@@ -39,7 +39,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return bool
  */
 function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    static $theme;
+    static $theme = null;
     if (empty($theme)) {
         $theme = theme_config::load('foundation');
     }

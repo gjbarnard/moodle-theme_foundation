@@ -28,6 +28,8 @@ namespace theme_foundation;
 
 defined('MOODLE_INTERNAL') || die();
 
+use theme_config;
+
 class toolbox {
 
     protected $corerenderer = null;
@@ -43,10 +45,15 @@ class toolbox {
         return self::$instance;
     }
 
+    public function get_theme_renderer(theme_config $theme) {
+        global $PAGE;
+        return $PAGE->get_renderer('theme_'.$theme->name, 'core');
+    }
+
     public function get_main_scss_content($theme) {
         global $CFG;
 
-        $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+        $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
 
         return $scss;
     }

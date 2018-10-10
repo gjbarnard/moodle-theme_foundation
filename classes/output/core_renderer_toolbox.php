@@ -23,42 +23,24 @@
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 namespace theme_foundation\output;
+
+//use html_writer;
 
 defined('MOODLE_INTERNAL') || die();
 
-use action_menu;
+trait core_renderer_toolbox {
+    public function render_page() {
+        echo $this->doctype();
 
-class core_renderer extends \core_renderer {
+        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        $blockshtml = $this->blocks('side-pre');
+        $hasblocks = strpos($blockshtml, 'data-block=') !== false;
+        $data = new \stdClass();
+        $data->output = $this;
+        $data->sidepreblocks = $blockshtml;
+        $data->hasblocks = $hasblocks;
 
-    use core_renderer_toolbox;
-
-    public function __construct(\moodle_page $page, $target) {
-        parent::__construct($page, $target);
+        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }
-
-    /**
-     * Renders an action menu component.
-     *
-     * @param action_menu $menu
-     * @return string HTML
-     */
-    public function render_action_menu(action_menu $menu) {
-
-        // We don't want the class icon there!
-        foreach ($menu->get_secondary_actions() as $action) {
-            if ($action instanceof \action_menu_link && $action->has_class('icon')) {
-                $action->attributes['class'] = preg_replace('/(^|\s+)icon(\s+|$)/i', '', $action->attributes['class']);
-            }
-        }
-
-        if ($menu->is_empty()) {
-            return '';
-        }
-        $context = $menu->export_for_template($this);
-
-        return $this->render_from_template('core/action_menu', $context);
-    }
-
 }

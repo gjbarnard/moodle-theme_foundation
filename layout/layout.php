@@ -24,14 +24,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_foundation\output;
+ defined('MOODLE_INTERNAL') || die;
 
-defined('MOODLE_INTERNAL') || die();
-
-class core_renderer_maintenance extends \core_renderer_maintenance {
-    use core_renderer_toolbox;
-
-    public function __construct(\moodle_page $page, $target) {
-        parent::__construct($page, $target);
-    }
-}
+// Get the renderer for this plugin.
+$toolbox = \theme_foundation\toolbox::get_instance();
+$output = $toolbox->get_theme_renderer($PAGE->theme);
+echo $OUTPUT->doctype();
+echo $output->render_page();
