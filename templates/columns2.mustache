@@ -19,7 +19,7 @@
 
     Admin time setting template.
 
-    Boost 2 column layout template.
+    Foundation 2 column layout template.
 
     Context variables required for this template:
     * sitename - The name of the site
@@ -27,7 +27,6 @@
     * bodyattributes - attributes for the body tag as a string of html attributes
     * sidepreblocks - HTML for the blocks
     * hasblocks - true if there are blocks on this page
-    * navdraweropen - true if the nav drawer should be open on page load
     * regionmainsettingsmenu - HTML for the region main settings menu
     * hasregionmainsettingsmenu - There is a region main settings menu on this page.
 
@@ -67,6 +66,11 @@
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
+                {{#hasblocks}}
+                <section data-region="blocks-column" class="d-print-none">
+                    {{{ sidepreblocks }}}
+                </section>
+                {{/hasblocks}}
                 <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
                     <div class="card">
                         <div class="card-body">
@@ -80,11 +84,6 @@
                         </div>
                     </div>
                 </section>
-                {{#hasblocks}}
-                <section data-region="blocks-column" class="d-print-none">
-                    {{{ sidepreblocks }}}
-                </section>
-                {{/hasblocks}}
             </div>
         </div>
     </div>

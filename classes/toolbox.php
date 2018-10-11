@@ -57,4 +57,17 @@ class toolbox {
 
         return $scss;
     }
+
+    /**
+     * Return an instance of the mustache class.
+     *
+     * @since 2.9
+     * @return Mustache_Engine
+     */
+    public function get_mustache() {
+        global $PAGE;
+        $renderer = $PAGE->get_renderer('theme_foundation', 'mustache');
+        
+        return $renderer->getmustache();
+    }
 }
