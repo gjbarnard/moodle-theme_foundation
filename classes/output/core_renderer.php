@@ -34,8 +34,77 @@ class core_renderer extends \core_renderer {
 
     use core_renderer_toolbox;
 
+    /**
+     * @var Mustache_Engine $mustache The mustache template compiler
+     */
+    protected $mustache_engine;
+
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
+    }
+
+    /**
+     * Return an instance of the mustache class.
+     *
+     * @since 2.9
+     * @return Mustache_Engine
+     */
+    protected function get_mustache() {
+        global $CFG;
+
+        if ($this->mustache_engine === null) {
+            require_once("{$CFG->libdir}/filelib.php");
+
+            $themename = $this->page->theme->name;
+            $themerev = theme_get_revision();
+
+            // Create new localcache directory.
+            $cachedir = make_localcache_directory("mustache/$themerev/$themename");
+
+            // Remove old localcache directories.
+            $mustachecachedirs = glob("{$CFG->localcachedir}/mustache/*", GLOB_ONLYDIR);
+            foreach ($mustachecachedirs as $localcachedir) {
+                $cachedrev = [];
+                preg_match("/\/mustache\/([0-9]+)$/", $localcachedir, $cachedrev);
+                $cachedrev = isset($cachedrev[1]) ? intval($cachedrev[1]) : 0;
+                if ($cachedrev > 0 && $cachedrev < $themerev) {
+                    fulldelete($localcachedir);
+                }
+            }
+
+            $loader = new \theme_foundation\output\core\output\mustache_filesystem_loader();
+            $partialsloader = new \theme_foundation\output\core\output\mustache_filesystem_loader();
+            $partialsloader->tisPartials();
+            $stringhelper = new \core\output\mustache_string_helper();
+            $quotehelper = new \core\output\mustache_quote_helper();
+            $jshelper = new \core\output\mustache_javascript_helper($this->page);
+            $pixhelper = new \core\output\mustache_pix_helper($this);
+            $shortentexthelper = new \core\output\mustache_shorten_text_helper();
+            $userdatehelper = new \core\output\mustache_user_date_helper();
+
+            // We only expose the variables that are exposed to JS templates.
+            $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $this);
+
+            $helpers = array('config' => $safeconfig,
+                             'str' => array($stringhelper, 'str'),
+                             'quote' => array($quotehelper, 'quote'),
+                             'js' => array($jshelper, 'help'),
+                             'pix' => array($pixhelper, 'pix'),
+                             'shortentext' => array($shortentexthelper, 'shorten'),
+                             'userdate' => array($userdatehelper, 'transform'),
+                         );
+
+            $this->mustache_engine = new \Mustache_Engine(array(
+                'cache' => $cachedir,
+                'escape' => 's',
+                'loader' => $loader,
+                'partials_loader' => $partialsloader,
+                'helpers' => $helpers,
+                'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS]));
+
+        }
+
+        return $this->mustache_engine;
     }
 
     /**
@@ -58,6 +127,7 @@ class core_renderer extends \core_renderer {
         }
         $context = $menu->export_for_template($this);
 
+        //return $this->render_from_template('theme_boost/core/action_menu', $context);
         return $this->render_from_template('core/action_menu', $context);
     }
 
