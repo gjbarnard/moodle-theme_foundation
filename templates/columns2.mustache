@@ -47,7 +47,7 @@
         "hasregionmainsettingsmenu": false
     }
 }}
-{{> theme_foundation/head }}
+{{> partial/head }}
 
 <body {{{ bodyattributes }}}>
 
@@ -55,7 +55,7 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    {{> theme_foundation/navbar}}
+    {{> partial/navbar}}
 
     <div id="page" class="container-fluid">
         {{{ output.full_header }}}
@@ -90,7 +90,7 @@
     </div>
 </div>
 
-{{> theme_foundation/footer }}
+{{> partial/footer }}
 
 </body>
 </html>

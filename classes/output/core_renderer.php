@@ -28,11 +28,9 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
-use action_menu;
-
 class core_renderer extends \core_renderer {
-
     use core_renderer_toolbox;
+    use core_renderer_boost;
 
     /**
      * @var Mustache_Engine $mustache The mustache template compiler
@@ -73,8 +71,6 @@ class core_renderer extends \core_renderer {
             }
 
             $loader = new \theme_foundation\output\core\output\mustache_filesystem_loader();
-            $partialsloader = new \theme_foundation\output\core\output\mustache_filesystem_loader();
-            $partialsloader->tisPartials();
             $stringhelper = new \core\output\mustache_string_helper();
             $quotehelper = new \core\output\mustache_quote_helper();
             $jshelper = new \core\output\mustache_javascript_helper($this->page);
@@ -105,29 +101,4 @@ class core_renderer extends \core_renderer {
 
         return $this->mustache_engine;
     }
-
-    /**
-     * Renders an action menu component.
-     *
-     * @param action_menu $menu
-     * @return string HTML
-     */
-    public function render_action_menu(action_menu $menu) {
-
-        // We don't want the class icon there!
-        foreach ($menu->get_secondary_actions() as $action) {
-            if ($action instanceof \action_menu_link && $action->has_class('icon')) {
-                $action->attributes['class'] = preg_replace('/(^|\s+)icon(\s+|$)/i', '', $action->attributes['class']);
-            }
-        }
-
-        if ($menu->is_empty()) {
-            return '';
-        }
-        $context = $menu->export_for_template($this);
-
-        //return $this->render_from_template('theme_boost/core/action_menu', $context);
-        return $this->render_from_template('core/action_menu', $context);
-    }
-
 }

@@ -15,36 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Perform some custom name mapping for template file names (strip leading component/).
+ * Foundation theme.
  *
- * @package    core
- * @category   output
- * @copyright  2015 Damyon Wiese
+ * @package    theme
+ * @subpackage foundation
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ *             based upon work by Damyon Wiese.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace theme_foundation\output\core\output;
 
-/**
- * Perform some custom name mapping for template file names.
- *
- * @copyright  2015 Damyon Wiese
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @since      2.9
- */
 class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader {
 
-    private $partials;
- 
-    /**
-     * Provide a default no-args constructor (we don't really need anything).
-     */
     public function __construct() {
-        $this->partials = 'false';
-    }
-    
-    public function tisPartials() {
-        $this->partials = 'true';
+        parent::__construct();
     }
 
     /**
@@ -55,31 +41,12 @@ class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader
      * @return string Template file name
      */
     protected function getFileName($name) {
-        error_log(print_r('getFileName('.$this->partials.'): '.$name, true));
-        /* Call the Moodle template finder.
+        /* 
+         * Call the theme template finder which supports partials and our inclusion rather
+         * than the dependance on the Boost theme.
          * 
-         * If there is no underscore before the first forward slash then from our theme persepective it
-         * is a non-frankenstyle overridden template that should have been defined in the Boost theme.
-         * This can be called either from PHP or as a 'partials', i.e. the 'partials_loader' concept.
-         * 
-         * But if we wanted to overload a Boost 'partial' then all we need to do is prefix it with the
-         * theme name, i.e. 'theme_foundation/core/action_menu' and this code will cope with that syntax
-         * even if core does not support partials.
-         * 
-         * All of this allows us as a theme not to have to have copies of and maintain all of the Bootstrap
-         * version 4 core templates that Boost provides.
+         * Specify partials in the form 'partial/templatename'.
          */
-        $component = substr($name, 0, strpos($name, '/'));
-        if (strpos($component, '_') === FALSE) {
-            return \core\output\mustache_template_finder::get_template_filepath($name, 'boost');            
-        } else if (substr_count($name, '/') == 2) {
-            $parts = explode('/', $name);
-            // First part is theme name.
-            $themename = explode('_', $parts[0]);
-            $name = $parts[1].'/'.$parts[2];
-            return \core\output\mustache_template_finder::get_template_filepath($name, $themename[1]);
-        } else {
-            return \core\output\mustache_template_finder::get_template_filepath($name);
-        }
+        return mustache_template_finder::get_template_filepath($name);
     }
 }

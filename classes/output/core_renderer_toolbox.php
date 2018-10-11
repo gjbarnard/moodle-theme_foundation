@@ -23,6 +23,7 @@
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace theme_foundation\output;
 
 //use html_writer;
@@ -30,17 +31,25 @@ namespace theme_foundation\output;
 defined('MOODLE_INTERNAL') || die();
 
 trait core_renderer_toolbox {
+
     public function render_page() {
         echo $this->doctype();
 
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $blockshtml = $this->blocks('side-pre');
         $hasblocks = strpos($blockshtml, 'data-block=') !== false;
+        $bodyattributes = $this->body_attributes();
+        $regionmainsettingsmenu = $this->region_main_settings_menu();
+
         $data = new \stdClass();
         $data->output = $this;
         $data->sidepreblocks = $blockshtml;
         $data->hasblocks = $hasblocks;
+        $data->bodyattributes = $bodyattributes;
+        $data->regionmainsettingsmenu = $regionmainsettingsmenu;
+        $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
 
-        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
+        echo $this->render_from_template('theme_foundation/' . $mustache, $data);
     }
+
 }
