@@ -98,7 +98,6 @@ class core_renderer extends \core_renderer {
                 'cache' => $cachedir,
                 'escape' => 's',
                 'loader' => $loader,
-                'partials_loader' => $partialsloader,
                 'helpers' => $helpers,
                 'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS]));
 

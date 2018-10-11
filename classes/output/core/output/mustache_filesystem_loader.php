@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output\core\output;
 
-use coding_exception;
-
 /**
  * Perform some custom name mapping for template file names.
  *
@@ -50,47 +48,6 @@ class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader
     }
 
     /**
-     * Load a Template by name.
-     *
-     *     $loader = new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views');
-     *     $loader->load('admin/dashboard'); // loads "./views/admin/dashboard.mustache";
-     *
-     * @param string $name
-     *
-     * @return string Mustache Template source
-     */
-    public function load($name)
-    {
-        //error_log(print_r('load('.$this->partials.'): '.$name, true));
-        if (!isset($this->templates[$name])) {
-            $this->templates[$name] = $this->loadFile($name);
-        }
-
-        return $this->templates[$name];
-    }
-
-    /**
-     * Helper function for loading a Mustache file by name.
-     *
-     * @throws Mustache_Exception_UnknownTemplateException If a template file is not found
-     *
-     * @param string $name
-     *
-     * @return string Mustache Template source
-     */
-    protected function loadFile($name)
-    {
-        //error_log(print_r('loadFile('.$this->partials.'): '.$name, true));
-        $fileName = $this->getFileName($name);
-
-        if ($this->shouldCheckPath() && !file_exists($fileName)) {
-            throw new Mustache_Exception_UnknownTemplateException($name);
-        }
-
-        return file_get_contents($fileName);
-    }
-
-    /**
      * Helper function for getting a Mustache template file name.
      * Uses the leading component to restrict us specific directories.
      *
@@ -99,8 +56,23 @@ class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader
      */
     protected function getFileName($name) {
         error_log(print_r('getFileName('.$this->partials.'): '.$name, true));
-        // Call the Moodle template finder.
-        if (substr_count($name, '/') == 2) {
+        /* Call the Moodle template finder.
+         * 
+         * If there is no underscore before the first forward slash then from our theme persepective it
+         * is a non-frankenstyle overridden template that should have been defined in the Boost theme.
+         * This can be called either from PHP or as a 'partials', i.e. the 'partials_loader' concept.
+         * 
+         * But if we wanted to overload a Boost 'partial' then all we need to do is prefix it with the
+         * theme name, i.e. 'theme_foundation/core/action_menu' and this code will cope with that syntax
+         * even if core does not support partials.
+         * 
+         * All of this allows us as a theme not to have to have copies of and maintain all of the Bootstrap
+         * version 4 core templates that Boost provides.
+         */
+        $component = substr($name, 0, strpos($name, '/'));
+        if (strpos($component, '_') === FALSE) {
+            return \core\output\mustache_template_finder::get_template_filepath($name, 'boost');            
+        } else if (substr_count($name, '/') == 2) {
             $parts = explode('/', $name);
             // First part is theme name.
             $themename = explode('_', $parts[0]);
