@@ -51,7 +51,10 @@ class mustache_renderer extends \renderer_base {
         if ($this->mustache_engine === null) {
             require_once("{$CFG->libdir}/filelib.php");
 
-            $themename = $this->page->theme->name;
+            $theme = $this->page->theme;
+            $themename = $theme->name;
+            $toolbox = \theme_foundation\toolbox::get_instance();
+            $corerenderer = $toolbox->get_theme_renderer($theme);
             $themerev = theme_get_revision();
 
             // Create new localcache directory.
@@ -72,12 +75,12 @@ class mustache_renderer extends \renderer_base {
             $stringhelper = new \core\output\mustache_string_helper();
             $quotehelper = new \core\output\mustache_quote_helper();
             $jshelper = new \core\output\mustache_javascript_helper($this->page);
-            $pixhelper = new \core\output\mustache_pix_helper($this);
+            $pixhelper = new \core\output\mustache_pix_helper($corerenderer);
             $shortentexthelper = new \core\output\mustache_shorten_text_helper();
             $userdatehelper = new \core\output\mustache_user_date_helper();
 
             // We only expose the variables that are exposed to JS templates.
-            $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $this);
+            $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $corerenderer);
 
             $helpers = array('config' => $safeconfig,
                              'str' => array($stringhelper, 'str'),

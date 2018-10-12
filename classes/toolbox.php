@@ -70,4 +70,8 @@ class toolbox {
         
         return $renderer->getmustache();
     }
+    
+    public function extra_scss() {
+        return '.navbar-expand{ color: #fab; }';
+    }
 }

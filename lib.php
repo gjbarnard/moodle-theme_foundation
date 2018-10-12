@@ -57,3 +57,8 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
         send_file_not_found();
     }
 }
+
+function theme_foundation_extra_scss() {
+    $toolbox = \theme_foundation\toolbox::get_instance();
+    return $toolbox->extra_scss();
+}

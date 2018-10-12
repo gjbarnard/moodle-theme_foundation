@@ -172,5 +172,6 @@ $THEME->scss = function($theme) {
     $toolbox = \theme_foundation\toolbox::get_instance();
     return $toolbox->get_main_scss_content($theme);
 };
+$THEME->extrascsscallback = 'theme_foundation_extra_scss';
 
 $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;

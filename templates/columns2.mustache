@@ -66,11 +66,6 @@
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                {{#hasblocks}}
-                <section data-region="blocks-column" class="d-print-none">
-                    {{{ sidepreblocks }}}
-                </section>
-                {{/hasblocks}}
                 <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
                     <div class="card">
                         <div class="card-body">
@@ -84,6 +79,11 @@
                         </div>
                     </div>
                 </section>
+                {{#hasblocks}}
+                <section data-region="blocks-column" class="d-print-none">
+                    {{{ sidepreblocks }}}
+                </section>
+                {{/hasblocks}}
             </div>
         </div>
     </div>
