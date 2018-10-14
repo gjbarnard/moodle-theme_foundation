@@ -1,0 +1,13 @@
+.block_navigation .block_tree p.hasicon,
+.block_settings .block_tree p.hasicon {
+    padding-left: 0;
+    text-indent: -2px;
+}
+
+.block_navigation .block_tree .tree_item.branch,
+.block_settings .block_tree .tree_item.branch {
+    padding-left: 0;
+}
+.block_tree .tree_item.branch {
+    margin-left: 0;
+}

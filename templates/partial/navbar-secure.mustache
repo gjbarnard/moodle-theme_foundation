@@ -19,22 +19,22 @@
 }}
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand moodle-has-zindex">
 
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
-            {{^ output.should_display_navbar_logo }}
-                d-none d-sm-inline
-            {{/ output.should_display_navbar_logo }}
-                ">
-            {{# output.should_display_navbar_logo }}
-                <span class="logo d-none d-sm-inline">
-                    <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-                </span>
-            {{/ output.should_display_navbar_logo }}
-            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
-        </a>
+    <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+        {{^ output.should_display_navbar_logo }}
+            d-none d-sm-inline
+        {{/ output.should_display_navbar_logo }}
+        ">
+        {{# output.should_display_navbar_logo }}
+            <span class="logo d-none d-sm-inline">
+                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+            </span>
+        {{/ output.should_display_navbar_logo }}
+        <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+    </a>
 
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item">
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
             {{{ output.secure_login_info }}}
-            </li>
-        </ul>
+        </li>
+    </ul>
 </nav>

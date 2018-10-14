@@ -69,6 +69,7 @@ $theme-colors: (
     dark: $gray-800
 );
 
+// Imports relative to theme scss folder, see get_css_content_from_scss() and get_scss_property() of theme_config in /lib/outputlib.php.
 // Import FontAwesome.
 @import "../../boost/scss/fontawesome";
 

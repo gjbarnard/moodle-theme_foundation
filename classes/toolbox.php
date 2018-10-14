@@ -50,12 +50,58 @@ class toolbox {
         return $PAGE->get_renderer('theme_'.$theme->name, 'core');
     }
 
-    public function get_main_scss_content($theme) {
-        global $CFG;
+    public function get_main_scss_content($theme_config) {
+        //global $CFG;
 
-        $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
+        //$scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
+        //$scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
+
+        $scss = $this->generate_css_from_scss($theme_config);
 
         return $scss;
+    }
+
+    protected function generate_css_from_scss($theme_config) {
+        global $CFG;
+
+        $boostpath = $CFG->dirroot . '/theme/boost/scss';
+
+        list($paths, $scss) = $theme_config->get_scss_property();
+        $paths[] = $boostpath;
+
+        $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
+        //$scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
+        //$scss = file($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
+        //$handle = fopen($CFG->dirroot . '/theme/foundation/scss/preset/default.scss', "rb");
+        //$scss = fread($handle, filesize($CFG->dirroot . '/theme/foundation/scss/preset/default.scss'));
+        //fclose($handle);
+
+        //$scss .= file($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
+
+        // We might need more memory/time to do this, so let's play safe.
+        \raise_memory_limit(MEMORY_EXTRA);
+        \core_php_time_limit::raise(300);
+
+        // Set-up the compiler.
+        $compiler = new \core_scss();
+
+        $compiler->append_raw_scss($scss);
+        $compiler->setImportPaths($paths);
+
+        try {
+            // Compile!
+            $compiled = $compiler->to_css();
+error_log(print_r($compiler->getParsedFiles(), true));
+        } catch (\Exception $e) {
+            $compiled = false;
+            debugging('Error while compiling SCSS: ' . $e->getMessage(), DEBUG_DEVELOPER);
+        }
+
+        // Try to save memory.
+        $compiler = null;
+        unset($compiler);
+
+        return $compiled;
     }
 
     /**
@@ -67,11 +113,15 @@ class toolbox {
     public function get_mustache() {
         global $PAGE;
         $renderer = $PAGE->get_renderer('theme_foundation', 'mustache');
-        
+
         return $renderer->getmustache();
     }
-    
+
     public function extra_scss() {
-        return '.navbar-expand{ color: #fab; }';
+        //$us = \theme_config::load('foundation');
+        //$css = $this->generate_css_from_scss($us);
+        $css = '';
+
+        return $css;
     }
 }
