@@ -124,12 +124,10 @@ trait core_renderer_boost {
      * @return bool
      */
     public function should_display_main_logo($headinglevel = 1) {
-        global $PAGE;
-
         // Only render the logo if we're on the front page or login page and the we have a logo.
         $logo = $this->get_logo_url();
         if ($headinglevel == 1 && !empty($logo)) {
-            if ($PAGE->pagelayout == 'frontpage' || $PAGE->pagelayout == 'login') {
+            if ($this->page->pagelayout == 'frontpage' || $this->page->pagelayout == 'login') {
                 return true;
             }
         }

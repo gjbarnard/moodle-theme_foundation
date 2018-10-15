@@ -46,15 +46,14 @@ class mustache_renderer extends \renderer_base {
      * @return Mustache_Engine
      */
     protected function get_mustache() {
-        global $CFG;
-
         if ($this->mustache_engine === null) {
+            global $CFG;
             require_once("{$CFG->libdir}/filelib.php");
 
             $theme = $this->page->theme;
             $themename = $theme->name;
             $toolbox = \theme_foundation\toolbox::get_instance();
-            $corerenderer = $toolbox->get_theme_renderer($theme);
+            $corerenderer = $toolbox->get_theme_renderer();
             $themerev = theme_get_revision();
 
             // Create new localcache directory.

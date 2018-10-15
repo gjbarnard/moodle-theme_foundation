@@ -41,6 +41,15 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 $string['configtitle'] = 'Foundation';
 $string['pluginname'] = 'Foundation';
 
+// Settings.
+$string['generalheading'] = 'General';
+$string['generalheadingsub'] = 'General settings';
+$string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
+
+// Dynamic - will this break plugin validation?
+$toolbox = \theme_foundation\toolbox::get_instance();
+$string = array_merge($string, $toolbox->get_en_strings());
+
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
 

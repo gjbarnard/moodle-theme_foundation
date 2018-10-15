@@ -28,13 +28,14 @@ namespace theme_foundation;
 
 defined('MOODLE_INTERNAL') || die();
 
-use theme_config;
-
 class toolbox {
 
     protected $corerenderer = null;
-    protected static $instance;
+    protected $themename = '';
+    protected $theconfig = null;
+    protected static $instance = null;
 
+    // This is a lonely object.
     private function __construct() {
     }
 
@@ -45,14 +46,28 @@ class toolbox {
         return self::$instance;
     }
 
-    public function get_theme_renderer(theme_config $theme) {
+    public function get_theme_renderer() {
         global $PAGE;
-        return $PAGE->get_renderer('theme_'.$theme->name, 'core');
+        $themename = $PAGE->theme->name;
+        if (empty($this->corerenderer)) {
+            $this->corerenderer = $PAGE->get_renderer('theme_'.$themename, 'core');
+            $this->themename = $themename;
+
+            // Now is a good time to setup our theme configuration for settings etc.
+            $this->theconfig = \theme_foundation\the_config::load($themename);
+            //error_log(print_r($this->theconfig, true));
+        } else {
+            if ($themename != $this->themename) {
+                // More of a humm! if this happens.
+                \debugging('theme_foundation toolbox::get_theme_renderer() - Different theme \''.$themename.'\' from original \''.$this->themename.'\'.');
+            }
+        }
+        return $this->corerenderer;
     }
 
-    public function get_main_scss_content(theme_config $theme) {
+    public function get_main_scss_content(\theme_config $theme) {
         global $CFG;
-        
+
         // TODO: Cope with the theme being in $CFG->themedir.
         $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_variables.scss');
         $scss .= $this->get_core_framework_scss();
@@ -95,5 +110,36 @@ class toolbox {
         $css = '';
 
         return $css;
+    }
+
+    public function add_settings($admin) {
+        $admin->add('themes', new \admin_category('theme_foundation', 'Foundation'));
+
+        // General settings.
+        $generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
+        if ($admin->fulltree) {
+            $generalsettings->add(new \admin_setting_heading('theme_foundation_generalheading',
+                get_string('generalheadingsub', 'theme_foundation'),
+                format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+
+            // Custom SCSS.
+            $name = 'theme_foundation/customscss';
+            $title = get_string('customscss', 'theme_foundation');
+            $description = get_string('customscssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $generalsettings->add($setting);
+        }
+        $admin->add('theme_foundation', $generalsettings);
+    }
+
+    public function get_en_strings() {
+        $strings = array();
+
+        $strings['customscss'] = 'Custom SCSS';
+        $strings['customscssdesc'] = 'Add custom SCSS to the theme.';
+
+        return $strings;
     }
 }

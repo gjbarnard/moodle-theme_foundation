@@ -24,10 +24,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- defined('MOODLE_INTERNAL') || die;
+defined('MOODLE_INTERNAL') || die;
+$settings = null;
 
-// Get the renderer for this plugin.
 $toolbox = \theme_foundation\toolbox::get_instance();
-$output = $toolbox->get_theme_renderer();
-echo $OUTPUT->doctype();
-echo $output->render_page();
+$toolbox->add_settings($ADMIN);
