@@ -168,10 +168,9 @@ $THEME->layouts = array(
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
-$THEME->scss = function($theme_config) {
-    //return '';
+$THEME->scss = function(theme_config $theme) {
     $toolbox = \theme_foundation\toolbox::get_instance();
-    $scss = $toolbox->get_main_scss_content($theme_config);
+    $scss = $toolbox->get_main_scss_content($theme);
 
     return $scss;
 };

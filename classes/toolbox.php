@@ -50,58 +50,30 @@ class toolbox {
         return $PAGE->get_renderer('theme_'.$theme->name, 'core');
     }
 
-    public function get_main_scss_content($theme_config) {
-        //global $CFG;
-
-        //$scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
-        //$scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
-
-        $scss = $this->generate_css_from_scss($theme_config);
+    public function get_main_scss_content(theme_config $theme) {
+        global $CFG;
+        
+        // TODO: Cope with the theme being in $CFG->themedir.
+        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_variables.scss');
+        $scss .= $this->get_core_framework_scss();
+        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_bootswatch.scss');
+        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
 
         return $scss;
     }
 
-    protected function generate_css_from_scss($theme_config) {
-        global $CFG;
+    protected function get_core_framework_scss() {
+        // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
+        $path = '../../boost/scss/';
 
-        $boostpath = $CFG->dirroot . '/theme/boost/scss';
+        $scss = '// Import FontAwesome.'.PHP_EOL;
+        $scss .= '@import "'.$path.'fontawesome";'.PHP_EOL;
+        $scss .= '// Import All of Bootstrap'.PHP_EOL;
+        $scss .= '@import "'.$path.'bootstrap";'.PHP_EOL;
+        $scss .= '// Import Core moodle CSS'.PHP_EOL;
+        $scss .= '@import "'.$path.'moodle";'.PHP_EOL;
 
-        list($paths, $scss) = $theme_config->get_scss_property();
-        $paths[] = $boostpath;
-
-        $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
-        //$scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
-        //$scss = file($CFG->dirroot . '/theme/foundation/scss/preset/default.scss');
-        //$handle = fopen($CFG->dirroot . '/theme/foundation/scss/preset/default.scss', "rb");
-        //$scss = fread($handle, filesize($CFG->dirroot . '/theme/foundation/scss/preset/default.scss'));
-        //fclose($handle);
-
-        //$scss .= file($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
-
-        // We might need more memory/time to do this, so let's play safe.
-        \raise_memory_limit(MEMORY_EXTRA);
-        \core_php_time_limit::raise(300);
-
-        // Set-up the compiler.
-        $compiler = new \core_scss();
-
-        $compiler->append_raw_scss($scss);
-        $compiler->setImportPaths($paths);
-
-        try {
-            // Compile!
-            $compiled = $compiler->to_css();
-error_log(print_r($compiler->getParsedFiles(), true));
-        } catch (\Exception $e) {
-            $compiled = false;
-            debugging('Error while compiling SCSS: ' . $e->getMessage(), DEBUG_DEVELOPER);
-        }
-
-        // Try to save memory.
-        $compiler = null;
-        unset($compiler);
-
-        return $compiled;
+        return $scss;
     }
 
     /**
