@@ -104,12 +104,15 @@ class toolbox {
         return $renderer->getmustache();
     }
 
-    public function extra_scss() {
-        //$us = \theme_config::load('foundation');
-        //$css = $this->generate_css_from_scss($us);
-        $css = '';
+    public function extra_scss($themename) {
+        $scss = '';
+        
+        $customscss = $this->get_setting('customscss');  // TODO: Does there need to be a parent daisy chain of this setting?
+        if (!empty($customscss)) {
+            $scss .= $customscss;
+        }
 
-        return $css;
+        return $scss;
     }
 
     public function add_settings($admin) {
@@ -141,5 +144,25 @@ class toolbox {
         $strings['customscssdesc'] = 'Add custom SCSS to the theme.';
 
         return $strings;
+    }
+    
+    public function get_setting($settingname) {
+        $settingvalue = false;
+        
+        // We need to work on 'properties' so that empty values can be used.
+        if (property_exists($this->theconfig->settings, $settingname)) {
+            $settingvalue = $this->theconfig->settings->$settingname;            
+        } else {
+            /* Look in the parents.
+               Parents will be in the correct order of the hierarchy as defined in $THEME->parents in config.php. */
+            foreach ($this->theconfig->parents as $parent) {
+                if (property_exists($parent->settings, $settingname)) {
+                    $settingvalue = $parent->settings->$settingname;
+                    break;
+                }
+            }
+        }
+        error_log($settingname.' - '.$settingvalue);
+        return $settingvalue;
     }
 }

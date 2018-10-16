@@ -41,7 +41,7 @@ use stdClass;
  */
 class the_config {
 
-    public $parents;
+    public $parents = null;
 
     //==Following properties are not configurable from theme config.php==
 
@@ -49,13 +49,13 @@ class the_config {
      * @var string The name of this theme. Set automatically when this theme is
      * loaded. This can not be set in theme config.php
      */
-    public $name;
+    public $name = null;
 
     /**
      * @var string The folder where this themes files are stored. This is set
      * automatically. This can not be set in theme config.php
      */
-    public $dir;
+    public $dir = null;
 
     /**
      * @var stdClass Theme settings stored in config_plugins table.
@@ -199,10 +199,8 @@ class the_config {
 
         if (file_exists("$CFG->dirroot/theme/$themename/config.php")) {
             $dir = "$CFG->dirroot/theme/$themename";
-
         } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/config.php")) {
             $dir = "$CFG->themedir/$themename";
-
         } else {
             return null;
         }
