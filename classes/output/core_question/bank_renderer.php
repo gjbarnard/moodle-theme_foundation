@@ -15,25 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Question renderer.
+ * Foundation theme.
  *
- * @package    theme_boost
- * @copyright  2017 onwards Ankit Agarwal <ankit.agrr@gmail.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme
+ * @subpackage foundation
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_boost\output\core_question;
+
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/' . $CFG->admin . '/renderer.php');
+require_once($CFG->dirroot.'/'.$CFG->admin.'/renderer.php');
 
-/**
- * Question renderer class.
- *
- * @package    theme_boost
- * @copyright  2017 onwards Ankit Agarwal <ankit.agrr@gmail.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class bank_renderer extends \core_question_bank_renderer {
 
     /**

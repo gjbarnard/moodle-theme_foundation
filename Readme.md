@@ -2,11 +2,20 @@ Introduction
 ============
 Foundation theme.
 
+This is a basic Bootstrap version 4 theme that aims to provide a starting platform upon which to build themes and
+child themes.  It does not extend the Boost theme but rather 'pull' the files it needs from it because that is where
+they are currently stored.  No navigation drawer or docking has been implemented.
+
+There is added support for 'partial' templates which can then be imported into a main template with the syntax
+'> partial/mypartial'.
+
+Currently the theme does not work when placed within a $CFG->themedir folder.
+
 About
 =====
  * copyright  &copy; 2018-onwards G J Barnard.
  * author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
- * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
 
 Developed and maintained by
 ===========================

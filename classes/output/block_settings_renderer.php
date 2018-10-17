@@ -15,23 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Overridden block settings renderer.
+ * Foundation theme.
  *
- * @package    theme_boost
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme
+ * @subpackage foundation
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\output;
+
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Overridden block settings renderer.
- *
- * @package    theme_boost
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class block_settings_renderer extends \theme_boost\output\block_settings_renderer {
     protected function get_mustache() {
         $toolbox = \theme_foundation\toolbox::get_instance();

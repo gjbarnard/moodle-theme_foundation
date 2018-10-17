@@ -15,23 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Course renderer.
+ * Foundation theme.
  *
- * @package    theme_noanme
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme
+ * @subpackage foundation
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\output\core;
+
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Course renderer class.
- *
- * @package    theme_noanme
- * @copyright  2016 Frédéric Massart - FMCorz.net
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class course_renderer extends \theme_boost\output\core\course_renderer {
     protected function get_mustache() {
         $toolbox = \theme_foundation\toolbox::get_instance();

@@ -21,7 +21,7 @@
  * @subpackage foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\output;
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 
 class mustache_renderer extends \renderer_base {
     use mustache_engine;
-    
+
     /**
      * Allows the caller to get our Mustache_Engine engine instance when it is a protected getter in the core API.
      * @return Mustache_Engine Instance of.

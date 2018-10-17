@@ -22,7 +22,7 @@
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195},
  *             based upon work by Damyon Wiese.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\output\core\output;

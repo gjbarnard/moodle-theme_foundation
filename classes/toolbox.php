@@ -157,7 +157,7 @@ class toolbox {
                So.... start with the top parent and move forward, recursively. */
             if (!empty($theme->parents)) {
                 $parentname = end($theme->parents);
-                while ($parentname !== FALSE) {
+                while ($parentname !== false) {
                     $this->add_theme($parentname);
                     $parentname = prev($theme->parents);
                 }
@@ -196,7 +196,7 @@ class toolbox {
         /* Get the array internal pointer to the end then walk backwards to find the theme.  As we need to get the correct value
            for the setting with the theme specified as the starting point. */
         $current = end($this->theconfigs);
-        while (($current !== FALSE) && ($current->name != $themename)) {
+        while (($current !== false) && ($current->name != $themename)) {
             $current = prev($this->theconfigs);
         }
 
@@ -207,7 +207,7 @@ class toolbox {
             /* Look in the parents.
                Parents will be in the correct order of the hierarchy as defined in $THEME->parents in config.php. */
             $current = prev($this->theconfigs);
-            while ($current !== FALSE) {
+            while ($current !== false) {
                 if (property_exists($current->settings, $settingname)) {
                     $settingvalue = $current->settings->$settingname;
                     break;
