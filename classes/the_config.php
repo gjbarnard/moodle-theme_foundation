@@ -73,31 +73,10 @@ class the_config {
     public static function load($themename) {
         global $CFG;
 
-        // Load theme settings from db.
-        try {
-            $settings = \get_config('theme_'.$themename);
-        } catch (\dml_exception $e) {
-            // most probably moodle tables not created yet
-            $settings = new stdClass();
-        }
-
-        if ($config = self::find_theme_config($themename, $settings)) {
+        if ($config = self::find_theme_config($themename)) {
             return new self($config);
-
-        } else if ($themename == \theme_config::DEFAULT_THEME) {
-            throw new \coding_exception('Default theme '.\theme_config::DEFAULT_THEME.' not available or broken!');
-
-        } else if ($config = self::find_theme_config($CFG->theme, $settings)) {
-            debugging('This page should be using theme ' . $themename .
-                    ' which cannot be initialised. Falling back to the site theme '.$CFG->theme, DEBUG_NORMAL);
-            return new self($config);
-
         } else {
-            // bad luck, the requested theme has some problems - admin see details in theme config
-            debugging('This page should be using theme ' . $themename .
-                    ' which cannot be initialised. Nor can the site theme ' . $CFG->theme .
-                    '. Falling back to '.\theme_config::DEFAULT_THEME, DEBUG_NORMAL);
-            return new self(self::find_theme_config(\theme_config::DEFAULT_THEME, $settings));
+            throw new \coding_exception('Unable to load the '.$themename.' theme!');
         }
     }
 
@@ -106,8 +85,6 @@ class the_config {
      * @param stdClass $config
      */
     private function __construct($config) {
-        global $CFG; //needed for included lib.php files
-
         $this->settings = $config->settings;
         $this->name     = $config->name;
         $this->dir      = $config->dir;
@@ -121,13 +98,13 @@ class the_config {
         }
 
         // Verify all parents and load configs.
-        foreach ($this->parents as $parent) {
+        /*foreach ($this->parents as $parent) {
             if (!$parent_config = self::find_theme_config($parent)) {
                 // This is not good - better exclude faulty parents.
                 continue;
             }
             $this->parent_configs[$parent] = $parent_config;
-        }
+        }*/
     }
 
     /**
@@ -138,7 +115,7 @@ class the_config {
      * @param boolean $parentscheck true to also check the parents.    .
      * @return stdClass The theme configuration
      */
-    private static function find_theme_config($themename, $parentscheck = true) {
+    private static function find_theme_config($themename) {
         /* We have to use the variable name $THEME (upper case) because that
            is what is used in theme config.php files. */
 
@@ -167,12 +144,12 @@ class the_config {
         if (!is_array($THEME->parents)) {
             // Parents option is mandatory now.
             return null;
-        } else {
+        } // else {
             /* We use $parentscheck to only check the direct parents (avoid infinite loop).  Really?  Not sure why with an
                inheritance structure.  So really could be 'parent' then that 'parent' could refer to its 'parent' but as 'parents'
                then it is conceptually possible for a theme to define the wrong grand-parent and break / get a different
                ancestry than intended by the author of the 'parent'. */
-            if ($parentscheck) {
+            /* if ($parentscheck) {
                 // Find all parent theme configs.
                 foreach ($THEME->parents as $parent) {
                     // Load theme settings from db.
@@ -181,8 +158,8 @@ class the_config {
                         return null;
                     }
                 }
-            }
-        }
+            } */
+        //}
 
         return $THEME;
     }

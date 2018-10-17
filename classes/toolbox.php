@@ -32,7 +32,7 @@ class toolbox {
 
     protected $corerenderer = null;
     protected $themename = '';
-    protected $theconfig = null;
+    protected $theconfigs = array(); // Indexed on theme name in hierarchy order.
     protected static $instance = null;
 
     // This is a lonely object.
@@ -54,7 +54,7 @@ class toolbox {
             $this->themename = $themename;
 
             // Now is a good time to setup our theme configuration for settings etc.
-            $this->theconfig = \theme_foundation\the_config::load($themename);
+            //$this->theconfig = \theme_foundation\the_config::load($themename);
             //error_log(print_r($this->theconfig, true));
         } else {
             if ($themename != $this->themename) {
@@ -67,6 +67,10 @@ class toolbox {
 
     public function get_main_scss_content(\theme_config $theme) {
         global $CFG;
+
+        if (!$this->theme_exists($theme->name)) {
+            $this->add_theme($theme->name);
+        }
 
         // TODO: Cope with the theme being in $CFG->themedir.
         $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_variables.scss');
@@ -107,7 +111,7 @@ class toolbox {
     public function extra_scss($themename) {
         $scss = '';
         
-        $customscss = $this->get_setting('customscss');  // TODO: Does there need to be a parent daisy chain of this setting?
+        $customscss = $this->get_setting('customscss', $themename);  // TODO: Does there need to be a parent daisy chain of this setting?
         if (!empty($customscss)) {
             $scss .= $customscss;
         }
@@ -146,20 +150,81 @@ class toolbox {
         return $strings;
     }
     
-    public function get_setting($settingname) {
+    // Theme configuration management.
+    protected function add_theme($themename) {
+        error_log('add_theme: '.$themename);
+        $e = new \Exception;
+        error_log($e->getTraceAsString());
+        error_log('B4: '.print_r($this->theconfigs, true));
+        
+        // Does the theme exist already?
+        if (!$this->theme_exists($themename)) {
+            // No.
+            $theme = \theme_foundation\the_config::load($themename);
+            if ($theme !== null) {
+                // Everything went ok.  So add it and its parents if any.
+                
+                // So.... start with the top parent and move forward, recursively.
+                if (!empty($theme->parents)) {
+                    $parentname = end($theme->parents);
+                    while ($parentname !== FALSE) {
+                        $this->add_theme($parentname);
+                        $parentname = prev($theme->parents);
+                    }
+                }
+                
+                // Add to the end.
+                end($this->theconfigs);
+                $this->theconfigs[$themename] = $theme;
+            }
+        }
+        error_log('AF: '.print_r($this->theconfigs, true));
+    }
+    
+    protected function theme_exists($themename) {    
+        return array_key_exists($themename, $this->theconfigs);
+    }
+    
+    // Settings.
+    /**
+     * Gets the specified setting.
+     * 
+     * @param string $settingname The name of the setting.
+     * @param string $themename The name of the theme to start looking in.
+     * @return boolean|mixed false if not found or setting value.
+     */
+    public function get_setting($settingname, $themename = null) {
         $settingvalue = false;
         
+        if ($themename == null) {
+            global $PAGE;
+            $themename = $PAGE->theme->name;
+        }
+        
+        if (!$this->theme_exists($themename)) {
+            $this->add_theme($themename);
+        }
+        
+        /* Get the array internal pointer to the end then walk backwards to find the theme.  As we need to get the correct value
+           for the setting with the theme specified as the starting point. */
+        $current = end($this->theconfigs);
+        while (($current !== FALSE) && ($current->name != $themename)) {
+            $current = prev($this->theconfigs);
+        }
+        
         // We need to work on 'properties' so that empty values can be used.
-        if (property_exists($this->theconfig->settings, $settingname)) {
-            $settingvalue = $this->theconfig->settings->$settingname;            
+        if (property_exists($current->settings, $settingname)) {
+            $settingvalue = $current->settings->$settingname;            
         } else {
             /* Look in the parents.
                Parents will be in the correct order of the hierarchy as defined in $THEME->parents in config.php. */
-            foreach ($this->theconfig->parents as $parent) {
-                if (property_exists($parent->settings, $settingname)) {
-                    $settingvalue = $parent->settings->$settingname;
+            $current = prev($this->theconfigs);
+            while ($current !== FALSE) {
+                if (property_exists($current->settings, $settingname)) {
+                    $settingvalue = $current->settings->$settingname;
                     break;
                 }
+                $current = prev($this->theconfigs);
             }
         }
         error_log($settingname.' - '.$settingvalue);
