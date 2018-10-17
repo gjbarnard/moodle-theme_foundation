@@ -71,12 +71,10 @@ class the_config {
      * @return theme_config an instance of this class.
      */
     public static function load($themename) {
-        global $CFG;
-
         if ($config = self::find_theme_config($themename)) {
             return new self($config);
         } else {
-            throw new \coding_exception('Unable to load the '.$themename.' theme!');
+            throw new \coding_exception('Unable to load the \''.$themename.'\' theme!');
         }
     }
 
@@ -86,25 +84,9 @@ class the_config {
      */
     private function __construct($config) {
         $this->settings = $config->settings;
-        $this->name     = $config->name;
-        $this->dir      = $config->dir;
-
-        $configurable = array('parents');
-
-        foreach ($config as $key => $value) {
-            if (in_array($key, $configurable)) {
-                $this->$key = $value;
-            }
-        }
-
-        // Verify all parents and load configs.
-        /*foreach ($this->parents as $parent) {
-            if (!$parent_config = self::find_theme_config($parent)) {
-                // This is not good - better exclude faulty parents.
-                continue;
-            }
-            $this->parent_configs[$parent] = $parent_config;
-        }*/
+        $this->name = $config->name;
+        $this->dir = $config->dir;
+        $this->parents = $config->parents;
     }
 
     /**
@@ -119,9 +101,7 @@ class the_config {
         /* We have to use the variable name $THEME (upper case) because that
            is what is used in theme config.php files. */
 
-        if (!$dir = self::find_theme_location($themename)) {
-            return null;
-        }
+        $dir = self::find_theme_location($themename);
 
         $THEME = new stdClass();
         $THEME->name = $themename;
@@ -143,23 +123,8 @@ class the_config {
         // Verify the theme configuration is OK.
         if (!is_array($THEME->parents)) {
             // Parents option is mandatory now.
-            return null;
-        } // else {
-            /* We use $parentscheck to only check the direct parents (avoid infinite loop).  Really?  Not sure why with an
-               inheritance structure.  So really could be 'parent' then that 'parent' could refer to its 'parent' but as 'parents'
-               then it is conceptually possible for a theme to define the wrong grand-parent and break / get a different
-               ancestry than intended by the author of the 'parent'. */
-            /* if ($parentscheck) {
-                // Find all parent theme configs.
-                foreach ($THEME->parents as $parent) {
-                    // Load theme settings from db.
-                    $parentconfig = theme_config::find_theme_config($parent, false);
-                    if (empty($parentconfig)) {
-                        return null;
-                    }
-                }
-            } */
-        //}
+            throw new \coding_exception('Theme \''.$themename.'\' has no \'parents\' array defined in its config.php file.');
+        }
 
         return $THEME;
     }
@@ -179,12 +144,12 @@ class the_config {
         } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/config.php")) {
             $dir = "$CFG->themedir/$themename";
         } else {
-            return null;
+            throw new \coding_exception('Unable to find the \''.$themename.'\' theme!');
         }
 
         if (file_exists("$dir/styles.php")) {
             // Legacy theme - needs to be upgraded - upgrade info is displayed on the admin settings page.
-            return null;
+            throw new \coding_exception('Legacy \''.$themename.'\' theme needs to be upgraded!');
         }
 
         return $dir;
