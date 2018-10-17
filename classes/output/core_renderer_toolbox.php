@@ -26,8 +26,6 @@
 
 namespace theme_foundation\output;
 
-//use html_writer;
-
 defined('MOODLE_INTERNAL') || die();
 
 trait core_renderer_toolbox {

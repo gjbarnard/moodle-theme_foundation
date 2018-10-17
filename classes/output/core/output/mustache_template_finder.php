@@ -32,6 +32,8 @@ use moodle_exception;
 use core_component;
 use theme_config;
 
+defined('MOODLE_INTERNAL') || die();
+
 class mustache_template_finder {
 
     /**
@@ -57,7 +59,7 @@ class mustache_template_finder {
         // Validate the component.
         $dirs = array();
         $partial = ($component == 'partial');
-        if (!$partial) { // This allows the theme to put 
+        if (!$partial) { // This allows the theme to put partial templates in a sub-folder.
             $compdirectory = core_component::get_component_directory($component);
             if (!$compdirectory) {
                 throw new coding_exception("Component was not valid: " . s($component));
@@ -90,7 +92,7 @@ class mustache_template_finder {
         if (!$partial) {
             // Now check the Boost theme.
             $dirs[] = $CFG->dirroot . '/theme/boost/templates/' . $component . '/';
-        
+
             $dirs[] = $compdirectory . '/templates/';
         }
 

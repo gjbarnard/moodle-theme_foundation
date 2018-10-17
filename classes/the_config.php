@@ -43,7 +43,7 @@ class the_config {
 
     public $parents = null;
 
-    //==Following properties are not configurable from theme config.php==
+    // The following properties are not configurable from theme config.php.
 
     /**
      * @var string The name of this theme. Set automatically when this theme is

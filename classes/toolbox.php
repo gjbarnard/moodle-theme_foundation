@@ -52,10 +52,6 @@ class toolbox {
         if (empty($this->corerenderer)) {
             $this->corerenderer = $PAGE->get_renderer('theme_'.$themename, 'core');
             $this->themename = $themename;
-
-            // Now is a good time to setup our theme configuration for settings etc.
-            //$this->theconfig = \theme_foundation\the_config::load($themename);
-            //error_log(print_r($this->theconfig, true));
         } else {
             if ($themename != $this->themename) {
                 // More of a humm! if this happens.

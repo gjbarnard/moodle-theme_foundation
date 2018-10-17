@@ -27,6 +27,8 @@
 
 namespace theme_foundation\output\core\output;
 
+defined('MOODLE_INTERNAL') || die();
+
 class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader {
 
     public function __construct() {
@@ -41,10 +43,10 @@ class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader
      * @return string Template file name
      */
     protected function getFileName($name) {
-        /* 
+        /*
          * Call the theme template finder which supports partials and our inclusion rather
          * than the dependance on the Boost theme.
-         * 
+         *
          * Specify partials in the form 'partial/templatename'.
          */
         return mustache_template_finder::get_template_filepath($name);
