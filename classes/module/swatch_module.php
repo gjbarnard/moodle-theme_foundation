@@ -30,9 +30,9 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Swatch module.
- * 
+ *
  * Implements the ability to change swatches.
- * 
+ *
  * Swatches from https://bootswatch.com/ and licensed under the MIT Licence:
  * https://github.com/thomaspark/bootswatch/blob/master/LICENSE.
  */
@@ -45,21 +45,14 @@ class swatch_module extends \theme_foundation\module_basement {
         }
         // TODO: Cope with the theme being in $CFG->themedir.
         global $CFG;
-        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/'.$swatch.'_variables.scss');
+        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_variables.scss');
         $scss .= $toolbox->get_core_framework_scss();
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/'.$swatch.'_bootswatch.scss');
-        
+        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_bootswatch.scss');
+
         return $scss;
     }
-    
-    public function add_settings($settingspage, $toolbox) {
-        /*global $CFG;
-        if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-            require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
-        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-            require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
-        }*/
 
+    public function add_settings($settingspage, $toolbox) {
         // Swatch.
         $name = 'theme_foundation/swatch';
         $title = get_string('swatch', 'theme_foundation');
@@ -74,13 +67,13 @@ class swatch_module extends \theme_foundation\module_basement {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspage->add($setting);
     }
-    
+
     public function get_en_strings($toolbox) {
         $strings = array();
-        
+
         $strings['swatch'] = 'Swatch';
         $strings['swatchdesc'] = 'Choose the swatch for the theme.';
-        
+
         return $strings;
     }
 }

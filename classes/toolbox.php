@@ -54,24 +54,24 @@ class toolbox {
         // TODO: Cope with $CFG->themedir.
         if ($handle = opendir($CFG->dirroot . '/theme/foundation/classes/module/')) {
             while (false !== ($entry = readdir($handle))) {
-                //error_log('Filename = '.$entry);
+                if ($entry == '.' || $entry == '..') {
+                    continue;
+                }
+                $fullpath = $CFG->dirroot.'/theme/foundation/classes/module/'.$entry;
+                if (is_dir($fullpath)) {
+                    continue;
+                }
 
-                if ($entry != "." && $entry != "..") {
-                    //$fullpath = $CFG->dirroot.'/theme/foundation/classes/module/'.$entry;
-                    //include($fullpath);
-                    // Remove '.php';
-                    $classname = rtrim($entry, '.php');
-                    $classname = '\theme_foundation\module\\' . $classname;
-                    //error_log('Classname = '.$classname);
-                    if (class_exists($classname)) {
-                        $this->modules[] = new $classname();
-                        //error_log('Class added = '.$classname);
-                    }
-                    //error_log(print_r(get_declared_classes(), true));
+                // Remove '.php';
+                $classname = rtrim($entry, '.php');
+                $classname = '\theme_foundation\module\\'.$classname;
+                if (class_exists($classname)) {
+                    $this->modules[] = new $classname();
+                } else {
+                    \debugging('theme_foundation::toolbox:init_modules() Class \''.$classname.'\' not found.');
                 }
             }
             closedir($handle);
-            //error_log(print_r($this->modules, true));
         }
     }
 
@@ -152,22 +152,6 @@ class toolbox {
         }
 
         return $scss;
-    }
-
-    protected function call_modules($methodname, $parameter = null) {
-        $retr = '';
-
-        if (is_null($parameter)) {
-            foreach ($this->modules as $module) {
-
-            }
-        } else {
-            foreach ($this->modules as $module) {
-
-            }
-        }
-
-        return $retr;
     }
 
     public function add_settings($admin) {
