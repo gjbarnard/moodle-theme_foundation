@@ -46,6 +46,10 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
+$string['moduleheading'] = 'Module';
+$string['moduleheadingsub'] = 'Module settings';
+$string['moduleheadingdesc'] = 'Configure the module settings for Foundation here.';
+
 // Dynamic - will this break plugin validation?
 $toolbox = \theme_foundation\toolbox::get_instance();
 $string = array_merge($string, $toolbox->get_en_strings());

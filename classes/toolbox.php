@@ -33,10 +33,12 @@ class toolbox {
     protected $corerenderer = null;
     protected $themename = '';
     protected $theconfigs = array(); // Indexed on theme name in hierarchy order.
+    protected $modules = array();
     protected static $instance = null;
 
     // This is a lonely object.
     private function __construct() {
+        $this->init_modules();
     }
 
     public static function get_instance() {
@@ -44,6 +46,33 @@ class toolbox {
             self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    private function init_modules() {
+        global $CFG;
+
+        // TODO: Cope with $CFG->themedir.
+        if ($handle = opendir($CFG->dirroot . '/theme/foundation/classes/module/')) {
+            while (false !== ($entry = readdir($handle))) {
+                //error_log('Filename = '.$entry);
+
+                if ($entry != "." && $entry != "..") {
+                    //$fullpath = $CFG->dirroot.'/theme/foundation/classes/module/'.$entry;
+                    //include($fullpath);
+                    // Remove '.php';
+                    $classname = rtrim($entry, '.php');
+                    $classname = '\theme_foundation\module\\' . $classname;
+                    //error_log('Classname = '.$classname);
+                    if (class_exists($classname)) {
+                        $this->modules[] = new $classname();
+                        //error_log('Class added = '.$classname);
+                    }
+                    //error_log(print_r(get_declared_classes(), true));
+                }
+            }
+            closedir($handle);
+            //error_log(print_r($this->modules, true));
+        }
     }
 
     public function get_theme_renderer() {
@@ -69,15 +98,21 @@ class toolbox {
         }
 
         // TODO: Cope with the theme being in $CFG->themedir.
-        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_variables.scss');
+        /*$scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default_variables.scss');
         $scss .= $this->get_core_framework_scss();
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/preset/default_bootswatch.scss');
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
+        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default_bootswatch.scss'); */
+
+        $scss = '';
+        foreach ($this->modules as $module) {
+            $scss .= $module->get_main_scss_content($theme, $this);
+        }
+
+        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
 
         return $scss;
     }
 
-    protected function get_core_framework_scss() {
+    public function get_core_framework_scss() {
         // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
         $path = '../../boost/scss/';
 
@@ -112,7 +147,27 @@ class toolbox {
             $scss .= $customscss;
         }
 
+        foreach ($this->modules as $module) {
+            $scss .= $module->extra_scss($themename, $this);
+        }
+
         return $scss;
+    }
+
+    protected function call_modules($methodname, $parameter = null) {
+        $retr = '';
+
+        if (is_null($parameter)) {
+            foreach ($this->modules as $module) {
+
+            }
+        } else {
+            foreach ($this->modules as $module) {
+
+            }
+        }
+
+        return $retr;
     }
 
     public function add_settings($admin) {
@@ -121,9 +176,7 @@ class toolbox {
         // General settings.
         $generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
         if ($admin->fulltree) {
-            $generalsettings->add(new \admin_setting_heading('theme_foundation_generalheading',
-                get_string('generalheadingsub', 'theme_foundation'),
-                format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+            $generalsettings->add(new \admin_setting_heading('theme_foundation_generalheading', get_string('generalheadingsub', 'theme_foundation'), format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
 
             // Custom SCSS.
             $name = 'theme_foundation/customscss';
@@ -135,6 +188,17 @@ class toolbox {
             $generalsettings->add($setting);
         }
         $admin->add('theme_foundation', $generalsettings);
+
+        // Modules - TODO: make the module choose / create the setting page.
+        $modulesettings = new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'));
+        if ($admin->fulltree) {
+            $modulesettings->add(new \admin_setting_heading('theme_foundation_moduleheading', get_string('moduleheadingsub', 'theme_foundation'), format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+
+            foreach ($this->modules as $module) {
+                $module->add_settings($modulesettings, $this);
+            }
+        }
+        $admin->add('theme_foundation', $modulesettings);
     }
 
     public function get_en_strings() {
@@ -142,6 +206,10 @@ class toolbox {
 
         $strings['customscss'] = 'Custom SCSS';
         $strings['customscssdesc'] = 'Add custom SCSS to the theme.';
+
+        foreach ($this->modules as $module) {
+            $strings = array_merge($strings, $module->get_en_strings($this));
+        }
 
         return $strings;
     }
