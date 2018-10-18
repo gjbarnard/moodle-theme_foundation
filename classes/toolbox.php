@@ -52,7 +52,7 @@ class toolbox {
         global $CFG;
 
         // TODO: Cope with $CFG->themedir.
-        if ($handle = opendir($CFG->dirroot . '/theme/foundation/classes/module/')) {
+        if ($handle = opendir($CFG->dirroot.'/theme/foundation/classes/module/')) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry == '.' || $entry == '..') {
                     continue;
@@ -97,11 +97,6 @@ class toolbox {
             $this->add_theme($theme->name);
         }
 
-        // TODO: Cope with the theme being in $CFG->themedir.
-        /*$scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default_variables.scss');
-        $scss .= $this->get_core_framework_scss();
-        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/preset/default_bootswatch.scss'); */
-
         $scss = '';
         foreach ($this->modules as $module) {
             $scss .= $module->get_main_scss_content($theme, $this);
@@ -142,13 +137,13 @@ class toolbox {
     public function extra_scss($themename) {
         $scss = '';
 
+        foreach ($this->modules as $module) {
+            $scss .= $module->extra_scss($themename, $this);
+        }
+
         $customscss = $this->get_setting('customscss', $themename);  // TODO: Does there need to be a parent daisy chain of this setting?
         if (!empty($customscss)) {
             $scss .= $customscss;
-        }
-
-        foreach ($this->modules as $module) {
-            $scss .= $module->extra_scss($themename, $this);
         }
 
         return $scss;
@@ -160,7 +155,13 @@ class toolbox {
         // General settings.
         $generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
         if ($admin->fulltree) {
-            $generalsettings->add(new \admin_setting_heading('theme_foundation_generalheading', get_string('generalheadingsub', 'theme_foundation'), format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+            $generalsettings->add(
+                new \admin_setting_heading(
+                    'theme_foundation_generalheading',
+                    get_string('generalheadingsub', 'theme_foundation'),
+                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
             // Custom SCSS.
             $name = 'theme_foundation/customscss';
@@ -173,10 +174,16 @@ class toolbox {
         }
         $admin->add('theme_foundation', $generalsettings);
 
-        // Modules - TODO: make the module choose / create the setting page.
+        // Modules - TODO: Make the module choose / create the setting page or should each module have its own page or have general modules and module created pages?
         $modulesettings = new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'));
         if ($admin->fulltree) {
-            $modulesettings->add(new \admin_setting_heading('theme_foundation_moduleheading', get_string('moduleheadingsub', 'theme_foundation'), format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+            $modulesettings->add(
+                new \admin_setting_heading(
+                    'theme_foundation_moduleheading',
+                    get_string('moduleheadingsub', 'theme_foundation'),
+                    format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
             foreach ($this->modules as $module) {
                 $module->add_settings($modulesettings, $this);
