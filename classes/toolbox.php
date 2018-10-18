@@ -195,9 +195,6 @@ class toolbox {
     public function get_en_strings() {
         $strings = array();
 
-        $strings['customscss'] = 'Custom SCSS';
-        $strings['customscssdesc'] = 'Add custom SCSS to the theme.';
-
         foreach ($this->modules as $module) {
             $strings = array_merge($strings, $module->get_en_strings($this));
         }

@@ -36,14 +36,14 @@ abstract class module_basement {
     public function get_main_scss_content(\theme_config $theme, $toolbox) {
         return '';
     }
-    
+
     public function extra_scss($themename, $toolbox) {
         return '';
     }
-    
+
     public function add_settings($settingspage, $toolbox) {
     }
-    
+
     public function get_en_strings($toolbox) {
         return array();
     }

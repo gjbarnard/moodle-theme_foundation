@@ -107,22 +107,20 @@ class mustache_template_finder {
      * @return string
      */
     public static function get_template_filepath($name, $themename = '') {
-        global $CFG, $PAGE;
-
         if (strpos($name, '/') === false) {
-            throw new coding_exception('Templates names must be specified as "componentname/templatename"' .
-                                       ' (' . s($name) . ' requested) ');
+            throw new coding_exception('Templates names must be specified as "componentname/templatename"'.
+                ' (' . s($name) . ' requested) ');
         }
         list($component, $templatename) = explode('/', $name, 2);
         $component = clean_param($component, PARAM_COMPONENT);
         if (strpos($templatename, '/') !== false) {
-            throw new coding_exception('Templates cannot be placed in sub directories (' . s($name) . ' requested)');
+            throw new coding_exception('Templates cannot be placed in sub directories ('.s($name).' requested)');
         }
 
         $dirs = self::get_template_directories_for_component($component, $themename);
 
         foreach ($dirs as $dir) {
-            $candidate = $dir . $templatename . '.mustache';
+            $candidate = $dir.$templatename.'.mustache';
             if (file_exists($candidate)) {
                 return $candidate;
             }
