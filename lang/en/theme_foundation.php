@@ -46,8 +46,8 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
-$strings['customscss'] = 'Custom SCSS';
-$strings['customscssdesc'] = 'Add custom SCSS to the theme.';
+$string['customscss'] = 'Custom SCSS';
+$string['customscssdesc'] = 'Add custom SCSS to the theme.';
 
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';
