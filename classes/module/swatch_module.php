@@ -52,7 +52,19 @@ class swatch_module extends \theme_foundation\module_basement {
         return $scss;
     }
 
-    public function add_settings($settingspage, $toolbox) {
+    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
+
+        $settingspages['swatch'] = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
+        if ($adminfulltree) {
+            $settingspages['swatch']->add(
+                new \admin_setting_heading(
+                    'theme_foundation_swatchheading',
+                    get_string('swatchheadingsub', 'theme_foundation'),
+                    format_text(get_string('swatchheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+        }
+
         // Swatch.
         $name = 'theme_foundation/swatch';
         $title = get_string('swatch', 'theme_foundation');
@@ -74,14 +86,21 @@ class swatch_module extends \theme_foundation\module_basement {
         $default = 'default';
         $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspage->add($setting);
+        //$settingspages['module']->add($setting);
+        $settingspages['swatch']->add($setting);
     }
 
-    public function get_en_strings($toolbox) {
+    public function get_lang_strings($lang, $toolbox) {
         $strings = array();
 
-        $strings['swatch'] = 'Swatch';
-        $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+        if ($lang == 'en') {
+            $strings['swatch'] = 'Swatch';
+            $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+
+            $strings['swatchheading'] = 'Swatch';
+            $strings['swatchheadingsub'] = 'Swatch settings';
+            $strings['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
+        }
 
         return $strings;
     }

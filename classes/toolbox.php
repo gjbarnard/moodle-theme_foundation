@@ -152,10 +152,15 @@ class toolbox {
     public function add_settings($admin) {
         $admin->add('themes', new \admin_category('theme_foundation', 'Foundation'));
 
+        $settingspages = array(
+            'general' => new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation')),
+            'module' => new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'))
+        );
+
         // General settings.
-        $generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
+        //$generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
         if ($admin->fulltree) {
-            $generalsettings->add(
+            $settingspages['general']->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
                     get_string('generalheadingsub', 'theme_foundation'),
@@ -170,40 +175,47 @@ class toolbox {
             $default = '';
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
-            $generalsettings->add($setting);
+            $settingspages['general']->add($setting);
         }
-        $admin->add('theme_foundation', $generalsettings);
+        //$admin->add('theme_foundation', $generalsettings);
 
-        // Modules - TODO: Make the module choose / create the setting page or should each module have its own page or have general modules and module created pages?
-        $modulesettings = new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'));
+        //$modulesettings = new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'));
         if ($admin->fulltree) {
-            $modulesettings->add(
+            $settingspages['module']->add(
                 new \admin_setting_heading(
                     'theme_foundation_moduleheading',
                     get_string('moduleheadingsub', 'theme_foundation'),
                     format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
+        }
+        //$admin->add('theme_foundation', $modulesettings);
 
-            foreach ($this->modules as $module) {
-                $module->add_settings($modulesettings, $this);
+        // Call each module where they can either add their settings to an existing settings page or create their own and have it added.
+        foreach ($this->modules as $module) {
+            $module->add_settings($settingspages, $admin->fulltree, $this);
+        }        
+
+        // Add the settings pages if they have more than just the settings page heading.
+        foreach (array_values($settingspages) as $settingspage) {
+            //error_log(print_r($settingspage->settings, true));
+            if (count((array)$settingspage->settings) > 1) {
+                $admin->add('theme_foundation', $settingspage);
             }
         }
-        $admin->add('theme_foundation', $modulesettings);
     }
 
     /**
      * Returns the strings from the modules.
      * 
-     * TODO: Add other language support.
-     * 
+     * @param string $lang The language code to get.
      * @return array Array of strings.
      */
-    public function get_en_strings() {
+    public function get_lang_strings($lang) {
         $strings = array();
 
         foreach ($this->modules as $module) {
-            $strings = array_merge($strings, $module->get_en_strings($this));
+            $strings = array_merge($strings, $module->get_lang_strings($lang, $this));
         }
 
         return $strings;

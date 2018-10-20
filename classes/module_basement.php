@@ -41,10 +41,10 @@ abstract class module_basement {
         return '';
     }
 
-    public function add_settings($settingspage, $toolbox) {
+    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
     }
 
-    public function get_en_strings($toolbox) {
+    public function get_lang_strings($lang, $toolbox) {
         return array();
     }
 }

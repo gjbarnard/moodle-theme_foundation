@@ -55,7 +55,7 @@ $string['moduleheadingdesc'] = 'Configure the module settings for Foundation her
 
 // Dynamic - will this break plugin validation?
 $toolbox = \theme_foundation\toolbox::get_instance();
-$string = array_merge($string, $toolbox->get_en_strings());
+$string = array_merge($string, $toolbox->get_lang_strings('en'));
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
