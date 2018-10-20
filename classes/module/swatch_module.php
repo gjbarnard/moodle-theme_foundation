@@ -43,7 +43,7 @@ class swatch_module extends \theme_foundation\module_basement {
         if (empty($swatch)) {
             $swatch = 'default';
         }
-        // TODO: Cope with the theme being in $CFG->themedir.
+        // TODOs: Cope with the theme being in $CFG->themedir.  Serve locally unique fonts in the swatch?
         global $CFG;
         $scss = file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_variables.scss');
         $scss .= $toolbox->get_core_framework_scss();
@@ -60,6 +60,15 @@ class swatch_module extends \theme_foundation\module_basement {
         $choices = array(
             'default' => new \lang_string('default'),
             'cerulean' => 'Cerulean',
+            'cyborg' => 'Cyborg',
+            'literia' => 'Literia',
+            'lumen' => 'Lumen',
+            'lux' => 'Lux',
+            'materia' => 'Materia',
+            'pulse' => 'Pulse',
+            'simplex' => 'Simplex',
+            'superhero' => 'Superhero',
+            'united' => 'United',
             'yeti' => 'Yeti'
         );
         $default = 'default';
@@ -72,7 +81,7 @@ class swatch_module extends \theme_foundation\module_basement {
         $strings = array();
 
         $strings['swatch'] = 'Swatch';
-        $strings['swatchdesc'] = 'Choose the swatch for the theme.';
+        $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
 
         return $strings;
     }

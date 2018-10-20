@@ -192,6 +192,13 @@ class toolbox {
         $admin->add('theme_foundation', $modulesettings);
     }
 
+    /**
+     * Returns the strings from the modules.
+     * 
+     * TODO: Add other language support.
+     * 
+     * @return array Array of strings.
+     */
     public function get_en_strings() {
         $strings = array();
 

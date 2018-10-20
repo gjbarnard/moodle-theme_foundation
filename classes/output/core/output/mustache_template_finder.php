@@ -62,7 +62,7 @@ class mustache_template_finder {
         if (!$partial) { // This allows the theme to put partial templates in a sub-folder.
             $compdirectory = core_component::get_component_directory($component);
             if (!$compdirectory) {
-                throw new coding_exception("Component was not valid: " . s($component));
+                throw new coding_exception("Component was not valid: ".s($component));
             }
         }
 
@@ -76,24 +76,24 @@ class mustache_template_finder {
         }
 
         // First check the theme.
-        $dirs[] = $CFG->dirroot . '/theme/' . $themename . '/templates/' . $component . '/';
+        $dirs[] = $CFG->dirroot.'/theme/'.$themename.'/templates/'.$component.'/';
         if (isset($CFG->themedir)) {
-            $dirs[] = $CFG->themedir . '/' . $themename . '/templates/' . $component . '/';
+            $dirs[] = $CFG->themedir.'/'.$themename.'/templates/'.$component.'/';
         }
         /* Now check the parent themes.
            Search each of the parent themes second. */
         foreach ($parents as $parent) {
-            $dirs[] = $CFG->dirroot . '/theme/' . $parent . '/templates/' . $component . '/';
+            $dirs[] = $CFG->dirroot.'/theme/'.$parent.'/templates/'.$component.'/';
             if (isset($CFG->themedir)) {
-                $dirs[] = $CFG->themedir . '/' . $parent . '/templates/' . $component . '/';
+                $dirs[] = $CFG->themedir.'/'.$parent.'/templates/'.$component.'/';
             }
         }
 
         if (!$partial) {
-            // Now check the Boost theme.
-            $dirs[] = $CFG->dirroot . '/theme/boost/templates/' . $component . '/';
+            // Now check the Boost theme.  This helps us to process the templates in core_renderer_boost.php.
+            $dirs[] = $CFG->dirroot.'/theme/boost/templates/'.$component.'/';
 
-            $dirs[] = $compdirectory . '/templates/';
+            $dirs[] = $compdirectory.'/templates/';
         }
 
         return $dirs;
@@ -109,7 +109,7 @@ class mustache_template_finder {
     public static function get_template_filepath($name, $themename = '') {
         if (strpos($name, '/') === false) {
             throw new coding_exception('Templates names must be specified as "componentname/templatename"'.
-                ' (' . s($name) . ' requested) ');
+                ' ('.s($name).' requested) ');
         }
         list($component, $templatename) = explode('/', $name, 2);
         $component = clean_param($component, PARAM_COMPONENT);
