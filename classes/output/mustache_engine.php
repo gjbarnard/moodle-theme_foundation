@@ -49,7 +49,7 @@ trait mustache_engine {
             $theme = $this->page->theme;
             $themename = $theme->name;
             $toolbox = \theme_foundation\toolbox::get_instance();
-            $corerenderer = $toolbox->get_theme_renderer();
+            $corerenderer = $toolbox->get_core_renderer();
             $themerev = theme_get_revision();
 
             // Create new localcache directory.

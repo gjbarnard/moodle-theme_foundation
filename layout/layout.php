@@ -28,6 +28,6 @@
 
 // Get the renderer for this plugin.
 $toolbox = \theme_foundation\toolbox::get_instance();
-$output = $toolbox->get_theme_renderer();
+$output = $toolbox->get_core_renderer();
 echo $OUTPUT->doctype();
 echo $output->render_page();

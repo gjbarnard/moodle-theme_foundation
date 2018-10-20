@@ -29,21 +29,51 @@ namespace theme_foundation;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Basement class that all theme modules should extend.
+ * Abstract 'basement' class that all theme modules should extend.
  */
 abstract class module_basement {
 
+    /**
+     * Gets the module main SCSS.
+     *
+     * @param \theme_config $theme The theme configuration object for the theme the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
     public function get_main_scss_content(\theme_config $theme, $toolbox) {
         return '';
     }
 
+    /**
+     * Gets the module extra SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
     public function extra_scss($themename, $toolbox) {
         return '';
     }
 
+    /**
+     * Add the module settings to the theme.
+     *
+     * @param array $settingspages Reference to the settings pages array so that a module can add a new page to it.
+     * @param boolean $adminfulltree If true then all settings required, if false then only the pages.  See /lib/adminlib.php.
+     * @param toolbox $toolbox The toolbox instance.
+     */
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
     }
 
+    /**
+     * Gets the language strings for the given language code.
+     * See 'What do codes like "en" and "en_us" or "es" and "es_mx" and "es_ve" mean??' on:
+     * https://docs.moodle.org/35/en/Language_FAQ
+     *
+     * @param string $lang The language code to get.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return array Array of strings for the module.
+     */
     public function get_lang_strings($lang, $toolbox) {
         return array();
     }

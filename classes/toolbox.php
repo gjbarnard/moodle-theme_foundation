@@ -36,11 +36,18 @@ class toolbox {
     protected $modules = array();
     protected static $instance = null;
 
-    // This is a lonely object.
+    /**
+     * This is a lonely object.
+     */
     private function __construct() {
         $this->init_modules();
     }
 
+    /**
+     * Gets the toolbox singleton.
+     *
+     * @return toolbox The toolbox instance.
+     */
     public static function get_instance() {
         if (!is_object(self::$instance)) {
             self::$instance = new self();
@@ -48,6 +55,9 @@ class toolbox {
         return self::$instance;
     }
 
+    /**
+     * Finds and instantiates the available theme modules.
+     */
     private function init_modules() {
         global $CFG;
 
@@ -75,7 +85,12 @@ class toolbox {
         }
     }
 
-    public function get_theme_renderer() {
+    /**
+     * Returns the core renderer for the theme.
+     * 
+     * @return core_renderer The core renderer object.
+     */
+    public function get_core_renderer() {
         global $PAGE;
         $themename = $PAGE->theme->name;
         if (empty($this->corerenderer)) {
@@ -84,12 +99,18 @@ class toolbox {
         } else {
             if ($themename != $this->themename) {
                 // More of a humm! if this happens.
-                \debugging('theme_foundation toolbox::get_theme_renderer() - Different theme \''.$themename.'\' from original \''.$this->themename.'\'.');
+                \debugging('theme_foundation toolbox::get_core_renderer() - Different theme \''.$themename.'\' from original \''.$this->themename.'\'.');
             }
         }
         return $this->corerenderer;
     }
 
+    /**
+     * Gets the main SCSS for the theme.
+     * 
+     * @param theme_config $theme The theme configuration object.
+     * @return string SCSS.
+     */
     public function get_main_scss_content(\theme_config $theme) {
         global $CFG;
 
@@ -149,16 +170,20 @@ class toolbox {
         return $scss;
     }
 
+    /**
+     * Add the settings to the theme.
+     * @param admin_root $admin The admin root.
+     */
     public function add_settings($admin) {
         $admin->add('themes', new \admin_category('theme_foundation', 'Foundation'));
 
+        // The settings pages we create.
         $settingspages = array(
             'general' => new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation')),
             'module' => new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'))
         );
 
         // General settings.
-        //$generalsettings = new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation'));
         if ($admin->fulltree) {
             $settingspages['general']->add(
                 new \admin_setting_heading(
@@ -177,9 +202,8 @@ class toolbox {
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general']->add($setting);
         }
-        //$admin->add('theme_foundation', $generalsettings);
 
-        //$modulesettings = new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'));
+        // Module settings.
         if ($admin->fulltree) {
             $settingspages['module']->add(
                 new \admin_setting_heading(
@@ -189,16 +213,14 @@ class toolbox {
                 )
             );
         }
-        //$admin->add('theme_foundation', $modulesettings);
 
         // Call each module where they can either add their settings to an existing settings page or create their own and have it added.
         foreach ($this->modules as $module) {
             $module->add_settings($settingspages, $admin->fulltree, $this);
-        }        
+        }
 
         // Add the settings pages if they have more than just the settings page heading.
         foreach (array_values($settingspages) as $settingspage) {
-            //error_log(print_r($settingspage->settings, true));
             if (count((array)$settingspage->settings) > 1) {
                 $admin->add('theme_foundation', $settingspage);
             }
@@ -207,7 +229,7 @@ class toolbox {
 
     /**
      * Returns the strings from the modules.
-     * 
+     *
      * @param string $lang The language code to get.
      * @return array Array of strings.
      */
