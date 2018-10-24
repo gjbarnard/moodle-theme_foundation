@@ -72,7 +72,7 @@ class toolbox {
                     continue;
                 }
 
-                // Remove '.php';
+                // Remove '.php'.
                 $classname = rtrim($entry, '.php');
                 $classname = '\theme_foundation\module\\'.$classname;
                 if (class_exists($classname)) {
@@ -99,7 +99,8 @@ class toolbox {
         } else {
             if ($themename != $this->themename) {
                 // More of a humm! if this happens.
-                \debugging('theme_foundation toolbox::get_core_renderer() - Different theme \''.$themename.'\' from original \''.$this->themename.'\'.');
+                \debugging('theme_foundation toolbox::get_core_renderer() - Different theme \''.$themename.'\' from original \''.
+                    $this->themename.'\'.');
             }
         }
         return $this->corerenderer;
@@ -162,7 +163,8 @@ class toolbox {
             $scss .= $module->extra_scss($themename, $this);
         }
 
-        $customscss = $this->get_setting('customscss', $themename);  // TODO: Does there need to be a parent daisy chain of this setting?
+        // TODO: Does there need to be a parent daisy chain of this setting?
+        $customscss = $this->get_setting('customscss', $themename);
         if (!empty($customscss)) {
             $scss .= $customscss;
         }
@@ -214,7 +216,8 @@ class toolbox {
             );
         }
 
-        // Call each module where they can either add their settings to an existing settings page or create their own and have it added.
+        /* Call each module where they can either add their settings to an existing settings page or create their own
+           and have it added. */
         foreach ($this->modules as $module) {
             $module->add_settings($settingspages, $admin->fulltree, $this);
         }

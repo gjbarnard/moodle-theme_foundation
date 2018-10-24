@@ -55,7 +55,8 @@ class swatch_module extends \theme_foundation\module_basement {
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
 
         // Create our own settings page.
-        $settingspages['swatch'] = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
+        $settingspages['swatch'] = new \admin_settingpage('theme_foundation_swatch',
+            get_string('swatchheading', 'theme_foundation'));
         if ($adminfulltree) {
             $settingspages['swatch']->add(
                 new \admin_setting_heading(
@@ -96,7 +97,8 @@ class swatch_module extends \theme_foundation\module_basement {
         // Note: 'en' must be specified.
         if ($lang == 'en') {
             $strings['swatch'] = 'Swatch';
-            $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+            $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to'.
+                'limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
 
             $strings['swatchheading'] = 'Swatch';
             $strings['swatchheadingsub'] = 'Swatch settings';

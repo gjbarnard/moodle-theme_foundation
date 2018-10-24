@@ -30,8 +30,6 @@ defined('MOODLE_INTERNAL') || die();
 
 class core_renderer_maintenance extends \core_renderer_maintenance {
     use core_renderer_toolbox;
-
-    public function __construct(\moodle_page $page, $target) {
-        parent::__construct($page, $target);
-    }
+    use core_renderer_boost;
+    use mustache_engine;
 }

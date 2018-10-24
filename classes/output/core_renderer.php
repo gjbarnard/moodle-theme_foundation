@@ -32,8 +32,4 @@ class core_renderer extends \core_renderer {
     use core_renderer_toolbox;
     use core_renderer_boost;
     use mustache_engine;
-
-    public function __construct(\moodle_page $page, $target) {
-        parent::__construct($page, $target);
-    }
 }
