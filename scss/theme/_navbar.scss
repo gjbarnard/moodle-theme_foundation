@@ -8,14 +8,19 @@
     .usermenu {
       a {
         color: $navbar-light-color;
-      }
-
-      @include hover-focus a {
-        color: $navbar-light-hover-color;
+        @include hover-focus {
+            color: $navbar-light-hover-color;
+        }
       }
 
       &.disabled a {
         color: $navbar-light-disabled-color;
+      }
+
+      .dropdown-menu {
+        a, a .icon {
+          color: $body-color !important; /* stylelint-disable-line declaration-no-important */;
+        }
       }
     }
 
@@ -36,14 +41,19 @@
     .usermenu {
       a {
         color: $navbar-dark-color;
-      }
-
-      @include hover-focus a {
-        color: $navbar-dark-hover-color;
+        @include hover-focus {
+            color: $navbar-dark-hover-color;
+        }
       }
 
       &.disabled a {
         color: $navbar-dark-disabled-color;
+      }
+
+      .dropdown-menu {
+        a, a .icon {
+          color: $body-color !important; /* stylelint-disable-line declaration-no-important */;
+        }
       }
     }
 
