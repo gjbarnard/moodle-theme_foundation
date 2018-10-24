@@ -13,11 +13,20 @@ in /lib/classes/output/external.php which has a fixed namespace reference to the
 
 Currently the theme does not work when placed within a $CFG->themedir folder.
 
+Features
+========
+* Bootstrap V4 CSS with minimal additions for Moodle.
+* Child theme capable - in 'beta'.
+* Custom SCSS.
+* Custom Swatches from Bootswatch.com and licensed under the MIT License (MIT).
+* Partial template support.
+* Theme modules - in 'beta', see the swatch_modules.php file.
+
 About
 =====
- * copyright  &copy; 2018-onwards G J Barnard.
- * author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
- * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+Copyright  &copy; 2018-onwards G J Barnard.
+Author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
+License    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
 
 Developed and maintained by
 ===========================
@@ -29,10 +38,17 @@ Free Software
 =============
 The Foundation theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.
 
+It can be obtained for free from:
+github.com/gjb2048/moodle-theme_foundation/releases
+
 You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
-FAQ - http://www.gnu.org/licenses/gpl-faq.html - is a good place to look.
+FAQ - www.gnu.org/licenses/gpl-faq.html - is a good place to look.
 
 If you reuse any of the code then I kindly ask that you make reference to the theme.
+
+If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
+github.com/gjb2048/moodle-theme_foundation and doing a 'Pull Request' so that the rest of the Moodle community
+benefits.
 
 Support
 =======
