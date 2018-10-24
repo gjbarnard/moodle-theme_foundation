@@ -1,3 +1,14 @@
 .custom-select.jumpmenu {
     width: auto;
 }
+
+.section {
+    .activity {
+        // The command block for each activity.
+        .actions {
+            .btn {
+                border-width: 0;
+            }
+        }
+    }
+}
