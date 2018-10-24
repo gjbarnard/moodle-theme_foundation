@@ -53,7 +53,7 @@ $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';
 $string['moduleheadingdesc'] = 'Configure the module settings for Foundation here.';
 
-// Dynamic - will this break plugin validation?
+// Dynamic - will this break plugin validation?  If it does then will have to put the theme strings here, but the concept will still be proven for modules.
 $toolbox = \theme_foundation\toolbox::get_instance();
 $string = array_merge($string, $toolbox->get_lang_strings('en'));
 

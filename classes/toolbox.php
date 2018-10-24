@@ -87,7 +87,7 @@ class toolbox {
 
     /**
      * Returns the core renderer for the theme.
-     * 
+     *
      * @return core_renderer The core renderer object.
      */
     public function get_core_renderer() {
@@ -107,7 +107,7 @@ class toolbox {
 
     /**
      * Gets the main SCSS for the theme.
-     * 
+     *
      * @param theme_config $theme The theme configuration object.
      * @return string SCSS.
      */

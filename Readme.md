@@ -7,7 +7,9 @@ child themes.  It does not extend the Boost theme but rather 'pull' the files it
 they are currently stored.  No navigation drawer or docking has been implemented.
 
 There is added support for 'partial' templates which can then be imported into a main template with the syntax
-'> partial/mypartial'.
+'> partial/mypartial'.  But this only works for templates rendered by a renderer in PHP, not if called by JS via
+AJAX and the 'core_output_load_template' method defined in /lib/db/services.php which then calls 'load_template'
+in /lib/classes/output/external.php which has a fixed namespace reference to the 'mustache_template_finder' class.
 
 Currently the theme does not work when placed within a $CFG->themedir folder.
 
