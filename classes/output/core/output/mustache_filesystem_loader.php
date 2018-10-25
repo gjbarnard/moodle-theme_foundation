@@ -31,10 +31,6 @@ defined('MOODLE_INTERNAL') || die();
 
 class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader {
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     /**
      * Helper function for getting a Mustache template file name.
      * Uses the leading component to restrict us specific directories.
