@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -53,42 +52,41 @@ class swatch_module extends \theme_foundation\module_basement {
     }
 
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
-
         // Create our own settings page.
-        $settingspages['swatch'] = new \admin_settingpage('theme_foundation_swatch',
-            get_string('swatchheading', 'theme_foundation'));
+        $settingspages['swatch'] = array('page' => new \admin_settingpage('theme_foundation_swatch',
+            get_string('swatchheading', 'theme_foundation')), 'settingcount' => 1);
         if ($adminfulltree) {
-            $settingspages['swatch']->add(
+            $settingspages['swatch']['page']->add(
                 new \admin_setting_heading(
                     'theme_foundation_swatchheading',
                     get_string('swatchheadingsub', 'theme_foundation'),
                     format_text(get_string('swatchheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
-        }
 
-        // Swatch.
-        $name = 'theme_foundation/swatch';
-        $title = get_string('swatch', 'theme_foundation');
-        $description = get_string('swatchdesc', 'theme_foundation');
-        $choices = array(
-            'default' => new \lang_string('default'),
-            'cerulean' => 'Cerulean',
-            'cyborg' => 'Cyborg',
-            'literia' => 'Literia',
-            'lumen' => 'Lumen',
-            'lux' => 'Lux',
-            'materia' => 'Materia',
-            'pulse' => 'Pulse',
-            'simplex' => 'Simplex',
-            'superhero' => 'Superhero',
-            'united' => 'United',
-            'yeti' => 'Yeti'
-        );
-        $default = 'default';
-        $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['swatch']->add($setting);
+            // Swatch.
+            $name = 'theme_foundation/swatch';
+            $title = get_string('swatch', 'theme_foundation');
+            $description = get_string('swatchdesc', 'theme_foundation');
+            $choices = array(
+                'default' => new \lang_string('default'),
+                'cerulean' => 'Cerulean',
+                'cyborg' => 'Cyborg',
+                'literia' => 'Literia',
+                'lumen' => 'Lumen',
+                'lux' => 'Lux',
+                'materia' => 'Materia',
+                'pulse' => 'Pulse',
+                'simplex' => 'Simplex',
+                'superhero' => 'Superhero',
+                'united' => 'United',
+                'yeti' => 'Yeti'
+            );
+            $default = 'default';
+            $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['swatch']['page']->add($setting);
+        }
     }
 
     public function get_lang_strings($lang, $toolbox) {

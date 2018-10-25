@@ -175,18 +175,22 @@ class toolbox {
      * Add the settings to the theme.
      * @param admin_root $admin The admin root.
      */
-    public function add_settings(&$admin) {
+    public function add_settings(\admin_root $admin) {
         $admin->add('themes', new \admin_category('theme_foundation', 'Foundation'));
 
         // The settings pages we create.
         $settingspages = array(
-            'general' => new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation')),
-            'module' => new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation'))
+            'general' => array(
+                'page' => new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation')),
+                'settingcount' => 1),
+            'module' => array(
+                'page' => new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation')),
+                'settingcount' => 0)
         );
 
         // General settings.
         if ($admin->fulltree) {
-            $settingspages['general']->add(
+            $settingspages['general']['page']->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
                     get_string('generalheadingsub', 'theme_foundation'),
@@ -201,12 +205,12 @@ class toolbox {
             $default = '';
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['general']->add($setting);
+            $settingspages['general']['page']->add($setting);
         }
 
         // Module settings.
         if ($admin->fulltree) {
-            $settingspages['module']->add(
+            $settingspages['module']['page']->add(
                 new \admin_setting_heading(
                     'theme_foundation_moduleheading',
                     get_string('moduleheadingsub', 'theme_foundation'),
@@ -223,8 +227,9 @@ class toolbox {
 
         // Add the settings pages if they have more than just the settings page heading.
         foreach (array_values($settingspages) as $settingspage) {
-            if (count((array)$settingspage->settings) > 1) {
-                $admin->add('theme_foundation', $settingspage);
+            if ($settingspage['settingcount'] > 0) {
+                $thepage = $settingspage['page'];
+                $admin->add('theme_foundation', $thepage);
             }
         }
     }
