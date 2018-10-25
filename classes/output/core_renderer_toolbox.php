@@ -61,7 +61,7 @@ trait core_renderer_toolbox {
      * @return mixed string|bool
      */
     public function mform_element($element, $required, $advanced, $error, $ingroup) {
-        $templatename = 'core_form/element-' . $element->getType();
+        $templatename = 'core_form/element-'.$element->getType();
         if ($ingroup) {
             $templatename .= "-inline";
         }
@@ -70,7 +70,7 @@ trait core_renderer_toolbox {
                We don't want to call export_for_template if there is no template. */
             \theme_foundation\output\core\output\mustache_template_finder::get_template_filepath($templatename);
 
-            if ($element instanceof templatable) {
+            if ($element instanceof \templatable) {
                 $elementcontext = $element->export_for_template($this);
 
                 $helpbutton = '';
@@ -100,7 +100,7 @@ trait core_renderer_toolbox {
                 );
                 return $this->render_from_template($templatename, $context);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // No template for this element.
             return false;
         }
