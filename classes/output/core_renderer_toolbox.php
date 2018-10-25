@@ -50,4 +50,59 @@ trait core_renderer_toolbox {
         echo $this->render_from_template('theme_foundation/' . $mustache, $data);
     }
 
+    /**
+     * Renders an mform element from a template.
+     *
+     * @param HTML_QuickForm_element $element element
+     * @param bool $required if input is required field
+     * @param bool $advanced if input is an advanced field
+     * @param string $error error message to display
+     * @param bool $ingroup True if this element is rendered as part of a group
+     * @return mixed string|bool
+     */
+    public function mform_element($element, $required, $advanced, $error, $ingroup) {
+        $templatename = 'core_form/element-' . $element->getType();
+        if ($ingroup) {
+            $templatename .= "-inline";
+        }
+        try {
+            /* We call this to generate a file not found exception if there is no template.
+               We don't want to call export_for_template if there is no template. */
+            \theme_foundation\output\core\output\mustache_template_finder::get_template_filepath($templatename);
+
+            if ($element instanceof templatable) {
+                $elementcontext = $element->export_for_template($this);
+
+                $helpbutton = '';
+                if (method_exists($element, 'getHelpButton')) {
+                    $helpbutton = $element->getHelpButton();
+                }
+                $label = $element->getLabel();
+                $text = '';
+                if (method_exists($element, 'getText')) {
+                    // There currently exists code that adds a form element with an empty label.
+                    // If this is the case then set the label to the description.
+                    if (empty($label)) {
+                        $label = $element->getText();
+                    } else {
+                        $text = $element->getText();
+                    }
+                }
+
+                $context = array(
+                    'element' => $elementcontext,
+                    'label' => $label,
+                    'text' => $text,
+                    'required' => $required,
+                    'advanced' => $advanced,
+                    'helpbutton' => $helpbutton,
+                    'error' => $error
+                );
+                return $this->render_from_template($templatename, $context);
+            }
+        } catch (Exception $e) {
+            // No template for this element.
+            return false;
+        }
+    }
 }
