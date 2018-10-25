@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -102,6 +101,10 @@ trait core_renderer_toolbox {
             }
         } catch (\Exception $e) {
             // No template for this element.
+            /* 
+             * Note: Currently catches the 'element-link-inline' template when viewing the course settings page.
+             * Happens in Boost too.
+             */
             return false;
         }
     }
