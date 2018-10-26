@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -30,6 +29,9 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * The Foundation theme does not store any user data.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class provider implements \core_privacy\local\metadata\null_provider {
 

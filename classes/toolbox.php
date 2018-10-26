@@ -20,19 +20,40 @@
  * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * The theme's toolbox.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class toolbox {
 
+    /**
+     * @var core_renderer
+     */
     protected $corerenderer = null;
+    /**
+     * @var string Theme name.
+     */
     protected $themename = '';
+    /**
+     * @var the_config The hierarchy of the_config instances with the current theme last.
+     */
     protected $theconfigs = array(); // Indexed on theme name in hierarchy order.
+    /**
+     * @var module_basement Sub class instances of the abstract module_basement class representing all of the modules in the theme.
+     */
     protected $modules = array();
+    /**
+     * @var toolbox Singleton instance of us.
+     */
     protected static $instance = null;
 
     /**
@@ -128,6 +149,11 @@ class toolbox {
         return $scss;
     }
 
+    /**
+     * Returns the core framework SCSS.
+     *
+     * @return string SCSS.
+     */
     public function get_core_framework_scss() {
         // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
         $path = '../../boost/scss/';
@@ -155,6 +181,12 @@ class toolbox {
         return $renderer->getmustache();
     }
 
+    /**
+     * Gets the extra SCSS.
+     *
+     * @param string $themename The name of the theme.
+     * @return string SCSS.
+     */
     public function extra_scss($themename) {
         $scss = '';
 
@@ -173,6 +205,7 @@ class toolbox {
 
     /**
      * Add the settings to the theme.
+     *
      * @param admin_root $admin The admin root.
      */
     public function add_settings(\admin_root $admin) {
@@ -251,6 +284,11 @@ class toolbox {
     }
 
     // Theme configuration management.
+    /**
+     * Creates an instance of the_config for the given theme and adds it to the known list of themes if not already.
+     *
+     * @param type $themename Theme name.
+     */
     protected function add_theme($themename) {
         // Does the theme exist already?
         if (!$this->theme_exists($themename)) {
@@ -273,6 +311,12 @@ class toolbox {
         }
     }
 
+    /**
+     * Do we already know about the theme?
+     *
+     * @param string $themename Theme name.
+     * @return boolean true or false.
+     */
     protected function theme_exists($themename) {
         return array_key_exists($themename, $this->theconfigs);
     }

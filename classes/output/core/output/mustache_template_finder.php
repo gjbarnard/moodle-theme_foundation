@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195},
  *             based upon work by Damyon Wiese.
@@ -34,6 +33,12 @@ use theme_config;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Get information about valid locations for mustache templates.
+ * 
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class mustache_template_finder {
 
     /**

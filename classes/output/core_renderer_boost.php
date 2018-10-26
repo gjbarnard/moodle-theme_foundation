@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -48,6 +47,9 @@ use pix_icon;
 
 /**
  * Contains the Boost methods we need for Bootstrap V4.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 trait core_renderer_boost {
     /**
@@ -112,16 +114,19 @@ trait core_renderer_boost {
     /**
      * Get the compact logo URL.
      *
-     * @return string
+     * @param int $maxwidth
+     * @param int $maxheight
+     * @return string URL.
      */
     public function get_compact_logo_url($maxwidth = 100, $maxheight = 100) {
         return parent::get_compact_logo_url(null, 70);
     }
 
     /**
-     * Whether we should display the main logo.
+     * If we should display the main logo.
      *
-     * @return bool
+     * @param array $headinglevel The heading level.
+     * @return boolean true or false.
      */
     public function should_display_main_logo($headinglevel = 1) {
         // Only render the logo if we're on the front page or login page and the we have a logo.
@@ -140,17 +145,24 @@ trait core_renderer_boost {
      *
      * We will when there are no main logos, and we have compact logo.
      *
-     * @return bool
+     * @return bool true or false.
      */
     public function should_display_navbar_logo() {
         $logo = $this->get_compact_logo_url();
         return !empty($logo) && !$this->should_display_main_logo();
     }
 
-    /*
+    /**
      * Overriding the custom_menu function ensures the custom menu is
      * always shown, even if no menu items are configured in the global
      * theme settings page.
+     *
+     * A custom menu can be configured by browsing to
+     *    Settings: Administration > Appearance > Themes > Theme settings
+     * and then configuring the custommenu config setting as described.
+     *
+     * @param string $custommenuitems
+     * @return string Markup.
      */
     public function custom_menu($custommenuitems = '') {
         global $CFG;

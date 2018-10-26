@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195} - based upon work by Tim Hunt in theme_config.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -30,13 +29,16 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Abstract 'basement' class that all theme modules should extend.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 abstract class module_basement {
 
     /**
      * Gets the module main SCSS.
      *
-     * @param \theme_config $theme The theme configuration object for the theme the SCSS is for.
+     * @param theme_config $theme The theme configuration object for the theme the SCSS is for.
      * @param toolbox $toolbox The toolbox instance.
      * @return string SCSS.
      */

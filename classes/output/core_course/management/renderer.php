@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -28,7 +27,18 @@ namespace theme_foundation\output\core_course\management;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * The course management renderer.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class renderer extends \theme_boost\output\core_course\management\renderer {
+    /**
+     * Return an instance of the mustache class.
+     *
+     * @return Mustache_Engine
+     */
     protected function get_mustache() {
         $toolbox = \theme_foundation\toolbox::get_instance();
         return $toolbox->get_mustache();

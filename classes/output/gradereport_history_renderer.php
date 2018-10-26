@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -28,7 +27,18 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Overriden gradereport_history renderer.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class gradereport_history_renderer extends \theme_boost\output\gradereport_history_renderer {
+    /**
+     * Return an instance of the mustache class.
+     *
+     * @return Mustache_Engine
+     */
     protected function get_mustache() {
         $toolbox = \theme_foundation\toolbox::get_instance();
         return $toolbox->get_mustache();

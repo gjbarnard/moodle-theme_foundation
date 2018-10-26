@@ -15,10 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Config select setting that sets the default on first run.  Proof of concept before tracker issue.
- *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,31 +25,36 @@ namespace theme_foundation;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Config select setting that sets the default on first run.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class admin_setting_configselect extends \admin_setting_configselect {
     /**
-     * Returns XHTML select field
+     * Returns XHTML select field and wrapping div(s)
      *
-     * Ensure the options are loaded, and generate the XHTML for the select
-     * element and any warning message. Separating this out from output_html
-     * makes it easier to subclass this class.
+     * @see output_select_html()
      *
-     * @param string $data the option to show as selected.
-     * @param string $current the currently selected option in the database, null if none.
-     * @param string $default the default selected option.
-     * @return array the HTML for the select element, and a warning message.
+     * @param string $data the option to show as selected
+     * @param string $query
+     * @return string XHTML field and wrapping div
      */
-    public function output_select_html($data, $current, $default, $extraname = '') {
+    public function output_html($data, $query='') {
         if (!$this->load_choices() or empty($this->choices)) {
-            return array('', '');
+            return '';
         }
 
+        $current = $this->get_setting();
         if (is_null($current)) {
             // First run.
+            $default = $this->get_defaultsetting();
             if ((!is_null($default)) and (empty($data))) {
                 $data = $default;
             }
         }
 
-        return parent::output_select_html($data, $current, $default, $extraname);
+        return parent::output_html($data, $query);
     }
 }

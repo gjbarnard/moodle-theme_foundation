@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -30,11 +29,16 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Rendering of files viewer related widgets.
- * @package   theme_boost
- * @copyright 2016 Damyon Wiese
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class files_renderer extends \theme_boost\output\core\files_renderer {
+    /**
+     * Return an instance of the mustache class.
+     *
+     * @return Mustache_Engine
+     */
     protected function get_mustache() {
         $toolbox = \theme_foundation\toolbox::get_instance();
         return $toolbox->get_mustache();

@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  *             based upon work by Damyon Wiese.
@@ -29,14 +28,20 @@ namespace theme_foundation\output\core\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Perform some custom name mapping for template file names.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader {
 
     /**
      * Helper function for getting a Mustache template file name.
      * Uses the leading component to restrict us specific directories.
      *
-     * @param string $name
-     * @return string Template file name
+     * @param string $name Template name.
+     * @return string Template file name with path.
      */
     protected function getFileName($name) {
         /*

@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -58,6 +57,11 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
     }
 }
 
+/**
+ * Gets the extra SCSS for the theme.
+ *
+ * @return string SCSS.
+ */
 function theme_foundation_extra_scss() {
     $toolbox = \theme_foundation\toolbox::get_instance();
     return $toolbox->extra_scss('foundation');

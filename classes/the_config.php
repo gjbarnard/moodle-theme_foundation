@@ -17,8 +17,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195} - based upon work by Tim Hunt in theme_config.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -38,15 +37,21 @@ use stdClass;
  *
  * And we cannot extend it as it has a private constructor, so can only be instantiated
  * from itself and not even an inheriting class.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class the_config {
 
+    /**
+     * @var Array Theme parents.
+     */
     public $parents = null;
 
     // The following properties are not configurable from theme config.php.
 
     /**
-     * @var string The name of this theme. Set automatically when this theme is
+     * @var string The name of this theme.  Set automatically when this theme is
      * loaded. This can not be set in theme config.php
      */
     public $name = null;
@@ -92,10 +97,8 @@ class the_config {
     /**
      * Loads the theme config from config.php file.
      *
-     * @param string $themename
-     * @param stdClass $settings from config_plugins table
-     * @param boolean $parentscheck true to also check the parents.    .
-     * @return stdClass The theme configuration
+     * @param string $themename The name of the theme.
+     * @return stdClass The theme configuration.
      */
     private static function find_theme_config($themename) {
         /* We have to use the variable name $THEME (upper case) because that

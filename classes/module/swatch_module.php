@@ -20,7 +20,7 @@
  * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\module;
@@ -34,9 +34,19 @@ defined('MOODLE_INTERNAL') || die();
  *
  * Swatches from https://bootswatch.com/ and licensed under the MIT Licence:
  * https://github.com/thomaspark/bootswatch/blob/master/LICENSE.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class swatch_module extends \theme_foundation\module_basement {
 
+    /**
+     * Gets the swatch SCSS.
+     *
+     * @param theme_config $theme Theme configuration.
+     * @param toolbox $toolbox The theme toolbox.
+     * @return string SCSS.
+     */
     public function get_main_scss_content(\theme_config $theme, $toolbox) {
         $swatch = $toolbox->get_setting('swatch', $theme->name);
         if (empty($swatch)) {
@@ -51,6 +61,13 @@ class swatch_module extends \theme_foundation\module_basement {
         return $scss;
     }
 
+    /**
+     * Add the swatch settings.
+     *
+     * @param array $settingspages The setting pages.
+     * @param boolean $adminfulltree If the full tree is required.
+     * @param toolbox $toolbox The theme toolbox.
+     */
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
         // Create our own settings page.
         $settingspages['swatch'] = array('page' => new \admin_settingpage('theme_foundation_swatch',
@@ -89,6 +106,13 @@ class swatch_module extends \theme_foundation\module_basement {
         }
     }
 
+    /**
+     * Returns the language strings for the swatch.
+     *
+     * @param string $lang Language code to get.
+     * @param toolbox $toolbox The theme toolbox.
+     * @return array Language strings.
+     */
     public function get_lang_strings($lang, $toolbox) {
         $strings = array();
 

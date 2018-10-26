@@ -27,8 +27,17 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * The core renderer toolbox.
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 trait core_renderer_toolbox {
 
+    /**
+     * Orchestrates the rendering of the page.
+     */
     public function render_page() {
         echo $this->doctype();
 
