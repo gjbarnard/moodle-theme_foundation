@@ -63,7 +63,7 @@ class mustache_template_finder {
 
         // Validate the component.
         $dirs = array();
-        $partial = ($component == 'partial');
+        $partial = ($component == 'partials');
         if (!$partial) { // This allows the theme to put partial templates in a sub-folder.
             $compdirectory = core_component::get_component_directory($component);
             if (!$compdirectory) {
