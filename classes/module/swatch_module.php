@@ -95,8 +95,10 @@ class swatch_module extends \theme_foundation\module_basement {
         // Note: 'en' must be specified.
         if ($lang == 'en') {
             $strings['swatch'] = 'Swatch';
-            $strings['swatchdesc'] = 'Choose the swatch for the theme.  Note:  The Google font CDN\'s have been removed due to'.
-                'limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+            $strings['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme '.
+                'using a preset list of definitions that you attach a name to.  All swatches are from \'Bootswatch.com\' and '.
+                'licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with '.
+                'the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
 
             $strings['swatchheading'] = 'Swatch';
             $strings['swatchheadingsub'] = 'Swatch settings';
