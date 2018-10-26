@@ -101,7 +101,7 @@ trait core_renderer_toolbox {
             }
         } catch (\Exception $e) {
             // No template for this element.
-            /* 
+            /*
              * Note: Currently catches the 'element-link-inline' template when viewing the course settings page.
              * Happens in Boost too.
              */
