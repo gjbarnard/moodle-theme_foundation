@@ -7,7 +7,7 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:400,700" !default;
 //@import url($web-font-path);
 
-@mixin btn-shadow($color){
+@mixin btn-shadow($color) {
     @include gradient-y-three-colors(lighten($color, 3%), $color, 6%, darken($color, 3%));
     filter: none;
     border: 1px solid darken($color, 6.5%);
@@ -24,18 +24,18 @@
     }
 
     &-fixed-bottom {
-        border-top-width: 1px 0 0 0;
+        border-width: 1px 0 0 0;
         border-style: solid;
     }
 }
 
 .bg-primary {
-    background-color: $primary !important;
-    border-color: darken($primary, 6.5%) !important;
+    background-color: $primary !important; /* stylelint-disable-line declaration-no-important */
+    border-color: darken($primary, 6.5%) !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .bg-dark {
-    border-color: darken($dark, 6.5%) !important;
+    border-color: darken($dark, 6.5%) !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .bg-light {
@@ -103,7 +103,7 @@
 // Typography ==================================================================
 
 .text-secondary {
-    color: $gray-700 !important;
+    color: $gray-700 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Tables ======================================================================
