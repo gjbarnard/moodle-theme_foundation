@@ -224,10 +224,12 @@ class toolbox {
         // The settings pages we create.
         $settingspages = array(
             'general' => array(
-                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic', get_string('generalheading', 'theme_foundation')),
+                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
+                    get_string('generalheading', 'theme_foundation')),
                 self::SETTINGCOUNT => 1),
             'module' => array(
-                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module', get_string('moduleheading', 'theme_foundation')),
+                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
+                    get_string('moduleheading', 'theme_foundation')),
                 self::SETTINGCOUNT => 0)
         );
 
