@@ -57,7 +57,7 @@ trait core_renderer_toolbox {
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
 
-        echo $this->render_from_template('theme_foundation/' . $mustache, $data);
+        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }
 
     /**
