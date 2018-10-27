@@ -24,6 +24,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
+// phpcs:ignoreFile
+
 namespace theme_foundation\output\core\output;
 
 defined('MOODLE_INTERNAL') || die();
