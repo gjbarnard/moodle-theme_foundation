@@ -38,14 +38,14 @@ $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 
 $theme-colors: (
-primary: $primary,
-secondary: $gray-200,
-success: $success,
-info: $info,
-warning: $orange,
-danger: $danger,
-light: $gray-100,
-dark: $gray-800
+    primary: $primary,
+    secondary: $gray-200,
+    success: $success,
+    info: $info,
+    warning: $orange,
+    danger: $danger,
+    light: $gray-100,
+    dark: $gray-800
 );
 
 // Body
@@ -64,5 +64,5 @@ $dropdown-link-hover-bg:         $primary !default;
 
 // Navbar
 
-$navbar-dark-color:                 rgba($white,.8) !default;
+$navbar-dark-color:                 rgba($white, .8) !default;
 $navbar-dark-hover-color:           $white !default;
