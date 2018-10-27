@@ -70,10 +70,10 @@ class swatch_module extends \theme_foundation\module_basement {
      */
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
         // Create our own settings page.
-        $settingspages['swatch'] = array('page' => new \admin_settingpage('theme_foundation_swatch',
-            get_string('swatchheading', 'theme_foundation')), 'settingcount' => 1);
+        $settingspages['swatch'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_swatch',
+            get_string('swatchheading', 'theme_foundation')), \theme_foundation\toolbox::SETTINGCOUNT => 1);
         if ($adminfulltree) {
-            $settingspages['swatch']['page']->add(
+            $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_swatchheading',
                     get_string('swatchheadingsub', 'theme_foundation'),
@@ -102,7 +102,7 @@ class swatch_module extends \theme_foundation\module_basement {
             $default = 'default';
             $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
             $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['swatch']['page']->add($setting);
+            $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
         }
     }
 
