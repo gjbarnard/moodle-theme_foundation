@@ -1,3 +1,18 @@
+a:hover {
+    text-decoration: none;
+}
+
 #region-main > .card {
     min-height: auto;
+}
+
+.dropdown-item a {
+    color: inherit;
+}
+
+#page-footer a {
+    text-decoration: none;
+    @include hover-focus-active {
+        text-decoration: underline;
+    }
 }
