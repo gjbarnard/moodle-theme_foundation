@@ -93,6 +93,7 @@ class swatch_module extends \theme_foundation\module_basement {
                 'lumen' => 'Lumen',
                 'lux' => 'Lux',
                 'materia' => 'Materia',
+                'minty' => 'Minty',
                 'pulse' => 'Pulse',
                 'simplex' => 'Simplex',
                 'superhero' => 'Superhero',

@@ -56,7 +56,7 @@ $headings-color:              $gray-700 !default;
 
 // Tables
 
-$table-border-color:          rgba(0,0,0,0.05) !default;
+$table-border-color:          rgba(0, 0, 0, 0.05) !default;
 
 // Dropdowns
 
@@ -65,13 +65,13 @@ $dropdown-link-hover-bg:            $secondary !default;
 
 // Navbar
 
-$navbar-dark-color:                 rgba($white,.6) !default;
+$navbar-dark-color:                 rgba($white, .6) !default;
 $navbar-dark-hover-color:           $white !default;
 
-$navbar-light-color:                rgba($black,.3) !default;
+$navbar-light-color:                rgba($black, .3) !default;
 $navbar-light-hover-color:          $gray-700 !default;
 $navbar-light-active-color:         $gray-700 !default;
-$navbar-light-disabled-color:       rgba($black,.1) !default;
+$navbar-light-disabled-color:       rgba($black, .1) !default;
 
 // Pagination
 
@@ -87,7 +87,7 @@ $pagination-active-bg:              $secondary !default;
 $pagination-active-border-color:    $pagination-active-bg !default;
 
 $pagination-disabled-color:         $white !default;
-$pagination-disabled-bg:            #CCE8E0 !default;
+$pagination-disabled-bg:            #cce8e0 !default;
 $pagination-disabled-border-color:  $pagination-disabled-bg !default;
 
 // Breadcrumbs
