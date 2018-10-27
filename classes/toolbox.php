@@ -293,11 +293,10 @@ class toolbox {
         return $strings;
     }
 
-    // Theme configuration management.
     /**
      * Creates an instance of the_config for the given theme and adds it to the known list of themes if not already.
      *
-     * @param type $themename Theme name.
+     * @param string $themename Theme name.
      */
     protected function add_theme($themename) {
         // Does the theme exist already?

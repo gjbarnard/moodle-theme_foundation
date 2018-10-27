@@ -17,6 +17,14 @@
 /**
  * Foundation theme.
  *
+ * Needed as theme_config is inflexible in terms of allowing access to parent settings.....
+ * But theme_config does not actually store the parent settings at at all in the 'parents'
+ * attribute but the settings of the theme itself as they are not loaded from the database
+ * by find_theme_config().
+ *
+ * And we cannot extend it as it has a private constructor, so can only be instantiated
+ * from itself and not even an inheriting class.
+ * 
  * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195} - based upon work by Tim Hunt in theme_config.
@@ -30,13 +38,7 @@ defined('MOODLE_INTERNAL') || die();
 use stdClass;
 
 /**
- * Needed as theme_config is inflexible in terms of allowing access to parent settings.....
- * But theme_config does not actually store the parent settings at at all in the 'parents'
- * attribute but the settings of the theme itself as they are not loaded from the database
- * by find_theme_config().
- *
- * And we cannot extend it as it has a private constructor, so can only be instantiated
- * from itself and not even an inheriting class.
+ * Theme configuration.
  *
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

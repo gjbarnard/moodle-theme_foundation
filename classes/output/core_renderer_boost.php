@@ -85,7 +85,7 @@ trait core_renderer_boost {
         return $this->render_from_template('theme_boost/header', $header);
     }
 
-    /*
+    /**
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
@@ -267,7 +267,7 @@ trait core_renderer_boost {
     }
 
     /**
-     * Renders tabtree
+     * Renders tabtree.
      *
      * @param tabtree $tabtree
      * @return string
@@ -281,13 +281,13 @@ trait core_renderer_boost {
     }
 
     /**
-     * Renders tabobject (part of tabtree)
+     * Renders tabobject (part of tabtree).
      *
      * This function is called from {@link core_renderer::render_tabtree()}
      * and also it calls itself when printing the $tabobject subtree recursively.
      *
-     * @param tabobject $tabobject
-     * @return string HTML fragment
+     * @param tabobject $tabobject The tab object.
+     * @return string HTML fragment.
      */
     protected function render_tabobject(tabobject $tab) {
         throw new coding_exception('Tab objects should not be directly rendered.');
