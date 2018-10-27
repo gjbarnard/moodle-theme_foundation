@@ -27,7 +27,7 @@
 
         .dropdown-item.active,
         .dropdown-item:hover,
-            .dropdown-item:focus {
+        .dropdown-item:focus {
             background-color: darken($primary, 5%);
             color: #fff;
         }
@@ -35,7 +35,7 @@
 }
 
 .bg-dark {
-    background-color: $gray-800 !important;
+    background-color: $gray-800 !important; /* stylelint-disable-line declaration-no-important */
 
     .dropdown-menu {
         background-color: $gray-800;
@@ -47,7 +47,7 @@
 
         .dropdown-item.active,
         .dropdown-item:hover,
-            .dropdown-item:focus  {
+        .dropdown-item:focus {
             background-color: darken($gray-800, 5%);
             color: #fff;
         }
@@ -66,7 +66,7 @@
 
         .dropdown-item.active,
         .dropdown-item:hover,
-            .dropdown-item:focus  {
+        .dropdown-item:focus  {
             background-color: lighten($gray-200, 5%);
             color: $navbar-light-hover-color;
         }
@@ -128,7 +128,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($primary, 8%);
             }
         }
@@ -142,7 +142,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($secondary, 8%);
             }
         }
@@ -156,7 +156,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($success, 8%);
             }
         }
@@ -170,7 +170,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($info, 8%);
             }
         }
@@ -184,7 +184,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($warning, 8%);
             }
         }
@@ -198,7 +198,7 @@
             }
 
             .dropdown-item:hover,
-                .dropdown-item:focus {
+            .dropdown-item:focus {
                 background-color: darken($danger, 8%);
             }
         }
@@ -400,13 +400,13 @@ label,
     .nav-link,
     .nav-link.disabled,
     .nav-link.disabled:hover,
-        .nav-link.disabled:focus {
+    .nav-link.disabled:focus {
         border-color: $nav-tabs-border-color;
         background-color: $gray-200;
     }
 
     .nav-link:hover,
-        .nav-link:focus {
+    .nav-link:focus {
         background-color: lighten($gray-200, 5%);
     }
 }
@@ -435,7 +435,7 @@ label,
         margin-right: 0.1em;
 
         &:hover,
-            &:focus {
+        &:focus {
             text-decoration: none;
         }
     }
@@ -451,7 +451,7 @@ label,
 .pagination-lg,
 .pagination-sm {
     .page-item:first-child,
-        .page-item:last-child {
+    .page-item:last-child {
         .page-link {
             border-radius: 3px;
         }
@@ -470,7 +470,7 @@ label,
     text-shadow: none;
 
     &:hover,
-        &:focus {
+    &:focus {
         opacity: 1;
     }
 }
@@ -554,7 +554,7 @@ label,
     &-light {
         &,
         & a:not(.btn),
-            & .alert-link {
+        & .alert-link {
             color: $body-color;
         }
     }
