@@ -35,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Get information about valid locations for mustache templates.
- * 
+ *
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
