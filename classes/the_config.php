@@ -24,7 +24,7 @@
  *
  * And we cannot extend it as it has a private constructor, so can only be instantiated
  * from itself and not even an inheriting class.
- * 
+ *
  * @package    theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195} - based upon work by Tim Hunt in theme_config.
