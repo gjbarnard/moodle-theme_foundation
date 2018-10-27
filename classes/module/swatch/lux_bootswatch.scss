@@ -27,7 +27,7 @@
 }
 
 .bg-primary {
-    background-color: $gray-900 !important;
+    background-color: $gray-900 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .bg-light {
@@ -59,8 +59,8 @@
     &-warning {
         &,
         &:hover,
-            &:not([disabled]):not(.disabled):active,
-            &:focus {
+        &:not([disabled]):not(.disabled):active,
+        &:focus {
             color: $white;
         }
     }
@@ -71,8 +71,8 @@
     color: $gray-600;
 
     &:not([disabled]):not(.disabled):hover,
-        &:not([disabled]):not(.disabled):focus,
-        &:not([disabled]):not(.disabled):active {
+    &:not([disabled]):not(.disabled):focus,
+    &:not([disabled]):not(.disabled):active {
         background-color: $gray-400;
         border-color: $gray-400;
         color: $white;
@@ -88,7 +88,7 @@
 }
 
 .border-secondary {
-    border: 1px solid $gray-400 !important;
+    border: 1px solid $gray-400 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Typography ==================================================================
@@ -109,7 +109,7 @@ h6 {
 }
 
 .text-secondary {
-    color: $body-color !important;
+    color: $body-color !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Tables ======================================================================
@@ -126,7 +126,8 @@ th {
     }
 
     &-sm {
-        th, td {
+        th,
+        td {
             padding: 0.75rem;
         }
     }
