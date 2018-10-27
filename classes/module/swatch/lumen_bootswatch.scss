@@ -7,7 +7,7 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" !default;
 //@import url($web-font-path);
 
-@mixin shadow($width: 4px){
+@mixin shadow($width: 4px) {
     border-style: solid;
     border-width: 0 1px $width 1px;
 }
@@ -27,8 +27,8 @@
 }
 
 .bg-light {
-    background-color: #fff !important;
-    border-color: darken(#fff, 5%);
+    background-color: #fff !important; /* stylelint-disable-line declaration-no-important */
+    border-color: darken(#fff, 5%); /* stylelint-disable-line csstree/validator */
 }
 
 // Buttons =====================================================================
@@ -108,7 +108,7 @@
 // Typography ==================================================================
 
 .text-secondary {
-    color: $gray-700 !important;
+    color: $gray-700 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .blockquote-footer {
@@ -287,7 +287,7 @@
 .nav {
     .open > a,
     .open > a:hover,
-        .open > a:focus {
+    .open > a:focus {
         border-color: transparent;
     }
 }
@@ -300,15 +300,15 @@
         &,
         &.disabled,
         &.disabled:hover,
-            &.disabled:focus {
+        &.disabled:focus {
             margin-top: 6px;
             border-color: $nav-tabs-border-color;
             transition: all 0.2s ease-in-out;
         }
 
         &:not(.disabled):hover,
-            &:not(.disabled):focus,
-            &.active {
+        &:not(.disabled):focus,
+        &.active {
             padding-bottom: calc(0.5em + 6px);
             border-bottom-color: transparent;
             margin-top: 0;
@@ -345,7 +345,7 @@
         text-transform: uppercase;
 
         &:hover,
-            &:focus {
+        &:focus {
             top: 1px;
             border-bottom-width: 3px;
             text-decoration: none;
@@ -381,7 +381,7 @@
 
         &,
         &:hover,
-            &:active {
+        &:active {
             border-left-width: 2px;
             border-right-width: 2px;
         }
@@ -395,7 +395,7 @@
     opacity: 0.4;
 
     &:hover,
-        &:focus {
+    &:focus {
         opacity: 1;
     }
 }
@@ -479,7 +479,7 @@ a.list-group-item {
         }
 
         &.active:hover,
-            &.active:focus {
+        &.active:focus {
             background-color: darken($success, 5%);
         }
     }
@@ -490,7 +490,7 @@ a.list-group-item {
         }
 
         &.active:hover,
-            &.active:focus {
+        &.active:focus {
             background-color: darken($warning, 5%);
         }
     }
@@ -501,7 +501,7 @@ a.list-group-item {
         }
 
         &.active:hover,
-            &.active:focus {
+        &.active:focus {
             background-color: darken($danger, 5%);
         }
     }
@@ -518,7 +518,7 @@ a.list-group-item {
         color: $black;
 
         &:not(:disabled):not(.disabled):hover,
-            &:not(:disabled):not(.disabled):focus {
+        &:not(:disabled):not(.disabled):focus {
             color: $black;
         }
     }
