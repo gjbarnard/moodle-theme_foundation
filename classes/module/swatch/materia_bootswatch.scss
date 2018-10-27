@@ -9,7 +9,7 @@
 
 // Effects =====================================================================
 
-@mixin ripple($color){
+@mixin ripple($color) {
     position: relative;
 
     &:after {
@@ -48,7 +48,7 @@
 
 .navbar {
     border: none;
-    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
 
     &-brand {
         font-size: 24px;
@@ -80,7 +80,7 @@
 
 // Buttons =====================================================================
 
-@mixin btn($class,$bg,$color){
+@mixin btn($class, $bg, $color) {
     .btn-#{$class} {
         &:focus {
             background-color: $bg;
@@ -88,12 +88,12 @@
         }
 
         &:hover,
-            &:active:hover {
+        &:active:hover {
             background-color: darken($bg, 6%);
         }
 
         &:active {
-            box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
         }
 
         @include ripple($color);
@@ -116,7 +116,7 @@
 .btn {
     text-transform: uppercase;
     border: none;
-    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
     transition: all 0.4s;
 
     &-link {
@@ -124,7 +124,7 @@
         color: $link-color;
 
         &:hover,
-            &:focus {
+        &:focus {
             box-shadow: none;
             color: $link-hover-color;
             text-decoration: $link-hover-decoration;
@@ -134,7 +134,7 @@
         &[disabled],
         fieldset[disabled] & {
             &:hover,
-                &:active:hover {
+            &:active:hover {
                 color: $btn-link-disabled-color;
                 text-decoration: none;
             }
@@ -150,7 +150,7 @@
             opacity: 1;
 
             &:hover,
-                &:focus {
+            &:focus {
                 background-color: rgba(0, 0, 0, 0.1);
             }
         }
@@ -194,7 +194,7 @@
 }
 
 .border-secondary {
-    border: 1px solid #dfdfdf !important;
+    border: 1px solid #dfdfdf !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Typography ==================================================================
@@ -215,7 +215,7 @@ a {
 }
 
 .text-secondary {
-    color: $gray-500 !important;
+    color: $gray-500 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Tables ======================================================================
@@ -286,7 +286,7 @@ select,
 select.form-control {
     appearance: none;
     padding: 0.5rem 0;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAJ1BMVEVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmaP/QSjAAAADHRSTlMAAgMJC0uWpKa6wMxMdjkoAAAANUlEQVR4AeXJyQEAERAAsNl7Hf3X6xt0QL6JpZWq30pdvdadme+0PMdzvHm8YThHcT1H7K0BtOMDniZhWOgAAAAASUVORK5CYII=);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAJ1BMVEVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmaP/QSjAAAADHRSTlMAAgMJC0uWpKa6wMxMdjkoAAAANUlEQVR4AeXJyQEAERAAsNl7Hf3X6xt0QL6JpZWq30pdvdadme+0PMdzvHm8YThHcT1H7K0BtOMDniZhWOgAAAAASUVORK5CYII=); /* stylelint-disable-line function-uri-scheme-blacklist */
     background-size: 13px;
     background-repeat: no-repeat;
     background-position: right center;
@@ -355,12 +355,12 @@ select.form-control {
 
 .has-warning {
     input:not([type=checkbox]),
-        .form-control,
-        input.form-control[readonly],
-        input[type=text][readonly],
-        [type=text].form-control[readonly],
-        input:not([type=checkbox]):focus,
-        .form-control:focus {
+    .form-control,
+    input.form-control[readonly],
+    input[type=text][readonly],
+    [type=text].form-control[readonly],
+    input:not([type=checkbox]):focus,
+    .form-control:focus {
         border-bottom: none;
         box-shadow: inset 0 -2px 0 $warning;
     }
@@ -368,12 +368,12 @@ select.form-control {
 
 .has-danger {
     input:not([type=checkbox]),
-        .form-control,
-        input.form-control[readonly],
-        input[type=text][readonly],
-        [type=text].form-control[readonly],
-        input:not([type=checkbox]):focus,
-        .form-control:focus {
+    .form-control,
+    input.form-control[readonly],
+    input[type=text][readonly],
+    [type=text].form-control[readonly],
+    input:not([type=checkbox]):focus,
+    .form-control:focus {
         border-bottom: none;
         box-shadow: inset 0 -2px 0 $danger;
     }
@@ -381,12 +381,12 @@ select.form-control {
 
 .has-success {
     input:not([type=checkbox]),
-        .form-control,
-        input.form-control[readonly],
-        input[type=text][readonly],
-        [type=text].form-control[readonly],
-        input:not([type=checkbox]):focus,
-        .form-control:focus {
+    .form-control,
+    input.form-control[readonly],
+    input[type=text][readonly],
+    [type=text].form-control[readonly],
+    input:not([type=checkbox]):focus,
+    .form-control:focus {
         border-bottom: none;
         box-shadow: inset 0 -2px 0 $success;
     }
@@ -522,10 +522,10 @@ select.form-control {
 
         .nav-link,
         .nav-link:hover,
-            .nav-link:focus,
-            .nav-link.active,
-            .nav-link.active:hover,
-            .nav-link.active:focus {
+        .nav-link:focus,
+        .nav-link.active,
+        .nav-link.active:hover,
+        .nav-link.active:focus {
             border: none;
         }
     }
@@ -538,7 +538,7 @@ select.form-control {
 .dropdown-menu {
     margin-top: 0;
     border: none;
-    box-shadow: 0 1px 4px rgba(0,0,0,.3);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
 }
 
 // Indicators ==================================================================
@@ -568,7 +568,7 @@ select.form-control {
     }
 
     a:not(.btn),
-        .alert-link {
+    .alert-link {
         color: #fff;
         font-weight: bold;
     }
@@ -581,7 +581,7 @@ select.form-control {
     &-light {
         &,
         & a:not(.btn),
-            & .alert-link {
+        & .alert-link {
             color: $body-color;
         }
     }
@@ -622,7 +622,7 @@ select.form-control {
 }
 
 .card {
-    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
 
     &.border-primary,
     &.border-secondary,
@@ -644,7 +644,12 @@ select.form-control {
 
 .list-group {
     &-item-action.active {
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: $white;
         }
     }
@@ -652,12 +657,12 @@ select.form-control {
 
 .modal-content {
     border-radius: 0.2rem;
-    box-shadow: 0 6px 36px rgba(0,0,0,.3);
+    box-shadow: 0 6px 36px rgba(0, 0, 0, .3);
 }
 
 .popover {
     border: none;
-    box-shadow: 0 1px 4px rgba(0,0,0,.3);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
 }
 
 .carousel {
