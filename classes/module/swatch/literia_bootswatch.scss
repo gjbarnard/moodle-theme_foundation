@@ -16,11 +16,11 @@ $font-family-serif:      Georgia, Cambria, "Times New Roman", Times, serif !defa
 }
 
 .bg-dark {
-    background-color: $success !important;
+    background-color: $success !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .bg-light {
-    background-color: #fff !important;
+    background-color: #fff !important; /* stylelint-disable-line declaration-no-important */
     border: 1px solid rgba(0, 0, 0, 0.1);
 
     &.navbar-fixed-top {
@@ -50,8 +50,8 @@ $font-family-serif:      Georgia, Cambria, "Times New Roman", Times, serif !defa
 
     &-secondary,
     &-secondary:hover,
-        &-warning,
-        &-warning:hover {
+    &-warning,
+    &-warning:hover {
         color: $white;
     }
 }
