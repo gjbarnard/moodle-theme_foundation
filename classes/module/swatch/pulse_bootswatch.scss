@@ -9,9 +9,9 @@
 .btn {
 
     &:focus,
-        &:active,
-        &:active:focus,
-        &.active:focus {
+    &:active,
+    &:active:focus,
+    &.active:focus {
         outline: none;
     }
 
@@ -79,7 +79,7 @@
 // Forms =======================================================================
 
 .form-control:focus {
-    box-shadow: 0 0 5px rgba(100,65,164,.4);
+    box-shadow: 0 0 5px rgba(100, 65, 164, .4);
 }
 
 // Navs ========================================================================
@@ -92,9 +92,9 @@
     }
 
     .nav-link:hover,
-        .nav-link.active,
-        .nav-link.active:hover,
-        .nav-link.active:focus {
+    .nav-link.active,
+    .nav-link.active:hover,
+    .nav-link.active:focus {
         border-bottom: 1px solid $primary;
     }
 
@@ -135,7 +135,7 @@
 
         &.active,
         &:hover,
-            &:focus {
+        &:focus {
             color: #fff;
         }
 
