@@ -16,12 +16,12 @@
     }
 
     &.bg-dark {
-        background-color: $body-bg !important;
+        background-color: $body-bg !important; /* stylelint-disable-line declaration-no-important */
         border: 1px solid $gray-700;
     }
 
     &.bg-light {
-        background-color: $gray-500 !important;
+        background-color: $gray-500 !important; /* stylelint-disable-line declaration-no-important */
     }
 
     &.fixed-top {
@@ -99,7 +99,9 @@ table {
     }
 
     &-info {
-        &, > th, > td {
+        &,
+        > th,
+        > td {
             background-color: $info;
         }
     }
