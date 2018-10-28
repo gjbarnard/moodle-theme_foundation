@@ -41,14 +41,14 @@
 module.exports = function(grunt) { // jshint ignore:line
     var path = require('path'),
         tasks = {},
-        cwd = process.env.PWD || process.cwd(),
+        cwd = process.env.PWD || process.cwd(), // jshint ignore:line
         DOMParser = require('xmldom').DOMParser,
         xpath = require('xpath'),
         semver = require('semver');
 
     // Verify the node version is new enough.
     var expected = semver.validRange(grunt.file.readJSON('package.json').engines.node);
-    var actual = semver.valid(process.version);
+    var actual = semver.valid(process.version); // jshint ignore:line
     if (!semver.satisfies(actual, expected)) {
         grunt.fail.fatal('Node version too old. Require ' + expected + ', version installed: ' + actual);
     }
@@ -57,8 +57,8 @@ module.exports = function(grunt) { // jshint ignore:line
        the root by passing --root=path/to/dir. */
     if (grunt.option('root')) {
         var root = grunt.option('root');
-        if (grunt.file.exists(__dirname, root)) {
-            cwd = path.join(__dirname, root);
+        if (grunt.file.exists(__dirname, root)) { // jshint ignore:line
+            cwd = path.join(__dirname, root); // jshint ignore:line
             grunt.log.ok('Setting root to ' + cwd);
         } else {
             grunt.fail.fatal('Setting root to ' + root + ' failed - path does not exist');
