@@ -68,11 +68,11 @@ function theme_foundation_extra_scss() {
 }
 
 /**
- * Get compiled css.
+ * Get the compiled css.
  *
- * @return string compiled css
+ * @return string The compiled css.
  */
 function theme_foundation_get_precompiled_css() {
     global $CFG;
-    return file_get_contents($CFG->dirroot . '/theme/foundation/style/fallback.css');
+    return file_get_contents($CFG->dirroot.'/theme/foundation/style/fallback.css');
 }
