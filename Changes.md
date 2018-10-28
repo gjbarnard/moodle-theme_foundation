@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.5.0.5
+  1. Beta version.
+
 Version 3.5.0.4
   1. Beta version.
 
