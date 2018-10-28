@@ -1,0 +1,32 @@
+{
+  "name": "theme-foundation-tasks",
+  "version": "0.1.0",
+  "description": "Grunt tasks for Moodle Foundation theme.",
+  "main": "Gruntfile.js",
+  "author": {
+    "name": "Gareth J Barnard",
+    "url": "http://about.me/gjbarnard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gjb2048/moodle-theme_foundation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gjb2048/moodle-theme_foundation/issues"
+  },
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-sass": "2.1.0",
+    "grunt-stylelint": "0.6.0",
+    "semver": "5.3.0",
+    "stylelint": "8.0.0",
+    "stylelint-checkstyle-formatter": "0.1.0",
+    "stylelint-csstree-validator": "1.1.1",
+    "xmldom": "0.1.22",
+    "xpath": "0.0.23"
+  },
+  "engines": {
+    "node": ">=8.9 <9"
+  },
+  "license": "GPL-3.0"
+}

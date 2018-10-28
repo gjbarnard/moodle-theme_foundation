@@ -29,6 +29,9 @@ $THEME->doctype = 'html5';
 $THEME->name = 'foundation';
 $THEME->parents = array();
 $THEME->sheets = array();
+$THEME->editor_sheets = [];
+$THEME->usefallback = true;
+$THEME->precompiledcsscallback = 'theme_foundation_get_precompiled_css';
 $THEME->enable_dock = false;
 
 $THEME->supportscssoptimisation = false;

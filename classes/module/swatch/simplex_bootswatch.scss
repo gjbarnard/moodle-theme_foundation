@@ -118,7 +118,7 @@ label {
 // Navs =======================================================================
 
 .breadcrumb {
-    border: 1px solid darken(#fff, 6.5%);
+    border: 1px solid darken(#fff, 6.5%); /* stylelint-disable-line csstree/validator */
 }
 
 .pagination {

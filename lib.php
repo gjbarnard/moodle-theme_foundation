@@ -66,3 +66,13 @@ function theme_foundation_extra_scss() {
     $toolbox = \theme_foundation\toolbox::get_instance();
     return $toolbox->extra_scss('foundation');
 }
+
+/**
+ * Get compiled css.
+ *
+ * @return string compiled css
+ */
+function theme_foundation_get_precompiled_css() {
+    global $CFG;
+    return file_get_contents($CFG->dirroot . '/theme/foundation/style/fallback.css');
+}

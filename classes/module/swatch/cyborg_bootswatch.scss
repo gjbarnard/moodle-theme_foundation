@@ -41,7 +41,7 @@
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-            } @else {
+            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
                 background-color: $value;
             }
         }
@@ -264,7 +264,7 @@ legend {
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-            } @else {
+            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
                 background-color: $value;
             }
         }
