@@ -1,0 +1,15 @@
+// Collapsed Topics course format.
+ul.ctopics .content .summary ul,
+ul.ctopics .content .section ul {
+    margin: 0 0 10px 10px;
+}
+
+ul.ctopics :target {
+    margin: 4px 0 1px !important; /* stylelint-disable-line declaration-no-important */
+    padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.course-content ul.ctopics li.section.main, 
+.course-content ul.ctopics li.tcsection {
+    margin: 4px 0 1px;
+}
