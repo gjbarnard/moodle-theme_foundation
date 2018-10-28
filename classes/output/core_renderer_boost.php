@@ -206,10 +206,13 @@ trait core_renderer_boost {
         return $custommenu->export_for_template($this);
     }
 
-    /*
+    /**
      * This renders the bootstrap top menu.
      *
      * This renderer is needed to enable the Bootstrap style navigation.
+     * 
+     * @param custom_menu $menu The menu.
+     * @return string The rendered menu.
      */
     protected function render_custom_menu(custom_menu $menu) {
         $langs = get_string_manager()->get_list_of_translations();
@@ -286,7 +289,7 @@ trait core_renderer_boost {
      * This function is called from {@link core_renderer::render_tabtree()}
      * and also it calls itself when printing the $tabobject subtree recursively.
      *
-     * @param tabobject $tabobject The tab object.
+     * @param tabobject $tab The tab object.
      * @return string HTML fragment.
      */
     protected function render_tabobject(tabobject $tab) {
