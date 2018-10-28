@@ -98,3 +98,13 @@ body {
 .userpicture {
     border-radius: 50%;
 }
+
+// Fallback alert.
+body.admin h1:after {
+    border: 2px dashed red;
+    color: red;
+    content: 'Fallback CSS sheet in use, check for invalid SCSS!';
+    display: block;
+    margin: 10px 0;
+    padding: 4px;
+}
