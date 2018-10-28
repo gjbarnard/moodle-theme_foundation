@@ -210,7 +210,7 @@ trait core_renderer_boost {
      * This renders the bootstrap top menu.
      *
      * This renderer is needed to enable the Bootstrap style navigation.
-     * 
+     *
      * @param custom_menu $menu The menu.
      * @return string The rendered menu.
      */
