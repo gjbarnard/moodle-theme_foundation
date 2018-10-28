@@ -39,7 +39,7 @@
 }
 
 .bg-light {
-    border-color: darken(#fff, 6.5%);
+    border-color: darken(#fff, 6.5%); /* stylelint-disable-line csstree/validator */
 }
 
 // Buttons =====================================================================
