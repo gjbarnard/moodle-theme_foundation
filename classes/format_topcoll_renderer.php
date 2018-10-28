@@ -30,10 +30,10 @@ if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
     include_once($CFG->dirroot."/course/format/topcoll/renderer.php");
 
     class theme_foundation_format_topcoll_renderer extends format_topcoll_renderer {
-        
+
         /**
          * The grid row class.
-         * 
+         *
          * @return string CSS class.
          */
         protected function get_row_class() {
@@ -42,7 +42,7 @@ if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
 
         /**
          * The grid column class depending on the number of columns.
-         * 
+         *
          * @param byte $columns Number of columns.
          * @return string CSS class.
          */
