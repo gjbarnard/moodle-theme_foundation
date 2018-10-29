@@ -31,6 +31,8 @@
  *
  * grunt css     Create the default CSS and lint the SCSS.
  *
+ * grunt amd     Create the Asynchronous Module Definition JavaScript files.  See: MDL-49046.
+ *               Done here as core Gruntfile.js currently *nix only.
  *
  * @package theme_foundation.
  * @author G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
@@ -97,6 +99,21 @@ module.exports = function(grunt) { // jshint ignore:line
         return libs;
     };
 
+    // PHP strings for exec task.
+    var moodleroot = path.dirname(path.dirname(__dirname)), // jshint ignore:line
+        dirrootopt = grunt.option('dirroot') || process.env.MOODLE_DIR || ''; // jshint ignore:line
+
+    // Allow user to explicitly define Moodle root dir.
+    if ('' !== dirrootopt) {
+        moodleroot = path.resolve(dirrootopt);
+    }
+
+    var configfile = path.join(moodleroot, 'config.php');
+
+    var decachephp = 'define(\'CLI_SCRIPT\', true);';
+    decachephp += 'require(\'' + configfile + '\');';
+    decachephp += 'purge_all_caches();';
+
     // Project configuration.
     grunt.initConfig({
         sass: {
@@ -125,6 +142,38 @@ module.exports = function(grunt) { // jshint ignore:line
                     }
                 }
             }
+        },
+        exec: {
+            decache: {
+                cmd: 'php -r "' + decachephp + '"',
+                callback: function(error) {
+                    // The 'exec' process will output error messages, just add one to confirm success.
+                    if (!error) {
+                        grunt.log.writeln("Moodle cache reset.");
+                    }
+                }
+            }
+        },
+        jshint: {
+            options: {jshintrc: moodleroot + '/.jshintrc'},
+            files: ['**/amd/src/*.js']
+        },
+        uglify: {
+            dynamic_mappings: {
+                files: grunt.file.expandMapping(
+                    ['**/src/*.js', '!**/node_modules/**'],
+                    '',
+                    {
+                        cwd: cwd,
+                        rename: function(destBase, destPath) {
+                            destPath = destPath.replace('src', 'build');
+                            destPath = destPath.replace('.js', '.min.js');
+                            destPath = path.resolve(cwd, destPath);
+                            return destPath;
+                        }
+                    }
+                )
+            }
         }
     });
 
@@ -143,11 +192,18 @@ module.exports = function(grunt) { // jshint ignore:line
     };
 
     // Register tasks.
+    grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-stylelint');
+    grunt.registerTask("decache", ["exec:decache"]);
 
     // Register JS tasks.
     grunt.registerTask('ignorefiles', 'Generate ignore files for linters', tasks.ignorefiles);
+
+    // Load core tasks.
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.registerTask("amd", ["jshint", "uglify", "decache"]);
 
     // Register CSS taks.
     grunt.registerTask('css', ['ignorefiles', 'stylelint:scss', 'sass', 'stylelint:css']);

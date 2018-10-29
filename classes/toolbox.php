@@ -239,7 +239,8 @@ class toolbox {
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
                     get_string('generalheadingsub', 'theme_foundation'),
-                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
 

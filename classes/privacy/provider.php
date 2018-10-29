@@ -25,23 +25,64 @@
 
 namespace theme_foundation\privacy;
 
+use \core_privacy\local\request\writer;
+use \core_privacy\local\metadata\collection;
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The Foundation theme does not store any user data.
+ * The Foundation theme.
  *
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class provider implements \core_privacy\local\metadata\null_provider {
+class provider implements
+    // This plugin has data.
+    \core_privacy\local\metadata\provider,
+
+    // This plugin has some sitewide user preferences to export.
+    \core_privacy\local\request\user_preference_provider {
 
     /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
+     * Returns meta data about this system.
      *
-     * @return  string
+     * @param   collection $items The initialised item collection to add items to.
+     * @return  collection A listing of user data stored through this system.
      */
-    public static function get_reason() : string {
-        return 'privacy:nop';
+    public static function get_metadata(collection $items) : collection {
+        $items->add_user_preference('collapseblock', 'privacy:metadata:preference:collapseblock');
+
+        return $items;
+    }
+
+    /**
+     * Store all user preferences for the plugin.
+     *
+     * @param int $userid The user id of the user whose data is to be exported.
+     */
+    public static function export_user_preferences(int $userid) {
+        $preferences = get_user_preferences(null, null, $userid);
+        foreach ($preferences as $name => $value) {
+            $blockid = null;
+            $matches = array();
+            if (preg_match('/(?<=block)\d*(?=hidden)/', $name, $matches)) {
+                if (!empty($matches[0])) {
+                    $blockid = $matches[0];
+                    $decoded = ($value) ? 'Open' : 'Closed';
+
+                    writer::export_user_preference(
+                        'theme_foundation',
+                        $name,
+                        $value,
+                        get_string('privacy:request:preference:collapseblock', 'theme_foundation', (object) [
+                            'name' => $name,
+                            'blockid' => $blockid,
+                            'value' => $value,
+                            'decoded' => $decoded
+                        ])
+                    );
+                }
+            }
+        }
     }
 }
