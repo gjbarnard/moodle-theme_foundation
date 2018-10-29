@@ -11,3 +11,24 @@
 .block_tree .tree_item.branch {
     margin-left: 0;
 }
+
+// MDL-57305 - thanks to Daniel Miericke.
+.block {
+    .block-action {
+        @include fa-icon();
+        cursor: pointer;
+        float: right;
+        margin: .2rem .6rem 0 0;
+        &:before {
+            content: $fa-var-compress;
+        }
+    }
+    &.hidden {
+        .block-action:before {
+            content: $fa-var-expand;
+        }
+        .card-text {
+            display: none;
+        }
+    }
+}

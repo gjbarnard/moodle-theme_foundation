@@ -307,13 +307,15 @@ trait core_renderer_boost {
         $bc = clone($bc); // Avoid messing up the object passed in.
         if (empty($bc->blockinstanceid) || !strip_tags($bc->title)) {
             $bc->collapsible = block_contents::NOT_HIDEABLE;
+        } else {
+            user_preference_allow_ajax_update('block'.$bc->blockinstanceid.'hidden', PARAM_INT);
         }
-
         $id = !empty($bc->attributes['id']) ? $bc->attributes['id'] : uniqid('block-');
         $context = new stdClass();
         $context->skipid = $bc->skipid;
         $context->blockinstanceid = $bc->blockinstanceid;
         $context->dockable = $bc->dockable;
+        $context->collapsible = $bc->collapsible;
         $context->id = $id;
         $context->hidden = $bc->collapsible == block_contents::HIDDEN;
         $context->skiptitle = strip_tags($bc->title);
