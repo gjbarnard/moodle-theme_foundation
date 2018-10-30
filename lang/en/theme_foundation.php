@@ -40,6 +40,8 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 $string['configtitle'] = 'Foundation';
 $string['pluginname'] = 'Foundation';
 
+$string['region-side-pre'] = 'Left';
+
 // Settings.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
