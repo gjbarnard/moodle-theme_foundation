@@ -32,3 +32,12 @@
         }
     }
 }
+
+.block-controls {
+    .action-menu-item {
+        padding: $btn-padding-y 0;
+    }
+    .menubar {
+        justify-content: space-between;
+    }
+}
