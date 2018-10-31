@@ -60,9 +60,10 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
 /**
  * Gets the extra SCSS for the theme.
  *
+ * @param theme_config $theme The theme configuration object.
  * @return string SCSS.
  */
-function theme_foundation_extra_scss() {
+function theme_foundation_extra_scss($theme) {
     $toolbox = \theme_foundation\toolbox::get_instance();
     return $toolbox->extra_scss('foundation');
 }
