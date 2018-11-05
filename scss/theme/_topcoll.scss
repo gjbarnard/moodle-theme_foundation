@@ -5,8 +5,8 @@ ul.ctopics .content .section ul {
 }
 
 ul.ctopics :target {
-    margin: 4px 0 1px !important; /* stylelint-disable-line declaration-no-important */
-    padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+    margin: 4px 0 1px !important; // stylelint-disable-line declaration-no-important
+    padding-top: 0 !important; // stylelint-disable-line declaration-no-important
 }
 
 .course-content ul.ctopics li.section.main,

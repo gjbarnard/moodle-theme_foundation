@@ -123,7 +123,7 @@ module.exports = function(grunt) { // jshint ignore:line
                 }
             },
             options: {
-                includePaths: ["scss/preset/"]
+                includePaths: ["scss/"]
             }
         },
         stylelint: {

@@ -69,7 +69,7 @@ $theme-colors: (
     dark: $gray-800
 );
 
-/* Imports relative to theme scss folder, see get_css_content_from_scss() and get_scss_property() of theme_config in
+/* Imports relative to theme folder, see get_css_content_from_scss() and get_scss_property() of theme_config in
    /lib/outputlib.php. */
 // Import FontAwesome.
 @import "../boost/scss/fontawesome";
@@ -108,3 +108,6 @@ body.admin h1:after {
     margin: 10px 0;
     padding: 4px;
 }
+
+// Import Core moodle CSS
+@import "./scss/theme/theme";

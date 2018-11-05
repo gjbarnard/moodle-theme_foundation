@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Imports relative to theme scss folder, see get_css_content_from_scss() and get_scss_property() of theme_config in
+/* Imports relative to theme folder, see get_css_content_from_scss() and get_scss_property() of theme_config in
    /lib/outputlib.php. */
 @font-face {
   font-family: 'FontAwesome';
@@ -8595,6 +8595,9 @@ a.dimmed_text:visited,
   #page-admin-report-backups-index .backup-unfinished[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:focus {
     background-color: #c9302c; }
 
+.custom-select {
+  width: auto; }
+
 .fade.in {
   opacity: 1; }
 
@@ -16999,3 +17002,82 @@ body.admin h1:after {
   display: block;
   margin: 10px 0;
   padding: 4px; }
+
+.block_navigation .block_tree p.hasicon,
+.block_settings .block_tree p.hasicon {
+  padding-left: 0;
+  text-indent: -2px; }
+
+.block_navigation .block_tree .tree_item.branch,
+.block_settings .block_tree .tree_item.branch {
+  padding-left: 0; }
+
+.block_tree .tree_item.branch {
+  margin-left: 0; }
+
+.block .block-action {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  float: right;
+  margin: .2rem .6rem 0 0; }
+  .block .block-action:before {
+    content: ""; }
+
+.block.hidden .block-action:before {
+  content: ""; }
+
+.block.hidden .card-text {
+  display: none; }
+
+.block-controls .action-menu-item {
+  padding: 0.375rem 0; }
+
+.block-controls .menubar {
+  justify-content: space-between; }
+
+a:hover {
+  text-decoration: none; }
+
+#region-main > .card, #page-enrol-users #region-main > #filterform, .que #region-main > .history, .userprofile .profile_tree #region-main > section, #region-main > .groupinfobox, #region-main > .well {
+  min-height: auto;
+  padding-bottom: 1px; }
+
+.dropdown-item a {
+  color: inherit; }
+
+#page-footer a {
+  text-decoration: none; }
+  #page-footer a:hover, #page-footer a:focus, #page-footer a:active {
+    text-decoration: underline; }
+
+.custom-select.jumpmenu {
+  width: auto; }
+
+.section .activity .actions .btn, .section .activity #page-grade-grading-manage .actions .action, #page-grade-grading-manage .section .activity .actions .action, .section .activity .actions #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel input, #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .section .activity .actions input, .section .activity .actions #rubric-rubric.gradingform_rubric .addcriterion, #rubric-rubric.gradingform_rubric .section .activity .actions .addcriterion {
+  border-width: 0; }
+
+.custom-select {
+  background: #fff none no-repeat scroll 0% 0%; }
+
+.navbar-dark a .icon {
+  color: inherit !important; }
+
+.navbar .popover-region {
+  margin-top: 4px; }
+
+ul.ctopics .content .summary ul,
+ul.ctopics .content .section ul {
+  margin: 0 0 10px 10px; }
+
+ul.ctopics :target {
+  margin: 4px 0 1px !important;
+  padding-top: 0 !important; }
+
+.course-content ul.ctopics li.section.main,
+.course-content ul.ctopics li.tcsection {
+  margin: 4px 0 1px; }
