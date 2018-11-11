@@ -15,9 +15,9 @@ Currently the theme does not work when placed within a $CFG->themedir folder.
 
 Features
 ========
-* Bootstrap V4 CSS with minimal additions for Moodle.
+* Bootstrap V4 CSS with core Moodle CSS.
 * Child theme capable - in 'beta'.
-* Custom SCSS.
+* Pre and Custom SCSS.
 * Custom Swatches from Bootswatch.com and licensed under the MIT License (MIT).
 * Partial template support.
 * Theme modules - in 'beta', see the swatch_modules.php file.
@@ -45,6 +45,10 @@ You have all the rights granted to you by the GPLv3 license.  If you are unsure 
 FAQ - www.gnu.org/licenses/gpl-faq.html - is a good place to look.
 
 If you reuse any of the code then I kindly ask that you make reference to the theme.
+
+The 'Swatches' are from https://bootswatch.com/ and licensed under the MIT Licence:
+https://github.com/thomaspark/bootswatch/blob/master/LICENSE.  I have modified them to disable the '@import url($web-font-path))'
+in order for them to work with Moodle.
 
 If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
 github.com/gjb2048/moodle-theme_foundation and doing a 'Pull Request' so that the rest of the Moodle community
@@ -116,9 +120,9 @@ that you are operating the required version of Moodle as stated at the top - thi
 functionality that is out of its control.
 
 I operate a policy that I will fix all genuine issues for free.  Improvements are at my discretion.  I am happy to make bespoke
-customisations / improvements for a negotiated fee. 
+customisations / improvements for a negotiated fee.
 
-It is essential that you provide as much information as possible, the critical information being the contents of the theme's 
+It is essential that you provide as much information as possible, the critical information being the contents of the theme's
 version.php file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
 can be really useful in visualising the issue along with any files you consider to be relevant.
 

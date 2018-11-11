@@ -36,6 +36,17 @@ defined('MOODLE_INTERNAL') || die();
 abstract class module_basement {
 
     /**
+     * Gets the module pre SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
+    public function pre_scss($themename, $toolbox) {
+        return '';
+    }
+
+    /**
      * Gets the module main SCSS.
      *
      * @param theme_config $theme The theme configuration object for the theme the SCSS is for.

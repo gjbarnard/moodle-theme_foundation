@@ -47,6 +47,9 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
+$string['prescss'] = 'Pre SCSS';
+$string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
+
 $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 

@@ -137,6 +137,28 @@ class toolbox {
     }
 
     /**
+     * Gets the pre SCSS.
+     *
+     * @param string $themename The name of the theme.
+     * @return string SCSS.
+     */
+    public function pre_scss($themename) {
+        $scss = '';
+
+        foreach ($this->modules as $module) {
+            $scss .= $module->pre_scss($themename, $this);
+        }
+
+        // TODO: Does there need to be a parent daisy chain of this setting?
+        $prescss = $this->get_setting('prescss', $themename);
+        if (!empty($prescss)) {
+            $scss .= $prescss;
+        }
+
+        return $scss;
+    }
+
+    /**
      * Gets the main SCSS for the theme.
      *
      * @param theme_config $theme The theme configuration object.
@@ -226,7 +248,7 @@ class toolbox {
             'general' => array(
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
                     get_string('generalheading', 'theme_foundation')),
-                self::SETTINGCOUNT => 1),
+                self::SETTINGCOUNT => 2),
             'module' => array(
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
                     get_string('moduleheading', 'theme_foundation')),
@@ -243,6 +265,15 @@ class toolbox {
                     format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
+
+            // Pre SCSS.
+            $name = 'theme_foundation/prescss';
+            $title = get_string('prescss', 'theme_foundation');
+            $description = get_string('prescssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Custom SCSS.
             $name = 'theme_foundation/customscss';

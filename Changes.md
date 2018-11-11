@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.5.0.6
   1. Beta version.
+  2. Changes for CONTRIB-7493 including a 'pre SCSS' setting.
 
 Version 3.5.0.5
   1. Beta version.
