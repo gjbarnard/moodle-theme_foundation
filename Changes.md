@@ -3,6 +3,7 @@ Version Information
 Version 3.5.0.6
   1. Beta version.
   2. Changes for CONTRIB-7493 including a 'pre SCSS' setting.
+  3. Conform to https://docs.moodle.org/dev/Plugin_contribution_checklist#Strings for modules for now.
 
 Version 3.5.0.5
   1. Beta version.

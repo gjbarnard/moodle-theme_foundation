@@ -58,8 +58,14 @@ $string['moduleheadingsub'] = 'Module settings';
 $string['moduleheadingdesc'] = 'Configure the module settings for Foundation here.';
 
 // Dynamic - will this break plugin validation?  If it does then will have to put the theme strings here, but the concept will still be proven for modules.
-$toolbox = \theme_foundation\toolbox::get_instance();
-$string = array_merge($string, $toolbox->get_lang_strings('en'));
+/* Future code? -> $toolbox = \theme_foundation\toolbox::get_instance();
+   $string = array_merge($string, $toolbox->get_lang_strings('en')); */
+// Module strings here for now!
+$string['swatch'] = 'Swatch';
+$string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+$string['swatchheading'] = 'Swatch';
+$string['swatchheadingsub'] = 'Swatch settings';
+$string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';

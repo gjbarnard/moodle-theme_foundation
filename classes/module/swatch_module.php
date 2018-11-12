@@ -110,6 +110,8 @@ class swatch_module extends \theme_foundation\module_basement {
     /**
      * Returns the language strings for the swatch.
      *
+     * Note: Not currently called due to https://docs.moodle.org/dev/Plugin_contribution_checklist#Strings
+     *
      * @param string $lang Language code to get.
      * @param toolbox $toolbox The theme toolbox.
      * @return array Language strings.

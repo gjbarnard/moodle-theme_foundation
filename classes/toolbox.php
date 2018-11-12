@@ -314,6 +314,8 @@ class toolbox {
     /**
      * Returns the strings from the modules.
      *
+     * Note: Not currently called due to https://docs.moodle.org/dev/Plugin_contribution_checklist#Strings
+     *
      * @param string $lang The language code to get.
      * @return array Array of strings.
      */

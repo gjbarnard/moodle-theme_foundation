@@ -83,6 +83,9 @@ abstract class module_basement {
      * See 'What do codes like "en" and "en_us" or "es" and "es_mx" and "es_ve" mean??' on:
      * https://docs.moodle.org/35/en/Language_FAQ
      *
+     * Note: Do not use at the moment due to https://docs.moodle.org/dev/Plugin_contribution_checklist#Strings but instead when
+     *       adding a new module, put them in the language file for the theme.
+     *
      * @param string $lang The language code to get.
      * @param toolbox $toolbox The toolbox instance.
      * @return array Array of strings for the module.
