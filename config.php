@@ -96,7 +96,7 @@ $THEME->layouts = array(
         'mustache' => 'columns2',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true)
+        'options' => array('langmenu' => true, 'nocontextheader' => true)
     ),
     // My public page.
     'mypublic' => array(
