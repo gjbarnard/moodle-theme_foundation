@@ -78,11 +78,11 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.5 version 2018051700.00 (Build: 20180517) and above within the 3.5 branch until the
+This version works with Moodle 3.6rc1 version 2018112500.00 (Build: 20181125) and above within the 3.6 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/35/en/Installing_Moodle'.
+'docs.moodle.org/36/en/Installing_Moodle'.
 
 Installation
 ============
