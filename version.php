@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2018112700;
-$plugin->requires  = 2018112500.00; // Moodle 3.6rc1 (Build: 20181125).
+$plugin->requires  = 2018112800.00; // Moodle 3.6rc2 (Build: 20181128).
 $plugin->component = 'theme_foundation';
 $plugin->maturity = MATURITY_BETA;
 $plugin->release = '3.6.0.1';
