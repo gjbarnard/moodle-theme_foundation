@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.5.0.7
+  1. Improvements to the way the Grid format looks.
 
 Version 3.5.0.6
   1. Beta version.
