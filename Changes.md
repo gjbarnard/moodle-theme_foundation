@@ -3,6 +3,11 @@ Version Information
 Version 3.6.0.2
   1. Moodle 3.6.1 version.
   2. Improvements to the way the Grid format looks.
+  3. Fix template loading when called from JavaScript via the external web service API.  This effectively fixes
+     the user tours not using the Boost theme tourstep.mustache template instead of the core one and saves us
+     having to store our own copy of that template because the Foundation template finder creates a hierarchy
+     whereby Foundation, then Boost, then core is checked for a given template without the theme needing to be
+     a child theme of Boost itself and thereby use the implemented core logic.
 
 Version 3.6.0.1
   1. Moodle 3.6rc1 beta version based on 3.5.0.6.

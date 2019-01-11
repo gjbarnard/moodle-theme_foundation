@@ -88,3 +88,18 @@ function theme_foundation_get_precompiled_css() {
     global $CFG;
     return file_get_contents($CFG->dirroot.'/theme/foundation/style/fallback.css');
 }
+
+/**
+ * Override the core_output_load_template function to use our Mustache template finder.
+ *
+ * Info on: https://docs.moodle.org/dev/Miscellaneous_callbacks#override_webservice_execution
+ */
+function theme_foundation_override_webservice_execution($function, $params) {
+    // Check if it's the function we want to override.
+    if ($function->name === 'core_output_load_template') {
+        // Call our load template function in our class instead of $function->classname.
+        return call_user_func_array(['theme_foundation\output\external', $function->methodname], $params);
+    }
+
+    return false;
+}
