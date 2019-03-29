@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.6.0.3
+
 Version 3.6.0.2
   1. Moodle 3.6.1 version.
   2. Improvements to the way the Grid format looks.
