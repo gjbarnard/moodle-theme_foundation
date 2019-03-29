@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.6.0.3
+  1. Add H5P custom CSS setting from Essential.
 
 Version 3.6.0.2
   1. Moodle 3.6.1 version.

@@ -283,6 +283,15 @@ class toolbox {
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // H5P Custom CSS.
+            $name = 'theme_foundation/hvpcustomcss';
+            $title = get_string('hvpcustomcss', 'theme_foundation');
+            $description = get_string('hvpcustomcssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
         }
 
         // Module settings.
