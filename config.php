@@ -38,13 +38,13 @@ $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
 $empty = array();
-$regions = array('side-pre');
+$regions = array('side-pre', 'drawer');
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
         'file' => 'layout.php',
-        'mustache' => 'columns1',
+        'mustache' => 'columns2',
         'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
@@ -131,9 +131,9 @@ $THEME->layouts = array(
         'mustache' => 'embedded',
         'regions' => $empty
     ),
-    // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
-    // This must not have any blocks, and it is good idea if it does not have links to
-    // other places - for example there should not be a home link in the footer...
+    /* Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
+       This must not have any blocks, and it is good idea if it does not have links to
+       other places - for example there should not be a home link in the footer... */
     'maintenance' => array(
         'file' => 'layout.php',
         'mustache' => 'maintenance',

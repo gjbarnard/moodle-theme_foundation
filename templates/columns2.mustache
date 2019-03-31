@@ -22,12 +22,14 @@
     Foundation 2 column layout template.
 
     Context variables required for this template:
-    * sitename - The name of the site
-    * output - The core renderer for the page
-    * bodyattributes - attributes for the body tag as a string of html attributes
-    * sidepreblocks - HTML for the blocks
-    * hasblocks - true if there are blocks on this page
-    * regionmainsettingsmenu - HTML for the region main settings menu
+    * sitename - The name of the site.
+    * output - The core renderer for the page.
+    * bodyattributes - attributes for the body tag as a string of html attributes.
+    * drawerblocks - HTML for the drawer blocks.
+    * hasdrawerblocks - true if there are drawer blocks on this page.
+    * sidepreblocks - HTML for the side pre blocks.
+    * haspreblocks - true if there are side pre blocks on this page.
+    * regionmainsettingsmenu - HTML for the region main settings menu.
     * hasregionmainsettingsmenu - There is a region main settings menu on this page.
 
     Example context (json):
@@ -40,8 +42,10 @@
             "main_content": "<h1>Headings make html validators happier</h1>"
          },
         "bodyattributes":"",
+        "drawerblocks": "<h2>Blocks html goes here</h2>",
+        "hasdrawerblocks": true,
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
-        "hasblocks":true,
+        "haspreblocks": true,
         "regionmainsettingsmenu": "",
         "hasregionmainsettingsmenu": false
     }
@@ -62,11 +66,11 @@
         <div id="page-content" class="row pb-3">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
+                <div id="region-main-settings-menu" class="d-print-none {{#haspreblocks}}has-blocks{{/haspreblocks}}">
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
+                <section id="region-main" {{#haspreblocks}}class="has-blocks mb-3"{{/haspreblocks}}>
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
@@ -75,14 +79,21 @@
                     {{{ output.activity_navigation }}}
                     {{{ output.course_content_footer }}}
                 </section>
-                {{#hasblocks}}
+                {{#haspreblocks}}
                 <section data-region="blocks-column" class="d-print-none">
                     {{{ sidepreblocks }}}
                 </section>
-                {{/hasblocks}}
+                {{/haspreblocks}}
             </div>
         </div>
     </div>
+
+    {{#hasdrawerblocks}}
+    <section data-region="blocks-drawer" class="drawer-hidden d-print-none" aria-hidden="true">
+        {{{ drawerblocks }}}
+    </section>
+    {{/hasdrawerblocks}}
+
     {{{ output.standard_after_main_region_html }}}
     {{> partials/footer }}
 </div>
@@ -91,4 +102,7 @@
 </html>
 {{#js}}
 require(['theme_boost/loader']);
+{{#hasdrawerblocks}}
+require(['theme_foundation/drawer']);
+{{/hasdrawerblocks}}
 {{/js}}

@@ -22,6 +22,11 @@
     Context variables required for this template:
     * sitename - The name of the site
     * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes.
+    * drawerblocks - HTML for the drawer blocks.
+    * hasdrawerblocks - true if there are drawer blocks on this page.
+    * sidepreblocks - HTML for the side pre blocks.
+    * haspreblocks - true if there are side pre blocks on this page.
 
       Example context (json):
     {
@@ -30,7 +35,11 @@
             "doctype": "<!DOCTYPE html>",
             "page_title": "Test page",
             "favicon": "favicon.ico",
-            "main_content": "<h1>Headings make html validators happier</h1>"
+            "main_content": "<h1>Headings make html validators happier</h1>",
+            "drawerblocks": "<h2>Blocks html goes here</h2>",
+            "hasdrawerblocks": true,
+            "sidepreblocks": "<h2>Blocks html goes here</h2>",
+            "haspreblocks": true
          }
     }
 }}
@@ -59,19 +68,26 @@
 
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
-                <section id="region-main" {{#hasblocks}}class="has-blocks"{{/hasblocks}}>
+                <section id="region-main" {{#haspreblocks}}class="has-blocks"{{/haspreblocks}}>
                     {{{ output.course_content_header }}}
                     {{{ output.main_content }}}
                     {{{ output.course_content_footer }}}
                 </section>
-                {{#hasblocks}}
+                {{#haspreblocks}}
                 <section data-region="blocks-column">
                     {{{ sidepreblocks }}}
                 </section>
-                {{/hasblocks}}
+                {{/haspreblocks}}
             </div>
         </div>
     </div>
+
+    {{#hasdrawerblocks}}
+    <section data-region="blocks-drawer" class="drawer-hidden d-print-none" aria-hidden="true">
+        {{{ drawerblocks }}}
+    </section>
+    {{/hasdrawerblocks}}
+
     <footer id="page-footer" class="py-3 bg-dark text-light">
         <div class="container">
             <div id="course-footer">{{{ output.course_footer }}}</div>
@@ -84,4 +100,7 @@
 </html>
 {{#js}}
 require(['theme_boost/loader']);
+{{#hasdrawerblocks}}
+require(['theme_foundation/drawer']);
+{{/hasdrawerblocks}}
 {{/js}}

@@ -44,15 +44,23 @@ trait core_renderer_toolbox {
         echo $this->doctype();
 
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
-        $blockshtml = $this->blocks('side-pre');
-        $hasblocks = strpos($blockshtml, 'data-block=') !== false;
+        $data = new \stdClass();
+        $data->output = $this;
         $bodyattributes = $this->body_attributes();
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
-        $data = new \stdClass();
-        $data->output = $this;
-        $data->sidepreblocks = $blockshtml;
-        $data->hasblocks = $hasblocks;
+        if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+            $drawerblockshtml = $this->blocks('drawer');
+            $hasdrawerblocks = ((strpos($drawerblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+            $preblockshtml = $this->blocks('side-pre');
+            $haspreblocks = strpos($preblockshtml, 'data-block=') !== false;
+
+            $data->drawerblocks = $drawerblockshtml;
+            $data->hasdrawerblocks = $hasdrawerblocks;
+            $data->sidepreblocks = $preblockshtml;
+            $data->haspreblocks = $haspreblocks;
+        }
+
         $data->bodyattributes = $bodyattributes;
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);

@@ -23,16 +23,23 @@
     * sitename - The name of the site.
     * output - The core renderer for the page.
     * config - The config instance.
+    * hasdrawerblocks - true if there are drawer blocks on this page.
 
     Example context (json):
     {
         "sitename": "Moodle",
         "output": "",
-        "config": ""
+        "config": "",
+        "hasdrawerblocks": true
     }
 }}
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-
+    {{#hasdrawerblocks}}
+    <button id="drawer" class="btn btn-primary" type="button">
+        <span id="drawerclose" class="fa fa-hand-o-left d-none"></span>
+        <span id="draweropen" class="fa fa-hand-o-right"></span>
+    </button>
+    {{/hasdrawerblocks}}
     <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
         {{^ output.should_display_navbar_logo }}
             d-none d-sm-inline

@@ -40,6 +40,7 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 $string['configtitle'] = 'Foundation';
 $string['pluginname'] = 'Foundation';
 
+$string['region-drawer'] = 'Drawer';
 $string['region-side-pre'] = 'Left';
 
 // Settings.
@@ -54,7 +55,7 @@ $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 
 $string['hvpcustomcss'] = 'H5P Custom CSS';
-$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.';
+$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.  Note: Currently not possible to override in a child theme.';
 
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';

@@ -23,47 +23,54 @@
     * sitename - The name of the site.
     * output - The core renderer for the page.
     * config - The config instance.
+    * hasdrawerblocks - true if there are drawer blocks on this page.
 
     Example context (json):
     {
         "sitename": "Moodle",
         "output": "",
-        "config": ""
+        "config": "",
+        "hasdrawerblocks": true
     }
 }}
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
-            {{^ output.should_display_navbar_logo }}
-                d-none d-sm-inline
-            {{/ output.should_display_navbar_logo }}
-                ">
-            {{# output.should_display_navbar_logo }}
-                <span class="logo d-none d-sm-inline">
-                    <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-                </span>
-            {{/ output.should_display_navbar_logo }}
-            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
-        </a>
+    {{#hasdrawerblocks}}
+    <button id="drawer" class="btn btn-primary" type="button">
+        <span id="drawerclose" class="fa fa-hand-o-left d-none"></span>
+        <span id="draweropen" class="fa fa-hand-o-right"></span>
+    </button>
+    {{/hasdrawerblocks}}
+    <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+        {{^ output.should_display_navbar_logo }}
+            d-none
+        {{/ output.should_display_navbar_logo }}
+            ">
+        {{# output.should_display_navbar_logo }}
+            <span class="logo d-none d-sm-inline">
+                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+            </span>
+        {{/ output.should_display_navbar_logo }}
+        <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+    </a>
 
-        <ul class="navbar-nav d-none d-md-flex mr-auto">
-            <!-- custom_menu -->
-            {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
-        </ul>
-        <ul class="nav navbar-nav flex-row ml-auto">
-            <li class="d-none d-md-block">
+    <ul class="navbar-nav d-none d-md-flex mr-auto">
+        <!-- custom_menu -->
+        {{{ output.custom_menu }}}
+        <!-- page_heading_menu -->
+        {{{ output.page_heading_menu }}}
+    </ul>
+    <ul class="nav navbar-nav flex-row ml-auto">
+        <li class="d-none d-md-block">
             <!-- search_box -->
             {{{ output.search_box }}}
-            </li>
-            <!-- navbar_plugin_output -->
-            <li class="nav-item">
-                {{{ output.navbar_plugin_output }}}
-            </li>
-            <!-- user_menu -->
-            <li class="nav-item d-flex align-items-center">
-                {{{ output.user_menu }}}
-            </li>
-        </ul>
+        </li>
+        <!-- navbar_plugin_output -->
+        <li class="nav-item">
+            {{{ output.navbar_plugin_output }}}
+        </li>
+        <!-- user_menu -->
+        <li class="nav-item d-flex align-items-center">
+            {{{ output.user_menu }}}
+        </li>
+    </ul>
 </nav>
-

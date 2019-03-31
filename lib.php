@@ -68,8 +68,7 @@ function theme_foundation_serve_hvp_css($filename) {
     global $CFG;
     require_once($CFG->dirroot.'/lib/configonlylib.php'); // For min_enable_zlib_compression().
 
-    $toolbox = \theme_foundation\toolbox::get_instance();
-    $content = $toolbox->get_setting('hvpcustomcss');
+    $content = get_config('theme_foundation', 'hvpcustomcss');
     $md5content = md5($content);
     $md5stored = get_config('theme_foundation', 'hvpccssmd5');
     if ((empty($md5stored)) || ($md5stored != $md5content)) {

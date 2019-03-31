@@ -41,3 +41,29 @@
         justify-content: space-between;
     }
 }
+
+[data-region="blocks-drawer"] {
+    height: calc(100% - 50px - 1rem);
+    left: 0;
+    overflow-y: auto;
+    padding-left: 15px;
+    position: fixed;
+    top: calc(50px + 1rem);
+    transition: left 0.75s;
+    width: 360px;
+    &.drawer-hidden {
+        left: -360px;
+    }
+}
+
+.drawer-open {
+    margin-left: 360px;
+}
+
+body {
+    transition: margin-left 0.75s;
+}
+
+.editing [data-region="blocks-drawer"] {
+    min-height: 786px; // For a drag and drop target area when empty.
+}
