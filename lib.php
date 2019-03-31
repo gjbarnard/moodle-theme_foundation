@@ -65,19 +65,22 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
  * @param type $filename The filename.
  */
 function theme_foundation_serve_hvp_css($filename) {
-    global $CFG;
+    global $CFG, $PAGE;
     require_once($CFG->dirroot.'/lib/configonlylib.php'); // For min_enable_zlib_compression().
 
-    $content = get_config('theme_foundation', 'hvpcustomcss');
+    $toolbox = \theme_foundation\toolbox::get_instance();
+    $PAGE->set_context(context_system::instance());
+    $themename = $PAGE->theme->name;
+    $content = $toolbox->get_setting('hvpcustomcss', $themename);
     $md5content = md5($content);
     $md5stored = get_config('theme_foundation', 'hvpccssmd5');
     if ((empty($md5stored)) || ($md5stored != $md5content)) {
         // Content changed, so the last modified time needs to change.
-        set_config('hvpccssmd5', $md5content, 'theme_foundation');
+        set_config('hvpccssmd5', $md5content, $themename);
         $lastmodified = time();
-        set_config('hvpccsslm', $lastmodified, 'theme_foundation');
+        set_config('hvpccsslm', $lastmodified, $themename);
     } else {
-        $lastmodified = get_config('theme_foundation', 'hvpccsslm');
+        $lastmodified = get_config($themename, 'hvpccsslm');
         if (empty($lastmodified)) {
             $lastmodified = time();
         }

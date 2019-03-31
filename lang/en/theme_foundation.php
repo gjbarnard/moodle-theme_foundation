@@ -55,7 +55,7 @@ $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 
 $string['hvpcustomcss'] = 'H5P Custom CSS';
-$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.  Note: Currently not possible to override in a child theme.';
+$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.';
 
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';
