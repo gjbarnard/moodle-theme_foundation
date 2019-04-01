@@ -44,6 +44,7 @@
         "bodyattributes":"",
         "drawerblocks": "<h2>Blocks html goes here</h2>",
         "hasdrawerblocks": true,
+        "drawerclosed": true,
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
         "haspreblocks": true,
         "regionmainsettingsmenu": "",
@@ -89,7 +90,7 @@
     </div>
 
     {{#hasdrawerblocks}}
-    <section data-region="blocks-drawer" class="drawer-hidden d-print-none" aria-hidden="true">
+    <section data-region="blocks-drawer" class="d-print-none{{#drawerclosed}} drawer-hidden{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}">
         {{{ drawerblocks }}}
     </section>
     {{/hasdrawerblocks}}

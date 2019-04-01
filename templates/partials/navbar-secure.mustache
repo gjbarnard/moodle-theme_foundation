@@ -30,14 +30,15 @@
         "sitename": "Moodle",
         "output": "",
         "config": "",
-        "hasdrawerblocks": true
+        "hasdrawerblocks": true,
+        "drawerclosed": true
     }
 }}
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
     <button id="drawer" class="btn btn-primary" type="button">
-        <span id="drawerclose" class="fa fa-hand-o-left d-none"></span>
-        <span id="draweropen" class="fa fa-hand-o-right"></span>
+        <span id="drawerclose" class="fa fa-hand-o-left{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
+        <span id="draweropen" class="fa fa-hand-o-right{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
     </button>
     {{/hasdrawerblocks}}
     <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}

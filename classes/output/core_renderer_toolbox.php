@@ -46,7 +46,7 @@ trait core_renderer_toolbox {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
-        $bodyattributes = $this->body_attributes();
+        $bodyclasses = '';
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
@@ -59,9 +59,17 @@ trait core_renderer_toolbox {
             $data->hasdrawerblocks = $hasdrawerblocks;
             $data->sidepreblocks = $preblockshtml;
             $data->haspreblocks = $haspreblocks;
+
+            if ($hasdrawerblocks) {
+                \user_preference_allow_ajax_update('drawerclosed', PARAM_BOOL);
+                $data->drawerclosed = get_user_preferences('drawerclosed', true);
+                if (!$data->drawerclosed) {
+                    $bodyclasses .= 'drawer-open';
+                }
+            }
         }
 
-        $data->bodyattributes = $bodyattributes;
+        $data->bodyattributes = $this->body_attributes($bodyclasses);
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
 

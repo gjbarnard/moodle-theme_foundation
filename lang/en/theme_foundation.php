@@ -73,8 +73,12 @@ $string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation her
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
+$string['closedrawer'] = 'Close drawer';
+$string['opendrawer'] = 'Open drawer';
 
 // Privacy.
 $string['privacynote'] = 'Note: The Foundation theme stores has settings that pertain to its configuration.  Specific user settings are described in the \'Plugin privacy registry\'.  For the other settings, it is your responsibilty to ensure that no user data is entered in any of the free text fields.  Setting a setting will result in that action being logged within the core Moodle logging system against the user whom changed it, this is outside of the themes control, please see the core logging system for privacy compliance for this.  When uploading images, you should avoid uploading images with embedded location data (EXIF GPS) included or other such personal data.  It would be possible to extract any location / personal data from the images.  Please examine the code carefully to be sure that it complies with your interpretation of your privacy laws.  I am not a lawyer and my analysis is based on my interpretation.  If you have any doubt then remove the theme forthwith.';
 $string['privacy:metadata:preference:collapseblock'] = 'The state of the blocks on a page.';
 $string['privacy:request:preference:collapseblock'] = 'The user preference "{$a->name}" for block id "{$a->blockid}" has the value "{$a->value}" which represents "{$a->decoded}" for the state of the block.';
+$string['privacy:metadata:preference:drawerclosed'] = 'The state of the drawer.';
+$string['privacy:request:preference:drawerclosed'] = 'The user preference "{$a->name}" has the value "{$a->value}" which represents "{$a->decoded}" for the state of the drawer.';

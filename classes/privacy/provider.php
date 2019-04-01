@@ -51,6 +51,7 @@ class provider implements
      */
     public static function get_metadata(collection $items) : collection {
         $items->add_user_preference('collapseblock', 'privacy:metadata:preference:collapseblock');
+        $items->add_user_preference('drawerclosed', 'privacy:metadata:preference:drawerclosed');
 
         return $items;
     }
@@ -82,6 +83,19 @@ class provider implements
                         ])
                     );
                 }
+            } else if ($name == 'drawerclosed') {
+                $decoded = ($value) ? 'Closed' : 'Open';
+
+                writer::export_user_preference(
+                    'theme_foundation',
+                    $name,
+                    $value,
+                    get_string('privacy:request:preference:drawerclosed', 'theme_foundation', (object) [
+                        'name' => $name,
+                        'value' => $value,
+                        'decoded' => $decoded
+                    ])
+                );
             }
         }
     }
