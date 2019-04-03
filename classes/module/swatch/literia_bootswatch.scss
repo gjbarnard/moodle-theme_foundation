@@ -7,6 +7,20 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Raleway:400,700" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|Raleway-Regular.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    src: unquote("url('[[font:theme|Raleway-Bold.ttf]]') format('truetype')");
+}
+
 $font-family-serif:      Georgia, Cambria, "Times New Roman", Times, serif !default;
 
 // Navbar ======================================================================

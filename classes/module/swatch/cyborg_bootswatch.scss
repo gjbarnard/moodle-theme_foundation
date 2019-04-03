@@ -7,6 +7,20 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,700" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|Roboto-Regular-webfont.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: unquote("url('[[font:theme|Roboto-Black-webfont.woff]]') format('woff')");
+}
+
 // Navbar ======================================================================
 
 .navbar {

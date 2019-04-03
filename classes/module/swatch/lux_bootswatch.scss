@@ -7,6 +7,20 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Nunito+Sans:400,600" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|NunitoSans-Regular.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: unquote("url('[[font:theme|NunitoSans-SemiBold.ttf]]') format('truetype')");
+}
+
 // Navbar ======================================================================
 
 .navbar {

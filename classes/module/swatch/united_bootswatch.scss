@@ -7,6 +7,20 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Ubuntu:400,700" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|Ubuntu-R.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    src: unquote("url('[[font:theme|Ubuntu-B.ttf]]') format('truetype')");
+}
+
 // Navbar ======================================================================
 
 // Buttons =====================================================================
