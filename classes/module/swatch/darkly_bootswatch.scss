@@ -7,6 +7,28 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|Lato-Regular.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: unquote("url('[[font:theme|Lato-Bold.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|Lato-Italic.ttf]]') format('truetype')");
+}
+
 // Navbar ======================================================================
 
 .bg-primary {
