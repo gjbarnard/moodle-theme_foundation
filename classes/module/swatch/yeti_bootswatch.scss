@@ -6,7 +6,51 @@
 
 //$web-font-path: 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700' !default;
 //@import url($web-font-path);
-//@import url('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700');
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: unquote("url('[[font:theme|OpenSans-Light-webfont.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|OpenSans-LightItalic-webfont.ttf]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: unquote("url('[[font:theme|OpenSans-Regular-webfont.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|OpenSans-Italic-webfont.ttf]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: unquote("url('[[font:theme|OpenSans-Bold-webfont.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|OpenSans-BoldItalic-webfont.ttf]]') format('woff')");
+}
 
 // Navbar ======================================================================
 
