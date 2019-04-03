@@ -7,6 +7,20 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=News+Cycle:400,700" !default;
 //@import url($web-font-path);
 
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 400;
+  src: unquote("url('[[font:theme|NewsCycle-Regular.ttf]]') format('truetype')");
+}
+
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 700;
+  src: unquote("url('[[font:theme|NewsCycle-Bold.ttf]]') format('truetype')");
+}
+
 // Navbar ======================================================================
 
 .bg-dark {

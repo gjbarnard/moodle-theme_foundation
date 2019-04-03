@@ -7,6 +7,102 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-ExtraLight.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-ExtraLightIt.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-Light.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-LightIt.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-Regular.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-It.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-Semibold.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-SemiboldIt.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-Bold.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-BoldIt.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-Black.woff]]') format('woff')");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SourceSansPro-BlackIt.woff]]') format('woff')");
+}
+
 // Navbar ======================================================================
 
 // Buttons =====================================================================

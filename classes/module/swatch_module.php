@@ -91,6 +91,8 @@ class swatch_module extends \theme_foundation\module_basement {
                 'cosmo' => 'Cosmo',
                 'cyborg' => 'Cyborg',
                 'darkly' => 'Darkly',
+                'flatly' => 'Flatly',
+                'journal' => 'Journal',
                 'literia' => 'Literia',
                 'lumen' => 'Lumen',
                 'lux' => 'Lux',

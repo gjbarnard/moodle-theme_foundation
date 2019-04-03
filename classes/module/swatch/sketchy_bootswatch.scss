@@ -7,6 +7,27 @@
 //$web-font-path: "https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch" !default;
 //@import url($web-font-path);
 
+@font-face {
+    font-family: 'Cabin Sketch';
+    font-style: normal;
+    font-weight: normal;
+    src: unquote("url('[[font:theme|CabinSketch-Regular.otf]]')");
+}
+
+@font-face {
+    font-family: 'Cabin Sketch';
+    font-style: normal;
+    font-weight: bold;
+    src: unquote("url('[[font:theme|CabinSketch-Bold.otf]]')");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    src: unquote("url('[[font:theme|Roboto-Regular-webfont.woff]]') format('woff')");
+}
+
 // Navbar ======================================================================
 
 .navbar {
