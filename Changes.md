@@ -3,6 +3,8 @@ Version Information
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.
   2. Add scrollable drawer block region.
+  3. Add new Bootswatches: Cosmo, Darkly, Flatly, Journal, Sandstone, Sketchy, Slate, Solar and Spacelab.
+  4. Add local fonts as much as possible to each Bootswatch.
 
 Version 3.6.0.2
   1. Moodle 3.6.1 version.
