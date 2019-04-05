@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.6.0.4
+
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.
   2. Add scrollable drawer block region.
