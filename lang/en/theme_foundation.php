@@ -43,6 +43,9 @@ $string['pluginname'] = 'Foundation';
 $string['region-drawer'] = 'Drawer';
 $string['region-side-pre'] = 'Left';
 
+$string['stylecover'] = 'Cover';
+$string['stylestretch'] = 'Stretch';
+
 // Settings.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
@@ -53,6 +56,13 @@ $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
+
+$string['loginbackground'] = 'Login background image';
+$string['loginbackgrounddesc'] = 'Upload your own login background image.  Select the style of the image below.';
+$string['loginbackgroundstyle'] = 'Login background style';
+$string['loginbackgroundstyledesc'] = 'Select the style for the uploaded image.';
+$string['loginbackgroundopacity'] = 'Login box background opacity when there is a background image';
+$string['loginbackgroundopacitydesc'] = 'Login background opacity for the login box when there is a background image.';
 
 $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';

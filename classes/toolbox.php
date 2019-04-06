@@ -226,10 +226,38 @@ class toolbox {
             $scss .= $module->extra_scss($themename, $this);
         }
 
+        $scss .= $this->login_background($themename);
+
         // TODO: Does there need to be a parent daisy chain of this setting?
         $customscss = $this->get_setting('customscss', $themename);
         if (!empty($customscss)) {
             $scss .= $customscss;
+        }
+
+        return $scss;
+    }
+
+    private function login_background($themename) {
+        $scss = '';
+
+        $loginbackgroundurl = $this->setting_file_url('loginbackground', 'loginbackground', $themename);
+
+        if (!empty($loginbackgroundurl)) {
+            $scss .= 'body.loginbackground {'.PHP_EOL;
+            $scss .= 'background-image: url("'.$loginbackgroundurl.'");'.PHP_EOL;
+
+            $loginbackgroundstyle = $this->get_setting('loginbackgroundstyle', $themename);
+            $replacementstyle = 'cover';
+            if ($loginbackgroundstyle === 'stretch') {
+                $replacementstyle = '100% 100%';
+            }
+            $scss .= 'background-size: '.$replacementstyle.';'.PHP_EOL;
+            $scss .= '#page-content,'.PHP_EOL;
+            $scss .= '#page-footer {'.PHP_EOL;
+            $loginbackgroundopacity = $this->get_setting('loginbackgroundopacity', $themename);
+            $scss .= 'opacity: '.$loginbackgroundopacity.';'.PHP_EOL;
+            $scss .= '}'.PHP_EOL;
+            $scss .= '}'.PHP_EOL;
         }
 
         return $scss;
@@ -257,6 +285,13 @@ class toolbox {
 
         // General settings.
         if ($admin->fulltree) {
+            global $CFG;
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
+            }
+
             $settingspages['general'][self::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
@@ -281,6 +316,50 @@ class toolbox {
             $default = '';
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Login background image.
+            $name = 'theme_foundation/loginbackground';
+            $title = get_string('loginbackground', 'theme_foundation');
+            $description = get_string('loginbackgrounddesc', 'theme_foundation');
+            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'loginbackground');
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Login background style.
+            $name = 'theme_foundation/loginbackgroundstyle';
+            $title = get_string('loginbackgroundstyle', 'theme_foundation');
+            $description = get_string('loginbackgroundstyledesc', 'theme_foundation');
+            $default = 'cover';
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default,
+                array(
+                    'cover' => get_string('stylecover', 'theme_foundation'),
+                    'stretch' => get_string('stylestretch', 'theme_foundation')
+                )
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            $opactitychoices = array(
+                '0.0' => '0.0',
+                '0.1' => '0.1',
+                '0.2' => '0.2',
+                '0.3' => '0.3',
+                '0.4' => '0.4',
+                '0.5' => '0.5',
+                '0.6' => '0.6',
+                '0.7' => '0.7',
+                '0.8' => '0.8',
+                '0.9' => '0.9',
+                '1.0' => '1.0'
+            );
+
+            // Overridden course title text background opacity setting.
+            $name = 'theme_foundation/loginbackgroundopacity';
+            $title = get_string('loginbackgroundopacity', 'theme_foundation');
+            $description = get_string('loginbackgroundopacitydesc', 'theme_foundation');
+            $default = '0.8';
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $opactitychoices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Custom SCSS.
@@ -424,6 +503,34 @@ class toolbox {
             }
         }
         return $settingurl;
+    }
+
+    /**
+     * Gets the setting file url for the given setting if it exists and set.
+     */
+    public function setting_file_url($setting, $filearea, $themename = null) {
+        $url = null;
+        $settingconfig = $this->get_setting_theme_config($setting, $themename);
+
+        if ($settingconfig) {
+            $thesetting = $settingconfig->settings->$setting;
+            if (!empty($thesetting)) {
+                // From theme_config::setting_file_url.
+                global $CFG;
+                $component = 'theme_'.$themename;
+                $itemid = \theme_get_revision();
+                $filepath = $thesetting;
+                $syscontext = \context_system::instance();
+
+                $url = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/$component/$filearea/$itemid".$filepath);
+
+                /* Now this is tricky because the we can not hardcode http or https here, lets use the relative link.
+                   Note: unfortunately moodle_url does not support //urls yet. */
+
+                $url = preg_replace('|^https?://|i', '//', $url->out(false));
+            }
+        }
+        return $url;
     }
 
     /**

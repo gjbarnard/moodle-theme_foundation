@@ -53,6 +53,8 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
             return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
         } else if ($filearea === 'hvp') {
             theme_foundation_serve_hvp_css($args[1]);
+        } else if ($filearea === 'loginbackground') {
+            return $theme->setting_file_serve('loginbackground', $args, $forcedownload, $options);
         } else {
             send_file_not_found();
         }

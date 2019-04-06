@@ -46,7 +46,7 @@ trait core_renderer_toolbox {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
-        $bodyclasses = '';
+        $bodyclasses = array();
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
@@ -64,11 +64,19 @@ trait core_renderer_toolbox {
                 \user_preference_allow_ajax_update('drawerclosed', PARAM_BOOL);
                 $data->drawerclosed = get_user_preferences('drawerclosed', true);
                 if (!$data->drawerclosed) {
-                    $bodyclasses .= 'drawer-open';
+                    $bodyclasses[] = 'drawer-open';
                 }
             }
         }
+        if ($this->page->pagelayout == 'login') {
+            $bodyclasses[] = 'loginbackground';
+        }
 
+        if (!empty($bodyclasses)) {
+            $bodyclasses = implode(' ', $bodyclasses);
+        } else {
+            $bodyclasses = '';
+        }
         $data->bodyattributes = $this->body_attributes($bodyclasses);
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
