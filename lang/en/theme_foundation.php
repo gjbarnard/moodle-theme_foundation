@@ -48,6 +48,9 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
+$string['favicon'] = 'Custom favicon';
+$string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
+
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
 

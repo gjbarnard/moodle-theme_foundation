@@ -3,6 +3,7 @@ Version Information
 Version 3.6.0.4
   1. Use module templates as cannot override the Mustache engine with our own due to module locallib rendering
      preventing overriding.
+  2. Add favicon setting to general settings.  Provides the ability to use your own custom favicon.
 
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.

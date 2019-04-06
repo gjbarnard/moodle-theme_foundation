@@ -332,4 +332,22 @@ trait core_renderer_toolbox {
             $usermenuclasses
         );
     }
+
+    /**
+     * Returns the url of the custom favicon.
+     */
+    public function favicon() {
+        /* See: https://moodle.org/mod/forum/discuss.php?d=371252#p1516474 and change if theme_config::setting_file_url
+           changes.
+           Need to do: $url = preg_replace('|^https?://|i', '//', $url->out(false)); separately as the tool_provider of
+           the LTI tool does this in a different way. */
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $favicon = $toolbox->get_setting_moodle_url('favicon');
+
+        if (empty($favicon)) {
+            return $this->page->theme->image_url('favicon', 'theme');
+        } else {
+            return $favicon;
+        }
+    }
 }

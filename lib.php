@@ -49,6 +49,8 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
         }
         if ($filearea === 'logo') {
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else if ($filearea === 'favicon') {
+            return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
         } else if ($filearea === 'hvp') {
             theme_foundation_serve_hvp_css($args[1]);
         } else {

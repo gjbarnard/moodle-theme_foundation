@@ -266,6 +266,14 @@ class toolbox {
                 )
             );
 
+            // Custom favicon.
+            $name = 'theme_foundation/favicon';
+            $title = get_string('favicon', 'theme_foundation');
+            $description = get_string('favicondesc', 'theme_foundation');
+            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon');
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Pre SCSS.
             $name = 'theme_foundation/prescss';
             $title = get_string('prescss', 'theme_foundation');
@@ -386,6 +394,44 @@ class toolbox {
     public function get_setting($settingname, $themename = null) {
         $settingvalue = false;
 
+        $theconfig = $this->get_setting_theme_config($settingname, $themename);
+        if ($theconfig != null) {
+            $settingvalue = $theconfig->settings->$settingname;
+        }
+
+        return $settingvalue;
+    }
+
+    /**
+     * Gets the setting moodle_url for the given setting if it exists and set.
+     *
+     * See: https://moodle.org/mod/forum/discuss.php?d=371252#p1516474 and change if theme_config::setting_file_url
+     * changes.
+     * My need to do: $url = preg_replace('|^https?://|i', '//', $url->out(false)); separately.
+     */
+    public function get_setting_moodle_url($setting, $themename = null) {
+        $settingurl = null;
+
+        $theconfig = $this->get_setting_theme_config($setting, $themename);
+        if ($theconfig != null) {
+            $thesetting = $theconfig->settings->$setting;
+            if (!empty($thesetting)) {
+                global $CFG;
+                $itemid = \theme_get_revision();
+                $syscontext = \context_system::instance();
+
+                $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_$theconfig->name/$setting/$itemid".$thesetting);
+            }
+        }
+        return $settingurl;
+    }
+
+    /**
+     * Gets the youngest theme config that the setting is stored in or null if not.
+     */
+    private function get_setting_theme_config($settingname, $themename = null) {
+        $theconfig = null;
+
         if ($themename == null) {
             global $PAGE;
             $themename = $PAGE->theme->name;
@@ -404,19 +450,20 @@ class toolbox {
 
         // We need to work on 'properties' so that empty values can be used.
         if (property_exists($current->settings, $settingname)) {
-            $settingvalue = $current->settings->$settingname;
+            $theconfig = $current;
         } else {
             /* Look in the parents.
                Parents will be in the correct order of the hierarchy as defined in $THEME->parents in config.php. */
             $current = prev($this->theconfigs);
             while ($current !== false) {
                 if (property_exists($current->settings, $settingname)) {
-                    $settingvalue = $current->settings->$settingname;
+                    $theconfig = $current;
                     break;
                 }
                 $current = prev($this->theconfigs);
             }
         }
-        return $settingvalue;
+
+        return $theconfig;
     }
 }
