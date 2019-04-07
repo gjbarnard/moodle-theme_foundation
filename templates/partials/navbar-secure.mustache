@@ -36,10 +36,12 @@
 }}
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
-    <button id="drawer" class="btn btn-primary mr-2" type="button">
-        <span id="drawerclose" class="fa fa-hand-o-left{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
-        <span id="draweropen" class="fa fa-hand-o-right{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
-    </button>
+    <div class="navbar-nav">
+        <button id="drawer" class="btn btn-primary mr-2 nav-link" type="button">
+            <span id="drawerclose" class="fa fa-hand-o-left{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
+            <span id="draweropen" class="fa fa-hand-o-right{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
+        </button>
+    </div>
     {{/hasdrawerblocks}}
     <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
         {{^ output.should_display_navbar_logo }}
@@ -55,8 +57,15 @@
     </a>
 
     <ul class="nav navbar-nav ml-auto">
+        <!-- Go to bottom -->
+        <li class="nav-item">
+            <button id="gotobottom" class="btn btn-primary mr-2 nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-arrow-circle-o-down"></span></button>
+        </li>
         <li class="nav-item">
             {{{ output.secure_login_info }}}
         </li>
     </ul>
 </nav>
+{{#js}}
+require(['theme_foundation/anti_gravity']);
+{{/js}}

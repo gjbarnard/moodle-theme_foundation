@@ -1,3 +1,38 @@
 .forgetpass .btn {
     white-space: normal;
 }
+
+#gotobottom {
+    margin-top: 3px;
+}
+
+#backtotop {
+    background-color: $black;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px $white;
+    color: $white;
+    display: none;
+    font: 9px;
+    padding: 5px 12px;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 85%;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+#backtotop,
+.nav-link {
+    .fa {
+        font-size: 24px;
+    }
+}
+
+#drawer,
+#gotobottom {
+    padding: .5rem 1rem;
+}

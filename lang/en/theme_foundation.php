@@ -46,6 +46,10 @@ $string['region-side-pre'] = 'Left';
 $string['stylecover'] = 'Cover';
 $string['stylestretch'] = 'Stretch';
 
+// Misc.
+$string['gotobottom'] = 'Go to the bottom of the page';
+$string['backtotop'] = 'Back to top';
+
 // Settings.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
