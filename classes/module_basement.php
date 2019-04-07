@@ -69,6 +69,15 @@ abstract class module_basement {
     }
 
     /**
+     * Gets the module bodyclasses.
+     *
+     * @return array bodyclass strings.
+     */
+    public function body_classes() {
+        return array();
+    }
+
+    /**
      * Add the module settings to the theme.
      *
      * @param array $settingspages Reference to the settings pages array so that a module can add a new page to it.

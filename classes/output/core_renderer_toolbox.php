@@ -68,9 +68,8 @@ trait core_renderer_toolbox {
                 }
             }
         }
-        if ($this->page->pagelayout == 'login') {
-            $bodyclasses[] = 'loginbackground';
-        }
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {
             $bodyclasses = implode(' ', $bodyclasses);
