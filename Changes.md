@@ -5,6 +5,7 @@ Version 3.6.0.4
      preventing overriding.
   2. Add favicon setting to general settings.  Provides the ability to use your own custom favicon.
   3. Add login page background settings from Essential.
+  4. Change login page forget password link to be styled like a button.
 
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.
