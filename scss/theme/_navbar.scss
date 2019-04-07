@@ -1,4 +1,21 @@
 // Navbar.
-.navbar .popover-region {
-    margin-top: 4px;
+.navbar {
+    .popover-region {
+        margin-top: 4px;
+    }
+    .popover-region-container {
+        right: -16px;
+        top: 47px;
+    }
+}
+
+.popover-region-toggle {
+    &::after {
+        bottom: -6px;
+        right: -4px;
+    }
+    &::before {
+        bottom: -5px;
+        right: -5px;
+    }
 }
