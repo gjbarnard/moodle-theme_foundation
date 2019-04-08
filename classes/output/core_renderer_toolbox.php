@@ -75,7 +75,7 @@ trait core_renderer_toolbox {
         if (!empty($featuresmodule)) {
             $featuresdata = $featuresmodule->export_for_template($this);
             if (!empty($featuresdata)) {
-                foreach($featuresdata as $fkey => $fvalue) {
+                foreach ($featuresdata as $fkey => $fvalue) {
                     $data->$fkey = $fvalue;
                 }
             }

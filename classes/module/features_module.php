@@ -261,7 +261,13 @@ class features_module extends \theme_foundation\module_basement implements \temp
         return $bodyclasses;
     }
 
-    public function export_for_template(\renderer_base $output) {
+    /**
+     * Export for template.
+     *
+     * @param renderer_base $output The renderer.
+     * @return stdClass containing the data or null.
+     */
+     public function export_for_template(\renderer_base $output) {
         $data = null;
         $toolbox = \theme_foundation\toolbox::get_instance();
 
@@ -294,8 +300,8 @@ class features_module extends \theme_foundation\module_basement implements \temp
                     $thealert->alerttype = $toolbox->get_setting('alerttype'.$alertnum, 'foundation');
                     $thealert->alerttitle = $toolbox->get_setting('alerttitle'.$alertnum, 'foundation');
                     $thealert->alerttext = $toolbox->get_setting('alerttext'.$alertnum, 'foundation');
-                    
-                    $data->thealerts[] = $output->render_from_template('theme_foundation/alert', $thealert);
+
+                    $data->thealerts[] = $thealert;
                 }
             }
         }

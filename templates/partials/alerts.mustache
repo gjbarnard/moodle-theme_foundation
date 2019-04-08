@@ -20,13 +20,24 @@
     Alerts.
 
     Context variables required for this template:
-    * hasalerts - Has alerts.
+    * thealerts - Array of alerts if any.
 
     Example context (json):
     {
-        "hasalerts": "true"
+        "thealerts": [
+            {"alerttype":"info", "alerttitle":"Tab 1", "alerttext":"<p>Alert one.</p>"},
+            {"alerttype":"warning", "alerttitle":"Tab 2", "alerttext":"<p>Alert two.</p>"},
+            {"alerttype":"primary", "alerttitle":"Tab 3", "alerttext":"<p>Alert three.</p>"}
+        ]
     }
 }}
 {{#thealerts}}
-{{{.}}}
+<div class="alert alert-{{alerttype}} alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">{{alerttitle}}</h4>
+    <hr>
+    <div class="mb-0">{{{alerttext}}}</div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span class="fa fa-times" aria-hidden="true"></span>
+    </button>
+</div>
 {{/thealerts}}
