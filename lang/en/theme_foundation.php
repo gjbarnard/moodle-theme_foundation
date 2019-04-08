@@ -95,8 +95,8 @@ $string['alertdark'] = 'Dark';
 
 $string['alerttitle'] = 'Alert {$a->number} title';
 $string['alerttitledesc'] = 'Title for alert {$a->number}.';
-$string['alerttext'] = 'Alert {$a->number} title';
-$string['alerttextdesc'] = 'Title for alert {$a->number}.';
+$string['alerttext'] = 'Alert {$a->number} text';
+$string['alerttextdesc'] = 'Text for alert {$a->number}.';
 $string['alertpage'] = 'Alert {$a->number} page';
 $string['alertpagedesc'] = 'Show alert {$a->number} on the given page or \'All\'.';
 
