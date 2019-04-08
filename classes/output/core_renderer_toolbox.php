@@ -68,7 +68,19 @@ trait core_renderer_toolbox {
                 }
             }
         }
+
         $toolbox = \theme_foundation\toolbox::get_instance();
+        $data->thealerts = array();
+        $featuresmodule = $toolbox->get_module('features');
+        if (!empty($featuresmodule)) {
+            $featuresdata = $featuresmodule->export_for_template($this);
+            if (!empty($featuresdata)) {
+                foreach($featuresdata as $fkey => $fvalue) {
+                    $data->$fkey = $fvalue;
+                }
+            }
+        }
+
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {

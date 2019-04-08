@@ -35,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class features_module extends \theme_foundation\module_basement {
+class features_module extends \theme_foundation\module_basement implements \templatable {
 
     /**
      * Add the features settings.
@@ -47,13 +47,122 @@ class features_module extends \theme_foundation\module_basement {
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
         // Create our own settings page.
         $settingspages['features'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_features',
-            get_string('featuresheading', 'theme_foundation')), \theme_foundation\toolbox::SETTINGCOUNT => 3);
+            get_string('featuresheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
         if ($adminfulltree) {
+            global $CFG;
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
+            }
+
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_featuresheading',
                     get_string('featuresheadingsub', 'theme_foundation'),
                     format_text(get_string('featuresheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Alerts.
+            // Alerts heading.
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_alerts_heading',
+                    get_string('alertsheading', 'theme_foundation'),
+                    format_text(get_string('alertsheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Number of alerts.
+            $name = 'theme_foundation/numberofalerts';
+            $title = get_string('numberofalerts', 'theme_foundation');
+            $default = 0;
+            $lower = 0;
+            $upper = 4;
+            $description = get_string('numberofalertsdesc', 'theme_foundation',
+                array('lower' => $lower, 'upper' => $upper));
+            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+            $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
+            if ($numberofalerts > 0) {
+                for ($alertnum = 1; $alertnum <= $numberofalerts; $alertnum++) {
+                    // Alert X heading.
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                        new \admin_setting_heading(
+                            'theme_foundation_alert'.$alertnum.'_heading',
+                            get_string('alertsettingheading', 'theme_foundation', array('number' => $alertnum)),
+                            ''
+                        )
+                    );
+
+                    // Alert enabled.
+                    $name = 'theme_foundation/enablealert'.$alertnum;
+                    $title = get_string('enablealert', 'theme_foundation', array('number' => $alertnum));
+                    $description = get_string('enablealertdesc', 'theme_foundation', array('number' => $alertnum));
+                    $default = false;
+                    $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Alert type.
+                    $name = 'theme_foundation/alerttype'.$alertnum;
+                    $title = get_string('alerttype', 'theme_foundation', array('number' => $alertnum));
+                    $description = get_string('alerttypedesc', 'theme_foundation');
+                    $default = 'info';
+                    $choices = array(
+                        'primary' => get_string('alertprimary', 'theme_foundation'),
+                        'secondary' => get_string('alertsecondary', 'theme_foundation'),
+                        'success' => get_string('alertsuccess', 'theme_foundation'),
+                        'danger' => get_string('alertdanger', 'theme_foundation'),
+                        'warning' => get_string('alertwarning', 'theme_foundation'),
+                        'info' => get_string('alertinfo', 'theme_foundation'),
+                        'light' => get_string('alertlight', 'theme_foundation'),
+                        'dark' => get_string('alertdark', 'theme_foundation')
+                    );
+                    $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Alert title.
+                    $name = 'theme_foundation/alerttitle'.$alertnum;
+                    $title = get_string('alerttitle', 'theme_foundation', array('number' => $alertnum));
+                    $description = get_string('alerttitledesc', 'theme_foundation', array('number' => $alertnum));
+                    $default = '';
+                    $setting = new \admin_setting_configtext($name, $title, $description, $default);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Alert text.
+                    $name = 'theme_foundation/alerttext'.$alertnum;
+                    $title = get_string('alerttext', 'theme_foundation', array('number' => $alertnum));
+                    $description = get_string('alerttextdesc', 'theme_foundation', array('number' => $alertnum));
+                    $default = '';
+                    $setting = new \admin_setting_confightmleditor($name, $title, $description, $default);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Alert pages on.
+                    $name = 'theme_foundation/alertpage'.$alertnum;
+                    $title = get_string('alertpage', 'theme_foundation', array('number' => $alertnum));
+                    $description = get_string('alertpagedesc', 'theme_foundation', array('number' => $alertnum));
+                    $default = 'frontpage';
+                    $choices = array(
+                        'all' => get_string('all'),
+                        'course' => get_string('course'),
+                        'mydashboard' => get_string('myhome'),
+                        'frontpage' => get_string('frontpage', 'admin')
+                    );
+                    $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+                }
+            }
+
+            // Login background image heading.
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_loginbackground_heading',
+                    get_string('loginbackgroundheading', 'theme_foundation'),
+                    format_text(get_string('loginbackgroundheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
 
@@ -150,5 +259,47 @@ class features_module extends \theme_foundation\module_basement {
         }
 
         return $bodyclasses;
+    }
+
+    public function export_for_template(\renderer_base $output) {
+        $data = null;
+        $toolbox = \theme_foundation\toolbox::get_instance();
+
+        $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
+        if ($numberofalerts > 0) {
+            global $PAGE;
+            $alertsenabled = array();
+            for ($alertnum = 1; $alertnum <= $numberofalerts; $alertnum++) {
+                $alertenabled = $toolbox->get_setting('enablealert'.$alertnum, 'foundation'); // Stick to ours or could be confusing!
+                if ($alertenabled) {
+                    $alertpage = $toolbox->get_setting('alertpage'.$alertnum, 'foundation');
+                    switch ($alertpage) {
+                        case 'all':
+                            $alertsenabled[] = $alertnum; // Alert to be shown on the page.
+                            break;
+                        default:
+                            if ($PAGE->pagelayout == $alertpage) {
+                                $alertsenabled[] = $alertnum; // Alert to be shown on the given page.
+                            }
+                            break;
+                    }
+                }
+            }
+
+            if (!empty($alertsenabled)) {
+                $data = new \stdClass;
+                $data->thealerts = array();
+                foreach ($alertsenabled as $alertnum) {
+                    $thealert = new \stdClass;
+                    $thealert->alerttype = $toolbox->get_setting('alerttype'.$alertnum, 'foundation');
+                    $thealert->alerttitle = $toolbox->get_setting('alerttitle'.$alertnum, 'foundation');
+                    $thealert->alerttext = $toolbox->get_setting('alerttext'.$alertnum, 'foundation');
+                    
+                    $data->thealerts[] = $output->render_from_template('theme_foundation/alert', $thealert);
+                }
+            }
+        }
+
+        return $data;
     }
 }

@@ -71,6 +71,37 @@ $string['featuresheading'] = 'Features';
 $string['featuresheadingsub'] = 'Features settings';
 $string['featuresheadingdesc'] = 'Configure the settings for the features of Foundation here.';
 
+$string['alertsheading'] = 'Alerts settings';
+$string['alertsheadingdesc'] = 'Set the alerts settings.';
+
+$string['numberofalerts'] = 'Alerts';
+$string['numberofalertsdesc'] = 'Number of alerts between {$a->lower} and {$a->upper}.  After changing and \'Saving changes\', refresh the page.';
+
+$string['alertsettingheading'] = 'Alert {$a->number} settings';
+
+$string['enablealert'] = 'Alert {$a->number} enabled';
+$string['enablealertdesc'] = 'Enable or disable alert {$a->number}.';
+
+$string['alerttype'] = 'Alert {$a->number} type';
+$string['alerttypedesc'] = 'Set the appropriate alert type to best inform your users.';
+$string['alertprimary'] = 'Primary';
+$string['alertsecondary'] = 'Secondary';
+$string['alertsuccess'] = 'Success';
+$string['alertdanger'] = 'Danger';
+$string['alertwarning'] = 'Warning';
+$string['alertinfo'] = 'Information';
+$string['alertlight'] = 'Light';
+$string['alertdark'] = 'Dark';
+
+$string['alerttitle'] = 'Alert {$a->number} title';
+$string['alerttitledesc'] = 'Title for alert {$a->number}.';
+$string['alerttext'] = 'Alert {$a->number} title';
+$string['alerttextdesc'] = 'Title for alert {$a->number}.';
+$string['alertpage'] = 'Alert {$a->number} page';
+$string['alertpagedesc'] = 'Show alert {$a->number} on the given page or \'All\'.';
+
+$string['loginbackgroundheading'] = 'Login background image settings';
+$string['loginbackgroundheadingdesc'] = 'Set the login background image settings.';
 $string['loginbackground'] = 'Login background image';
 $string['loginbackgrounddesc'] = 'Upload your own login background image.  Select the style of the image below.';
 $string['loginbackgroundstyle'] = 'Login background style';
@@ -96,6 +127,11 @@ $string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation her
 $string['navbarmenus'] = 'Navbar menus';
 $string['closedrawer'] = 'Close drawer';
 $string['opendrawer'] = 'Open drawer';
+
+// foundation_admin_setting_configinteger.
+$string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
+$string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
+$string['asconfigintnan'] = '{$a->value} is not a number';
 
 // Privacy.
 $string['privacynote'] = 'Note: The Foundation theme stores has settings that pertain to its configuration.  Specific user settings are described in the \'Plugin privacy registry\'.  For the other settings, it is your responsibilty to ensure that no user data is entered in any of the free text fields.  Setting a setting will result in that action being logged within the core Moodle logging system against the user whom changed it, this is outside of the themes control, please see the core logging system for privacy compliance for this.  When uploading images, you should avoid uploading images with embedded location data (EXIF GPS) included or other such personal data.  It would be possible to extract any location / personal data from the images.  Please examine the code carefully to be sure that it complies with your interpretation of your privacy laws.  I am not a lawyer and my analysis is based on my interpretation.  If you have any doubt then remove the theme forthwith.';

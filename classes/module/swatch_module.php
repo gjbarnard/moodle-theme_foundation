@@ -71,7 +71,7 @@ class swatch_module extends \theme_foundation\module_basement {
     public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
         // Create our own settings page.
         $settingspages['swatch'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_swatch',
-            get_string('swatchheading', 'theme_foundation')), \theme_foundation\toolbox::SETTINGCOUNT => 1);
+            get_string('swatchheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
         if ($adminfulltree) {
             $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                 new \admin_setting_heading(

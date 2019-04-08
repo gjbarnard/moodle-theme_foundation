@@ -57,14 +57,14 @@ class toolbox {
     protected static $instance = null;
 
     /**
-     * Module setting page index.
+     * Setting page index.
      */
     const SETTINGPAGE = 'p';
 
     /**
-     * Module setting page count.
+     * Has settings.
      */
-    const SETTINGCOUNT = 'c';
+    const HASSETTINGS = 's';
 
     /**
      * This is a lonely object.
@@ -214,6 +214,26 @@ class toolbox {
     }
 
     /**
+     * Returns the module instance for the given modulename.
+     *
+     * @param string $themename The name of the theme.
+     * @return module_basement extended object or null if not found.
+     */
+    public function get_module($modulename) {
+        $themodule = null;
+        foreach ($this->modules as $module) {
+            // Get the actual classname from the end of the prefixing namespace.
+            $classname = explode('\\', get_class($module));
+            $classname = end($classname);
+            if ($classname == $modulename.'_module') {
+                $themodule = $module;
+                break;
+            }
+        }
+        return $themodule;
+    }
+
+    /**
      * Return an instance of the mustache class.
      *
      * @since 2.9
@@ -261,22 +281,15 @@ class toolbox {
             'general' => array(
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
                     get_string('generalheading', 'theme_foundation')),
-                self::SETTINGCOUNT => 2),
+                self::HASSETTINGS => true),
             'module' => array(
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
                     get_string('moduleheading', 'theme_foundation')),
-                self::SETTINGCOUNT => 0)
+                self::HASSETTINGS => false)
         );
 
         // General settings.
         if ($admin->fulltree) {
-            global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
-            }
-
             $settingspages['general'][self::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
@@ -341,7 +354,7 @@ class toolbox {
 
         // Add the settings pages if they have more than just the settings page heading.
         foreach (array_values($settingspages) as $settingspage) {
-            if ($settingspage[self::SETTINGCOUNT] > 0) {
+            if ($settingspage[self::HASSETTINGS] == true) {
                 $thepage = $settingspage[self::SETTINGPAGE];
                 $admin->add('theme_foundation', $thepage);
             }
