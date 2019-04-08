@@ -267,7 +267,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
      * @param renderer_base $output The renderer.
      * @return stdClass containing the data or null.
      */
-     public function export_for_template(\renderer_base $output) {
+    public function export_for_template(\renderer_base $output) {
         $data = null;
         $toolbox = \theme_foundation\toolbox::get_instance();
 
