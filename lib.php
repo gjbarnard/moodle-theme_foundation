@@ -49,6 +49,8 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
         }
         if ($filearea === 'logo') {
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else if (preg_match("/^frontpageslideimage[1-9][0-9]*$/", $filearea)) {
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'favicon') {
             return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
         } else if ($filearea === 'hvp') {

@@ -51,6 +51,7 @@ $string['gotobottom'] = 'Go to the bottom of the page';
 $string['backtotop'] = 'Back to top';
 
 // Settings.
+// General.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
@@ -67,6 +68,7 @@ $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 $string['hvpcustomcss'] = 'H5P Custom CSS';
 $string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.';
 
+// Features.
 $string['featuresheading'] = 'Features';
 $string['featuresheadingsub'] = 'Features settings';
 $string['featuresheadingdesc'] = 'Configure the settings for the features of Foundation here.';
@@ -79,7 +81,7 @@ $string['numberofalertsdesc'] = 'Number of alerts between {$a->lower} and {$a->u
 
 $string['alertsettingheading'] = 'Alert {$a->number} settings';
 
-$string['enablealert'] = 'Alert {$a->number} enabled';
+$string['enablealert'] = 'Alert {$a->number} enable';
 $string['enablealertdesc'] = 'Enable or disable alert {$a->number}.';
 
 $string['alerttype'] = 'Alert {$a->number} type';
@@ -109,6 +111,31 @@ $string['loginbackgroundstyledesc'] = 'Select the style for the uploaded image.'
 $string['loginbackgroundopacity'] = 'Login box background opacity when there is a background image';
 $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login box when there is a background image.';
 
+// Carousels.
+$string['frontpagecarouselheading'] = 'Frontpage carousel';
+$string['frontpagecarouselheadingsub'] = 'Frontpage carousel settings';
+$string['frontpagecarouselheadingdesc'] = 'Configure the settings for the frontpage carousel of Foundation here.';
+$string['frontpagecarouselslides'] = 'Frontpage slides';
+$string['frontpagecarouselslidesdesc'] = 'Number of frontpage slides between {$a->lower} and {$a->upper}.  After changing and \'Saving changes\', refresh the page.';
+$string['frontpageslideno'] = 'Frontpage slide {$a->number}';
+$string['frontpageslidenodesc'] = 'Enter the settings for frontpage slide {$a->number}.';
+$string['frontpageenableslide'] = 'Frontpage slide {$a->number} enable';
+$string['frontpageenableslidedesc'] = 'Enable or disable frontpage slide {$a->number}.';
+$string['frontpageslidetitle'] = 'Frontpage slide {$a->number} title';
+$string['frontpageslidetitledesc'] = 'Title for frontpage slide {$a->number}.';
+$string['frontpageslidecaption'] = 'Frontpage slide {$a->number} caption';
+$string['frontpageslidecaptiondesc'] = 'Caption for frontpage slide {$a->number}.';
+$string['frontpageslideimage'] = 'Frontpage slide {$a->number} image';
+$string['frontpageslideimagedesc'] = 'Image for frontpage slide {$a->number}.';
+$string['frontpageslideurl'] = 'Frontpage slide link {$a->number}';
+$string['frontpageslideurldesc'] = 'Enter the target destination of frontpage slide {$a->number} image link';
+$string['urltarget'] = 'Link target';
+$string['urltargetdesc'] = 'Choose how the link should be opened';
+$string['urltargetself'] = 'Current page';
+$string['urltargetnew'] = 'New page';
+$string['urltargetparent'] = 'Parent frame';
+
+// Modules.
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';
 $string['moduleheadingdesc'] = 'Configure the module settings for Foundation here.';

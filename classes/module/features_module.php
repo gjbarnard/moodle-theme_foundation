@@ -90,10 +90,10 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
             if ($numberofalerts > 0) {
                 for ($alertnum = 1; $alertnum <= $numberofalerts; $alertnum++) {
-                    // Alert X heading.
+                    // Alert X setting heading.
                     $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                         new \admin_setting_heading(
-                            'theme_foundation_alert'.$alertnum.'_heading',
+                            'theme_foundation_alert_'.$alertnum.'_heading',
                             get_string('alertsettingheading', 'theme_foundation', array('number' => $alertnum)),
                             ''
                         )
