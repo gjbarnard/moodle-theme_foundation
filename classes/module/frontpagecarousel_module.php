@@ -162,38 +162,45 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
      */
     public function export_for_template(\renderer_base $output) {
         $data = null;
-        $toolbox = \theme_foundation\toolbox::get_instance();
+        global $PAGE;
+        if ($PAGE->pagelayout == 'frontpage') {
+            $toolbox = \theme_foundation\toolbox::get_instance();
 
-        $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
-        if ($numberofslides > 0) {
-            global $PAGE;
-            $slidesenabled = array();
-            for ($slidenum = 1; $slidenum <= $numberofslides; $slidenum++) {
-                $slideenabled = $toolbox->get_setting('frontpageenableslide'.$slidenum, 'foundation'); // Stick to ours or could be confusing!
-                if ($slideenabled) {
-                    $slidesenabled[] = $slidenum; // Slide to be shown on the page.
+            $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
+            if ($numberofslides > 0) {
+                $slidesenabled = array();
+                for ($slidenum = 1; $slidenum <= $numberofslides; $slidenum++) {
+                    $slideenabled = $toolbox->get_setting('frontpageenableslide'.$slidenum, 'foundation'); // Stick to ours or could be confusing!
+                    if ($slideenabled) {
+                        $slidesenabled[] = $slidenum; // Slide to be shown on the page.
+                    }
                 }
-            }
 
-            if (!empty($slidesenabled)) {
-                $data = new \stdClass;
-                $data->carouselid = 'frontpagecarousel';
-                $data->carouselindicators = array();
-                $indicator = 0;
-                $data->carouselslides = array();
-                foreach ($slidesenabled as $slidenum) {
-                    $theslide = new \stdClass;
-                    $theslide->slidetitle = $toolbox->get_setting('frontpageslidetitle'.$slidenum, 'foundation');
-                    $theslide->slidecaption = $toolbox->get_setting('frontpageslidecaption'.$slidenum, 'foundation');
-                    $theslide->slideimage = $toolbox->setting_file_url('frontpageslideimage'.$slidenum, 'frontpageslideimage'.$slidenum, 'foundation');
+                if (!empty($slidesenabled)) {
+                    $data = new \stdClass;
+                    $data->carouselid = 'frontpagecarousel';
+                    $data->carouselindicators = array();
+                    $indicator = 0;
+                    $data->carouselslides = array();
+                    foreach ($slidesenabled as $slidenum) {
+                        $theslide = new \stdClass;
+                        $theslide->slidetitle = $toolbox->get_setting('frontpageslidetitle'.$slidenum, 'foundation');
+                        $theslide->slidecaption = $toolbox->get_setting('frontpageslidecaption'.$slidenum, 'foundation');
+                        if (!empty($toolbox->get_setting('frontpageslideimage'.$slidenum))) {
+                            $theslide->slideimage = $toolbox->setting_file_url('frontpageslideimage'.$slidenum, 'frontpageslideimage'.$slidenum, 'foundation');
+                        } else {
+                            $theslide->slideimage = $output->image_url('Foundation_default_slide', 'theme_foundation');
+                        }
+                        $theslide->slideimagetext = 'TODO';
 
-                    $theindicator = new \stdClass;
-                    $theindicator->indicatornumber = $indicator++;
-                    $theindicator->indicatoractive = ($indicator == 0) ? true : false;
-                    $data->carouselindicators[] = $theindicator;
+                        $theindicator = new \stdClass;
+                        $theindicator->indicatoractive = ($indicator == 0) ? 1 : 0;
+                        $theindicator->indicatornumber = $indicator++;
+                        $data->carouselindicators[] = $theindicator;
 
-                    $theslide->slideactive = $theindicator->indicatoractive;
-                    $data->carouselslides[] = $theslide;
+                        $theslide->slideactive = $theindicator->indicatoractive;
+                        $data->carouselslides[] = $theslide;
+                    }
                 }
             }
         }

@@ -81,6 +81,16 @@ trait core_renderer_toolbox {
             }
         }
 
+        $frontpagecarouselmodule = $toolbox->get_module('frontpagecarousel');
+        if (!empty($frontpagecarouselmodule)) {
+            $frontpagecarouseldata = $frontpagecarouselmodule->export_for_template($this);
+            if (!empty($frontpagecarouseldata)) {
+                foreach ($frontpagecarouseldata as $fkey => $fvalue) {
+                    $data->$fkey = $fvalue;
+                }
+            }
+        }
+
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {
