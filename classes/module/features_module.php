@@ -113,14 +113,14 @@ class features_module extends \theme_foundation\module_basement implements \temp
                     $description = get_string('alerttypedesc', 'theme_foundation');
                     $default = 'info';
                     $choices = array(
+                        'danger' => get_string('alertdanger', 'theme_foundation'),
+                        'dark' => get_string('alertdark', 'theme_foundation'),
+                        'info' => get_string('alertinfo', 'theme_foundation'),
+                        'light' => get_string('alertlight', 'theme_foundation'),
                         'primary' => get_string('alertprimary', 'theme_foundation'),
                         'secondary' => get_string('alertsecondary', 'theme_foundation'),
                         'success' => get_string('alertsuccess', 'theme_foundation'),
-                        'danger' => get_string('alertdanger', 'theme_foundation'),
-                        'warning' => get_string('alertwarning', 'theme_foundation'),
-                        'info' => get_string('alertinfo', 'theme_foundation'),
-                        'light' => get_string('alertlight', 'theme_foundation'),
-                        'dark' => get_string('alertdark', 'theme_foundation')
+                        'warning' => get_string('alertwarning', 'theme_foundation')
                     );
                     $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
                     $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);

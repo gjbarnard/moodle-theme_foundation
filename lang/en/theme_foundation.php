@@ -94,7 +94,7 @@ $string['alertlight'] = 'Light';
 $string['alertdark'] = 'Dark';
 
 $string['alerttitle'] = 'Alert {$a->number} title';
-$string['alerttitledesc'] = 'Title for alert {$a->number}.';
+$string['alerttitledesc'] = 'Title for alert {$a->number}.  If the title is empty, it will not be shown but any text will.';
 $string['alerttext'] = 'Alert {$a->number} text';
 $string['alerttextdesc'] = 'Text for alert {$a->number}.';
 $string['alertpage'] = 'Alert {$a->number} page';

@@ -33,8 +33,10 @@
 }}
 {{#thealerts}}
 <div class="alert alert-{{alerttype}} alert-dismissible fade show" role="alert">
+    {{#alerttitle}}
     <h4 class="alert-heading">{{alerttitle}}</h4>
     <hr>
+    {{/alerttitle}}
     <div class="mb-0">{{{alerttext}}}</div>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span class="fa fa-times" aria-hidden="true"></span>
