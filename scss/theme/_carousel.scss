@@ -1,0 +1,76 @@
+.carousel-inner {
+    padding: 0 32px;
+}
+
+.the-slide {
+    align-items: center;
+}
+
+.the-slide-image-container {
+    padding: 1%;
+    @include media-breakpoint-up(md) {
+        line-height: 200px;
+    }
+    @include media-breakpoint-up(lg) {
+        line-height: 250px;
+    }
+    @include media-breakpoint-up(xl) {
+        line-height: 300px;
+    }
+    text-align: center;
+    width: 90%;
+}
+
+.the-slide-image {
+    background-color: $white;
+    box-shadow: 0 0 8px $gray-900;
+    max-height: 100px;
+    @include media-breakpoint-up(md) {
+        max-height: 180px;
+    }
+    @include media-breakpoint-up(lg) {
+        max-height: 230px;
+    }
+    @include media-breakpoint-up(xl) {
+        max-height: 280px;
+    }
+    max-width: 100%;
+    padding: 8px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 24px;
+    width: auto;
+    > span {
+        color: $primary;
+        &:hover,
+        &:focus {
+            color: darken($primary, 7%);
+        }
+    }
+}
+
+.carousel {
+    .carousel-control,
+    .carousel-indicators {
+        display: none;
+    }
+    &:hover,
+    &:focus {
+        .carousel-control,
+        .carousel-indicators {
+            display: flex;
+        }
+    }
+}
+
+.carousel-indicators {
+    margin-bottom: 0;
+    li {
+        background-color: $primary;
+    }
+    .active {
+        background-color: darken($primary, 7%);
+    }
+}

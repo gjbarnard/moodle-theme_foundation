@@ -8,6 +8,7 @@ Version 3.6.0.4
   4. Change login page forget password link to be styled like a button.
   5. Add anti-gravity functionality from Essential.
   6. Add alert system.  Multiple dismissable alert types on all, course, dashboard or frontpage pages.
+  7. Add frontpage carousel similar to one I created for Essential.
 
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.

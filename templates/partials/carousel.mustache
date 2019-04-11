@@ -38,23 +38,27 @@
         <li data-target="#{{carouselid}}" data-slide-to="{{indicatornumber}}"{{#indicatoractive}} class="active"{{/indicatoractive}}></li>
         {{/carouselindicators}}
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner container-fluid">
         {{#carouselslides}}
         <div class="carousel-item{{#slideactive}} active{{/slideactive}}">
-            <img src="{{slideimage}}" class="d-block w-100" alt="{{slideimagetext}}">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{slidetitle}}</h5>
-                <div>{{{slidecaption}}}</div>
+            <div class="row the-slide">
+                <div class="col-xs-5 the-slide-caption">
+                    <h5>{{slidetitle}}</h5>
+                    <div>{{{slidecaption}}}</div>
+                </div>
+                <div class="col-xs-7 the-slide-image-container">
+                    <img src="{{slideimage}}" class="the-slide-image" alt="{{slideimagetext}}">
+                </div>
             </div>
         </div>
         {{/carouselslides}}
     </div>
-    <a class="carousel-control-prev" href="#{{carouselid}}" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <a class="carousel-control carousel-control-prev" href="#{{carouselid}}" role="button" data-slide="prev">
+        <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
         <span class="sr-only">{{#str}}previous{{/str}}</span>
     </a>
-    <a class="carousel-control-next" href="#{{carouselid}}" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <a class="carousel-control carousel-control-next" href="#{{carouselid}}" role="button" data-slide="next">
+        <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
         <span class="sr-only">{{#str}}next{{/str}}</span>
     </a>
 </div>
