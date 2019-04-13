@@ -126,19 +126,6 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
     }
 
     /**
-     * Gets the module extra SCSS.
-     *
-     * @param string $themename The theme name the SCSS is for.
-     * @param toolbox $toolbox The toolbox instance.
-     * @return string SCSS.
-     */
-    public function extra_scss($themename, $toolbox) {
-        $scss = '';
-
-        return $scss;
-    }
-
-    /**
      * Gets the module bodyclasses.
      *
      * @return array bodyclass strings.

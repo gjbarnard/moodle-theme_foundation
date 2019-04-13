@@ -41,8 +41,6 @@ trait core_renderer_toolbox {
      * Orchestrates the rendering of the page.
      */
     public function render_page() {
-        echo $this->doctype();
-
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
@@ -101,6 +99,17 @@ trait core_renderer_toolbox {
         $data->bodyattributes = $this->body_attributes($bodyclasses);
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
+
+        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
+    }
+
+    /**
+     * Orchestrates the rendering of a plain page.
+     */
+    public function render_plain_page() {
+        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        $data = new \stdClass();
+        $data->output = $this;
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }

@@ -127,7 +127,7 @@ $THEME->layouts = array(
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
-        'file' => 'layout.php',
+        'file' => 'plainlayout.php',
         'mustache' => 'embedded',
         'regions' => $empty
     ),
@@ -135,7 +135,7 @@ $THEME->layouts = array(
        This must not have any blocks, and it is good idea if it does not have links to
        other places - for example there should not be a home link in the footer... */
     'maintenance' => array(
-        'file' => 'layout.php',
+        'file' => 'plainlayout.php',
         'mustache' => 'maintenance',
         'regions' => $empty
     ),
@@ -148,7 +148,7 @@ $THEME->layouts = array(
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
-        'file' => 'layout.php',
+        'file' => 'plainlayout.php',
         'mustache' => 'embedded',
         'regions' => $empty
     ),
