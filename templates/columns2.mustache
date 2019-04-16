@@ -64,6 +64,7 @@
     <div id="page" class="container-fluid">
         {{{ output.full_header }}}
 
+        {{> partials/alerts}}
         <div id="page-content" class="row pb-3">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -76,7 +77,6 @@
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
                     {{{ output.course_content_header }}}
-                    {{> partials/alerts}}
                     {{> partials/carousel}}
                     {{{ output.main_content }}}
                     {{{ output.activity_navigation }}}
