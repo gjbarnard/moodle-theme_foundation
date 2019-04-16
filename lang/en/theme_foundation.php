@@ -135,6 +135,44 @@ $string['urltargetself'] = 'Current page';
 $string['urltargetnew'] = 'New page';
 $string['urltargetparent'] = 'Parent frame';
 
+// Courses menu.
+$string['coursesmenuheading'] = 'Courses menu';
+$string['coursesmenuheadingsub'] = 'Courses menu settings';
+$string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu of Foundation here.';
+$string['displaymycourses'] = 'Display courses';
+$string['displaymycoursesdesc'] = 'Display enrolled courses for users on the \'Navbar\'.';
+$string['displayhiddenmycourses'] = 'Display hidden courses';
+$string['displayhiddenmycoursesdesc'] = 'Display hidden courses for users in the \'Courses menu\' if they have permission to view hidden courses';
+$string['mycoursesorderidorder'] = 'Course ID order';
+$string['mycoursesorderidorderdesc'] = 'Course ID order for when \'Course ID\' is set as the \'Course sort order\'.';
+$string['mycoursesorderidasc'] = 'Ascending';
+$string['mycoursesorderiddes'] = 'Descending';
+
+$string['mycoursesorder'] = 'Courses order';
+$string['mycoursesorderdesc'] = 'State how the courses should be ordered.  The course sort order can be is set by the core navigation setting \'navsortmycoursessort\'.';
+$string['mycoursesordersort'] = 'Course sort order';
+$string['mycoursesorderid'] = 'Course ID';
+$string['mycoursesorderlast'] = 'Last accessed time or enrolment start time if never accessed';
+$string['mycoursesorderidorder'] = 'Course ID order';
+$string['mycoursesorderidorderdesc'] = 'Course ID order for when \'Course ID\' is set as the \'Course sort order\'.';
+$string['mycoursesorderidasc'] = 'Ascending';
+$string['mycoursesorderiddes'] = 'Descending';
+$string['mycoursesmax'] = 'Max courses';
+$string['mycoursesmaxdesc'] = 'State up to how many courses should be listed between {$a->lower} and {$a->upper} where \'{$a->lower}\' represents all.';
+$string['mycoursesorderenrolbackcolour'] = 'Enrolled and not accessed course background colour';
+$string['mycoursesorderenrolbackcolourdesc'] = 'The background colour for enrolled but not accessed courses.  For when \'mycoursesorder\' is set to \'Last accessed...\'.';
+$string['mycoursetitle'] = 'Terminology';
+$string['mycoursetitledesc'] = 'Change the terminology for the "My courses" menu title.  When \'mycoursesorder\' is set to \'Last accessed...\' then the word \'latest\' will be added.';
+$string['mycourses'] = 'My courses';
+$string['mylatestcourses'] = 'My latest courses';
+$string['myunits'] = 'My units';
+$string['mylatestunits'] = 'My latest units';
+$string['mymodules'] = 'My modules';
+$string['mylatestmodules'] = 'My latest modules';
+$string['myclasses'] = 'My classes';
+$string['mylatestclasses'] = 'My latest classes';
+$string['noenrolments'] = 'You have no current enrolments';
+
 // Modules.
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';

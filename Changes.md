@@ -9,6 +9,7 @@ Version 3.6.0.4
   5. Add anti-gravity functionality from Essential.
   6. Add alert system.  Multiple dismissable alert types on all, course, dashboard or frontpage pages.
   7. Add frontpage carousel similar to one I created for Essential.
+  8. Add reduced version (no sub-menus on BS4) of the 'My Courses menu' from Essential.
 
 Version 3.6.0.3
   1. Add H5P custom CSS setting from Essential.

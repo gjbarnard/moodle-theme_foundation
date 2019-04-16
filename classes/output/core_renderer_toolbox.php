@@ -89,6 +89,16 @@ trait core_renderer_toolbox {
             }
         }
 
+        $coursesmenumodule = $toolbox->get_module('coursesmenu');
+        if (!empty($coursesmenumodule)) {
+            $coursesmenudata = $coursesmenumodule->export_for_template($this);
+            if (!empty($coursesmenudata)) {
+                foreach ($coursesmenudata as $cmkey => $cmvalue) {
+                    $data->$cmkey = $cmvalue;
+                }
+            }
+        }
+
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {
@@ -388,4 +398,32 @@ trait core_renderer_toolbox {
             return $favicon;
         }
     }
+
+    /**
+     * Renders the course menu.
+     *
+     * @param course_menu_item $menu Menu branch to add the course to.
+     * @return string Markup if any.
+      */
+    public function render_the_course_menu(course_menu $menu) {
+        if (!$menu->has_children()) {
+            return '';
+        }
+
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+
+        return $content;
+    }
+
+    public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
+        $classes[] = 'fa fa-'.$theicon;
+        $attributes['aria-hidden'] = 'true';
+        $attributes['class'] = implode(' ', $classes);
+        return html_writer::tag('span', $content, $attributes);
+    }
+
 }
