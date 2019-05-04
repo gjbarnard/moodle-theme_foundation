@@ -404,8 +404,8 @@ trait core_renderer_toolbox {
      *
      * @param course_menu_item $menu Menu branch to add the course to.
      * @return string Markup if any.
-      */
-    public function render_the_course_menu(course_menu $menu) {
+     */
+    public function render_the_course_menu(course_menu_item $menu) {
         if (!$menu->has_children()) {
             return '';
         }

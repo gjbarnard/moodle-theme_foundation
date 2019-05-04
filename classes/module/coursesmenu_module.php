@@ -167,7 +167,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         $hasdisplaymycourses = $toolbox->get_setting('displaymycourses');
         if (isloggedin() && !isguestuser() && $hasdisplaymycourses) {
             global $PAGE;
-            $coursemenu = new \theme_foundation\output\course_menu();
+            $coursemenu = new \theme_foundation\output\course_menu_item('');
             $mycoursesorder = $toolbox->get_setting('mycoursesorder');
             if (!$mycoursesorder) {
                 $mycoursesorder = 1;
@@ -220,8 +220,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
                 }
                 $courses = \enrol_get_my_courses(null, $sortorder.' '.$direction);
             } else if ($mycoursesorder == 3) {
-                /*
-                 * To test:
+                /* To test:
                  * 1. As an administrator...
                  * 2. Create a test user to be a student.
                  * 3. Create a course with a start time before the current and enrol the student.
