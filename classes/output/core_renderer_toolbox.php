@@ -208,7 +208,7 @@ trait core_renderer_toolbox {
         }
 
         // Add a class for when $withlinks is false.
-        $usermenuclasses = 'usermenu';
+        $usermenuclasses = 'usermenu nav-link';
         if (!$withlinks) {
             $usermenuclasses .= ' withoutlinks';
         }
