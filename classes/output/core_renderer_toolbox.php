@@ -208,7 +208,7 @@ trait core_renderer_toolbox {
         }
 
         // Add a class for when $withlinks is false.
-        $usermenuclasses = 'usermenu nav-link';
+        $usermenuclasses = 'usermenu';
         if (!$withlinks) {
             $usermenuclasses .= ' withoutlinks';
         }
@@ -231,7 +231,7 @@ trait core_renderer_toolbox {
             return html_writer::div(
                 html_writer::span(
                     $returnstr,
-                    'login'
+                    'login nav-link'
                 ),
                 $usermenuclasses
             );
@@ -248,7 +248,7 @@ trait core_renderer_toolbox {
             return html_writer::div(
                 html_writer::span(
                     $returnstr,
-                    'login'
+                    'login nav-link'
                 ),
                 $usermenuclasses
             );
