@@ -194,9 +194,13 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
 
             $coursemenubranch = $coursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
-            $hometext = get_string('myhome');
+            $myhometext = get_string('myhome');
+            $myhomelabel = '<span>'.$output->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
+            $coursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
+
+            $hometext = get_string('sitehome');
             $homelabel = '<span>'.$output->getfontawesomemarkup('home', array('icon')).$hometext.'</span>';
-            $coursemenubranch->add($homelabel, new moodle_url('/my/index.php'), $homelabel);
+            $coursemenubranch->add($homelabel, new moodle_url('/index.php', array('redirect' => '0')), $homelabel);
 
             // Retrieve courses and add them to the menu when they are visible.
             $numcourses = 0;
