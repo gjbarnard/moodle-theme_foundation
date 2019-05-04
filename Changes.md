@@ -5,9 +5,9 @@ Version 3.6.0.4
      preventing overriding.
   2. Add favicon setting to general settings.  Provides the ability to use your own custom favicon.
   3. Add login page background settings from Essential.
-  4. Change login page forget password link to be styled like a button.
+  4. Change login page forget password link styled like a button.
   5. Add anti-gravity functionality from Essential.
-  6. Add alert system.  Multiple dismissable alert types on all, course, dashboard or frontpage pages.
+  6. Add alert system.  Multiple dismissible alert types on all, course, dashboard or frontpage pages.
   7. Add frontpage carousel similar to one I created for Essential.
   8. Add reduced version (no sub-menus on BS4) of the 'My Courses menu' from Essential.
 
