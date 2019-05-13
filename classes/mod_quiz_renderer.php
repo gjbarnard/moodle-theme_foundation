@@ -33,7 +33,7 @@ if (file_exists($quizrenderer)) {
      * Class theme_foundation_mod_quiz_renderer
      */
     class theme_foundation_mod_quiz_renderer extends mod_quiz_renderer {
-        /**
+       /**
         * Display a quiz navigation button.
         *
         * @param quiz_nav_question_button $button

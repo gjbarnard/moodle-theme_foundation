@@ -10,15 +10,15 @@ matrix:
  allow_failures:
  fast_finish: true
  include:
- - php: 7.0
+ - php: 7.1
    env: DB=mysqli
- - php: 7.0
+ - php: 7.1
    env: DB=pgsql
    addons:
       postgresql: 9.4
- - php: 7.1
+ - php: 7.2
    env: DB=mysqli
- - php: 7.1
+ - php: 7.2
    env: DB=pgsql
    addons:
       postgresql: 9.4
