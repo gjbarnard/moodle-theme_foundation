@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class bank_renderer extends \theme_boost\output\core_question\bank_renderer {
+class bank_renderer extends \core_question_bank_renderer {
     /**
      * Return an instance of the mustache class.
      *

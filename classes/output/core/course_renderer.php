@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class course_renderer extends \theme_boost\output\core\course_renderer {
+class course_renderer extends \core_course_renderer {
     /**
      * Return an instance of the mustache class.
      *

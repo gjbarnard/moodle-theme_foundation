@@ -24,7 +24,7 @@ Features
 
 About
 =====
-Copyright  &copy; 2018-onwards G J Barnard.
+Copyright  &copy; 2019-onwards G J Barnard.
 Author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
 License    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
 
@@ -78,11 +78,11 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.6.1 version 2018120301.00 (Build: 20181205) and above within the 3.6 branch until the
+This version works with Moodle 3.7beta version 2019051100.00 (Build: 20190511) and above within the 3.7 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/36/en/Installing_Moodle'.
+'docs.moodle.org/37/en/Installing_Moodle'.
 
 Installation
 ============

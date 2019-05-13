@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class gradereport_history_renderer extends \theme_boost\output\gradereport_history_renderer {
+class gradereport_history_renderer extends \gradereport_history\output\renderer {
     /**
      * Return an instance of the mustache class.
      *
