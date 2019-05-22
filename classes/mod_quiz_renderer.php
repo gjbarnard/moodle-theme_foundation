@@ -33,12 +33,12 @@ if (file_exists($quizrenderer)) {
      * Class theme_foundation_mod_quiz_renderer
      */
     class theme_foundation_mod_quiz_renderer extends mod_quiz_renderer {
-       /**
-        * Display a quiz navigation button.
-        *
-        * @param quiz_nav_question_button $button
-        * @return string HTML fragment.
-        */
+        /**
+         * Display a quiz navigation button.
+         *
+         * @param quiz_nav_question_button $button
+         * @return string HTML fragment.
+         */
         protected function render_quiz_nav_question_button(quiz_nav_question_button $button) {
             $classes = array('qnbutton', $button->stateclass, $button->navmethod);
             $extrainfo = array();
