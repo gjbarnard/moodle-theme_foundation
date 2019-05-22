@@ -78,7 +78,7 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.7beta version 2019051100.00 (Build: 20190511) and above within the 3.7 branch until the
+This version works with Moodle 3.7 version 2019052000.00 (Build: 20190520) and above within the 3.7 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
