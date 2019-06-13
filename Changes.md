@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.6.0.5
+  1. Fix core_text scope issue causing exception.
 
 Version 3.6.0.4
   1. Use module templates as cannot override the Mustache engine with our own due to module locallib rendering
