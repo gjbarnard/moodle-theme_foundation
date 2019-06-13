@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.7.0.2
+  1. Fix core_text scope issue causing exception.
 
 Version 3.7.0.1
   1. Beta version based on theme version 3.6.0.4.
