@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.7.0.3
+
 Version 3.7.0.2
   1. Fix core_text scope issue causing exception.
 
