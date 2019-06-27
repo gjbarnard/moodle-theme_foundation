@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.6.1.0 - TBD
+  1. Fix no popup layout #4.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
