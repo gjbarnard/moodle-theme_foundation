@@ -11,6 +11,10 @@ a:hover {
     color: inherit;
 }
 
+.pagelayout-popup #page {
+    margin-top: 0;
+}
+
 #page-footer a {
     text-decoration: none;
     @include hover-focus-active {
