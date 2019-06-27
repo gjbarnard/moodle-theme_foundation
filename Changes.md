@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.7.0.3
   1. Fix no popup layout #4.
+  2. Only show a navbar if there are items in it, e.g. empty on the base layout
 
 Version 3.7.0.2
   1. Fix core_text scope issue causing exception.

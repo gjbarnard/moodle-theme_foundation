@@ -419,6 +419,23 @@ trait core_renderer_toolbox {
         return $content;
     }
 
+    /**
+     * This renders the navbar.
+     * Improved on core not to output any markup if no items.
+     *
+     * @return string Markup if any.
+     */
+    public function navbar() {
+        $output = '';
+        $navbaritems = $this->page->navbar->get_items();
+        if (!empty($navbaritems)) {
+            $navbar = new \stdClass();
+            $navbar->get_items = $navbaritems;
+            $output .= $this->render_from_template('core/navbar', $navbar);
+        }
+        return $output;
+    }
+
     public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
         $classes[] = 'fa fa-'.$theicon;
         $attributes['aria-hidden'] = 'true';
