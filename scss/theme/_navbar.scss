@@ -10,6 +10,12 @@
     }
 }
 
+.navbar-nav .dropdown-menu {
+    left: auto;
+    position: absolute;
+    right: 0;
+}
+
 .popover-region-toggle {
     &::after {
         bottom: -6px;

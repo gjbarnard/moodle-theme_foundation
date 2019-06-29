@@ -2,7 +2,8 @@ Version Information
 ===================
 Version 3.6.1.0 - TBD
   1. Fix no popup layout #4.
-  2. Only show a navbar if there are items in it, e.g. empty on the base layout
+  2. Only show a navbar if there are items in it, e.g. empty on the base layout.
+  3. Fix user menu on mobile #3.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
