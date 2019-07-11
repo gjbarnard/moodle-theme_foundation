@@ -327,3 +327,20 @@ label,
         }
     }
 }
+
+// Fixes =======================================================================
+
+.bg-white {
+    background-color: $card-bg !important;
+}
+
+.bg-dark {
+    &.text-light {
+        color: #fff !important;
+    }
+}
+
+.block-cards .btn-outline-secondary {
+    @include button-outline-variant($gray-600);
+    border-color: $border-color;
+}

@@ -56,9 +56,9 @@
     }
 }
 
-.nav-item {
-    margin-right: 2rem;
-}
+//.nav-item {
+//    margin-right: 2rem;
+//}
 
 // Buttons =====================================================================
 
@@ -185,4 +185,10 @@ th {
     &-header {
         color: inherit;
     }
+}
+
+// Fixes =======================================================================
+
+#gotobottom {
+    margin-top: 7px !important;
 }

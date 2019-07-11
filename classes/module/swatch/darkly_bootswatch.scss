@@ -257,3 +257,16 @@
     color: #fff;
   }
 }
+
+// Fixes =======================================================================
+
+.bg-white {
+    background-color: $gray-800 !important;
+}
+
+.bg-dark {
+    color: $gray-500;
+    &.text-light {
+        color: #fff !important;
+    }
+}
