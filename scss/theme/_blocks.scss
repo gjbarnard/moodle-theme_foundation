@@ -60,6 +60,10 @@
     margin-left: 360px;
 }
 
+.dashboard-card-deck.one-row {
+    overflow-x: auto;
+}
+
 body {
     transition: margin-left 0.75s;
 }
