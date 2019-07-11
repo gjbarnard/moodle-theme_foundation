@@ -479,3 +479,18 @@ legend {
     background-color: darken($gray-900, 5%);
   }
 }
+
+// Fixes =======================================================================
+
+.bg-white {
+    background-color: $card-bg !important;
+}
+
+.navbar .nav-link {
+    border-left: none;
+    border-right: none;
+}
+
+#gotobottom {
+    margin-top: 11px !important;
+}
