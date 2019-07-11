@@ -347,3 +347,17 @@ legend {
         border-bottom: none;
     }
 }
+
+// Fixes =======================================================================
+
+.bg-dark,
+.bg-white {
+    background-color: $gray-700 !important;
+}
+
+.bg-dark {
+    color: $gray-500;
+    &.text-light {
+        color: #fff !important;
+    }
+}
