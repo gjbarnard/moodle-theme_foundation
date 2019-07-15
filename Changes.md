@@ -5,6 +5,9 @@ Version 3.6.1.0 - TBD
   2. Only show a navbar if there are items in it, e.g. empty on the base layout.
   3. Fix user menu on mobile #3.
   4. Fix assign grader #5.
+  5. Fix dashboard overflow.
+  6. Fix my-index page background.
+  7. Swatch fixes.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
