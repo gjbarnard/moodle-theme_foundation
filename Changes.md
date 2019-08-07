@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.7.0.4
+  1. Put back collapsible block functionality.
 
 Version 3.7.0.3
   1. Fix no popup layout #4.
