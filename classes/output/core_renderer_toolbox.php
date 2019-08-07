@@ -27,6 +27,7 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+use block_contents;
 use html_writer;
 
 /**
@@ -122,6 +123,45 @@ trait core_renderer_toolbox {
         $data->output = $this;
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
+    }
+
+    /**
+     * Prints a nice side block with an optional header.
+     *
+     * @param block_contents $bc HTML for the content
+     * @param string $region the region the block is appearing in.
+     * @return string the HTML to be output.
+     */
+    public function block(block_contents $bc, $region) {
+        $bc = clone($bc); // Avoid messing up the object passed in.
+        if (empty($bc->blockinstanceid) || !strip_tags($bc->title)) {
+            $bc->collapsible = block_contents::NOT_HIDEABLE;
+        } else {
+            user_preference_allow_ajax_update('block'.$bc->blockinstanceid.'hidden', PARAM_INT);
+        }
+        $id = !empty($bc->attributes['id']) ? $bc->attributes['id'] : uniqid('block-');
+        $context = new \stdClass();
+        $context->skipid = $bc->skipid;
+        $context->blockinstanceid = $bc->blockinstanceid;
+        $context->dockable = $bc->dockable;
+        $context->collapsible = $bc->collapsible;
+        $context->id = $id;
+        $context->hidden = $bc->collapsible == block_contents::HIDDEN;
+        $context->skiptitle = strip_tags($bc->title);
+        $context->showskiplink = !empty($context->skiptitle);
+        $context->arialabel = $bc->arialabel;
+        $context->ariarole = !empty($bc->attributes['role']) ? $bc->attributes['role'] : 'complementary';
+        $context->type = $bc->attributes['data-block'];
+        $context->title = $bc->title;
+        $context->content = $bc->content;
+        $context->annotation = $bc->annotation;
+        $context->footer = $bc->footer;
+        $context->hascontrols = !empty($bc->controls);
+        if ($context->hascontrols) {
+            $context->controls = $this->block_controls($bc->controls, $id);
+        }
+
+        return $this->render_from_template('core/block', $context);
     }
 
     /**

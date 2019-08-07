@@ -8,6 +8,7 @@ Version 3.6.1.0 - TBD
   5. Fix dashboard overflow.
   6. Fix my-index page background.
   7. Swatch fixes.
+  8. Put back collapsible block functionality.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
