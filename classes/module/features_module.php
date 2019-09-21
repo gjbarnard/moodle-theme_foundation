@@ -234,10 +234,10 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 $replacementstyle = '100% 100%';
             }
             $scss .= 'background-size: '.$replacementstyle.';'.PHP_EOL;
-            $scss .= '#page-content,'.PHP_EOL;
+            $scss .= '.card,'.PHP_EOL;
             $scss .= '#page-footer {'.PHP_EOL;
             $loginbackgroundopacity = $toolbox->get_setting('loginbackgroundopacity', $themename);
-            $scss .= 'opacity: '.$loginbackgroundopacity.';'.PHP_EOL;
+            $scss .= 'background-color: rgba(red($card-bg), green($card-bg), blue($card-bg), '.$loginbackgroundopacity.') !important;'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
         }
