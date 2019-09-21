@@ -9,6 +9,7 @@ Version 3.6.1.0 - TBD
   6. Fix my-index page background.
   7. Swatch fixes.
   8. Put back collapsible block functionality.
+  9. Improve login page opacity.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
