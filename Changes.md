@@ -1,8 +1,9 @@
 Version Information
 ===================
-Version 3.7.0.4
+Version 3.7.1.0 - 29/09/2019
   1. Put back collapsible block functionality.
   2. Improve login page opacity.
+  3. Stable version.
 
 Version 3.7.0.3
   1. Fix no popup layout #4.
