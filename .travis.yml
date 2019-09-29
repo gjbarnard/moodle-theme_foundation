@@ -6,24 +6,24 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-services:
-  - mysql
-  - postgresql
-
 matrix:
  allow_failures:
  fast_finish: true
  include:
  - php: 7.1
    env: DB=mysqli
+   services: mysql
  - php: 7.1
    env: DB=pgsql
+   services: postgresql
    addons:
       postgresql: 9.4
  - php: 7.2
    env: DB=mysqli
+   services: mysql
  - php: 7.2
    env: DB=pgsql
+   services: postgresql
    addons:
       postgresql: 9.4
 env:
