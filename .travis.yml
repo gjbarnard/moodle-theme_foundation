@@ -6,6 +6,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+services:
+  - mysql
+  - postgresql
+
 matrix:
  allow_failures:
  fast_finish: true
