@@ -54,7 +54,7 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
         } else if ($filearea === 'favicon') {
             return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
         } else if ($filearea === 'hvp') {
-            theme_foundation_serve_hvp_css($args[1]);
+            theme_foundation_serve_hvp_css($args[1], $theme);
         } else if ($filearea === 'loginbackground') {
             return $theme->setting_file_serve('loginbackground', $args, $forcedownload, $options);
         } else {
@@ -68,16 +68,41 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
 /**
  * Serves the H5P Custom CSS.
  *
- * @param type $filename The filename.
+ * @param string $filename The filename.
+ * @param theme_config $theme The theme config object.
  */
-function theme_foundation_serve_hvp_css($filename) {
+function theme_foundation_serve_hvp_css($filename, $theme) {
     global $CFG, $PAGE;
     require_once($CFG->dirroot.'/lib/configonlylib.php'); // For min_enable_zlib_compression().
 
     $toolbox = \theme_foundation\toolbox::get_instance();
     $PAGE->set_context(context_system::instance());
-    $themename = $PAGE->theme->name;
-    $content = $toolbox->get_setting('hvpcustomcss', $themename);
+    $themename = $theme->name;
+
+    $content = '';
+    $hvpfontcss = $toolbox->get_setting('hvpfontcss', $themename);
+    if (!empty($hvpfontcss)) {
+        // Code adapted from post_process() in the theme_config object.
+        if (preg_match_all('/\[\[font:([a-z0-9_]+\|)?([^\]]+)\]\]/', $hvpfontcss, $matches, PREG_SET_ORDER)) {
+            $replaced = array();
+            foreach ($matches as $match) {
+                if (isset($replaced[$match[0]])) {
+                    continue;
+                }
+                $replaced[$match[0]] = true;
+                $fontname = $match[2];
+                $component = rtrim($match[1], '|');
+                $fonturl = $theme->font_url($fontname, $component)->out(false);
+                // We do not need full url because the font.php is always in the same dir.
+                $fonturl = preg_replace('|^http.?://[^/]+|', '', $fonturl);
+                $hvpfontcss = str_replace($match[0], $fonturl, $hvpfontcss);
+            }
+
+            $content .= $hvpfontcss.PHP_EOL.PHP_EOL;
+        }
+    }
+
+    $content .= $toolbox->get_setting('hvpcustomcss', $themename);
     $md5content = md5($content);
     $md5stored = get_config('theme_foundation', 'hvpccssmd5');
     if ((empty($md5stored)) || ($md5stored != $md5content)) {
