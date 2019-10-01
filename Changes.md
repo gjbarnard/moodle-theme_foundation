@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.7.1.1 - TBR
+
 Version 3.7.1.0 - 29/09/2019
   1. Put back collapsible block functionality.
   2. Improve login page opacity.
