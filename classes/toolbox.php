@@ -282,6 +282,10 @@ class toolbox {
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
                     get_string('generalheading', 'theme_foundation')),
                 self::HASSETTINGS => true),
+            'hvp' => array(
+                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_hvp',
+                    get_string('hvpheading', 'theme_foundation')),
+                self::HASSETTINGS => true),
             'module' => array(
                 self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
                     get_string('moduleheading', 'theme_foundation')),
@@ -324,6 +328,18 @@ class toolbox {
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        }
+
+        // H5P settings.
+        if ($admin->fulltree) {
+            $settingspages['hvp'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_hvpheading',
+                    get_string('hvpheadingsub', 'theme_foundation'),
+                    format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
             // H5P Custom CSS.
             $name = 'theme_foundation/hvpcustomcss';
@@ -332,7 +348,16 @@ class toolbox {
             $default = '';
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
+
+            // H5P Font CSS.
+            $name = 'theme_foundation/hvpfontcss';
+            $title = get_string('hvpfontcss', 'theme_foundation');
+            $description = get_string('hvpfontcssdesc', 'theme_foundation');
+            $default = $this->gethvpdefaultfonts();
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
         }
 
         // Module settings.
@@ -359,6 +384,409 @@ class toolbox {
                 $admin->add('theme_foundation', $thepage);
             }
         }
+    }
+
+    /**
+     * Gets the default H5P fonts as supplied by the theme.
+     *
+     * @return string The font CSS.
+     */
+    private function gethvpdefaultfonts() {
+        return "
+            @font-face {
+                font-family: 'Cabin Sketch';
+                font-style: normal;
+                font-weight: normal;
+                src: url('[[font:theme|CabinSketch-Regular.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Cabin Sketch';
+                font-style: normal;
+                font-weight: bold;
+                src: url('[[font:theme|CabinSketch-Bold.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 300;
+                src: url('[[font:theme|Lato-Light.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Lato-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-weight: 400;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|Lato-Italic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Lato-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 100;
+                src: url('[[font:theme|Montserrat-Thin.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 100;
+                src: url('[[font:theme|Montserrat-ThinItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 200;
+                src: url('[[font:theme|Montserrat-ExtraLight.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 200;
+                src: url('[[font:theme|Montserrat-ExtraLightItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 300;
+                src: url('[[font:theme|Montserrat-Light.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 300;
+                src: url('[[font:theme|Montserrat-LightItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Montserrat-Regular.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 400;
+                src: url('[[font:theme|Montserrat-Italic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                src: url('[[font:theme|Montserrat-Medium.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 500;
+                src: url('[[font:theme|Montserrat-MediumItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                src: url('[[font:theme|Montserrat-SemiBold.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 600;
+                src: url('[[font:theme|Montserrat-SemiBoldItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Montserrat-Bold.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 700;
+                src: url('[[font:theme|Montserrat-BoldItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 800;
+                src: url('[[font:theme|Montserrat-ExtraBold.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 800;
+                src: url('[[font:theme|Montserrat-ExtraBoldItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 900;
+                src: url('[[font:theme|Montserrat-Black.otf]]');
+            }
+
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: italic;
+                font-weight: 900;
+                src: url('[[font:theme|Montserrat-BlackItalic.otf]]');
+            }
+
+            @font-face {
+                font-family: 'News Cycle';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|NewsCycle-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'News Cycle';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|NewsCycle-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito Sans';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|NunitoSans-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito Sans';
+                font-style: normal;
+                font-weight: 600;
+                src: url('[[font:theme|NunitoSans-SemiBold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 300;
+                src: url('[[font:theme|OpenSans-Light-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-weight: 300;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|OpenSans-LightItalic-webfont.ttf]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|OpenSans-Regular-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-weight: 400;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|OpenSans-Italic-webfont.ttf]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|OpenSans-Bold-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                font-weight: 700;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|OpenSans-BoldItalic-webfont.ttf]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Raleway';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Raleway-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Raleway';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Raleway-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 300;
+                src: url('[[font:theme|Roboto-Light-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Roboto-Regular-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                src: url('[[font:theme|Roboto-Medium-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Roboto-Black-webfont.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 200;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-ExtraLight.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 200;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-ExtraLightIt.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 300;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-Light.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 300;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-LightIt.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 400;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-Regular.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 400;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-It.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 600;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-Semibold.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 600;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-SemiboldIt.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 700;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-Bold.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 700;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-BoldIt.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 900;
+                font-style: normal;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-Black.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-weight: 900;
+                font-style: italic;
+                font-stretch: normal;
+                src: url('[[font:theme|SourceSansPro-BlackIt.woff]]') format('woff');
+            }
+
+            @font-face {
+                font-family: 'Ubuntu';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Ubuntu-R.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Ubuntu';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Ubuntu-B.ttf]]') format('truetype');
+            }
+        ";
     }
 
     /**

@@ -10,6 +10,7 @@ Version 3.6.1.0 - TBD
   7. Swatch fixes.
   8. Put back collapsible block functionality.
   9. Improve login page opacity.
+ 10. Add 'hvpfontcss' setting to allow use of theme fonts within H5P custom CSS.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.

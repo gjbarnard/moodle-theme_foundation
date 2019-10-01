@@ -65,8 +65,16 @@ $string['prescssdesc'] = 'State the SCSS that should be used before any other SC
 $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 
+// H5P.
+$string['hvpheading'] = 'H5P';
+$string['hvpheadingsub'] = 'H5P settings';
+$string['hvpheadingdesc'] = 'Configure the H5P settings for Foundation here.  They only take effect if the H5P module (moodle.org/plugins/mod_hvp) is installed.';
+
 $string['hvpcustomcss'] = 'H5P Custom CSS';
-$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module (moodle.org/plugins/mod_hvp) if installed.';
+$string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module.';
+
+$string['hvpfontcss'] = 'H5P Font CSS';
+$string['hvpfontcssdesc'] = 'Font CSS for the H5P module.  Place the \'font-face\' declarations here using Moodle \'font:theme\' syntax for the URL and ensure the font file is in the themes font folder.  Then apply with CSS \'font-family\' declarations in the H5P custom CSS setting.';
 
 // Features.
 $string['featuresheading'] = 'Features';
