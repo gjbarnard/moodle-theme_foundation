@@ -66,5 +66,50 @@ class external extends \core\output\external {
 
         return $templatestr;
     }
-}
 
+    /**
+     * Returns description of load_icon_map() parameters.
+     *
+     * @return external_function_parameters
+     */
+    public static function load_fontawesome_icon_map_parameters() {
+        return new external_function_parameters([]);
+    }
+
+    /**
+     * Return a mapping of icon names to icons.
+     *
+     * @return array the mapping
+     */
+    public static function load_fontawesome_icon_map() {
+        $instance = \core\output\icon_system::instance('\\theme_foundation\\output\\icon_system_fontawesome');
+
+        $map = $instance->get_icon_name_map();
+        $result = [];
+
+        foreach ($map as $from => $to) {
+            list($component, $pix) = explode(':', $from);
+            $one = [];
+            $one['component'] = $component;
+            $one['pix'] = $pix;
+            $one['to'] = $to;
+            $result[] = $one;
+        }
+        return $result;
+    }
+
+    /**
+     * Returns description of load_icon_map() result value.
+     *
+     * @return external_description
+     */
+    public static function load_fontawesome_icon_map_returns() {
+        return new external_multiple_structure(new external_single_structure(
+            array(
+                'component' => new external_value(PARAM_COMPONENT, 'The component for the icon.'),
+                'pix' => new external_value(PARAM_RAW, 'Value to map the icon from.'),
+                'to' => new external_value(PARAM_RAW, 'Value to map the icon to.')
+            )
+        ));
+    }
+}

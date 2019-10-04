@@ -29,6 +29,13 @@ $THEME->doctype = 'html5';
 $THEME->name = 'foundation';
 $THEME->parents = array();
 $THEME->sheets = array();
+if (!empty(\theme_foundation\toolbox::get_config_setting('fav'))) {
+    $THEME->sheets[] = 'fa-brands';
+    $THEME->sheets[] = 'fa-regular';
+    $THEME->sheets[] = 'fa-solid';
+    $THEME->sheets[] = 'fontawesome';
+    $THEME->sheets[] = 'fa-fixes';
+}
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
 $THEME->precompiledcsscallback = 'theme_foundation_get_precompiled_css';
@@ -179,4 +186,4 @@ $THEME->scss = function(theme_config $theme) {
 };
 $THEME->extrascsscallback = 'theme_foundation_extra_scss';
 
-$THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
+$THEME->iconsystem = '\\theme_foundation\\output\\icon_system_fontawesome';
