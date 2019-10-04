@@ -1,7 +1,7 @@
 Version Information
 ===================
 Version 3.7.1.1 - TBR
-  1. Add '' setting to allow use of theme fonts within H5P custom CSS.
+  1. Add 'hvpfontcss' setting to allow use of theme fonts within H5P custom CSS.
 
 Version 3.7.1.0 - 29/09/2019
   1. Put back collapsible block functionality.
