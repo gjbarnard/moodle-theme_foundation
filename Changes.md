@@ -2,6 +2,8 @@ Version Information
 ===================
 Version 3.7.1.1 - TBR
   1. Add 'hvpfontcss' setting to allow use of theme fonts within H5P custom CSS.
+  2. Add Font Awesome 5.11.2 free icons.  Turn on / off with 'fav' setting.
+     Please see the license file 'Font Awesome 5 Free LICENSE.txt' in the fonts folder.
 
 Version 3.7.1.0 - 29/09/2019
   1. Put back collapsible block functionality.

@@ -110,6 +110,7 @@ trait core_renderer_toolbox {
         $data->bodyattributes = $this->body_attributes($bodyclasses);
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
+        $data->fav = !empty($toolbox->get_setting('fav'));
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }
