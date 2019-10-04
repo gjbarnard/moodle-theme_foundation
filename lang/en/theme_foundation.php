@@ -59,6 +59,9 @@ $string['generalheadingdesc'] = 'Configure the general settings for Foundation h
 $string['favicon'] = 'Custom favicon';
 $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 
+$string['fav'] = 'FontAwesome 5 Free';
+$string['favdesc'] = 'Use FontAwesome 5 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
+
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
 
