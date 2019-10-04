@@ -73,7 +73,7 @@ class external extends \core\output\external {
      * @return external_function_parameters
      */
     public static function load_fontawesome_icon_map_parameters() {
-        return new external_function_parameters([]);
+        return new \external_function_parameters([]);
     }
 
     /**
@@ -104,11 +104,11 @@ class external extends \core\output\external {
      * @return external_description
      */
     public static function load_fontawesome_icon_map_returns() {
-        return new external_multiple_structure(new external_single_structure(
+        return new \external_multiple_structure(new \external_single_structure(
             array(
-                'component' => new external_value(PARAM_COMPONENT, 'The component for the icon.'),
-                'pix' => new external_value(PARAM_RAW, 'Value to map the icon from.'),
-                'to' => new external_value(PARAM_RAW, 'Value to map the icon to.')
+                'component' => new \external_value(PARAM_COMPONENT, 'The component for the icon.'),
+                'pix' => new \external_value(PARAM_RAW, 'Value to map the icon from.'),
+                'to' => new \external_value(PARAM_RAW, 'Value to map the icon to.')
             )
         ));
     }

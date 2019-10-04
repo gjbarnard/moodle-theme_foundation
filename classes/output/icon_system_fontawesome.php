@@ -39,8 +39,8 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * Constructor
      */
     protected function __construct() {
-        $toolbox = \theme_foundation\toolbox::get_instance();
-        $this->fav = $toolbox->get_setting('fav');
+        // Has to be this for the external AJAX calls that don't know what theme is set.
+        $this->fav = \theme_foundation\toolbox::get_config_setting('fav');
     }
 
     public function get_core_icon_map() {
@@ -249,11 +249,13 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/menubars' => 'fas fa-bars',
             'core:i/mnethost' => 'fas fa-external-link-alt',
             'core:i/moodle_host' => 'fas fa-graduation-cap',
+            'core:i/moremenu' => 'fas fa-ellipsis-h',
             'core:i/move_2d' => 'fas fa-arrows-alt',
             'core:i/navigationitem' => 'fas fa-chevron-right',
             'core:i/ne_red_mark' => 'fas fa-times',
             'core:i/new' => 'fas fa-bolt',
             'core:i/news' => 'far fa-newspaper',
+            'core:i/next' => 'fas fa-chevron-right',
             'core:i/nosubcat' => 'far fa-plus-square',
             'core:i/notifications' => 'fas fa-bell',
             'core:i/open' => 'fas fa-folder-open',
@@ -264,6 +266,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/persona_sign_in_black' => 'fas fa-male',
             'core:i/portfolio' => 'fas fa-id-badge',
             'core:i/preview' => 'fas fa-search-plus',
+            'core:i/previous' => 'fas fa-chevron-left',
             'core:i/progressbar' => 'fas fa-spinner fa-spin',
             'core:i/publish' => 'fas fa-share',
             'core:i/questions' => 'fas fa-question',
@@ -388,12 +391,12 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * Default is to do no mapping.
      */
     public function get_icon_name_map() {
-        if ($this->map === []) {
-            $cache = \cache::make('theme_foundation', 'fontawesome5iconmapping');
+        if (!$this->fav) {
+            return parent::get_icon_name_map();
+        } else {
+            if ($this->map === []) {
+                $cache = \cache::make('theme_foundation', 'fontawesome5iconmapping');
 
-            if (!$this->fav) {
-                $this->map = parent::get_icon_name_map();
-            } else {
                 $this->map = $cache->get('mapping');
 
                 if (empty($this->map)) {
