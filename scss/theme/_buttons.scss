@@ -3,7 +3,7 @@
 }
 
 #gotobottom {
-    margin-top: 3px;
+    margin-top: $gotobottom-top-margin;
 }
 
 #backtotop {
@@ -34,5 +34,5 @@
 
 #drawer,
 #gotobottom {
-    padding: .5rem 1rem;
+    padding: .5rem;
 }

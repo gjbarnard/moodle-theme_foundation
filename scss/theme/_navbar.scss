@@ -1,6 +1,12 @@
 // Navbar.
 .navbar {
     flex-wrap: nowrap;
+
+    .nav-link {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
     .popover-region {
         margin-right: 0;
     }
@@ -60,6 +66,6 @@
     }
     
     .dropdown-menu {
-        top: unquote("calc(100% + .5rem)");
+        top: unquote("calc(100% + 0.25rem)");
     }
 }
