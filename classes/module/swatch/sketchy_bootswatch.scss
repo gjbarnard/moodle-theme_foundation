@@ -417,16 +417,3 @@ pre {
   border: 2px solid $gray-800;
   border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
 }
-
-.close,
-.close:hover,
-.close:focus,
-.close:active {
-  opacity: 1;
-
-  &:before {
-    position: absolute;
-    content: "X";
-    color: $gray-800;
-  }
-}
