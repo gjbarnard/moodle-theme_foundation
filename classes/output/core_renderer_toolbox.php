@@ -311,7 +311,7 @@ trait core_renderer_toolbox {
         }
 
         // Get some navigation opts.
-        $opts = \user_get_user_navigation_info($user, $this->page);
+        $opts = \user_get_user_navigation_info($user, $this->page, array('avatarsize' => 30));
 
         $avatarclasses = "avatars";
         $avatarcontents = html_writer::span($opts->metadata['useravatar'], 'avatar current');
@@ -493,7 +493,12 @@ trait core_renderer_toolbox {
     }
 
     public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
-        $classes[] = 'fa fa-'.$theicon;
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        if ($toolbox->get_setting('fav')) {
+            $classes[] = $toolbox->get_fa5_from_fa4($theicon);
+        } else {
+            $classes[] = 'fa fa-'.$theicon;
+        }
         $attributes['aria-hidden'] = 'true';
         $attributes['class'] = implode(' ', $classes);
         return html_writer::tag('span', $content, $attributes);

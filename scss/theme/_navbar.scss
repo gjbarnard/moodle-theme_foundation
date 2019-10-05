@@ -2,11 +2,17 @@
 .navbar {
     flex-wrap: nowrap;
     .popover-region {
-        margin-top: 4px;
+        margin-right: 0;
     }
     .popover-region-container {
         right: -16px;
         top: 47px;
+    }
+    .popover-region-toggle {
+        width: auto;
+        .icon {
+            margin-right: 0;
+        }
     }
 }
 
@@ -14,6 +20,10 @@
     left: auto;
     position: absolute;
     right: 0;
+}
+
+.nav .caret {
+    margin-left: 0;
 }
 
 .popover-region-toggle {
@@ -31,10 +41,25 @@
     font-size: 16px;
 }
 
-.usermenu .login a {
-    color: inherit;
-    &:hover,
-    &:focus {
+.usermenu {
+    .login a {
         color: inherit;
+        &:hover,
+        &:focus {
+            color: inherit;
+        }
+    }
+
+    .dropdown-toggle {
+        padding-bottom: 0;
+        padding-top: 0;
+
+        img.userpicture {
+            margin-right: 0;
+        }
+    }
+    
+    .dropdown-menu {
+        top: unquote("calc(100% + .5rem)");
     }
 }

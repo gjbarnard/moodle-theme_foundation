@@ -709,6 +709,10 @@ select.form-control {
 
 // Fixes =======================================================================
 
+.close .fa {
+    line-height: .5;
+}
+
 #gotobottom {
-    margin-top: 11px !important;
+    margin-top: 6px !important;
 }
