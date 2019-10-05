@@ -344,3 +344,7 @@ label,
     @include button-outline-variant($gray-600);
     border-color: $border-color;
 }
+
+.navbar-plugin-output {
+    margin-top: 2px;
+}
