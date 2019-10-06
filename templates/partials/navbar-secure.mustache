@@ -37,9 +37,9 @@
 <nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
     <div class="navbar-nav">
-        <button id="drawer" class="btn btn-primary mr-2 nav-link" type="button">
-            <span id="drawerclose" class="fa fa-hand-o-left{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
-            <span id="draweropen" class="fa fa-hand-o-right{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
+        <button id="drawer" class="btn btn-link nav-link" type="button">
+            <span id="drawerclose" class="{{^fav}}fa fa-hand-o-left{{/fav}}{{#fav}}far fa-hand-point-left{{/fav}}{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
+            <span id="draweropen" class="{{^fav}}fa fa-hand-o-right{{/fav}}{{#fav}}far fa-hand-point-right{{/fav}}{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
         </button>
     </div>
     {{/hasdrawerblocks}}

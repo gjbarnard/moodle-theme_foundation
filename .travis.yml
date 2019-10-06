@@ -29,7 +29,7 @@ matrix:
 env:
  global:
   - MOODLE_BRANCH=MOODLE_36_STABLE
-  - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css
+  - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css
 
 before_install:
 # This disables XDebug which should speed up the build.  One reason to remove this

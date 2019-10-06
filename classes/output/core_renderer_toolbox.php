@@ -384,7 +384,7 @@ trait core_renderer_toolbox {
         if ($withlinks) {
             $navitemcount = count($opts->navitems);
             $idx = 0;
-            foreach ($opts->navitems as $key => $value) {
+            foreach ($opts->navitems as $value) {
 
                 switch ($value->itemtype) {
                     case 'divider':

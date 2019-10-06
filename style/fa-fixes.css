@@ -1,12 +1,12 @@
-.block_settings .block_tree [aria-expanded="false"]:before,
-.block_navigation .block_tree [aria-expanded="false"]:before {
+.block_settings .block_tree .tree_item[aria-expanded="false"]:before,
+.block_navigation .block_tree .tree_item[aria-expanded="false"]:before {
     content: "\f054";
     font: normal normal 900 14px/1 'Font Awesome 5 Free';
     width: 14px;
 }
 
-.block_settings .block_tree [aria-expanded="true"]:before,
-.block_navigation .block_tree [aria-expanded="true"]:before {
+.block_settings .block_tree .tree_item[aria-expanded="true"]:before,
+.block_navigation .block_tree .tree_item[aria-expanded="true"]:before {
     content: "\f078";
     font: normal normal 900 14px/1 'Font Awesome 5 Free';
     width: 14px;
