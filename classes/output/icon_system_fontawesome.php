@@ -45,7 +45,9 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
     public function get_core_icon_map() {
         if (!$this->fav) {
-            return parent::get_core_icon_map();
+            $map = parent::get_core_icon_map();
+            $map['core:i/navigationitem'] = 'fa-compass';
+            return $map;
         }
 
         // Information on https://fontawesome.com/how-to-use/upgrading-from-4.
@@ -259,7 +261,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/moremenu' => 'fas fa-ellipsis-h',
             'core:i/move_2d' => 'fas fa-arrows-alt',
             'core:i/muted' => 'fas fa-microphone-slash',
-            'core:i/navigationitem' => 'fas fa-chevron-right',
+            'core:i/navigationitem' => 'far fa-compass',
             'core:i/ne_red_mark' => 'fas fa-times',
             'core:i/new' => 'fas fa-bolt',
             'core:i/news' => 'far fa-newspaper',
