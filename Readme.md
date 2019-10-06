@@ -4,7 +4,8 @@ Foundation theme.
 
 This is a Bootstrap version 4 theme that aims to be different and yet at the same time have some traditions of the past.
 It does not extend the Boost theme but rather 'pull' the files it needs from it because that is where they are currently
-stored.  No navigation drawer or docking has been implemented.  However, you can collapse and expand blocks.
+stored.  No navigation drawer or docking has been implemented.  However, you can collapse and expand blocks and put them
+in a 'drawer' region.
 
 There is added support for 'partial' templates which can then be imported into a main template with the syntax
 '> partials/mypartial'.  But this only works for templates rendered by a renderer in PHP, not if called by JS via
