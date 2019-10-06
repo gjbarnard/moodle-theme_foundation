@@ -119,6 +119,6 @@ function(IconSystem, $, Ajax, Mustache, LocalStorage, Url) {
         return 'theme_foundation/pix_icon_fontawesome';
     };
 
-    return /** @alias module:theme_foundation/icon_system_fontawesome */ IconSystemFontawesome;
+    return /** @alias module:theme_foundation/icon_system_fontawesome */ IconSystemFontawesome; // jshint ;_;
 
 });
