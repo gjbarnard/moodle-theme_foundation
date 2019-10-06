@@ -25,6 +25,8 @@
 
 namespace theme_foundation\output;
 
+defined('MOODLE_INTERNAL') || die();
+
 class external extends \core\output\external {
 
     /**
@@ -36,8 +38,6 @@ class external extends \core\output\external {
      * @return string the template.
      */
     public static function load_template($component, $template, $themename, $includecomments = false) {
-        global $DB, $CFG, $PAGE;
-
         $params = self::validate_parameters(
             self::load_template_parameters(),
             array(

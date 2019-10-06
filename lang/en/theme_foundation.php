@@ -204,7 +204,7 @@ $string['navbarmenus'] = 'Navbar menus';
 $string['closedrawer'] = 'Close drawer';
 $string['opendrawer'] = 'Open drawer';
 
-// foundation_admin_setting_configinteger.
+// Setting foundation_admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
 $string['asconfigintnan'] = '{$a->value} is not a number';

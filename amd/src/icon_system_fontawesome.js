@@ -23,7 +23,7 @@
  */
 
 define(['core/icon_system', 'jquery', 'core/ajax', 'core/mustache', 'core/localstorage', 'core/url'],
-        function(IconSystem, $, Ajax, Mustache, LocalStorage, Url) {
+function(IconSystem, $, Ajax, Mustache, LocalStorage, Url) {
 
     var staticMap = null;
     var fetchMap = null;
