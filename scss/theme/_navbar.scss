@@ -48,11 +48,14 @@
 }
 
 .usermenu {
-    .login a {
-        color: inherit;
-        &:hover,
-        &:focus {
+    .login {
+        line-height: $line-height-base;
+        a {
             color: inherit;
+            &:hover,
+            &:focus {
+                color: inherit;
+            }
         }
     }
 
