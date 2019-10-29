@@ -16,6 +16,7 @@ Version 3.6.1.0 - TBD
  12. General style fixes.
  13. Fix position of goto bottom icon when logged out.
  14. Fix quiz drag and drop colour and not working in preview.
+ 15. Fix content overflow causing horizontal scrollbar when editing a quiz.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
