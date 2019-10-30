@@ -54,15 +54,31 @@
     padding-left: 15px;
     position: fixed;
     top: calc(50px + 1rem);
-    transition: left 0.75s;
+    transition: all 0.75s;
     width: 360px;
     &.drawer-hidden {
         left: -360px;
     }
 }
 
-.drawer-open {
-    margin-left: 360px;
+@include media-breakpoint-down(md) {
+    [data-region="blocks-drawer"] {
+        background-color: $card-bg;
+        height: calc(100% - 50px);
+        padding: 5px 5px 0 5px;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        &.drawer-hidden {
+            width: 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .drawer-open {
+        margin-left: 360px;
+    }
 }
 
 .dashboard-card-deck.one-row {

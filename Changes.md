@@ -4,6 +4,7 @@ Version 3.7.1.2 - TBD
   1. Fix position of goto bottom icon when logged out.
   2. Fix quiz drag and drop colour and not working in preview.
   3. Fix content overflow causing horizontal scrollbar when editing a quiz.
+  4. Add floating drawer on screens less than 768px wide.
 
 Version 3.7.1.1 - 6/10/2019
   1. Add 'hvpfontcss' setting to allow use of theme fonts within H5P custom CSS.
