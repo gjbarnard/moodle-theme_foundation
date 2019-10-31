@@ -61,7 +61,7 @@
     }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(sm) {
     [data-region="blocks-drawer"] {
         background-color: $card-bg;
         height: calc(100% - 50px);
