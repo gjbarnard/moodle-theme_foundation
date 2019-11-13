@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.7.1.2 - TBD
+Version 3.7.1.2 - 13/11/2019
   1. Fix position of goto bottom icon when logged out.
   2. Fix quiz drag and drop colour and not working in preview.
   3. Fix content overflow causing horizontal scrollbar when editing a quiz.
