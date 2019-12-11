@@ -28,7 +28,7 @@ matrix:
       postgresql: 9.4
 env:
  global:
-  - MOODLE_BRANCH=master
+  - MOODLE_BRANCH=MOODLE_38_STABLE
   - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css
 
 before_install:
