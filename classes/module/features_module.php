@@ -209,6 +209,43 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $default = '0.8';
             $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $opactitychoices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+            // Syntax highlighting.
+            // Syntax highlighting heading.
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_syntaxhighlight_heading',
+                    get_string('syntaxhighlightheading', 'theme_foundation'),
+                    format_text(get_string('syntaxhighlightheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Activate syntax highlighting - 1 = no, 2 = yes.
+            $name = 'theme_foundation/syntaxhighlight';
+            $title = get_string('syntaxhighlight', 'theme_foundation');
+            $description = get_string('syntaxhighlight_desc', 'theme_foundation');
+            $default = 1;
+            $choices = array(
+                1 => new \lang_string('no'), // No.
+                2 => new \lang_string('yes') // Yes.
+            );
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+            if (\theme_foundation\toolbox::get_config_setting('syntaxhighlight') == 2) {
+                // Syntax highlighting categories.
+                $coursecats = \theme_foundation\toolbox::get_categories_list();
+                $coursecatsoptions = array();
+                foreach ($coursecats as $catkey => $catvalue) {
+                    $coursecatsoptions[$catkey] = join(' / ', $catvalue->namechunks);
+                }
+                $name = 'theme_foundation/syntaxhighlightcat';
+                $title = get_string('syntaxhighlightcat', 'theme_foundation');
+                $description = get_string('syntaxhighlightcatdesc', 'theme_foundation');
+                $default = array();
+                $setting = new \admin_setting_configmultiselect($name, $title, $description, $default, $coursecatsoptions);
+                $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+            }
         }
     }
 

@@ -1,0 +1,16 @@
+.syntaxhighlightmodal {
+    text-align: center;
+    margin: 0 auto;
+    #mySHModal {
+        text-align: left;
+        a {
+            color: $blue;
+        }
+        pre {
+            font-size: 21px;
+        }
+        .modal-dialog {
+            max-width: 674px;
+        }
+    }
+}
