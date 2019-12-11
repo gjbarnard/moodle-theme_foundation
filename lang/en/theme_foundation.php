@@ -122,6 +122,22 @@ $string['loginbackgroundstyledesc'] = 'Select the style for the uploaded image.'
 $string['loginbackgroundopacity'] = 'Login box background opacity when there is a background image';
 $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login box when there is a background image.';
 
+// Syntax highlighter.
+$string['syntaxhighlightheading'] = 'Syntax highlighting settings';
+$string['syntaxhighlightheadingdesc'] = 'Set the syntax highlighting settings.';
+$string['syntaxhighlight'] = 'Activate syntax highlighting';
+$string['syntaxhighlight_desc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
+$string['syntaxhighlightpage'] = 'Syntax highlighting help';
+$string['syntaxhelpone'] = 'When editing anything (such as a label) with the text editor surround your code with a \'pre\' tag and add the class="brush: alias" where \'alias\' is one of the following:';
+$string['syntaxhelptwo'] = 'Brush name';
+$string['syntaxhelpthree'] = 'Brush alias';
+$string['syntaxhelpfour'] = 'For example:';
+$string['syntaxhelpfive'] = 'becomes:';
+$string['syntaxhelpsix'] = 'If you cannot see this help on a course then ask the administrator to activate \'Syntax highlighting\' for the courses\' category.';
+$string['syntaxhelpseven'] = 'More information on';
+$string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
+$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.  To select none, use the \'Ctrl\ key.';
+
 // Carousels.
 $string['frontpagecarouselheading'] = 'Frontpage carousel';
 $string['frontpagecarouselheadingsub'] = 'Frontpage carousel settings';

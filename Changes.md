@@ -1,6 +1,8 @@
 Version Information
 ===================
 Version 3.7.1.3 - TBD
+  1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83.
+     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html.
 
 Version 3.7.1.2 - 13/11/2019
   1. Fix position of goto bottom icon when logged out.

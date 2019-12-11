@@ -986,6 +986,95 @@ class toolbox {
         return $theconfig;
     }
 
+    static public function get_categories_list() {
+        static $catlist = null;
+        if (empty($catlist)) {
+            global $DB;
+            $catlist = $DB->get_records('course_categories', null, 'sortorder', 'id, name, depth, path');
+
+            foreach ($catlist as $category) {
+                $category->parents = array();
+                if ($category->depth > 1 ) {
+                    $path = preg_split('|/|', $category->path, -1, PREG_SPLIT_NO_EMPTY);
+                    $category->namechunks = array();
+                    foreach ($path as $parentid) {
+                        $category->namechunks[] = $catlist[$parentid]->name;
+                        $category->parents[] = $parentid;
+                    }
+                    $category->parents = array_reverse($category->parents);
+                } else {
+                    $category->namechunks = array($category->name);
+                }
+            }
+        }
+
+        return $catlist;
+    }
+
+    static public function serve_syntaxhighlighter($filename) {
+        global $CFG;
+        if (file_exists("{$CFG->dirroot}/theme/foundation/javascript/syntaxhighlighter_3_0_83/scripts/")) {
+            $thesyntaxhighlighterpath = $CFG->dirroot.'/theme/foundation/javascript/syntaxhighlighter_3_0_83/scripts/';
+        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/javascript/syntaxhighlighter_3_0_83/scripts/")) {
+            $thesyntaxhighlighterpath = $CFG->themedir.'/foundation/javascript/syntaxhighlighter_3_0_83/scripts/';
+        } else {
+            header('HTTP/1.0 404 Not Found');
+            die('Foundation syntax highlighter scripts folder not found.');
+        }
+        $thefile = $thesyntaxhighlighterpath . $filename;
+
+        /* Ref: http://css-tricks.com/snippets/php/intelligent-php-cache-control/ - rather than /lib/csslib.php as it is a static
+          file who's contents should only change if it is rebuilt.  But! There should be no difference with TDM on so will see for
+          the moment if that decision is a factor. */
+
+        $etagfile = md5_file($thefile);
+        // File.
+        $lastmodified = filemtime($thefile);
+        // Header.
+        $ifmodifiedsince = (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : false);
+        $etagheader = (isset($_SERVER['HTTP_IF_NONE_MATCH']) ? trim($_SERVER['HTTP_IF_NONE_MATCH']) : false);
+
+        if ((($ifmodifiedsince) && (strtotime($ifmodifiedsince) == $lastmodified)) || $etagheader == $etagfile) {
+            self::send_unmodified($lastmodified, $etagfile, 'application/javascript');
+        }
+        self::send_cached($thesyntaxhighlighterpath, $filename, $lastmodified, $etagfile, 'application/javascript');
+    }
+
+    static private function send_unmodified($lastmodified, $etag, $contenttype) {
+        $lifetime = 60 * 60 * 24 * 60;
+        header('HTTP/1.1 304 Not Modified');
+        header('Expires: '.gmdate('D, d M Y H:i:s', time() + $lifetime).' GMT');
+        header('Cache-Control: public, max-age=' . $lifetime);
+        header('Content-Type: '.$contenttype.'; charset=utf-8');
+        header('Etag: "'.$etag.'"');
+        if ($lastmodified) {
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastmodified).' GMT');
+        }
+        die;
+    }
+
+    static private function send_cached($path, $filename, $lastmodified, $etag, $contenttype) {
+        global $CFG;
+        require_once($CFG->dirroot . '/lib/configonlylib.php'); // For min_enable_zlib_compression().
+        // Sixty days only - the revision may get incremented quite often.
+        $lifetime = 60 * 60 * 24 * 60;
+
+        header('Etag: "'.$etag.'"');
+        header('Content-Disposition: inline; filename="'.$filename.'"');
+        header('Last-Modified: '.gmdate('D, d M Y H:i:s', $lastmodified).' GMT');
+        header('Expires: '.gmdate('D, d M Y H:i:s', time() + $lifetime).' GMT');
+        header('Pragma: ');
+        header('Cache-Control: public, max-age='.$lifetime);
+        header('Accept-Ranges: none');
+        header('Content-Type: '.$contenttype.'; charset=utf-8');
+        if (!min_enable_zlib_compression()) {
+            header('Content-Length: '.filesize($path . $filename));
+        }
+
+        readfile($path . $filename);
+        die;
+    }
+
     public function get_fa5_from_fa4($icon, $hasprefix = false) {
         $icontofind = ($hasprefix) ? $icon : 'fa-'.$icon;
 
