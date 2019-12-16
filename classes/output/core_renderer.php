@@ -40,6 +40,7 @@ class core_renderer extends \core_renderer {
     use mustache_engine;
 
     protected $syntaxhighlighterenabled = false;
+    protected $syntaxhighlighterhelpenabled = false;
 
     /**
      * The standard tags (meta tags, links to stylesheets and JavaScript, etc.)
@@ -53,17 +54,26 @@ class core_renderer extends \core_renderer {
             case 'course':
             case 'incourse':
                 $this->syntax_highlighter();
+            break;
+            default:
+                if (join('-', array_slice(explode('-', trim($this->page->pagetype)), 0, 1)) == 'mod') {
+                    $this->syntax_highlighter(false);
+                }
+            break;
         }
         return parent::standard_head_html();
     }
 
-    protected function syntax_highlighter() {
+    protected function syntax_highlighter($codeandhelp = true) {
         $toolbox = \theme_foundation\toolbox::get_instance();
         if ($toolbox->get_setting('syntaxhighlight') == 2) {
             if (in_array($this->get_current_category(), explode(',', $toolbox->get_setting('syntaxhighlightcat'))) !== false) {
-                $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
-                $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
-                $this->syntaxhighlighterenabled = true;
+                if ($codeandhelp) {
+                    $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
+                    $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
+                    $this->syntaxhighlighterenabled = true;
+                }
+                $this->syntaxhighlighterhelpenabled = true;
             }
         }
     }
@@ -99,9 +109,9 @@ class core_renderer extends \core_renderer {
 
         $context = \context_course::instance($this->page->course->id);
         // Typically if you can update the course settings then you can use syntax highlighting.
-        if (($this->syntaxhighlighterenabled) && (\has_capability('moodle/course:update', $context))) {
+        if (($this->syntaxhighlighterhelpenabled) && (\has_capability('moodle/course:update', $context))) {
             $output .= html_writer::start_tag('div', array('class' => 'syntaxhighlightmodal'));
-            $output .= '<a href="#mySHModal" role="button" class="btn" data-toggle="modal">Syntax highlighing help</a>';
+            $output .= '<a href="#mySHModal" role="button" class="btn" data-toggle="modal">'.get_string('syntaxhighlightpage', 'theme_foundation').'</a>';
 
             $output .= '<div id="mySHModal" class="modal fade text-dark" tabindex="-1" role="dialog" aria-labelledby="mySHModalLabel" '.
                 'aria-hidden="true">';
