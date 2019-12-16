@@ -134,7 +134,7 @@ $string['syntaxhelpthree'] = 'Brush alias';
 $string['syntaxhelpfour'] = 'For example:';
 $string['syntaxhelpfive'] = 'becomes:';
 $string['syntaxhelpsix'] = 'If you cannot see this help on a course then ask the administrator to activate \'Syntax highlighting\' for the courses\' category.';
-$string['syntaxhelpseven'] = 'More information on';
+$string['syntaxhelpseven'] = 'Note: The \'&lt;\' and \'&gt;\' symbols seem to be problematic within in a \'pre\' tag, change them to \'&amp;lt;\' and \'&amp;gt;\' respectively.  More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
 $string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.  To select none, use the \'Ctrl\ key.';
 
