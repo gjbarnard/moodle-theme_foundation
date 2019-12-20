@@ -29,6 +29,7 @@ matrix:
 env:
  global:
   - MOODLE_BRANCH=MOODLE_36_STABLE
+  - IGNORE_PATHS=javascript/syntaxhighlighter_3_0_83/
   - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css
 
 before_install:
