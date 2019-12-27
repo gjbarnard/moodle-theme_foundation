@@ -1013,10 +1013,16 @@ class toolbox {
 
     static public function serve_syntaxhighlighter($filename) {
         global $CFG;
-        if (file_exists("{$CFG->dirroot}/theme/foundation/javascript/syntaxhighlighter_3_0_83/scripts/")) {
+        $us = self::get_instance();
+        $v3083 = ($us->get_config_setting('syntaxhighlightversion') == '3.0.83');
+        if (($v3083) && (file_exists("{$CFG->dirroot}/theme/foundation/javascript/syntaxhighlighter_3_0_83/scripts/"))) {
             $thesyntaxhighlighterpath = $CFG->dirroot.'/theme/foundation/javascript/syntaxhighlighter_3_0_83/scripts/';
-        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/javascript/syntaxhighlighter_3_0_83/scripts/")) {
+        } else if (($v3083) && (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/javascript/syntaxhighlighter_3_0_83/scripts/"))) {
             $thesyntaxhighlighterpath = $CFG->themedir.'/foundation/javascript/syntaxhighlighter_3_0_83/scripts/';
+        } else if ((!$v3083) && (file_exists("{$CFG->dirroot}/theme/foundation/javascript/syntaxhighlighter_4_0_1/scripts/"))) {
+            $thesyntaxhighlighterpath = $CFG->dirroot.'/theme/foundation/javascript/syntaxhighlighter_4_0_1/scripts/';
+        } else if ((!$v3083) && (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/javascript/syntaxhighlighter_4_0_1/scripts/"))) {
+            $thesyntaxhighlighterpath = $CFG->themedir.'/foundation/javascript/syntaxhighlighter_4_0_1/scripts/';
         } else {
             header('HTTP/1.0 404 Not Found');
             die('Foundation syntax highlighter scripts folder not found.');
