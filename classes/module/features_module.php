@@ -223,13 +223,26 @@ class features_module extends \theme_foundation\module_basement implements \temp
             // Activate syntax highlighting - 1 = no, 2 = yes.
             $name = 'theme_foundation/syntaxhighlight';
             $title = get_string('syntaxhighlight', 'theme_foundation');
-            $description = get_string('syntaxhighlight_desc', 'theme_foundation');
+            $description = get_string('syntaxhighlightdesc', 'theme_foundation');
             $default = 1;
             $choices = array(
                 1 => new \lang_string('no'), // No.
                 2 => new \lang_string('yes') // Yes.
             );
             $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+            $shchoices = array(
+                '3.0.83' => '3.0.83',
+                '4.0.1' => '4.0.1'
+            );
+
+            // Syntax highlighter version.
+            $name = 'theme_foundation/syntaxhighlightversion';
+            $title = get_string('syntaxhighlightversion', 'theme_foundation');
+            $description = get_string('syntaxhighlightversiondesc', 'theme_foundation');
+            $default = '3.0.83';
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $shchoices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             if (\theme_foundation\toolbox::get_config_setting('syntaxhighlight') == 2) {

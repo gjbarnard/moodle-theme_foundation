@@ -70,8 +70,12 @@ class core_renderer extends \core_renderer {
         if ($toolbox->get_setting('syntaxhighlight') == 2) {
             if (in_array($this->get_current_category(), explode(',', $toolbox->get_setting('syntaxhighlightcat'))) !== false) {
                 if ($codeandhelp) {
-                    $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
-                    $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
+                    if ($toolbox->get_setting('syntaxhighlightversion') == '3.0.83') {
+                        $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
+                        $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
+                    } else {
+                        $this->page->requires->css('/theme/foundation/javascript/syntaxhighlighter_4_0_1/styles/default.css');
+                    }
                     $this->syntaxhighlighterenabled = true;
                 }
                 $this->syntaxhighlighterhelpenabled = true;
@@ -303,41 +307,50 @@ class core_renderer extends \core_renderer {
                 "/$syscontext->id/theme_foundation/syntaxhighlighter/$itemid/");
             $url = preg_replace('|^https?://|i', '//', $url->out(false));
 
-            $output .= html_writer::script('', $url.'shCore.js');
-            $output .= html_writer::script('', $url.'shAutoloader.js');
-            $script = "require(['jquery', 'core/log'], function($, log) {";  // Use AMD to get jQuery.
-            $script .= "log.debug('Foundation SyntaxHighlighter AMD autoloader');";
-            $script .= "$('document').ready(function(){";
-            $script .= "SyntaxHighlighter.autoloader(";
-            $script .= "[ 'applescript', '" . $url . "shBrushAppleScript.js' ],";
-            $script .= "[ 'actionscript3', 'as3', '" . $url . "shBrushAS3.js' ],";
-            $script .= "[ 'bash', 'shell', '" . $url . "shBrushBash.js' ],";
-            $script .= "[ 'coldfusion', 'cf', '" . $url . "shBrushColdFusion.js' ],";
-            $script .= "[ 'cpp', 'c', '" . $url . "shBrushCpp.js' ],";
-            $script .= "[ 'c#', 'c-sharp', 'csharp', '" . $url . "shBrushCSharp.js' ],";
-            $script .= "[ 'css', '" . $url . "shBrushCss.js' ],";
-            $script .= "[ 'delphi', 'pascal', '" . $url . "shBrushDelphi.js' ],";
-            $script .= "[ 'diff', 'patch', 'pas', '" . $url . "shBrushDiff.js' ],";
-            $script .= "[ 'erl', 'erlang', '" . $url . "shBrushErlang.js' ],";
-            $script .= "[ 'groovy', '" . $url . "shBrushGroovy.js' ],";
-            $script .= "[ 'haxe hx', '" . $url . "shBrushHaxe.js', ],";
-            $script .= "[ 'java', '" . $url . "shBrushJava.js' ],";
-            $script .= "[ 'jfx', 'javafx', '" . $url . "shBrushJavaFX.js' ],";
-            $script .= "[ 'js', 'jscript', 'javascript', '" . $url . "shBrushJScript.js' ],";
-            $script .= "[ 'perl', 'pl', '" . $url . "shBrushPerl.js' ],";
-            $script .= "[ 'php', '" . $url . "shBrushPhp.js' ],";
-            $script .= "[ 'text', 'plain', '" . $url . "shBrushPlain.js' ],";
-            $script .= "[ 'py', 'python', '" . $url . "shBrushPython.js' ],";
-            $script .= "[ 'ruby', 'rails', 'ror', 'rb', '" . $url . "shBrushRuby.js' ],";
-            $script .= "[ 'scala', '" . $url . "shBrushScala.js' ],";
-            $script .= "[ 'sql', '" . $url . "shBrushSql.js' ],";
-            $script .= "[ 'vb', 'vbnet', '" . $url . "shBrushVb.js' ],";
-            $script .= "[ 'xml', 'xhtml', 'xslt', 'html', '" . $url . "shBrushXml.js' ]";
-            $script .= ');';
-            $script .= 'SyntaxHighlighter.all(); console.log("Syntax Highlighter Init");';
-            $script .= '});';
-            $script .= '});';
-            $output .= html_writer::script($script);
+            $toolbox = \theme_foundation\toolbox::get_instance();
+            if ($toolbox->get_setting('syntaxhighlightversion') == '3.0.83') {
+                $output .= html_writer::script('', $url.'shCore.js');
+                $output .= html_writer::script('', $url.'shAutoloader.js');
+                $script = "require(['jquery', 'core/log'], function($, log) {";  // Use AMD to get jQuery.
+                $script .= "log.debug('Foundation SyntaxHighlighter AMD autoloader');";
+                $script .= "$('document').ready(function(){";
+                $script .= "SyntaxHighlighter.autoloader(";
+                $script .= "[ 'applescript', '" . $url . "shBrushAppleScript.js' ],";
+                $script .= "[ 'actionscript3', 'as3', '" . $url . "shBrushAS3.js' ],";
+                $script .= "[ 'bash', 'shell', '" . $url . "shBrushBash.js' ],";
+                $script .= "[ 'coldfusion', 'cf', '" . $url . "shBrushColdFusion.js' ],";
+                $script .= "[ 'cpp', 'c', '" . $url . "shBrushCpp.js' ],";
+                $script .= "[ 'c#', 'c-sharp', 'csharp', '" . $url . "shBrushCSharp.js' ],";
+                $script .= "[ 'css', '" . $url . "shBrushCss.js' ],";
+                $script .= "[ 'delphi', 'pascal', '" . $url . "shBrushDelphi.js' ],";
+                $script .= "[ 'diff', 'patch', 'pas', '" . $url . "shBrushDiff.js' ],";
+                $script .= "[ 'erl', 'erlang', '" . $url . "shBrushErlang.js' ],";
+                $script .= "[ 'groovy', '" . $url . "shBrushGroovy.js' ],";
+                $script .= "[ 'haxe hx', '" . $url . "shBrushHaxe.js', ],";
+                $script .= "[ 'java', '" . $url . "shBrushJava.js' ],";
+                $script .= "[ 'jfx', 'javafx', '" . $url . "shBrushJavaFX.js' ],";
+                $script .= "[ 'js', 'jscript', 'javascript', '" . $url . "shBrushJScript.js' ],";
+                $script .= "[ 'perl', 'pl', '" . $url . "shBrushPerl.js' ],";
+                $script .= "[ 'php', '" . $url . "shBrushPhp.js' ],";
+                $script .= "[ 'text', 'plain', '" . $url . "shBrushPlain.js' ],";
+                $script .= "[ 'py', 'python', '" . $url . "shBrushPython.js' ],";
+                $script .= "[ 'ruby', 'rails', 'ror', 'rb', '" . $url . "shBrushRuby.js' ],";
+                $script .= "[ 'scala', '" . $url . "shBrushScala.js' ],";
+                $script .= "[ 'sql', '" . $url . "shBrushSql.js' ],";
+                $script .= "[ 'vb', 'vbnet', '" . $url . "shBrushVb.js' ],";
+                $script .= "[ 'xml', 'xhtml', 'xslt', 'html', '" . $url . "shBrushXml.js' ]";
+                $script .= ');';
+                $script .= 'SyntaxHighlighter.all(); console.log("Syntax Highlighter 3.0.83 Init");';
+                $script .= '});';
+                $script .= '});';
+                $output .= html_writer::script($script);
+            } else {
+                $output .= html_writer::script('', $url.'syntaxhighlighter.js');
+                $script = "require(['core/log'], function(log) {";
+                $script .= 'console.log("Syntax Highlighter 4.0.1 Init");';
+                $script .= '});';
+                $output .= html_writer::script($script);
+            }
         }
 
         return $output;

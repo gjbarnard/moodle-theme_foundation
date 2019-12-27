@@ -126,7 +126,7 @@ $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login 
 $string['syntaxhighlightheading'] = 'Syntax highlighting settings';
 $string['syntaxhighlightheadingdesc'] = 'Set the syntax highlighting settings.';
 $string['syntaxhighlight'] = 'Activate syntax highlighting';
-$string['syntaxhighlight_desc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
+$string['syntaxhighlightdesc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
 $string['syntaxhighlightpage'] = 'Syntax highlighting help';
 $string['syntaxhelpone'] = 'When editing anything (such as a label) with the text editor surround your code with a \'pre\' tag and add the class="brush: alias" where \'alias\' is one of the following:';
 $string['syntaxhelptwo'] = 'Brush name';
@@ -137,6 +137,8 @@ $string['syntaxhelpsix'] = 'If you cannot see this help on a course then ask the
 $string['syntaxhelpseven'] = 'Note: The \'&lt;\' and \'&gt;\' symbols seem to be problematic within in a \'pre\' tag, change them to \'&amp;lt;\' and \'&amp;gt;\' respectively for your code.  More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
 $string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.  To select none, use the \'Ctrl\ key.';
+$string['syntaxhighlightversion'] = 'Syntax highlighting version';
+$string['syntaxhighlightversiondesc'] = 'Select which version you would like to use.  Choose between 3.0.83 and 4.0.1.';
 
 // Carousels.
 $string['frontpagecarouselheading'] = 'Frontpage carousel';
