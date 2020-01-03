@@ -22,10 +22,15 @@
     }
 }
 
-.navbar-nav .usermenu .dropdown-menu {
-    left: auto;
-    position: absolute;
-    right: 0;
+.navbar-nav {
+    .dropdown-menu {
+        position: absolute;
+    }
+    .usermenu .dropdown-menu {
+        left: auto;
+        position: absolute;
+        right: 0;
+    }
 }
 
 .nav .caret {

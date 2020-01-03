@@ -188,6 +188,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             } else {
                 $branchtitle = get_string('my'.$lateststring.'courses', 'theme_foundation');
             }
+            $branchtitle = html_writer::tag('span', $branchtitle, array('class' => 'd-none d-sm-inline'));
             $branchlabel = $output->getfontawesomemarkup('briefcase', array('icon')).$branchtitle;
             $branchurl = $PAGE->url;
             $branchsort = 200;
