@@ -1,4 +1,10 @@
 // Icons.
+@media (max-width: 575px) {
+    .nav-link > .icon {
+        margin-right: 1px;
+    }
+}
+
 .navbar-dark a .icon {
     color: inherit !important; // stylelint-disable-line declaration-no-important
 }
