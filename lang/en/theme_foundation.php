@@ -41,7 +41,7 @@ $string['configtitle'] = 'Foundation';
 $string['pluginname'] = 'Foundation';
 
 $string['region-drawer'] = 'Drawer';
-$string['region-horizontal'] = 'Horizontal';
+$string['region-marketing'] = 'Marketing';
 $string['region-side-pre'] = 'Left';
 
 $string['stylecover'] = 'Cover';
@@ -62,6 +62,9 @@ $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 
 $string['fav'] = 'FontAwesome 5 Free';
 $string['favdesc'] = 'Use FontAwesome 5 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
+
+$string['blocksperrow'] = 'Blocks per row';
+$string['blocksperrowdesc'] = 'Number of blocks per row when using a horizontal block region, such as \'Marketing\'.  Note: When editing all blocks will be the same size to facilitate ease of use.';
 
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
