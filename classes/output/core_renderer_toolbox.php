@@ -165,9 +165,16 @@ trait core_renderer_toolbox {
         $classes = (array)$classes;
         $classes[] = 'block-region row hblocks';
         $editing = $this->page->user_is_editing();
-        if ($editing) {
-            $classes[] = 'editing';
+
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $blocksperrow = $toolbox->get_setting('blocksperrow');
+        if (($blocksperrow > 6) || ($blocksperrow < 1)) {
+            $blocksperrow = 4;
         }
+        if ($editing) {
+            $classes[] = 'editing bpr-'.$blocksperrow;
+        }
+
         $attributes = array(
             'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
@@ -175,7 +182,7 @@ trait core_renderer_toolbox {
             'data-droptarget' => '1'
         );
         if ($this->page->blocks->region_has_content($region, $this)) {
-            $content = $this->hblocks_for_region($region, $editing);
+            $content = $this->hblocks_for_region($region, $editing, $blocksperrow);
         } else {
             $content = '';
         }
@@ -185,11 +192,13 @@ trait core_renderer_toolbox {
     /**
      * Output all the horizontal blocks in a particular region.
      *
-     * @param string $region the name of a region on this page.
+     * @param string $region The name of a region on this page.
      * @param boolean $editing If the user is editing the page.
+     * @param int $blocksperrow Number of blocks per row.
+     *
      * @return string the HTML to be output.
      */
-    public function hblocks_for_region($region, $editing) {
+    public function hblocks_for_region($region, $editing, $blocksperrow) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $blocks = $this->page->blocks->get_blocks_for_region($region);
         $lastblock = null;
@@ -200,13 +209,8 @@ trait core_renderer_toolbox {
         $output = '';
 
         $blockcount = count($blockcontents);
-        $toolbox = \theme_foundation\toolbox::get_instance();
-        $blocksperrow = $toolbox->get_setting('blocksperrow');
 
         if ($blockcount >= 1) {
-            if (($blocksperrow > 6) || ($editing)) {
-                $blocksperrow = 4; // Will result in a 'col-sm-3' when more than one row.
-            }
             $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
 
             if (!$editing) {

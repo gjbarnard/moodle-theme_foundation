@@ -63,7 +63,22 @@
 
 .hblocks.editing .card {
     margin: 0 15px;
+}
+
+.hblocks.editing.bpr-1 .card {
+    width: calc(100% - 30px);
+}
+.hblocks.editing.bpr-2 .card {
+    width: calc(50% - 30px);
+}
+.hblocks.editing.bpr-3 .card {
+    width: calc(33.3333333333% - 30px);
+}
+.hblocks.editing.bpr-4 .card {
     width: calc(25% - 30px);
+}
+.hblocks.editing.bpr-6 .card {
+    width: calc(16.6666666667% - 30px);
 }
 
 @include media-breakpoint-down(sm) {
