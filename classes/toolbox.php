@@ -301,6 +301,13 @@ class toolbox {
 
         // General settings.
         if ($admin->fulltree) {
+            global $CFG;
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
+            }
+
             $settingspages['general'][self::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
@@ -326,6 +333,21 @@ class toolbox {
             $default = false;
             $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
             $setting->set_updatedcallback('purge_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Number of blocks per row.
+            $name = 'theme_foundation/blocksperrow';
+            $title = get_string('blocksperrow', 'theme_foundation');
+            $default = '2';
+            $description = get_string('blocksperrowdesc', 'theme_foundation');
+            $choices = array(
+                '1' => '1',
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+                '6' => '6'
+            );
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Pre SCSS.
