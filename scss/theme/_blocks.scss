@@ -61,6 +61,11 @@
     }
 }
 
+#block-region-horizontal.editing .card {
+    margin: 0 15px;
+    width: calc(25% - 30px);
+}
+
 @include media-breakpoint-down(sm) {
     [data-region="blocks-drawer"] {
         background-color: $card-bg;

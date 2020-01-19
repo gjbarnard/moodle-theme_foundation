@@ -41,6 +41,7 @@ $string['configtitle'] = 'Foundation';
 $string['pluginname'] = 'Foundation';
 
 $string['region-drawer'] = 'Drawer';
+$string['region-horizontal'] = 'Horizontal';
 $string['region-side-pre'] = 'Left';
 
 $string['stylecover'] = 'Cover';

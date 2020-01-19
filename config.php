@@ -46,6 +46,7 @@ $THEME->yuicssmodules = array();
 
 $empty = array();
 $regions = array('side-pre', 'drawer');
+$hregions = array_merge($regions, array('horizontal'));
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
@@ -86,7 +87,7 @@ $THEME->layouts = array(
     'frontpage' => array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => $regions,
+        'regions' => $hregions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true)
     ),

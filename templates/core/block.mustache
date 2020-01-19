@@ -20,6 +20,9 @@
 {{/showskiplink}}
 
 {{! Start Block Container }}
+{{#haswidth}}
+<div class="{{width}}">
+{{/haswidth}}
 <section id="{{id}}"
      class="{{#hidden}}hidden{{/hidden}} block block_{{type}} {{#hascontrols}}block_with_controls{{/hascontrols}} card mb-3"
      role="{{ariarole}}"
@@ -59,6 +62,9 @@
 
 {{! End Block Container }}
 </section>
+{{#haswidth}}
+</div>
+{{/haswidth}}
 
 {{! Block Skip Link Target }}
 {{#showskiplink}}
