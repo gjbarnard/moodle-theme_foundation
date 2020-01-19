@@ -65,8 +65,8 @@ trait core_renderer_toolbox {
                 }
             }
 
-            if (in_array('horizontal', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-                $hblockshtml = $this->hblocks('horizontal');
+            if (in_array('marketing', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $hblockshtml = $this->hblocks('marketing');
                 $hashblocks = strpos($hblockshtml, 'data-block=') !== false;
 
                 $data->hblocks = $hblockshtml;
@@ -163,7 +163,7 @@ trait core_renderer_toolbox {
      */
     public function hblocks($region, $classes = array(), $tag = 'aside') {
         $classes = (array)$classes;
-        $classes[] = 'block-region row';
+        $classes[] = 'block-region row hblocks';
         $editing = $this->page->user_is_editing();
         if ($editing) {
             $classes[] = 'editing';
@@ -200,10 +200,11 @@ trait core_renderer_toolbox {
         $output = '';
 
         $blockcount = count($blockcontents);
-        $blocksperrow = 2;
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $blocksperrow = $toolbox->get_setting('blocksperrow');
 
         if ($blockcount >= 1) {
-            if (($blocksperrow > 4) || ($editing)) {
+            if (($blocksperrow > 6) || ($editing)) {
                 $blocksperrow = 4; // Will result in a 'col-sm-3' when more than one row.
             }
             $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
