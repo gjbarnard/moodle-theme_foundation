@@ -314,7 +314,8 @@ class toolbox {
             $name = 'theme_foundation/favicon';
             $title = get_string('favicon', 'theme_foundation');
             $description = get_string('favicondesc', 'theme_foundation');
-            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon');
+            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
+                array('accepted_types' => '.ico'));
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
