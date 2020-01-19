@@ -49,22 +49,36 @@ trait core_renderer_toolbox {
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-            $drawerblockshtml = $this->blocks('drawer');
-            $hasdrawerblocks = ((strpos($drawerblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
-            $preblockshtml = $this->blocks('side-pre');
-            $haspreblocks = strpos($preblockshtml, 'data-block=') !== false;
+            if (in_array('drawer', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $drawerblockshtml = $this->blocks('drawer');
+                $hasdrawerblocks = ((strpos($drawerblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
 
-            $data->drawerblocks = $drawerblockshtml;
-            $data->hasdrawerblocks = $hasdrawerblocks;
-            $data->sidepreblocks = $preblockshtml;
-            $data->haspreblocks = $haspreblocks;
+                $data->drawerblocks = $drawerblockshtml;
+                $data->hasdrawerblocks = $hasdrawerblocks;
 
-            if ($hasdrawerblocks) {
-                \user_preference_allow_ajax_update('drawerclosed', PARAM_BOOL);
-                $data->drawerclosed = get_user_preferences('drawerclosed', true);
-                if (!$data->drawerclosed) {
-                    $bodyclasses[] = 'drawer-open';
+                if ($hasdrawerblocks) {
+                    \user_preference_allow_ajax_update('drawerclosed', PARAM_BOOL);
+                    $data->drawerclosed = get_user_preferences('drawerclosed', true);
+                    if (!$data->drawerclosed) {
+                        $bodyclasses[] = 'drawer-open';
+                    }
                 }
+            }
+
+            if (in_array('horizontal', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $hblockshtml = $this->hblocks('horizontal');
+                $hashblocks = strpos($hblockshtml, 'data-block=') !== false;
+
+                $data->hblocks = $hblockshtml;
+                $data->hashblocks = $hashblocks;
+            }
+
+            if (in_array('side-pre', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $preblockshtml = $this->blocks('side-pre');
+                $haspreblocks = strpos($preblockshtml, 'data-block=') !== false;
+
+                $data->sidepreblocks = $preblockshtml;
+                $data->haspreblocks = $haspreblocks;
             }
         }
 
@@ -142,6 +156,114 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Get the HTML for horizontal blocks in the given region.
+     *
+     * @param string $region The region to get HTML for.
+     * @return string HTML.
+     */
+    public function hblocks($region, $classes = array(), $tag = 'aside') {
+        $classes = (array)$classes;
+        $classes[] = 'block-region row';
+        $editing = $this->page->user_is_editing();
+        if ($editing) {
+            $classes[] = 'editing';
+        }
+        $attributes = array(
+            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
+            'class' => join(' ', $classes),
+            'data-blockregion' => $region,
+            'data-droptarget' => '1'
+        );
+        if ($this->page->blocks->region_has_content($region, $this)) {
+            $content = $this->hblocks_for_region($region, $editing);
+        } else {
+            $content = '';
+        }
+        return html_writer::tag($tag, $content, $attributes);
+    }
+
+    /**
+     * Output all the horizontal blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @param boolean $editing If the user is editing the page.
+     * @return string the HTML to be output.
+     */
+    public function hblocks_for_region($region, $editing) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            $zones[] = $block->title;
+        }
+        $output = '';
+
+        $blockcount = count($blockcontents);
+        $blocksperrow = 2;
+
+        if ($blockcount >= 1) {
+            if (($blocksperrow > 4) || ($editing)) {
+                $blocksperrow = 4; // Will result in a 'col-sm-3' when more than one row.
+            }
+            $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
+
+            if (!$editing) {
+                if ($rows <= 1) {
+                    $col = 12 / $blockcount;
+                    if ($col < 1) {
+                        // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
+                        $col = 1;
+                    }
+                } else {
+                    $col = 12 / $blocksperrow;
+                }
+            }
+
+            $currentblockcount = 0;
+            $currentrow = 0;
+            $currentrequiredrow = 1;
+
+            foreach ($blockcontents as $bc) {
+                if (!$editing) { // Using CSS when editing.
+                    $currentblockcount++;
+                    if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
+                        // Tripping point.
+                        $currentrequiredrow++;
+                        // Recalculate col if needed...
+                        $remainingblocks = $blockcount - ($currentblockcount - 1);
+                        if ($remainingblocks < $blocksperrow) {
+                            $col = 12 / $remainingblocks;
+                            if ($col < 1) {
+                                /* Should not happen but a fail safe.
+                                  Block will be small so good for screen shots when this happens. */
+                                $col = 1;
+                            }
+                        }
+                    }
+
+                    if ($currentrow < $currentrequiredrow) {
+                        $currentrow = $currentrequiredrow;
+                    }
+
+                    $bc->attributes['width'] = 'col-sm-'.$col;
+                }
+
+                if ($bc instanceof block_contents) {
+                    $output .= $this->block($bc, $region);
+                    $lastblock = $bc->title;
+                } else if ($bc instanceof block_move_target) {
+                    $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+                } else {
+                    throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
+                }
+            }
+        }
+
+        return $output;
+    }
+
+    /**
      * Prints a nice side block with an optional header.
      *
      * @param block_contents $bc HTML for the content
@@ -173,6 +295,13 @@ trait core_renderer_toolbox {
         $context->annotation = $bc->annotation;
         $context->footer = $bc->footer;
         $context->hascontrols = !empty($bc->controls);
+        if (!empty($bc->attributes['width'])) {
+            $context->haswidth = true;
+            $context->width = $bc->attributes['width'];
+        } else {
+            $context->haswidth = false;
+            $context->width = '';
+        }
         if ($context->hascontrols) {
             $context->controls = $this->block_controls($bc->controls, $id);
         }
