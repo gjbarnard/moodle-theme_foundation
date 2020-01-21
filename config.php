@@ -34,6 +34,9 @@ if (!empty(\theme_foundation\toolbox::get_config_setting('fav'))) {
     $THEME->sheets[] = 'fa-regular';
     $THEME->sheets[] = 'fa-solid';
     $THEME->sheets[] = 'fontawesome';
+    if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
+        $THEME->sheets[] = 'fa-v4-shims';
+    }
     $THEME->sheets[] = 'fa-fixes';
 }
 $THEME->editor_sheets = [];
