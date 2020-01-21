@@ -1,8 +1,12 @@
 Version Information
 ===================
 Version 3.7.1.3 - TBD
-  1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83.
-     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html.
+  1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
+     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html for 3.0.83 and MIT for 4.0.1.
+     There is a setting whereby you can switch between the two.
+  2. Add horizontal block area functionality.  Initially used for front page marketing spots.
+  3. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
+  4. Ensure that favicon is an 'ico' file only.
 
 Version 3.7.1.2 - 13/11/2019
   1. Fix position of goto bottom icon when logged out.
