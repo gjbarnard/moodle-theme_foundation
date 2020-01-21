@@ -18,8 +18,12 @@ Version 3.6.1.0 - TBD
  14. Fix quiz drag and drop colour and not working in preview.
  15. Fix content overflow causing horizontal scrollbar when editing a quiz.
  16. Add floating drawer on screens less than 768px wide.
- 17. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83.
-     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html.
+ 17. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
+     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html for 3.0.83 and MIT for 4.0.1.
+     There is a setting whereby you can switch between the two.
+ 18. Add horizontal block area functionality.  Initially used for front page marketing spots.
+ 19. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
+ 20. Ensure that favicon is an 'ico' file only.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.
