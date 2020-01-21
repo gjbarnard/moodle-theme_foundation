@@ -62,6 +62,8 @@ $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 
 $string['fav'] = 'FontAwesome 5 Free';
 $string['favdesc'] = 'Use FontAwesome 5 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
+$string['faiv'] = 'FontAwesome 5 Free v4 shims';
+$string['faivdesc'] = 'When using FontAwesome 5 Free for the icons add support for version 4 icon class names.';
 
 $string['blocksperrow'] = 'Blocks per row';
 $string['blocksperrowdesc'] = 'Number of blocks per row when using a horizontal block region, such as \'Marketing\'.  Note: When editing all blocks will be the same size to facilitate ease of use.';

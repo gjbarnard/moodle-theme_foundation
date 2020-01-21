@@ -335,6 +335,15 @@ class toolbox {
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
+            // Font Awesome 5 Free v4 shims.
+            $name = 'theme_foundation/faiv';
+            $title = get_string('faiv', 'theme_foundation');
+            $description = get_string('faivdesc', 'theme_foundation');
+            $default = false;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $setting->set_updatedcallback('purge_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Number of blocks per row.
             $name = 'theme_foundation/blocksperrow';
             $title = get_string('blocksperrow', 'theme_foundation');
