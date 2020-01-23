@@ -24,6 +24,7 @@ Version 3.6.1.0 - TBD
  18. Add horizontal block area functionality.  Initially used for front page marketing spots.
  19. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
  20. Ensure that favicon is an 'ico' file only.
+ 21. Add brands to the footer.
 
 Version 3.6.0.5
   1. Fix core_text scope issue causing exception.

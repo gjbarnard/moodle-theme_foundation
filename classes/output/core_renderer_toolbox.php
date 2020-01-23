@@ -83,7 +83,6 @@ trait core_renderer_toolbox {
         }
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $data->thealerts = array();
         $featuresmodule = $toolbox->get_module('features');
         if (!empty($featuresmodule)) {
             $featuresdata = $featuresmodule->export_for_template($this);
