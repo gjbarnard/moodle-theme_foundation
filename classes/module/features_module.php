@@ -157,6 +157,65 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 }
             }
 
+            // Brands.
+            // Brands heading.
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_brands_heading',
+                    get_string('brandsheading', 'theme_foundation'),
+                    format_text(get_string('brandsheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Number of brands.
+            $name = 'theme_foundation/numberofbrands';
+            $title = get_string('numberofbrands', 'theme_foundation');
+            $default = 0;
+            $lower = 0;
+            $upper = 8;
+            $description = get_string('numberofbrandsdesc', 'theme_foundation',
+                array('lower' => $lower, 'upper' => $upper));
+            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+            $numberofbrands = $toolbox->get_setting('numberofbrands', 'foundation'); // Stick to ours or could be confusing!
+            if ($numberofbrands > 0) {
+                for ($brandnum = 1; $brandnum <= $numberofbrands; $brandnum++) {
+                    // Brand X setting heading.
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                        new \admin_setting_heading(
+                            'theme_foundation_brand_'.$brandnum.'_heading',
+                            get_string('brandsettingheading', 'theme_foundation', array('number' => $brandnum)),
+                            ''
+                        )
+                    );
+
+                    // Brand enabled.
+                    $name = 'theme_foundation/enablebrand'.$brandnum;
+                    $title = get_string('enablebrand', 'theme_foundation', array('number' => $brandnum));
+                    $description = get_string('enablebranddesc', 'theme_foundation', array('number' => $brandnum));
+                    $default = false;
+                    $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Brand icon name.
+                    $name = 'theme_foundation/brandiconname'.$brandnum;
+                    $title = get_string('brandiconname', 'theme_foundation', array('number' => $brandnum));
+                    $description = get_string('brandiconnamedesc', 'theme_foundation', array('number' => $brandnum));
+                    $default = '';
+                    $setting = new \admin_setting_configtext($name, $title, $description, $default);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+                    // Brand icon URL.
+                    $name = 'theme_foundation/brandiconurl'.$brandnum;
+                    $title = get_string('brandiconurl', 'theme_foundation', array('number' => $brandnum));
+                    $description = get_string('brandiconurldesc', 'theme_foundation', array('number' => $brandnum));
+                    $default = '';
+                    $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+                    $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+                }
+            }
+
             // Login background image heading.
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                 new \admin_setting_heading(
@@ -315,19 +374,32 @@ class features_module extends \theme_foundation\module_basement implements \temp
      * Export for template.
      *
      * @param renderer_base $output The renderer.
+     *
      * @return stdClass containing the data or null.
      */
     public function export_for_template(\renderer_base $output) {
-        $data = null;
+        $data = new \stdClass;
         $toolbox = \theme_foundation\toolbox::get_instance();
 
+        $this->export_alerts($data, $toolbox);
+        $this->export_brands($data, $toolbox);
+
+        return $data;
+    }
+
+    /**
+     * Export alerts for template.
+     *
+     * @param array $data The template data array.
+     * @param toolbox $toolbox The theme's toolbox instance.
+     */
+    protected function export_alerts(&$data, $toolbox) {
         $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
         if ($numberofalerts > 0) {
             global $PAGE;
             $alertsenabled = array();
             for ($alertnum = 1; $alertnum <= $numberofalerts; $alertnum++) {
-                $alertenabled = $toolbox->get_setting('enablealert'.$alertnum, 'foundation'); // Stick to ours or could be confusing!
-                if ($alertenabled) {
+                if ($toolbox->get_setting('enablealert'.$alertnum, 'foundation')) { // Stick to ours or could be confusing!
                     $alertpage = $toolbox->get_setting('alertpage'.$alertnum, 'foundation');
                     switch ($alertpage) {
                         case 'all':
@@ -343,7 +415,6 @@ class features_module extends \theme_foundation\module_basement implements \temp
             }
 
             if (!empty($alertsenabled)) {
-                $data = new \stdClass;
                 $data->thealerts = array();
                 foreach ($alertsenabled as $alertnum) {
                     $thealert = new \stdClass;
@@ -355,7 +426,41 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 }
             }
         }
+    }
 
-        return $data;
+    /**
+     * Export brands for template.
+     *
+     * @param array $data The template data array.
+     * @param toolbox $toolbox The theme's toolbox instance.
+     */
+    protected function export_brands(&$data, $toolbox) {
+        $numberofbrands = $toolbox->get_setting('numberofbrands', 'foundation'); // Stick to ours or could be confusing!
+        if ($numberofbrands > 0) {
+            global $PAGE;
+            $brandsenabled = array();
+            for ($brandnum = 1; $brandnum <= $numberofbrands; $brandnum++) {
+                if ($toolbox->get_setting('enablebrand'.$brandnum, 'foundation')) { // Stick to ours or could be confusing!
+                    $brandsenabled[] = $brandnum; // Alert to be shown on the page.
+                }
+            }
+
+            if (!empty($brandsenabled)) {
+                $data->thebrands = array();
+                if ($toolbox->get_setting('fav', 'foundation')) {
+                    $data->brandclasses = 'fab fa-';
+                } else {
+                    $data->brandclasses = 'fa fa-';
+                }
+                $data->brandsenabled = true;
+                foreach ($brandsenabled as $brandnum) {
+                    $thebrand = new \stdClass;
+                    $thebrand->brandiconname = $toolbox->get_setting('brandiconname'.$brandnum, 'foundation');
+                    $thebrand->brandiconurl = $toolbox->get_setting('brandiconurl'.$brandnum, 'foundation');
+
+                    $data->thebrands[] = $thebrand;
+                }
+            }
+        }
     }
 }

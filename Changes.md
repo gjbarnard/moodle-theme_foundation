@@ -7,6 +7,7 @@ Version 3.7.1.3 - TBD
   2. Add horizontal block area functionality.  Initially used for front page marketing spots.
   3. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
   4. Ensure that favicon is an 'ico' file only.
+  5. Add brands to the footer.
 
 Version 3.7.1.2 - 13/11/2019
   1. Fix position of goto bottom icon when logged out.
