@@ -1,0 +1,15 @@
+.brands {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    justify-content: flex-end;
+    text-align: center;
+
+    .brand {
+        margin: 8px;
+    }
+
+    i {
+        width: 30px;
+    }
+}
