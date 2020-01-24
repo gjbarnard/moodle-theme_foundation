@@ -52,10 +52,8 @@ class features_module extends \theme_foundation\module_basement implements \temp
             global $CFG;
             if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
                 require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
             } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
                 require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
             }
 
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
@@ -84,7 +82,11 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $upper = 4;
             $description = get_string('numberofalertsdesc', 'theme_foundation',
                 array('lower' => $lower, 'upper' => $upper));
-            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+            $choices = array();
+            for ($c = $lower; $c <= $upper; $c++) {
+                $choices[''.$c] = $c;
+            }
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
@@ -175,7 +177,11 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $upper = 8;
             $description = get_string('numberofbrandsdesc', 'theme_foundation',
                 array('lower' => $lower, 'upper' => $upper));
-            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+            $choices = array();
+            for ($c = $lower; $c <= $upper; $c++) {
+                $choices[''.$c] = $c;
+            }
+            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             $numberofbrands = $toolbox->get_setting('numberofbrands', 'foundation'); // Stick to ours or could be confusing!
