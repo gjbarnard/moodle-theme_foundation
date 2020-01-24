@@ -94,7 +94,7 @@ $string['alertsheading'] = 'Alerts settings';
 $string['alertsheadingdesc'] = 'Set the alerts settings.';
 
 $string['numberofalerts'] = 'Alerts';
-$string['numberofalertsdesc'] = 'Number of alerts between {$a->lower} and {$a->upper}.  After changing and \'Saving changes\', refresh the page.';
+$string['numberofalertsdesc'] = 'Number of alerts between {$a->lower} and {$a->upper}.  After changing click on \'Save changes\' to get the number you set.';
 
 $string['alertsettingheading'] = 'Alert {$a->number} settings';
 
@@ -123,7 +123,7 @@ $string['brandsheading'] = 'Brand icons settings';
 $string['brandsheadingdesc'] = 'Set the brand icon settings.  The brand icon \'name\' is  - this is the FontAwesome name without the prefixing \'fa-\' so \'fa-train\' simply becomes \'train\'.  Depending on the \'fav\' setting to enable use of FontAwsome 5, please look at \'fontawesome.com/icons?d=gallery&s=brands&m=free\' if set and \'fontawesome.com/v4.7.0/icons/#brand\' if not, for the name of the icon.  The theme will do the rest with the class names.';
 
 $string['numberofbrands'] = 'Brands';
-$string['numberofbrandsdesc'] = 'Number of brands between {$a->lower} and {$a->upper}.  After changing and \'Saving changes\', refresh the page.';
+$string['numberofbrandsdesc'] = 'Number of brands between {$a->lower} and {$a->upper}.  After changing click on \'Save changes\' to get the number you set.';
 
 $string['brandsettingheading'] = 'Brand {$a->number} settings';
 
@@ -157,7 +157,7 @@ $string['syntaxhelpfive'] = 'becomes:';
 $string['syntaxhelpsix'] = 'If you cannot see this help on a course then ask the administrator to activate \'Syntax highlighting\' for the courses\' category.';
 $string['syntaxhelpseven'] = 'Note: The \'&lt;\' and \'&gt;\' symbols seem to be problematic within in a \'pre\' tag, change them to \'&amp;lt;\' and \'&amp;gt;\' respectively for your code.  More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
-$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.  To select none, use the \'Ctrl\ key.';
+$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.  To select none, use the \'Ctrl\' key.';
 $string['syntaxhighlightversion'] = 'Syntax highlighting version';
 $string['syntaxhighlightversiondesc'] = 'Select which version you would like to use.  Choose between 3.0.83 and 4.0.1.';
 
