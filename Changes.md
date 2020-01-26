@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.7.1.3 - TBD
+Version 3.7.1.3 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
      Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html for 3.0.83 and MIT for 4.0.1.
      There is a setting whereby you can switch between the two.
