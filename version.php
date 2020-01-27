@@ -25,11 +25,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2018112704;
+$plugin->version   = 2018112705;
 $plugin->requires  = 2018120301.00; // Moodle 3.6.1 (Build: 20181205).
 $plugin->component = 'theme_foundation';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '3.6.0.5';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '3.6.1.0';
 $plugin->dependencies = array(
     'theme_boost'  => 2018120300,
 );
