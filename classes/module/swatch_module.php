@@ -101,6 +101,7 @@ class swatch_module extends \theme_foundation\module_basement {
                 'minty' => 'Minty',
                 'pulse' => 'Pulse',
                 'sandstone' => 'Sandstone',
+                'seventies' => 'Seventies',
                 'slate' => 'Slate',
                 'simplex' => 'Simplex',
                 'sketchy' => 'Sketchy',

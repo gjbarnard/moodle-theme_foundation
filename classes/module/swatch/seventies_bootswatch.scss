@@ -1,0 +1,98 @@
+// Seventies
+
+// Variables ===================================================================
+@font-face {
+    font-family: 'BPscript';
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|BPscript-webfont.woff]]') format('woff'), url('[[font:theme|BPscript.otf]]')");
+}
+
+@font-face {
+    font-family: 'NimbusMono';
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|nimbusmono-regular.otf]]')");
+}
+
+@font-face {
+    font-family: 'NimbusMono';
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|nimbusmono-oblique.otf]]')");
+}
+
+@font-face {
+    font-family: 'NimbusMono';
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|nimbusmono-bold.otf]]')");
+}
+
+@font-face {
+    font-family: 'NimbusMono';
+    font-weight: bold;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|nimbusmono-boldoblique.otf]]')");
+}
+
+@font-face {
+    font-family: 'Risque';
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|Risque-Regular.otf]]')");
+}
+
+@font-face {
+    font-family: 'SpicyRice';
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|SpicyRice-Regular.otf]]')");
+}
+
+// Typography ==================================================================
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.summary {
+    font-family: "BPscript", Calibri, Candara, Arial, sans-serif;
+}
+
+//
+// Code
+//
+
+body .syntaxhighlighter {
+    code,
+    div {
+        font-family: $font-family-monospace !important;
+    }
+    code {
+        @include font-size(0.85em, true);
+    }
+}
+
+// Show expand collapse with font-awesome.
+.block_settings .block_tree [aria-expanded="true"],
+.block_settings .block_tree [aria-expanded="true"].emptybranch,
+.block_settings .block_tree [aria-expanded="false"],
+.block_navigation .block_tree [aria-expanded="true"],
+.block_navigation .block_tree [aria-expanded="true"].emptybranch,
+.block_navigation .block_tree [aria-expanded="false"] {
+    &:before {
+        color: $primary;
+    }
+}
+
+.block .block-action:before {
+    color: $primary;
+}
