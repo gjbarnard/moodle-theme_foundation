@@ -12,3 +12,17 @@
         }
     }
 }
+
+.course-content ul.topics,
+.course-content ul.weeks {
+    li.section {
+        .summary,
+        .content > .availabilityinfo {
+            margin-left: 13px;
+        }
+    }
+}
+
+.course-content ul.section {
+    padding-left: 0;
+}
