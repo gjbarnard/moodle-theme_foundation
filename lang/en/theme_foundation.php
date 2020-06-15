@@ -233,7 +233,7 @@ $string['moduleheadingdesc'] = 'Configure the module settings for Foundation her
    $string = array_merge($string, $toolbox->get_lang_strings('en')); */
 // Module strings here for now!
 $string['swatch'] = 'Swatch';
-$string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
+$string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches (bar \'Seventies\' which I created) are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
 $string['swatchheading'] = 'Swatch';
 $string['swatchheadingsub'] = 'Swatch settings';
 $string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
