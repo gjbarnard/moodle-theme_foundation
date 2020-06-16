@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.9.0.1 - TBD
+  1. Apply MDL-68041.
 
 Version 3.8.1.1 - TBD
   1. Back to top functionality in embedded template.
