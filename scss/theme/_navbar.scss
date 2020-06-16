@@ -37,6 +37,15 @@
     margin-left: 0;
 }
 
+.navbar-dark {
+    .navbar-nav {
+        .logininfo {
+            color: $navbar-dark-color;
+            padding: $nav-link-padding-y $nav-link-padding-x;
+        }
+    }
+}
+
 .popover-region-toggle {
     &::after {
         bottom: -6px;

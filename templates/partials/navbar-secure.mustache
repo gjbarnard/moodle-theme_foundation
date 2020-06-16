@@ -24,11 +24,15 @@
     * output - The core renderer for the page.
     * config - The config instance.
     * hasdrawerblocks - true if there are drawer blocks on this page.
+    * drawerclosed - true if the drawe is closed on this page.
 
     Example context (json):
     {
-        "sitename": "Moodle",
-        "output": "",
+        "output": {
+            "should_display_navbar_logo": "true",
+            "get_compact_logo_url": "http://example.com/image.png"
+        },
+        "sitename": "Moodle Site",
         "config": "",
         "hasdrawerblocks": true,
         "drawerclosed": true
@@ -61,9 +65,17 @@
         <li class="nav-item">
             <button id="gotobottom" class="btn btn-link nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down fa-lg{{/fav}}"></span></button>
         </li>
-        <li class="nav-item">
-            {{{ output.secure_login_info }}}
-        </li>
+        {{# output.secure_layout_language_menu }}
+        <ul class="navbar-nav d-none d-md-flex">
+            <!-- language_menu -->
+            {{{ . }}}
+        </ul>
+        {{/ output.secure_layout_language_menu }}
+        {{# output.secure_layout_login_info }}
+        <div class="ml-auto">
+            {{{ . }}}
+        </div>
+        {{/ output.secure_layout_login_info }}
     </ul>
 </nav>
 {{#js}}
