@@ -1,7 +1,10 @@
 Version Information
 ===================
-Version 3.9.0.1 - TBD
+Version 3.9.0.1 - 17/06/2020
   1. Apply MDL-68041.
+  Note: Custom H5P settings will only work with the mod_hvp (https://moodle.org/plugins/mod_hvp) module and not the
+        core mod_h5pactivity module in core due to a reduction in the supporting API.  Ref: https://h5p.org/node/285646
+        for how it should work with 'hvp_alter_styles'.
 
 Version 3.8.1.1 - TBD
   1. Back to top functionality in embedded template.
