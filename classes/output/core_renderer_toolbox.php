@@ -113,6 +113,18 @@ trait core_renderer_toolbox {
             }
         }
 
+        if ((!empty($this->page->cm->modname)) && ($this->page->cm->modname == 'h5pactivity')) {
+            $hvpcontent = $toolbox->get_setting('hvpcustomcss');
+            if (!empty($hvpcontent)) {
+                global $CFG;
+
+                $syscontext = \context_system::instance();
+                $itemid = md5($hvpcontent);
+                $data->hvpurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+                    "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css");
+            }
+        }
+
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {

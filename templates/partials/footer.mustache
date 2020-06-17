@@ -63,4 +63,22 @@
 <button id="backtotop" class="btn btn-primary mr-2 mb-1 mt-1" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
 {{#js}}
 require(['theme_foundation/anti_gravity']);
+{{#hvpurl}}
+require(['jquery', 'core/log'], function($, log) {
+    $(document).ready(function() {
+        function append_hvp() {
+            var iframe = $("iframe.h5p-iframe");
+            if (iframe.length) {
+                var iframehead = iframe.contents().find('head');
+                if (iframehead.length) {
+                    iframehead.append("<link rel='stylesheet' href='{{hvpurl}}' type='text/css' />");
+                    log.debug('iframehead: ' + iframehead.length);
+                }
+            }
+            log.debug('iframe: ' + iframe.length);
+        };
+        window.setTimeout(append_hvp, 5000); // 5 seconds
+    });
+});
+{{/hvpurl}}
 {{/js}}
