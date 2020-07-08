@@ -609,6 +609,75 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Renders a custom menu object (located in outputcomponents.php)
+     *
+     * The custom menu this method produces makes use of the YUI3 menunav widget
+     * and requires very specific html elements and classes.
+     *
+     * @staticvar int $menucount - where?!
+     * @param custom_menu $menu
+     * @return string
+     */
+    protected function render_custom_menu(\custom_menu $menu) {
+        if (!$menu->has_children()) {
+            return '';
+        }
+
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+
+        return $content;
+    }
+
+    /**
+     * Renders the language menu.
+     *
+     * @return string
+     */
+    public function render_lang_menu() {
+        global $CFG;
+
+        if (empty($CFG->langmenu)) {
+            return '';
+        }
+
+        if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
+            // Do not show lang menu if language forced.
+            return '';
+        }
+
+        $langs = get_string_manager()->get_list_of_translations();
+        if (count($langs) < 2) {
+            return '';
+        }
+
+        $menu = new course_menu_item('');
+        $strlang = get_string('language');
+        $currentlangcode = current_language();
+        if (isset($langs[$currentlangcode])) {
+            $currentlang = html_writer::tag('span', $langs[$currentlangcode], array('class' => 'd-none d-sm-inline')).
+                html_writer::tag('span', $currentlangcode, array('class' => 'd-sm-none'));
+        } else {
+            $currentlang = $strlang;
+        }
+        $this->language = $menu->add($currentlang, new \moodle_url('#'), $strlang, 10000);
+        foreach ($langs as $langtype => $langname) {
+            $this->language->add($langname, new \moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+        }
+
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+
+        return $content;
+    }
+
+    /**
      * This renders the navbar.
      * Improved on core not to output any markup if no items.
      *
