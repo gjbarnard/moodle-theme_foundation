@@ -187,3 +187,46 @@ function theme_foundation_override_webservice_execution($function, $params) {
 
     return false;
 }
+
+/**
+ * Extend the course navigation.
+ *
+ * Ref: MDL-69249.
+ *
+ * @param navigation_node $coursenode The navigation node.
+ * @param stdClass $course The course.
+ * @param context_course $coursecontext The course context.
+ */
+function theme_foundation_extend_navigation_course($coursenode, $course, $coursecontext) {
+    global $PAGE;
+
+    if ($PAGE->user_allowed_editing()) {
+        // Add the turn on/off settings.
+        if ($PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
+            // We are on the course page, retain the current page params e.g. section.
+            $baseurl = clone($PAGE->url);
+            $baseurl->param('sesskey', sesskey());
+        } else {
+            // Edit on the main course page.
+            $baseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()));
+        }
+
+        $editurl = clone($baseurl);
+        if ($PAGE->user_is_editing()) {
+            $editurl->param('edit', 'off');
+            $editstring = get_string('turneditingoff');
+        } else {
+            $editurl->param('edit', 'on');
+            $editstring = get_string('turneditingon');
+        }
+
+        $childnode = navigation_node::create($editstring, $editurl, navigation_node::TYPE_SETTING, null, 'turneditingonoff', new pix_icon('i/edit', ''));
+        $keylist = $coursenode->get_children_key_list();
+        if (!empty($keylist)) {
+            $beforekey = $keylist[0];
+        } else {
+            $beforekey = null;
+        }
+        $coursenode->add_node($childnode, $beforekey);
+    }
+}

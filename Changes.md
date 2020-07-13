@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.9.0.2 - TBD
+  1. Put back missing 'Turn editing on' in course settings block - MDL-69249.
 
 Version 3.9.0.1 - 17/06/2020
   1. Apply MDL-68041.
