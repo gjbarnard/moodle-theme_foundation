@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.9.0.2 - TBD
+
 Version 3.9.0.1 - 17/06/2020
   1. Apply MDL-68041.
   Note: Custom H5P settings will only work with the mod_hvp (https://moodle.org/plugins/mod_hvp) module and not the
