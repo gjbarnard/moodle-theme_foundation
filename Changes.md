@@ -3,6 +3,7 @@ Version Information
 Version 3.8.1.1 - TBD
   1. Back to top functionality in embedded template.
   2. Add 'seventies' swatch.
+  3. Fix 'Error when adding questions to a quiz' - #6.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
