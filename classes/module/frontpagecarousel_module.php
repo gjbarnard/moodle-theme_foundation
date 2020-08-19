@@ -50,11 +50,9 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
             get_string('frontpagecarouselheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
         if ($adminfulltree) {
             global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
                 require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
                 require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
             }
 

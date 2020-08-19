@@ -158,6 +158,9 @@ trait core_renderer_toolbox {
      * Get the HTML for horizontal blocks in the given region.
      *
      * @param string $region The region to get HTML for.
+     * @param array $classes Classes.
+     * @param string $tag Tag.
+     *
      * @return string HTML.
      */
     public function hblocks($region, $classes = array(), $tag = 'aside') {
@@ -614,8 +617,8 @@ trait core_renderer_toolbox {
      * The custom menu this method produces makes use of the YUI3 menunav widget
      * and requires very specific html elements and classes.
      *
-     * @staticvar int $menucount - where?!
      * @param custom_menu $menu
+     *
      * @return string
      */
     protected function render_custom_menu(\custom_menu $menu) {
@@ -694,6 +697,16 @@ trait core_renderer_toolbox {
         return $output;
     }
 
+    /**
+     * Get the FontAwesome markup.
+     *
+     * @param string $theicon Icon name.
+     * @param array $classes Classes.
+     * @param array $attributes Attributes.
+     * @param string $content Content.
+     *
+     * @return string Markup.
+     */
     public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
         $toolbox = \theme_foundation\toolbox::get_instance();
         if ($toolbox->get_setting('fav')) {

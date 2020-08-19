@@ -17,8 +17,7 @@
 /**
  * Integer admin setting with lower and upper limits.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,6 +25,15 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Integer admin setting with lower and upper limits.
+ *
+ * @package    theme
+ * @subpackage foundation
+ * @copyright  &copy; 2019-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class foundation_admin_setting_configinteger extends admin_setting_configtext {
 
     /** @var int lower range limit */
@@ -53,6 +61,13 @@ class foundation_admin_setting_configinteger extends admin_setting_configtext {
         parent::__construct($name, $visiblename, $description, $defaultsetting, PARAM_INT);
     }
 
+    /**
+     * Checks if data has empty html.
+     *
+     * @param string $data
+     *
+     * @return string Empty when no errors.
+     */
     public function write_setting($data) {
         // Trim any spaces to avoid spaces typo.
         $data = trim($data);
@@ -65,7 +80,8 @@ class foundation_admin_setting_configinteger extends admin_setting_configtext {
 
     /**
      * Validate data before storage
-     * @param string data
+     * @param string $data
+     *
      * @return mixed true if ok string if error found
      */
     public function validate($data) {

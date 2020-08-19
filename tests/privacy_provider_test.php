@@ -32,9 +32,16 @@ use \theme_foundation\privacy\provider;
 /**
  * Privacy unit tests for the Foundation theme.
  * @group theme_foundation
+ *
+ * @copyright  &copy; 2018-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_testcase {
 
+    /**
+     * Set up.
+     */
     protected function set_up() {
         $this->resetAfterTest(true);
 

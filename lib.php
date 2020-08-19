@@ -177,6 +177,11 @@ function theme_foundation_get_precompiled_css() {
  * Override the core_output_load_template function to use our Mustache template finder.
  *
  * Info on: https://docs.moodle.org/dev/Miscellaneous_callbacks#override_webservice_execution
+ *
+ * @param stdClass $function Function details.
+ * @param array $params Parameters
+ *
+ * @return boolean Success.
  */
 function theme_foundation_override_webservice_execution($function, $params) {
     // Check if it's the function we want to override.

@@ -26,6 +26,14 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Foundation theme.
+ *
+ * @package    theme_foundation
+ * @copyright  &copy; 2019-onwards G J Barnard.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
     /**
@@ -33,6 +41,9 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      */
     private $map = [];
 
+    /**
+     * @var boolean $fav Using FontAwesome 5.
+     */
     private $fav;
 
     /**
@@ -43,6 +54,11 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         $this->fav = \theme_foundation\toolbox::get_config_setting('fav');
     }
 
+    /**
+     * Return the icon map.
+     *
+     * @return array the map.
+     */
     public function get_core_icon_map() {
         if (!$this->fav) {
             $map = parent::get_core_icon_map();
@@ -413,6 +429,8 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
     /**
      * Overridable function to get a mapping of all icons.
      * Default is to do no mapping.
+     *
+     * @return array the map.
      */
     public function get_icon_name_map() {
         if (!$this->fav) {
@@ -448,6 +466,11 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         return $this->map;
     }
 
+    /**
+     * Get the AMD JS code name.
+     *
+     * @return string the name.
+     */
     public function get_amd_name() {
         if (!$this->fav) {
             return parent::get_amd_name();
@@ -455,6 +478,14 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         return 'theme_foundation/icon_system_fontawesome';
     }
 
+    /**
+     * Get the AMD JS code name.
+     *
+     * @param renderer_base $output The output object.
+     * @param pix_icon $icon The pix_icon object.
+     *
+     * @return string the rendered icon markup.
+     */
     public function render_pix_icon(\renderer_base $output, \pix_icon $icon) {
         if (!$this->fav) {
             return parent::render_pix_icon($output, $icon);

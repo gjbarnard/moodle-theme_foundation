@@ -53,11 +53,9 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             get_string('coursesmenuheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
         if ($adminfulltree) {
             global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
                 require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
                 require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
             }
 
@@ -95,7 +93,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
                 2 => get_string('mycoursesorderid', 'theme_foundation'),
                 3 => get_string('mycoursesorderlast', 'theme_foundation')
             );
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             // Course ID order.
@@ -107,7 +105,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
                 1 => get_string('mycoursesorderidasc', 'theme_foundation'),
                 2 => get_string('mycoursesorderiddes', 'theme_foundation')
             );
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             // Max courses.
@@ -132,7 +130,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
                 'class' => get_string('myclasses', 'theme_foundation'),
                 'module' => get_string('mymodules', 'theme_foundation')
             );
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         }
@@ -316,7 +314,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
      *
      * @param custom_menu_item $branch Menu branch to add the course to.
      * @param stdClass $course Course to use.
-     * @param boodlean $hasdisplayhiddenmycourses Display hidden courses.
+     * @param boolean $hasdisplayhiddenmycourses Display hidden courses.
      * @param renderer_base $output Output renderer.
      * @return boolean $courseadded if the course was added to the branch.
      */
@@ -339,6 +337,15 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         return $courseadded;
     }
 
+    /**
+     * Compares two courses.
+     *
+     * @param stdClass $a Course a.
+     * @param stdClass $b Course b.
+     * @param stdClass $course Course to use.
+     *
+     * @return int a < b, a = b or a > b.
+     */
     protected static function timeaccesscompare($a, $b) {
         // The timeaccess is lastaccess entry and timestart an enrol entry.
         if ((!empty($a->timeaccess)) && (!empty($b->timeaccess))) {

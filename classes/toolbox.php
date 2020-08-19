@@ -140,6 +140,7 @@ class toolbox {
      * Gets the pre SCSS.
      *
      * @param string $themename The name of the theme.
+     *
      * @return string SCSS.
      */
     public function pre_scss($themename) {
@@ -162,6 +163,7 @@ class toolbox {
      * Gets the main SCSS for the theme.
      *
      * @param theme_config $theme The theme configuration object.
+     *
      * @return string SCSS.
      */
     public function get_main_scss_content(\theme_config $theme) {
@@ -224,6 +226,7 @@ class toolbox {
      * Returns the module instance for the given modulename.
      *
      * @param string $themename The name of the theme.
+     *
      * @return module_basement extended object or null if not found.
      */
     public function get_module($modulename) {
@@ -244,6 +247,7 @@ class toolbox {
      * Return an instance of the mustache class.
      *
      * @since 2.9
+     *
      * @return Mustache_Engine
      */
     public function get_mustache() {
@@ -257,6 +261,7 @@ class toolbox {
      * Gets the extra SCSS.
      *
      * @param string $themename The name of the theme.
+     *
      * @return string SCSS.
      */
     public function extra_scss($themename) {
@@ -301,13 +306,6 @@ class toolbox {
 
         // General settings.
         if ($admin->fulltree) {
-            global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
-            }
-
             $settingspages['general'][self::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
@@ -356,7 +354,7 @@ class toolbox {
                 '4' => '4',
                 '6' => '6'
             );
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Pre SCSS.
@@ -843,6 +841,7 @@ class toolbox {
      * Note: Not currently called due to https://docs.moodle.org/dev/Plugin_contribution_checklist#Strings
      *
      * @param string $lang The language code to get.
+     *
      * @return array Array of strings.
      */
     public function get_lang_strings($lang) {
@@ -886,6 +885,7 @@ class toolbox {
      * Do we already know about the theme?
      *
      * @param string $themename Theme name.
+     *
      * @return boolean true or false.
      */
     protected function theme_exists($themename) {
@@ -898,6 +898,7 @@ class toolbox {
      *
      * @param string $settingname The name of the setting.
      * @param string $themename The name of the theme to start looking in.
+     *
      * @return boolean|mixed false if not found or setting value.
      */
     public function get_setting($settingname, $themename = null) {
@@ -914,8 +915,10 @@ class toolbox {
     /**
      * Finds the given setting in the theme using the get_config core function for when the
      * theme_config object has not been created.
+     *
      * @param string $setting Setting name.
      * @param themename $themename null(default of 'foundation' used)|theme name.
+     *
      * @return any false|value of setting.
      */
     static public function get_config_setting($setting, $themename = null) {
@@ -931,6 +934,11 @@ class toolbox {
      * See: https://moodle.org/mod/forum/discuss.php?d=371252#p1516474 and change if theme_config::setting_file_url
      * changes.
      * My need to do: $url = preg_replace('|^https?://|i', '//', $url->out(false)); separately.
+     *
+     * @param string $setting Setting name.
+     * @param string $themename Theme name.
+     *
+     * @return moodle_url The URL.
      */
     public function get_setting_moodle_url($setting, $themename = null) {
         $settingurl = null;
@@ -951,6 +959,12 @@ class toolbox {
 
     /**
      * Gets the setting file url for the given setting if it exists and set.
+     *
+     * @param string $setting Setting name.
+     * @param string $filearea File area.
+     * @param string $themename Theme name.
+     *
+     * @return string The URL.
      */
     public function setting_file_url($setting, $filearea, $themename = null) {
         $url = null;
@@ -979,6 +993,11 @@ class toolbox {
 
     /**
      * Gets the youngest theme config that the setting is stored in or null if not.
+     *
+     * @param string $settingname Setting name.
+     * @param string $themename Theme name.
+     *
+     * @return theme_config Theme config object.
      */
     private function get_setting_theme_config($settingname, $themename = null) {
         $theconfig = null;
@@ -1018,6 +1037,11 @@ class toolbox {
         return $theconfig;
     }
 
+    /**
+     * Gets the list of categories.
+     *
+     * @return array Categories.
+     */
     static public function get_categories_list() {
         static $catlist = null;
         if (empty($catlist)) {
@@ -1043,6 +1067,11 @@ class toolbox {
         return $catlist;
     }
 
+    /**
+     * Serves the Syntax Highlighter.
+     *
+     * @param string $filename Filename.
+     */
     static public function serve_syntaxhighlighter($filename) {
         global $CFG;
         $us = self::get_instance();
@@ -1078,6 +1107,13 @@ class toolbox {
         self::send_cached($thesyntaxhighlighterpath, $filename, $lastmodified, $etagfile, 'application/javascript');
     }
 
+    /**
+     * Serves the Syntax Highlighter.
+     *
+     * @param string $lastmodified Last modified.
+     * @param string $etag eTag.
+     * @param string $contenttype Content type.
+     */
     static private function send_unmodified($lastmodified, $etag, $contenttype) {
         $lifetime = 60 * 60 * 24 * 60;
         header('HTTP/1.1 304 Not Modified');
@@ -1091,6 +1127,15 @@ class toolbox {
         die;
     }
 
+    /**
+     * Serves the Syntax Highlighter.
+     *
+     * @param string $path Path.
+     * @param string $filename Filename.
+     * @param string $lastmodified Filename.
+     * @param string $etag eTag.
+     * @param string $contenttype Content type.
+     */
     static private function send_cached($path, $filename, $lastmodified, $etag, $contenttype) {
         global $CFG;
         require_once($CFG->dirroot . '/lib/configonlylib.php'); // For min_enable_zlib_compression().
@@ -1113,6 +1158,14 @@ class toolbox {
         die;
     }
 
+    /**
+     * Gets the Font Awesome 5 version of the version 4 icon.
+     *
+     * @param string $icon The icon.
+     * @param boolean $hasprefix Has the 'fa' prefix.
+     *
+     * @return string Icon CSS classes.
+     */
     public function get_fa5_from_fa4($icon, $hasprefix = false) {
         $icontofind = ($hasprefix) ? $icon : 'fa-'.$icon;
 

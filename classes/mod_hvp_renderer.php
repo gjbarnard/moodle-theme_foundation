@@ -31,6 +31,10 @@ if (file_exists($h5prenderer)) {
 
     /**
      * Class theme_foundation_mod_hvp_renderer
+     *
+     * @package     theme_foundation
+     * @copyright   2018 Gareth J Barnard
+     * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
      */
     class theme_foundation_mod_hvp_renderer extends mod_hvp_renderer {
 
@@ -52,6 +56,13 @@ if (file_exists($h5prenderer)) {
             }
         }
 
+        /**
+         * Get style URL when an H5P is displayed.
+         *
+         * @param string $styles Content.
+         *
+         * @return moodle_url the URL.
+         */
         protected function get_style_url($content) {
             global $CFG;
 
