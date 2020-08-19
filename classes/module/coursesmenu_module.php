@@ -342,7 +342,6 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
      *
      * @param stdClass $a Course a.
      * @param stdClass $b Course b.
-     * @param stdClass $course Course to use.
      *
      * @return int a < b, a = b or a > b.
      */

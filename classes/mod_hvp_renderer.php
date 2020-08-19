@@ -59,7 +59,7 @@ if (file_exists($h5prenderer)) {
         /**
          * Get style URL when an H5P is displayed.
          *
-         * @param string $styles Content.
+         * @param string $content Content.
          *
          * @return moodle_url the URL.
          */

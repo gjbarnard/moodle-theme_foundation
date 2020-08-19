@@ -41,7 +41,7 @@ class external extends \core\output\external {
      * Return a mustache template, and all the strings it requires.
      *
      * @param string $component The component that holds the template.
-     * @param string $templatename The name of the template.
+     * @param string $template The name of the template.
      * @param string $themename The name of the current theme.
      * @param boolean $includecomments Include the comments.
      *
