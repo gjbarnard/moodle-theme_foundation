@@ -3,6 +3,7 @@ Version Information
 Version 3.9.0.2 - TBD
   1. Put back missing 'Turn editing on' in course settings block - MDL-69249.
   2. Fix 'Error when adding questions to a quiz' - #6.
+  3. Update Travis to Moodle HQ version 3 - https://moodlehq.github.io/moodle-plugin-ci/UPGRADE-3.0.html.
 
 Version 3.9.0.1 - 17/06/2020
   1. Apply MDL-68041.
