@@ -225,7 +225,7 @@ class toolbox {
     /**
      * Returns the module instance for the given modulename.
      *
-     * @param string $themename The name of the theme.
+     * @param string $modulename The name of the module.
      *
      * @return module_basement extended object or null if not found.
      */

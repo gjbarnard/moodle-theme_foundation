@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die;
  *
  * @return boolean Success.
  */
- function xmldb_theme_foundation_upgrade($oldversion = 0) {
+function xmldb_theme_foundation_upgrade($oldversion = 0) {
 
     // Automatic 'Purge all caches'....
     if ($oldversion < 2109100400) {

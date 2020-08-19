@@ -28,8 +28,7 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * Integer admin setting with lower and upper limits.
  *
- * @package    theme
- * @subpackage foundation
+ * @package    theme_foundation
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
