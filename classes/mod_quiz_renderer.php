@@ -31,6 +31,10 @@ if (file_exists($quizrenderer)) {
 
     /**
      * Class theme_foundation_mod_quiz_renderer
+     *
+     * @package     theme_foundation
+     * @copyright   2019 Gareth J Barnard
+     * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
      */
     class theme_foundation_mod_quiz_renderer extends mod_quiz_renderer {
         /**

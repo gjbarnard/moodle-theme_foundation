@@ -49,13 +49,6 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $settingspages['features'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_features',
             get_string('featuresheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
         if ($adminfulltree) {
-            global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configselect.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configselect.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configselect.php');
-            }
-
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                 new \admin_setting_heading(
                     'theme_foundation_featuresheading',
@@ -86,7 +79,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             for ($c = $lower; $c <= $upper; $c++) {
                 $choices[''.$c] = $c;
             }
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
@@ -124,7 +117,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
                         'success' => get_string('alertsuccess', 'theme_foundation'),
                         'warning' => get_string('alertwarning', 'theme_foundation')
                     );
-                    $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+                    $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
                     $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                     // Alert title.
@@ -154,7 +147,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
                         'mydashboard' => get_string('myhome'),
                         'frontpage' => get_string('frontpage', 'admin')
                     );
-                    $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+                    $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
                     $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
                 }
             }
@@ -181,7 +174,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             for ($c = $lower; $c <= $upper; $c++) {
                 $choices[''.$c] = $c;
             }
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $choices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             $numberofbrands = $toolbox->get_setting('numberofbrands', 'foundation'); // Stick to ours or could be confusing!
@@ -244,7 +237,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $title = get_string('loginbackgroundstyle', 'theme_foundation');
             $description = get_string('loginbackgroundstyledesc', 'theme_foundation');
             $default = 'cover';
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default,
+            $setting = new \admin_setting_configselect($name, $title, $description, $default,
                 array(
                     'cover' => get_string('stylecover', 'theme_foundation'),
                     'stretch' => get_string('stylestretch', 'theme_foundation')
@@ -272,7 +265,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $title = get_string('loginbackgroundopacity', 'theme_foundation');
             $description = get_string('loginbackgroundopacitydesc', 'theme_foundation');
             $default = '0.8';
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $opactitychoices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $opactitychoices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             // Syntax highlighting.
@@ -307,7 +300,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $title = get_string('syntaxhighlightversion', 'theme_foundation');
             $description = get_string('syntaxhighlightversiondesc', 'theme_foundation');
             $default = '3.0.83';
-            $setting = new \foundation_admin_setting_configselect($name, $title, $description, $default, $shchoices);
+            $setting = new \admin_setting_configselect($name, $title, $description, $default, $shchoices);
             $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
             if (\theme_foundation\toolbox::get_config_setting('syntaxhighlight') == 2) {

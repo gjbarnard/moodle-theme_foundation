@@ -27,6 +27,14 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Foundation theme.
+ *
+ * @package    theme_foundation
+ * @copyright  &copy; 2019-onwards G J Barnard.  Based upon work by Damyon Wiese and G Thomas.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class external extends \core\output\external {
 
     /**
@@ -35,6 +43,8 @@ class external extends \core\output\external {
      * @param string $component The component that holds the template.
      * @param string $templatename The name of the template.
      * @param string $themename The name of the current theme.
+     * @param boolean $includecomments Include the comments.
+     *
      * @return string the template.
      */
     public static function load_template($component, $template, $themename, $includecomments = false) {

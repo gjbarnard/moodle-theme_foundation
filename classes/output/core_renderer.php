@@ -39,7 +39,13 @@ class core_renderer extends \core_renderer {
     use core_renderer_toolbox;
     use mustache_engine;
 
+    /**
+     * @var boolean Syntax Highligher enabled.
+     */
     protected $syntaxhighlighterenabled = false;
+    /**
+     * @var boolean Syntax Highligher help enabled.
+     */
     protected $syntaxhighlighterhelpenabled = false;
 
     /**
@@ -64,6 +70,11 @@ class core_renderer extends \core_renderer {
         return parent::standard_head_html();
     }
 
+    /**
+     * Initialises Syntax Highlighter if needed.
+     *
+     * @param boolean $codeandhelp
+     */
     protected function syntax_highlighter($codeandhelp = true) {
         $toolbox = \theme_foundation\toolbox::get_instance();
         if ($toolbox->get_setting('syntaxhighlight') == 2) {
