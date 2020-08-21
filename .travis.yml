@@ -50,6 +50,7 @@ install:
 # npm
   - npm install eslint@latest --save-dev
   - npm install eslint-plugin-babel@latest --save-dev
+  - npm install eslint-plugin-promise@latest --save-dev
 
 script:
   - moodle-plugin-ci phplint
