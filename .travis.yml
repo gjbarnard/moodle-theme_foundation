@@ -48,9 +48,9 @@ before_install:
 install:
   - moodle-plugin-ci install
 # npm
-  - npm install eslint@latest --save-dev
-  - npm install eslint-plugin-babel@latest --save-dev
-  - npm install eslint-plugin-promise@latest --save-dev
+  - npm install eslint@latest
+  - npm install eslint-plugin-babel@latest
+  - npm install eslint-plugin-promise@latest
 
 script:
   - moodle-plugin-ci phplint
