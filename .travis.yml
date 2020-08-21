@@ -35,10 +35,6 @@ before_install:
 # This disables XDebug which should speed up the build.  One reason to remove this
 # line is if you are trying to generate code coverage with PHPUnit.
   - phpenv config-rm xdebug.ini
-# nvm / npm
-  - nvm install 14.0
-  - nvm use 14.0
-  - npm install eslint-plugin-babel@latest --save-dev
 # Currently we are inside of the clone of your repository.  We move up two
 # directories to build the project.
   - cd ../..
@@ -51,6 +47,8 @@ before_install:
 
 install:
   - moodle-plugin-ci install
+# npm
+  - npm install eslint-plugin-babel@latest --save-dev
 
 script:
   - moodle-plugin-ci phplint

@@ -26,12 +26,7 @@
     "stylelint-checkstyle-formatter": "0.1.0",
     "stylelint-csstree-validator": "1.1.1",
     "xmldom": "0.1.22",
-    "xpath": "0.0.23",
-    "@babel/core": "7.9.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "6.8.0",
-    "eslint-plugin-babel": "5.3.0",
-    "eslint-plugin-promise": "4.2.1"
+    "xpath": "0.0.23"
   },
   "engines": {
     "node": ">=8.9"
