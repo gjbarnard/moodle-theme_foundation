@@ -38,7 +38,7 @@ $functions = array(
 
 $services = array(
     'Foundation theme FontAwesome map' => array(
-            'functions' => array ('theme_foundation_output_load_fontawesome_icon_map'),
+            'functions' => array('theme_foundation_output_load_fontawesome_icon_map'),
             'restrictedusers' => 0,
             'enabled' => 1
     )
