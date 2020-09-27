@@ -52,6 +52,17 @@
     font-size: 16px;
 }
 
+.context-header-settings-menu {
+    margin-top: 2px;
+    a {
+        color: inherit;
+    }
+    .dropdown-toggle > .icon {
+        font-size: 1.33333em;
+        height: 1.33333em;
+    }
+}
+
 .usermenu {
     .login {
         line-height: $line-height-base;

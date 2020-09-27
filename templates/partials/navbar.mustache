@@ -77,6 +77,12 @@
         <li class="nav-item">
             <button id="gotobottom" class="btn btn-link nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down fa-lg{{/fav}}"></span></button>
         </li>
+        {{#hascontextheadersettingsmenu}}
+        <!-- context_header_settings_menu -->
+        <li class="nav-item nav-link context-header-settings-menu">
+            {{{ contextheadersettingsmenu }}}
+        </li>
+        {{/hascontextheadersettingsmenu}}
         <!-- navbar_plugin_output -->
         <li class="nav-item navbar-plugin-output">
             {{{ output.navbar_plugin_output }}}
