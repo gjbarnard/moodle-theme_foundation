@@ -5,6 +5,7 @@ Version 3.8.1.1 - TBD
  2. Add 'seventies' swatch.
  3. Fix 'Error when adding questions to a quiz' - #6.
  4. Update Travis to Moodle HQ version 3 - https://moodlehq.github.io/moodle-plugin-ci/UPGRADE-3.0.html.
+ 5. Tidy navbar.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
