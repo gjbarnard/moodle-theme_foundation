@@ -2,9 +2,16 @@ a:hover {
     text-decoration: none;
 }
 
-#region-main > .card {
-    min-height: auto;
-    padding-bottom: 1px; // Odd!  Prevents scroll bar from appearing on a course.
+#region-main {
+    > .card {
+        min-height: auto;
+        padding-bottom: 1px; // Odd!  Prevents scroll bar from appearing on a course.
+    }
+}
+
+#region-main,
+.card {
+    border: none;
 }
 
 .dropdown-item a {
