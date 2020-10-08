@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.9.1.1 - 8/10/20
+
 Version 3.9.1.0 - 4/10/20
   1. Put back missing 'Turn editing on' in course settings block - MDL-69249.
   2. Fix 'Error when adding questions to a quiz' - #6.
