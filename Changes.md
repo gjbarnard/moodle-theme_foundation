@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.9.1.1 - 8/10/20
+  1. Fix 'Call to undefined function course_get_format() on login' - #8.
 
 Version 3.9.1.0 - 4/10/20
   1. Put back missing 'Turn editing on' in course settings block - MDL-69249.

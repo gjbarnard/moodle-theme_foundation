@@ -42,6 +42,8 @@ trait core_renderer_toolbox {
      * Orchestrates the rendering of the page.
      */
     public function render_page() {
+        global $CFG;
+
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
@@ -59,6 +61,7 @@ trait core_renderer_toolbox {
                 ['id' => 'region-main-settings-menu']
             ));
         }
+        require_once($CFG->dirroot.'/course/format/lib.php');
         $contextheadersettingsmenu = $this->context_header_settings_menu();
 
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
