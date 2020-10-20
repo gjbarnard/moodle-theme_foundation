@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.9.1.2 - TBR
+  1. Fix 'Book module has two icons'.
 
 Version 3.9.1.1 - 8/10/20
   1. Fix 'Call to undefined function course_get_format() on login' - #8.
