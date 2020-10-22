@@ -738,10 +738,9 @@ trait core_renderer_toolbox {
      * @return string HTML fragment
      */
     protected function render_navigation_node(\navigation_node $item) {
+        // Action link template uses the 'pix' mustache helper for the icon.
         if ($item->action instanceof \action_link) {
-            $action = clone($item->action);
-            $item = clone($item);
-            $item->action = $action;
+            $item->hideicon = true;
         }
         return parent::render_navigation_node($item);
     }
