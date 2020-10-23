@@ -42,7 +42,7 @@ $string['pluginname'] = 'Foundation';
 
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
-$string['region-side-pre'] = 'Left';
+$string['region-side-pre'] = 'Right';
 
 $string['stylecover'] = 'Cover';
 $string['stylestretch'] = 'Stretch';

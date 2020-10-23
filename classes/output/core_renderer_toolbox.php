@@ -83,7 +83,7 @@ trait core_renderer_toolbox {
 
             if (in_array('marketing', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $hblockshtml = $this->hblocks('marketing');
-                $hashblocks = strpos($hblockshtml, 'data-block=') !== false;
+                $hashblocks = ((strpos($hblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
 
                 $data->hblocks = $hblockshtml;
                 $data->hashblocks = $hashblocks;
@@ -91,7 +91,7 @@ trait core_renderer_toolbox {
 
             if (in_array('side-pre', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $preblockshtml = $this->blocks('side-pre');
-                $haspreblocks = strpos($preblockshtml, 'data-block=') !== false;
+                $haspreblocks = ((strpos($preblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
 
                 $data->sidepreblocks = $preblockshtml;
                 $data->haspreblocks = $haspreblocks;
