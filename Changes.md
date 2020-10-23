@@ -8,6 +8,8 @@ Version 3.8.1.1 - TBD
  5. Tidy navbar.
  6. Fix 'Call to undefined function course_get_format() on login' - #8.
  7. Fix 'Book module has two icons'.
+ 8. Fix empty block regions don't have JS drop area when editing.
+ 9. Side-pre is on the right.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
