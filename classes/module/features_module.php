@@ -43,7 +43,6 @@ class features_module extends \theme_foundation\module_basement implements \temp
      * Add the features settings.
      *
      * @param array $settingspages The setting pages.
-     * @param boolean $adminfulltree If the full tree is required.
      * @param toolbox $toolbox The theme toolbox.
      */
     public function add_settings(&$settingspages, $toolbox) {
