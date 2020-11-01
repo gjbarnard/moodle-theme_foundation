@@ -44,6 +44,9 @@
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
     }
+    .dropdown-item a .icon {
+        color: inherit !important; // stylelint-disable-line declaration-no-important
+    }
 }
 
 .popover-region-toggle {
