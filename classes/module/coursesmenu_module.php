@@ -44,96 +44,93 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
      * Add the course menu settings.
      *
      * @param array $settingspages The setting pages.
-     * @param boolean $adminfulltree If the full tree is required.
      * @param toolbox $toolbox The theme toolbox.
      */
-    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
+    public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
         $settingspages['coursesmenu'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_coursesmenu',
             get_string('coursesmenuheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
-        if ($adminfulltree) {
-            global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
-            }
 
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_coursesmenuheading',
-                    get_string('coursesmenuheadingsub', 'theme_foundation'),
-                    format_text(get_string('coursesmenuheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
-
-            // Toggle courses display in custommenu.
-            $name = 'theme_foundation/displaymycourses';
-            $title = get_string('displaymycourses', 'theme_foundation');
-            $description = get_string('displaymycoursesdesc', 'theme_foundation');
-            $default = true;
-            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-            // Toggle hidden courses display in custommenu.
-            $name = 'theme_foundation/displayhiddenmycourses';
-            $title = get_string('displayhiddenmycourses', 'theme_foundation');
-            $description = get_string('displayhiddenmycoursesdesc', 'theme_foundation');
-            $default = true;
-            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-            // My courses order.
-            $name = 'theme_foundation/mycoursesorder';
-            $title = get_string('mycoursesorder', 'theme_foundation');
-            $description = get_string('mycoursesorderdesc', 'theme_foundation');
-            $default = 1;
-            $choices = array(
-                1 => get_string('mycoursesordersort', 'theme_foundation'),
-                2 => get_string('mycoursesorderid', 'theme_foundation'),
-                3 => get_string('mycoursesorderlast', 'theme_foundation')
-            );
-            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-            // Course ID order.
-            $name = 'theme_foundation/mycoursesorderidorder';
-            $title = get_string('mycoursesorderidorder', 'theme_foundation');
-            $description = get_string('mycoursesorderidorderdesc', 'theme_foundation');
-            $default = 1;
-            $choices = array(
-                1 => get_string('mycoursesorderidasc', 'theme_foundation'),
-                2 => get_string('mycoursesorderiddes', 'theme_foundation')
-            );
-            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-            // Max courses.
-            $name = 'theme_foundation/mycoursesmax';
-            $title = get_string('mycoursesmax', 'theme_foundation');
-            $default = 0;
-            $lower = 0;
-            $upper = 20;
-            $description = get_string('mycoursesmaxdesc', 'theme_foundation',
-                array('lower' => $lower, 'upper' => $upper));
-            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-            // Set terminology for dropdown course list.
-            $name = 'theme_foundation/mycoursetitle';
-            $title = get_string('mycoursetitle', 'theme_foundation');
-            $description = get_string('mycoursetitledesc', 'theme_foundation');
-            $default = 'course';
-            $choices = array(
-                'course' => get_string('mycourses', 'theme_foundation'),
-                'unit' => get_string('myunits', 'theme_foundation'),
-                'class' => get_string('myclasses', 'theme_foundation'),
-                'module' => get_string('mymodules', 'theme_foundation')
-            );
-            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
-            $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
+        global $CFG;
+        if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
+            require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
+        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
+            require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
         }
+
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_coursesmenuheading',
+                get_string('coursesmenuheadingsub', 'theme_foundation'),
+                format_text(get_string('coursesmenuheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Toggle courses display in custommenu.
+        $name = 'theme_foundation/displaymycourses';
+        $title = get_string('displaymycourses', 'theme_foundation');
+        $description = get_string('displaymycoursesdesc', 'theme_foundation');
+        $default = true;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Toggle hidden courses display in custommenu.
+        $name = 'theme_foundation/displayhiddenmycourses';
+        $title = get_string('displayhiddenmycourses', 'theme_foundation');
+        $description = get_string('displayhiddenmycoursesdesc', 'theme_foundation');
+        $default = true;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // My courses order.
+        $name = 'theme_foundation/mycoursesorder';
+        $title = get_string('mycoursesorder', 'theme_foundation');
+        $description = get_string('mycoursesorderdesc', 'theme_foundation');
+        $default = 1;
+        $choices = array(
+            1 => get_string('mycoursesordersort', 'theme_foundation'),
+            2 => get_string('mycoursesorderid', 'theme_foundation'),
+            3 => get_string('mycoursesorderlast', 'theme_foundation')
+        );
+        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Course ID order.
+        $name = 'theme_foundation/mycoursesorderidorder';
+        $title = get_string('mycoursesorderidorder', 'theme_foundation');
+        $description = get_string('mycoursesorderidorderdesc', 'theme_foundation');
+        $default = 1;
+        $choices = array(
+            1 => get_string('mycoursesorderidasc', 'theme_foundation'),
+            2 => get_string('mycoursesorderiddes', 'theme_foundation')
+        );
+        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Max courses.
+        $name = 'theme_foundation/mycoursesmax';
+        $title = get_string('mycoursesmax', 'theme_foundation');
+        $default = 0;
+        $lower = 0;
+        $upper = 20;
+        $description = get_string('mycoursesmaxdesc', 'theme_foundation',
+            array('lower' => $lower, 'upper' => $upper));
+        $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Set terminology for dropdown course list.
+        $name = 'theme_foundation/mycoursetitle';
+        $title = get_string('mycoursetitle', 'theme_foundation');
+        $description = get_string('mycoursetitledesc', 'theme_foundation');
+        $default = 'course';
+        $choices = array(
+            'course' => get_string('mycourses', 'theme_foundation'),
+            'unit' => get_string('myunits', 'theme_foundation'),
+            'class' => get_string('myclasses', 'theme_foundation'),
+            'module' => get_string('mymodules', 'theme_foundation')
+        );
+        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
     /**

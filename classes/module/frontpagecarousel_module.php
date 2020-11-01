@@ -41,84 +41,81 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
      * Add the frontpage carousel settings.
      *
      * @param array $settingspages The setting pages.
-     * @param boolean $adminfulltree If the full tree is required.
      * @param toolbox $toolbox The theme toolbox.
      */
-    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
+    public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
         $settingspages['frontpagecarousel'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_frontpagecarousel',
             get_string('frontpagecarouselheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
-        if ($adminfulltree) {
-            global $CFG;
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
-            }
 
-            $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_frontpagecarouselheading',
-                    get_string('frontpagecarouselheadingsub', 'theme_foundation'),
-                    format_text(get_string('frontpagecarouselheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
+        global $CFG;
+        if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
+            require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
+        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
+            require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
+        }
 
-            // Number of slides.
-            $name = 'theme_foundation/frontpagecarouselslides';
-            $title = get_string('frontpagecarouselslides', 'theme_foundation');
-            $default = 2;
-            $lower = 0;
-            $upper = 8;
-            $description = get_string('frontpagecarouselslidesdesc', 'theme_foundation',
+        $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_frontpagecarouselheading',
+                get_string('frontpagecarouselheadingsub', 'theme_foundation'),
+                format_text(get_string('frontpagecarouselheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Number of slides.
+        $name = 'theme_foundation/frontpagecarouselslides';
+        $title = get_string('frontpagecarouselslides', 'theme_foundation');
+        $default = 2;
+        $lower = 0;
+        $upper = 8;
+        $description = get_string('frontpagecarouselslidesdesc', 'theme_foundation',
                 array('lower' => $lower, 'upper' => $upper));
-            $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-            $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-            $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
-            if ($numberofslides > 0) {
-                for ($slidenum = 1; $slidenum <= $numberofslides; $slidenum++) {
-                    // Slide X setting heading.
-                    $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add(
-                        new \admin_setting_heading(
-                            'theme_foundation_frontpagecarousel_'.$slidenum.'_heading',
-                            get_string('frontpageslideno', 'theme_foundation', array('number' => $slidenum)),
-                            get_string('frontpageslidenodesc', 'theme_foundation', array('number' => $slidenum))
-                        )
-                    );
+        $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
+        if ($numberofslides > 0) {
+            for ($slidenum = 1; $slidenum <= $numberofslides; $slidenum++) {
+                // Slide X setting heading.
+                $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+                    new \admin_setting_heading(
+                        'theme_foundation_frontpagecarousel_' . $slidenum . '_heading',
+                        get_string('frontpageslideno', 'theme_foundation', array('number' => $slidenum)),
+                        get_string('frontpageslidenodesc', 'theme_foundation', array('number' => $slidenum))
+                    )
+                );
 
-                    // Slide enabled.
-                    $name = 'theme_foundation/frontpageenableslide'.$slidenum;
-                    $title = get_string('frontpageenableslide', 'theme_foundation', array('number' => $slidenum));
-                    $description = get_string('frontpageenableslidedesc', 'theme_foundation', array('number' => $slidenum));
-                    $default = false;
-                    $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-                    $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+                // Slide enabled.
+                $name = 'theme_foundation/frontpageenableslide' . $slidenum;
+                $title = get_string('frontpageenableslide', 'theme_foundation', array('number' => $slidenum));
+                $description = get_string('frontpageenableslidedesc', 'theme_foundation', array('number' => $slidenum));
+                $default = false;
+                $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+                $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-                    // Slide title.
-                    $name = 'theme_foundation/frontpageslidetitle'.$slidenum;
-                    $title = get_string('frontpageslidetitle', 'theme_foundation', array('number' => $slidenum));
-                    $description = get_string('frontpageslidetitledesc', 'theme_foundation', array('number' => $slidenum));
-                    $default = '';
-                    $setting = new \admin_setting_configtext($name, $title, $description, $default);
-                    $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+                // Slide title.
+                $name = 'theme_foundation/frontpageslidetitle' . $slidenum;
+                $title = get_string('frontpageslidetitle', 'theme_foundation', array('number' => $slidenum));
+                $description = get_string('frontpageslidetitledesc', 'theme_foundation', array('number' => $slidenum));
+                $default = '';
+                $setting = new \admin_setting_configtext($name, $title, $description, $default);
+                $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-                    // Slide caption.
-                    $name = 'theme_foundation/frontpageslidecaption'.$slidenum;
-                    $title = get_string('frontpageslidecaption', 'theme_foundation', array('number' => $slidenum));
-                    $description = get_string('frontpageslidecaptiondesc', 'theme_foundation', array('number' => $slidenum));
-                    $default = '';
-                    $setting = new \admin_setting_confightmleditor($name, $title, $description, $default);
-                    $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+                // Slide caption.
+                $name = 'theme_foundation/frontpageslidecaption' . $slidenum;
+                $title = get_string('frontpageslidecaption', 'theme_foundation', array('number' => $slidenum));
+                $description = get_string('frontpageslidecaptiondesc', 'theme_foundation', array('number' => $slidenum));
+                $default = '';
+                $setting = new \admin_setting_confightmleditor($name, $title, $description, $default);
+                $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-                    // Slide image.
-                    $name = 'theme_foundation/frontpageslideimage'.$slidenum;
-                    $title = get_string('frontpageslideimage', 'theme_foundation', array('number' => $slidenum));
-                    $description = get_string('frontpageslideimagedesc', 'theme_foundation', array('number' => $slidenum));
-                    $setting = new \admin_setting_configstoredfile($name, $title, $description, 'frontpageslideimage'.$slidenum);
-                    $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-                }
+                // Slide image.
+                $name = 'theme_foundation/frontpageslideimage' . $slidenum;
+                $title = get_string('frontpageslideimage', 'theme_foundation', array('number' => $slidenum));
+                $description = get_string('frontpageslideimagedesc', 'theme_foundation', array('number' => $slidenum));
+                $setting = new \admin_setting_configstoredfile($name, $title, $description, 'frontpageslideimage' . $slidenum);
+                $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
             }
         }
     }

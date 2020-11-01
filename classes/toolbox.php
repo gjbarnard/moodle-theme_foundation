@@ -18,7 +18,7 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2018-onwards G J Barnard.
+ * @copyright  &copy; 2018 G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
@@ -283,10 +283,10 @@ class toolbox {
     /**
      * Add the settings to the theme.
      *
-     * @param admin_root $admin The admin root.
+     * @param admin_settingpage $admin The core settings page reference.
      */
-    public function add_settings(\admin_root $admin) {
-        $admin->add('themes', new \admin_category('theme_foundation', 'Foundation'));
+    public function add_settings(\admin_settingpage &$settings) {
+        $settings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtitle', 'theme_foundation'));
 
         // The settings pages we create.
         $settingspages = array(
@@ -305,129 +305,123 @@ class toolbox {
         );
 
         // General settings.
-        if ($admin->fulltree) {
-            $settingspages['general'][self::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_generalheading',
-                    get_string('generalheadingsub', 'theme_foundation'),
-                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
-                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
+        $settingspages['general'][self::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_generalheading',
+                get_string('generalheadingsub', 'theme_foundation'),
+                format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
 
-            // Custom favicon.
-            $name = 'theme_foundation/favicon';
-            $title = get_string('favicon', 'theme_foundation');
-            $description = get_string('favicondesc', 'theme_foundation');
-            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
-                array('accepted_types' => '.ico'));
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        // Custom favicon.
+        $name = 'theme_foundation/favicon';
+        $title = get_string('favicon', 'theme_foundation');
+        $description = get_string('favicondesc', 'theme_foundation');
+        $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
+            array('accepted_types' => '.ico'));
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Font Awesome 5 Free.
-            $name = 'theme_foundation/fav';
-            $title = get_string('fav', 'theme_foundation');
-            $description = get_string('favdesc', 'theme_foundation');
-            $default = false;
-            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-            $setting->set_updatedcallback('purge_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        // Font Awesome 5 Free.
+        $name = 'theme_foundation/fav';
+        $title = get_string('fav', 'theme_foundation');
+        $description = get_string('favdesc', 'theme_foundation');
+        $default = false;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $setting->set_updatedcallback('purge_all_caches');
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Font Awesome 5 Free v4 shims.
-            $name = 'theme_foundation/faiv';
-            $title = get_string('faiv', 'theme_foundation');
-            $description = get_string('faivdesc', 'theme_foundation');
-            $default = false;
-            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-            $setting->set_updatedcallback('purge_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        // Font Awesome 5 Free v4 shims.
+        $name = 'theme_foundation/faiv';
+        $title = get_string('faiv', 'theme_foundation');
+        $description = get_string('faivdesc', 'theme_foundation');
+        $default = false;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $setting->set_updatedcallback('purge_all_caches');
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Number of blocks per row.
-            $name = 'theme_foundation/blocksperrow';
-            $title = get_string('blocksperrow', 'theme_foundation');
-            $default = '2';
-            $description = get_string('blocksperrowdesc', 'theme_foundation');
-            $choices = array(
-                '1' => '1',
-                '2' => '2',
-                '3' => '3',
-                '4' => '4',
-                '6' => '6'
-            );
-            $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        // Number of blocks per row.
+        $name = 'theme_foundation/blocksperrow';
+        $title = get_string('blocksperrow', 'theme_foundation');
+        $default = '2';
+        $description = get_string('blocksperrowdesc', 'theme_foundation');
+        $choices = array(
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '6' => '6'
+        );
+        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Pre SCSS.
-            $name = 'theme_foundation/prescss';
-            $title = get_string('prescss', 'theme_foundation');
-            $description = get_string('prescssdesc', 'theme_foundation');
-            $default = '';
-            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        // Pre SCSS.
+        $name = 'theme_foundation/prescss';
+        $title = get_string('prescss', 'theme_foundation');
+        $description = get_string('prescssdesc', 'theme_foundation');
+        $default = '';
+        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Custom SCSS.
-            $name = 'theme_foundation/customscss';
-            $title = get_string('customscss', 'theme_foundation');
-            $description = get_string('customscssdesc', 'theme_foundation');
-            $default = '';
-            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
-        }
+        // Custom SCSS.
+        $name = 'theme_foundation/customscss';
+        $title = get_string('customscss', 'theme_foundation');
+        $description = get_string('customscssdesc', 'theme_foundation');
+        $default = '';
+        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
         // H5P settings.
-        if ($admin->fulltree) {
-            $settingspages['hvp'][self::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_hvpheading',
-                    get_string('hvpheadingsub', 'theme_foundation'),
-                    format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
-                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
+        $settingspages['hvp'][self::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_hvpheading',
+                get_string('hvpheadingsub', 'theme_foundation'),
+                format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
 
-            // H5P Custom CSS.
-            $name = 'theme_foundation/hvpcustomcss';
-            $title = get_string('hvpcustomcss', 'theme_foundation');
-            $description = get_string('hvpcustomcssdesc', 'theme_foundation');
-            $default = '';
-            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
+        // H5P Custom CSS.
+        $name = 'theme_foundation/hvpcustomcss';
+        $title = get_string('hvpcustomcss', 'theme_foundation');
+        $description = get_string('hvpcustomcssdesc', 'theme_foundation');
+        $default = '';
+        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
 
-            // H5P Font CSS.
-            $name = 'theme_foundation/hvpfontcss';
-            $title = get_string('hvpfontcss', 'theme_foundation');
-            $description = get_string('hvpfontcssdesc', 'theme_foundation');
-            $default = $this->gethvpdefaultfonts();
-            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
-        }
+        // H5P Font CSS.
+        $name = 'theme_foundation/hvpfontcss';
+        $title = get_string('hvpfontcss', 'theme_foundation');
+        $description = get_string('hvpfontcssdesc', 'theme_foundation');
+        $default = $this->gethvpdefaultfonts();
+        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
 
         // Module settings.
-        if ($admin->fulltree) {
-            $settingspages['module'][self::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_moduleheading',
-                    get_string('moduleheadingsub', 'theme_foundation'),
-                    format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
-        }
+        $settingspages['module'][self::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_moduleheading',
+                get_string('moduleheadingsub', 'theme_foundation'),
+                format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
 
         /* Call each module where they can either add their settings to an existing settings page or create their own
            and have it added. */
         foreach ($this->modules as $module) {
-            $module->add_settings($settingspages, $admin->fulltree, $this);
+            $module->add_settings($settingspages, $this);
         }
 
         // Add the settings pages if they have more than just the settings page heading.
         foreach (array_values($settingspages) as $settingspage) {
             if ($settingspage[self::HASSETTINGS] == true) {
                 $thepage = $settingspage[self::SETTINGPAGE];
-                $admin->add('theme_foundation', $thepage);
+                $settings->add($thepage);
             }
         }
     }
