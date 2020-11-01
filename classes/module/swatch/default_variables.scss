@@ -32,6 +32,20 @@ $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 
+// stylelint-disable
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    primary: $primary,
+    secondary: $gray-200,
+    success: $success,
+    info: $info,
+    warning: $orange,
+    danger: $danger,
+    light: $gray-100,
+    dark: $gray-800
+), $theme-colors);
+// stylelint-enable
+
 // Options
 $enable-rounded: false !default;
 
@@ -58,13 +72,5 @@ $breadcrumb-divider-rtl: "/" !default;
 // Alerts
 $alert-border-width:                0 !default;
 
-$theme-colors: (
-    primary: $primary,
-    secondary: $gray-200,
-    success: $success,
-    info: $info,
-    warning: $orange,
-    danger: $danger,
-    light: $gray-100,
-    dark: $gray-800
-);
+$dropdown-link-hover-color: $white;
+$dropdown-link-hover-bg: $primary;

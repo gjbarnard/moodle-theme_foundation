@@ -10,6 +10,7 @@ Version 3.8.1.1 - TBD
  7. Fix 'Book module has two icons'.
  8. Fix empty block regions don't have JS drop area when editing.
  9. Side-pre is on the right.
+10. Fix default navbar dropdown icons and text hover.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.

@@ -37,6 +37,18 @@
     margin-left: 0;
 }
 
+.navbar-dark {
+    .navbar-nav {
+        .logininfo {
+            color: $navbar-dark-color;
+            padding: $nav-link-padding-y $nav-link-padding-x;
+        }
+    }
+    .dropdown-item a .icon {
+        color: inherit !important; // stylelint-disable-line declaration-no-important
+    }
+}
+
 .popover-region-toggle {
     &::after {
         bottom: -6px;
