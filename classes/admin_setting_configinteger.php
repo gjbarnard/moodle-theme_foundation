@@ -23,6 +23,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_foundation;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -33,7 +35,7 @@ defined('MOODLE_INTERNAL') || die;
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class foundation_admin_setting_configinteger extends admin_setting_configtext {
+class admin_setting_configinteger extends \admin_setting_configtext {
 
     /** @var int lower range limit */
     public $lower;

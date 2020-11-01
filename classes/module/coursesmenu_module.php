@@ -29,6 +29,8 @@ defined('MOODLE_INTERNAL') || die();
 
 use html_writer;
 use moodle_url;
+use theme_foundation\admin_setting_configselect;
+use theme_foundation\admin_setting_configinteger;
 
 /**
  * Course menu module.
@@ -50,13 +52,6 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         // Create our own settings page.
         $settingspages['coursesmenu'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_coursesmenu',
             get_string('coursesmenuheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
-
-        global $CFG;
-        if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
-            require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
-            require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
-        }
 
         $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
@@ -92,7 +87,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             2 => get_string('mycoursesorderid', 'theme_foundation'),
             3 => get_string('mycoursesorderlast', 'theme_foundation')
         );
-        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Course ID order.
@@ -104,7 +99,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             1 => get_string('mycoursesorderidasc', 'theme_foundation'),
             2 => get_string('mycoursesorderiddes', 'theme_foundation')
         );
-        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Max courses.
@@ -115,7 +110,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         $upper = 20;
         $description = get_string('mycoursesmaxdesc', 'theme_foundation',
             array('lower' => $lower, 'upper' => $upper));
-        $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
         $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Set terminology for dropdown course list.
@@ -129,7 +124,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             'class' => get_string('myclasses', 'theme_foundation'),
             'module' => get_string('mymodules', 'theme_foundation')
         );
-        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 

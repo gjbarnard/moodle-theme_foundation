@@ -353,7 +353,7 @@ class toolbox {
             '4' => '4',
             '6' => '6'
         );
-        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
         // Pre SCSS.

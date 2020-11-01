@@ -23,9 +23,10 @@
  */
 
 namespace theme_foundation;
-use admin_settingpage;
 
 defined('MOODLE_INTERNAL') || die();
+
+use admin_settingpage;
 
 /**
  * @package   theme_foundation

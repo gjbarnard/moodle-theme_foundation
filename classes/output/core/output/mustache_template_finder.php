@@ -26,12 +26,12 @@
 
 namespace theme_foundation\output\core\output;
 
-use coding_exception;
-use moodle_exception;
-use core_component;
-use theme_config;
-
 defined('MOODLE_INTERNAL') || die();
+
+use coding_exception;
+use core_component;
+use moodle_exception;
+use theme_config;
 
 /**
  * Get information about valid locations for mustache templates.
