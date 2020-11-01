@@ -66,56 +66,54 @@ class swatch_module extends \theme_foundation\module_basement {
      * Add the swatch settings.
      *
      * @param array $settingspages The setting pages.
-     * @param boolean $adminfulltree If the full tree is required.
      * @param toolbox $toolbox The theme toolbox.
      */
-    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
+    public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
         $settingspages['swatch'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_swatch',
             get_string('swatchheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
-        if ($adminfulltree) {
-            $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_swatchheading',
-                    get_string('swatchheadingsub', 'theme_foundation'),
-                    format_text(get_string('swatchheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
-            );
 
-            // Swatch.
-            $name = 'theme_foundation/swatch';
-            $title = get_string('swatch', 'theme_foundation');
-            $description = get_string('swatchdesc', 'theme_foundation');
-            $choices = array(
-                'default' => new \lang_string('default'),
-                'cerulean' => 'Cerulean',
-                'cosmo' => 'Cosmo',
-                'cyborg' => 'Cyborg',
-                'darkly' => 'Darkly',
-                'flatly' => 'Flatly',
-                'journal' => 'Journal',
-                'literia' => 'Literia',
-                'lumen' => 'Lumen',
-                'lux' => 'Lux',
-                'materia' => 'Materia',
-                'minty' => 'Minty',
-                'pulse' => 'Pulse',
-                'sandstone' => 'Sandstone',
-                'seventies' => 'Seventies',
-                'slate' => 'Slate',
-                'simplex' => 'Simplex',
-                'sketchy' => 'Sketchy',
-                'solar' => 'Solar',
-                'spacelab' => 'Spacelab',
-                'superhero' => 'Superhero',
-                'united' => 'United',
-                'yeti' => 'Yeti'
-            );
-            $default = 'default';
-            $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
-            $setting->set_updatedcallback('theme_reset_all_caches');
-            $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-        }
+        $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_swatchheading',
+                get_string('swatchheadingsub', 'theme_foundation'),
+                format_text(get_string('swatchheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Swatch.
+        $name = 'theme_foundation/swatch';
+        $title = get_string('swatch', 'theme_foundation');
+        $description = get_string('swatchdesc', 'theme_foundation');
+        $choices = array(
+            'default' => new \lang_string('default'),
+            'cerulean' => 'Cerulean',
+            'cosmo' => 'Cosmo',
+            'cyborg' => 'Cyborg',
+            'darkly' => 'Darkly',
+            'flatly' => 'Flatly',
+            'journal' => 'Journal',
+            'literia' => 'Literia',
+            'lumen' => 'Lumen',
+            'lux' => 'Lux',
+            'materia' => 'Materia',
+            'minty' => 'Minty',
+            'pulse' => 'Pulse',
+            'sandstone' => 'Sandstone',
+            'seventies' => 'Seventies',
+            'slate' => 'Slate',
+            'simplex' => 'Simplex',
+            'sketchy' => 'Sketchy',
+            'solar' => 'Solar',
+            'spacelab' => 'Spacelab',
+            'superhero' => 'Superhero',
+            'united' => 'United',
+            'yeti' => 'Yeti'
+        );
+        $default = 'default';
+        $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['swatch'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
     /**

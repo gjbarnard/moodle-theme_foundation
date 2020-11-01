@@ -81,10 +81,9 @@ abstract class module_basement {
      * Add the module settings to the theme.
      *
      * @param array $settingspages Reference to the settings pages array so that a module can add a new page to it.
-     * @param boolean $adminfulltree If true then all settings required, if false then only the pages.  See /lib/adminlib.php.
      * @param toolbox $toolbox The toolbox instance.
      */
-    public function add_settings(&$settingspages, $adminfulltree, $toolbox) {
+    public function add_settings(&$settingspages, $toolbox) {
     }
 
     /**

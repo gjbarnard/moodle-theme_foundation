@@ -18,13 +18,14 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2018-onwards G J Barnard.
+ * @copyright  &copy; 2018 G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 defined('MOODLE_INTERNAL') || die;
-$settings = null;
 
-$toolbox = \theme_foundation\toolbox::get_instance();
-$toolbox->add_settings($ADMIN);
+if ($ADMIN->fulltree) {
+    $toolbox = \theme_foundation\toolbox::get_instance();
+    $toolbox->add_settings($settings);
+}
