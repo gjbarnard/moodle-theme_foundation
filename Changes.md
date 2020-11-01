@@ -5,6 +5,7 @@ Version 3.9.1.2 - TBR
   2. Fix empty block regions don't have JS drop area when editing.
   3. Side-pre is on the right.
   4. Fix default navbar dropdown icons and text hover.
+  5. Adjustments to the navbar to sort out alignment issues.
 
 Version 3.9.1.1 - 8/10/20
   1. Fix 'Call to undefined function course_get_format() on login' - #8.

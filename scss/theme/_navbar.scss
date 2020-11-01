@@ -64,14 +64,21 @@
     font-size: 16px;
 }
 
-.context-header-settings-menu {
-    margin-top: 2px;
+.navbar .context-header-settings-menu {
     a {
         color: inherit;
     }
     .dropdown-toggle > .icon {
         font-size: 1.33333em;
         height: 1.33333em;
+    }
+}
+@media (min-width: 576px) {
+    .navbar {
+        .context-header-settings-menu,
+        .region-main-settings-menu {
+            height: auto;
+        }
     }
 }
 
