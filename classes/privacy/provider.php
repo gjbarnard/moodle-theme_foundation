@@ -25,10 +25,10 @@
 
 namespace theme_foundation\privacy;
 
+defined('MOODLE_INTERNAL') || die();
+
 use \core_privacy\local\request\writer;
 use \core_privacy\local\metadata\collection;
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * The Foundation theme.

@@ -48,13 +48,6 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
         $settingspages['frontpagecarousel'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_frontpagecarousel',
             get_string('frontpagecarouselheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
 
-        global $CFG;
-        if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_configinteger.php")) {
-            require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_configinteger.php');
-        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_configinteger.php")) {
-            require_once($CFG->themedir . '/foundation/foundation_admin_setting_configinteger.php');
-        }
-
         $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
                 'theme_foundation_frontpagecarouselheading',
@@ -71,7 +64,7 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
         $upper = 8;
         $description = get_string('frontpagecarouselslidesdesc', 'theme_foundation',
                 array('lower' => $lower, 'upper' => $upper));
-        $setting = new \foundation_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        $setting = new \theme_foundation\admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
         $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
