@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Container for settings pages to display as tabs.
+ *
  * @package   theme_foundation
  * @copyright  &copy; 2020 G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
@@ -29,6 +31,8 @@ defined('MOODLE_INTERNAL') || die();
 use admin_settingpage;
 
 /**
+ * Container for settings pages to display as tabs.
+ *
  * @package   theme_foundation
  * @copyright  &copy; 2020 G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
@@ -53,8 +57,13 @@ class admin_settingspage_tabs extends admin_settingpage {
         return true;
     }
 
-    public function add($tab) {
-        return $this->add_tab($tab);
+    /**
+     * Add a settings page.
+     *
+     * @param admin_settingpage $page A page.
+     */
+    public function add($page) {
+        return $this->add_tab($page);
     }
 
     /**

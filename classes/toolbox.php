@@ -283,7 +283,7 @@ class toolbox {
     /**
      * Add the settings to the theme.
      *
-     * @param admin_settingpage $admin The core settings page reference.
+     * @param admin_settingpage $settings The core settings page reference.
      */
     public function add_settings(\admin_settingpage &$settings) {
         $settings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtitle', 'theme_foundation'));
