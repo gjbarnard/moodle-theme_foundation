@@ -14,6 +14,7 @@ Version 3.8.1.1 - TBD
 11. Adjustments to the navbar to sort out alignment issues.
 12. Settings tabs.
 13. Namespaced classes for settings.
+14. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.

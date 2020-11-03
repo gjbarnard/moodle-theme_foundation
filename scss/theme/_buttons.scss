@@ -7,22 +7,19 @@
 }
 
 #backtotop {
-    background-color: $black;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(red($primary), green($primary), blue($primary), 0.5);
     box-shadow: 0 0 1px $white;
     color: $white;
     display: none;
-    font: 9px;
-    padding: 5px 12px;
+    font-size: 9px;
+    padding: 5px 9px 0;
     position: fixed;
-    right: 15px;
+    right: 24px;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    top: 85%;
-    &:hover {
-        text-decoration: none;
-    }
+    top: 84%;
+    z-index: 3;
 }
 
 #backtotop,
