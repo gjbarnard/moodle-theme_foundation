@@ -8,6 +8,7 @@ Version 3.9.1.2 - TBR
   5. Adjustments to the navbar to sort out alignment issues.
   6. Settings tabs.
   7. Namespaced classes for settings.
+  8. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
 
 Version 3.9.1.1 - 8/10/20
   1. Fix 'Call to undefined function course_get_format() on login' - #8.
