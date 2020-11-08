@@ -3,7 +3,10 @@
 }
 
 #gotobottom {
+    font-size: 1.33333em;;
+    line-height: .75em;
     margin-top: $gotobottom-top-margin;
+    vertical-align: -.0667em;
 }
 
 #backtotop {
@@ -12,7 +15,7 @@
     color: $white;
     display: none;
     font-size: 9px;
-    padding: 5px 9px 0;
+    padding: 5px 12px 10px;
     position: fixed;
     right: 24px;
     text-align: center;
@@ -22,8 +25,11 @@
     z-index: 3;
 }
 
-#backtotop,
-.nav-link {
+#backtotop.fav {
+    padding: 5px 9px 0;
+}
+
+#backtotop {
     .fa {
         font-size: 24px;
     }

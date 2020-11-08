@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.10.0.1 - TBR
+  1. Navbar style improvements.
 
 Version 3.9.1.2 - 8/11/20
   1. Fix 'Book module has two icons'.

@@ -11,8 +11,11 @@
         margin-right: 0;
     }
     .popover-region-container {
-        right: -16px;
-        top: 47px;
+        right: -10px;
+        top: 40px;
+    }
+    .navbar-plugin-output.fav .popover-region-container {
+        top: 42px;
     }
     .popover-region-toggle {
         width: auto;
@@ -26,9 +29,11 @@
     .dropdown-menu {
         position: absolute;
     }
+    .context-header-settings-menu .dropdown-menu {
+        top: 112%;
+    }
     .usermenu .dropdown-menu {
         left: auto;
-        position: absolute;
         right: 0;
     }
 }
@@ -44,6 +49,8 @@
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
     }
+    .context-header-settings-menu a.dropdown-toggle,
+    a .icon,
     .dropdown-item a .icon {
         color: inherit !important; // stylelint-disable-line declaration-no-important
     }
@@ -51,23 +58,31 @@
 
 .popover-region-toggle {
     &::after {
-        bottom: -6px;
-        right: -4px;
+        bottom: -3px;
+        right: 7px;
     }
     &::before {
-        bottom: -5px;
-        right: -5px;
+        bottom: -2px;
+        right: 6px;
     }
 }
 
-.dropdown-toggle.nav-link .fa {
+.navbar-plugin-output.fav .popover-region-toggle {
+    &::after {
+        bottom: -1px;
+        right: 9px;
+    }
+    &::before {
+        bottom: 0;
+        right: 8px;
+    }
+}
+
+.dropdown-menu .fa {
     font-size: 16px;
 }
 
 .navbar .context-header-settings-menu {
-    a {
-        color: inherit;
-    }
     .dropdown-toggle > .icon {
         font-size: 1.33333em;
         height: 1.33333em;
