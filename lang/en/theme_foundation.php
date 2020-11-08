@@ -148,6 +148,8 @@ $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login 
 // Syntax highlighter.
 $string['syntaxhighlightheading'] = 'Syntax highlighting settings';
 $string['syntaxhighlightheadingdesc'] = 'Set the syntax highlighting settings.';
+$string['syntaxhighlightdeprecatedwarning'] = 'Deprecation warning:';
+$string['syntaxhighlightdeprecatedinformation'] = 'Syntax highlighting in Foundation has been deprecated as it conflicts with my \'<a href="https://moodle.org/plugins/filter_synhi" target="_blank">SynHi</a>\' filter and will be removed in future releases.  Please use the \'SynHi\' filter instead and deactivate syntax highlighting here.';
 $string['syntaxhighlight'] = 'Activate syntax highlighting';
 $string['syntaxhighlightdesc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
 $string['syntaxhighlightpage'] = 'Syntax highlighting help';

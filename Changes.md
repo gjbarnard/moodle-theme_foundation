@@ -15,6 +15,7 @@ Version 3.8.1.1 - TBD
 12. Settings tabs.
 13. Namespaced classes for settings.
 14. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
+15. Deprecate syntax highlighting functionality in favour of 'SynHi' filter - https://moodle.org/plugins/filter_synhi.
 
 Version 3.8.1.0 - 26/01/2020
   1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
