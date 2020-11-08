@@ -10,6 +10,7 @@ Version 3.9.1.2 - 8/11/20
   7. Namespaced classes for settings.
   8. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
   9. Deprecate syntax highlighting functionality in favour of 'SynHi' filter - https://moodle.org/plugins/filter_synhi.
+ 10. Navbar style improvements.
 
 Version 3.9.1.1 - 8/10/20
   1. Fix 'Call to undefined function course_get_format() on login' - #8.
