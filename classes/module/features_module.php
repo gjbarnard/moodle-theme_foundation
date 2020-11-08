@@ -279,6 +279,13 @@ class features_module extends \theme_foundation\module_basement implements \temp
             )
         );
 
+        // Deprecated info.
+        $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_description('theme_foundation_syntaxhighlight_deprecated_information',
+                get_string('syntaxhighlightdeprecatedwarning', 'theme_foundation'),
+                '<p>'.get_string('syntaxhighlightdeprecatedinformation', 'theme_foundation').'</p>')
+        );
+
         // Activate syntax highlighting - 1 = no, 2 = yes.
         $name = 'theme_foundation/syntaxhighlight';
         $title = get_string('syntaxhighlight', 'theme_foundation');
