@@ -44,6 +44,8 @@ $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
 $string['region-side-pre'] = 'Right';
 
+$string['cachedef_fontawesome5iconmapping'] = 'Caches font awesome 5 icons';
+
 $string['stylecover'] = 'Cover';
 $string['stylestretch'] = 'Stretch';
 

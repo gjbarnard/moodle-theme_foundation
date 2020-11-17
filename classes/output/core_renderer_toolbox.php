@@ -277,7 +277,7 @@ trait core_renderer_toolbox {
                             $col = 12 / $remainingblocks;
                             if ($col < 1) {
                                 /* Should not happen but a fail safe.
-                                  Block will be small so good for screen shots when this happens. */
+                                   Block will be small so good for screen shots when this happens. */
                                 $col = 1;
                             }
                         }
