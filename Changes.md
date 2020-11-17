@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.9.1.3 - TBR
+
 Version 3.9.1.2 - 8/11/20
   1. Fix 'Book module has two icons'.
   2. Fix empty block regions don't have JS drop area when editing.
