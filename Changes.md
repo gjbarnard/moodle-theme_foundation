@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.10.0.2 - TBR
+
 Version 3.10.0.1 - 9/11/20
   1. Navbar style improvements.
 
