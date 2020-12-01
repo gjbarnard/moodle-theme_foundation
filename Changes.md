@@ -17,15 +17,17 @@ Version 3.8.1.1 - TBD
 14. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
 15. Deprecate syntax highlighting functionality in favour of 'SynHi' filter - https://moodle.org/plugins/filter_synhi.
 16. Navbar style improvements.
+17. Fix - Ensure cache language strings are correct - /cache/admin.php.
+18. Fix - menu item hover.
 
 Version 3.8.1.0 - 26/01/2020
-  1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
-     Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html for 3.0.83 and MIT for 4.0.1.
-     There is a setting whereby you can switch between the two.
-  2. Add horizontal block area functionality.  Initially used for front page marketing spots.
-  3. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
-  4. Ensure that favicon is an 'ico' file only.
-  5. Add brands to the footer.
+ 1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
+    Licensed under LGPLv3, www.gnu.org/copyleft/lesser.html for 3.0.83 and MIT for 4.0.1.
+    There is a setting whereby you can switch between the two.
+ 2. Add horizontal block area functionality.  Initially used for front page marketing spots.
+ 3. Update to FontAwesome 5 Free v5.12.0 and add in v4 shim CSS setting.
+ 4. Ensure that favicon is an 'ico' file only.
+ 5. Add brands to the footer.
 
 Version 3.8.0.1 - 13/11/2019
   1. Fix position of goto bottom icon when logged out.

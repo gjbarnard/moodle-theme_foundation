@@ -53,32 +53,18 @@
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
     }
-    .context-header-settings-menu a.dropdown-toggle,
-    a .icon,
-    .dropdown-item a .icon {
+    a .icon {
         color: inherit !important; // stylelint-disable-line declaration-no-important
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus,
-    .dropdown-item:focus-within,
-    .dropdown-item:active,
-    .dropdown-item.active {
-        background-color: $primary;
-        color: $navbar-dark-hover-color;
-        a {
-            background-color: $primary;
-            color: $navbar-dark-hover-color;
-        }
     }
 }
 
 .popover-region-toggle {
     &::after {
-        bottom: -3px;
+        bottom: 1px;
         right: 7px;
     }
     &::before {
-        bottom: -2px;
+        bottom: 2px;
         right: 6px;
     }
 }
