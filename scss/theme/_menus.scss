@@ -1,0 +1,17 @@
+.context-header-settings-menu a.dropdown-toggle,
+.dropdown-item a .icon {
+    color: inherit !important; // stylelint-disable-line declaration-no-important
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:focus-within,
+.dropdown-item:active,
+.dropdown-item.active {
+    background-color: $primary;
+    color: $navbar-dark-hover-color;
+    a {
+        background-color: $primary;
+        color: $navbar-dark-hover-color;
+    }
+}
