@@ -1,9 +1,10 @@
 Version Information
 ===================
 Version 3.9.1.3 - TBR
-  1. Fix - Ensure cache language strings are correct - /cache/admin.php.
-  2. Fix - menu item hover.
-  3. Tabs update in line with MDL-69301.
+ 1. Fix - Ensure cache language strings are correct - /cache/admin.php.
+ 2. Fix - menu item hover.
+ 3. Tabs update in line with MDL-69301.
+ 4. Add import / export settings code from Essential.
 
 Version 3.9.1.2 - 8/11/20
   1. Fix 'Book module has two icons'.
