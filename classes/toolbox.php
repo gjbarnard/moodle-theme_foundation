@@ -286,144 +286,200 @@ class toolbox {
      * @param admin_settingpage $settings The core settings page reference.
      */
     public function add_settings(\admin_settingpage &$settings) {
-        $settings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtitle', 'theme_foundation'));
+        global $ADMIN;
 
-        // The settings pages we create.
-        $settingspages = array(
-            'general' => array(
-                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
-                    get_string('generalheading', 'theme_foundation')),
-                self::HASSETTINGS => true),
-            'hvp' => array(
-                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_hvp',
-                    get_string('hvpheading', 'theme_foundation')),
-                self::HASSETTINGS => true),
-            'module' => array(
-                self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
-                    get_string('moduleheading', 'theme_foundation')),
-                self::HASSETTINGS => false)
-        );
+        $settings = null;
 
-        // General settings.
-        $settingspages['general'][self::SETTINGPAGE]->add(
-            new \admin_setting_heading(
-                'theme_foundation_generalheading',
-                get_string('generalheadingsub', 'theme_foundation'),
-                format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
-                format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
-            )
-        );
+        $ADMIN->add('themes', new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
+        $fsettings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtabtitle', 'theme_foundation'));
 
-        // Custom favicon.
-        $name = 'theme_foundation/favicon';
-        $title = get_string('favicon', 'theme_foundation');
-        $description = get_string('favicondesc', 'theme_foundation');
-        $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
-            array('accepted_types' => '.ico'));
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+        if ($ADMIN->fulltree) {
+            // The settings pages we create.
+            $settingspages = array(
+               'general' => array(
+                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
+                        get_string('generalheading', 'theme_foundation')),
+                    self::HASSETTINGS => true),
+                'hvp' => array(
+                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_hvp',
+                        get_string('hvpheading', 'theme_foundation')),
+                    self::HASSETTINGS => true),
+                'module' => array(
+                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
+                        get_string('moduleheading', 'theme_foundation')),
+                    self::HASSETTINGS => false)
+            );
 
-        // Font Awesome 5 Free.
-        $name = 'theme_foundation/fav';
-        $title = get_string('fav', 'theme_foundation');
-        $description = get_string('favdesc', 'theme_foundation');
-        $default = false;
-        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-        $setting->set_updatedcallback('purge_all_caches');
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            // General settings.
+            $settingspages['general'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_generalheading',
+                    get_string('generalheadingsub', 'theme_foundation'),
+                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
-        // Font Awesome 5 Free v4 shims.
-        $name = 'theme_foundation/faiv';
-        $title = get_string('faiv', 'theme_foundation');
-        $description = get_string('faivdesc', 'theme_foundation');
-        $default = false;
-        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-        $setting->set_updatedcallback('purge_all_caches');
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            // Custom favicon.
+            $name = 'theme_foundation/favicon';
+            $title = get_string('favicon', 'theme_foundation');
+            $description = get_string('favicondesc', 'theme_foundation');
+            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
+                array('accepted_types' => '.ico'));
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // Number of blocks per row.
-        $name = 'theme_foundation/blocksperrow';
-        $title = get_string('blocksperrow', 'theme_foundation');
-        $default = '2';
-        $description = get_string('blocksperrowdesc', 'theme_foundation');
-        $choices = array(
-            '1' => '1',
-            '2' => '2',
-            '3' => '3',
-            '4' => '4',
-            '6' => '6'
-        );
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            // Font Awesome 5 Free.
+            $name = 'theme_foundation/fav';
+            $title = get_string('fav', 'theme_foundation');
+            $description = get_string('favdesc', 'theme_foundation');
+            $default = false;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $setting->set_updatedcallback('purge_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // Pre SCSS.
-        $name = 'theme_foundation/prescss';
-        $title = get_string('prescss', 'theme_foundation');
-        $description = get_string('prescssdesc', 'theme_foundation');
-        $default = '';
-        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            // Font Awesome 5 Free v4 shims.
+            $name = 'theme_foundation/faiv';
+            $title = get_string('faiv', 'theme_foundation');
+            $description = get_string('faivdesc', 'theme_foundation');
+            $default = false;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $setting->set_updatedcallback('purge_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // Custom SCSS.
-        $name = 'theme_foundation/customscss';
-        $title = get_string('customscss', 'theme_foundation');
-        $description = get_string('customscssdesc', 'theme_foundation');
-        $default = '';
-        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['general'][self::SETTINGPAGE]->add($setting);
+            // Number of blocks per row.
+            $name = 'theme_foundation/blocksperrow';
+            $title = get_string('blocksperrow', 'theme_foundation');
+            $default = '2';
+            $description = get_string('blocksperrowdesc', 'theme_foundation');
+            $choices = array(
+                '1' => '1',
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+                '6' => '6'
+            );
+            $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // H5P settings.
-        $settingspages['hvp'][self::SETTINGPAGE]->add(
-            new \admin_setting_heading(
-                'theme_foundation_hvpheading',
-                get_string('hvpheadingsub', 'theme_foundation'),
-                format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
-                format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
-            )
-        );
+            // Pre SCSS.
+            $name = 'theme_foundation/prescss';
+            $title = get_string('prescss', 'theme_foundation');
+            $description = get_string('prescssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // H5P Custom CSS.
-        $name = 'theme_foundation/hvpcustomcss';
-        $title = get_string('hvpcustomcss', 'theme_foundation');
-        $description = get_string('hvpcustomcssdesc', 'theme_foundation');
-        $default = '';
-        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
+            // Custom SCSS.
+            $name = 'theme_foundation/customscss';
+            $title = get_string('customscss', 'theme_foundation');
+            $description = get_string('customscssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-        // H5P Font CSS.
-        $name = 'theme_foundation/hvpfontcss';
-        $title = get_string('hvpfontcss', 'theme_foundation');
-        $description = get_string('hvpfontcssdesc', 'theme_foundation');
-        $default = $this->gethvpdefaultfonts();
-        $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
+            // H5P settings.
+            $settingspages['hvp'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_hvpheading',
+                    get_string('hvpheadingsub', 'theme_foundation'),
+                    format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
-        // Module settings.
-        $settingspages['module'][self::SETTINGPAGE]->add(
-            new \admin_setting_heading(
-                'theme_foundation_moduleheading',
-                get_string('moduleheadingsub', 'theme_foundation'),
-                format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-            )
-        );
+            // H5P Custom CSS.
+            $name = 'theme_foundation/hvpcustomcss';
+            $title = get_string('hvpcustomcss', 'theme_foundation');
+            $description = get_string('hvpcustomcssdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
 
-        /* Call each module where they can either add their settings to an existing settings page or create their own
-           and have it added. */
-        foreach ($this->modules as $module) {
-            $module->add_settings($settingspages, $this);
-        }
+            // H5P Font CSS.
+            $name = 'theme_foundation/hvpfontcss';
+            $title = get_string('hvpfontcss', 'theme_foundation');
+            $description = get_string('hvpfontcssdesc', 'theme_foundation');
+            $default = $this->gethvpdefaultfonts();
+            $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $settingspages['hvp'][self::SETTINGPAGE]->add($setting);
 
-        // Add the settings pages if they have more than just the settings page heading.
-        foreach (array_values($settingspages) as $settingspage) {
-            if ($settingspage[self::HASSETTINGS] == true) {
-                $thepage = $settingspage[self::SETTINGPAGE];
-                $settings->add($thepage);
+            // Module settings.
+            $settingspages['module'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_moduleheading',
+                    get_string('moduleheadingsub', 'theme_foundation'),
+                    format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            /* Call each module where they can either add their settings to an existing settings page or create their own
+               and have it added. */
+            foreach ($this->modules as $module) {
+                $module->add_settings($settingspages, $this);
+            }
+
+            // Add the settings pages if they have more than just the settings page heading.
+            foreach (array_values($settingspages) as $settingspage) {
+                if ($settingspage[self::HASSETTINGS] == true) {
+                    $thepage = $settingspage[self::SETTINGPAGE];
+                    $fsettings->add($thepage);
+                }
             }
         }
+        $ADMIN->add('theme_foundation', $fsettings);
+
+        $this->add_importexport_settings();
+    }
+
+    private function add_importexport_settings() {
+        global $ADMIN, $CFG;
+        $page = new \admin_settingpage('theme_foundation_importexport', get_string('properties', 'theme_foundation'));
+        if ($ADMIN->fulltree) {
+            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_getprops.php")) {
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_getprops.php');
+                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_putprops.php');
+            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_getprops.php")) {
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_getprops.php');
+                require_once($CFG->themedir . '/foundation/foundation_admin_setting_putprops.php');
+            }
+
+            $page->add(new \admin_setting_heading('theme_foundation_importexport',
+                get_string('propertiessub', 'theme_foundation'),
+                format_text(get_string('propertiesdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+
+            $foundationexportprops = optional_param('theme_foundation_getprops_saveprops', 0, PARAM_INT);
+            $foundationprops = self::compile_properties('foundation');
+            $page->add(new \foundation_admin_setting_getprops('theme_foundation_getprops',
+                get_string('propertiesproperty', 'theme_foundation'),
+                get_string('propertiesvalue', 'theme_foundation'),
+                $foundationprops,
+                'theme_foundation_importexport',
+                get_string('propertiesreturn', 'theme_foundation'),
+                get_string('propertiesexport', 'theme_foundation'),
+                $foundationexportprops
+            ));
+
+            // Import theme settings section (put properties).
+            $name = 'theme_foundation/theme_foundation_putprops_import_heading';
+            $heading = get_string('putpropertiesheading', 'theme_foundation');
+            $setting = new \admin_setting_heading($name, $heading, '');
+            $page->add($setting);
+
+            $setting = new \foundation_admin_setting_putprops('theme_foundation_putprops',
+                get_string('putpropertiesname', 'theme_foundation'),
+                get_string('putpropertiesdesc', 'theme_foundation'),
+                'foundation',
+                '\theme_foundation\toolbox::put_properties'
+            );
+            $setting->set_updatedcallback('purge_all_caches');
+            $page->add($setting);
+        }
+        $ADMIN->add('theme_foundation', $page);
     }
 
     /**
@@ -1059,6 +1115,186 @@ class toolbox {
         }
 
         return $catlist;
+    }
+
+    /**
+     * Compile properties.
+     *
+     * @param string $themename Theme name
+     * @param bool $array Is this an array (confusing variable name)
+     *
+     * @return array properties
+     */
+    static public function compile_properties($themename, $array = true) {
+        global $CFG, $DB;
+
+        $props = array();
+        $themeprops = $DB->get_records('config_plugins', array('plugin' => 'theme_'.$themename));
+
+        if ($array) {
+            $props['moodle_version'] = $CFG->version;
+            // Put the theme version next so that it will be at the top of the table.
+            foreach ($themeprops as $themeprop) {
+                if ($themeprop->name == 'version') {
+                    $props['theme_version'] = $themeprop->value;
+                    unset($themeprops[$themeprop->id]);
+                    break;
+                }
+            }
+
+            foreach ($themeprops as $themeprop) {
+                $props[$themeprop->name] = $themeprop->value;
+            }
+        } else {
+            $data = new \stdClass();
+            $data->id = 0;
+            $data->value = $CFG->version;
+            $props['moodle_version'] = $data;
+            // Convert 'version' to 'theme_version'.
+            foreach ($themeprops as $themeprop) {
+                if ($themeprop->name == 'version') {
+                    $data = new \stdClass();
+                    $data->id = $themeprop->id;
+                    $data->name = 'theme_version';
+                    $data->value = $themeprop->value;
+                    $props['theme_version'] = $data;
+                    unset($themeprops[$themeprop->id]);
+                    break;
+                }
+            }
+            foreach ($themeprops as $themeprop) {
+                $data = new \stdClass();
+                $data->id = $themeprop->id;
+                $data->value = $themeprop->value;
+                $props[$themeprop->name] = $data;
+            }
+        }
+
+        return $props;
+    }
+
+    /**
+     * Store properties.
+     *
+     * @param string $themename Theme name
+     * @param string $props Properties
+     * @return string
+     */
+    static public function put_properties($themename, $props) {
+        global $DB;
+
+        // Get the current properties as a reference and for theme version information.
+        $currentprops = self::compile_properties($themename, false);
+
+        // Build the report.
+        $report = get_string('putpropertyreport', 'theme_foundation').PHP_EOL;
+        $report .= get_string('putpropertyproperties', 'theme_foundation').' \'Moodle\' '.
+            get_string('putpropertyversion', 'theme_foundation').' '.$props['moodle_version'].'.'.PHP_EOL;
+        unset($props['moodle_version']);
+        $report .= get_string('putpropertyour', 'theme_foundation').' \'Moodle\' '.
+            get_string('putpropertyversion', 'theme_foundation').' '.$currentprops['moodle_version']->value.'.'.PHP_EOL;
+        unset($currentprops['moodle_version']);
+        $report .= get_string('putpropertyproperties', 'theme_foundation').' \''.ucfirst($themename).'\' '.
+            get_string('putpropertyversion', 'theme_foundation').' '.$props['theme_version'].'.'.PHP_EOL;
+        unset($props['theme_version']);
+        $report .= get_string('putpropertyour', 'theme_foundation').' \''.ucfirst($themename).'\' '.
+            get_string('putpropertyversion', 'theme_foundation').' '.$currentprops['theme_version']->value.'.'.PHP_EOL.PHP_EOL;
+        unset($currentprops['theme_version']);
+
+        // Pre-process files - using 'theme_foundation_pluginfile' in lib.php as a reference.
+        $filestoreport = '';
+        $preprocessfilesettings = array('logo', 'favicon', 'hvp', 'loginbackground');
+
+        // Slide show.
+        for ($propslide = 1; $propslide <= $props['frontpagecarouselslides']; $propslide++) {
+            $preprocessfilesettings[] = 'frontpageslideimage'.$propslide;
+        }
+
+        // Process the file properties.
+        foreach ($preprocessfilesettings as $preprocessfilesetting) {
+            self::put_prop_file_preprocess($preprocessfilesetting, $props, $filestoreport);
+            unset($currentprops[$preprocessfilesetting]);
+        }
+
+        if ($filestoreport) {
+            $report .= get_string('putpropertiesreportfiles', 'theme_foundation').PHP_EOL.$filestoreport.PHP_EOL;
+        }
+
+        // Need to ignore and report on any unknown settings.
+        $report .= get_string('putpropertiessettingsreport', 'theme_foundation').PHP_EOL;
+        $changed = '';
+        $unchanged = '';
+        $added = '';
+        $ignored = '';
+        $settinglog = '';
+        foreach ($props as $propkey => $propvalue) {
+            $settinglog = '\''.$propkey.'\' '.get_string('putpropertiesvalue', 'theme_foundation').' \''.$propvalue.'\'';
+            if (array_key_exists($propkey, $currentprops)) {
+                if ($propvalue != $currentprops[$propkey]->value) {
+                    $settinglog .= ' '.get_string('putpropertiesfrom', 'theme_foundation').' \''.$currentprops[$propkey]->value.'\'';
+                    $changed .= $settinglog.'.'.PHP_EOL;
+                    $DB->update_record('config_plugins', array('id' => $currentprops[$propkey]->id, 'value' => $propvalue), true);
+                } else {
+                    $unchanged .= $settinglog.'.'.PHP_EOL;
+                }
+            } else if (self::to_add_property($propkey)) {
+                // Properties that have an index and don't already exist.
+                $DB->insert_record('config_plugins', array(
+                    'plugin' => 'theme_'.$themename, 'name' => $propkey, 'value' => $propvalue), true);
+                $added .= $settinglog.'.'.PHP_EOL;
+            } else {
+                $ignored .= $settinglog.'.'.PHP_EOL;
+            }
+        }
+
+        if (!empty($changed)) {
+            $report .= get_string('putpropertieschanged', 'theme_foundation').PHP_EOL.$changed.PHP_EOL;
+        }
+        if (!empty($added)) {
+            $report .= get_string('putpropertiesadded', 'theme_foundation').PHP_EOL.$added.PHP_EOL;
+        }
+        if (!empty($unchanged)) {
+            $report .= get_string('putpropertiesunchanged', 'theme_foundation').PHP_EOL.$unchanged.PHP_EOL;
+        }
+        if (!empty($ignored)) {
+            $report .= get_string('putpropertiesignored', 'theme_foundation').PHP_EOL.$ignored.PHP_EOL;
+        }
+
+        return $report;
+    }
+
+    /**
+     * Property to add
+     *
+     * @param int $propkey
+
+     * @return array matches
+     */
+    static protected function to_add_property($propkey) {
+        static $matches = '('.
+             // Slider ....
+             '^frontpageenableslide[1-9][0-9]$|'.
+             '^frontpageslidetitle[1-9][0-9]$|'.
+             '^frontpageslidecaption[1-9][0-9]$|'.
+            ')';
+
+        return (preg_match($matches, $propkey) === 1);
+    }
+
+    /**
+     * Pre process properties file.
+     *
+     * @param int $key
+     * @param array $props
+     * @param string $filestoreport
+     *
+     */
+    static private function put_prop_file_preprocess($key, &$props, &$filestoreport) {
+        if (!empty($props[$key])) {
+            $filestoreport .= '\''.$key.'\' '.get_string('putpropertiesvalue', 'theme_foundation').' \''.
+                \core_text::substr($props[$key], 1).'\'.'.PHP_EOL;
+        }
+        unset($props[$key]);
     }
 
     /**

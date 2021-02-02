@@ -25,7 +25,5 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-if ($ADMIN->fulltree) {
-    $toolbox = \theme_foundation\toolbox::get_instance();
-    $toolbox->add_settings($settings);
-}
+$toolbox = \theme_foundation\toolbox::get_instance();
+$toolbox->add_settings($settings);

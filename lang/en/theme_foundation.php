@@ -38,6 +38,7 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 </div></div>';
 
 $string['configtitle'] = 'Foundation';
+$string['configtabtitle'] = 'Foundation settings';
 $string['pluginname'] = 'Foundation';
 
 $string['region-drawer'] = 'Drawer';
@@ -251,6 +252,31 @@ $string['opendrawer'] = 'Open drawer';
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
 $string['asconfigintnan'] = '{$a->value} is not a number';
+
+// Properties.
+$string['properties'] = 'Import / Export Foundation settings';
+$string['propertiessub'] = 'Current theme settings';
+$string['propertiesdesc'] = 'In this section you can import / export current Foundation theme settings (properties) in JSON format. You can also view all current settings on this Moodle installation.';
+$string['propertiesproperty'] = 'Property';
+$string['propertiesvalue'] = 'Value';
+$string['propertiesexport'] = 'Export properties as a JSON string';
+$string['propertiesreturn'] = 'Return';
+$string['putpropertiesheading'] = 'Import theme settings';
+$string['putpropertiesname'] = 'Import properties';
+$string['putpropertiesdesc'] = 'Paste the JSON string and \'Save changes\'.  Warning!  Does not validate setting values and performs a \'Purge all caches\'.';
+$string['putpropertyreport'] = 'Report:';
+$string['putpropertyversion'] = 'version:';
+$string['putpropertyproperties'] = 'Properties';
+$string['putpropertyour'] = 'Our';
+$string['putpropertiesignorecti'] = 'Ignoring all course title image settings.';
+$string['putpropertiesreportfiles'] = 'Remember to upload the following files to their settings:';
+$string['putpropertiessettingsreport'] = 'Settings report:';
+$string['putpropertiesvalue'] = '->';
+$string['putpropertiesfrom'] = 'from';
+$string['putpropertieschanged'] = 'Changed:';
+$string['putpropertiesunchanged'] = 'Unchanged:';
+$string['putpropertiesadded'] = 'Added:';
+$string['putpropertiesignored'] = 'Ignored:';
 
 // Privacy.
 $string['privacynote'] = 'Note: The Foundation theme stores has settings that pertain to its configuration.  Specific user settings are described in the \'Plugin privacy registry\'.  For the other settings, it is your responsibilty to ensure that no user data is entered in any of the free text fields.  Setting a setting will result in that action being logged within the core Moodle logging system against the user whom changed it, this is outside of the themes control, please see the core logging system for privacy compliance for this.  When uploading images, you should avoid uploading images with embedded location data (EXIF GPS) included or other such personal data.  It would be possible to extract any location / personal data from the images.  Please examine the code carefully to be sure that it complies with your interpretation of your privacy laws.  I am not a lawyer and my analysis is based on my interpretation.  If you have any doubt then remove the theme forthwith.';
