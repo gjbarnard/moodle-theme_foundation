@@ -119,11 +119,4 @@
     <version>4.0.1</version>
     <licenseversion></licenseversion>
   </library>
-  <library>
-    <location>classes/parsedown</location>
-    <name>Parsedown by Emanuil Rusev - http://parsedown.org and http://erusev.com</name>
-    <license>MIT</license>
-    <version>1.8.0-beta-7</version>
-    <licenseversion></licenseversion>
-  </library>
 </libraries>

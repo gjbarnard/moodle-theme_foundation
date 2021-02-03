@@ -326,8 +326,13 @@ class toolbox {
             // Changes.md.
             $name = 'theme_foundation/themechanges';
             $title = get_string('themechanges', 'theme_foundation');
-            $description = get_string('themechangesdesc', 'theme_foundation');
-            $setting = new admin_setting_markdown($name, $title, $description, 'Changes.md');
+            $setting = new admin_setting_markdown($name, $title, '', 'Changes.md');
+            $settingspages['information'][self::SETTINGPAGE]->add($setting);
+
+            // Readme.md.
+            $name = 'theme_foundation/themereadme';
+            $title = get_string('themereadme', 'theme_foundation');
+            $setting = new admin_setting_markdown($name, $title, '', 'Readme.md');
             $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // General settings.
