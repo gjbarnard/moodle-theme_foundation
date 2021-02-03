@@ -23,6 +23,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_foundation;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -32,7 +34,7 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright &copy; 2021 G J Barnard.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class foundation_admin_setting_putprops extends admin_setting_configtextarea {
+class admin_setting_putprops extends \admin_setting_configtextarea {
 
     /** @var string Name of the theme. */
     private $themename;

@@ -468,16 +468,9 @@ class toolbox {
      * This does not work on tabbed settings.
      */
     private function add_importexport_settings() {
-        global $ADMIN, $CFG;
+        global $ADMIN;
         $page = new \admin_settingpage('theme_foundation_importexport', get_string('properties', 'theme_foundation'));
         if ($ADMIN->fulltree) {
-            if (file_exists("{$CFG->dirroot}/theme/foundation/foundation_admin_setting_getprops.php")) {
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_getprops.php');
-                require_once($CFG->dirroot . '/theme/foundation/foundation_admin_setting_putprops.php');
-            } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/foundation_admin_setting_getprops.php")) {
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_getprops.php');
-                require_once($CFG->themedir . '/foundation/foundation_admin_setting_putprops.php');
-            }
 
             $page->add(new \admin_setting_heading('theme_foundation_importexport',
                 get_string('propertiessub', 'theme_foundation'),
@@ -485,7 +478,7 @@ class toolbox {
 
             $foundationexportprops = optional_param('theme_foundation_getprops_saveprops', 0, PARAM_INT);
             $foundationprops = self::compile_properties('foundation');
-            $page->add(new \foundation_admin_setting_getprops('theme_foundation_getprops',
+            $page->add(new admin_setting_getprops('theme_foundation_getprops',
                 get_string('propertiesproperty', 'theme_foundation'),
                 get_string('propertiesvalue', 'theme_foundation'),
                 $foundationprops,
@@ -501,7 +494,7 @@ class toolbox {
             $setting = new \admin_setting_heading($name, $heading, '');
             $page->add($setting);
 
-            $setting = new \foundation_admin_setting_putprops('theme_foundation_putprops',
+            $setting = new admin_setting_putprops('theme_foundation_putprops',
                 get_string('putpropertiesname', 'theme_foundation'),
                 get_string('putpropertiesdesc', 'theme_foundation'),
                 'foundation',

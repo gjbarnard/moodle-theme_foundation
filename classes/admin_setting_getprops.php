@@ -23,6 +23,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_foundation;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -32,7 +34,7 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright &copy; 2021 G J Barnard.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class foundation_admin_setting_getprops extends admin_setting {
+class admin_setting_getprops extends \admin_setting {
 
     /** @var string Store properties. */
     private $props;
@@ -111,7 +113,7 @@ class foundation_admin_setting_getprops extends admin_setting {
         $return = '';
 
         if ($this->saveprops) {
-            $returnurl = new moodle_url('/admin/settings.php', array('section' => $this->settingsectionname));
+            $returnurl = new \moodle_url('/admin/settings.php', array('section' => $this->settingsectionname));
             $returnbutton = '<div class="singlebutton"><a class="btn btn-default" href="'.$returnurl->out(true).'">'.
                 $this->returnbuttonname.'</a></div>';
             $return .= $returnbutton;
@@ -120,12 +122,12 @@ class foundation_admin_setting_getprops extends admin_setting {
             $return .= '</div>';
             $return .= $returnbutton;
         } else {
-            $propsexporturl = new moodle_url('/admin/settings.php', array('section' => $this->settingsectionname,
+            $propsexporturl = new \moodle_url('/admin/settings.php', array('section' => $this->settingsectionname,
                 $this->name.'_saveprops' => 1));
 
             $propsexportbutton = '<div class="singlebutton"><div><a class="btn btn-default" href="'.$propsexporturl->out(true).'">'.
                 $this->savepropsbuttonname.'</a></div></div>';
-            $table = new html_table();
+            $table = new \html_table();
             $table->head = array($this->visiblename, markdown_to_html($this->description));
             $table->colclasses = array('leftalign', 'leftalign');
             $table->id = 'adminprops_'.$this->name;
@@ -136,7 +138,7 @@ class foundation_admin_setting_getprops extends admin_setting {
                 $table->data[] = array($propname, '<pre>'.htmlentities($propvalue).'</pre>');
             }
             $return .= $propsexportbutton;
-            $return .= html_writer::table($table);
+            $return .= \html_writer::table($table);
             $return .= $propsexportbutton;
         }
 
