@@ -6,6 +6,7 @@ Version 3.10.0.2 - TBR
  2. Fix - menu item hover.
  3. Add import / export settings code from Essential.
  4. Have an 'Information' settings page.
+ 5. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------

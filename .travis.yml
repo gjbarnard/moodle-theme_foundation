@@ -28,7 +28,7 @@ jobs:
 env:
  global:
   - MOODLE_BRANCH=MOODLE_310_STABLE
-  - IGNORE_PATHS=javascript/syntaxhighlighter_3_0_83/,javascript/syntaxhighlighter_4_0_1/,templates/mod_assign
+  - IGNORE_PATHS=templates/mod_assign
   - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css
 
 before_install:

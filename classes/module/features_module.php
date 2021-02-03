@@ -279,52 +279,12 @@ class features_module extends \theme_foundation\module_basement implements \temp
             )
         );
 
-        // Deprecated info.
-        $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
-            new \admin_setting_description('theme_foundation_syntaxhighlight_deprecated_information',
-                get_string('syntaxhighlightdeprecatedwarning', 'theme_foundation'),
-                '<p>'.get_string('syntaxhighlightdeprecatedinformation', 'theme_foundation').'</p>')
-        );
-
-        // Activate syntax highlighting - 1 = no, 2 = yes.
-        $name = 'theme_foundation/syntaxhighlight';
-        $title = get_string('syntaxhighlight', 'theme_foundation');
-        $description = get_string('syntaxhighlightdesc', 'theme_foundation');
-        $default = 1;
-        $choices = array(
-            1 => new \lang_string('no'), // No.
-            2 => new \lang_string('yes') // Yes.
-        );
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        // Syntax highlight removed.
+        $name = 'theme_foundation/syntaxhighlightremoved';
+        $title = get_string('syntaxhighlightremoved', 'theme_foundation');
+        $description = get_string('syntaxhighlightremoveddesc', 'theme_foundation');
+        $setting = new \admin_setting_description($name, $title, $description);
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-        $shchoices = array(
-            '3.0.83' => '3.0.83',
-            '4.0.1' => '4.0.1'
-        );
-
-        // Syntax highlighter version.
-        $name = 'theme_foundation/syntaxhighlightversion';
-        $title = get_string('syntaxhighlightversion', 'theme_foundation');
-        $description = get_string('syntaxhighlightversiondesc', 'theme_foundation');
-        $default = '3.0.83';
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $shchoices);
-        $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
-        if (\theme_foundation\toolbox::get_config_setting('syntaxhighlight') == 2) {
-            // Syntax highlighting categories.
-            $coursecats = \theme_foundation\toolbox::get_categories_list();
-            $coursecatsoptions = array();
-            foreach ($coursecats as $catkey => $catvalue) {
-                $coursecatsoptions[$catkey] = join(' / ', $catvalue->namechunks);
-            }
-            $name = 'theme_foundation/syntaxhighlightcat';
-            $title = get_string('syntaxhighlightcat', 'theme_foundation');
-            $description = get_string('syntaxhighlightcatdesc', 'theme_foundation');
-            $default = array();
-            $setting = new \admin_setting_configmultiselect($name, $title, $description, $default, $coursecatsoptions);
-            $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-        }
     }
 
     /**
