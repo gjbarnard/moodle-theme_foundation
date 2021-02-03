@@ -326,13 +326,15 @@ class toolbox {
             // Changes.md.
             $name = 'theme_foundation/themechanges';
             $title = get_string('themechanges', 'theme_foundation');
-            $setting = new admin_setting_markdown($name, $title, '', 'Changes.md');
+            $description = get_string('themechangesdesc', 'theme_foundation');
+            $setting = new admin_setting_markdown($name, $title, $description, 'Changes.md');
             $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // Readme.md.
             $name = 'theme_foundation/themereadme';
             $title = get_string('themereadme', 'theme_foundation');
-            $setting = new admin_setting_markdown($name, $title, '', 'Readme.md');
+            $description = get_string('themereadmedesc', 'theme_foundation');
+            $setting = new admin_setting_markdown($name, $title, $description, 'Readme.md');
             $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // General settings.
@@ -461,6 +463,10 @@ class toolbox {
         $this->add_importexport_settings();
     }
 
+    /**
+     * Adds the separate import / export settings page.
+     * This does not work on tabbed settings.
+     */
     private function add_importexport_settings() {
         global $ADMIN, $CFG;
         $page = new \admin_settingpage('theme_foundation_importexport', get_string('properties', 'theme_foundation'));

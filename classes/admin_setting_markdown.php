@@ -27,23 +27,23 @@ namespace theme_foundation;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Setting that uses the 'Parsedown' class to show markup.
- * Based on admin_setting_description in adminlib.php.
+ * Setting that displays markdown files.  Based on admin_setting_description in adminlib.php.
  *
  * @copyright  &copy; 2021-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class admin_setting_markdown extends \admin_setting {
 
+    /** @var string Filename */
     private $filename;
 
     /**
      * Not a setting, just markup.
      *
-     * @param string $name.
-     * @param string $visiblename.
-     * @param string $description.
-     * @param string $filename.
+     * @param string $name Setting name.
+     * @param string $visiblename Setting name on the device.
+     * @param string $description Setting description on the device.
+     * @param string $filename The file to show.
      */
     public function __construct($name, $visiblename, $description, $filename) {
         $this->nosave = true;
@@ -92,6 +92,7 @@ class admin_setting_markdown extends \admin_setting {
 
         $context = new \stdClass();
         $context->title = $this->visiblename;
+        $context->description = $this->description;
 
         if (file_exists("{$CFG->dirroot}/theme/foundation/{$this->filename}")) {
             $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/'.$this->filename);
@@ -100,7 +101,6 @@ class admin_setting_markdown extends \admin_setting {
         } else {
             $filecontents = 'admin_setting_markdown -> file not found: '.$this->filename;
         }
-        
         $context->markdown = format_text($filecontents, FORMAT_MARKDOWN);
 
         return $OUTPUT->render_from_template('theme_foundation/admin_setting_markdown', $context);

@@ -5,18 +5,19 @@ Version 3.9.1.3 - TBR
  2. Fix - menu item hover.
  3. Tabs update in line with MDL-69301.
  4. Add import / export settings code from Essential.
+ 5. Have an 'Information' settings page.
 
 Version 3.9.1.2 - 8/11/20
-  1. Fix 'Book module has two icons'.
-  2. Fix empty block regions don't have JS drop area when editing.
-  3. Side-pre is on the right.
-  4. Fix default navbar dropdown icons and text hover.
-  5. Adjustments to the navbar to sort out alignment issues.
-  6. Settings tabs.
-  7. Namespaced classes for settings.
-  8. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
-  9. Deprecate syntax highlighting functionality in favour of 'SynHi' filter - https://moodle.org/plugins/filter_synhi.
- 10. Navbar style improvements.
+ 1. Fix 'Book module has two icons'.
+ 2. Fix empty block regions don't have JS drop area when editing.
+ 3. Side-pre is on the right.
+ 4. Fix default navbar dropdown icons and text hover.
+ 5. Adjustments to the navbar to sort out alignment issues.
+ 6. Settings tabs.
+ 7. Namespaced classes for settings.
+ 8. Improve goto bottom icon and make sure it floats on top of search 'Go' button.
+ 9. Deprecate syntax highlighting functionality in favour of 'SynHi' filter - https://moodle.org/plugins/filter_synhi.
+10. Navbar style improvements.
 
 Version 3.9.1.1 - 8/10/20
   1. Fix 'Call to undefined function course_get_format() on login' - #8.
