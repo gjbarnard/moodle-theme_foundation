@@ -90,14 +90,18 @@ class admin_setting_markdown extends \admin_setting {
     public function output_html($data, $query='') {
         global $CFG, $OUTPUT;
 
-        $parsedown = new \theme_foundation\parsedown\Parsedown();
-
         $context = new \stdClass();
         $context->title = $this->visiblename;
-        $context->description = $this->description;
-        //$context->markdown = $parsedown->text('Hello _Parsedown_!').format_text('Hello _Parsedown_!', FORMAT_MARKDOWN);
-        $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/Changes.md');
-        $context->markdown = $parsedown->text($filecontents).format_text($filecontents, FORMAT_MARKDOWN);
+
+        if (file_exists("{$CFG->dirroot}/theme/foundation/{$this->filename}")) {
+            $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/'.$this->filename);
+        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/{$this->filename}")) {
+            $filecontents = file_get_contents($CFG->themedir.'/foundation/'.$this->filename);
+        } else {
+            $filecontents = 'admin_setting_markdown -> file not found: '.$this->filename;
+        }
+        
+        $context->markdown = format_text($filecontents, FORMAT_MARKDOWN);
 
         return $OUTPUT->render_from_template('theme_foundation/admin_setting_markdown', $context);
     }
