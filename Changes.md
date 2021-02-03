@@ -6,6 +6,7 @@ Version 3.9.1.3 - TBR
  3. Tabs update in line with MDL-69301.
  4. Add import / export settings code from Essential.
  5. Have an 'Information' settings page.
+ 6. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
 
 Version 3.9.1.2 - 8/11/20
  1. Fix 'Book module has two icons'.
