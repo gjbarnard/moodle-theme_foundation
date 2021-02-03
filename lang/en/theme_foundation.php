@@ -55,6 +55,14 @@ $string['gotobottom'] = 'Go to the bottom of the page';
 $string['backtotop'] = 'Back to top';
 
 // Settings.
+// Information
+$string['informationheading'] = 'Information';
+$string['informationheadingsub'] = 'Information settings';
+$string['informationheadingdesc'] = 'Information about the Foundation theme.';
+
+$string['themechanges'] = 'Changes';
+$string['themechangesdesc'] = 'Theme changes.';
+
 // General.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';

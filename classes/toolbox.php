@@ -296,6 +296,10 @@ class toolbox {
         if ($ADMIN->fulltree) {
             // The settings pages we create.
             $settingspages = array(
+                'information' => array(
+                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_information',
+                        get_string('informationheading', 'theme_foundation')),
+                    self::HASSETTINGS => true),
                'general' => array(
                     self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
                         get_string('generalheading', 'theme_foundation')),
@@ -309,6 +313,22 @@ class toolbox {
                         get_string('moduleheading', 'theme_foundation')),
                     self::HASSETTINGS => false)
             );
+
+            // Information settings.
+            $settingspages['information'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_informationheading',
+                    get_string('informationheadingsub', 'theme_foundation'),
+                    format_text(get_string('informationheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Changes.md.
+            $name = 'theme_foundation/themechanges';
+            $title = get_string('themechanges', 'theme_foundation');
+            $description = get_string('themechangesdesc', 'theme_foundation');
+            $setting = new admin_setting_markdown($name, $title, $description, 'Changes.md');
+            $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // General settings.
             $settingspages['general'][self::SETTINGPAGE]->add(
