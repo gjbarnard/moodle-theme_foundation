@@ -21,6 +21,7 @@ Version 3.8.1.1 - TBD
 18. Fix - menu item hover.
 19. Add import / export settings code from Essential.
 20. Have an 'Information' settings page.
+21. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
 
 Version 3.8.1.0 - 26/01/2020
  1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.

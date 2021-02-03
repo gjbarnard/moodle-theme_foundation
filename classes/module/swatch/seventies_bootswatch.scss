@@ -67,20 +67,6 @@ body {
     font-family: "BPscript", Calibri, Candara, Arial, sans-serif;
 }
 
-//
-// Code
-//
-
-body .syntaxhighlighter {
-    code,
-    div {
-        font-family: $font-family-monospace !important;
-    }
-    code {
-        @include font-size(0.85em, true);
-    }
-}
-
 // Show expand collapse with font-awesome.
 .block_settings .block_tree [aria-expanded="true"],
 .block_settings .block_tree [aria-expanded="true"].emptybranch,

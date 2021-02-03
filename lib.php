@@ -57,8 +57,6 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
             theme_foundation_serve_hvp_css($args[1], $theme);
         } else if ($filearea === 'loginbackground') {
             return $theme->setting_file_serve('loginbackground', $args, $forcedownload, $options);
-        } else if ($filearea === 'syntaxhighlighter') {
-            \theme_foundation\toolbox::serve_syntaxhighlighter($args[1]);
         } else {
             send_file_not_found();
         }

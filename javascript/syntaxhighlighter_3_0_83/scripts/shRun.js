@@ -1,1 +1,0 @@
-SyntaxHighlighter.all();
