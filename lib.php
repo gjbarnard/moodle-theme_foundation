@@ -168,7 +168,16 @@ function theme_foundation_extra_scss($theme) {
  */
 function theme_foundation_get_precompiled_css() {
     global $CFG;
-    return file_get_contents($CFG->dirroot.'/theme/foundation/style/fallback.css');
+
+    if (file_exists("{$CFG->dirroot}/theme/foundation/style/fallback.css")) {
+        $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/style/fallback.css');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/style/fallback.css")) {
+        $filecontents = file_get_contents($CFG->themedir.'/foundation/style/fallback.css');
+    } else {
+        $filecontents = '';
+    }
+
+    return $filecontents;
 }
 
 /**
