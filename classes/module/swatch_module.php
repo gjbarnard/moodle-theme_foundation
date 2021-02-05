@@ -41,6 +41,21 @@ defined('MOODLE_INTERNAL') || die();
 class swatch_module extends \theme_foundation\module_basement {
 
     /**
+     * Gets the module pre SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
+    public function pre_scss($themename, $toolbox) {
+        $prescss = '';
+        if ($toolbox->get_setting('swatch', 'foundation') == 'custom') {
+            $prescss = '$primary: #fab;';
+        }
+        return $prescss;
+    }
+    
+    /**
      * Gets the swatch SCSS.
      *
      * @param theme_config $theme Theme configuration.
