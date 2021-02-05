@@ -291,7 +291,7 @@ class toolbox {
         $settings = null;
 
         $ADMIN->add('themes', new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
-        $fsettings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtabtitle', 'theme_foundation'));
+        $fsettings = new admin_settingspage_tabs('themesettingsfoundation', get_string('configtabtitle', 'theme_foundation'));
 
         if ($ADMIN->fulltree) {
             // The settings pages we create.
@@ -300,7 +300,7 @@ class toolbox {
                     self::SETTINGPAGE => new \admin_settingpage('theme_foundation_information',
                         get_string('informationheading', 'theme_foundation')),
                     self::HASSETTINGS => true),
-               'general' => array(
+                'general' => array(
                     self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
                         get_string('generalheading', 'theme_foundation')),
                     self::HASSETTINGS => true),
@@ -311,7 +311,11 @@ class toolbox {
                 'module' => array(
                     self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
                         get_string('moduleheading', 'theme_foundation')),
-                    self::HASSETTINGS => false)
+                    self::HASSETTINGS => false),
+                'custom' => array(
+                    self::SETTINGPAGE => new admin_settingspage_tabs('theme_foundation_custom',
+                        'Custom'),
+                    self::HASSETTINGS => true)
             );
 
             // Information settings.
@@ -443,6 +447,15 @@ class toolbox {
                     format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
+
+            // Custom
+            $apage = new \admin_settingpage('theme_foundation_a1', 'A1');
+            $apage->add(new \admin_setting_heading('theme_foundation_a1heading','A1 Heading', ''));
+            $settingspages['custom'][self::SETTINGPAGE]->add($apage);
+            $apage = new \admin_settingpage('theme_foundation_a2', 'A2');
+            $apage->add(new \admin_setting_heading('theme_foundation_a1heading','A2 Heading', ''));
+            $settingspages['custom'][self::SETTINGPAGE]->add($apage);
+
 
             /* Call each module where they can either add their settings to an existing settings page or create their own
                and have it added. */
