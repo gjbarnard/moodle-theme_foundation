@@ -311,11 +311,7 @@ class toolbox {
                 'module' => array(
                     self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
                         get_string('moduleheading', 'theme_foundation')),
-                    self::HASSETTINGS => false),
-                'custom' => array(
-                    self::SETTINGPAGE => new admin_settingspage_tabs('theme_foundation_custom',
-                        'Custom'),
-                    self::HASSETTINGS => true)
+                    self::HASSETTINGS => false)
             );
 
             // Information settings.
@@ -447,15 +443,6 @@ class toolbox {
                     format_text(get_string('moduleheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
-
-            // Custom
-            $apage = new \admin_settingpage('theme_foundation_a1', 'A1');
-            $apage->add(new \admin_setting_heading('theme_foundation_a1heading','A1 Heading', ''));
-            $settingspages['custom'][self::SETTINGPAGE]->add($apage);
-            $apage = new \admin_settingpage('theme_foundation_a2', 'A2');
-            $apage->add(new \admin_setting_heading('theme_foundation_a1heading','A2 Heading', ''));
-            $settingspages['custom'][self::SETTINGPAGE]->add($apage);
-
 
             /* Call each module where they can either add their settings to an existing settings page or create their own
                and have it added. */
