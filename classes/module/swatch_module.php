@@ -69,22 +69,14 @@ class swatch_module extends \theme_foundation\module_basement {
      * @param toolbox $toolbox The theme toolbox.
      */
     public function add_settings(&$settingspages, $toolbox) {
-        // Create our own settings page / tabs.
-        if ($toolbox->get_setting('swatch', 'foundation') == 'custom') {
-            $swatchsettings = new \theme_foundation\admin_settingspage_tabs('theme_foundation_swatchtabs', get_string('swatchheading', 'theme_foundation'));
-            $mainpage = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
-            $swatchsettings->add($mainpage);
-            $this->add_custom_settings($swatchsettings);
-        } else {
-            $swatchsettings = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
-            $mainpage = $swatchsettings;
-        }
+        // Create our own settings page.
+        $swatchsettings = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
         $settingspages['swatch'] = array(
-            \theme_foundation\toolbox::SETTINGPAGE =>$swatchsettings, 
+            \theme_foundation\toolbox::SETTINGPAGE =>$swatchsettings,
             \theme_foundation\toolbox::HASSETTINGS => true
         );
 
-        $mainpage->add(
+        $swatchsettings->add(
             new \admin_setting_heading(
                 'theme_foundation_swatchheading',
                 get_string('swatchheadingsub', 'theme_foundation'),
@@ -125,16 +117,24 @@ class swatch_module extends \theme_foundation\module_basement {
         $default = 'default';
         $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $mainpage->add($setting);
+        $swatchsettings->add($setting);
+
+        if ($toolbox->get_setting('swatch', 'foundation') == 'custom') {
+            $this->add_custom_settings($settingspages);
+        }
     }
 
     /**
      * Add the custom swatch settings.
      *
-     * @param array $swatchsettings The swatch setting tabs.
+     * @param array $settingspages The setting pages.
      */
-    private function add_custom_settings(&$swatchsettings) {
+    private function add_custom_settings(&$settingspages) {
         $custompage = new \admin_settingpage('theme_foundation_swatchcustom', get_string('swatchcustomheading', 'theme_foundation'));
+        $settingspages['swatchcustom'] = array(
+            \theme_foundation\toolbox::SETTINGPAGE =>$custompage,
+            \theme_foundation\toolbox::HASSETTINGS => true
+        );
 
         $custompage->add(
             new \admin_setting_heading(
@@ -143,8 +143,6 @@ class swatch_module extends \theme_foundation\module_basement {
                 format_text(get_string('swatchcustomheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
             )
         );
-
-        $swatchsettings->add($custompage);
     }
 
     /**
