@@ -41,6 +41,25 @@ defined('MOODLE_INTERNAL') || die();
 class swatch_module extends \theme_foundation\module_basement {
 
     /**
+     * @var string $swatchcustomcolourdefaults SWatch custom colour defaults.
+     */
+    private static $swatchcustomcolourdefaults = array(
+        'primary' => '#ffaabb',
+        'secondary' => '#6c757d'
+    );
+
+    /**
+     * Helper method.
+     *
+     * @param string $settingname Setting name.
+     *
+     * @return string Setting default.
+     */
+    private function get_custom_swatch_default_colour_setting($settingname) {
+        return self::$swatchcustomcolourdefaults[$settingname];
+    }
+
+    /**
      * Gets the module pre SCSS.
      *
      * @param string $themename The theme name the SCSS is for.
@@ -52,7 +71,7 @@ class swatch_module extends \theme_foundation\module_basement {
         $prescss = '';
         if ($toolbox->get_setting('swatchcustom', $themename)) {
             $prescss = '$primary: '.
-                $this->get_custom_swatch_setting('swatchcustomprimarycolour', '#ffaabb', $themename, $toolbox).';';
+                $this->get_custom_swatch_setting('primary', $themename, $toolbox).';';
         }
 
         return $prescss;
@@ -62,16 +81,16 @@ class swatch_module extends \theme_foundation\module_basement {
      * Helper method.
      *
      * @param string $settingname Setting name.
-     * @param string $settingdefault Setting default.
      * @param string $themename The theme name the SCSS is for.
      * @param toolbox $toolbox The toolbox instance.
      *
      * @return string Setting value or default if empty.
      */
-    private function get_custom_swatch_setting($settingname, $settingdefault, $themename, $toolbox) {
-        $settingvalue = $toolbox->get_setting($settingname, $themename);
+    private function get_custom_swatch_setting($settingname, $themename, $toolbox) {
+        $settingfullname = 'swatchcustom'.$settingname.'colour';
+        $settingvalue = $toolbox->get_setting($settingfullname, $themename);
         if (empty($settingvalue)) {
-            $settingvalue = $settingdefault;
+            $settingvalue = $this->get_custom_swatch_default_colour_setting($settingname);
         }
         return $settingvalue;
     }
@@ -189,13 +208,50 @@ class swatch_module extends \theme_foundation\module_basement {
         );
 
         // Primary colour.
-        $name = 'theme_foundation/swatchcustomprimarycolour';
+        /*$name = 'theme_foundation/swatchcustomprimarycolour';
         $title = get_string('swatchcustomprimarycolour', 'theme_foundation');
         $description = get_string('swatchcustomprimarycolourdesc', 'theme_foundation');
         $previewconfig = null;
         $setting = new \admin_setting_configcolourpicker($name, $title, $description, '#ffaabb', $previewconfig);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $custompage->add($setting);
+        $custompage->add($setting);*/
+
+        $custompage->add($this->create_custom_swatch_colour_setting('primary'));
+        $custompage->add($this->create_custom_swatch_colour_setting('secondary'));
+
+        /*
+        $success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+*/
+    }
+
+    /**
+     * Helper method.
+     *
+     * @param string $settingname Setting name.
+     *
+     * @return object Admin setting instance.
+     */
+    private function create_custom_swatch_colour_setting($settingname) {
+        $settingfullname = 'swatchcustom'.$settingname.'colour';
+        $name = 'theme_foundation/'.$settingfullname;
+        $title = get_string($settingfullname, 'theme_foundation');
+        $description = get_string($settingfullname.'desc', 'theme_foundation');
+        $previewconfig = null;
+        $setting = new \admin_setting_configcolourpicker(
+            $name,
+            $title,
+            $description, 
+            $this->get_custom_swatch_default_colour_setting($settingname),
+            $previewconfig
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+
+        return $setting;
     }
 
     /**
