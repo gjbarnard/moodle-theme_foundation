@@ -256,11 +256,11 @@ $string['swatchcustomtypographyheading'] = 'Swatch custom typography';
 $string['swatchcustomtypographyheadingsub'] = 'Custom swatch typography settings';
 $string['swatchcustomtypographyheadingdesc'] = 'Configure the custom swatch typography settings for Foundation here.';
 
-$string['customswatchfontsizebase'] = 'Font size base';
-$string['customswatchfontsizebasedesc'] = 'Set the base font size as a number.  Units are \'rem\' internally.';
+$string['swatchcustomfontsizebase'] = 'Font size base';
+$string['swatchcustomfontsizebasedesc'] = 'Set the base font size as a number.  Units are \'rem\' internally.';
 
-$string['customswatchlineheightbase'] = 'Line height base';
-$string['customswatchlineheightbasedesc'] = 'Set the base line height as a number.';
+$string['swatchcustomlineheightbase'] = 'Line height base';
+$string['swatchcustomlineheightbasedesc'] = 'Set the base line height as a number.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
