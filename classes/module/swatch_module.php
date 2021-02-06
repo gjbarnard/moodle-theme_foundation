@@ -86,20 +86,20 @@ class swatch_module extends \theme_foundation\module_basement {
         $prescss = '';
 
         if ($toolbox->get_setting('swatchcustomcolours', $themename)) {
-            foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+            foreach (array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
                 $prescss .= '$'.$settingkey.': '.
                     $this->get_custom_swatch_setting($settingkey, $themename, $toolbox).';'.PHP_EOL;
             }
         }
 
         if ($toolbox->get_setting('swatchcustomtypography', $themename)) {
-            $fontsizebase = $toolbox->get_setting('customswatchfontsizebase', $themename);
+            $fontsizebase = $toolbox->get_setting('swatchcustomfontsizebase', $themename);
             if (empty($fontsizebase)) {
                 $fontsizebase = '1';
             }
             $prescss .= '$font-size-base: '.$fontsizebase.'rem;'.PHP_EOL;
 
-            $lineheightbase = $toolbox->get_setting('customswatchlineheightbase', $themename);
+            $lineheightbase = $toolbox->get_setting('swatchcustomlineheightbase', $themename);
             if (empty($lineheightbase)) {
                 $lineheightbase = '1.5';
             }
@@ -243,13 +243,13 @@ class swatch_module extends \theme_foundation\module_basement {
 
             $custompage->add(
                 new \admin_setting_heading(
-                    'theme_foundation_customswatchcoloursheading',
+                    'theme_foundation_swatchcustomcoloursheading',
                     get_string('swatchcustomcoloursheadingsub', 'theme_foundation'),
                     format_text(get_string('swatchcustomcoloursheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
 
-            foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+            foreach (array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
                 $custompage->add($this->create_custom_swatch_colour_setting($settingkey));
             }
         }
@@ -264,25 +264,25 @@ class swatch_module extends \theme_foundation\module_basement {
 
             $custompage->add(
                 new \admin_setting_heading(
-                    'theme_foundation_customswatchtypographyheading',
+                    'theme_foundation_swatchcustomtypographyheading',
                     get_string('swatchcustomtypographyheadingsub', 'theme_foundation'),
                     format_text(get_string('swatchcustomtypographyheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
 
             // Font size base.
-            $name = 'theme_foundation/customswatchfontsizebase';
-            $title = get_string('customswatchfontsizebase', 'theme_foundation');
-            $description = get_string('customswatchfontsizebasedesc', 'theme_foundation');
+            $name = 'theme_foundation/swatchcustomfontsizebase';
+            $title = get_string('swatchcustomfontsizebase', 'theme_foundation');
+            $description = get_string('swatchcustomfontsizebasedesc', 'theme_foundation');
             $default = '1';
             $setting = new \admin_setting_configtext($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
             $custompage->add($setting);
 
             // Line height base.
-            $name = 'theme_foundation/customswatchlineheightbase';
-            $title = get_string('customswatchlineheightbase', 'theme_foundation');
-            $description = get_string('customswatchlineheightbasedesc', 'theme_foundation');
+            $name = 'theme_foundation/swatchcustomlineheightbase';
+            $title = get_string('swatchcustomlineheightbase', 'theme_foundation');
+            $description = get_string('swatchcustomlineheightbasedesc', 'theme_foundation');
             $default = '1.5';
             $setting = new \admin_setting_configtext($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
@@ -305,7 +305,7 @@ class swatch_module extends \theme_foundation\module_basement {
         $setting = new \admin_setting_configcolourpicker(
             $name,
             $title,
-            $description, 
+            $description,
             $this->get_custom_swatch_default_colour_setting($settingname),
             $previewconfig
         );
