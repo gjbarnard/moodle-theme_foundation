@@ -243,14 +243,12 @@ $string['swatchcustom'] = 'Swatch custom';
 $string['swatchcustomdesc'] = 'Activate custom swatch settings';
 
 // Swatch custom settings.
-$string['swatchcustomheading'] = 'Swatch custom';
-$string['swatchcustomheadingsub'] = 'Custom swatch settings';
-$string['swatchcustomheadingdesc'] = 'Configure the custom swatch settings for Foundation here.';
+$string['swatchcustomcoloursheading'] = 'Swatch custom colours';
+$string['swatchcustomcoloursheadingsub'] = 'Custom swatch colour settings';
+$string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings for Foundation here.';
 
-$string['swatchcustomprimarycolour'] = 'Primary colour';
-$string['swatchcustomprimarycolourdesc'] = 'Set the primary colour';
-$string['swatchcustomsecondarycolour'] = 'Secondary colour';
-$string['swatchcustomsecondarycolourdesc'] = 'Set the secondary colour';
+$string['swatchcustomcolour'] = '{$a} colour';
+$string['swatchcustomcolourdesc'] = 'Set the {$a} colour.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
