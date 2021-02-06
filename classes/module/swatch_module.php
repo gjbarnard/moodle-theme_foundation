@@ -84,11 +84,26 @@ class swatch_module extends \theme_foundation\module_basement {
      */
     public function pre_scss($themename, $toolbox) {
         $prescss = '';
-        if ($toolbox->get_setting('swatchcustom', $themename)) {
+
+        if ($toolbox->get_setting('swatchcustomcolours', $themename)) {
             foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
                 $prescss .= '$'.$settingkey.': '.
                     $this->get_custom_swatch_setting($settingkey, $themename, $toolbox).';'.PHP_EOL;
             }
+        }
+
+        if ($toolbox->get_setting('swatchcustomtypography', $themename)) {
+            $fontsizebase = $toolbox->get_setting('customswatchfontsizebase', $themename);
+            if (empty($fontsizebase)) {
+                $fontsizebase = '1';
+            }
+            $prescss .= '$font-size-base: '.$fontsizebase.'rem;'.PHP_EOL;
+
+            $lineheightbase = $toolbox->get_setting('customswatchlineheightbase', $themename);
+            if (empty($lineheightbase)) {
+                $lineheightbase = '1.5';
+            }
+            $prescss .= '$line-height-base: '.$lineheightbase.';'.PHP_EOL;
         }
 
         return $prescss;
@@ -190,43 +205,88 @@ class swatch_module extends \theme_foundation\module_basement {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $swatchsettings->add($setting);
 
-        // Custom swatch settings.
-        $name = 'theme_foundation/swatchcustom';
-        $title = get_string('swatchcustom', 'theme_foundation');
-        $description = get_string('swatchcustomdesc', 'theme_foundation');
+        // Custom swatch colour settings.
+        $name = 'theme_foundation/swatchcustomcolours';
+        $title = get_string('swatchcustomcolours', 'theme_foundation');
+        $description = get_string('swatchcustomcoloursdesc', 'theme_foundation');
         $default = false;
         $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
         $setting->set_updatedcallback('theme_reset_all_caches');  // Will alter the 'prescss'.
         $swatchsettings->add($setting);
 
-        if ($toolbox->get_setting('swatchcustom', 'foundation')) {
-            $this->add_custom_settings($settingspages);
-        }
+        // Custom swatch typography settings.
+        $name = 'theme_foundation/swatchcustomtypography';
+        $title = get_string('swatchcustomtypography', 'theme_foundation');
+        $description = get_string('swatchcustomtypographydesc', 'theme_foundation');
+        $default = false;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $setting->set_updatedcallback('theme_reset_all_caches');  // Will alter the 'prescss'.
+        $swatchsettings->add($setting);
+
+        $this->add_custom_settings($settingspages, $toolbox);
     }
 
     /**
      * Add the custom swatch settings.
      *
      * @param array $settingspages The setting pages.
+     * @param toolbox $toolbox The theme toolbox.
      */
-    private function add_custom_settings(&$settingspages) {
-        $custompage = new \admin_settingpage('theme_foundation_swatchcustomcolours',
-            get_string('swatchcustomcoloursheading', 'theme_foundation'));
-        $settingspages['swatchcustomcolours'] = array(
-            \theme_foundation\toolbox::SETTINGPAGE => $custompage,
-            \theme_foundation\toolbox::HASSETTINGS => true
-        );
+    private function add_custom_settings(&$settingspages, $toolbox) {
+        if ($toolbox->get_setting('swatchcustomcolours', 'foundation')) {
+            $custompage = new \admin_settingpage('theme_foundation_swatchcustomcolours',
+                get_string('swatchcustomcoloursheading', 'theme_foundation'));
+            $settingspages['swatchcustomcolours'] = array(
+                \theme_foundation\toolbox::SETTINGPAGE => $custompage,
+                \theme_foundation\toolbox::HASSETTINGS => true
+            );
 
-        $custompage->add(
-            new \admin_setting_heading(
-                'theme_foundation_customswatchcoloursheading',
-                get_string('swatchcustomcoloursheadingsub', 'theme_foundation'),
-                format_text(get_string('swatchcustomcoloursheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-            )
-        );
+            $custompage->add(
+                new \admin_setting_heading(
+                    'theme_foundation_customswatchcoloursheading',
+                    get_string('swatchcustomcoloursheadingsub', 'theme_foundation'),
+                    format_text(get_string('swatchcustomcoloursheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
 
-        foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
-            $custompage->add($this->create_custom_swatch_colour_setting($settingkey));
+            foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+                $custompage->add($this->create_custom_swatch_colour_setting($settingkey));
+            }
+        }
+
+        if ($toolbox->get_setting('swatchcustomtypography', 'foundation')) {
+            $custompage = new \admin_settingpage('theme_foundation_swatchcustomtypography',
+                get_string('swatchcustomtypographyheading', 'theme_foundation'));
+            $settingspages['swatchcustomtypography'] = array(
+                \theme_foundation\toolbox::SETTINGPAGE => $custompage,
+                \theme_foundation\toolbox::HASSETTINGS => true
+            );
+
+            $custompage->add(
+                new \admin_setting_heading(
+                    'theme_foundation_customswatchtypographyheading',
+                    get_string('swatchcustomtypographyheadingsub', 'theme_foundation'),
+                    format_text(get_string('swatchcustomtypographyheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Font size base.
+            $name = 'theme_foundation/customswatchfontsizebase';
+            $title = get_string('customswatchfontsizebase', 'theme_foundation');
+            $description = get_string('customswatchfontsizebasedesc', 'theme_foundation');
+            $default = '1';
+            $setting = new \admin_setting_configtext($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $custompage->add($setting);
+
+            // Line height base.
+            $name = 'theme_foundation/customswatchlineheightbase';
+            $title = get_string('customswatchlineheightbase', 'theme_foundation');
+            $description = get_string('customswatchlineheightbasedesc', 'theme_foundation');
+            $default = '1.5';
+            $setting = new \admin_setting_configtext($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $custompage->add($setting);
         }
     }
 
