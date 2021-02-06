@@ -41,11 +41,26 @@ defined('MOODLE_INTERNAL') || die();
 class swatch_module extends \theme_foundation\module_basement {
 
     /**
-     * @var string $swatchcustomcolourdefaults SWatch custom colour defaults.
+     * @var string $swatchcustomcolourdefaults Swatch custom colour defaults.
      */
     private static $swatchcustomcolourdefaults = array(
         'primary' => '#ffaabb',
-        'secondary' => '#6c757d'
+        'secondary' => '#6c757d',
+        'success' => '#28a745',
+        'info' => '#17a2b8',
+        'warning' => '#ffc107',
+        'danger' => '#dc3545',
+        'light' => '#f8f9fa',
+        'dark' => '#343a40',
+        'body-bg' => '#ffffff',
+        'body-color' => '#212529',
+        'component-active-color' => '#ffffff',
+        'component-active-bg' => '#ffaabb',
+        'headings-color' => '#ffaabb',
+        'text-muted' => '#6c757d',
+        'blockquote-small-color' => '#6c757d',
+        'card-color' => '#ffaabb',
+        'card-bg' => '#ffffff'
     );
 
     /**
@@ -70,8 +85,10 @@ class swatch_module extends \theme_foundation\module_basement {
     public function pre_scss($themename, $toolbox) {
         $prescss = '';
         if ($toolbox->get_setting('swatchcustom', $themename)) {
-            $prescss = '$primary: '.
-                $this->get_custom_swatch_setting('primary', $themename, $toolbox).';';
+            foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+                $prescss .= '$'.$settingkey.': '.
+                    $this->get_custom_swatch_setting($settingkey, $themename, $toolbox).';'.PHP_EOL;
+            }
         }
 
         return $prescss;
@@ -87,7 +104,7 @@ class swatch_module extends \theme_foundation\module_basement {
      * @return string Setting value or default if empty.
      */
     private function get_custom_swatch_setting($settingname, $themename, $toolbox) {
-        $settingfullname = 'swatchcustom'.$settingname.'colour';
+        $settingfullname = 'swatchcustom'.str_replace('-', '', $settingname).'colour';
         $settingvalue = $toolbox->get_setting($settingfullname, $themename);
         if (empty($settingvalue)) {
             $settingvalue = $this->get_custom_swatch_default_colour_setting($settingname);
@@ -193,40 +210,24 @@ class swatch_module extends \theme_foundation\module_basement {
      * @param array $settingspages The setting pages.
      */
     private function add_custom_settings(&$settingspages) {
-        $custompage = new \admin_settingpage('theme_foundation_swatchcustom', get_string('swatchcustomheading', 'theme_foundation'));
-        $settingspages['swatchcustom'] = array(
+        $custompage = new \admin_settingpage('theme_foundation_swatchcustomcolours',
+            get_string('swatchcustomcoloursheading', 'theme_foundation'));
+        $settingspages['swatchcustomcolours'] = array(
             \theme_foundation\toolbox::SETTINGPAGE => $custompage,
             \theme_foundation\toolbox::HASSETTINGS => true
         );
 
         $custompage->add(
             new \admin_setting_heading(
-                'theme_foundation_customswatchheading',
-                get_string('swatchcustomheadingsub', 'theme_foundation'),
-                format_text(get_string('swatchcustomheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+                'theme_foundation_customswatchcoloursheading',
+                get_string('swatchcustomcoloursheadingsub', 'theme_foundation'),
+                format_text(get_string('swatchcustomcoloursheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
             )
         );
 
-        // Primary colour.
-        /*$name = 'theme_foundation/swatchcustomprimarycolour';
-        $title = get_string('swatchcustomprimarycolour', 'theme_foundation');
-        $description = get_string('swatchcustomprimarycolourdesc', 'theme_foundation');
-        $previewconfig = null;
-        $setting = new \admin_setting_configcolourpicker($name, $title, $description, '#ffaabb', $previewconfig);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $custompage->add($setting);*/
-
-        $custompage->add($this->create_custom_swatch_colour_setting('primary'));
-        $custompage->add($this->create_custom_swatch_colour_setting('secondary'));
-
-        /*
-        $success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
-*/
+        foreach(array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+            $custompage->add($this->create_custom_swatch_colour_setting($settingkey));
+        }
     }
 
     /**
@@ -237,10 +238,9 @@ $dark:          $gray-800 !default;
      * @return object Admin setting instance.
      */
     private function create_custom_swatch_colour_setting($settingname) {
-        $settingfullname = 'swatchcustom'.$settingname.'colour';
-        $name = 'theme_foundation/'.$settingfullname;
-        $title = get_string($settingfullname, 'theme_foundation');
-        $description = get_string($settingfullname.'desc', 'theme_foundation');
+        $name = 'theme_foundation/swatchcustom'.str_replace('-', '', $settingname).'colour';
+        $title = get_string('swatchcustomcolour', 'theme_foundation', ucfirst($settingname));
+        $description = get_string('swatchcustomcolourdesc', 'theme_foundation', $settingname);
         $previewconfig = null;
         $setting = new \admin_setting_configcolourpicker(
             $name,

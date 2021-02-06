@@ -37,17 +37,6 @@ $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 
-$theme-colors: (
-    primary: $primary,
-    secondary: $gray-200,
-    success: $success,
-    info: $info,
-    warning: $orange,
-    danger: $danger,
-    light: $gray-100,
-    dark: $gray-800
-);
-
 // Body
 
 $body-color:    $gray-700 !default;
