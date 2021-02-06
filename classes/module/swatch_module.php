@@ -45,16 +45,37 @@ class swatch_module extends \theme_foundation\module_basement {
      *
      * @param string $themename The theme name the SCSS is for.
      * @param toolbox $toolbox The toolbox instance.
+     *
      * @return string SCSS.
      */
     public function pre_scss($themename, $toolbox) {
         $prescss = '';
-        if ($toolbox->get_setting('swatch', 'foundation') == 'custom') {
-            $prescss = '$primary: #fab;';
+        if ($toolbox->get_setting('swatchcustom', $themename)) {
+            $prescss = '$primary: '.
+                $this->get_custom_swatch_setting('swatchcustomprimarycolour', '#ffaabb', $themename, $toolbox).';';
         }
+
         return $prescss;
     }
-    
+
+    /**
+     * Helper method.
+     *
+     * @param string $settingname Setting name.
+     * @param string $settingdefault Setting default.
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     *
+     * @return string Setting value or default if empty.
+     */
+    private function get_custom_swatch_setting($settingname, $settingdefault, $themename, $toolbox) {
+        $settingvalue = $toolbox->get_setting($settingname, $themename);
+        if (empty($settingvalue)) {
+            $settingvalue = $settingdefault;
+        }
+        return $settingvalue;
+    }
+
     /**
      * Gets the swatch SCSS.
      *
@@ -64,7 +85,7 @@ class swatch_module extends \theme_foundation\module_basement {
      */
     public function get_main_scss_content(\theme_config $theme, $toolbox) {
         $swatch = $toolbox->get_setting('swatch', $theme->name);
-        if ((empty($swatch)) || ($swatch == 'custom')) {
+        if (empty($swatch)) {
             $swatch = 'default';
         }
         // TODOs: Cope with the theme being in $CFG->themedir.
@@ -87,7 +108,7 @@ class swatch_module extends \theme_foundation\module_basement {
         // Create our own settings page.
         $swatchsettings = new \admin_settingpage('theme_foundation_swatch', get_string('swatchheading', 'theme_foundation'));
         $settingspages['swatch'] = array(
-            \theme_foundation\toolbox::SETTINGPAGE =>$swatchsettings,
+            \theme_foundation\toolbox::SETTINGPAGE => $swatchsettings,
             \theme_foundation\toolbox::HASSETTINGS => true
         );
 
@@ -105,7 +126,6 @@ class swatch_module extends \theme_foundation\module_basement {
         $description = get_string('swatchdesc', 'theme_foundation');
         $choices = array(
             'default' => new \lang_string('default'),
-            'custom' => new \lang_string('custom', 'theme_foundation'),
             'cerulean' => 'Cerulean',
             'cosmo' => 'Cosmo',
             'cyborg' => 'Cyborg',
@@ -134,7 +154,16 @@ class swatch_module extends \theme_foundation\module_basement {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $swatchsettings->add($setting);
 
-        if ($toolbox->get_setting('swatch', 'foundation') == 'custom') {
+        // Custom swatch settings.
+        $name = 'theme_foundation/swatchcustom';
+        $title = get_string('swatchcustom', 'theme_foundation');
+        $description = get_string('swatchcustomdesc', 'theme_foundation');
+        $default = false;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $setting->set_updatedcallback('theme_reset_all_caches');  // Will alter the 'prescss'.
+        $swatchsettings->add($setting);
+
+        if ($toolbox->get_setting('swatchcustom', 'foundation')) {
             $this->add_custom_settings($settingspages);
         }
     }
@@ -147,7 +176,7 @@ class swatch_module extends \theme_foundation\module_basement {
     private function add_custom_settings(&$settingspages) {
         $custompage = new \admin_settingpage('theme_foundation_swatchcustom', get_string('swatchcustomheading', 'theme_foundation'));
         $settingspages['swatchcustom'] = array(
-            \theme_foundation\toolbox::SETTINGPAGE =>$custompage,
+            \theme_foundation\toolbox::SETTINGPAGE => $custompage,
             \theme_foundation\toolbox::HASSETTINGS => true
         );
 
@@ -158,6 +187,15 @@ class swatch_module extends \theme_foundation\module_basement {
                 format_text(get_string('swatchcustomheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
             )
         );
+
+        // Primary colour.
+        $name = 'theme_foundation/swatchcustomprimarycolour';
+        $title = get_string('swatchcustomprimarycolour', 'theme_foundation');
+        $description = get_string('swatchcustomprimarycolourdesc', 'theme_foundation');
+        $previewconfig = null;
+        $setting = new \admin_setting_configcolourpicker($name, $title, $description, '#ffaabb', $previewconfig);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $custompage->add($setting);
     }
 
     /**

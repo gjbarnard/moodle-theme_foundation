@@ -233,15 +233,22 @@ $string['moduleheadingdesc'] = 'Configure the module settings for Foundation her
 /* Future code? -> $toolbox = \theme_foundation\toolbox::get_instance();
    $string = array_merge($string, $toolbox->get_lang_strings('en')); */
 // Module strings here for now!
+// Swatch.
 $string['swatchheading'] = 'Swatch';
 $string['swatchheadingsub'] = 'Swatch settings';
 $string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
 $string['swatch'] = 'Swatch';
 $string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches (bar \'Seventies\' which I created) are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
-$string['custom'] = 'Custom';
-$string['swatchcustomheading'] = 'Swatch Custom';
+$string['swatchcustom'] = 'Swatch custom';
+$string['swatchcustomdesc'] = 'Activate custom swatch settings';
+
+// Swatch custom settings.
+$string['swatchcustomheading'] = 'Swatch custom';
 $string['swatchcustomheadingsub'] = 'Custom swatch settings';
 $string['swatchcustomheadingdesc'] = 'Configure the custom swatch settings for Foundation here.';
+
+$string['swatchcustomprimarycolour'] = 'Primary colour';
+$string['swatchcustomprimarycolourdesc'] = 'Set the primary colour';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
