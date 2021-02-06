@@ -239,16 +239,28 @@ $string['swatchheadingsub'] = 'Swatch settings';
 $string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
 $string['swatch'] = 'Swatch';
 $string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches (bar \'Seventies\' which I created) are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
-$string['swatchcustom'] = 'Swatch custom';
-$string['swatchcustomdesc'] = 'Activate custom swatch settings';
 
 // Swatch custom settings.
+$string['swatchcustomcolours'] = 'Swatch custom colours';
+$string['swatchcustomcoloursdesc'] = 'Activate custom swatch colour settings.';
 $string['swatchcustomcoloursheading'] = 'Swatch custom colours';
 $string['swatchcustomcoloursheadingsub'] = 'Custom swatch colour settings';
 $string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings for Foundation here.';
 
 $string['swatchcustomcolour'] = '{$a} colour';
 $string['swatchcustomcolourdesc'] = 'Set the {$a} colour.';
+
+$string['swatchcustomtypography'] = 'Swatch custom typography';
+$string['swatchcustomtypographydesc'] = 'Activate custom swatch typography settings.';
+$string['swatchcustomtypographyheading'] = 'Swatch custom typography';
+$string['swatchcustomtypographyheadingsub'] = 'Custom swatch typography settings';
+$string['swatchcustomtypographyheadingdesc'] = 'Configure the custom swatch typography settings for Foundation here.';
+
+$string['customswatchfontsizebase'] = 'Font size base';
+$string['customswatchfontsizebasedesc'] = 'Set the base font size as a number.  Units are \'rem\' internally.';
+
+$string['customswatchlineheightbase'] = 'Line height base';
+$string['customswatchlineheightbasedesc'] = 'Set the base line height as a number.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
