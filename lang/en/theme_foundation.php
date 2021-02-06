@@ -249,6 +249,8 @@ $string['swatchcustomheadingdesc'] = 'Configure the custom swatch settings for F
 
 $string['swatchcustomprimarycolour'] = 'Primary colour';
 $string['swatchcustomprimarycolourdesc'] = 'Set the primary colour';
+$string['swatchcustomsecondarycolour'] = 'Secondary colour';
+$string['swatchcustomsecondarycolourdesc'] = 'Set the secondary colour';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
