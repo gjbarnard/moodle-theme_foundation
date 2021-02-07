@@ -45,22 +45,22 @@ class swatch_module extends \theme_foundation\module_basement {
      */
     private static $swatchcustomcolourdefaults = array(
         'primary' => '#ffaabb',
-        'secondary' => '#6c757d',
+        'secondary' => '#82b6fc',
         'success' => '#28a745',
         'info' => '#17a2b8',
         'warning' => '#ffc107',
         'danger' => '#dc3545',
-        'light' => '#f8f9fa',
-        'dark' => '#343a40',
-        'body-bg' => '#ffffff',
-        'body-color' => '#212529',
-        'component-active-color' => '#ffffff',
-        'component-active-bg' => '#ffaabb',
-        'headings-color' => '#ffaabb',
-        'text-muted' => '#6c757d',
-        'blockquote-small-color' => '#6c757d',
+        'light' => '#fab2fd',
+        'dark' => '#3c6afb',
+        'body-bg' => '#fffa0f',
+        'body-color' => '#03b40a',
+        'component-active-color' => '#bbfc70',
+        'component-active-bg' => '#f475fc',
+        'headings-color' => '#ffca8e',
+        'text-muted' => '#015a22',
+        'blockquote-small-color' => '#028187',
         'card-color' => '#ffaabb',
-        'card-bg' => '#ffffff'
+        'card-bg' => '#060064'
     );
 
     /**
