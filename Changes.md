@@ -7,6 +7,7 @@ Version 3.10.0.2 - TBR
  3. Add import / export settings code from Essential.
  4. Have an 'Information' settings page.
  5. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
+ 6. Add the ability to have the navbar at the bottom.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------

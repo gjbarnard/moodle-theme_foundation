@@ -129,6 +129,17 @@ trait core_renderer_toolbox {
             }
         }
 
+        $data->nonavbar = (!empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nonavbar']));
+        if ($data->nonavbar) {
+            $bodyclasses[] = 'no-navbar';
+        }
+        $data->navbarposition = $toolbox->get_setting('navbarposition');
+        if (empty($data->navbarposition)) {
+            $data->navbarposition = 'top';
+        }
+        $bodyclasses[] = 'navbar-'.$data->navbarposition;
+        $data->navbarbottom = ($data->navbarposition == 'bottom');
+
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {
@@ -137,6 +148,7 @@ trait core_renderer_toolbox {
             $bodyclasses = '';
         }
         $data->bodyattributes = $this->body_attributes($bodyclasses);
+
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
         $data->contextheadersettingsmenu = $contextheadersettingsmenu;

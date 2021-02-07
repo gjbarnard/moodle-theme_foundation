@@ -15,3 +15,38 @@
         color: $navbar-dark-hover-color;
     }
 }
+
+.popover-region-footer-container {
+    height: auto;
+}
+
+.navbar-bottom {
+    .dropdown-menu {
+        bottom: 100%;
+        top: auto;
+    }
+    .usermenu .dropdown-menu,
+    .navbar-nav .context-header-settings-menu .dropdown-menu {
+        top: auto;
+    }
+    .navbar .popover-region-container {
+        bottom: 50px;
+        top: auto;
+    }
+
+    .popover-region-toggle {
+        &::before {
+            border-bottom: none;
+            border-top: 10px solid #ddd;
+            bottom: auto;
+            top: -18px;
+        }
+    
+        &::after {
+            border-bottom: none;
+            border-top: 9px solid #fff;
+            bottom: auto;
+            top: -19px;
+        }
+    }
+}

@@ -35,10 +35,11 @@
         "sitename": "Moodle Site",
         "config": "",
         "hasdrawerblocks": true,
-        "drawerclosed": true
+        "drawerclosed": true,
+        "navbarposition": "top"
     }
 }}
-<nav class="fixed-top navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<nav class="fixed-{{navbarposition}} navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
     <div class="navbar-nav">
         <button id="drawer" class="btn btn-link nav-link" type="button">
