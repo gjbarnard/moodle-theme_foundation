@@ -47,17 +47,23 @@
     }
 }
 
-[data-region="blocks-drawer"] {
-    height: calc(100% - 50px - 1rem);
-    left: 0;
-    overflow-y: auto;
-    padding-left: 15px;
-    position: fixed;
-    top: calc(50px + 1rem);
-    transition: all 0.75s;
-    width: 360px;
-    &.drawer-hidden {
-        left: -360px;
+// Navbar fixed-bottom or not there.
+.navbar-bottom,
+.no-navbar {
+    [data-region="left-hand-drawer"],
+    [data-region="right-hand-drawer"] {
+        &.drawer {
+            top: 0;
+        }
+    }
+}
+
+.navbar-bottom {
+    [data-region="left-hand-drawer"],
+    [data-region="right-hand-drawer"] {
+        &.drawer {
+            bottom: 50px;
+        }
     }
 }
 

@@ -42,7 +42,8 @@
             "favicon": "favicon.ico",
             "main_content": "<h1>Headings make html validators happier</h1>"
          },
-        "bodyattributes":"",
+        "bodyattributes": "",
+        "nonavbar": false,
         "drawerblocks": "<h2>Blocks html goes here</h2>",
         "hasdrawerblocks": true,
         "drawerclosed": true,
@@ -60,7 +61,9 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    {{> partials/navbar}}
+    {{^nonavbar}}
+        {{> partials/navbar}}
+    {{/nonavbar}}
 
     <div id="page" class="container-fluid">
         {{{ output.full_header }}}
