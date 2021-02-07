@@ -356,6 +356,18 @@ class toolbox {
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
+            // Navbar position.
+            $name = 'theme_foundation/navbarposition';
+            $title = get_string('navbarposition', 'theme_foundation');
+            $default = 'top';
+            $description = get_string('navbarpositiondesc', 'theme_foundation');
+            $choices = array(
+                'bottom' => get_string('bottom', 'core_editor'),
+                'top' => get_string('top', 'core_editor')
+            );
+            $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Font Awesome 5 Free.
             $name = 'theme_foundation/fav';
             $title = get_string('fav', 'theme_foundation');

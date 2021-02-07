@@ -33,8 +33,9 @@
             "page_title": "Test page",
             "favicon": "favicon.ico",
             "main_content": "<h1>Headings make html validators happier</h1>"
-         },
-         "bodyattributes":""
+        },
+        "bodyattributes":"",
+        "nonavbar": true
     }
 }}
 {{> partials/head }}
@@ -42,6 +43,11 @@
 <body {{{ bodyattributes }}}>
     <div id="page-wrapper">
         {{{ output.standard_top_of_body_html }}}
+
+        {{^nonavbar}}
+            {{> partials/navbar}}
+        {{/nonavbar}}
+
         <div id="page" class="container-fluid">
             <div id="page-content" class="row pb-3">
                 <section id="region-main" class="col-12">

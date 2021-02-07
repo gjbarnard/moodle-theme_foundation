@@ -70,6 +70,9 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
+$string['navbarposition'] = 'Navbar position';
+$string['navbarpositiondesc'] = 'Set the position of the navbar.';
+
 $string['favicon'] = 'Custom favicon';
 $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 

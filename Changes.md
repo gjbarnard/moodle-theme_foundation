@@ -7,6 +7,7 @@ Version 3.9.1.3 - TBR
  4. Add import / export settings code from Essential.
  5. Have an 'Information' settings page.
  6. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
+ 7. Add the ability to have the navbar at the bottom.
 
 Version 3.9.1.2 - 8/11/20
  1. Fix 'Book module has two icons'.

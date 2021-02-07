@@ -123,3 +123,11 @@
         top: unquote("calc(100% + 0.25rem)");
     }
 }
+
+// fixed-bottom or not there.
+.navbar-bottom,
+.no-navbar {
+    #page {
+        margin-top: 0;
+    }
+}

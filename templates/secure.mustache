@@ -36,12 +36,14 @@
             "htmlattributes": "lang='en'",
             "page_title": "Test page",
             "favicon": "favicon.ico",
-            "main_content": "<h1>Headings make html validators happier</h1>",
-            "drawerblocks": "<h2>Blocks html goes here</h2>",
-            "hasdrawerblocks": true,
-            "sidepreblocks": "<h2>Blocks html goes here</h2>",
-            "haspreblocks": true
-         }
+            "main_content": "<h1>Headings make html validators happier</h1>"
+        },
+        "bodyattributes": "",
+        "nonavbar": false,
+        "drawerblocks": "<h2>Blocks html goes here</h2>",
+        "hasdrawerblocks": true,
+        "sidepreblocks": "<h2>Blocks html goes here</h2>",
+        "haspreblocks": true
     }
 }}
 {{> partials/head }}
@@ -52,7 +54,9 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    {{> partials/navbar-secure}}
+    {{^nonavbar}}
+        {{> partials/navbar-secure}}
+    {{/nonavbar}}
 
     <div id="page" class="container-fluid">
         {{! Secured full header }}
