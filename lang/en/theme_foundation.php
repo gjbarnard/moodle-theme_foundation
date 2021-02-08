@@ -136,7 +136,7 @@ $string['alertpage'] = 'Alert {$a->number} page';
 $string['alertpagedesc'] = 'Show alert {$a->number} on the given page or \'All\'.';
 
 $string['brandsheading'] = 'Brand icons settings';
-$string['brandsheadingdesc'] = 'Set the brand icon settings.  The brand icon \'name\' is  - this is the FontAwesome name without the prefixing \'fa-\' so \'fa-train\' simply becomes \'train\'.  Depending on the \'fav\' setting to enable use of FontAwsome 5, please look at \'fontawesome.com/icons?d=gallery&s=brands&m=free\' if set and \'fontawesome.com/v4.7.0/icons/#brand\' if not, for the name of the icon.  The theme will do the rest with the class names.';
+$string['brandsheadingdesc'] = 'Set the brand icon settings.  The brand icon \'name\' is  - this is the FontAwesome name without the prefixing \'fa-\' so \'fa-train\' simply becomes \'train\'.  Depending on the \'fav\' setting to enable use of FontAwsome 5, please look at \'<a href="//fontawesome.com/icons?d=gallery&s=brands&m=free" target="_blank">fontawesome.com/icons?d=gallery&s=brands&m=free</a>\' if set and \'<a href="//fontawesome.com/v4.7.0/icons/#brand" target="_blank">fontawesome.com/v4.7.0/icons/#brand</a>\' if not, for the name of the icon.  The theme will do the rest with the class names.';
 
 $string['numberofbrands'] = 'Brands';
 $string['numberofbrandsdesc'] = 'Number of brands between {$a->lower} and {$a->upper}.  After changing click on \'Save changes\' to get the number you set.';
