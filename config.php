@@ -126,7 +126,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'popup',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nonavbar' => true)
+        'options' => array('nofooter' => true, 'nobreadcrumb' => true, 'nonavbar' => true)
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
@@ -154,7 +154,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nonavbar' => false)
+        'options' => array('nofooter' => true, 'nobreadcrumb' => false, 'nonavbar' => true)
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
