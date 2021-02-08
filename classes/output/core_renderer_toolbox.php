@@ -166,8 +166,12 @@ trait core_renderer_toolbox {
     public function full_header() {
         $header = new \stdClass();
         $header->contextheader = $this->context_header();
-        $header->hasnavbar = empty($this->page->layout_options['nonavbar']);
-        $header->navbar = $this->navbar();
+        $header->hasbreadcrumb = (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nobreadcrumb']));
+        if ($header->hasbreadcrumb) {
+            $header->breadcrumb = $this->navbar();
+        } else {
+            $header->breadcrumb = '';
+        }
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
         $header->headeractions = $this->page->get_header_actions();
@@ -695,6 +699,11 @@ trait core_renderer_toolbox {
 
         if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
             // Do not show lang menu if language forced.
+            return '';
+        }
+
+        if (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['langmenu'])) {
+            // Only show the lang menu if the layout specifies it.
             return '';
         }
 
