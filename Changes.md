@@ -8,6 +8,9 @@ Version 3.10.0.2 - TBR
  4. Have an 'Information' settings page.
  5. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
  6. Add the ability to have the navbar at the bottom.
+ 7. Added an extra level of '$spacer' in Bootstrap classes, e.g. can now have 'pb-6'.
+ 8. Fixed 'nonavbar' not working in config.php.
+ 9. Fix 'Carousel does not start automatically' - #9.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
