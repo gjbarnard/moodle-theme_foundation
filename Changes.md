@@ -8,6 +8,9 @@ Version 3.9.1.3 - TBR
  5. Have an 'Information' settings page.
  6. Removed Syntax Highlighting, please use [SynHi](https://moodle.org/plugins/filter_synhi) instead.
  7. Add the ability to have the navbar at the bottom.
+ 8. Added an extra level of '$spacer' in Bootstrap classes, e.g. can now have 'pb-6'.
+ 9. Fixed 'nonavbar' not working in config.php.
+10. Fix 'Carousel does not start automatically' - #9.
 
 Version 3.9.1.2 - 8/11/20
  1. Fix 'Book module has two icons'.
