@@ -3,64 +3,77 @@
 }
 
 .navbarantigravity {
-    display: none;
-    font-size: 1.33333em;
-    line-height: .75em;
-    margin-top: $gotobottom-top-margin;
-    vertical-align: -.0667em;
-
-    &.backtotop {
-        padding-right: 0.25rem !important;
+    height: 35px;
+    position: relative;
+    width: 58px;
+    &.fav {
+        width: 64px;
     }
 
-    &.gotobottom {
-        padding-left: 0.25rem !important;
+    button {
+        display: none;
+        font-size: 1.33333em;
+        line-height: .75em;
+        margin-top: $gotobottom-top-margin;
+        position: absolute;
+        vertical-align: -.0667em;
+
+        &.backtotop {
+            left: 0;
+            padding-right: 0.25rem !important;
+        }
+
+        &.gotobottom {
+            right: 0;
+            padding-left: 0.25rem !important;
+        }
     }
 }
 
 .footerantigravity {
-    background-color: rgba(red($primary), green($primary), blue($primary), 0.5);
     box-shadow: 0 0 1px $white;
-    color: $white;
-    position: fixed;
-    right: 24px;
-    top: 84%;
     z-index: 3;
 
-    &.bothshown button {
-        &.backtotop {
-            margin-right: -2px;
-        }
+    .backtotop {
+        right: 53px;
+    }
 
-        &.gotobottom {
-            margin-left: -2px;
-        }
+    .gotobottom {
+        right: 24px;
     }
 
     button {
-        background-color: transparent;
+        background-color: rgba(red($primary), green($primary), blue($primary), 0.5);
         border: none;
+        color: $white;
         display: none;
         font-size: 9px;
-        padding: 5px 12px 10px;
+        padding: 1px 7px 3px;
+        position: fixed;
         text-align: center;
         text-decoration: none;
-        .fa {
-            font-size: 24px;
+        top: 84%;
+    }
+
+    &.fav {
+        button {
+            padding: 3px 8px 3px;
         }
+        .backtotop {
+            right: 55px;
+        }
+    }
+
+    .fa {
+        font-size: 24px;
     }
 }
 
-.navbar-bottom .footerantigravity {
+.navbar-bottom .footerantigravity button {
     bottom: 84%;
     top: auto;
 }
 
-.footerantigravity.fav button {
-    padding: 5px 9px;
-}
-
-#drawer,
-.navbarantigravity.gotobottom {
+#drawer {
     padding: .5rem;
 }

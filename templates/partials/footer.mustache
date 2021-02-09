@@ -21,11 +21,14 @@
 
     Context variables required for this template:
     * output - The core renderer for the page.
+    * navbarbottom - true if navbar is at the bottom of the page.
+    * fav - true if using Font Awesome 5.
 
     Example context (json):
     {
         "output": "",
-        "navbarbottom": false
+        "navbarbottom": false,
+        "fav": true
     }
 }}
 <footer id="page-footer" class="pt-3 {{^navbarbottom}}pb-3{{/navbarbottom}}{{#navbarbottom}}pb-6{{/navbarbottom}} bg-dark text-light">
