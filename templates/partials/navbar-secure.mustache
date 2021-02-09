@@ -24,7 +24,9 @@
     * output - The core renderer for the page.
     * config - The config instance.
     * hasdrawerblocks - true if there are drawer blocks on this page.
-    * drawerclosed - true if the drawe is closed on this page.
+    * drawerclosed - true if the drawer is closed on this page.
+    * navbarposition - Position of the navbar on the page.
+    * fav - true if using Font Awesome 5.
 
     Example context (json):
     {
@@ -36,7 +38,8 @@
         "config": "",
         "hasdrawerblocks": true,
         "drawerclosed": true,
-        "navbarposition": "top"
+        "navbarposition": "top",
+        "fav": true
     }
 }}
 <nav class="fixed-{{navbarposition}} navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
@@ -63,7 +66,8 @@
 
     <ul class="nav navbar-nav ml-auto">
         <!-- Go to bottom -->
-        <li class="nav-item">
+        <li class="nav-item navbarantigravity{{#fav}} fav{{/fav}}">
+            <button class="backtotop btn btn-link nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></button>
             <button class="gotobottom btn btn-link nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></button>
         </li>
         {{# output.secure_layout_language_menu }}

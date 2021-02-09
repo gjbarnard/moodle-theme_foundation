@@ -17,38 +17,18 @@ define(['jquery', 'core/log'], function($, log) {
         var topoffset = 220;
         var duration = 1000;
         var botoffset = $(document).height() - $(window).height();
-        var btt = false;
-        var gtb = false;
-
-        var bscheck = function () {
-            if (btt && gtb) {
-                $('.footerantigravity').addClass('bothshown');
-            } else {
-                $('.footerantigravity').removeClass('bothshown');
-            }
-        };
 
         var gravitycheck = function () {
             var sc = $(window).scrollTop();
             if (sc > topoffset) {
-                btt = true;
-                bscheck();
                 $('.backtotop').fadeIn(duration);
             } else {
-                btt = false;
-                $('.footerantigravity .backtotop').fadeOut(duration, bscheck);
-                $('.navbarantigravity.backtotop').fadeOut(duration);
+                $('.backtotop').fadeOut(duration);
             }
             if (sc < botoffset) {
-                gtb = true;
-                if (btt) {
-                    bscheck();
-                }
                 $('.gotobottom').fadeIn(duration);
             } else {
-                gtb = false;
-                $('.footerantigravity .gotobottom').fadeOut(duration, bscheck);
-                $('.navbarantigravity.gotobottom').fadeOut(duration);
+                $('.gotobottom').fadeOut(duration);
             }
         };
 
