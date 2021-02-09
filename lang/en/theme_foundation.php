@@ -38,7 +38,7 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 </div></div>';
 
 $string['configtitle'] = 'Foundation';
-$string['configtabtitle'] = 'Foundation settings';
+$string['configtabtitle'] = 'Settings';
 $string['pluginname'] = 'Foundation';
 
 $string['region-drawer'] = 'Drawer';
@@ -276,7 +276,7 @@ $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit
 $string['asconfigintnan'] = '{$a->value} is not a number';
 
 // Properties.
-$string['properties'] = 'Import / Export Foundation settings';
+$string['properties'] = 'Import / export settings';
 $string['propertiessub'] = 'Current theme settings';
 $string['propertiesdesc'] = 'In this section you can import / export current Foundation theme settings (properties) in JSON format. You can also view all current settings on this Moodle installation.';
 $string['propertiesproperty'] = 'Property';
