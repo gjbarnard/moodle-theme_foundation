@@ -11,6 +11,7 @@ Version 3.9.1.3 - TBR
  8. Added an extra level of '$spacer' in Bootstrap classes, e.g. can now have 'pb-6'.
  9. Fixed 'nonavbar' not working in config.php.
 10. Fix 'Carousel does not start automatically' - #9.
+11. Update FontAwesome 5 free from 5.12.0 to 5.15.2.
 
 Version 3.9.1.2 - 8/11/20
  1. Fix 'Book module has two icons'.
