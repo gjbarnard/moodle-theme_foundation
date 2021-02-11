@@ -11,6 +11,7 @@ Version 3.10.0.2 - TBR
  7. Added an extra level of '$spacer' in Bootstrap classes, e.g. can now have 'pb-6'.
  8. Fixed 'nonavbar' not working in config.php.
  9. Fix 'Carousel does not start automatically' - #9.
+10. Update FontAwesome 5 free from 5.12.0 to 5.15.2.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
