@@ -49,11 +49,11 @@
     z-index: 3;
 
     .backtotop {
-        right: 53px;
+        right: calc(2% + 29px - #{$footer-antigravity-horizontal-offset});
     }
 
     .gotobottom {
-        right: 24px;
+        right: calc(2% - #{$footer-antigravity-horizontal-offset});
     }
 
     button {
@@ -66,7 +66,7 @@
         position: fixed;
         text-align: center;
         text-decoration: none;
-        top: 84%;
+        top: calc(84% + #{$footer-antigravity-vertical-offset});
     }
 
     &.fav {
@@ -74,7 +74,7 @@
             padding: 3px 8px 3px;
         }
         .backtotop {
-            right: 55px;
+            right: calc(2% + 31px - #{$footer-antigravity-horizontal-offset});
         }
     }
 
@@ -84,8 +84,7 @@
 }
 
 .navbar-bottom .footerantigravity button {
-    bottom: 84%;
-    top: auto;
+    top: calc(16% + #{$footer-antigravity-vertical-offset});
 }
 
 #drawer {
