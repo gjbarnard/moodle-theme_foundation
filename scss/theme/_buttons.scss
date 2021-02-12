@@ -3,31 +3,45 @@
 }
 
 .navbarantigravity {
-    height: 35px;
     position: relative;
-    width: 58px;
-    &.fav {
-        width: 64px;
+
+    .backtotop,
+    .gotobottom {
+        display: none;
+        position: absolute;
     }
 
-    button {
-        display: none;
+    .backtotop {
+        left: 0;
+    }
+
+    .gotobottom {
+        right: 0;
+    }
+
+    .btts,
+    .gtbs {
+        opacity: 0;
+        padding: $nav-link-padding-y $nav-link-padding-x;
+    }
+
+    .antigravity {
         font-size: 1.33333em;
         line-height: .75em;
         margin-top: $gotobottom-top-margin;
-        position: absolute;
         vertical-align: -.0667em;
 
-        &.backtotop {
-            left: 0;
+        &.backtotop, 
+        &.btts {
             padding-right: 0.25rem !important;
         }
 
-        &.gotobottom {
-            right: 0;
+        &.gotobottom,
+        &.gtbs {
             padding-left: 0.25rem !important;
         }
     }
+
 }
 
 .footerantigravity {
