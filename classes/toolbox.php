@@ -150,6 +150,16 @@ class toolbox {
             $scss .= $module->pre_scss($themename, $this);
         }
 
+        $footerantigravityhorizontaloffset = $this->get_setting('footerantigravityhorizontaloffset', $themename);
+        if (!empty($footerantigravityhorizontaloffset)) {
+            $scss .= '$footer-antigravity-horizontal-offset: '.$footerantigravityhorizontaloffset.'px;';
+        }
+
+        $footerantigravityverticaloffset = $this->get_setting('footerantigravityverticaloffset', $themename);
+        if (!empty($footerantigravityverticaloffset)) {
+            $scss .= '$footer-antigravity-vertical-offset: '.$footerantigravityverticaloffset.'px;';
+        }
+
         // TODO: Does there need to be a parent daisy chain of this setting?
         $prescss = $this->get_setting('prescss', $themename);
         if (!empty($prescss)) {
@@ -359,13 +369,31 @@ class toolbox {
             // Navbar position.
             $name = 'theme_foundation/navbarposition';
             $title = get_string('navbarposition', 'theme_foundation');
-            $default = 'top';
             $description = get_string('navbarpositiondesc', 'theme_foundation');
+            $default = 'top';
             $choices = array(
                 'bottom' => get_string('bottom', 'core_editor'),
                 'top' => get_string('top', 'core_editor')
             );
             $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Footer anti-gravity horizontal offset.
+            $name = 'theme_foundation/footerantigravityhorizontaloffset';
+            $title = get_string('footerantigravityhorizontaloffset', 'theme_foundation');
+            $default = 0;
+            $description = get_string('footerantigravityhorizontaloffsetdesc', 'theme_foundation');
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_INT);
+            $setting->set_updatedcallback('purge_all_caches');
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Footer anti-gravity vertical offset.
+            $name = 'theme_foundation/footerantigravityverticaloffset';
+            $title = get_string('footerantigravityverticaloffset', 'theme_foundation');
+            $default = 0;
+            $description = get_string('footerantigravityverticaloffsetdesc', 'theme_foundation');
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_INT);
+            $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Font Awesome 5 Free.

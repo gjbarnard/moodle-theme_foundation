@@ -13,6 +13,7 @@ Version 3.10.0.2 - TBR
  9. Fix 'Carousel does not start automatically' - #9.
 10. Update FontAwesome 5 free from 5.12.0 to 5.15.2.
 11. Tabs update in line with MDL-69301.
+12. Anti-gravity adjustment settings.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
