@@ -65,12 +65,18 @@
     </a>
 
     <ul class="nav navbar-nav ml-auto">
-        <!-- Go to bottom -->
-        <li class="nav-item navbarantigravity{{#fav}} fav{{/fav}}">
-            <div class="btts antigravity btn btn-link nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></div>
-            <button class="backtotop antigravity btn btn-link nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></button>
-            <div class="gtbs antigravity btn btn-link nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></div>
-            <button class="gotobottom antigravity btn btn-link nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></button>
+        <!-- Anti-gravity -->
+        <li class="nav-item">
+            <div class="d-flex navbarantigravity{{#fav}} fav{{/fav}}">
+                <div class="bttc antigravity">
+                    <div class="btts nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></div>
+                    <div class="backtotop nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></div>
+                </div>
+                <div class="gtbc antigravity">
+                    <div class="gtbs nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></div>
+                    <div class="gotobottom nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></div>
+                </div>
+            </div>
         </li>
         {{# output.secure_layout_language_menu }}
         <ul class="navbar-nav d-none d-md-flex">
