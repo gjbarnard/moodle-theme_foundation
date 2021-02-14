@@ -3,20 +3,19 @@
 }
 
 .navbarantigravity {
-    position: relative;
-
     .backtotop,
     .gotobottom {
+        bottom: 0;
         display: none;
-        position: absolute;
-    }
-
-    .backtotop {
         left: 0;
-    }
-
-    .gotobottom {
+        position: absolute;
         right: 0;
+        top: 0;
+
+        span {
+            position: absolute;
+            top: $antigravity-top;
+        }
     }
 
     .btts,
@@ -26,22 +25,26 @@
     }
 
     .antigravity {
-        font-size: 1.33333em;
-        line-height: .75em;
-        margin-top: $gotobottom-top-margin;
-        vertical-align: -.0667em;
+        font-size: 24px;
+        //margin-top: $gotobottom-top-margin;
+        position: relative;
 
-        &.backtotop, 
-        &.btts {
+        .backtotop, 
+        .btts {
             padding-right: 0.25rem !important;
         }
 
-        &.gotobottom,
-        &.gtbs {
+        .gotobottom,
+        .gtbs {
             padding-left: 0.25rem !important;
         }
     }
+}
 
+.navbar .navbarantigravity .nav-link {
+    @include hover-focus {
+        border: none;
+    }
 }
 
 .footerantigravity {
