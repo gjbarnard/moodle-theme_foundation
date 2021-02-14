@@ -25,34 +25,34 @@ Features
 
 About
 =====
-Copyright  &copy; 2019-onwards G J Barnard.
-Author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
-License    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+Copyright  &copy; 2019-onwards G J Barnard.  
+Author     G J Barnard - [About.me](http://about.me/gjbarnard) and [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+License    [GNU GPL v3 or later](http://www.gnu.org/copyleft/gpl.html).
 
 Developed and maintained by
 ===========================
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
-Moodle profile | http://moodle.org/user/profile.php?id=442195
-Web profile | http://about.me/gjbarnard
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
+Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+Web profile | [About.me](http://about.me/gjbarnard)
 
 Free Software
 =============
 The Foundation theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.
 
 It can be obtained for free from:
-github.com/gjb2048/moodle-theme_foundation/releases
+[github.com/gjb2048/moodle-theme_foundation/releases](https://github.com/gjb2048/moodle-theme_foundation/releases)
 
 You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
 FAQ - www.gnu.org/licenses/gpl-faq.html - is a good place to look.
 
 If you reuse any of the code then I kindly ask that you make reference to the theme.
 
-The 'Swatches' are from https://bootswatch.com/ and licensed under the MIT Licence:
-https://github.com/thomaspark/bootswatch/blob/master/LICENSE.  I have modified them to disable the '@import url($web-font-path))'
+The 'Swatches' are from [Bootswatch.com](https://bootswatch.com/) and licensed under the
+[MIT Licence](https://github.com/thomaspark/bootswatch/blob/master/LICENSE).  I have modified them to disable the '@import url($web-font-path))'
 in order for them to work with Moodle.
 
 If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
-github.com/gjb2048/moodle-theme_foundation and doing a 'Pull Request' so that the rest of the Moodle community
+[GitHub](https://github.com/gjb2048/moodle-theme_foundation) and doing a 'Pull Request' so that the rest of the Moodle community
 benefits.
 
 Support
@@ -133,6 +133,6 @@ See Changes.md
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
-Moodle profile: http://moodle.org/user/profile.php?id=442195
-Web profile   : http://about.me/gjbarnard
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
+Moodle profile: [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+Web profile   : [About.me](http://about.me/gjbarnard)
