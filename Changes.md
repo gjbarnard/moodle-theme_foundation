@@ -14,6 +14,7 @@ Version 3.9.1.3 - TBR
 11. Update FontAwesome 5 free from 5.12.0 to 5.15.2.
 12. Anti-gravity adjustment settings.
 13. Fix 'nocontextheader' not being checked in theme config layout options.
+14. Fix 'Yeti' swatch 'context_header_settings_menu()' styling.
 
 Version 3.9.1.2 - 8/11/20
 1. Fix 'Book module has two icons'.
