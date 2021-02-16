@@ -629,3 +629,21 @@ label,
 .navbar-plugin-output {
     margin-top: 3px;
 }
+
+// Foundation ==================================================================
+.bg-primary .context-header-settings-menu {
+    .dropdown-item {
+        a,
+        a:focus {
+            color: $navbar-dark-color;
+        }
+    }
+    .dropdown-item.active,
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        a {
+            background-color: darken($primary, 5%);
+            color: #fff;
+        }
+    }
+}

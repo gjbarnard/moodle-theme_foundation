@@ -15,6 +15,7 @@ Version 3.10.0.2 - TBR
 11. Tabs update in line with MDL-69301.
 12. Anti-gravity adjustment settings.
 13. Fix 'nocontextheader' not being checked in theme config layout options.
+14. Fix 'Yeti' swatch 'context_header_settings_menu()' styling.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
