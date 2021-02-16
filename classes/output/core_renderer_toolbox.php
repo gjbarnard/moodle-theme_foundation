@@ -165,7 +165,11 @@ trait core_renderer_toolbox {
      */
     public function full_header() {
         $header = new \stdClass();
-        $header->contextheader = $this->context_header();
+        if (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nocontextheader'])) {
+            $header->contextheader = $this->context_header();
+        } else {
+            $header->contextheader = '';
+        }
         $header->hasbreadcrumb = (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nobreadcrumb']));
         if ($header->hasbreadcrumb) {
             $header->breadcrumb = $this->navbar();

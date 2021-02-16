@@ -14,6 +14,7 @@ Version 3.10.0.2 - TBR
 10. Update FontAwesome 5 free from 5.12.0 to 5.15.2.
 11. Tabs update in line with MDL-69301.
 12. Anti-gravity adjustment settings.
+13. Fix 'nocontextheader' not being checked in theme config layout options.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
