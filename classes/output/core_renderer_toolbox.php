@@ -61,8 +61,6 @@ trait core_renderer_toolbox {
                 ['id' => 'region-main-settings-menu']
             ));
         }
-        require_once($CFG->dirroot.'/course/format/lib.php');
-        $contextheadersettingsmenu = $this->context_header_settings_menu();
 
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
             if (in_array('drawer', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
@@ -151,8 +149,9 @@ trait core_renderer_toolbox {
 
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
-        $data->contextheadersettingsmenu = $contextheadersettingsmenu;
-        $data->hascontextheadersettingsmenu = !empty($contextheadersettingsmenu);
+        require_once($CFG->dirroot.'/course/format/lib.php');  // For course_get_format() call?  Not sure if needed.
+        $data->contextheadersettingsmenu = $this->context_header_settings_menu();
+        $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
         $data->fav = !empty($toolbox->get_setting('fav'));
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
