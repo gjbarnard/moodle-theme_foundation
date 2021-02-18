@@ -35,7 +35,7 @@ use theme_foundation\admin_setting_configinteger;
 /**
  * Course menu module.
  *
- * Implements the features of the theme.
+ * Implements the course menu of the theme.
  *
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.

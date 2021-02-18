@@ -271,6 +271,13 @@ $string['swatchcustomfontsizebasedesc'] = 'Set the base font size as a number.  
 $string['swatchcustomlineheightbase'] = 'Line height base';
 $string['swatchcustomlineheightbasedesc'] = 'Set the base line height as a number.';
 
+// Header.
+$string['headerheading'] = 'Header';
+$string['headerheadingsub'] = 'Header settings';
+$string['headerheadingdesc'] = 'Configure the header settings for Foundation here.';
+$string['header'] = 'Header';
+$string['headerdesc'] = 'Header desc.';
+
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
 $string['closedrawer'] = 'Close drawer';
