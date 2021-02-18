@@ -97,32 +97,14 @@ trait core_renderer_toolbox {
         }
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $featuresmodule = $toolbox->get_module('features');
-        if (!empty($featuresmodule)) {
-            $featuresdata = $featuresmodule->export_for_template($this);
-            if (!empty($featuresdata)) {
-                foreach ($featuresdata as $fkey => $fvalue) {
-                    $data->$fkey = $fvalue;
-                }
-            }
-        }
-
-        $frontpagecarouselmodule = $toolbox->get_module('frontpagecarousel');
-        if (!empty($frontpagecarouselmodule)) {
-            $frontpagecarouseldata = $frontpagecarouselmodule->export_for_template($this);
-            if (!empty($frontpagecarouseldata)) {
-                foreach ($frontpagecarouseldata as $fkey => $fvalue) {
-                    $data->$fkey = $fvalue;
-                }
-            }
-        }
-
-        $coursesmenumodule = $toolbox->get_module('coursesmenu');
-        if (!empty($coursesmenumodule)) {
-            $coursesmenudata = $coursesmenumodule->export_for_template($this);
-            if (!empty($coursesmenudata)) {
-                foreach ($coursesmenudata as $cmkey => $cmvalue) {
-                    $data->$cmkey = $cmvalue;
+        $modules = $toolbox->get_modules();
+        foreach ($modules as $module) {
+            if (method_exists ($module, 'export_for_template')) {
+                $moduledata = $module->export_for_template($this);
+                if (!empty($moduledata)) {
+                    foreach ($moduledata as $mkey => $mvalue) {
+                        $data->$mkey = $mvalue;
+                    }
                 }
             }
         }
