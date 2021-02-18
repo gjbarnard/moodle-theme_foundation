@@ -254,6 +254,15 @@ class toolbox {
     }
 
     /**
+     * Returns the module instances.
+     *
+     * @return module_basement extended objects.
+     */
+    public function get_modules() {
+        return $this->modules;
+    }
+
+    /**
      * Return an instance of the mustache class.
      *
      * @since 2.9
