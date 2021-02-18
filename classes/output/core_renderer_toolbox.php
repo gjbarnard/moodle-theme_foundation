@@ -145,22 +145,7 @@ trait core_renderer_toolbox {
      * @return string HTML to display the main header.
      */
     public function full_header() {
-        $header = new \stdClass();
-        if (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nocontextheader'])) {
-            $header->contextheader = $this->context_header();
-        } else {
-            $header->contextheader = '';
-        }
-        $header->hasbreadcrumb = (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nobreadcrumb']));
-        if ($header->hasbreadcrumb) {
-            $header->breadcrumb = $this->navbar();
-        } else {
-            $header->breadcrumb = '';
-        }
-        $header->pageheadingbutton = $this->page_heading_button();
-        $header->courseheader = $this->course_header();
-        $header->headeractions = $this->page->get_header_actions();
-        return $this->render_from_template('core/full_header', $header);
+        return \theme_foundation\toolbox::get_instance()->get_module('header')->header($this);
     }
 
     /**
