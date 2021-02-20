@@ -228,6 +228,7 @@ class header_module extends \theme_foundation\module_basement {
     /**
      * Wrapper for header elements.
      *
+     * @param core_renderer $outpur The core renderer instance.
      * @return string HTML to display the main header.
      */
     public function header($output) {
