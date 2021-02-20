@@ -152,6 +152,25 @@ class header_module extends \theme_foundation\module_basement {
     }
 
     /**
+     * Gets the module pre SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     *
+     * @return string SCSS.
+     */
+    public function pre_scss($themename, $toolbox) {
+        $prescss = '';
+
+        $headerbackgroundbottomcolour = $toolbox->get_setting('headerbackgroundbottomcolour', $themename);
+        if ((!empty($headerbackgroundbottomcolour)) && ($headerbackgroundbottomcolour[0] != '-')) {
+            $prescss .= '$breadcrumb-divider-color: '.$headerbackgroundbottomcolour.';'.PHP_EOL;
+        }
+
+        return $prescss;
+    }
+
+    /**
      * Gets the module extra SCSS.
      *
      * @param string $themename The theme name the SCSS is for.
