@@ -125,14 +125,12 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundtopcolour', 'theme_foundation');
         $description = get_string('headerbackgroundtopcolourdesc', 'theme_foundation');
         $default = '-';
-        $previewconfig = null;
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
             $default,
-            '#ffaabb',
-            $previewconfig
+            '#ffaabb'
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -142,14 +140,12 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundbottomcolour', 'theme_foundation');
         $description = get_string('headerbackgroundbottomcolourdesc', 'theme_foundation');
         $default = '-';
-        $previewconfig = null;
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
             $default,
-            '#ffaabb',
-            $previewconfig
+            '#ffaabb'
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);

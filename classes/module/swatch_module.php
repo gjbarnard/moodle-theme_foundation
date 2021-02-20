@@ -87,8 +87,10 @@ class swatch_module extends \theme_foundation\module_basement {
 
         if ($toolbox->get_setting('swatchcustomcolours', $themename)) {
             foreach (array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
-                $prescss .= '$'.$settingkey.': '.
-                    $this->get_custom_swatch_setting($settingkey, $themename, $toolbox).';'.PHP_EOL;
+                $settingvalue = $this->get_custom_swatch_setting($settingkey, $themename, $toolbox);
+                if (!empty($settingvalue)) {
+                    $prescss .= '$'.$settingkey.': '.$settingvalue.';'.PHP_EOL;
+                }
             }
         }
 
@@ -121,8 +123,8 @@ class swatch_module extends \theme_foundation\module_basement {
     private function get_custom_swatch_setting($settingname, $themename, $toolbox) {
         $settingfullname = 'swatchcustom'.str_replace('-', '', $settingname).'colour';
         $settingvalue = $toolbox->get_setting($settingfullname, $themename);
-        if (empty($settingvalue)) {
-            $settingvalue = $this->get_custom_swatch_default_colour_setting($settingname);
+        if ((!empty($settingvalue)) && ($settingvalue[0] == '-')) {
+            $settingvalue = '';
         }
         return $settingvalue;
     }
@@ -301,13 +303,13 @@ class swatch_module extends \theme_foundation\module_basement {
         $name = 'theme_foundation/swatchcustom'.str_replace('-', '', $settingname).'colour';
         $title = get_string('swatchcustomcolour', 'theme_foundation', ucfirst($settingname));
         $description = get_string('swatchcustomcolourdesc', 'theme_foundation', $settingname);
-        $previewconfig = null;
-        $setting = new \admin_setting_configcolourpicker(
+        $default = $this->get_custom_swatch_default_colour_setting($settingname);
+        $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
-            $this->get_custom_swatch_default_colour_setting($settingname),
-            $previewconfig
+            $default,
+            $default
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
 
