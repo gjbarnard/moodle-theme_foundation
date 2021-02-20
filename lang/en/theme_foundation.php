@@ -297,9 +297,9 @@ $string['headerbackgroundtopopacity'] = 'Header background top opacity.';
 $string['headerbackgroundtopopacitydesc'] = 'Header background top opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
 
 $string['headerbackgroundtopcolour'] = 'Header background top colour';
-$string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the top of the header when there is a background.';
+$string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the top of the header when there is a background.  Enter \'-\' to ignore this setting.';
 $string['headerbackgroundbottomcolour'] = 'Header background bottom colour';
-$string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.';
+$string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.  Enter \'-\' to ignore this setting.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';

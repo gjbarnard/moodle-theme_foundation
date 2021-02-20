@@ -43,7 +43,7 @@ class admin_setting_configinteger extends \admin_setting_configtext {
     public $upper;
 
     /**
-     * Config text constructor
+     * Config integer constructor
      *
      * @param string $name unique ascii name, either 'mysetting' for settings that in config, or 'myplugin/mysetting' for ones in
      * config_plugins.

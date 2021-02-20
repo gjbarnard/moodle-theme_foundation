@@ -124,30 +124,34 @@ class header_module extends \theme_foundation\module_basement {
         $name = 'theme_foundation/headerbackgroundtopcolour';
         $title = get_string('headerbackgroundtopcolour', 'theme_foundation');
         $description = get_string('headerbackgroundtopcolourdesc', 'theme_foundation');
-        $default = '#000000';
+        $default = '-';
         $previewconfig = null;
-        $setting = new \admin_setting_configcolourpicker(
+        $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
             $default,
+            '#ffaabb',
             $previewconfig
         );
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Header background bottom colour setting.
         $name = 'theme_foundation/headerbackgroundbottomcolour';
         $title = get_string('headerbackgroundbottomcolour', 'theme_foundation');
         $description = get_string('headerbackgroundbottomcolourdesc', 'theme_foundation');
-        $default = '#000000';
+        $default = '-';
         $previewconfig = null;
-        $setting = new \admin_setting_configcolourpicker(
+        $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
             $default,
+            '#ffaabb',
             $previewconfig
         );
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
@@ -188,13 +192,13 @@ class header_module extends \theme_foundation\module_basement {
             $scss .= '}'.PHP_EOL;
 
             $headerbackgroundtopcolour = $toolbox->get_setting('headerbackgroundtopcolour', $themename);
-            if (!empty($headerbackgroundtopcolour)) {
+            if ((!empty($headerbackgroundtopcolour)) && ($headerbackgroundtopcolour[0] != '-')) {
                 $scss .= '.pageheadingtop {'.PHP_EOL;
                 $scss .= 'color: '.$headerbackgroundtopcolour.';'.PHP_EOL;
                 $scss .= '}'.PHP_EOL;
             }
             $headerbackgroundbottomcolour = $toolbox->get_setting('headerbackgroundbottomcolour', $themename);
-            if (!empty($headerbackgroundbottomcolour)) {
+            if ((!empty($headerbackgroundbottomcolour)) && ($headerbackgroundbottomcolour[0] != '-')) {
                 $scss .= '.pageheadingbottom {'.PHP_EOL;
                 $scss .= 'color: '.$headerbackgroundbottomcolour.';'.PHP_EOL;
                 $scss .= '}'.PHP_EOL;
