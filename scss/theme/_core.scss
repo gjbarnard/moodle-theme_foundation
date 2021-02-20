@@ -18,6 +18,10 @@ a:hover {
     margin-top: 0;
 }
 
+.page-context-header {
+    padding: 0;
+}
+
 #page-footer a {
     text-decoration: none;
     @include hover-focus-active {
