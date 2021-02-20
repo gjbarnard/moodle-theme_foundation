@@ -6,8 +6,8 @@ $breadcrumb-margin-bottom:          0 !default;
 
 // Foundation
 $antigravity-top:                      14px !default;
-$footer-antigravity-horizontal-offset:  0 !default;
-$footer-antigravity-vertical-offset:    0 !default;
+$footer-antigravity-horizontal-offset:  0px !default; /* stylelint-disable-line length-zero-no-unit */
+$footer-antigravity-vertical-offset:    0px !default; /* stylelint-disable-line length-zero-no-unit */
 
 // Extra spacer
 $spacer: 1rem !default;

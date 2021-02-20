@@ -19327,6 +19327,8 @@ body.admin h1:after {
   margin: 10px 0;
   padding: 4px; }
 
+/* stylelint-disable-line length-zero-no-unit */
+/* stylelint-disable-line length-zero-no-unit */
 .block_navigation .block_tree p.hasicon,
 .block_settings .block_tree p.hasicon {
   padding-left: 0;
@@ -19471,9 +19473,9 @@ body {
   box-shadow: 0 0 1px #fff;
   z-index: 3; }
   .footerantigravity .backtotop {
-    right: calc(2% + 29px - 0); }
+    right: calc(2% + 29px - 0px); }
   .footerantigravity .gotobottom {
-    right: calc(2% - 0); }
+    right: calc(2% - 0px); }
   .footerantigravity button {
     background-color: rgba(17, 119, 209, 0.5);
     border: none;
@@ -19484,16 +19486,16 @@ body {
     position: fixed;
     text-align: center;
     text-decoration: none;
-    top: calc(84% + 0); }
+    top: calc(84% + 0px); }
   .footerantigravity.fav button {
     padding: 3px 8px 3px; }
   .footerantigravity.fav .backtotop {
-    right: calc(2% + 31px - 0); }
+    right: calc(2% + 31px - 0px); }
   .footerantigravity .fa {
     font-size: 24px; }
 
 .navbar-bottom .footerantigravity button {
-  top: calc(16% + 0); }
+  top: calc(16% + 0px); }
 
 #drawer {
   padding: .5rem; }
