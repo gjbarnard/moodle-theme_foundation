@@ -29,14 +29,14 @@
         //margin-top: $gotobottom-top-margin;
         position: relative;
 
-        .backtotop, 
+        .backtotop,
         .btts {
-            padding-right: 0.25rem !important;
+            padding-right: 0.25rem !important; /* stylelint-disable-line declaration-no-important */
         }
 
         .gotobottom,
         .gtbs {
-            padding-left: 0.25rem !important;
+            padding-left: 0.25rem !important; /* stylelint-disable-line declaration-no-important */
         }
     }
 }

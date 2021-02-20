@@ -109,5 +109,8 @@ body.admin h1:after {
     padding: 4px;
 }
 
-// Import Core moodle CSS
+// Import Foundation variables.
+@import "./scss/foundation_variables";
+
+// Import Core moodle CSS.
 @import "./scss/theme/theme";

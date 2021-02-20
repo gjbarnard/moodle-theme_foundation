@@ -89,6 +89,7 @@
         line-height: 1.33333em;
     }
 }
+
 @media (min-width: 576px) {
     .navbar {
         .context-header-settings-menu,
@@ -118,9 +119,9 @@
             margin-right: 0;
         }
     }
-    
+
     .dropdown-menu {
-        top: unquote("calc(100% + 0.25rem)");
+        top: unquote("calc(100% + 0.25rem)");  /* stylelint-disable-line csstree/validator */
     }
 }
 
