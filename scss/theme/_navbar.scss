@@ -121,7 +121,7 @@
     }
 
     .dropdown-menu {
-        top: unquote("calc(100% + 0.25rem)");  /* stylelint-disable-line csstree/validator */
+        top: unquote("calc(100% + 0.25rem)");  // stylelint-disable-line csstree/validator
     }
 }
 

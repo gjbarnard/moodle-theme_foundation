@@ -19327,8 +19327,6 @@ body.admin h1:after {
   margin: 10px 0;
   padding: 4px; }
 
-/* stylelint-disable-line length-zero-no-unit */
-/* stylelint-disable-line length-zero-no-unit */
 .block_navigation .block_tree p.hasicon,
 .block_settings .block_tree p.hasicon {
   padding-left: 0;
@@ -19459,12 +19457,10 @@ body {
   position: relative; }
   .navbarantigravity .antigravity .backtotop,
   .navbarantigravity .antigravity .btts {
-    padding-right: 0.25rem !important;
-    /* stylelint-disable-line declaration-no-important */ }
+    padding-right: 0.25rem !important; }
   .navbarantigravity .antigravity .gotobottom,
   .navbarantigravity .antigravity .gtbs {
-    padding-left: 0.25rem !important;
-    /* stylelint-disable-line declaration-no-important */ }
+    padding-left: 0.25rem !important; }
 
 .navbar .navbarantigravity .nav-link:hover, .navbar .navbarantigravity .nav-link:focus {
   border: none; }
@@ -19742,8 +19738,7 @@ a:hover {
     margin-right: 0; }
 
 .usermenu .dropdown-menu {
-  top: calc(100% + 0.25rem);
-  /* stylelint-disable-line csstree/validator */ }
+  top: calc(100% + 0.25rem); }
 
 .navbar-bottom #page,
 .no-navbar #page {

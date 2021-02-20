@@ -79,7 +79,7 @@
 }
 
 .bg-dark {
-    background-color: $gray-800 !important; /* stylelint-disable-line declaration-no-important */
+    background-color: $gray-800 !important; // stylelint-disable-line declaration-no-important
 
     .dropdown-menu {
         background-color: $gray-800;

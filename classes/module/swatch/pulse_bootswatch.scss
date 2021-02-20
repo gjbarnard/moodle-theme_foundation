@@ -28,7 +28,7 @@
 
         &.disabled {
             background-color: $white;
-            border-color: lighten(#ccc, 5%); /* stylelint-disable-line csstree/validator */
+            border-color: lighten(#ccc, 5%); // stylelint-disable-line csstree/validator
             color: lighten($gray-900, 5%);
         }
     }
