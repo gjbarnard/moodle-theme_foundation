@@ -81,7 +81,8 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @return string XHTML field and wrapping div
      */
     public function output_html($data, $query='') {
-        global $PAGE;
+        global $PAGE, $OUTPUT;
+
         $id = $this->get_id();
         $PAGE->requires->js('/theme/foundation/js/fd_colourpopup.js');
         $PAGE->requires->js_init_call('M.util.init_fdcolour_popup', array($id));
@@ -96,50 +97,17 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             $colour = $this->defaultcolour;
         }
 
-        $element = '<div class="form-colourpicker defaultsnext">';
-        //$element .= '<div class="form-control-static clearfix">';
-        $element .= "<input size='5' name='" . $this->get_full_name() . "' value='" . $data . "' initvalue='".$colour."' id='{$id}' type='text' class='form-control text-ltr'>";
-        $element .= html_writer::tag('span', '&nbsp;', array(
-            'id' => 'colpicked_'.$id,
-            'class' => 'fdcolourpopupbox',
-            'tabindex' => '-1',
-            'style' => 'background-color: '.$colour.'; border: 1px solid #000; cursor: pointer; margin: 0 0 0 2px; padding: 0 8px;')
-        );
-        $element .= html_writer::start_tag('div', array(
-            'id' => 'colpick_' . $id,
-            'style' => "display: none; position: absolute; z-index: 500;",
-            'class' => 'fdcolourpopupsel form-colourpicker defaultsnext'));
-        $element .= html_writer::tag('div', '', array('class' => 'admin_colourpicker clearfix'));
-        $element .= html_writer::end_tag('div');
-
-        $element .= '</div>';
-        /* global $PAGE, $OUTPUT;
-
-        if (!empty($data)) {
-            if ($data[0] == '-') {
-                $colour = $this->getAttribute('defaultcolour');
-            } else {
-                $colour = $data;
-            }
-        } else {
-            $data = '-';
-            $colour = $this->getAttribute('defaultcolour');
-        }
-        
-        $icon = new pix_icon('i/loading', get_string('loading', 'admin'), 'moodle', ['class' => 'loadingicon']);
         $context = (object) [
             'id' => $this->get_id(),
             'name' => $this->get_full_name(),
             'value' => $data,
-            'icon' => $icon->export_for_template($OUTPUT),
+            'initvalue' => $colour,
             'haspreviewconfig' => !empty($this->previewconfig),
             'forceltr' => $this->get_force_ltr(),
             'readonly' => $this->is_readonly(),
         ];
 
-        $element = $OUTPUT->render_from_template('core_admin/setting_configcolourpicker', $context);
-        $PAGE->requires->js_init_call('M.util.init_colour_picker', array($this->get_id(), $this->previewconfig));
-        */
+        $element = $OUTPUT->render_from_template('theme_foundation/admin_setting_configcolourpicker', $context);
 
         return format_admin_setting($this, $this->visiblename, $element, $this->description, true, '',
             $this->get_defaultsetting(), $query);

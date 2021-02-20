@@ -1,0 +1,52 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_foundation/admin_setting_configcolourpicker
+
+    Admin setting colour picker template.
+
+    Context variables required for this template:
+    * name - element name
+    * id - element id
+    * value - element value
+    * initvalue - element default value
+    * haspreviewconfig - show preview of selected color
+    * readonly - bool
+
+    Example context (json):
+    {
+        "name": "name0",
+        "id": "id0",
+        "value": "#555655",
+        "initvalue": "#ffaabb",
+        "readonly": false,
+        "haspreviewconfig": false
+    }
+}}
+{{!
+    Setting configcolourpicker.
+}}
+<div class="form-colourpicker defaultsnext">
+    <input type="text" name="{{name}}" id="{{id}}" value="{{value}}" initvalue="{{initvalue}}" size="5" class="form-control text-ltr" {{#readonly}}disabled{{/readonly}}>
+    <span id="colpicked_{{id}}" class= "fdcolourpopupbox" tabindex="-1" style="background-color: {{initvalue}}; border: 1px solid #000; cursor: pointer; margin: 0 0 0 2px; padding: 0 8px;">&nbsp;</span>
+    <div id="colpick_{{id}}" style="display: none; position: absolute; z-index: 500;" class="fdcolourpopupsel form-colourpicker defaultsnext">
+        <div class="admin_colourpicker clearfix"></div>
+    </div>
+    {{#haspreviewconfig}}
+        <input type="button" id="{{id}}_preview" value={{#quote}}{{#str}}preview{{/str}}{{/quote}} class="admin_colourpicker_preview">
+    {{/haspreviewconfig}}
+</div>

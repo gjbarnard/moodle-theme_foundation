@@ -29,7 +29,7 @@ env:
  global:
   - MOODLE_BRANCH=MOODLE_38_STABLE
   - IGNORE_PATHS=templates/mod_assign
-  - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css
+  - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css,fd_colourpopup.js
 
 before_install:
 # This disables XDebug which should speed up the build.  One reason to remove this
