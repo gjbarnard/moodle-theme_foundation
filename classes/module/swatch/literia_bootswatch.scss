@@ -30,11 +30,11 @@ $font-family-serif:      Georgia, Cambria, "Times New Roman", Times, serif !defa
 }
 
 .bg-dark {
-    background-color: $success !important; /* stylelint-disable-line declaration-no-important */
+    background-color: $success !important; // stylelint-disable-line declaration-no-important
 }
 
 .bg-light {
-    background-color: #fff !important; /* stylelint-disable-line declaration-no-important */
+    background-color: #fff !important; // stylelint-disable-line declaration-no-important
     border: 1px solid rgba(0, 0, 0, 0.1);
 
     &.navbar-fixed-top {
@@ -293,7 +293,7 @@ table,
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(0deg, mix($body-bg, $value, 15%), $value) repeat-x;
-            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
+            } @else { // stylelint-disable-line block-closing-brace-newline-after
                 background-color: $value;
             }
         }

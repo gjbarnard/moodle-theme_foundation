@@ -44,16 +44,16 @@
 }
 
 .bg-primary {
-    background-color: $primary !important; /* stylelint-disable-line declaration-no-important */
-    border-color: darken($primary, 6.5%) !important; /* stylelint-disable-line declaration-no-important */
+    background-color: $primary !important; // stylelint-disable-line declaration-no-important
+    border-color: darken($primary, 6.5%) !important; // stylelint-disable-line declaration-no-important
 }
 
 .bg-dark {
-    border-color: darken($dark, 6.5%) !important; /* stylelint-disable-line declaration-no-important */
+    border-color: darken($dark, 6.5%) !important; // stylelint-disable-line declaration-no-important
 }
 
 .bg-light {
-    border-color: darken(#fff, 6.5%); /* stylelint-disable-line csstree/validator */
+    border-color: darken(#fff, 6.5%); // stylelint-disable-line csstree/validator
 }
 
 // Buttons =====================================================================
@@ -117,7 +117,7 @@
 // Typography ==================================================================
 
 .text-secondary {
-    color: $gray-700 !important; /* stylelint-disable-line declaration-no-important */
+    color: $gray-700 !important; // stylelint-disable-line declaration-no-important
 }
 
 // Tables ======================================================================
@@ -132,7 +132,7 @@ label {
 // Navs =======================================================================
 
 .breadcrumb {
-    border: 1px solid darken(#fff, 6.5%); /* stylelint-disable-line csstree/validator */
+    border: 1px solid darken(#fff, 6.5%); // stylelint-disable-line csstree/validator
 }
 
 .pagination {
