@@ -240,6 +240,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $default = 'cover';
         $setting = new admin_setting_configselect($name, $title, $description, $default,
             array(
+                'contain' => get_string('stylecontain', 'theme_foundation'),
                 'cover' => get_string('stylecover', 'theme_foundation'),
                 'stretch' => get_string('stylestretch', 'theme_foundation')
             )
@@ -247,26 +248,13 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-        $opactitychoices = array(
-            '0.0' => '0.0',
-            '0.1' => '0.1',
-            '0.2' => '0.2',
-            '0.3' => '0.3',
-            '0.4' => '0.4',
-            '0.5' => '0.5',
-            '0.6' => '0.6',
-            '0.7' => '0.7',
-            '0.8' => '0.8',
-            '0.9' => '0.9',
-            '1.0' => '1.0'
-        );
-
         // Overridden course title text background opacity setting.
         $name = 'theme_foundation/loginbackgroundopacity';
         $title = get_string('loginbackgroundopacity', 'theme_foundation');
         $description = get_string('loginbackgroundopacitydesc', 'theme_foundation');
         $default = '0.8';
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $opactitychoices);
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            \theme_foundation\toolbox::$settingopactitychoices);
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Syntax highlighting.
@@ -304,15 +292,14 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $scss .= 'background-image: url("'.$loginbackgroundurl.'");'.PHP_EOL;
 
             $loginbackgroundstyle = $toolbox->get_setting('loginbackgroundstyle', $themename);
-            $replacementstyle = 'cover';
             if ($loginbackgroundstyle === 'stretch') {
-                $replacementstyle = '100% 100%';
+                $loginbackgroundstyle = '100% 100%';
             }
-            $scss .= 'background-size: '.$replacementstyle.';'.PHP_EOL;
+            $scss .= 'background-size: '.$loginbackgroundstyle.';'.PHP_EOL;
             $scss .= '.card,'.PHP_EOL;
             $scss .= '#page-footer {'.PHP_EOL;
-            $loginbackgroundopacity = $toolbox->get_setting('loginbackgroundopacity', $themename);
-            $scss .= 'background-color: rgba(red($card-bg), green($card-bg), blue($card-bg), '.$loginbackgroundopacity.') !important;'.PHP_EOL;
+            $scss .= 'background-color: rgba(red($card-bg), green($card-bg), blue($card-bg), '.
+                $toolbox->get_setting('loginbackgroundopacity', $themename).') !important;'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
         }

@@ -47,8 +47,14 @@ $string['region-side-pre'] = 'Right';
 
 $string['cachedef_fontawesome5iconmapping'] = 'Caches font awesome 5 icons';
 
+$string['stylebottom'] = 'Bottom';
+$string['stylecenter'] = 'Centre';
+$string['stylecontain'] = 'Contain';
 $string['stylecover'] = 'Cover';
+$string['styleleft'] = 'Left';
+$string['styleright'] = 'Right';
 $string['stylestretch'] = 'Stretch';
+$string['styletop'] = 'Top';
 
 // Misc.
 $string['gotobottom'] = 'Go to the bottom of the page';
@@ -162,7 +168,7 @@ $string['loginbackground'] = 'Login background image';
 $string['loginbackgrounddesc'] = 'Upload your own login background image.  Select the style of the image below.';
 $string['loginbackgroundstyle'] = 'Login background style';
 $string['loginbackgroundstyledesc'] = 'Select the style for the uploaded image.';
-$string['loginbackgroundopacity'] = 'Login box background opacity when there is a background image';
+$string['loginbackgroundopacity'] = 'Login box background opacity';
 $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login box when there is a background image.';
 
 // Syntax highlighter.
@@ -277,6 +283,23 @@ $string['headerheadingsub'] = 'Header settings';
 $string['headerheadingdesc'] = 'Configure the header settings for Foundation here.';
 $string['header'] = 'Header';
 $string['headerdesc'] = 'Header desc.';
+
+$string['headerbackground'] = 'Header background';
+$string['headerbackgrounddesc'] = 'Header background image.';
+
+$string['headerbackgroundposition'] = 'Header background position';
+$string['headerbackgroundpositiondesc'] = 'Select the position for the uploaded image.';
+$string['headerbackgroundstyle'] = 'Header background style';
+$string['headerbackgroundstyledesc'] = 'Select the style for the uploaded image.';
+$string['headerbackgroundbottomopacity'] = 'Header background bottom opacity.';
+$string['headerbackgroundbottomopacitydesc'] = 'Header background bottom opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
+$string['headerbackgroundtopopacity'] = 'Header background top opacity.';
+$string['headerbackgroundtopopacitydesc'] = 'Header background top opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
+
+$string['headerbackgroundtopcolour'] = 'Header background top colour';
+$string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the top of the header when there is a background.';
+$string['headerbackgroundbottomcolour'] = 'Header background bottom colour';
+$string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.';
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';

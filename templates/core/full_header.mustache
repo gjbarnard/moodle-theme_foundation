@@ -29,34 +29,31 @@
     }
 }}
 <header id="page-header" class="row">
-    <div class="col-12 pt-3 pb-3">
-        <div class="card {{^contextheader}}border-0 bg-transparent{{/contextheader}}">
-            <div class="card-body {{^contextheader}}p-2{{/contextheader}}">
-                <div class="d-sm-flex align-items-center">
-                    {{#contextheader}}
-                    <div class="mr-auto">
-                        {{{contextheader}}}
-                    </div>
-                    {{/contextheader}}
-
-                    <div class="header-actions-container flex-shrink-0" data-region="header-actions-container">
-                        {{#headeractions}}
-                            <div class="header-action ml-2">{{{.}}}</div>
-                        {{/headeractions}}
-                    </div>
+    <div class="card w-100 pl-3 pr-3{{^contextheader}} border-0 bg-transparent{{/contextheader}}">
+        <div class="card-body{{^contextheader}} p-2{{/contextheader}}">
+            <div class="d-sm-flex align-items-center pageheadingtop">
+                {{#contextheader}}
+                <div class="mr-auto">
+                    {{{contextheader}}}
                 </div>
-                <div class="d-flex flex-wrap">
-                    {{#hasbreadcrumb}}
-                    <div id="page-navbar">
-                        {{{breadcrumb}}}
-                    </div>
-                    {{/hasbreadcrumb}}
-                    <div class="ml-auto d-flex">
-                        {{{pageheadingbutton}}}
-                    </div>
-                    <div id="course-header">
-                        {{{courseheader}}}
-                    </div>
+                {{/contextheader}}
+                <div class="header-actions-container flex-shrink-0" data-region="header-actions-container">
+                    {{#headeractions}}
+                        <div class="header-action ml-2">{{{.}}}</div>
+                    {{/headeractions}}
+                </div>
+            </div>
+            <div class="d-flex flex-wrap pageheadingbottom">
+                {{#hasbreadcrumb}}
+                <div id="page-navbar">
+                    {{{breadcrumb}}}
+                </div>
+                {{/hasbreadcrumb}}
+                <div class="ml-auto d-flex pageheadingbutton">
+                    {{{pageheadingbutton}}}
+                </div>
+                <div id="course-header">
+                    {{{courseheader}}}
                 </div>
             </div>
         </div>
