@@ -51,9 +51,9 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                 this.image = Y.Node.create('<img alt="" class="colourdialogue" />');
                 this.image.setAttribute('src', M.util.image_url('i/colourpicker', 'moodle'));
                 this.preview = Y.Node.create('<div class="previewcolour"></div>');
-                this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', this.input.getAttribute('initvalue'));
+                this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', this.input.getAttribute('data-initvalue'));
                 this.current = Y.Node.create('<div class="currentcolour"></div>');
-                this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', this.input.getAttribute('initvalue'));
+                this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', this.input.getAttribute('data-initvalue'));
                 this.box.setContent('').append(this.image).append(this.preview).append(this.current);
 
                 if (typeof(previewconf) === 'object' && previewconf !== null) {
