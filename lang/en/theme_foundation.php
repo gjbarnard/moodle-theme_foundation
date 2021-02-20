@@ -263,7 +263,7 @@ $string['swatchcustomcoloursheadingsub'] = 'Custom swatch colour settings';
 $string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings for Foundation here.';
 
 $string['swatchcustomcolour'] = '{$a} colour';
-$string['swatchcustomcolourdesc'] = 'Set the {$a} colour.';
+$string['swatchcustomcolourdesc'] = 'Set the {$a} colour.  Enter \'-\' to ignore this setting.';
 
 $string['swatchcustomtypography'] = 'Swatch custom typography';
 $string['swatchcustomtypographydesc'] = 'Activate custom swatch typography settings.';
