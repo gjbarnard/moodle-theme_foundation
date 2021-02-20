@@ -30,12 +30,12 @@
     }
 
     &.bg-dark {
-        background-color: $body-bg !important; /* stylelint-disable-line declaration-no-important */
+        background-color: $body-bg !important; // stylelint-disable-line declaration-no-important
         border: 1px solid $gray-700;
     }
 
     &.bg-light {
-        background-color: $gray-500 !important; /* stylelint-disable-line declaration-no-important */
+        background-color: $gray-500 !important; // stylelint-disable-line declaration-no-important
     }
 
     &.fixed-top {
@@ -55,7 +55,7 @@
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
+            } @else { // stylelint-disable-line block-closing-brace-newline-after
                 background-color: $value;
             }
         }
@@ -278,7 +278,7 @@ legend {
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
+            } @else { // stylelint-disable-line block-closing-brace-newline-after
                 background-color: $value;
             }
         }

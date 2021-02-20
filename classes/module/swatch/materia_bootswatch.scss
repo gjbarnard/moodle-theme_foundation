@@ -223,7 +223,7 @@
 }
 
 .border-secondary {
-    border: 1px solid #dfdfdf !important; /* stylelint-disable-line declaration-no-important */
+    border: 1px solid #dfdfdf !important; // stylelint-disable-line declaration-no-important
 }
 
 // Typography ==================================================================
@@ -244,7 +244,7 @@ a {
 }
 
 .text-secondary {
-    color: $gray-500 !important; /* stylelint-disable-line declaration-no-important */
+    color: $gray-500 !important; // stylelint-disable-line declaration-no-important
 }
 
 // Tables ======================================================================
@@ -315,7 +315,7 @@ select,
 select.form-control {
     appearance: none;
     padding: 0.5rem 0;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAJ1BMVEVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmaP/QSjAAAADHRSTlMAAgMJC0uWpKa6wMxMdjkoAAAANUlEQVR4AeXJyQEAERAAsNl7Hf3X6xt0QL6JpZWq30pdvdadme+0PMdzvHm8YThHcT1H7K0BtOMDniZhWOgAAAAASUVORK5CYII=); /* stylelint-disable-line function-url-scheme-blacklist */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAJ1BMVEVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmaP/QSjAAAADHRSTlMAAgMJC0uWpKa6wMxMdjkoAAAANUlEQVR4AeXJyQEAERAAsNl7Hf3X6xt0QL6JpZWq30pdvdadme+0PMdzvHm8YThHcT1H7K0BtOMDniZhWOgAAAAASUVORK5CYII=); // stylelint-disable-line function-url-scheme-blacklist
     background-size: 13px;
     background-repeat: no-repeat;
     background-position: right center;
@@ -590,7 +590,7 @@ select.form-control {
         &-#{$color} {
             @if $enable-gradients {
                 background: $value linear-gradient(180deg, mix($body-bg, $value, 15%), $value) repeat-x;
-            } @else { /* stylelint-disable-line block-closing-brace-newline-after */
+            } @else { // stylelint-disable-line block-closing-brace-newline-after
                 background-color: $value;
             }
         }

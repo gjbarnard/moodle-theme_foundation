@@ -59,8 +59,8 @@
 }
 
 .bg-light {
-    background-color: #fff !important; /* stylelint-disable-line declaration-no-important */
-    border-color: darken(#fff, 5%); /* stylelint-disable-line csstree/validator */
+    background-color: #fff !important; // stylelint-disable-line declaration-no-important
+    border-color: darken(#fff, 5%); // stylelint-disable-line csstree/validator
 }
 
 // Buttons =====================================================================
@@ -140,7 +140,7 @@
 // Typography ==================================================================
 
 .text-secondary {
-    color: $gray-700 !important; /* stylelint-disable-line declaration-no-important */
+    color: $gray-700 !important; // stylelint-disable-line declaration-no-important
 }
 
 .blockquote-footer {
