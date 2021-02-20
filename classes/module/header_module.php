@@ -60,6 +60,150 @@ class header_module extends \theme_foundation\module_basement {
                 format_text(get_string('headerheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
             )
         );
+
+        // Header background image.
+        $name = 'theme_foundation/headerbackground';
+        $title = get_string('headerbackground', 'theme_foundation');
+        $description = get_string('headerbackgrounddesc', 'theme_foundation');
+        $setting = new \admin_setting_configstoredfile($name, $title, $description, 'headerbackground', 0,
+            array('accepted_types' => array('jpg', 'png')));
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header background style.
+        $name = 'theme_foundation/headerbackgroundstyle';
+        $title = get_string('headerbackgroundstyle', 'theme_foundation');
+        $description = get_string('headerbackgroundstyledesc', 'theme_foundation');
+        $default = 'cover';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            array(
+                'contain' => get_string('stylecontain', 'theme_foundation'),
+                'cover' => get_string('stylecover', 'theme_foundation'),
+                'stretch' => get_string('stylestretch', 'theme_foundation')
+            )
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header background position.
+        $name = 'theme_foundation/headerbackgroundposition';
+        $title = get_string('headerbackgroundposition', 'theme_foundation');
+        $description = get_string('headerbackgroundpositiondesc', 'theme_foundation');
+        $default = 'center';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            array(
+                'center' => get_string('stylecenter', 'theme_foundation'),
+                'top' => get_string('styletop', 'theme_foundation'),
+                'bottom' => get_string('stylebottom', 'theme_foundation'),
+                'left' => get_string('styleleft', 'theme_foundation'),
+                'right' => get_string('styleright', 'theme_foundation')
+            )
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header top background opacity setting.
+        $name = 'theme_foundation/headerbackgroundtopopacity';
+        $title = get_string('headerbackgroundtopopacity', 'theme_foundation');
+        $description = get_string('headerbackgroundtopopacitydesc', 'theme_foundation');
+        $default = '0.1';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            \theme_foundation\toolbox::$settingopactitychoices);
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header bottom background opacity setting.
+        $name = 'theme_foundation/headerbackgroundbottomopacity';
+        $title = get_string('headerbackgroundbottomopacity', 'theme_foundation');
+        $description = get_string('headerbackgroundbottomopacitydesc', 'theme_foundation');
+        $default = '0.9';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            \theme_foundation\toolbox::$settingopactitychoices);
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header background top colour setting.
+        $name = 'theme_foundation/headerbackgroundtopcolour';
+        $title = get_string('headerbackgroundtopcolour', 'theme_foundation');
+        $description = get_string('headerbackgroundtopcolourdesc', 'theme_foundation');
+        $default = '#000000';
+        $previewconfig = null;
+        $setting = new \admin_setting_configcolourpicker(
+            $name,
+            $title,
+            $description,
+            $default,
+            $previewconfig
+        );
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header background bottom colour setting.
+        $name = 'theme_foundation/headerbackgroundbottomcolour';
+        $title = get_string('headerbackgroundbottomcolour', 'theme_foundation');
+        $description = get_string('headerbackgroundbottomcolourdesc', 'theme_foundation');
+        $default = '#000000';
+        $previewconfig = null;
+        $setting = new \admin_setting_configcolourpicker(
+            $name,
+            $title,
+            $description,
+            $default,
+            $previewconfig
+        );
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+    }
+
+    /**
+     * Gets the module extra SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
+    public function extra_scss($themename, $toolbox) {
+        $scss = '';
+
+        $headerbackgroundurl = $toolbox->setting_file_url('headerbackground', 'headerbackground', $themename);
+
+        if (!empty($headerbackgroundurl)) {
+            $scss .= '#page-header {'.PHP_EOL;
+
+            $scss .= 'background-image: linear-gradient(';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).')),';
+            $scss .= 'url("'.$headerbackgroundurl.'");'.PHP_EOL;
+            $scss .= 'background-position: '.$toolbox->get_setting('headerbackgroundposition', $themename).';'.PHP_EOL;
+            $headerbackgroundstyle = $toolbox->get_setting('headerbackgroundstyle', $themename);
+            if ($headerbackgroundstyle === 'stretch') {
+                $headerbackgroundstyle = '100% 100%';
+            }
+            $scss .= 'background-size: '.$headerbackgroundstyle.';'.PHP_EOL;
+            $scss .= '.card {'.PHP_EOL;
+            $scss .= 'background-color: transparent;'.PHP_EOL;
+            $scss .= '}'.PHP_EOL;
+
+            $scss .= '.breadcrumb-item a,'.PHP_EOL;
+            $scss .= '.pageheadingbutton .btn {'.PHP_EOL;
+            $scss .= 'color: inherit;'.PHP_EOL;
+            $scss .= '}'.PHP_EOL;
+
+            $headerbackgroundtopcolour = $toolbox->get_setting('headerbackgroundtopcolour', $themename);
+            if (!empty($headerbackgroundtopcolour)) {
+                $scss .= '.pageheadingtop {'.PHP_EOL;
+                $scss .= 'color: '.$headerbackgroundtopcolour.';'.PHP_EOL;
+                $scss .= '}'.PHP_EOL;
+            }
+            $headerbackgroundbottomcolour = $toolbox->get_setting('headerbackgroundbottomcolour', $themename);
+            if (!empty($headerbackgroundbottomcolour)) {
+                $scss .= '.pageheadingbottom {'.PHP_EOL;
+                $scss .= 'color: '.$headerbackgroundbottomcolour.';'.PHP_EOL;
+                $scss .= '}'.PHP_EOL;
+            }
+
+            $scss .= '}'.PHP_EOL;
+        }
+
+        return $scss;
     }
 
     /**

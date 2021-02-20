@@ -67,6 +67,23 @@ class toolbox {
     const HASSETTINGS = 's';
 
     /**
+     * Opacity choices for settings.
+     */
+    public static $settingopactitychoices = array(
+        '0.0' => '0.0',
+        '0.1' => '0.1',
+        '0.2' => '0.2',
+        '0.3' => '0.3',
+        '0.4' => '0.4',
+        '0.5' => '0.5',
+        '0.6' => '0.6',
+        '0.7' => '0.7',
+        '0.8' => '0.8',
+        '0.9' => '0.9',
+        '1.0' => '1.0'
+    );
+
+    /**
      * This is a lonely object.
      */
     private function __construct() {
@@ -220,6 +237,29 @@ class toolbox {
     }
 
     /**
+     * Gets the extra SCSS.
+     *
+     * @param string $themename The name of the theme.
+     *
+     * @return string SCSS.
+     */
+    public function extra_scss($themename) {
+        $scss = '';
+
+        foreach ($this->modules as $module) {
+            $scss .= $module->extra_scss($themename, $this);
+        }
+
+        // TODO: Does there need to be a parent daisy chain of this setting?
+        $customscss = $this->get_setting('customscss', $themename);
+        if (!empty($customscss)) {
+            $scss .= $customscss;
+        }
+
+        return $scss;
+    }
+
+    /**
      * Gets the module bodyclasses.
      *
      * @return array bodyclass strings.
@@ -274,29 +314,6 @@ class toolbox {
         $renderer = $PAGE->get_renderer('theme_foundation', 'mustache');
 
         return $renderer->getmustache();
-    }
-
-    /**
-     * Gets the extra SCSS.
-     *
-     * @param string $themename The name of the theme.
-     *
-     * @return string SCSS.
-     */
-    public function extra_scss($themename) {
-        $scss = '';
-
-        foreach ($this->modules as $module) {
-            $scss .= $module->extra_scss($themename, $this);
-        }
-
-        // TODO: Does there need to be a parent daisy chain of this setting?
-        $customscss = $this->get_setting('customscss', $themename);
-        if (!empty($customscss)) {
-            $scss .= $customscss;
-        }
-
-        return $scss;
     }
 
     /**
@@ -371,7 +388,7 @@ class toolbox {
             $title = get_string('favicon', 'theme_foundation');
             $description = get_string('favicondesc', 'theme_foundation');
             $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
-                array('accepted_types' => '.ico'));
+                array('accepted_types' => 'ico'));
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
