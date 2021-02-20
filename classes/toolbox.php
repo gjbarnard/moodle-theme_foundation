@@ -67,7 +67,7 @@ class toolbox {
     const HASSETTINGS = 's';
 
     /**
-     * Opacity choices for settings.
+     * @var array Opacity choices for settings.
      */
     public static $settingopactitychoices = array(
         '0.0' => '0.0',

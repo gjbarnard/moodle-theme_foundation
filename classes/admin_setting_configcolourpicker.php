@@ -48,6 +48,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param string $defaultsetting
      * @param string $defaultcolour default colour
      * @param array $previewconfig Array('selector'=>'.some .css .selector','style'=>'backgroundColor');
+     * @param boolean $usedefaultwhenempty true or false.
      */
     public function __construct($name, $visiblename, $description, $defaultsetting, $defaultcolour,
             array $previewconfig = null, $usedefaultwhenempty = true) {
