@@ -56,15 +56,12 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                     const initvalueelement = document.querySelector(initvaluedata.selector);
                     if (initvalueelement != null) {
                         style = getComputedStyle(initvalueelement);
-                        initvalue = style[initvaluedata.attribute];
-                        console.log('ele  ' + initvalue);
+                        initvalue = style[initvaluedata.element];
                     } else {
                         initvalue = initvaluedata.colour;
-                        console.log('col  ' + initvalue);
                     }
                 } else {
                     initvalue = initvaluedata.colour;
-                    console.log('col2  ' + initvalue);
                 }
                 this.preview = Y.Node.create('<div class="previewcolour"></div>');
                 this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', initvalue);
