@@ -98,6 +98,8 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             $colour = $this->defaultcolour;
         }
 
+        $colour = json_encode(array('selector' => 'body', 'attribute' => 'backgroundColor'));
+
         $context = (object) [
             'id' => $this->get_id(),
             'name' => $this->get_full_name(),
@@ -105,7 +107,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             'initvalue' => $colour,
             'haspreviewconfig' => !empty($this->previewconfig),
             'forceltr' => $this->get_force_ltr(),
-            'readonly' => $this->is_readonly(),
+            'readonly' => $this->is_readonly()
         ];
 
         $element = $OUTPUT->render_from_template('theme_foundation/admin_setting_configcolourpicker', $context);
