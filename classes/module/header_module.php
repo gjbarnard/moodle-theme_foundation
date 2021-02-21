@@ -125,7 +125,7 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundtopcolour', 'theme_foundation');
         $description = get_string('headerbackgroundtopcolourdesc', 'theme_foundation');
         $default = '-';
-        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingtop', 'attribute' => 'color');
+        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingtop', 'element' => 'color');
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
@@ -141,7 +141,7 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundbottomcolour', 'theme_foundation');
         $description = get_string('headerbackgroundbottomcolourdesc', 'theme_foundation');
         $default = '-';
-        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingbottom', 'attribute' => 'color');
+        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingbottom', 'element' => 'color');
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,

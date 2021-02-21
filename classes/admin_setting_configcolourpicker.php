@@ -46,7 +46,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param string $visiblename
      * @param string $description
      * @param string $defaultsetting
-     * @param string / array $defaultcolour default colour in hex or Array('colour' => '#ffaabb', 'selector' => 'body', 'attribute' => 'backgroundColor').
+     * @param string / array $defaultcolour default colour in hex or Array('colour' => '#ffaabb', 'selector' => 'body', 'element' => 'backgroundColor').
      * @param array $previewconfig Array('selector'=>'.some .css .selector','style'=>'backgroundColor');
      * @param boolean $usedefaultwhenempty true or false.
      */
