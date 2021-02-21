@@ -50,11 +50,27 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                 this.box = this.input.ancestor().one('.admin_colourpicker');
                 this.image = Y.Node.create('<img alt="" class="colourdialogue" />');
                 this.image.setAttribute('src', M.util.image_url('i/colourpicker', 'moodle'));
-                const initvalue = this.input.getAttribute('data-initvalue');
+                const initvaluedata = JSON.parse(this.input.getAttribute('data-initvalue'));
+                var initvalue = null;
+                if (initvaluedata.hasOwnProperty('selector')) {
+                    const initvalueelement = document.querySelector(initvaluedata.selector);
+                    if (initvalueelement != null) {
+                        style = getComputedStyle(initvalueelement);
+                        initvalue = style[initvaluedata.attribute];
+                        console.log('ele  ' + initvalue);
+                    } else {
+                        initvalue = initvaluedata.colour;
+                        console.log('col  ' + initvalue);
+                    }
+                } else {
+                    initvalue = initvaluedata.colour;
+                    console.log('col2  ' + initvalue);
+                }
                 this.preview = Y.Node.create('<div class="previewcolour"></div>');
                 this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', initvalue);
                 this.current = Y.Node.create('<div class="currentcolour"></div>');
                 this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', initvalue);
+                this.swatch.setStyle('backgroundColor', initvalue);
                 this.box.setContent('').append(this.image).append(this.preview).append(this.current);
 
                 if (typeof(previewconf) === 'object' && previewconf !== null) {
