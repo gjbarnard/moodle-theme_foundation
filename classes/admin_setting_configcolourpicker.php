@@ -98,8 +98,6 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             $colour = $this->defaultcolour;
         }
 
-        $colour = json_encode(array('selector' => 'body', 'attribute' => 'backgroundColor'));
-
         $context = (object) [
             'id' => $this->get_id(),
             'name' => $this->get_full_name(),

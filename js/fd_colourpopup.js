@@ -50,16 +50,11 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                 this.box = this.input.ancestor().one('.admin_colourpicker');
                 this.image = Y.Node.create('<img alt="" class="colourdialogue" />');
                 this.image.setAttribute('src', M.util.image_url('i/colourpicker', 'moodle'));
-                var initvalue = JSON.parse(this.input.getAttribute('data-initvalue'));
-                const element = document.querySelector(initvalue.selector);
-                const style = getComputedStyle(element);
-                const value = style[initvalue.attribute];
+                const initvalue = this.input.getAttribute('data-initvalue');
                 this.preview = Y.Node.create('<div class="previewcolour"></div>');
-                //this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', this.input.getAttribute('data-initvalue'));
-                this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', value);
+                this.preview.setStyle('width', this.height / 2).setStyle('height', this.height / 2).setStyle('backgroundColor', initvalue);
                 this.current = Y.Node.create('<div class="currentcolour"></div>');
-                //this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', this.input.getAttribute('data-initvalue'));
-                this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', value);
+                this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', initvalue);
                 this.box.setContent('').append(this.image).append(this.preview).append(this.current);
 
                 if (typeof(previewconf) === 'object' && previewconf !== null) {
@@ -78,16 +73,15 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                 this.eventClick = this.image.on('click', this.pickColour, this);
                 this.eventMouseEnter = Y.on('mouseenter', this.startFollow, this.image, this);
             },
-            popup: function(e){
+            popup: function(e) {
                 this.box.ancestor().setStyle('display', 'block');
             },
-            showColours : function(e){
+            showColours : function(e) {
                 this.eventFocus.detach();
                 this.box.setContent('').append(this.image).append(this.preview).append(this.current);
             },
-            setColour : function(e){
-                var colour = this.input.get('value');
-                console.log(colour);
+            setColour : function(e) {
+                const colour = this.current.getStyle('backgroundColor');
                 this.swatch.setStyle('backgroundColor', colour);
             },
             startFollow : function(e) {
