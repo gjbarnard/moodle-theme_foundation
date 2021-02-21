@@ -46,7 +46,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param string $visiblename
      * @param string $description
      * @param string $defaultsetting
-     * @param string $defaultcolour default colour
+     * @param string / array $defaultcolour default colour in hex or Array('colour' => '#ffaabb', 'selector' => 'body', 'attribute' => 'backgroundColor').
      * @param array $previewconfig Array('selector'=>'.some .css .selector','style'=>'backgroundColor');
      * @param boolean $usedefaultwhenempty true or false.
      */
@@ -87,22 +87,27 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
         $id = $this->get_id();
         $PAGE->requires->js('/theme/foundation/js/fd_colourpopup.js');
         $PAGE->requires->js_init_call('M.util.init_fdcolour_popup', array($id));
-        if (!empty($data)) {
-            if ($data[0] == '-') {
-                $colour = $this->defaultcolour;
-            } else {
-                $colour = $data;
-            }
-        } else {
+        $initvalue = array();
+        if (empty($data)) {
             $data = '-';
-            $colour = $this->defaultcolour;
         }
+        if ($data[0] == '-') {
+             if (is_array($this->defaultcolour)) {
+                 $initvalue = $this->defaultcolour;
+             } else {
+                 $initvalue['colour'] = $this->defaultcolour;
+             }
+        } else {
+            $initvalue['colour'] = $data;
+        }
+
+        $initvalue = json_encode($initvalue);
 
         $context = (object) [
             'id' => $this->get_id(),
             'name' => $this->get_full_name(),
             'value' => $data,
-            'initvalue' => $colour,
+            'initvalue' => $initvalue,
             'haspreviewconfig' => !empty($this->previewconfig),
             'forceltr' => $this->get_force_ltr(),
             'readonly' => $this->is_readonly()
