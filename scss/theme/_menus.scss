@@ -3,6 +3,17 @@
     color: inherit !important; // stylelint-disable-line declaration-no-important
 }
 
+.dropdown-menu,
+.popover-region-container {
+    background-color: $body-bg;
+}
+
+.dropdown-item,
+.dropdown-item a,
+.popover-region-container {
+    color: $body-color;
+}
+
 .dropdown-item:hover,
 .dropdown-item:focus,
 .dropdown-item:focus-within,

@@ -118,3 +118,16 @@ body {
 .editing [data-region="blocks-drawer"] {
     min-height: 786px; // For a drag and drop target area when empty.
 }
+
+@include media-breakpoint-down(xs) {
+    [data-region="blocks-column"] {
+        margin-right: -$grid-gutter-width / 2;
+        width: calc(100% + #{$grid-gutter-width});
+    }
+}
+
+@include media-breakpoint-up(xs) {
+    [data-region="blocks-column"] {
+        margin-bottom: -$grid-gutter-width / 2;
+    }
+}
