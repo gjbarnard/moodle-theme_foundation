@@ -14,3 +14,8 @@ $spacer: 1rem !default;
 $spacers: (
     6: ($spacer * 4)
 );
+
+// Bootstrap changes
+$dropdown-padding-y:         0 !default;
+$nav-tabs-link-active-color: $body-color !default;
+$navbar-padding-x:           $spacer / 4 !default;

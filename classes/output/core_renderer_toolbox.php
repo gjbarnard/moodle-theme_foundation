@@ -686,8 +686,8 @@ trait core_renderer_toolbox {
         $strlang = get_string('language');
         $currentlangcode = current_language();
         if (isset($langs[$currentlangcode])) {
-            $currentlang = html_writer::tag('span', $langs[$currentlangcode], array('class' => 'd-none d-sm-inline')).
-                html_writer::tag('span', $currentlangcode, array('class' => 'd-sm-none'));
+            $currentlang = html_writer::tag('span', $langs[$currentlangcode], array('class' => 'd-none d-md-inline')).
+                html_writer::tag('span', $currentlangcode, array('class' => 'd-md-none'));
         } else {
             $currentlang = $strlang;
         }
