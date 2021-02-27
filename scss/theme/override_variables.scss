@@ -1,0 +1,13 @@
+// Copy of Boostrap vars in case they are not already defined in the swatch or settings.
+// This is so that this file can be loaded before the Bootstrap _variables.scss file.
+$body-bg:                  #fff        !default;
+$body-color:               #212529     !default;
+$spacer:                     1rem        !default;
+
+// Bootstrap changes
+$dropdown-padding-y:         0 !default;
+$modal-content-color:        $body-color !default;
+$modal-content-bg:           $body-bg    !default;
+$nav-tabs-link-active-color: $body-color !default;
+$navbar-padding-x:           $spacer / 4 !default;
+$pagination-bg:              $body-bg    !default;
