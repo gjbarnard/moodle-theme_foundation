@@ -17,6 +17,7 @@ Version 3.10.0.2 - TBR
 13. Fix 'nocontextheader' not being checked in theme config layout options.
 14. Fix 'Yeti' swatch 'context_header_settings_menu()' styling.
 15. Fix modal colours.
+16. Fix course participants colours.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
