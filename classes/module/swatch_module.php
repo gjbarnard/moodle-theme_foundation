@@ -143,8 +143,7 @@ class swatch_module extends \theme_foundation\module_basement {
         }
         // TODOs: Cope with the theme being in $CFG->themedir.
         global $CFG;
-        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/foundation_variables.scss');
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_variables.scss');
+        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_variables.scss');
         $scss .= $toolbox->get_core_framework_scss();
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_bootswatch.scss');
 

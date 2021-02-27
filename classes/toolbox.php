@@ -205,7 +205,8 @@ class toolbox {
             $scss .= $module->get_main_scss_content($theme, $this);
         }
 
-        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
+        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/foundation_variables.scss');
+        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
 
         return $scss;
     }
@@ -216,10 +217,11 @@ class toolbox {
      * @return string SCSS.
      */
     public function get_core_framework_scss() {
+        global $CFG;
         // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
         $path = '../../boost/scss/';
 
-        $scss = '';
+        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/override_variables.scss');
         if (empty($this->get_setting('fav'))) {
             $scss .= '// Import FontAwesome.'.PHP_EOL;
             $scss .= '@import "'.$path.'fontawesome";'.PHP_EOL;
