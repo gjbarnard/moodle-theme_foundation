@@ -8,8 +8,3 @@ $breadcrumb-margin-bottom:          0 !default;
 $antigravity-top:                      14px !default;
 $footer-antigravity-horizontal-offset:  0px !default; // stylelint-disable-line length-zero-no-unit
 $footer-antigravity-vertical-offset:    0px !default; // stylelint-disable-line length-zero-no-unit
-
-// Extra spacer
-$spacers: (
-    6: ($spacer * 4)
-);
