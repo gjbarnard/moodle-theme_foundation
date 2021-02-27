@@ -10,14 +10,6 @@ $footer-antigravity-horizontal-offset:  0px !default; // stylelint-disable-line 
 $footer-antigravity-vertical-offset:    0px !default; // stylelint-disable-line length-zero-no-unit
 
 // Extra spacer
-$spacer: 1rem !default;
 $spacers: (
     6: ($spacer * 4)
 );
-
-// Bootstrap changes
-$dropdown-padding-y:         0 !default;
-$modal-content-color:        $body-color !default;
-$modal-content-bg:           $body-bg    !default;
-$nav-tabs-link-active-color: $body-color !default;
-$navbar-padding-x:           $spacer / 4 !default;
