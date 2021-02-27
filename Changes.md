@@ -28,6 +28,7 @@ Version 3.8.1.1 - TBD
 25. Fix 'nocontextheader' not being checked in theme config layout options.
 26. Fix 'Yeti' swatch 'context_header_settings_menu()' styling.
 27. Fix course participants, modal and my overview block progress bar colours.
+28. Better course icon in course listings.
 
 Version 3.8.1.0 - 26/01/2020
 1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.

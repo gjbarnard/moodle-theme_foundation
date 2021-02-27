@@ -178,7 +178,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             } else {
                 $branchtitle = get_string('my'.$lateststring.'courses', 'theme_foundation');
             }
-            $branchlabel = $output->getfontawesomemarkup('briefcase', array('icon')).
+            $branchlabel = $toolbox->getfontawesomemarkup('briefcase', array('icon')).
                 html_writer::tag('span', $branchtitle, array('class' => 'd-none d-sm-inline'));
             $branchurl = $PAGE->url;
             $branchsort = 200;
@@ -186,11 +186,11 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             $coursemenubranch = $coursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
             $myhometext = get_string('myhome');
-            $myhomelabel = '<span>'.$output->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
+            $myhomelabel = '<span>'.$toolbox->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
             $coursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
 
             $hometext = get_string('sitehome');
-            $homelabel = '<span>'.$output->getfontawesomemarkup('home', array('icon')).$hometext.'</span>';
+            $homelabel = '<span>'.$toolbox->getfontawesomemarkup('home', array('icon')).$hometext.'</span>';
             $coursemenubranch->add($homelabel, new moodle_url('/index.php', array('redirect' => '0')), $homelabel);
 
             // Retrieve courses and add them to the menu when they are visible.
@@ -312,15 +312,16 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
      */
     protected function courses_menu_add_course($branch, $course, $hasdisplayhiddenmycourses, \renderer_base $output) {
         $courseadded = false;
+        $toolbox = \theme_foundation\toolbox::get_instance();
         if ($course->visible) {
             $branchtitle = format_string($course->shortname);
             $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
-            $branchlabel = '<span>'.$output->getfontawesomemarkup('graduation-cap', array('icon')).format_string($course->fullname).'</span>';
+            $branchlabel = '<span>'.$toolbox->getfontawesomemarkup('graduation-cap', array('icon')).format_string($course->fullname).'</span>';
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
         } else if (has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) && $hasdisplayhiddenmycourses) {
             $branchtitle = format_string($course->shortname);
-            $branchlabel = '<span class="dimmed_text">'.$output->getfontawesomemarkup('eye-slash', array('icon')).
+            $branchlabel = '<span class="dimmed_text">'.$toolbox->getfontawesomemarkup('eye-slash', array('icon')).
                 format_string($course->fullname).'</span>';
             $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
             $branch->add($branchlabel, $branchurl, $branchtitle);

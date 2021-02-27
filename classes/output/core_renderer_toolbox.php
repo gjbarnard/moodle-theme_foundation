@@ -735,27 +735,4 @@ trait core_renderer_toolbox {
         }
         return parent::render_navigation_node($item);
     }
-
-    /**
-     * Get the FontAwesome markup.
-     *
-     * @param string $theicon Icon name.
-     * @param array $classes Classes.
-     * @param array $attributes Attributes.
-     * @param string $content Content.
-     *
-     * @return string Markup.
-     */
-    public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
-        $toolbox = \theme_foundation\toolbox::get_instance();
-        if ($toolbox->get_setting('fav')) {
-            $classes[] = $toolbox->get_fa5_from_fa4($theicon);
-        } else {
-            $classes[] = 'fa fa-'.$theicon;
-        }
-        $attributes['aria-hidden'] = 'true';
-        $attributes['class'] = implode(' ', $classes);
-        return html_writer::tag('span', $content, $attributes);
-    }
-
 }
