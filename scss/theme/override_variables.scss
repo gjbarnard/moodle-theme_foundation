@@ -4,6 +4,11 @@ $body-bg:                  #fff        !default;
 $body-color:               #212529     !default;
 $spacer:                     1rem        !default;
 
+// Extra spacer
+$spacers: (
+    6: ($spacer * 4)
+);
+
 // Bootstrap changes
 $dropdown-padding-y:         0 !default;
 $modal-content-color:        $body-color !default;
