@@ -51,18 +51,13 @@
         </button>
     </div>
     {{/hasdrawerblocks}}
-    <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo d-none d-sm-block{{/ output.should_display_navbar_logo }}
-        {{^ output.should_display_navbar_logo }}
-            d-none d-sm-inline
-        {{/ output.should_display_navbar_logo }}
-        ">
-        {{# output.should_display_navbar_logo }}
-            <span class="logo d-none d-sm-inline">
-                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-            </span>
-        {{/ output.should_display_navbar_logo }}
-        <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
-    </a>
+
+    {{# output.should_display_navbar_logo }}
+        <span class="logo d-none d-sm-inline">
+            <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+        </span>
+    {{/ output.should_display_navbar_logo }}
+    <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
 
     <ul class="nav navbar-nav ml-auto">
         <!-- Anti-gravity -->
