@@ -17,6 +17,7 @@ Version 3.9.1.3 - TBR
 14. Fix 'Yeti' swatch 'context_header_settings_menu()' styling.
 15. Fix course participants, modal and my overview block progress bar colours.
 16. Better course icon in course listings.
+17. Improve look of marketing blocks.
 
 Version 3.9.1.2 - 8/11/20
 1. Fix 'Book module has two icons'.
