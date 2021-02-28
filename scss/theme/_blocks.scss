@@ -47,26 +47,6 @@
     }
 }
 
-// Navbar fixed-bottom or not there.
-.navbar-bottom,
-.no-navbar {
-    [data-region="left-hand-drawer"],
-    [data-region="right-hand-drawer"] {
-        &.drawer {
-            top: 0;
-        }
-    }
-}
-
-.navbar-bottom {
-    [data-region="left-hand-drawer"],
-    [data-region="right-hand-drawer"] {
-        &.drawer {
-            bottom: 50px;
-        }
-    }
-}
-
 .hblocks.editing .card {
     margin: 0 15px;
 }
@@ -87,13 +67,23 @@
     width: calc(16.6666666667% - 30px);
 }
 
+[data-region="blocks-drawer"] {
+    height: calc(100% - 50px);
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 50px;
+    transition: all 0.75s;
+    width: 360px;
+    &.drawer-hidden {
+        left: -360px;
+    }
+}
+
 @include media-breakpoint-down(sm) {
     [data-region="blocks-drawer"] {
         background-color: $card-bg;
-        height: calc(100% - 50px);
         padding: 5px 5px 0 5px;
-        position: fixed;
-        top: 50px;
         width: 100%;
         &.drawer-hidden {
             width: 0;
@@ -104,6 +94,14 @@
 @include media-breakpoint-up(md) {
     .drawer-open {
         margin-left: 360px;
+    }
+}
+
+// Navbar fixed-bottom or not there.
+.navbar-bottom,
+.no-navbar {
+    [data-region="blocks-drawer"] {
+        top: 0;
     }
 }
 
