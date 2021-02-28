@@ -20,11 +20,8 @@
 {{/showskiplink}}
 
 {{! Start Block Container }}
-{{#haswidth}}
-<div class="{{width}}">
-{{/haswidth}}
 <section id="{{id}}"
-     class="{{#hidden}}hidden {{/hidden}}block block_{{type}}{{#hascontrols}} block_with_controls{{/hascontrols}} card mb-sm-3"
+     class="{{#hidden}}hidden {{/hidden}}block block_{{type}}{{#hascontrols}} block_with_controls{{/hascontrols}} card mb-sm-3{{#haswidth}} {{width}}{{/haswidth}}"
      role="{{ariarole}}"
      data-block="{{type}}"
      {{#arialabel}}
@@ -62,9 +59,6 @@
 
 {{! End Block Container }}
 </section>
-{{#haswidth}}
-</div>
-{{/haswidth}}
 
 {{! Block Skip Link Target }}
 {{#showskiplink}}

@@ -195,6 +195,8 @@ trait core_renderer_toolbox {
         }
         if ($editing) {
             $classes[] = 'editing bpr-'.$blocksperrow;
+        } else {
+            $classes[] = 'card-deck';
         }
 
         $attributes = array(
