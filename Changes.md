@@ -18,6 +18,7 @@ Version 3.9.1.3 - TBR
 15. Fix course participants, modal and my overview block progress bar colours.
 16. Better course icon in course listings.
 17. Improve look of marketing blocks.
+18. Fix paging bar position.
 
 Version 3.9.1.2 - 8/11/20
 1. Fix 'Book module has two icons'.
