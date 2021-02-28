@@ -11,11 +11,6 @@
         position: absolute;
         right: 0;
         top: 0;
-
-        span {
-            position: absolute;
-            top: $antigravity-top;
-        }
     }
 
     .btts,
@@ -26,7 +21,6 @@
 
     .antigravity {
         font-size: 24px;
-        //margin-top: $gotobottom-top-margin;
         position: relative;
 
         .backtotop,
