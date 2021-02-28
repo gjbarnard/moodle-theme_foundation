@@ -2,6 +2,10 @@
 .navbar {
     flex-wrap: nowrap;
 
+    .nav-link {
+        line-height: 1;
+    }
+
     .popover-region {
         margin-right: 0;
     }
