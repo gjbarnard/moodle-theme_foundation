@@ -20,6 +20,7 @@ Version 3.10.0.2 - TBR
 16. Better course icon in course listings.
 17. Improve look of marketing blocks.
 18. Fix paging bar position.
+19. Regions display their names when editing.
 
 Version 3.10.0.1 - 09/11/20
 ---------------------------
