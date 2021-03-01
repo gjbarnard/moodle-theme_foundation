@@ -31,6 +31,7 @@ Version 3.8.1.1 - TBD
 28. Better course icon in course listings.
 29. Improve look of marketing blocks.
 30. Fix paging bar position.
+31. Regions display their names when editing.
 
 Version 3.8.1.0 - 26/01/2020
 1. Add Alex Gorbatchev's Syntax Highlighter (alexgorbatchev.com/SyntaxHighlighter), version 3.0.83 and 4.0.1.
