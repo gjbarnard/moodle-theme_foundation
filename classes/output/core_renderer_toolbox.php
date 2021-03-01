@@ -175,6 +175,41 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Get the HTML for blocks in the given region.
+     *
+     * @param string $region The region to get HTML for.
+     * @param array $classes Classes.
+     * @param string $tag Tag.
+     *
+     * @return string HTML.
+     */
+    public function blocks($region, $classes = array(), $tag = 'aside') {
+        $displayregion = $this->page->apply_theme_region_manipulations($region);
+        $classes = (array)$classes;
+        $classes[] = 'block-region';
+        $content = '';
+
+        if ($this->page->user_is_editing()) {
+            $content .= $this->block_region_title($displayregion);
+        }
+
+        $attributes = array(
+            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'class' => join(' ', $classes),
+            'data-blockregion' => $displayregion,
+            'data-droptarget' => '1'
+        );
+
+        if ($this->page->blocks->region_has_content($displayregion, $this)) {
+            $content .= $this->blocks_for_region($displayregion);
+        } else {
+            $content .= '';
+        }
+
+        return html_writer::tag($tag, $content, $attributes);
+    }
+
+    /**
      * Get the HTML for horizontal blocks in the given region.
      *
      * @param string $region The region to get HTML for.
@@ -187,14 +222,17 @@ trait core_renderer_toolbox {
         $classes = (array)$classes;
         $classes[] = 'block-region row hblocks';
         $editing = $this->page->user_is_editing();
+        $content = '';
 
         $toolbox = \theme_foundation\toolbox::get_instance();
         $blocksperrow = $toolbox->get_setting('blocksperrow');
         if (($blocksperrow > 6) || ($blocksperrow < 1)) {
             $blocksperrow = 4;
         }
+
         if ($editing) {
             $classes[] = 'editing bpr-'.$blocksperrow;
+            $content .= $this->block_region_title($region);
         } else {
             $classes[] = 'card-deck';
         }
@@ -205,12 +243,29 @@ trait core_renderer_toolbox {
             'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
+
         if ($this->page->blocks->region_has_content($region, $this)) {
-            $content = $this->hblocks_for_region($region, $editing, $blocksperrow);
+            $content .= $this->hblocks_for_region($region, $editing, $blocksperrow);
         } else {
-            $content = '';
+            $content .= '';
         }
+
         return html_writer::tag($tag, $content, $attributes);
+    }
+
+    /**
+     * Get the HTML for block title in the given region.
+     *
+     * @param string $region The region to get HTML for.
+     *
+     * @return string HTML.
+     */
+    protected function block_region_title($region) {
+        return html_writer::tag(
+            'p',
+            get_string('region-'.$region, 'theme_foundation'),
+            array('class' => 'block-region-title col-12 text-center font-italic font-weight-bold')
+        );
     }
 
     /**
