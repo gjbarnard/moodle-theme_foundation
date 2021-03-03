@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <libraries>
   <library>
-    <location>../boost/scss/bootstrap</location>
+    <location>../boost/scss/bootstrap/</location>
     <name>Twitter Bootstrap</name>
     <license>MIT</license>
     <version>4.0.0</version>
@@ -99,10 +99,17 @@
     <licenseversion></licenseversion>
   </library>
   <library>
-    <location>../boost/scss/fontawesome</location>
+    <location>../boost/scss/fontawesome/</location>
     <name>Font Awesome by Dave Gandy - http://fontawesome.io</name>
-    <license>MIT</license>
+    <license>MIT and SIL OFL 1.1</license>
     <version>4.7.0</version>
+    <licenseversion></licenseversion>
+  </library>
+  <library>
+    <location>./style/fontawesome/</location>
+    <name>Font Awesome - http://fontawesome.com</name>
+    <license>MIT and SIL OFL 1.1</license>
+    <version>5.15.2</version>
     <licenseversion></licenseversion>
   </library>
 </libraries>
