@@ -107,8 +107,8 @@
   </library>
   <library>
     <location>./style/fontawesome/</location>
-    <name>Font Awesome - http://fontawesome.com</name>
-    <license>MIT and SIL OFL 1.1</license>
+    <name>Font Awesome - free - https://fontawesome.com</name>
+    <license>Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License</license>
     <version>5.15.2</version>
     <licenseversion></licenseversion>
   </library>
