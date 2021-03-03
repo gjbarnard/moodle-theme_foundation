@@ -85,6 +85,12 @@ module.exports = function(grunt) { // jshint ignore:line
 
             nodes.forEach(function(node) {
                 var lib = path.join(dirname, node.toString());
+
+                if (path.sep != '/') {
+                    // Convert Windows path separator to Posix so that can be found and ignored.
+                    lib = lib.replace(/\\/g, '/');
+                }
+
                 if (grunt.file.isDir(lib)) {
                     // Ensure trailing slash on dirs.
                     lib = lib.replace(/\/?$/, '/');
