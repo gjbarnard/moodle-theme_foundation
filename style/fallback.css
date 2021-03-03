@@ -19446,6 +19446,10 @@ body.admin h1:after {
   margin: 10px 0;
   padding: 4px; }
 
+.bg-light,
+.bg-white {
+  background-color: transparent !important; }
+
 .block_navigation .block_tree p.hasicon,
 .block_settings .block_tree p.hasicon {
   padding-left: 0;
@@ -19487,16 +19491,6 @@ body.admin h1:after {
 .block-controls .menubar {
   justify-content: space-between; }
 
-.navbar-bottom [data-region="left-hand-drawer"].drawer,
-.navbar-bottom [data-region="right-hand-drawer"].drawer,
-.no-navbar [data-region="left-hand-drawer"].drawer,
-.no-navbar [data-region="right-hand-drawer"].drawer {
-  top: 0; }
-
-.navbar-bottom [data-region="left-hand-drawer"].drawer,
-.navbar-bottom [data-region="right-hand-drawer"].drawer {
-  bottom: 50px; }
-
 .hblocks.editing .card {
   margin: 0 15px; }
 
@@ -19515,13 +19509,21 @@ body.admin h1:after {
 .hblocks.editing.bpr-6 .card {
   width: calc(16.6666666667% - 30px); }
 
+[data-region="blocks-drawer"] {
+  height: calc(100% - 50px);
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 50px;
+  transition: all 0.75s;
+  width: 360px; }
+  [data-region="blocks-drawer"].drawer-hidden {
+    left: -360px; }
+
 @media (max-width: 767.98px) {
   [data-region="blocks-drawer"] {
     background-color: #fff;
-    height: calc(100% - 50px);
     padding: 5px 5px 0 5px;
-    position: fixed;
-    top: 50px;
     width: 100%; }
     [data-region="blocks-drawer"].drawer-hidden {
       width: 0; } }
@@ -19529,6 +19531,10 @@ body.admin h1:after {
 @media (min-width: 768px) {
   .drawer-open {
     margin-left: 360px; } }
+
+.navbar-bottom [data-region="blocks-drawer"],
+.no-navbar [data-region="blocks-drawer"] {
+  top: 0; }
 
 .dashboard-card-deck.one-row {
   overflow-x: auto; }
@@ -19538,6 +19544,17 @@ body {
 
 .editing [data-region="blocks-drawer"] {
   min-height: 786px; }
+
+@media (max-width: 575.98px) {
+  [data-region="blocks-column"] {
+    margin-right: -15px;
+    width: calc(100% + 30px); } }
+
+[data-region="blocks-column"] {
+  margin-bottom: -15px; }
+
+.block_recentlyaccessedcourses .paging-bar-container {
+  margin-top: 0; }
 
 .brands {
   display: flex;
@@ -19561,10 +19578,6 @@ body {
   position: absolute;
   right: 0;
   top: 0; }
-  .navbarantigravity .backtotop span,
-  .navbarantigravity .gotobottom span {
-    position: absolute;
-    top: 14px; }
 
 .navbarantigravity .btts,
 .navbarantigravity .gtbs {
@@ -19716,6 +19729,10 @@ a:hover {
 .course-content ul.section {
   padding-left: 0; }
 
+.coursebox > .info > .coursename a {
+  background-image: none;
+  padding-left: 0; }
+
 .custom-select {
   background: #fff none no-repeat scroll 0% 0%; }
 
@@ -19733,6 +19750,16 @@ a:hover {
 .context-header-settings-menu a.dropdown-toggle,
 .dropdown-item a .icon {
   color: inherit !important; }
+
+.dropdown-menu,
+.popover-region-container {
+  background-color: #fff; }
+
+.dropdown-item,
+.dropdown-item a,
+.popover-region-container {
+  background-color: #fff;
+  color: #373a3c; }
 
 .dropdown-item:hover,
 .dropdown-item:focus,
@@ -19779,8 +19806,7 @@ a:hover {
 .navbar {
   flex-wrap: nowrap; }
   .navbar .nav-link {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem; }
+    line-height: 1; }
   .navbar .popover-region {
     margin-right: 0; }
   .navbar .popover-region-container {
@@ -19795,6 +19821,10 @@ a:hover {
     width: auto; }
     .navbar .popover-region-toggle .icon {
       margin-right: 0; }
+
+.navbar .nav-link {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem; }
 
 .navbar-nav .dropdown-menu {
   position: absolute; }
@@ -19817,11 +19847,11 @@ a:hover {
   color: inherit !important; }
 
 .popover-region-toggle::after {
-  bottom: 1px;
+  bottom: -3px;
   right: 7px; }
 
 .popover-region-toggle::before {
-  bottom: 2px;
+  bottom: -2px;
   right: 6px; }
 
 .navbar-plugin-output.fav .popover-region-toggle::after {
@@ -19862,6 +19892,11 @@ a:hover {
 .navbar-bottom #page,
 .no-navbar #page {
   margin-top: 0; }
+
+@media (max-width: 575.98px) {
+  .nav.usernav .usermenu .dropdown-toggle {
+    padding-left: 0;
+    padding-right: 0; } }
 
 .que.ddwtos .drag {
   color: #373a3c; }
