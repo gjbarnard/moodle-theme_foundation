@@ -1,6 +1,7 @@
 Version Information
 ===================
-Version 3.9.1.3 - TBR
+Version 3.9.1.3 - 04/03/21
+--------------------------
 1. Fix - Ensure cache language strings are correct - /cache/admin.php.
 2. Fix - menu item hover.
 3. Tabs update in line with MDL-69301.
