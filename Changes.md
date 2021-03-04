@@ -1,7 +1,7 @@
 Version Information
 ===================
-Version 3.10.0.2 - TBR
-----------------------
+Version 3.10.1.0 - 04/03/21
+---------------------------
 1. Fix - Ensure cache language strings are correct - /cache/admin.php.
 2. Fix - menu item hover.
 3. Add import / export settings code from Essential.
