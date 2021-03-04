@@ -1,6 +1,7 @@
 Version Information
 ===================
-Version 3.8.1.1 - TBD
+Version 3.8.1.1 - 04/03/21
+--------------------------
 1. Back to top functionality in embedded template.
 2. Add 'seventies' swatch.
 3. Fix 'Error when adding questions to a quiz' - #6.
