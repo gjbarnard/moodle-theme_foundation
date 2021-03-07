@@ -101,7 +101,7 @@
   <library>
     <location>../boost/scss/fontawesome/</location>
     <name>Font Awesome by Dave Gandy - http://fontawesome.io</name>
-    <license>MIT and SIL OFL 1.1</license>
+    <license>Documentation: CC BY 3.0, Fonts: SIL OFL 1.1, Code: MIT License</license>
     <version>4.7.0</version>
     <licenseversion></licenseversion>
   </library>
