@@ -11,6 +11,8 @@ $spacers: (
 
 // Bootstrap changes
 $dropdown-padding-y:         0 !default;
+$breadcrumb-divider-color:   inherit !default;
+$breadcrumb-font-size:       $font-size-base !default;
 $modal-content-color:        $body-color !default;
 $modal-content-bg:           $body-bg !default;
 $nav-tabs-link-active-color: $body-color !default;
