@@ -16,7 +16,13 @@
     .btts,
     .gtbs {
         opacity: 0;
-        padding: $nav-link-padding-y $nav-link-padding-x;
+    }
+
+    .bttc,
+    .gtbc {
+        .nav-link {
+            padding: $nav-link-padding-y $nav-link-padding-x;
+        }
     }
 
     .antigravity {
