@@ -109,6 +109,7 @@ class header_module extends \theme_foundation\module_basement {
         $default = '0.1';
         $setting = new admin_setting_configselect($name, $title, $description, $default,
             \theme_foundation\toolbox::$settingopactitychoices);
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Header bottom background opacity setting.
@@ -118,6 +119,7 @@ class header_module extends \theme_foundation\module_basement {
         $default = '0.9';
         $setting = new admin_setting_configselect($name, $title, $description, $default,
             \theme_foundation\toolbox::$settingopactitychoices);
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Header background top colour setting.
