@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.9.1.4 - TBR
 ---------------------
+1. Fix header opacity settings not resetting the theme cache.
 
 Version 3.9.1.3 - 04/03/21
 --------------------------
