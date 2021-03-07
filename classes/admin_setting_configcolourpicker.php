@@ -37,7 +37,10 @@ use html_writer;
 class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker {
 
     /** @var string default colour */
-    public $defaultcolour;
+    protected $defaultcolour;
+
+    /** @var string classname */
+    protected $classname;
 
     /**
      * Config colour picker constructor.
@@ -47,14 +50,16 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param string $description
      * @param string $defaultsetting
      * @param string/array $defaultcolour default colour in hex or Array('colour' => '#ffaabb', 'selector' => 'body', 'element' => 'backgroundColor').
+     * @param string $classname if not null then will be a string with a class name to create a hidden element to use.
      * @param array $previewconfig Array('selector'=>'.some .css .selector','style'=>'backgroundColor');
      * @param boolean $usedefaultwhenempty true or false.
      */
     public function __construct($name, $visiblename, $description, $defaultsetting, $defaultcolour,
-            array $previewconfig = null, $usedefaultwhenempty = true) {
+            $classname = null, array $previewconfig = null, $usedefaultwhenempty = true) {
         $this->previewconfig = $previewconfig;
         $this->usedefaultwhenempty = $usedefaultwhenempty;
         $this->defaultcolour = $defaultcolour;
+        $this->classname = $classname;
         parent::__construct($name, $visiblename, $description, $defaultsetting);
         $this->set_force_ltr(true);
     }
@@ -112,6 +117,10 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             'forceltr' => $this->get_force_ltr(),
             'readonly' => $this->is_readonly()
         ];
+
+        if (!empty($this->classname)) {
+            $context->classname = $this->classname;
+        }
 
         $element = $OUTPUT->render_from_template('theme_foundation/admin_setting_configcolourpicker', $context);
 

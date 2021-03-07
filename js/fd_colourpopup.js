@@ -56,7 +56,12 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                     const initvalueelement = document.querySelector(initvaluedata.selector);
                     if (initvalueelement != null) {
                         style = getComputedStyle(initvalueelement);
-                        initvalue = style[initvaluedata.element];
+                        if (style[initvaluedata.element] == 'rgba(0, 0, 0, 0)') {
+                            // There is no element with that selector on the page.
+                            initvalue = initvaluedata.colour;
+                        } else {
+                            initvalue = style[initvaluedata.element];
+                        }
                     } else {
                         initvalue = initvaluedata.colour;
                     }

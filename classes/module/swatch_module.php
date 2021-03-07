@@ -44,35 +44,24 @@ class swatch_module extends \theme_foundation\module_basement {
      * @var string $swatchcustomcolourdefaults Swatch custom colour defaults.
      */
     private static $swatchcustomcolourdefaults = array(
-        'primary' => '#ffaabb',
-        'secondary' => '#82b6fc',
-        'success' => '#28a745',
-        'info' => '#17a2b8',
-        'warning' => '#ffc107',
-        'danger' => '#dc3545',
-        'light' => '#fab2fd',
-        'dark' => '#3c6afb',
-        'body-bg' => '#fffa0f',
-        'body-color' => '#03b40a',
-        'component-active-color' => '#bbfc70',
-        'component-active-bg' => '#f475fc',
-        'headings-color' => '#ffca8e',
-        'text-muted' => '#015a22',
-        'blockquote-small-color' => '#028187',
-        'card-color' => '#ffaabb',
-        'card-bg' => '#060064'
+        'primary' => array('colour' => '#ffaabb', 'selector' => '.btn-primary', 'element' => 'backgroundColor'),
+        'secondary' => array('colour' => '#82b6fc', 'selector' => '.foundation-default-secondary-colour', 'element' => 'color'),
+        'success' => array('colour' => '#28a745'),
+        'info' => array('colour' => '#17a2b8'),
+        'warning' => array('colour' => '#ffc107'),
+        'danger' => array('colour' => '#dc3545'),
+        'light' => array('colour' => '#fab2fd'),
+        'dark' => array('colour' => '#3c6afb'),
+        'body-bg' => array('colour' => '#fffa0f'),
+        'body-color' => array('colour' => '#03b40a'),
+        'component-active-color' => array('colour' => '#bbfc70'),
+        'component-active-bg' => array('colour' => '#f475fc'),
+        'headings-color' => array('colour' => '#ffca8e'),
+        'text-muted' => array('colour' => '#015a22'),
+        'blockquote-small-color' => array('colour' => '#028187'),
+        'card-color' => array('colour' => '#ffaabb'),
+        'card-bg' => array('colour' => '#060064')
     );
-
-    /**
-     * Helper method.
-     *
-     * @param string $settingname Setting name.
-     *
-     * @return string Setting default.
-     */
-    private function get_custom_swatch_default_colour_setting($settingname) {
-        return self::$swatchcustomcolourdefaults[$settingname];
-    }
 
     /**
      * Gets the module pre SCSS.
@@ -147,6 +136,23 @@ class swatch_module extends \theme_foundation\module_basement {
         $scss .= $toolbox->get_core_framework_scss();
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/classes/module/swatch/'.$swatch.'_bootswatch.scss');
 
+        return $scss;
+    }
+
+    /**
+     * Gets the module extra SCSS.
+     *
+     * @param string $themename The theme name the SCSS is for.
+     * @param toolbox $toolbox The toolbox instance.
+     * @return string SCSS.
+     */
+    public function extra_scss($themename, $toolbox) {
+        $scss = '';
+        foreach (array_keys(self::$swatchcustomcolourdefaults) as $settingkey) {
+            $scss .= '.foundation-default-'.$settingkey.'-colour {'.PHP_EOL;
+            $scss .= 'color: $'.$settingkey.';'.PHP_EOL;
+            $scss .= '}'.PHP_EOL;
+        }
         return $scss;
     }
 
@@ -302,13 +308,14 @@ class swatch_module extends \theme_foundation\module_basement {
         $name = 'theme_foundation/swatchcustom'.str_replace('-', '', $settingname).'colour';
         $title = get_string('swatchcustomcolour', 'theme_foundation', ucfirst($settingname));
         $description = get_string('swatchcustomcolourdesc', 'theme_foundation', $settingname);
-        $default = $this->get_custom_swatch_default_colour_setting($settingname);
+        $default = self::$swatchcustomcolourdefaults[$settingname];
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
             $description,
+            $default['colour'],
             $default,
-            $default
+            'foundation-default-'.$settingname.'-colour'
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
 
