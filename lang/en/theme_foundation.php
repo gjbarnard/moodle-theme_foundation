@@ -67,9 +67,9 @@ $string['informationheadingsub'] = 'Information settings';
 $string['informationheadingdesc'] = 'Information about the Foundation theme.';
 
 $string['themechanges'] = 'Changes';
-$string['themechangesdesc'] = 'Theme Changes....';
+$string['themechangesdesc'] = 'Theme changes....';
 $string['themereadme'] = 'Readme';
-$string['themereadmedesc'] = 'Theme Readme....';
+$string['themereadmedesc'] = 'Theme readme....';
 
 // General.
 $string['generalheading'] = 'General';
