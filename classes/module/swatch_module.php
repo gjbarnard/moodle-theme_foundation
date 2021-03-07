@@ -44,23 +44,23 @@ class swatch_module extends \theme_foundation\module_basement {
      * @var string $swatchcustomcolourdefaults Swatch custom colour defaults.
      */
     private static $swatchcustomcolourdefaults = array(
-        'primary' => array('colour' => '#ffaabb', 'selector' => '.btn-primary', 'element' => 'backgroundColor'),
+        'primary' => array('colour' => '#ffaabb', 'selector' => '.foundation-default-primary-colour', 'element' => 'color'),
         'secondary' => array('colour' => '#82b6fc', 'selector' => '.foundation-default-secondary-colour', 'element' => 'color'),
-        'success' => array('colour' => '#28a745'),
-        'info' => array('colour' => '#17a2b8'),
-        'warning' => array('colour' => '#ffc107'),
-        'danger' => array('colour' => '#dc3545'),
-        'light' => array('colour' => '#fab2fd'),
-        'dark' => array('colour' => '#3c6afb'),
-        'body-bg' => array('colour' => '#fffa0f'),
-        'body-color' => array('colour' => '#03b40a'),
-        'component-active-color' => array('colour' => '#bbfc70'),
-        'component-active-bg' => array('colour' => '#f475fc'),
-        'headings-color' => array('colour' => '#ffca8e'),
-        'text-muted' => array('colour' => '#015a22'),
-        'blockquote-small-color' => array('colour' => '#028187'),
-        'card-color' => array('colour' => '#ffaabb'),
-        'card-bg' => array('colour' => '#060064')
+        'success' => array('colour' => '#28a745', 'selector' => '.foundation-default-success-colour', 'element' => 'color'),
+        'info' => array('colour' => '#17a2b8', 'selector' => '.foundation-default-info-colour', 'element' => 'color'),
+        'warning' => array('colour' => '#ffc107', 'selector' => '.foundation-default-warning-colour', 'element' => 'color'),
+        'danger' => array('colour' => '#dc3545', 'selector' => '.foundation-default-danger-colour', 'element' => 'color'),
+        'light' => array('colour' => '#fab2fd', 'selector' => '.foundation-default-light-colour', 'element' => 'color'),
+        'dark' => array('colour' => '#3c6afb', 'selector' => '.foundation-default-dark-colour', 'element' => 'color'),
+        'body-bg' => array('colour' => '#fffa0f', 'selector' => '.foundation-default-body-bg-colour', 'element' => 'color'),
+        'body-color' => array('colour' => '#03b40a', 'selector' => '.foundation-default-body-color-colour', 'element' => 'color'),
+        'component-active-color' => array('colour' => '#bbfc70', 'selector' => '.foundation-default-component-active-color-colour', 'element' => 'color'),
+        'component-active-bg' => array('colour' => '#f475fc', 'selector' => '.foundation-default-component-active-bg-colour', 'element' => 'color'),
+        'headings-color' => array('colour' => '#ffca8e', 'selector' => '.foundation-default-headings-color-colour', 'element' => 'color'),
+        'text-muted' => array('colour' => '#015a22', 'selector' => '.foundation-default-text-muted-colour', 'element' => 'color'),
+        'blockquote-small-color' => array('colour' => '#028187', 'selector' => '.foundation-default-blockquote-small-color-colour', 'element' => 'color'),
+        'card-color' => array('colour' => '#ffaabb', 'selector' => '.foundation-default-card-color-colour', 'element' => 'color'),
+        'card-bg' => array('colour' => '#060064', 'selector' => '.foundation-default-card-bg-colour', 'element' => 'color')
     );
 
     /**

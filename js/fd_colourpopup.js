@@ -73,6 +73,7 @@ M.util.init_fdcolour_popup = function(Y, id, previewconf) {
                 this.current = Y.Node.create('<div class="currentcolour"></div>');
                 this.current.setStyle('width', this.height / 2).setStyle('height', this.height / 2 - 1).setStyle('backgroundColor', initvalue);
                 this.swatch.setStyle('backgroundColor', initvalue);
+                this.swatch.setStyle('borderColor', initvaluedata.colour);
                 this.box.setContent('').append(this.image).append(this.preview).append(this.current);
 
                 if (typeof(previewconf) === 'object' && previewconf !== null) {
