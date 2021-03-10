@@ -13,10 +13,22 @@ define(['jquery', 'core/log'], function($, log) {
 
     log.debug('Foundation anti gravity AMD initialised');
 
+    var botcheck = function() {
+        var botdocoffset = $(document).height() - $(window).height();
+        var botmainoffset = $('#region-main').height();
+
+        if (botdocoffset < botmainoffset) {
+            return botdocoffset;
+        } else {
+            return botmainoffset;
+        }
+    };
+
     $(document).ready(function() {
         var topoffset = 220;
         var duration = 1000;
-        var botoffset = $(document).height() - $(window).height();
+        var botoffset = botcheck();
+        
 
         var gravitycheck = function () {
             var sc = $(window).scrollTop();
@@ -45,8 +57,8 @@ define(['jquery', 'core/log'], function($, log) {
 
         $('.gotobottom').click(function(e) {
             e.preventDefault();
-            var target = $('#page-footer');
-            $('html, body').animate({scrollTop: target.position().top}, duration);
+            var target = $('#region-main');
+            $('html, body').animate({scrollTop: target.position().top + target.height()}, duration);
             return false;
         });
     });
