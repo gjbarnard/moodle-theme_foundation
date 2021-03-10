@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.9.1.4 - TBR
+---------------------
+
 Version 3.9.1.3 - 04/03/21
 --------------------------
 1. Fix - Ensure cache language strings are correct - /cache/admin.php.
