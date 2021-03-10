@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.8.1.2 - TBR
+---------------------
+
 Version 3.8.1.1 - 04/03/21
 --------------------------
 1. Back to top functionality in embedded template.
