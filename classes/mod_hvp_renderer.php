@@ -37,6 +37,7 @@ if (file_exists($h5prenderer)) {
      * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
      */
     class theme_foundation_mod_hvp_renderer extends mod_hvp_renderer {
+        use \theme_foundation\hvp_toolbox;
 
         /**
          * Add styles when an H5P is displayed.
@@ -46,30 +47,7 @@ if (file_exists($h5prenderer)) {
          * @param string $embedtype How the H5P is displayed.
          */
         public function hvp_alter_styles(&$styles, $libraries, $embedtype) {
-            $toolbox = \theme_foundation\toolbox::get_instance();
-            $content = $toolbox->get_setting('hvpcustomcss');
-            if (!empty($content)) {
-                $styles[] = (object) array(
-                    'path' => $this->get_style_url($content),
-                    'version' => ''
-                );
-            }
-        }
-
-        /**
-         * Get style URL when an H5P is displayed.
-         *
-         * @param string $content Content.
-         *
-         * @return moodle_url the URL.
-         */
-        protected function get_style_url($content) {
-            global $CFG;
-
-            $syscontext = \context_system::instance();
-            $itemid = md5($content);
-            return \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
-                "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css");
+            $this->fhvp_alter_styles($styles, $libraries, $embedtype);
         }
     }
 }
