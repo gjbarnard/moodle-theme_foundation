@@ -1,5 +1,9 @@
 Version Information
 ===================
+Version 3.9.1.6 - TBR
+--------------------------
+1. Added core H5P alter styles support - MDL-69087.
+
 Version 3.9.1.5 - 28/04/21
 --------------------------
 1. Fix colour of search icon on navbar.
