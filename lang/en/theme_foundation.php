@@ -41,6 +41,7 @@ $string['configtitle'] = 'Foundation';
 $string['configtabtitle'] = 'Settings';
 $string['pluginname'] = 'Foundation';
 
+$string['region-content'] = 'Content';
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
 $string['region-side-pre'] = 'Right';
