@@ -44,6 +44,7 @@ $string['pluginname'] = 'Foundation';
 $string['region-content'] = 'Content';
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
+$string['region-side-post'] = 'Left';
 $string['region-side-pre'] = 'Right';
 
 $string['cachedef_fontawesome5iconmapping'] = 'Caches font awesome 5 icons';
@@ -96,6 +97,9 @@ $string['faivdesc'] = 'When using FontAwesome 5 Free for the icons add support f
 
 $string['blocksperrow'] = 'Blocks per row';
 $string['blocksperrowdesc'] = 'Number of blocks per row when using a horizontal block region, such as \'Marketing\'.  Note: When editing all blocks will be the same size to facilitate ease of use.';
+
+$string['trio'] = 'Three columns';
+$string['triodesc'] = 'Use three columns instead of two on two column pages.  The drawer block area does not count as a \'column\' in this terminology.';
 
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';

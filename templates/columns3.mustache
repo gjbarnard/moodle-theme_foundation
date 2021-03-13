@@ -15,9 +15,9 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_foundation/columns2
+    @template theme_foundation/columns3
 
-    Foundation 2 column layout template.
+    Foundation 3 column layout template.
 
     Context variables required for this template:
     * sitename - The name of the site.
@@ -27,6 +27,9 @@
     * hasdrawerblocks - true if there are drawer blocks on this page.
     * sidepreblocks - HTML for the side pre blocks.
     * haspreblocks - true if there are side pre blocks on this page.
+    * sidepostblocks - HTML for the side post blocks.
+    * haspostblocks - true if there are side post blocks on this page.
+    * hasblocks - true if there are side pre and /or post blocks on this page
     * regionmainsettingsmenu - HTML for the region main settings menu.
     * hasregionmainsettingsmenu - There is a region main settings menu on this page.
 
@@ -47,6 +50,9 @@
         "drawerclosed": true,
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
         "haspreblocks": true,
+        "sidepostblocks": "<h2>Blocks html goes here</h2>",
+        "haspostblocks": true,
+        "hasblocks": true,
         "regionmainsettingsmenu": "",
         "hasregionmainsettingsmenu": false
     }
@@ -67,14 +73,14 @@
         {{{ output.full_header }}}
 
         {{> partials/alerts}}
-        <div id="page-content" class="row pb-sm-3">
-            <div id="region-main-box" class="col-12">
+        <div id="page-content" class="row{{#haspreblocks}} blocks-pre{{/haspreblocks}}{{#haspostblocks}} blocks-post{{/haspostblocks}} d-print-block pb-sm-3">
+            <div id="region-main-box" class="col-12 region-main">
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#haspreblocks}}has-blocks{{/haspreblocks}}">
+                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#haspreblocks}}class="has-blocks mb-3"{{/haspreblocks}}>
+                <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
@@ -85,12 +91,23 @@
                     {{{ output.activity_navigation }}}
                     {{{ output.course_content_footer }}}
                 </section>
-                {{#haspreblocks}}
+            </div>
+
+            {{#haspreblocks}}
+            <div class="columnleft blockcolumn has-blocks">
                 <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}>
                     {{{ sidepreblocks }}}
                 </section>
-                {{/haspreblocks}}
             </div>
+            {{/haspreblocks}}
+
+            {{#haspostblocks}}
+            <div class="columnright blockcolumn has-blocks">
+                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                    {{{ sidepostblocks }}}
+                </section>
+            </div>
+            {{/haspostblocks}}
         </div>
     </div>
 
