@@ -105,7 +105,7 @@ trait core_renderer_toolbox {
                 $postblockshtml = $this->blocks('side-post');
                 $haspostblocks = ((strpos($postblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
 
-                $data->sidepreblocks = $postblockshtml;
+                $data->sidepostblocks = $postblockshtml;
                 $data->haspostblocks = $haspostblocks;
             }
 

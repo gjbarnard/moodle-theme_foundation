@@ -80,7 +80,7 @@
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
+                <section id="region-main" class="region-main-content mb-3" aria-label="{{#str}}content{{/str}}">
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
@@ -95,7 +95,7 @@
 
             {{#haspreblocks}}
             <div class="columnleft blockcolumn has-blocks">
-                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}>
+                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
                     {{{ sidepreblocks }}}
                 </section>
             </div>

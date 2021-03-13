@@ -16,7 +16,6 @@
         &.blocks-pre {
             .columnleft {
                 flex: 0 0 $blockswidth;
-                order: -1;
                 padding: 0 1rem;
                 max-width: $blockswidth;
             }
@@ -34,6 +33,7 @@
             }
             .columnright {
                 flex: 0 0 $blockswidth;
+                order: -1;
                 padding: 0 1rem;
                 max-width: $blockswidth;
             }
@@ -50,7 +50,7 @@
             width: 100%;
         }
     }
-
+/*
     .empty-region-side-pre {
         &.used-region-side-post {
             #page-content {
@@ -77,7 +77,6 @@
                 }
                 .columnleft {
                     flex: 0 0 $blockswidth;
-                    order: -1;
                     padding: 0 1rem;
                     max-width: $blockswidth;
                 }
@@ -94,18 +93,19 @@
                 }
                 .columnleft {
                     flex: 0 0 $blockswidth;
-                    order: -1;
                     padding: 0 1rem;
                     max-width: $blockswidth;
                 }
                 .columnright {
                     flex: 0 0 $blockswidth;
+                    order: -1;
                     padding: 0 1rem;
                     max-width: $blockswidth;
                 }
             }
         }
     }
+*/
 }
 
 // The block column needs some padding on small devices.

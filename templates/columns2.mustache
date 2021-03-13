@@ -74,7 +74,7 @@
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#haspreblocks}}class="has-blocks mb-3"{{/haspreblocks}}>
+                <section id="region-main" {{#haspreblocks}}class="has-blocks mb-3"{{/haspreblocks}} aria-label="{{#str}}content{{/str}}">
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
@@ -86,7 +86,7 @@
                     {{{ output.course_content_footer }}}
                 </section>
                 {{#haspreblocks}}
-                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}>
+                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
                     {{{ sidepreblocks }}}
                 </section>
                 {{/haspreblocks}}
