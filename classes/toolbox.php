@@ -205,6 +205,10 @@ class toolbox {
             $scss .= $module->get_main_scss_content($theme, $this);
         }
 
+        if (!empty($this->get_setting('trio'))) {
+            $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/trio.scss');
+        }
+
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/foundation_variables.scss');
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
 
@@ -455,6 +459,15 @@ class toolbox {
                 '6' => '6'
             );
             $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Three columns.
+            $name = 'theme_foundation/trio';
+            $title = get_string('trio', 'theme_foundation');
+            $description = get_string('triodesc', 'theme_foundation');
+            $default = false;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Pre SCSS.

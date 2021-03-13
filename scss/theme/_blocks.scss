@@ -1,22 +1,3 @@
-.block_navigation .block_tree p.hasicon,
-.block_settings .block_tree p.hasicon {
-    padding-left: 0;
-    margin-left: -3px;
-    text-indent: 0;
-
-    img {
-        margin-left: 3px;
-    }
-}
-
-.block_navigation .block_tree .tree_item.branch,
-.block_settings .block_tree .tree_item.branch {
-    padding-left: 0;
-}
-.block_tree .tree_item.branch {
-    margin-left: 0;
-}
-
 // MDL-57305 - thanks to Daniel Miericke.
 .block {
     .block-action {
@@ -132,4 +113,45 @@ body {
 
 .block_recentlyaccessedcourses .paging-bar-container {
     margin-top: 0;
+}
+
+// From Classic and adapted with existing Foundation changes....
+// Settings and Navigation blocks don't render well from default boost.
+.block_navigation,
+.block_settings {
+    .block_tree {
+        .tree_item.branch {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        p.hasicon {
+            padding-left: 0;
+            margin-left: -8px;
+            text-indent: 0;
+            img {
+                margin-left: 3px;
+            }
+        }
+        ul {
+            margin-left: 0.25rem;
+            padding-left: 1rem;
+        }
+    }
+}
+
+// Remove left indenting from root nodes to allow sub-nodes to indent correctly.
+.root_node,
+.navigation_node {
+    margin-left: 0 !important; /* stylelint-disable-line declaration-no-important */
+    padding-left: 0 !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.block.block_settings {
+    #settingsnav {
+        padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+    }
+}
+
+.block_navigation .block_tree .depth_1 > ul {
+    margin: 0.25rem;
 }
