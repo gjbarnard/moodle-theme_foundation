@@ -44,7 +44,13 @@ trait core_renderer_toolbox {
     public function render_page() {
         global $CFG;
 
+        $toolbox = \theme_foundation\toolbox::get_instance();
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        $trio = (!empty($toolbox->get_setting('trio')));
+        if ($trio && ($mustache == 'columns2')) {
+            $mustache = 'columns3';
+        }
+
         $data = new \stdClass();
         $data->output = $this;
         $bodyclasses = array();
@@ -56,7 +62,7 @@ trait core_renderer_toolbox {
             // the settings block on it. The region main settings are included in the settings block and
             // duplicating the content causes behat failures.
             $this->page->add_header_action(html_writer::div(
-                $this->region_main_settings_menu(),
+                $regionmainsettingsmenu,
                 'd-print-none',
                 ['id' => 'region-main-settings-menu']
             ));
@@ -94,9 +100,16 @@ trait core_renderer_toolbox {
                 $data->sidepreblocks = $preblockshtml;
                 $data->haspreblocks = $haspreblocks;
             }
+
+            if (in_array('side-post', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $postblockshtml = $this->blocks('side-post');
+                $haspostblocks = ((strpos($postblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+
+                $data->sidepostblocks = $postblockshtml;
+                $data->haspostblocks = $haspostblocks;
+            }
         }
 
-        $toolbox = \theme_foundation\toolbox::get_instance();
         $modules = $toolbox->get_modules();
         foreach ($modules as $module) {
             if (method_exists ($module, 'export_for_template')) {

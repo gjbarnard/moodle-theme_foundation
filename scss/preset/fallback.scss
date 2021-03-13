@@ -112,5 +112,6 @@ body.admin h1:after {
 // Import Foundation variables.
 @import "./scss/theme/foundation_variables";
 
-// Import Core moodle CSS.
+// Import Foundation CSS.
 @import "./scss/theme/theme";
+@import "./scss/theme/trio";
