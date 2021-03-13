@@ -4,6 +4,7 @@ Version 3.8.1.2 - TBR
 ---------------------
 1. Fix header opacity settings not resetting the theme cache.
 2. Added swatch custom colour detection.
+3. Add three column layout capability from Classic.
 
 Version 3.8.1.1 - 04/03/21
 --------------------------

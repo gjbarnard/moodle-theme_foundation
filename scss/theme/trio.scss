@@ -1,0 +1,139 @@
+// General Post SCSS for use in all presets.
+
+// Generate the column layout css.
+@mixin page_layout($blockswidth) {
+    $mainwidth-oneblock: (100% - $blockswidth);
+    $mainwidth-twoblocks: (100% - $blockswidth * 2);
+    #page-content {
+        display: flex;
+
+        .region-main {
+            flex: 0 0 100%;
+            padding: 0 1rem;
+            max-width: 100%;
+        }
+
+        &.blocks-pre {
+            .columnpre {
+                flex: 0 0 $blockswidth;
+                padding: 0 1rem;
+                max-width: $blockswidth;
+            }
+            .region-main {
+                flex: 0 0 $mainwidth-oneblock;
+                max-width: $mainwidth-oneblock;
+                padding: 0 1rem 0 0;
+            }
+        }
+        &.blocks-post {
+            .region-main {
+                flex: 0 0 $mainwidth-oneblock;
+                max-width: $mainwidth-oneblock;
+                padding: 0 0 0 1rem;
+            }
+            .columnpost {
+                flex: 0 0 $blockswidth;
+                order: -1;
+                padding: 0 1rem;
+                max-width: $blockswidth;
+            }
+        }
+        &.blocks-pre.blocks-post {
+            .region-main {
+                flex: 0 0 $mainwidth-twoblocks;
+                max-width: $mainwidth-twoblocks;
+                padding: 0;
+            }
+        }
+
+        [data-region="blocks-column"] {
+            width: 100%;
+        }
+    }
+}
+
+// The block column needs some padding on small devices.
+@include media-breakpoint-down(sm) {
+    .blockcolumn,
+    .region-main {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+// When changing this please check the size of the calendar block.
+@include media-breakpoint-up(md) {
+    @include page_layout(32%);
+}
+
+@include media-breakpoint-up(lg) {
+    @include page_layout(25%);
+}
+
+@include media-breakpoint-up(xl) {
+    @include page_layout(20%);
+}
+
+@media print {
+    #page-content .region-main, {
+        max-width: 100% !important; /* stylelint-disable-line declaration-no-important */
+        flex: 0 0 100% !important; /* stylelint-disable-line declaration-no-important */
+        padding: 0 1rem 0 !important; /* stylelint-disable-line declaration-no-important */
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .dashboard-card-deck .dashboard-card {
+        width: calc(50% - #{$card-gutter});
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .dashboard-card-deck .dashboard-card {
+        width: calc(50% - #{$card-gutter});
+    }
+    .blocks-post,
+    .blocks-pre {
+        .dashboard-card-deck .dashboard-card {
+            width: calc(100% - #{$card-gutter});
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .dashboard-card-deck .dashboard-card {
+        width: calc(33.33% - #{$card-gutter});
+    }
+    .blocks-post,
+    .blocks-pre {
+        .dashboard-card-deck .dashboard-card {
+            width: calc(50% - #{$card-gutter});
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .dashboard-card-deck .dashboard-card {
+        width: calc(25% - #{$card-gutter});
+    }
+    .blocks-post,
+    .blocks-pre {
+        .dashboard-card-deck .dashboard-card {
+            width: calc(33.33% - #{$card-gutter});
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .blockcolumn {
+        .dashboard-card-deck {
+            margin-left: 0;
+            margin-right: 0;
+            .dashboard-card {
+                width: calc(100% - #{$card-gutter}) !important; /* stylelint-disable-line declaration-no-important */
+            }
+        }
+    }
+}

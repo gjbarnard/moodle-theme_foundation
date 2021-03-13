@@ -49,6 +49,10 @@ $THEME->yuicssmodules = array();
 
 $empty = array();
 $regions = array('side-pre', 'drawer');
+if (!empty(\theme_foundation\toolbox::get_config_setting('trio'))) {
+    // Have three columns on 'two column' pages, the mustache file will be changed in the core renderer toolbox.
+    $regions[] = 'side-post';
+}
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
