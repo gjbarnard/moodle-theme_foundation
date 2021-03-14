@@ -6,6 +6,7 @@ Version 3.10.1.1 - TBR
 2. Added swatch custom colour detection.
 3. Added core H5P alter styles support - MDL-69087.
 4. Add three column layout capability from Classic.
+5. Fix bottom border on the last topic.
 
 Version 3.10.1.0 - 04/03/21
 ---------------------------

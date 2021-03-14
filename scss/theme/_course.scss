@@ -31,3 +31,7 @@
     background-image: none;
     padding-left: 0;
 }
+
+.course-content ul li.section.main:last-child {
+    border-bottom: 1px solid $table-border-color;
+}
