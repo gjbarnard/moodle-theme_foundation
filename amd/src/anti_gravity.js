@@ -28,7 +28,6 @@ define(['jquery', 'core/log'], function($, log) {
         var topoffset = 220;
         var duration = 1000;
         var botoffset = botcheck();
-        
 
         var gravitycheck = function () {
             var sc = $(window).scrollTop();
