@@ -6,6 +6,7 @@ Version 3.8.1.2 - TBR
 2. Added swatch custom colour detection.
 3. Add three column layout capability from Classic.
 4. Fix bottom border on the last topic.
+5. Fix dashboard padding when less than 768px.
 
 Version 3.8.1.1 - 04/03/21
 --------------------------
