@@ -22,14 +22,14 @@
             .region-main {
                 flex: 0 0 $mainwidth-oneblock;
                 max-width: $mainwidth-oneblock;
-                padding: 0 1rem 0 0;
+                padding: 0 0 0 1rem;
             }
         }
         &.blocks-post {
             .region-main {
                 flex: 0 0 $mainwidth-oneblock;
                 max-width: $mainwidth-oneblock;
-                padding: 0 0 0 1rem;
+                padding: 0 1rem 0 0;
             }
             .columnpost {
                 flex: 0 0 $blockswidth;
