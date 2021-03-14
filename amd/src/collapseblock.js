@@ -22,7 +22,5 @@ define(['jquery', 'core/log'], function($, log) {
         });
         log.debug('Foundation Collapse Block AMD init');
     });
-
-    return {}
 });
 /* jshint ignore:end */

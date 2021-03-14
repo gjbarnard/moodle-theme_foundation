@@ -15,21 +15,20 @@
     "url": "https://github.com/gjb2048/moodle-theme_foundation/issues"
   },
   "devDependencies": {
-    "grunt": "1.0.1",
-    "grunt-exec": "~0.4.6",
-    "grunt-contrib-jshint": "2.0.0",
-    "grunt-contrib-uglify": "1.0.1",
-    "grunt-sass": "2.1.0",
-    "grunt-stylelint": "0.6.0",
-    "semver": "5.3.0",
-    "stylelint": "8.0.0",
-    "stylelint-checkstyle-formatter": "0.1.0",
-    "stylelint-csstree-validator": "1.1.1",
-    "xmldom": "0.1.22",
-    "xpath": "0.0.23"
+    "grunt": "1.3.0",
+    "grunt-exec": "3.0.0",
+    "grunt-sass": "^3.1.0",
+    "grunt-stylelint": "0.16.0",
+    "node-sass": "^5.0.0",
+    "semver": "7.3.4",
+    "stylelint": "13.12.0",
+    "stylelint-checkstyle-formatter": "0.1.2",
+    "stylelint-csstree-validator": "1.9.0",
+    "xmldom": "0.5.0",
+    "xpath": "0.0.32"
   },
   "engines": {
-    "node": ">=8.9"
+    "node": ">=14.15.0 <15"
   },
   "license": "GPL-3.0"
 }
