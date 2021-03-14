@@ -28,7 +28,7 @@ matrix:
 env:
  global:
   - MOODLE_BRANCH=MOODLE_39_STABLE
-  - IGNORE_PATHS=templates/mod_assign
+  - IGNORE_PATHS=templates/mod_assign,node_modules
   - IGNORE_NAMES=*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css,fd_colourpopup.js
 
 before_install:
