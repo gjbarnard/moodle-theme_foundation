@@ -62,7 +62,7 @@ trait core_renderer_toolbox {
             // the settings block on it. The region main settings are included in the settings block and
             // duplicating the content causes behat failures.
             $this->page->add_header_action(html_writer::div(
-                $this->region_main_settings_menu(),
+                $regionmainsettingsmenu,
                 'd-print-none',
                 ['id' => 'region-main-settings-menu']
             ));
@@ -107,14 +107,6 @@ trait core_renderer_toolbox {
 
                 $data->sidepostblocks = $postblockshtml;
                 $data->haspostblocks = $haspostblocks;
-            }
-
-            if ($trio) {
-                if (!empty($data->haspreblocks)) {
-                    $data->hasblocks = true;
-                } else if (!empty($data->haspostblocks)) {
-                    $data->hasblocks = true;
-                }
             }
         }
 

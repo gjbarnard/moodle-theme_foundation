@@ -29,7 +29,6 @@
     * haspreblocks - true if there are side pre blocks on this page.
     * sidepostblocks - HTML for the side post blocks.
     * haspostblocks - true if there are side post blocks on this page.
-    * hasblocks - true if there are side pre and /or post blocks on this page
     * regionmainsettingsmenu - HTML for the region main settings menu.
     * hasregionmainsettingsmenu - There is a region main settings menu on this page.
 
@@ -52,7 +51,6 @@
         "haspreblocks": true,
         "sidepostblocks": "<h2>Blocks html goes here</h2>",
         "haspostblocks": true,
-        "hasblocks": true,
         "regionmainsettingsmenu": "",
         "hasregionmainsettingsmenu": false
     }
@@ -76,8 +74,8 @@
         <div id="page-content" class="row{{#haspreblocks}} blocks-pre{{/haspreblocks}}{{#haspostblocks}} blocks-post{{/haspostblocks}} d-print-block pb-sm-3">
             <div id="region-main-box" class="col-12 region-main">
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
+                <div id="region-main-settings-menu" class="d-print-none">
+                    {{{ output.region_main_settings_menu }}}
                 </div>
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main" class="region-main-content mb-3" aria-label="{{#str}}content{{/str}}">
