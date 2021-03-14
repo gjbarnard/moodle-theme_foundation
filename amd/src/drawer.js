@@ -35,7 +35,5 @@ define(['jquery', 'core/log'], function($, log) {
         });
         log.debug('Foundation Drawer AMD init');
     });
-
-    return {}
 });
 /* jshint ignore:end */
