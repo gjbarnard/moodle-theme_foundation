@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.10.1.2 - TBR
 ---------------------------
+1. Fix colour of search icon on navbar.
 
 Version 3.10.1.1 - 15/03/21
 ---------------------------
