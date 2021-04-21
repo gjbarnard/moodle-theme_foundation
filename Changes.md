@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.9.1.5 - TBD
 --------------------------
+1. Fix colour of search icon on navbar.
 
 Version 3.9.1.4 - 15/03/21
 --------------------------

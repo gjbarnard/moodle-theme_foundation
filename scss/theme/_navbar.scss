@@ -60,9 +60,14 @@
             color: $navbar-dark-color;
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
-    }
-    a .icon {
-        color: inherit !important; // stylelint-disable-line declaration-no-important
+        .btn,
+        .nav-link {
+            @include hover-focus() {
+                .icon {
+                    color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                }
+            }
+        }
     }
 }
 
