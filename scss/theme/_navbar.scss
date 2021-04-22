@@ -60,10 +60,11 @@
             color: $navbar-dark-color;
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
-        .btn,
-        .nav-link {
+        .dropdown-toggle,
+        .nav-link,
+        .simplesearchform .btn {
             @include hover-focus() {
-                .icon {
+                > .icon {
                     color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
                 }
             }
