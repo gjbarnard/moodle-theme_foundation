@@ -4,6 +4,7 @@ Version 3.10.1.2 - TBR
 ---------------------------
 1. Fix colour of search icon on navbar.
 2. Fix blocks per row when not editing.
+3. Fix mod_hvp editing page editor width.
 
 Version 3.10.1.1 - 15/03/21
 ---------------------------
