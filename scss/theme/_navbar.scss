@@ -60,9 +60,22 @@
             color: $navbar-dark-color;
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
+        .dropdown-menu,
+        .searchform-navbar {
+            a .icon {
+                color: inherit !important; // stylelint-disable-line declaration-no-important
+            }
+        }
+        .simplesearchform .btn {
+            @include hover-focus() {
+                > .icon {
+                    color: $body-color !important; // stylelint-disable-line declaration-no-important
+                }
+            }
+        }
         .dropdown-toggle,
         .nav-link,
-        .simplesearchform .btn {
+        .simplesearchform .btn-open {
             @include hover-focus() {
                 > .icon {
                     color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
