@@ -246,8 +246,6 @@ trait core_renderer_toolbox {
         if ($editing) {
             $classes[] = 'editing bpr-'.$blocksperrow;
             $content .= $this->block_region_title($region);
-        } else {
-            $classes[] = 'card-deck';
         }
 
         $attributes = array(
