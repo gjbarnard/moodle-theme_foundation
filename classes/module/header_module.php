@@ -236,7 +236,7 @@ class header_module extends \theme_foundation\module_basement {
      * @return string HTML to display the main header.
      */
     public function header($output) {
-        global $PAGE;
+        global $PAGE, $USER;
         $header = new \stdClass();
         if (empty($PAGE->theme->layouts[$PAGE->pagelayout]['options']['nocontextheader'])) {
             $header->contextheader = $output->context_header();
@@ -245,7 +245,11 @@ class header_module extends \theme_foundation\module_basement {
         }
         $header->hasbreadcrumb = (empty($PAGE->theme->layouts[$PAGE->pagelayout]['options']['nobreadcrumb']));
         if ($header->hasbreadcrumb) {
-            $header->breadcrumb = $output->navbar();
+            if ((!empty($USER->auth)) && ($USER->auth == 'lti')) {
+                $header->breadcrumb = '';
+            } else {
+                $header->breadcrumb = $output->navbar();
+            }
         } else {
             $header->breadcrumb = '';
         }
