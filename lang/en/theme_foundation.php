@@ -44,6 +44,7 @@ $string['pluginname'] = 'Foundation';
 $string['region-content'] = 'Content';
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
+$string['region-poster'] = 'Poster';
 $string['region-side-post'] = 'Left';
 $string['region-side-pre'] = 'Right';
 
