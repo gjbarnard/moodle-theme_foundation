@@ -45,6 +45,8 @@
         "drawerblocks": "<h2>Blocks html goes here</h2>",
         "hasdrawerblocks": true,
         "drawerclosed": true,
+        "posterblocks": "<h2>Blocks html goes here</h2>",
+        "hasposterblocks": true,
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
         "haspreblocks": true,
         "regionmainsettingsmenu": "",
@@ -80,6 +82,13 @@
                     {{/hasregionmainsettingsmenu}}
                     {{{ output.course_content_header }}}
                     {{> partials/carousel}}
+                    {{#hasposterblocks}}
+                    <div class="row justify-content-center">
+                        <section data-region="blocks-column" class="d-print-none col-6" aria-label="{{#str}}blocks{{/str}}">
+                            {{{ posterblocks }}}
+                        </section>
+                    </div>
+                    {{/hasposterblocks}}
                     {{> partials/hblocks}}
                     {{{ output.main_content }}}
                     {{{ output.activity_navigation }}}

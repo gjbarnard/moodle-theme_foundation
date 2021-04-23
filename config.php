@@ -93,7 +93,7 @@ $THEME->layouts = array(
     'frontpage' => array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => array_merge($regions, array('marketing')),
+        'regions' => array_merge($regions, array('marketing', 'poster')),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true)
     ),

@@ -7,6 +7,7 @@ Version 3.9.1.5 - TBD
 3. Fix mod_hvp editing page editor width.
 4. Have course title as italic when course is hidden.
 5. Don't have a link on the navbar logo / brand or show the breadcrumb when logged in via LTI.
+6. Add 'Poster' region on the frontpage.
 
 Version 3.9.1.4 - 15/03/21
 --------------------------

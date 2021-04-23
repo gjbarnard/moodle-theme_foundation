@@ -85,6 +85,14 @@ trait core_renderer_toolbox {
                 }
             }
 
+            if (in_array('poster', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $posterblockshtml = $this->blocks('poster');
+                $hasposterblocks = ((strpos($posterblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+
+                $data->posterblocks = $posterblockshtml;
+                $data->hasposterblocks = $hasposterblocks;
+            }
+
             if (in_array('marketing', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $hblockshtml = $this->hblocks('marketing');
                 $hashblocks = ((strpos($hblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
