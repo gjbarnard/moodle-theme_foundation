@@ -35,3 +35,7 @@
 .course-content ul li.section.main:last-child {
     border-bottom: 1px solid $table-border-color;
 }
+
+.course-hidden .page-header-headings {
+    font-style: italic;
+}

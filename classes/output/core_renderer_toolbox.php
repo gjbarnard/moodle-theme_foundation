@@ -42,7 +42,7 @@ trait core_renderer_toolbox {
      * Orchestrates the rendering of the page.
      */
     public function render_page() {
-        global $CFG;
+        global $CFG, $COURSE;
 
         $toolbox = \theme_foundation\toolbox::get_instance();
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
@@ -132,6 +132,10 @@ trait core_renderer_toolbox {
         }
         $bodyclasses[] = 'navbar-'.$data->navbarposition;
         $data->navbarbottom = ($data->navbarposition == 'bottom');
+
+        if (empty($COURSE->visible)) {
+            $bodyclasses[] = 'course-hidden';
+        }
 
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
