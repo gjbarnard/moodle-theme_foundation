@@ -48,18 +48,25 @@
         </button>
     </div>
     {{/hasdrawerblocks}}
-    <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo d-none d-sm-block{{/ output.should_display_navbar_logo }}
-        {{^ output.should_display_navbar_logo }}
-            d-none
-        {{/ output.should_display_navbar_logo }}
-            ">
+    {{^ltiauth}}
+    <a href="{{{ config.wwwroot }}}"
+    {{/ltiauth}}
+    {{#ltiauth}}
+    <span
+    {{/ltiauth}}
+    class="navbar-brand aabtn{{#output.should_display_navbar_logo}} has-logo d-none d-sm-block{{/output.should_display_navbar_logo}}{{^output.should_display_navbar_logo}} d-none{{/output.should_display_navbar_logo}}">
         {{# output.should_display_navbar_logo }}
             <span class="logo d-none d-sm-inline">
                 <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
             </span>
         {{/ output.should_display_navbar_logo }}
         <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+    {{^ltiauth}}
     </a>
+    {{/ltiauth}}
+    {{#ltiauth}}
+    </span>
+    {{/ltiauth}}
 
     <ul class="navbar-nav d-flex">
         <!-- courses_menu -->
