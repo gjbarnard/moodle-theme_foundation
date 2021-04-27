@@ -1076,7 +1076,7 @@ class toolbox {
      *
      * @return any false|value of setting.
      */
-    static public function get_config_setting($setting, $themename = null) {
+    public static function get_config_setting($setting, $themename = null) {
         if (empty($themename)) {
             $themename = 'foundation';
         }
@@ -1197,7 +1197,7 @@ class toolbox {
      *
      * @return array Categories.
      */
-    static public function get_categories_list() {
+    public static function get_categories_list() {
         static $catlist = null;
         if (empty($catlist)) {
             global $DB;
@@ -1230,7 +1230,7 @@ class toolbox {
      *
      * @return array properties
      */
-    static public function compile_properties($themename, $array = true) {
+    public static function compile_properties($themename, $array = true) {
         global $CFG, $DB;
 
         $props = array();
@@ -1285,7 +1285,7 @@ class toolbox {
      * @param string $props Properties
      * @return string
      */
-    static public function put_properties($themename, $props) {
+    public static function put_properties($themename, $props) {
         global $DB;
 
         // Get the current properties as a reference and for theme version information.
@@ -1375,7 +1375,7 @@ class toolbox {
 
      * @return array matches
      */
-    static protected function to_add_property($propkey) {
+    protected static function to_add_property($propkey) {
         static $matches = '('.
              // Slider ....
              '^frontpageenableslide[1-9][0-9]$|'.
@@ -1394,7 +1394,7 @@ class toolbox {
      * @param string $filestoreport
      *
      */
-    static private function put_prop_file_preprocess($key, &$props, &$filestoreport) {
+    private static function put_prop_file_preprocess($key, &$props, &$filestoreport) {
         if (!empty($props[$key])) {
             $filestoreport .= '\''.$key.'\' '.get_string('putpropertiesvalue', 'theme_foundation').' \''.
                 \core_text::substr($props[$key], 1).'\'.'.PHP_EOL;
