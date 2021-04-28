@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.10.1.2 - TBR
+Version 3.10.1.2 - 28/04/21
 ---------------------------
 1. Fix colour of search icon on navbar.
 2. Fix blocks per row when not editing.
