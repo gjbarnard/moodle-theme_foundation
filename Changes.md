@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.9.1.5 - TBD
+Version 3.9.1.5 - 28/04/21
 --------------------------
 1. Fix colour of search icon on navbar.
 2. Fix blocks per row when not editing.
