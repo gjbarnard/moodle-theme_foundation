@@ -27,8 +27,6 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die();
 
-use html_writer;
-
 /**
  * The core renderer.
  *
