@@ -1,7 +1,8 @@
 Version Information
 ===================
-Version 3.11.1.0 - TBR
+Version 3.11.1.0 - 20/05/21
 ---------------------------
+1. First version for Moodle 3.11.
 
 Version 3.10.1.2 - 28/04/21
 ---------------------------
