@@ -184,6 +184,8 @@ trait core_renderer_toolbox {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
+        $data->fakeblocks = $this->blocks('side-pre', array(), 'aside', true);
+        $data->hasfakeblocks = strpos($data->fakeblocks, 'data-block="_fake"') !== false;
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }
@@ -209,10 +211,11 @@ trait core_renderer_toolbox {
      * @param string $region The region to get HTML for.
      * @param array $classes Classes.
      * @param string $tag Tag.
+     * @param boolean $fakeblocksonly Include fake blocks only.
      *
      * @return string HTML.
      */
-    public function blocks($region, $classes = array(), $tag = 'aside') {
+    public function blocks($region, $classes = array(), $tag = 'aside', $fakeblocksonly = false) {
         $displayregion = $this->page->apply_theme_region_manipulations($region);
         $classes = (array)$classes;
         $classes[] = 'block-region';
@@ -230,7 +233,7 @@ trait core_renderer_toolbox {
         );
 
         if ($this->page->blocks->region_has_content($displayregion, $this)) {
-            $content .= $this->blocks_for_region($displayregion);
+            $content .= $this->blocks_for_region($displayregion, $fakeblocksonly);
         } else {
             $content .= '';
         }

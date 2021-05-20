@@ -47,11 +47,14 @@
     <body {{{ output.body_attributes }}}>
 
         {{{ output.standard_top_of_body_html }}}
-        <div id="page">
-            <div id="page-content">
-                {{{ output.main_content }}}
-            </div>
-        </div>
+        {{#hasfakeblocks}}
+            <section class="embedded-blocks" aria-label="{{#str}}blocks{{/str}}">
+                {{{ fakeblocks }}}
+            </section>
+        {{/hasfakeblocks}}
+        <section class="embedded-main">
+            {{{ output.main_content }}}
+        </section>
         <span class="footerantigravity{{#fav}} fav{{/fav}}">
             <button class="backtotop btn btn-primary" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
             <button class="gotobottom btn btn-primary" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-down"></span></button>
@@ -60,6 +63,9 @@
     </body>
 </html>
 {{#js}}
-require(['theme_boost/loader']);
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
 require(['theme_foundation/anti_gravity']);
 {{/js}}

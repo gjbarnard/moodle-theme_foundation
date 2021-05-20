@@ -131,7 +131,10 @@
 </body>
 </html>
 {{#js}}
-require(['theme_boost/loader']);
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
 {{#hasdrawerblocks}}
 require(['theme_foundation/drawer']);
 {{/hasdrawerblocks}}
