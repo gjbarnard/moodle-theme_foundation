@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.10.1.7 - TBR
 ---------------------------
+1. Fix navigation and settings block FontAwesome 5 fixes.
 
 Version 3.10.1.6 - 08/10/21
 ---------------------------
