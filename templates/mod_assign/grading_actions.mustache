@@ -29,6 +29,14 @@
     * see mod/assign/classes/output/grading_app.php
 
     This template is initially hidden, and is only displayed after the current user info has been loaded.
+
+    Context variables required for this template:
+    * showreview - Show review.
+
+    Example context (json):
+    {
+        "showreview": false
+    }
 }}
 {{#showreview}}
 <div class="btn-toolbar collapse-buttons">

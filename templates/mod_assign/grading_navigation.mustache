@@ -29,6 +29,17 @@
     * see mod/assign/classes/output/grading_app.php
 
     This template includes ajax functionality, so it cannot be shown in the template library.
+    Context variables required for this template:
+    * caneditsettings - Can edit the settings.
+    * duedate - Show the due date.
+    * cutoffdate - Show the cutoff date.
+
+    Example context (json):
+    {
+        "caneditsettings": false,
+        "duedate": false,
+        "cutoffdate": false
+    }
 }}
 <div class="container-fluid">
 <div data-region="grading-navigation" class="row">
