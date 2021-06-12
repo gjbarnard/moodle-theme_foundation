@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.11.1.1 - TBD
 ---------------------------
+1. Fix navigation and settings block FontAwesome 5 fixes.
 
 Version 3.11.1.0 - 20/05/21
 ---------------------------
