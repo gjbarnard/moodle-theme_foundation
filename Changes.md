@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.11.1.1 - TBD
+---------------------------
+
 Version 3.11.1.0 - 20/05/21
 ---------------------------
 1. First version for Moodle 3.11.
