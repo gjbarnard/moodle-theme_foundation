@@ -3,6 +3,8 @@ Version Information
 Version 3.11.1.1 - TBD
 ---------------------------
 1. Fix navigation and settings block FontAwesome 5 fixes.
+2. Added 'User menu log out URL' general setting.  When populated with a URL, that will be used
+   instead on the 'Log out' menu item of the user menu.
 
 Version 3.11.1.0 - 20/05/21
 ---------------------------

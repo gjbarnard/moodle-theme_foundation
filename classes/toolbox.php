@@ -410,6 +410,14 @@ class toolbox {
             $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
+            // Custom user menu url.
+            $name = 'theme_foundation/usermenulogouturl';
+            $title = get_string('usermenulogouturl', 'theme_foundation');
+            $default = '';
+            $description = get_string('usermenulogouturldesc', 'theme_foundation');
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Footer anti-gravity horizontal offset.
             $name = 'theme_foundation/footerantigravityhorizontaloffset';
             $title = get_string('footerantigravityhorizontaloffset', 'theme_foundation');

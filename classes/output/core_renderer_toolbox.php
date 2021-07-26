@@ -492,7 +492,7 @@ trait core_renderer_toolbox {
      * @return string HTML fragment.
      */
     public function user_menu($user = null, $withlinks = null) {
-        global $USER, $CFG;
+        global $CFG, $USER;
         require_once($CFG->dirroot.'/user/lib.php');
 
         if (is_null($user)) {
@@ -607,6 +607,21 @@ trait core_renderer_toolbox {
             );
         }
 
+        // Logout URL.
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $usermenulogouturl = $toolbox->get_setting('usermenulogouturl');
+        if (!empty($usermenulogouturl)) {
+            foreach ($opts->navitems as $object) {
+                if (!empty($object->titleidentifier)) {
+                    $titleidentifier = explode(',', $object->titleidentifier);
+                    if ($titleidentifier[0] == 'logout') {
+                        $object->url = new \moodle_url($usermenulogouturl);
+                        break;
+                    }
+                }
+            }
+        }
+
         $returnstr .= html_writer::span(
             html_writer::span($usertextcontents, 'usertext mr-1').
             html_writer::span($avatarcontents, $avatarclasses),
@@ -618,9 +633,7 @@ trait core_renderer_toolbox {
         $divider->primary = false;
 
         $am = new \action_menu();
-        $am->set_menu_trigger(
-            $returnstr, 'nav-link'
-        );
+        $am->set_menu_trigger($returnstr, 'nav-link');
         $am->set_action_label(get_string('usermenu'));
         $am->set_alignment(\action_menu::TR, \action_menu::BR);
         $am->set_nowrap_on_items();
