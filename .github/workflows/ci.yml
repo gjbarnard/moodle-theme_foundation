@@ -99,7 +99,8 @@ jobs:
 
       - name: Moodle Code Checker
         if: ${{ always() }}
-        run: moodle-plugin-ci codechecker --max-warnings 0
+#        run: moodle-plugin-ci codechecker --max-warnings 0
+        run: moodle-plugin-ci codechecker
 
 # Not ignoring node_modules for some reason.
 #      - name: Moodle PHPDoc Checker
