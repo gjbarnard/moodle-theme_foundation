@@ -1,5 +1,10 @@
 Version Information
 ===================
+Version 3.10.1.3 - TBD
+---------------------------
+1. Added 'User menu log out URL' general setting.  When populated with a URL, that will be used
+   instead on the 'Log out' menu item of the user menu.
+
 Version 3.10.1.2 - 28/04/21
 ---------------------------
 1. Fix colour of search icon on navbar.

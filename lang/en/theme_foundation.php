@@ -82,6 +82,9 @@ $string['generalheadingdesc'] = 'Configure the general settings for Foundation h
 $string['navbarposition'] = 'Navbar position';
 $string['navbarpositiondesc'] = 'Set the position of the navbar.';
 
+$string['usermenulogouturl'] = 'User menu log out URL';
+$string['usermenulogouturldesc'] = 'Set a custom URL to use for the \'Log out\' menu item on the user menu.  Leave blank for system default.';
+
 $string['footerantigravityhorizontaloffset'] = 'Screen anti-gravity horizontal offset';
 $string['footerantigravityhorizontaloffsetdesc'] = 'Set the horizontal offset of the anti-gravity buttons on the screen (not the navbar) from the default.  This can be an positive (move right) or negative (move left) number.  The units are pixels.  Note:  Flip this logic for RTL languages.';
 
