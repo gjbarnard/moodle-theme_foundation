@@ -625,7 +625,6 @@ trait core_renderer_toolbox {
             $navitemcount = count($opts->navitems);
             $idx = 0;
             foreach ($opts->navitems as $value) {
-
                 switch ($value->itemtype) {
                     case 'divider':
                         // If the nav item is a divider, add one and skip link processing.

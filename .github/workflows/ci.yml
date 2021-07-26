@@ -16,7 +16,7 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
       mariadb:
-        image: mariadb:10
+        image: mariadb:10.5
         env:
           MYSQL_USER: 'root'
           MYSQL_ALLOW_EMPTY_PASSWORD: "true"
@@ -27,9 +27,31 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.3', '7.4']
-        moodle-branch: ['MOODLE_311_STABLE']
-        database: [pgsql, mariadb]
+        include:
+          - php: 7.3
+            moodle-branch: 'MOODLE_311_STABLE'
+            database: pgsql
+          - php: 7.3
+            moodle-branch: 'MOODLE_311_STABLE'
+            database: mariadb
+          - php: 7.4
+            moodle-branch: 'MOODLE_311_STABLE'
+            database: pgsql
+          - php: 7.4
+            moodle-branch: 'MOODLE_311_STABLE'
+            database: mariadb
+          - php: 8.0
+            # The following line is only needed if you're going to run php8 jobs and your
+            # plugin needs xmlrpc services.
+            extensions: xmlrpc-beta
+            moodle-branch: MOODLE_311_STABLE
+            database: pgsql
+          - php: 8.0
+            # The following line is only needed if you're going to run php8 jobs and your
+            # plugin needs xmlrpc services.
+            extensions: xmlrpc-beta
+            moodle-branch: MOODLE_311_STABLE
+            database: mariadb
 
     steps:
       - name: Check out repository code
@@ -52,15 +74,14 @@ jobs:
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
           sudo locale-gen en_AU.UTF-8
           echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
-        env:
-          IGNORE_PATHS: 'templates/mod_assign,node_modules'
-          IGNORE_NAMES: '*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css,fd_colourpopup.js'
       - name: Install moodle-plugin-ci
         run: |
           moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
+          IGNORE_PATHS: 'templates/mod_assign,node_modules'
+          IGNORE_NAMES: '*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css,fd_colourpopup.js'
 
       - name: PHP Lint
         if: ${{ always() }}
@@ -76,15 +97,11 @@ jobs:
         if: ${{ always() }}
         run: moodle-plugin-ci phpmd
 
-# Disabled until https://github.com/moodlehq/moodle-plugin-ci/issues/104 resolved, run manually.
-#      - name: Moodle Code Checker
-#        if: ${{ always() }}
-#        run: moodle-plugin-ci codechecker --max-warnings 0
-#        env:
-#          IGNORE_PATHS: 'templates/mod_assign,node_modules'
-#          IGNORE_NAMES: '*.txt,mustache_filesystem_loader.php,fallback.css,fontawesome.css,fd_colourpopup.js'
+      - name: Moodle Code Checker
+        if: ${{ always() }}
+        run: moodle-plugin-ci codechecker --max-warnings 0
 
-# Disabled until https://github.com/moodlehq/moodle-plugin-ci/issues/104 resolved, run manually.
+# Not ignoring node_modules for some reason.
 #      - name: Moodle PHPDoc Checker
 #        if: ${{ always() }}
 #        run: moodle-plugin-ci phpdoc
