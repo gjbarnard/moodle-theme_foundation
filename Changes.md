@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.9.1.6 - TBR
+Version 3.9.1.6 - 28/07/21
 --------------------------
 1. Added core H5P alter styles support - MDL-69087.
 2. Added 'User menu log out URL' general setting.  When populated with a URL, that will be used
