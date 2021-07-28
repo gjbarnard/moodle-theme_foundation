@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.10.1.3 - TBD
+Version 3.10.1.3 - 28/07/21
 ---------------------------
 1. Added 'User menu log out URL' general setting.  When populated with a URL, that will be used
    instead on the 'Log out' menu item of the user menu.
