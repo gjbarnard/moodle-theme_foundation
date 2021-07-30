@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.11.1.2 - TBC
+---------------------------
+
 Version 3.11.1.1 - 28/07/21
 ---------------------------
 1. Fix navigation and settings block FontAwesome 5 fixes.
