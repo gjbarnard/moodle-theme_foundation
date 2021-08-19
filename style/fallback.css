@@ -6796,7 +6796,7 @@ a.close.disabled {
 .align-baseline {
   vertical-align: baseline !important; }
 
-.align-top {
+.align-top, [data-filterregion="value"] div:first-of-type {
   vertical-align: top !important; }
 
 .align-middle {
@@ -15508,7 +15508,7 @@ a.ygtvspacer:hover {
 
 body.path-question-type {
   /* Hacks to display the labels within a form group. */ }
-  body.path-question-type .form-group .sr-only:not(legend) {
+  body.path-question-type .form-group .sr-only:not(legend):not([for="id_category"]) {
     position: static;
     width: auto;
     height: auto;
@@ -17803,6 +17803,8 @@ div#dock {
   .generaltable tbody tr:hover {
     color: #373a3c;
     background-color: rgba(0, 0, 0, 0.075); }
+    .generaltable tbody tr:hover.dimmed_text a:not(.menu-action) {
+      color: #373a3c; }
 
 table caption {
   font-size: 24px;
@@ -19522,7 +19524,9 @@ body.admin h1:after {
     margin-left: 360px; } }
 
 .navbar-bottom [data-region="blocks-drawer"],
-.no-navbar [data-region="blocks-drawer"] {
+.navbar-bottom [data-region="right-hand-drawer"],
+.no-navbar [data-region="blocks-drawer"],
+.no-navbar [data-region="right-hand-drawer"] {
   top: 0; }
 
 .dashboard-card-deck.one-row {
@@ -19728,6 +19732,10 @@ a:hover {
 .card {
   border: none; }
 
+@media (max-width: 767.98px) {
+  .pagelayout-mydashboard #region-main {
+    padding: 5px; } }
+
 .pagelayout-popup #page {
   margin-top: 0; }
 
@@ -19758,6 +19766,12 @@ a:hover {
   background-image: none;
   padding-left: 0; }
 
+.course-content ul li.section.main:last-child {
+  border-bottom: 1px solid #dee2e6; }
+
+.course-hidden .page-header-headings {
+  font-style: italic; }
+
 .custom-select {
   background: #fff none no-repeat scroll 0% 0%; }
 
@@ -19766,7 +19780,8 @@ a:hover {
 
 .pageheadingbutton .btn {
   background-color: transparent;
-  border-color: transparent; }
+  border-color: transparent;
+  color: #373a3c; }
 
 @media (max-width: 575px) {
   .nav-link > .icon {
@@ -19828,6 +19843,9 @@ a:hover {
   bottom: auto;
   top: -19px; }
 
+#page-mod-hvp-mod .form-control-static {
+  width: 100%; }
+
 .navbar {
   flex-wrap: nowrap; }
   .navbar .nav-link {
@@ -19868,8 +19886,19 @@ a:hover {
   color: rgba(255, 255, 255, 0.5);
   padding: 0.5rem 1rem; }
 
-.navbar-dark a .icon {
+.navbar-dark .navbar-nav .dropdown-menu a .icon,
+.navbar-dark .navbar-nav .searchform-navbar a .icon {
   color: inherit !important; }
+
+.navbar-dark .navbar-nav .simplesearchform .btn:hover > .icon, .navbar-dark .navbar-nav .simplesearchform .btn:focus > .icon {
+  color: #373a3c !important; }
+
+.navbar-dark .navbar-nav .dropdown-toggle:hover > .icon, .navbar-dark .navbar-nav .dropdown-toggle:focus > .icon,
+.navbar-dark .navbar-nav .nav-link:hover > .icon,
+.navbar-dark .navbar-nav .nav-link:focus > .icon,
+.navbar-dark .navbar-nav .simplesearchform .btn-open:hover > .icon,
+.navbar-dark .navbar-nav .simplesearchform .btn-open:focus > .icon {
+  color: white !important; }
 
 .popover-region-toggle::after {
   bottom: -3px;
@@ -19964,11 +19993,11 @@ ul.ctopics :target {
     #page-content.blocks-pre .region-main {
       flex: 0 0 68%;
       max-width: 68%;
-      padding: 0 1rem 0 0; }
+      padding: 0 0 0 1rem; }
     #page-content.blocks-post .region-main {
       flex: 0 0 68%;
       max-width: 68%;
-      padding: 0 0 0 1rem; }
+      padding: 0 1rem 0 0; }
     #page-content.blocks-post .columnpost {
       flex: 0 0 32%;
       order: -1;
@@ -19995,11 +20024,11 @@ ul.ctopics :target {
     #page-content.blocks-pre .region-main {
       flex: 0 0 75%;
       max-width: 75%;
-      padding: 0 1rem 0 0; }
+      padding: 0 0 0 1rem; }
     #page-content.blocks-post .region-main {
       flex: 0 0 75%;
       max-width: 75%;
-      padding: 0 0 0 1rem; }
+      padding: 0 1rem 0 0; }
     #page-content.blocks-post .columnpost {
       flex: 0 0 25%;
       order: -1;
@@ -20026,11 +20055,11 @@ ul.ctopics :target {
     #page-content.blocks-pre .region-main {
       flex: 0 0 80%;
       max-width: 80%;
-      padding: 0 1rem 0 0; }
+      padding: 0 0 0 1rem; }
     #page-content.blocks-post .region-main {
       flex: 0 0 80%;
       max-width: 80%;
-      padding: 0 0 0 1rem; }
+      padding: 0 1rem 0 0; }
     #page-content.blocks-post .columnpost {
       flex: 0 0 20%;
       order: -1;
