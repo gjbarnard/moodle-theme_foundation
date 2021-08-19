@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.9.1.7 - TBR
 --------------------------
+1. Support change in Collapsed Topics renderer location in version 3.11.0.2.
 
 Version 3.9.1.6 - 28/07/21
 --------------------------
