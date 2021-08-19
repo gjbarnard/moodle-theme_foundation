@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.11.1.2 - TBC
 ---------------------------
+1. Support change in Collapsed Topics renderer location in version 3.11.0.2.
 
 Version 3.11.1.1 - 28/07/21
 ---------------------------

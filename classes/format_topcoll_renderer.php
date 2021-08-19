@@ -25,8 +25,45 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+trait theme_foundation_format_topcoll_renderer_trait {
+    /**
+     * The grid row class.
+     *
+     * @return string CSS class.
+     */
+    protected function get_row_class() {
+        return 'row';
+    }
+
+    /**
+     * The grid column class depending on the number of columns.
+     *
+     * @param byte $columns Number of columns.
+     * @return string CSS class.
+     */
+    protected function get_column_class($columns) {
+        $colclasses = array(
+            1 => 'col-sm-12 col-md-12 col-lg-12',
+            2 => 'col-sm-6 col-md-6 col-lg-6',
+            3 => 'col-md-4 col-lg-4',
+            4 => 'col-lg-3');
+
+        return $colclasses[$columns];
+    }
+}
+
 global $CFG;
-if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
+if (file_exists("$CFG->dirroot/course/format/topcoll/classes/output/renderer.php")) {
+    /**
+     * The theme's Collapsed Topics renderer, new location.
+     *
+     * @copyright  &copy; 2021-onwards G J Barnard.
+     * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+     */
+    class theme_foundation_format_topcoll_renderer extends \format_topcoll\output\renderer {
+        use theme_foundation_format_topcoll_renderer_trait;
+    }
+} else if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
     include_once($CFG->dirroot."/course/format/topcoll/renderer.php");
 
     /**
@@ -36,30 +73,6 @@ if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
      * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
      */
     class theme_foundation_format_topcoll_renderer extends format_topcoll_renderer {
-
-        /**
-         * The grid row class.
-         *
-         * @return string CSS class.
-         */
-        protected function get_row_class() {
-            return 'row';
-        }
-
-        /**
-         * The grid column class depending on the number of columns.
-         *
-         * @param byte $columns Number of columns.
-         * @return string CSS class.
-         */
-        protected function get_column_class($columns) {
-            $colclasses = array(
-                1 => 'col-sm-12 col-md-12 col-lg-12',
-                2 => 'col-sm-6 col-md-6 col-lg-6',
-                3 => 'col-md-4 col-lg-4',
-                4 => 'col-lg-3');
-
-            return $colclasses[$columns];
-        }
+        use theme_foundation_format_topcoll_renderer_trait;
     }
 }
