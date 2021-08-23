@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.9.1.7 - TBR
+Version 3.9.1.7 - 23/8/21
 --------------------------
 1. Support change in Collapsed Topics renderer location in version 3.11.0.2.
 2. Fix 'Turn editing on button not visible in courses with Sandstone swatch' - #11.
