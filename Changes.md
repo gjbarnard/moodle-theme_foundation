@@ -4,6 +4,7 @@ Version 3.11.1.2 - TBC
 ---------------------------
 1. Support change in Collapsed Topics renderer location in version 3.11.0.2.
 2. Fix 'Turn editing on button not visible in courses with Sandstone swatch' - #11.
+3. Fix 'usermenulogouturl setting not logging out'.
 
 Version 3.11.1.1 - 28/07/21
 ---------------------------
