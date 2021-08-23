@@ -42,7 +42,7 @@ if (($loggedin) && (!confirm_sesskey($sesskey))) {
     $PAGE->set_title($SITE->fullname);
     $PAGE->set_heading($SITE->fullname);
     echo $OUTPUT->header();
-    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url($PAGE->url, 
+    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url($PAGE->url,
         array('sesskey' => sesskey())), $CFG->wwwroot.'/');
     echo $OUTPUT->footer();
     die;
@@ -59,7 +59,7 @@ if (!$loggedin) {
 }
 
 $authsequence = get_enabled_auth_plugins(); // Auths, in sequence.
-foreach($authsequence as $authname) {
+foreach ($authsequence as $authname) {
     $authplugin = get_auth_plugin($authname);
     $authplugin->logoutpage_hook();
 }
