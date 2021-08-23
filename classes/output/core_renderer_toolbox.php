@@ -607,7 +607,7 @@ trait core_renderer_toolbox {
             );
         }
 
-        // Logout URL.
+        // Logout URL.  Only works when Foundation not in $CFG->themedir.
         $toolbox = \theme_foundation\toolbox::get_instance();
         $usermenulogouturl = $toolbox->get_setting('usermenulogouturl');
         if (!empty($usermenulogouturl)) {
@@ -615,7 +615,8 @@ trait core_renderer_toolbox {
                 if (!empty($object->titleidentifier)) {
                     $titleidentifier = explode(',', $object->titleidentifier);
                     if ($titleidentifier[0] == 'logout') {
-                        $object->url = new \moodle_url($usermenulogouturl);
+                        $foundationlogout = new \moodle_url('/theme/foundation/logout.php', $object->url->params());
+                        $object->url = $foundationlogout;
                         break;
                     }
                 }
