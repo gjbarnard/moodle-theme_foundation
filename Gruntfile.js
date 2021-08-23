@@ -43,7 +43,7 @@ module.exports = function(grunt) { // jshint ignore:line
     var path = require('path'),
         tasks = {},
         cwd = process.env.PWD || process.cwd(), // jshint ignore:line
-        DOMParser = require('xmldom').DOMParser,
+        DOMParser = require('@xmldom/xmldom').DOMParser,
         xpath = require('xpath'),
         semver = require('semver');
 
