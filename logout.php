@@ -35,24 +35,25 @@ $PAGE->set_url('/theme/foundation/logout.php');
 $PAGE->set_context(context_system::instance());
 
 $sesskey = optional_param('sesskey', '__notpresent__', PARAM_RAW); // We want not null default to prevent required sesskey warning.
-$noconfirmlogout = optional_param('noconfirmlogout', 0, PARAM_BOOL);
 
 $loggedin = isloggedin();
-if (($loggedin) && (empty($noconfirmlogout)) && (!confirm_sesskey($sesskey))) {
+
+if (($loggedin) && (!confirm_sesskey($sesskey))) {
     $PAGE->set_title($SITE->fullname);
     $PAGE->set_heading($SITE->fullname);
     echo $OUTPUT->header();
-    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url('/theme/foundation/logout.php',
-        array('sesskey' => sesskey(), 'noconfirmlogout' => '1')), $CFG->wwwroot.'/');
+    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url($PAGE->url, 
+        array('sesskey' => sesskey())), $CFG->wwwroot.'/');
     echo $OUTPUT->footer();
     die;
 }
+
 // Logout URL.
 $toolbox = \theme_foundation\toolbox::get_instance();
 $redirect = $toolbox->get_setting('usermenulogouturl');
 
 if (!$loggedin) {
-    // No confirmation, user has already logged out.
+    // User has already logged out.
     require_logout();
     redirect($redirect);
 }
