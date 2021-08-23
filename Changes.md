@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.9.1.7 - TBR
+--------------------------
+
 Version 3.9.1.6 - 28/07/21
 --------------------------
 1. Added core H5P alter styles support - MDL-69087.
