@@ -40,7 +40,7 @@ use theme_foundation\admin_setting_configinteger;
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class coursesmenu_module extends \theme_foundation\module_basement implements \templatable {
+class menus_module extends \theme_foundation\module_basement implements \templatable {
 
     /**
      * Add the course menu settings.
@@ -50,10 +50,10 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
      */
     public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
-        $settingspages['coursesmenu'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_coursesmenu',
-            get_string('coursesmenuheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
+        $settingspages['menus'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_menus',
+            get_string('menusheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
 
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
                 'theme_foundation_coursesmenuheading',
                 get_string('coursesmenuheadingsub', 'theme_foundation'),
@@ -67,7 +67,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         $description = get_string('displaymycoursesdesc', 'theme_foundation');
         $default = true;
         $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Toggle hidden courses display in custommenu.
         $name = 'theme_foundation/displayhiddenmycourses';
@@ -75,7 +75,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         $description = get_string('displayhiddenmycoursesdesc', 'theme_foundation');
         $default = true;
         $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // My courses order.
         $name = 'theme_foundation/mycoursesorder';
@@ -88,7 +88,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             3 => get_string('mycoursesorderlast', 'theme_foundation')
         );
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Course ID order.
         $name = 'theme_foundation/mycoursesorderidorder';
@@ -100,7 +100,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             2 => get_string('mycoursesorderiddes', 'theme_foundation')
         );
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Max courses.
         $name = 'theme_foundation/mycoursesmax';
@@ -111,7 +111,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
         $description = get_string('mycoursesmaxdesc', 'theme_foundation',
             array('lower' => $lower, 'upper' => $upper));
         $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Set terminology for dropdown course list.
         $name = 'theme_foundation/mycoursetitle';
@@ -125,7 +125,23 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             'module' => get_string('mymodules', 'theme_foundation')
         );
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $settingspages['coursesmenu'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_thiscoursemenuheading',
+                get_string('thiscoursemenuheadingsub', 'theme_foundation'),
+                format_text(get_string('thiscoursemenuheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Toggle this course display on the navbar in a course.
+        $name = 'theme_foundation/displaythiscourse';
+        $title = get_string('displaythiscourse', 'theme_foundation');
+        $description = get_string('displaythiscoursedesc', 'theme_foundation');
+        $default = true;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
     /**
@@ -137,10 +153,18 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
     public function export_for_template(\renderer_base $output) {
         $data = null;
 
-        $coursemenu = $this->courses_menu($output);
-        if (!empty($coursemenu)) {
+        $coursesmenu = $this->courses_menu($output);
+        if (!empty($coursesmenu)) {
             $data = new \stdClass;
-            $data->coursemenu = $coursemenu;
+            $data->coursesmenu = $coursesmenu;
+        }
+
+        $thiscourse = $this->this_course_menu($output);
+        if (!empty($thiscourse)) {
+            if (empty($data)) {
+                $data = new \stdClass;
+            }
+            $data->thiscoursemenu = $thiscourse;
         }
 
         return $data;
@@ -295,7 +319,7 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
                 $noenrolments = get_string('noenrolments', 'theme_foundation');
                 $coursemenubranch->add('<em>'.$noenrolments.'</em>', $PAGE->url, $noenrolments);
             }
-            return $output->render_the_course_menu($coursemenu);
+            return $output->render_the_menu($coursemenu);
         }
 
         return '';
@@ -328,6 +352,47 @@ class coursesmenu_module extends \theme_foundation\module_basement implements \t
             $courseadded = true;
         }
         return $courseadded;
+    }
+
+    /**
+     * Outputs the 'This course' menu.
+     *
+     * @param renderer_base $output Output renderer.
+     * @return string Rendered custom menu if any.
+     */
+    protected function this_course_menu(\renderer_base $output) {
+        global $PAGE;
+
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $hasdisplaythiscourse = $toolbox->get_setting('displaythiscourse');
+        if (isloggedin() && !isguestuser() && $hasdisplaythiscourse && ($PAGE->course->id != SITEID)) {
+
+            $navoptions = \course_get_user_navigation_options($PAGE->context, $PAGE->course);
+            error_log(print_r($navoptions, true));
+
+            if (($navoptions->badges) ||
+                ($navoptions->competencies) ||
+                ($navoptions->grades) ||
+                ($navoptions->participants)) {
+                $thiscoursemenu = new \theme_foundation\output\course_menu_item('');
+
+                $branchtitle = get_string('thiscourse', 'theme_foundation');
+                $branchlabel = $toolbox->getfontawesomemarkup('graduation-cap', array('icon')).
+                    html_writer::tag('span', $branchtitle, array('class' => 'd-none d-sm-inline'));
+                $branchurl = $PAGE->url;
+                $branchsort = 200;
+
+                $thiscoursemenubranch = $thiscoursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+                $myhometext = get_string('myhome');
+                $myhomelabel = '<span>'.$toolbox->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
+                $thiscoursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
+            }
+
+            return $output->render_the_menu($thiscoursemenu);
+        }
+
+        return '';
     }
 
     /**
