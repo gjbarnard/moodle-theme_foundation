@@ -772,7 +772,7 @@ trait core_renderer_toolbox {
             return '';
         }
 
-        $menu = new course_menu_item('');
+        $menu = new foundation_menu_item('');
         $strlang = get_string('language');
         $currentlangcode = current_language();
         if (isset($langs[$currentlangcode])) {

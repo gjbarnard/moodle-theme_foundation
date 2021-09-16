@@ -181,7 +181,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $hasdisplaymycourses = $toolbox->get_setting('displaymycourses');
         if (isloggedin() && !isguestuser() && $hasdisplaymycourses) {
             global $PAGE;
-            $coursemenu = new \theme_foundation\output\course_menu_item('');
+            $coursemenu = new \theme_foundation\output\foundation_menu_item('');
             $mycoursesorder = $toolbox->get_setting('mycoursesorder');
             if (!$mycoursesorder) {
                 $mycoursesorder = 1;
@@ -368,13 +368,12 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         if (isloggedin() && !isguestuser() && $hasdisplaythiscourse && ($PAGE->course->id != SITEID)) {
 
             $navoptions = \course_get_user_navigation_options($PAGE->context, $PAGE->course);
-            error_log(print_r($navoptions, true));
 
             if (($navoptions->badges) ||
                 ($navoptions->competencies) ||
                 ($navoptions->grades) ||
                 ($navoptions->participants)) {
-                $thiscoursemenu = new \theme_foundation\output\course_menu_item('');
+                $thiscoursemenu = new \theme_foundation\output\foundation_menu_item('');
 
                 $branchtitle = get_string('thiscourse', 'theme_foundation');
                 $branchlabel = $toolbox->getfontawesomemarkup('graduation-cap', array('icon')).
@@ -384,9 +383,29 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
                 $thiscoursemenubranch = $thiscoursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
-                $myhometext = get_string('myhome');
-                $myhomelabel = '<span>'.$toolbox->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
-                $thiscoursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
+                if ($navoptions->participants) {
+                    $participantstext = get_string('participants');
+                    $participantslabel = '<span>'.$toolbox->getfontawesomemarkup('users', array('icon')).$participantstext.'</span>';
+                    $thiscoursemenubranch->add($participantslabel, new moodle_url('/user/index.php?id='.$PAGE->course->id), $participantstext);
+                }
+
+                if ($navoptions->badges) {
+                    $badgestext = get_string('coursebadges', 'badges');
+                    $badgeslabel = '<span>'.$toolbox->getfontawesomemarkup('shield-alt', array('icon')).$badgestext.'</span>';
+                    $thiscoursemenubranch->add($badgeslabel, new moodle_url('/badges/view.php', array('type' => 2, 'id' => $PAGE->course->id)), $badgestext);
+                }
+
+                if ($navoptions->competencies) {
+                    $competenciestext = get_string('competencies', 'core_competency');
+                    $competencieslabel = '<span>'.$toolbox->getfontawesomemarkup('check-square', array('icon')).$competenciestext.'</span>';
+                    $thiscoursemenubranch->add($competencieslabel, new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)), $competenciestext);
+                }
+
+                if ($navoptions->grades) {
+                    $gradestext = get_string('grade');
+                    $gradeslabel = '<span>'.$toolbox->getfontawesomemarkup('table', array('icon')).$gradestext.'</span>';
+                    $thiscoursemenubranch->add($gradeslabel, new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id)), $gradestext);
+                }
             }
 
             return $output->render_the_menu($thiscoursemenu);
