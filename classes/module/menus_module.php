@@ -358,7 +358,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
      * Outputs the 'This course' menu.
      *
      * @param renderer_base $output Output renderer.
-     * @return string Rendered custom menu if any.
+     * @return string Rendered menu if any.
      */
     protected function this_course_menu(\renderer_base $output) {
         global $PAGE;
@@ -414,7 +414,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                 }
 
                 if ($navoptions->grades) {
-                    $gradestext = get_string('grade');
+                    $gradestext = get_string('grade', 'core_grades');
                     $gradeslabel = '<span>'.$toolbox->getfontawesomemarkup('table', array('icon')).$gradestext.'</span>';
                     $thiscoursemenubranch->add(
                         $gradeslabel,
