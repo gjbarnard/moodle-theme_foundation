@@ -3,6 +3,7 @@ Version Information
 Version 3.11.1.3 - TBR
 ---------------------------
 1. Fix 'Quick search in the forum brings an error' - #12.
+2. Add 'This course' menu with 'Badges', 'Competencies', 'Grades' and 'Participants'.
 
 Version 3.11.1.2 - 23/8/21
 ---------------------------
