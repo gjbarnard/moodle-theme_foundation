@@ -386,25 +386,41 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                 if ($navoptions->participants) {
                     $participantstext = get_string('participants');
                     $participantslabel = '<span>'.$toolbox->getfontawesomemarkup('users', array('icon')).$participantstext.'</span>';
-                    $thiscoursemenubranch->add($participantslabel, new moodle_url('/user/index.php?id='.$PAGE->course->id), $participantstext);
+                    $thiscoursemenubranch->add(
+                        $participantslabel,
+                        new moodle_url('/user/index.php?id='.$PAGE->course->id),
+                        $participantstext
+                    );
                 }
 
                 if ($navoptions->badges) {
                     $badgestext = get_string('coursebadges', 'badges');
                     $badgeslabel = '<span>'.$toolbox->getfontawesomemarkup('shield-alt', array('icon')).$badgestext.'</span>';
-                    $thiscoursemenubranch->add($badgeslabel, new moodle_url('/badges/view.php', array('type' => 2, 'id' => $PAGE->course->id)), $badgestext);
+                    $thiscoursemenubranch->add(
+                        $badgeslabel,
+                        new moodle_url('/badges/view.php', array('type' => 2, 'id' => $PAGE->course->id)),
+                        $badgestext
+                    );
                 }
 
                 if ($navoptions->competencies) {
                     $competenciestext = get_string('competencies', 'core_competency');
                     $competencieslabel = '<span>'.$toolbox->getfontawesomemarkup('check-square', array('icon')).$competenciestext.'</span>';
-                    $thiscoursemenubranch->add($competencieslabel, new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)), $competenciestext);
+                    $thiscoursemenubranch->add(
+                        $competencieslabel,
+                        new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)),
+                        $competenciestext
+                    );
                 }
 
                 if ($navoptions->grades) {
                     $gradestext = get_string('grade');
                     $gradeslabel = '<span>'.$toolbox->getfontawesomemarkup('table', array('icon')).$gradestext.'</span>';
-                    $thiscoursemenubranch->add($gradeslabel, new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id)), $gradestext);
+                    $thiscoursemenubranch->add(
+                        $gradeslabel,
+                        new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id)),
+                        $gradestext
+                    );
                 }
             }
 
