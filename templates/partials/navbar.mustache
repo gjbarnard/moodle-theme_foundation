@@ -68,10 +68,18 @@
     </span>
     {{/ltiauth}}
 
+    {{#coursesmenu}}
     <ul class="navbar-nav d-flex">
         <!-- courses_menu -->
-        {{{coursemenu}}}
+        {{{coursesmenu}}}
     </ul>
+    {{/coursesmenu}}
+    {{#thiscoursemenu}}
+    <ul class="navbar-nav d-flex">
+        <!-- this_course_menu -->
+        {{{thiscoursemenu}}}
+    </ul>
+    {{/thiscoursemenu}}
     <ul class="navbar-nav d-none d-md-flex mr-auto">
         <!-- custom_menu -->
         {{{ output.custom_menu }}}

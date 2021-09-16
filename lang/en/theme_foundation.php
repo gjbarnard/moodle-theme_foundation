@@ -210,8 +210,10 @@ $string['urltargetself'] = 'Current page';
 $string['urltargetnew'] = 'New page';
 $string['urltargetparent'] = 'Parent frame';
 
+// Menus.
+$string['menusheading'] = 'Menus';
+
 // Courses menu.
-$string['coursesmenuheading'] = 'Courses menu';
 $string['coursesmenuheadingsub'] = 'Courses menu settings';
 $string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu of Foundation here.';
 $string['displaymycourses'] = 'Display courses';
@@ -247,6 +249,13 @@ $string['mylatestmodules'] = 'My latest modules';
 $string['myclasses'] = 'My classes';
 $string['mylatestclasses'] = 'My latest classes';
 $string['noenrolments'] = 'You have no current enrolments';
+
+// This course menu.
+$string['thiscoursemenuheadingsub'] = 'This course menu settings';
+$string['thiscoursemenuheadingdesc'] = 'Configure the settings for the \'This course\' menu of Foundation here.';
+$string['displaythiscourse'] = 'Display \'This course\' menu';
+$string['displaythiscoursedesc'] = 'Display the \'This course\' menu on the \'Navbar\' in a course.';
+$string['thiscourse'] = 'This course';
 
 // Modules.
 $string['moduleheading'] = 'Module';

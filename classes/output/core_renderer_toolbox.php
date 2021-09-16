@@ -709,12 +709,12 @@ trait core_renderer_toolbox {
     }
 
     /**
-     * Renders the course menu.
+     * Renders the a menu.
      *
-     * @param course_menu_item $menu Menu branch to add the course to.
+     * @param object $menu Menu branch.
      * @return string Markup if any.
      */
-    public function render_the_course_menu(course_menu_item $menu) {
+    public function render_the_menu($menu) {
         if (!$menu->has_children()) {
             return '';
         }
@@ -739,17 +739,7 @@ trait core_renderer_toolbox {
      * @return string
      */
     protected function render_custom_menu(\custom_menu $menu) {
-        if (!$menu->has_children()) {
-            return '';
-        }
-
-        $content = '';
-        foreach ($menu->get_children() as $item) {
-            $context = $item->export_for_template($this);
-            $content .= $this->render_from_template('core/custom_menu_item', $context);
-        }
-
-        return $content;
+        return $this->render_the_menu($menu);
     }
 
     /**
@@ -779,7 +769,7 @@ trait core_renderer_toolbox {
             return '';
         }
 
-        $menu = new course_menu_item('');
+        $menu = new foundation_menu_item('');
         $strlang = get_string('language');
         $currentlangcode = current_language();
         if (isset($langs[$currentlangcode])) {
