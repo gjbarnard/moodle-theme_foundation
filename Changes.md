@@ -1,11 +1,11 @@
 Version Information
 ===================
-Version 3.11.1.3 - TBR
+Version 3.11.1.3 - 22/09/21
 ---------------------------
 1. Fix 'Quick search in the forum brings an error' - #12.
 2. Add 'This course' menu with 'Badges', 'Competencies', 'Grades' and 'Participants'.
 
-Version 3.11.1.2 - 23/8/21
+Version 3.11.1.2 - 23/08/21
 ---------------------------
 1. Support change in Collapsed Topics renderer location in version 3.11.0.2.
 2. Fix 'Turn editing on button not visible in courses with Sandstone swatch' - #11.
