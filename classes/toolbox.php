@@ -1055,6 +1055,20 @@ class toolbox {
         return array_key_exists($themename, $this->theconfigs);
     }
 
+    /**
+     * Get the layout options for the theme.
+     *
+     * @param string $themename Theme name.
+     *
+     * @return array Of layouts with options if any.
+     */
+    public function get_theme_layout_options($themename) {
+        if (!$this->theme_exists($themename)) {
+            $this->add_theme($themename);
+        }
+        return $this->theconfigs[$themename]->layoutoptions;
+    }
+
     // Settings.
     /**
      * Gets the specified setting.
