@@ -759,7 +759,10 @@ trait core_renderer_toolbox {
             return '';
         }
 
-        if (empty($this->page->theme->layouts[$this->page->pagelayout]['options']['langmenu'])) {
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $headerlangmenu = $toolbox->get_setting('headerlangmenu');
+        $headerlangmenu = explode(',', $headerlangmenu);
+        if (!in_array($this->page->pagelayout, $headerlangmenu)) {
             // Only show the lang menu if the layout specifies it.
             return '';
         }
