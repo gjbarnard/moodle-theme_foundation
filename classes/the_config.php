@@ -71,6 +71,12 @@ class the_config {
     public $settings = null;
 
     /**
+     * @var array Layout options (if any) indexed by layout type, ref:
+     * https://docs.moodle.org/dev/Themes_overview#The_different_layouts_as_of_21st_April_2013.
+     */
+    public $layoutoptions = null;
+
+    /**
      * Load the config.php file for a particular theme, and return an instance
      * of this class. (That is, this is a factory method.)
      *
@@ -94,6 +100,14 @@ class the_config {
         $this->name = $config->name;
         $this->dir = $config->dir;
         $this->parents = $config->parents;
+
+        foreach ($config->layouts as $key => $value) {
+            if (!empty($value['options'])) {
+                $this->layoutoptions[$key] = $value['options'];
+            } else {
+                $this->layoutoptions[$key] = null;
+            }
+        }
     }
 
     /**

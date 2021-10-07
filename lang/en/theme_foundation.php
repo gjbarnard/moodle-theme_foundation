@@ -319,6 +319,26 @@ $string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the t
 $string['headerbackgroundbottomcolour'] = 'Header background bottom colour';
 $string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.  Enter \'-\' to ignore this setting.';
 
+$string['headerlangmenu'] = 'Header language menu';
+$string['headerlangmenudesc'] = 'Set the page layouts that you want the language menu to show on.  Use the \'Ctrl\' key to select more than one.  Notes:  Standard Moodle logic may prevent the language menu from showing, in which case this setting will have no effect.  Set the defaults in the theme\'s \'config.php\' file, i.e. "\'options\' => array(\'langmenu\' => true)" for the given layout.';
+$string['baselayout'] = "Base";
+$string['standardlayout'] = "Standard";
+$string['courselayout'] = "Course";
+$string['coursecategorylayout'] = "Course category";
+$string['incourselayout'] = "In course";
+$string['frontpagelayout'] = "Frontpage";
+$string['adminlayout'] = "Admin";
+$string['mydashboardlayout'] = "My dashboard";
+$string['mypubliclayout'] = "My public";
+$string['loginlayout'] = "Login";
+$string['popuplayout'] = "Popup";
+$string['frametoplayout'] = "Frametop";
+$string['embeddedlayout'] = "Embedded";
+$string['maintenancelayout'] = "Maintenance";
+$string['printlayout'] = "Print";
+$string['reportlayout'] = "Report";
+$string['securelayout'] = "Secure";
+
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';
 $string['closedrawer'] = 'Close drawer';

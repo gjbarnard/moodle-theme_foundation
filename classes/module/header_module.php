@@ -153,6 +153,29 @@ class header_module extends \theme_foundation\module_basement {
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Lang menu.
+        $name = 'theme_foundation/headerlangmenu';
+        $title = get_string('headerlangmenu', 'theme_foundation');
+        $description = get_string('headerlangmenudesc', 'theme_foundation');
+        $layoutoptions = $toolbox->get_theme_layout_options('foundation');
+        unset($layoutoptions['redirect']); // Does not make sense here.
+        $defaults = array();
+        $layouts = array();
+        foreach ($layoutoptions as $key => $value) {
+            $layouts[$key] = get_string($key.'layout', 'theme_foundation');
+            if (!empty($value['langmenu'])) {
+                $defaults[] = $key;
+            }
+        }
+        $setting = new \admin_setting_configmultiselect(
+            $name,
+            $title,
+            $description,
+            $defaults,
+            $layouts
+        );
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
     /**
