@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.10.1.6 - TBR
+---------------------------
+
 Version 3.10.1.5 - 22/09/21
 ---------------------------
 1. Fix 'Quick search in the forum brings an error' - #12.
