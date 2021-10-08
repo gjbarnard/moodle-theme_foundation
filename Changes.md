@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.10.1.6 - TBR
+Version 3.10.1.6 - 08/10/21
 ---------------------------
 1. Add header language menu setting.
 
