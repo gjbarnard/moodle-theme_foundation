@@ -1,0 +1,10 @@
+.secondary-navigation {
+    border-top-style: none;
+    border-bottom-style: none;
+    .navigation {
+        margin-bottom: map-get($spacers, 1);
+        .nav-tabs {
+            border-bottom-style: none;
+        }
+    }
+}

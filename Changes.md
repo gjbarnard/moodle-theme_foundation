@@ -1,8 +1,10 @@
 Version Information
 ===================
-Version 3.11.1.5 - TBR
+Version 4.0.0.1 - TBR
 ---------------------------
-1. Add Progress Section format single page support.
+1. Add core edit switch.
+2. Add core secondary navigation.
+3. Add Progress Section format single page support.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

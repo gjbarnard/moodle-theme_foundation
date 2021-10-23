@@ -45,11 +45,6 @@ trait core_renderer_toolbox {
         global $CFG, $COURSE, $USER;
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
-        $trio = (!empty($toolbox->get_setting('trio')));
-        if ($trio && ($mustache == 'columns2')) {
-            $mustache = 'columns3';
-        }
 
         $data = new \stdClass();
         $data->output = $this;
@@ -164,6 +159,21 @@ trait core_renderer_toolbox {
         $data->contextheadersettingsmenu = $this->context_header_settings_menu();
         $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
         $data->fav = !empty($toolbox->get_setting('fav'));
+
+        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        if ($mustache == 'columns2') {
+            if (!empty($toolbox->get_setting('trio'))) {
+                $mustache = 'columns3';
+            }
+
+            if (!defined('BEHAT_SITE_RUNNING')) {
+                $buildsecondarynavigation = $this->page->has_secondary_navigation();
+                if ($buildsecondarynavigation) {
+                    $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs');
+                    $data->secondarymoremenu = $moremenu->export_for_template($this);
+                }
+            }
+        }
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }

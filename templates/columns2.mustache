@@ -69,6 +69,7 @@
         {{{ output.full_header }}}
 
         {{> partials/alerts}}
+
         <div id="page-content" class="row pb-sm-3">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -77,6 +78,11 @@
                 </div>
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main" {{#haspreblocks}}class="has-blocks mb-3"{{/haspreblocks}} aria-label="{{#str}}content{{/str}}">
+                    {{#secondarymoremenu}}
+                    <div class="secondary-navigation">
+                        {{> core/moremenu}}
+                    </div>
+                    {{/secondarymoremenu}}
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}

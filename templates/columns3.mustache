@@ -73,8 +73,14 @@
         {{{ output.full_header }}}
 
         {{> partials/alerts}}
+
         <div id="page-content" class="row{{#haspreblocks}} blocks-pre{{/haspreblocks}}{{#haspostblocks}} blocks-post{{/haspostblocks}} d-print-block pb-sm-3">
             <div id="region-main-box" class="col-12 region-main">
+                {{#secondarymoremenu}}
+                <div class="secondary-navigation">
+                    {{> core/moremenu}}
+                </div>
+                {{/secondarymoremenu}}
                 {{#hasregionmainsettingsmenu}}
                 <div id="region-main-settings-menu" class="d-print-none">
                     {{{ output.region_main_settings_menu }}}

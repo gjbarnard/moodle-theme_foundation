@@ -44,6 +44,42 @@
     .context-header-settings-menu .dropdown-menu {
         top: 112%;
     }
+
+    .custom-control-label {
+        &::before {
+            background-color: $navbar-dark-color;
+        }
+        &::after {
+            background-color: $primary;
+        }
+    }
+
+    .custom-control-input:checked~.custom-control-label {
+        &::before {
+            background-color: $navbar-dark-color;
+            border-color: transparent;
+        }
+        &::after {
+            background-color: $primary;
+        }
+    }
+
+    .nav-editswitch {
+        @include hover-focus() {
+            .custom-control-label {
+                &::after {
+                    background-color: $navbar-dark-hover-color;
+                }
+            }
+
+            .custom-control-input:checked~.custom-control-label {
+                &::after {
+                    background-color: $navbar-dark-hover-color;
+                }
+            }
+        }
+    }
+
     .usermenu {
         .userinitials {
             background-color: $navbar-dark-color;
