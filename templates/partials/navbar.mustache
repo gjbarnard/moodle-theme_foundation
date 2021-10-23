@@ -69,13 +69,13 @@
     {{/ltiauth}}
 
     {{#coursesmenu}}
-    <ul class="navbar-nav d-flex">
+    <ul class="navbar-nav">
         <!-- courses_menu -->
         {{{coursesmenu}}}
     </ul>
     {{/coursesmenu}}
     {{#thiscoursemenu}}
-    <ul class="navbar-nav d-flex">
+    <ul class="navbar-nav">
         <!-- this_course_menu -->
         {{{thiscoursemenu}}}
     </ul>
@@ -108,7 +108,7 @@
         </li>
         {{#hascontextheadersettingsmenu}}
         <!-- context_header_settings_menu -->
-        <li class="nav-item nav-link context-header-settings-menu">
+        <li class="nav-item context-header-settings-menu">
             {{{ contextheadersettingsmenu }}}
         </li>
         {{/hascontextheadersettingsmenu}}
@@ -116,8 +116,11 @@
         <li class="nav-item navbar-plugin-output{{#fav}} fav{{/fav}}">
             {{{ output.navbar_plugin_output }}}
         </li>
+        <li class="nav-item nav-editswitch">
+            {{{ output.edit_switch }}}
+        </li>
         <!-- user_menu -->
-        <li class="nav-item d-flex">
+        <li class="nav-item">
             {{{ output.user_menu }}}
         </li>
     </ul>

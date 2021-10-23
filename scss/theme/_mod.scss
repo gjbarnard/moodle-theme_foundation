@@ -2,3 +2,15 @@
 #page-mod-hvp-mod .form-control-static {
     width: 100%;
 }
+
+.userinitials {
+    background-color: $navbar-dark-color;
+    @include hover-focus() {
+        background-color: $navbar-dark-hover-color;
+    }
+    background-color: $gray-200;
+    &.size-30 {
+        width: 30px;
+        height: 30px;
+    }
+}

@@ -194,3 +194,4 @@ $THEME->scss = function(theme_config $theme) {
 $THEME->extrascsscallback = 'theme_foundation_extra_scss';
 
 $THEME->iconsystem = '\\theme_foundation\\output\\icon_system_fontawesome';
+$THEME->haseditswitch = true;

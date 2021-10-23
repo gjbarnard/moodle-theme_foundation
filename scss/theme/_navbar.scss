@@ -44,9 +44,29 @@
     .context-header-settings-menu .dropdown-menu {
         top: 112%;
     }
-    .usermenu .dropdown-menu {
-        left: auto;
-        right: 0;
+    .usermenu {
+        .userinitials {
+            background-color: $navbar-dark-color;
+        }
+        .dropdown-toggle {
+            @include hover-focus() {
+                .userinitials {
+                    background-color: $navbar-dark-hover-color;
+                }
+            }
+        }
+
+        .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+    }
+    
+    .nav-editswitch {
+        color: $navbar-dark-color;
+        @include hover-focus() {
+            color: $navbar-dark-hover-color;
+        }
     }
 }
 
@@ -87,11 +107,11 @@
 
 .popover-region-toggle {
     &::after {
-        bottom: -3px;
+        bottom: -9px;
         right: 7px;
     }
     &::before {
-        bottom: -2px;
+        bottom: -8px;
         right: 6px;
     }
 }
@@ -149,6 +169,10 @@
 
     .dropdown-menu {
         top: unquote("calc(100% + 0.25rem)");  // stylelint-disable-line csstree/validator
+    }
+    
+    .userbutton .usertext {
+        vertical-align: middle;
     }
 }
 

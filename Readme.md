@@ -79,11 +79,11 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.11 version 2021051700.00 (Build: 20210517) and above within the 3.11 branch until the
+This version works with Moodle 4.0dev+ version 2021102200.00 (Build: 20211022) and above within the master branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/311/en/Installing_Moodle'.
+'docs.moodle.org/40/en/Installing_Moodle'.
 
 Installation
 ============
