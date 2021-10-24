@@ -68,6 +68,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
         // Information on https://fontawesome.com/how-to-use/upgrading-from-4.
         return [
+            'core:book' => 'fas fa-book', // TODO: Backport?  In 4.0, used in helplink in footer rather than information icon.
             'core:docs' => 'fas fa-info-circle',
             'core:help' => 'fas fa-question-circle text-info',
             'core:req' => 'fas fa-exclamation-circle text-danger',

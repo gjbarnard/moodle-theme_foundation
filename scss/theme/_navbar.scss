@@ -139,6 +139,10 @@
             }
         }
     }
+
+    a .icon {
+        color: inherit !important; /* stylelint-disable-line declaration-no-important */
+    }
 }
 
 .popover-region-toggle {

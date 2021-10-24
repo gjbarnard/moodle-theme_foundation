@@ -144,8 +144,11 @@ trait core_renderer_toolbox {
             $bodyclasses[] = 'course-hidden';
         }
 
+        $data->fav = !empty($toolbox->get_setting('fav'));
+        if ($data->fav) {
+            $bodyclasses[] = 'fav';
+        }
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
-
         if (!empty($bodyclasses)) {
             $bodyclasses = implode(' ', $bodyclasses);
         } else {
@@ -158,7 +161,6 @@ trait core_renderer_toolbox {
         require_once($CFG->dirroot.'/course/format/lib.php');  // For course_get_format() call?  Not sure if needed.
         $data->contextheadersettingsmenu = $this->context_header_settings_menu();
         $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
-        $data->fav = !empty($toolbox->get_setting('fav'));
 
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         if ($mustache == 'columns2') {

@@ -61,6 +61,11 @@
             </div>
         </div>
         {{/brandsenabled}}
+        {{# output.debug_footer_html }}
+        <div class="footer-content-debugging py-sm-3">
+            {{{ output.debug_footer_html }}}
+        </div>
+        {{/ output.debug_footer_html }}
         {{{ output.standard_end_of_body_html }}}
     </div>
 </footer>
