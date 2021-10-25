@@ -55,6 +55,43 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
+                'theme_foundation_generalmenuheading',
+                get_string('generalmenuheadingsub', 'theme_foundation'),
+                format_text(get_string('generalmenuheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Navbar position.
+        $name = 'theme_foundation/navbarposition';
+        $title = get_string('navbarposition', 'theme_foundation');
+        $description = get_string('navbarpositiondesc', 'theme_foundation');
+        $default = 'top';
+        $choices = array(
+            'bottom' => get_string('bottom', 'core_editor'),
+            'top' => get_string('top', 'core_editor')
+        );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Custom user menu url.
+        $name = 'theme_foundation/usermenulogouturl';
+        $title = get_string('usermenulogouturl', 'theme_foundation');
+        $default = '';
+        $description = get_string('usermenulogouturldesc', 'theme_foundation');
+        $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Edit switch.
+        $name = 'theme_foundation/navbareditswitch';
+        $title = get_string('navbareditswitch', 'theme_foundation');
+        $description = get_string('navbareditswitchdesc', 'theme_foundation');
+        $default = true;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $setting->set_updatedcallback('theme_reset_all_caches'); // Config file uses this setting.
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
                 'theme_foundation_coursesmenuheading',
                 get_string('coursesmenuheadingsub', 'theme_foundation'),
                 format_text(get_string('coursesmenuheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)

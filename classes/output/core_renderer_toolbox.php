@@ -128,11 +128,16 @@ trait core_renderer_toolbox {
         $data->nonavbar = (!empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nonavbar']));
         if ($data->nonavbar) {
             $bodyclasses[] = 'no-navbar';
+        } else {
+            if ($toolbox->get_setting('navbareditswitch')) {
+                $data->navbareditswitch = $this->edit_switch();
+            }
+            $data->navbarposition = $toolbox->get_setting('navbarposition');
+            if (empty($data->navbarposition)) {
+                $data->navbarposition = 'top';
+            }
         }
-        $data->navbarposition = $toolbox->get_setting('navbarposition');
-        if (empty($data->navbarposition)) {
-            $data->navbarposition = 'top';
-        }
+
         $bodyclasses[] = 'navbar-'.$data->navbarposition;
         $data->navbarbottom = ($data->navbarposition == 'bottom');
 
