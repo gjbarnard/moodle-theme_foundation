@@ -22,13 +22,11 @@
     Context variables required for this template:
     * output - The core renderer for the page.
     * navbarbottom - true if navbar is at the bottom of the page.
-    * fav - true if using Font Awesome 5.
 
     Example context (json):
     {
         "output": "",
-        "navbarbottom": false,
-        "fav": true
+        "navbarbottom": false
     }
 }}
 <footer id="page-footer" class="pt-3 {{^navbarbottom}}pb-3{{/navbarbottom}}{{#navbarbottom}}pb-6{{/navbarbottom}} bg-dark text-light">
@@ -69,7 +67,7 @@
         {{{ output.standard_end_of_body_html }}}
     </div>
 </footer>
-<span class="footerantigravity{{#fav}} fav{{/fav}}">
+<span class="footerantigravity">
     <button class="backtotop btn btn-primary" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
     <button class="gotobottom btn btn-primary" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-down"></span></button>
 </span>

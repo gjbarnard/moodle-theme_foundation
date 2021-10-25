@@ -21,7 +21,6 @@
 
     Context variables required for this template:
     * output - The core renderer for the page
-    * fav - true if using Font Awesome 5.
 
     Example context (json):
     {
@@ -31,8 +30,7 @@
             "page_title": "Test page",
             "favicon": "favicon.ico",
             "main_content": "<h1>Headings make html validators happier</h1>"
-         },
-        "fav": true
+         }
     }
 }}
 {{{ output.doctype }}}
@@ -55,7 +53,7 @@
         <section class="embedded-main">
             {{{ output.main_content }}}
         </section>
-        <span class="footerantigravity{{#fav}} fav{{/fav}}">
+        <span class="footerantigravity">
             <button class="backtotop btn btn-primary" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
             <button class="gotobottom btn btn-primary" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-down"></span></button>
         </span>

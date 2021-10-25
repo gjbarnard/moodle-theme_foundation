@@ -72,7 +72,7 @@
         top: calc(84% + #{$footer-antigravity-vertical-offset});
     }
 
-    &.fav {
+    .fav & {
         button {
             padding: 3px 8px 3px;
         }
