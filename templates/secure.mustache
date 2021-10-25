@@ -94,6 +94,7 @@
         </section>
         {{/hasdrawerblocks}}
 
+        {{^nofooter}}
         <footer id="page-footer" class="py-3 bg-dark text-light">
             <div class="container">
                 <div id="course-footer">{{{ output.course_footer }}}</div>
@@ -104,6 +105,7 @@
             <button class="backtotop btn btn-primary" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
             <button class="gotobottom btn btn-primary" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-down"></span></button>
         </span>
+        {{/nofooter}}
     </div>
 </body>
 </html>

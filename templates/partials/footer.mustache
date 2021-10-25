@@ -39,9 +39,9 @@
         {{/brandsenabled}}
         <div id="course-footer">{{{ output.course_footer }}}</div>
 
-        {{# output.page_doc_link }}
-            <p class="helplink">{{{ output.page_doc_link }}}</p>
-        {{/ output.page_doc_link }}
+        {{#pagedoclink }}
+            <p class="helplink">{{{ pagedoclink }}}</p>
+        {{/pagedoclink }}
 
         {{{ output.login_info }}}
         <div class="tool_usertours-resettourcontainer"></div>
@@ -61,11 +61,11 @@
             </div>
         </div>
         {{/brandsenabled}}
-        {{# output.debug_footer_html }}
+        {{#debugfooterhtml }}
         <div class="footer-content-debugging py-sm-3">
-            {{{ output.debug_footer_html }}}
+            {{{ debugfooterhtml }}}
         </div>
-        {{/ output.debug_footer_html }}
+        {{/debugfooterhtml }}
         {{{ output.standard_end_of_body_html }}}
     </div>
 </footer>

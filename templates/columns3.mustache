@@ -131,7 +131,9 @@
     {{/hasdrawerblocks}}
 
     {{{ output.standard_after_main_region_html }}}
-    {{> partials/footer }}
+    {{^nofooter}}
+        {{> partials/footer }}
+    {{/nofooter}}
 </div>
 
 </body>

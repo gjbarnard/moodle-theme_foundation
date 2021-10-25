@@ -53,9 +53,9 @@ trait core_renderer_toolbox {
 
         if ($this->page->include_region_main_settings_in_header_actions() &&
                 !$this->page->blocks->is_block_present('settings')) {
-            // Only include the region main settings if the page has requested it and it doesn't already have
-            // the settings block on it. The region main settings are included in the settings block and
-            // duplicating the content causes behat failures.
+            /* Only include the region main settings if the page has requested it and it doesn't already have
+               the settings block on it. The region main settings are included in the settings block and
+               duplicating the content causes behat failures. */
             $this->page->add_header_action(html_writer::div(
                 $regionmainsettingsmenu,
                 'd-print-none',
@@ -161,6 +161,12 @@ trait core_renderer_toolbox {
         require_once($CFG->dirroot.'/course/format/lib.php');  // For course_get_format() call?  Not sure if needed.
         $data->contextheadersettingsmenu = $this->context_header_settings_menu();
         $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
+
+        $data->nofooter = (!empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nofooter']));
+        if (!$data->nofooter) {
+            $data->pagedoclink = $this->page_doc_link();
+            $data->debugfooterhtml = $this->debug_footer_html();
+        }
 
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         if ($mustache == 'columns2') {

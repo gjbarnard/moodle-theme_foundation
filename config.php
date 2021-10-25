@@ -178,7 +178,8 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'secure',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-pre',
+        'options' => array('nofooter' => true)
     ),
 );
 
