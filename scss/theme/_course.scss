@@ -13,6 +13,10 @@
     }
 }
 
+.section li.activity.hasinfo {
+    border-bottom-width: 0;
+}
+
 .course-content ul.topics,
 .course-content ul.weeks {
     li.section {
@@ -32,8 +36,8 @@
     padding-left: 0;
 }
 
-.course-content ul li.section.main:last-child {
-    border-bottom: 1px solid $table-border-color;
+.course-content ul li.section.main {
+    border-bottom-width: 0;
 }
 
 .course-hidden .page-header-headings {
