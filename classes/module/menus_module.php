@@ -240,7 +240,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                 $branchtitle = get_string('my'.$lateststring.'courses', 'theme_foundation');
             }
             $branchlabel = $toolbox->getfontawesomemarkup('briefcase', array('icon')).
-                html_writer::tag('span', $branchtitle, array('class' => 'd-none d-sm-inline'));
+                html_writer::tag('span', $branchtitle, array('class' => 'd-none d-md-inline'));
             $branchurl = $PAGE->url;
             $branchsort = 200;
 

@@ -37,6 +37,14 @@
     }
 }
 
+@include media-breakpoint-down(sm) {
+    .navbar {
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+}
+
 .navbar-nav {
     .dropdown-menu {
         position: absolute;
@@ -162,6 +170,19 @@
     }
     &::before {
         right: 8px;
+    }
+}
+
+.navbar .nav-item {
+    .popover-region:nth-child(odd) {
+        .nav-link {
+            padding-right: ($nav-link-padding-y / 2);
+        }
+    }
+    .popover-region:nth-child(even) {
+        .nav-link {
+            padding-left: ($nav-link-padding-y / 2);
+        }
     }
 }
 

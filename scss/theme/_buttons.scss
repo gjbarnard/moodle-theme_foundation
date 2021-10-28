@@ -18,26 +18,20 @@
         opacity: 0;
     }
 
-    .bttc,
+    .bttc {
+        .nav-link {
+            padding: $nav-link-padding-y ($nav-link-padding-y / 2) $nav-link-padding-y $nav-link-padding-y;
+        }
+    }
     .gtbc {
         .nav-link {
-            padding: $nav-link-padding-y $nav-link-padding-x;
+            padding: $nav-link-padding-y $nav-link-padding-y $nav-link-padding-y ($nav-link-padding-y / 2);
         }
     }
 
     .antigravity {
         font-size: 24px;
         position: relative;
-
-        .backtotop,
-        .btts {
-            padding-right: 0.25rem !important; // stylelint-disable-line declaration-no-important
-        }
-
-        .gotobottom,
-        .gtbs {
-            padding-left: 0.25rem !important; // stylelint-disable-line declaration-no-important
-        }
     }
 }
 
