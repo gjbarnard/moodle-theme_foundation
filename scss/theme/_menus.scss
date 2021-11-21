@@ -32,7 +32,7 @@
     height: auto;
 }
 
-.navbar-bottom {
+.navbar-bottom .navbar {
     .dropdown-menu {
         bottom: 100%;
         top: auto;
@@ -41,7 +41,7 @@
     .navbar-nav .context-header-settings-menu .dropdown-menu {
         top: auto;
     }
-    .navbar .popover-region-container {
+    .popover-region-container {
         bottom: 50px;
         top: auto;
     }
@@ -60,5 +60,11 @@
             bottom: auto;
             top: -19px;
         }
+    }
+}
+
+.fav {
+    .dropdown-item[aria-current="true"]:before {
+        font: normal normal normal 14px/1 'Font Awesome 5 Free';
     }
 }

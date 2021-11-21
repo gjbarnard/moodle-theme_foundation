@@ -6,6 +6,8 @@ Version 3.11.1.5 - TBR
 2. Add horizontal 'Course end' block region that applies to the course, with a new
    'courseendblocksperrow' setting to set the blocks per row, causing 'blocksperrow'
    to be changed to 'marketingblocksperrow'.
+3. Fix 'Course overview' dropdown menu when the navbar is at the bottom.
+4. Fix 'Course overview' dropdown menu item 'All (except removed from view)' icon.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
