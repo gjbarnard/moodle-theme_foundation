@@ -5,6 +5,8 @@ Version 4.0.0.1 - TBR
 1. Add core edit switch with 'navbareditswitch' setting to enable / disable.
 2. Add core secondary navigation.
 3. Add Progress Section format single page support.
+4. Fix 'Course overview' dropdown menu when the navbar is at the bottom.
+5. Fix 'Course overview' dropdown menu item 'All (except removed from view)' icon.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
