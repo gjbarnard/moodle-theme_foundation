@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.11.1.5 - TBR
 ---------------------------
+1. Add Progress Section format single page support.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
