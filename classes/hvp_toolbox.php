@@ -23,8 +23,6 @@
  */
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Trait theme_foundation_core_h5p_renderer.
  *

@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output\core_question;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * The question bank renderer.
  *

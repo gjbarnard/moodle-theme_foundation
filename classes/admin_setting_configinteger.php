@@ -25,8 +25,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Integer admin setting with lower and upper limits.
  *

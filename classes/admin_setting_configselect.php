@@ -24,8 +24,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Config select setting that sets the default on first run.
  *

@@ -25,8 +25,6 @@
 
 namespace theme_foundation\module;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Frontpage carousel module.
  *

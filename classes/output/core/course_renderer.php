@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output\core;
 
-defined('MOODLE_INTERNAL') || die();
-
 use html_writer;
 use moodle_url;
 

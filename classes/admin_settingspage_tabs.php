@@ -26,8 +26,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die();
-
 use admin_settingpage;
 
 /**

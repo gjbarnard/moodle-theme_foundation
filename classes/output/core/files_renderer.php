@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output\core;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Rendering of files viewer related widgets.
  *

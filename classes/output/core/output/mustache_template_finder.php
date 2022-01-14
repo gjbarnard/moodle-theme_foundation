@@ -26,8 +26,6 @@
 
 namespace theme_foundation\output\core\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 use coding_exception;
 use core_component;
 use moodle_exception;

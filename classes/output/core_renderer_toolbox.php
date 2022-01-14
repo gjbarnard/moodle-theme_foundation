@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 use block_contents;
 use html_writer;
 

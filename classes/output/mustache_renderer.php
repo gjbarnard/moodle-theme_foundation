@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * The mustache renderer.
  *

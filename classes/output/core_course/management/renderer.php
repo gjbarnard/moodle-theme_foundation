@@ -25,8 +25,6 @@
 
 namespace theme_foundation\output\core_course\management;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * The course management renderer.
  *

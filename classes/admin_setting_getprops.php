@@ -25,8 +25,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Get properties class.
  *

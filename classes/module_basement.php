@@ -25,8 +25,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Abstract 'basement' class that all theme modules should extend.
  *

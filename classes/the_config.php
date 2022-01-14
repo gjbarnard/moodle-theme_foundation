@@ -33,8 +33,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die();
-
 use stdClass;
 
 /**

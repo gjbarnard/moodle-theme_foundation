@@ -26,8 +26,6 @@
 
 namespace theme_foundation\output\core\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Perform some custom name mapping for template file names.
  *

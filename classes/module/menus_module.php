@@ -25,8 +25,6 @@
 
 namespace theme_foundation\module;
 
-defined('MOODLE_INTERNAL') || die();
-
 use html_writer;
 use moodle_url;
 use theme_foundation\admin_setting_configselect;

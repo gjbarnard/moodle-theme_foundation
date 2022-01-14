@@ -24,10 +24,6 @@
 
 namespace theme_foundation;
 
-defined('MOODLE_INTERNAL') || die();
-
-use html_writer;
-
 /**
  * Colour picker that allows you to state 'use default' and not apply the setting.
  *
