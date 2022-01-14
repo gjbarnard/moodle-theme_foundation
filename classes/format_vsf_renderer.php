@@ -35,7 +35,7 @@ if (file_exists("$CFG->dirroot/course/format/vsf/classes/output/renderer.php")) 
      * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
      */
     class theme_foundation_format_vsf_renderer extends \format_vsf\output\renderer {
-        protected function vsf_get_nav_link_icons() {
+        public function vsf_get_nav_link_icons() {
             if (!empty(\theme_foundation\toolbox::get_config_setting('fav'))) {
                 return array(
                     'next' => 'far fa-arrow-alt-circle-right',
