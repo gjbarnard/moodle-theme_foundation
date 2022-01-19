@@ -3,6 +3,7 @@ a:hover {
 }
 
 #region-main {
+    padding-right: 15px;
     > .card {
         min-height: auto;
         padding-bottom: 1px; // Odd!  Prevents scroll bar from appearing on a course.

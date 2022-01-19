@@ -43,3 +43,21 @@
 .course-hidden .page-header-headings {
     font-style: italic;
 }
+
+#frontpage-available-course-list,
+#frontpage-course-list, 
+.course-search-result {
+    .coursebox {
+        border: none;
+    }
+}
+
+.activity-item:not(.activityinline) {
+    border: none;
+}
+
+.activity-add,
+.block-add {
+    border-style: none;
+}
+

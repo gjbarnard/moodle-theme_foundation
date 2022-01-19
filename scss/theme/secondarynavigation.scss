@@ -2,9 +2,15 @@
     border-top-style: none;
     border-bottom-style: none;
     .navigation {
+        border-bottom: none;
+        border-top: none;
         margin-bottom: map-get($spacers, 1);
         .nav-tabs {
             border-bottom-style: none;
+            justify-content: center;
+            .nav-item {
+                border-top: 1px solid $nav-tabs-border-color;
+            }
         }
     }
 }

@@ -62,7 +62,7 @@
         }
     }
 
-    .custom-control-input:checked~.custom-control-label {
+    .custom-control-input:checked ~ .custom-control-label {
         &::before {
             background-color: $navbar-dark-color;
             border-color: transparent;
@@ -80,7 +80,7 @@
                 }
             }
 
-            .custom-control-input:checked~.custom-control-label {
+            .custom-control-input:checked ~ .custom-control-label {
                 &::after {
                     background-color: $navbar-dark-hover-color;
                 }
@@ -105,7 +105,7 @@
             right: 0;
         }
     }
-    
+
     .nav-editswitch {
         color: $navbar-dark-color;
         @include hover-focus() {
@@ -149,7 +149,7 @@
     }
 
     a .icon {
-        color: inherit !important; /* stylelint-disable-line declaration-no-important */
+        color: inherit !important; // stylelint-disable-line declaration-no-important
     }
 }
 
@@ -229,7 +229,7 @@
     }
 
     .dropdown-menu {
-        top: unquote("calc(100% + 0.25rem)");  // stylelint-disable-line csstree/validator
+        top: unquote("calc(100% + 0.25rem)"); // stylelint-disable-line csstree/validator
     }
     
     .userbutton .usertext {
