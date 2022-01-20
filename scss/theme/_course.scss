@@ -61,3 +61,6 @@
     border-style: none;
 }
 
+.course-content ul li.section.main:not(.course-section) {
+    border-bottom: none;
+}
