@@ -113,10 +113,10 @@
     <licenseversion></licenseversion>
   </library>
   <library>
-    <location>./style/fontawesome/</location>
+    <location>./style/fontawesomev/</location>
     <name>Font Awesome - free - https://fontawesome.com</name>
     <license>Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License</license>
-    <version>5.15.2</version>
+    <version>5.15.4</version>
     <licenseversion></licenseversion>
   </library>
 </libraries>
