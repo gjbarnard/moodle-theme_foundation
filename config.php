@@ -30,14 +30,14 @@ $THEME->name = 'foundation';
 $THEME->parents = array();
 $THEME->sheets = array();
 if (!empty(\theme_foundation\toolbox::get_config_setting('fav'))) {
-    $THEME->sheets[] = 'fontawesome/fa-brands';
-    $THEME->sheets[] = 'fontawesome/fa-regular';
-    $THEME->sheets[] = 'fontawesome/fa-solid';
-    $THEME->sheets[] = 'fontawesome/fontawesome';
+    $THEME->sheets[] = 'fontawesomev/fa-brands';
+    $THEME->sheets[] = 'fontawesomev/fa-regular';
+    $THEME->sheets[] = 'fontawesomev/fa-solid';
+    $THEME->sheets[] = 'fontawesomev/fontawesome';
     if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
-        $THEME->sheets[] = 'fontawesome/fa-v4-shims';
+        $THEME->sheets[] = 'fontawesomev/fa-v4-shims';
     }
-    $THEME->sheets[] = 'fontawesome/fa-fixes';
+    $THEME->sheets[] = 'fontawesomev/fa-fixes';
 }
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
