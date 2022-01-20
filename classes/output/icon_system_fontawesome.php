@@ -37,12 +37,12 @@ defined('MOODLE_INTERNAL') || die();
 class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
     /**
-     * @var array $map Cached map of moodle icon names to Font Awesome icon names.
+     * @var array $map Cached map of Moodle icon names to Font Awesome icon names.
      */
     private $map = [];
 
     /**
-     * @var boolean $fav Using FontAwesome 5.
+     * @var int $fav Using FontAwesome 4, 5 or 6 - 0, 1 or 2 values.
      */
     private $fav;
 
@@ -60,13 +60,14 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * @return array the map.
      */
     public function get_core_icon_map() {
-        if (!$this->fav) {
+        if (empty($this->fav)) {
             $map = parent::get_core_icon_map();
             $map['core:i/navigationitem'] = 'fa-compass';
             return $map;
         }
 
         // Information on https://fontawesome.com/how-to-use/upgrading-from-4.
+        // TODO: Determine if any missing and if FA 5 / 6 need to be different.
         return [
             'core:docs' => 'fas fa-info-circle',
             'core:help' => 'fas fa-question-circle text-info',
@@ -443,13 +444,18 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * @return array the map.
      */
     public function get_icon_name_map() {
-        if (!$this->fav) {
+        if (empty($this->fav)) {
             return parent::get_icon_name_map();
         } else {
             if ($this->map === []) {
-                $cache = \cache::make('theme_foundation', 'fontawesome5iconmapping');
+                $cache = \cache::make('theme_foundation', 'foundationfontawesomeiconmapping');
 
-                $this->map = $cache->get('mapping');
+                $this->map = $cache->get('mapping'.$this->fav);
+                if ($this->fav == 1) {
+                    $getmethod = 'get_fa5_from_fa4';
+                } else {
+                    $getmethod = 'get_fa6_from_fa4';
+                }
 
                 if (empty($this->map)) {
                     $this->map = $this->get_core_icon_map();
@@ -460,15 +466,15 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
                         foreach ($pluginsfunction as $plugintype => $plugins) {
                             foreach ($plugins as $pluginsubtype => $pluginfunction) {
                                 $pluginmap = $pluginfunction();
-                                // Convert map from FA 4 to 5.
+                                // Convert map from FA 4 to 5 or 6.
                                 foreach ($pluginmap as $micon => $faicon) {
-                                    $pluginmap[$micon] = $toolbox->get_fa5_from_fa4($faicon, true);
+                                    $pluginmap[$micon] = $toolbox->{$getmethod}($faicon, true);
                                 }
                                 $this->map += $pluginmap;
                             }
                         }
                     }
-                    $cache->set('mapping', $this->map);
+                    $cache->set('mapping'.$this->fav, $this->map);
                 }
             }
         }
@@ -482,7 +488,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * @return string the name.
      */
     public function get_amd_name() {
-        if (!$this->fav) {
+        if (empty($this->fav)) {
             return parent::get_amd_name();
         }
         return 'theme_foundation/icon_system_fontawesome';
@@ -497,7 +503,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * @return string the rendered icon markup.
      */
     public function render_pix_icon(\renderer_base $output, \pix_icon $icon) {
-        if (!$this->fav) {
+        if (empty($this->fav)) {
             return parent::render_pix_icon($output, $icon);
         }
         $subtype = '\pix_icon_fontawesome';

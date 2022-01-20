@@ -96,12 +96,15 @@
     }
 }
 
-.navbar-plugin-output.fav .popover-region-toggle {
-    &::after {
-        right: 9px;
-    }
-    &::before {
-        right: 8px;
+.fav,
+.favi {
+    .navbar-plugin-output .popover-region-toggle {
+        &::after {
+            right: 9px;
+        }
+        &::before {
+            right: 8px;
+        }
     }
 }
 

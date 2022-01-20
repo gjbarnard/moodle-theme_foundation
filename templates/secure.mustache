@@ -27,7 +27,9 @@
     * hasdrawerblocks - true if there are drawer blocks on this page.
     * sidepreblocks - HTML for the side pre blocks.
     * haspreblocks - true if there are side pre blocks on this page.
+    * fa - true if using Font Awesome 4.
     * fav - true if using Font Awesome 5.
+    * favi - true if using Font Awesome 6.
 
       Example context (json):
     {
@@ -45,7 +47,9 @@
         "hasdrawerblocks": true,
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
         "haspreblocks": true,
-        "fav": true
+        "fa": false,
+        "fav": true,
+        "favi": false
     }
 }}
 {{> partials/head }}
@@ -100,7 +104,7 @@
                     {{{ output.standard_end_of_body_html }}}
                 </div>
         </footer>
-        <span class="footerantigravity{{#fav}} fav{{/fav}}">
+        <span class="footerantigravity{{#fav}} fav{{/fav}}{{#favi}} favi{{/favi}}">
             <button class="backtotop btn btn-primary" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-up"></span></button>
             <button class="gotobottom btn btn-primary" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="fa fa-angle-down"></span></button>
         </span>

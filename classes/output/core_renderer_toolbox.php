@@ -153,14 +153,21 @@ trait core_renderer_toolbox {
             $data->ltiauth = true;
         }
 
-        $data->fav = !empty($toolbox->get_setting('fav'));
-        if ($data->fav) {
-            $bodyclasses[] = 'fav';
-        }
         if (empty($COURSE->visible)) {
             $bodyclasses[] = 'course-hidden';
         }
 
+        $fav = $toolbox->get_setting('fav');
+        if (empty($fav)) {
+            $data->fa = true;
+            $bodyclasses[] = 'fa';
+        } else if ($fav == 1) {
+            $data->fav = true;
+            $bodyclasses[] = 'fav';
+        } else if ($fav == 2) {
+            $data->favi = true;
+            $bodyclasses[] = 'favi';
+        }
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
 
         if (!empty($bodyclasses)) {

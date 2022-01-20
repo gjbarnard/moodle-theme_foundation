@@ -8,6 +8,8 @@ Version 3.11.1.5 - TBR
    to be changed to 'marketingblocksperrow'.
 3. Fix 'Course overview' dropdown menu when the navbar is at the bottom.
 4. Fix 'Course overview' dropdown menu item 'All (except removed from view)' icon.
+5. Update FontAwesome from 5.12.2 to 5.12.4.
+6. Add FontAwesome 6.0.0-beta.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

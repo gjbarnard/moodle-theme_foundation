@@ -36,11 +36,19 @@ if (file_exists("$CFG->dirroot/course/format/vsf/classes/output/renderer.php")) 
      */
     class theme_foundation_format_vsf_renderer extends \format_vsf\output\renderer {
         protected function vsf_get_nav_link_icons() {
-            if (!empty(\theme_foundation\toolbox::get_config_setting('fav'))) {
-                return array(
-                    'next' => 'far fa-arrow-alt-circle-right',
-                    'previous' => 'far fa-arrow-alt-circle-left'
-                );
+            $fav = \theme_foundation\toolbox::get_config_setting('fav');
+            if (!empty($fav)) {
+                if ($fav == 1) { // FA 5 free.
+                    return array(
+                        'next' => 'far fa-arrow-alt-circle-right',
+                        'previous' => 'far fa-arrow-alt-circle-left'
+                    );
+                } else { // FA 6 free.
+                    return array(
+                        'next' => 'fa-regular fa-arrow-alt-circle-right',
+                        'previous' => 'fa-regular fa-arrow-alt-circle-left'
+                    );
+                }
             } else {
                 return array(
                     'next' => 'fa fa-arrow-circle-o-right',

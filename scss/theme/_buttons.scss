@@ -72,12 +72,21 @@
         top: calc(84% + #{$footer-antigravity-vertical-offset});
     }
 
-    &.fav {
+    .fav &,
+    .favi & {
         button {
             padding: 3px 8px 3px;
         }
+    }
+    .fav & {
         .backtotop {
             right: calc(2% + 31px - #{$footer-antigravity-horizontal-offset});
+        }
+    }
+
+    .favi & {
+        .backtotop {
+            right: calc(2% + 34px - #{$footer-antigravity-horizontal-offset});
         }
     }
 

@@ -95,10 +95,13 @@ $string['footerantigravityverticaloffsetdesc'] = 'Set the vertical offset of the
 $string['favicon'] = 'Custom favicon';
 $string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
 
-$string['fav'] = 'FontAwesome 5 Free';
-$string['favdesc'] = 'Use FontAwesome 5 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
-$string['faiv'] = 'FontAwesome 5 Free v4 shims';
-$string['faivdesc'] = 'When using FontAwesome 5 Free for the icons add support for version 4 icon class names.';
+$string['fav'] = 'FontAwesome 5 or 6 Free';
+$string['favdesc'] = 'Use FontAwesome 5 or 6 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
+$string['favoff'] = 'Off';
+$string['fa5name'] = 'FontAwesome 5 Free';
+$string['fa6name'] = 'FontAwesome 6 Free';
+$string['faiv'] = 'FontAwesome Free v4 shims';
+$string['faivdesc'] = 'When using FontAwesome Free for the icons add support for version 4 icon class names.';
 
 $string['courseendblocksperrow'] = 'Course end blocks per row';
 $string['courseendblocksperrowdesc'] = 'Number of blocks per row when using the \'Course end\' horizontal block region.  Note: When editing all blocks will be the same size to facilitate ease of use.';
