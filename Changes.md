@@ -7,6 +7,8 @@ Version 4.0.0.1 - TBR
 3. Add Progress Section format single page support.
 4. Fix 'Course overview' dropdown menu when the navbar is at the bottom.
 5. Fix 'Course overview' dropdown menu item 'All (except removed from view)' icon.
+6. Update FontAwesome from 5.12.2 to 5.12.4.
+7. Add FontAwesome 6.0.0-beta.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

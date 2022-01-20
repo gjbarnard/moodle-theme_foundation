@@ -398,8 +398,11 @@ class features_module extends \theme_foundation\module_basement implements \temp
 
             if (!empty($brandsenabled)) {
                 $data->thebrands = array();
-                if ($toolbox->get_setting('fav', 'foundation')) {
+                $fav = $toolbox->get_setting('fav', 'foundation');
+                if ($fav == 1) {
                     $data->brandclasses = 'fab fa-';
+                } else if ($fav == 2) {
+                    $data->brandclasses = 'fa-brands fa-';
                 } else {
                     $data->brandclasses = 'fa fa-';
                 }

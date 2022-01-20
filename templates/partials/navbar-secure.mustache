@@ -26,7 +26,9 @@
     * hasdrawerblocks - true if there are drawer blocks on this page.
     * drawerclosed - true if the drawer is closed on this page.
     * navbarposition - Position of the navbar on the page.
+    * fa - true if using Font Awesome 4.
     * fav - true if using Font Awesome 5.
+    * favi - true if using Font Awesome 6.
 
     Example context (json):
     {
@@ -39,15 +41,17 @@
         "hasdrawerblocks": true,
         "drawerclosed": true,
         "navbarposition": "top",
-        "fav": true
+        "fa": false,
+        "fav": true,
+        "favi": false
     }
 }}
 <nav class="fixed-{{navbarposition}} navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
     <div class="navbar-nav">
         <button id="drawer" class="btn btn-link nav-link" type="button">
-            <span id="drawerclose" class="{{^fav}}fa fa-hand-o-left{{/fav}}{{#fav}}far fa-hand-point-left{{/fav}}{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
-            <span id="draweropen" class="{{^fav}}fa fa-hand-o-right{{/fav}}{{#fav}}far fa-hand-point-right{{/fav}}{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
+            <span id="drawerclose" class="{{#fa}}fa fa-hand-o-left{{/fa}}{{#fav}}far fa-hand-point-left{{/fav}}{{#favi}}fa-regular fa-hand-point-left{{/favi}}{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
+            <span id="draweropen" class="{{#fa}}fa fa-hand-o-right{{/fa}}{{#fav}}far fa-hand-point-right{{/fav}}{{#favi}}fa-regular fa-hand-point-right{{/favi}}{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
         </button>
     </div>
     {{/hasdrawerblocks}}
@@ -64,12 +68,12 @@
         <li class="nav-item">
             <div class="d-flex navbarantigravity">
                 <div class="bttc antigravity">
-                    <div class="btts nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></div>
-                    <div class="backtotop nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-up{{/fav}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}"></span></div>
+                    <div class="btts nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{#fa}}fa fa-arrow-circle-o-up{{/fa}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}{{#favi}}fa-regular fa-arrow-alt-circle-up{{/favi}}"></span></div>
+                    <div class="backtotop nav-link" title="{{#str}}backtotop, theme_foundation{{/str}}"><span aria-hidden="true" class="{{#fa}}fa fa-arrow-circle-o-up{{/fa}}{{#fav}}far fa-arrow-alt-circle-up{{/fav}}{{#favi}}fa-regular fa-arrow-alt-circle-up{{/favi}}"></span></div>
                 </div>
                 <div class="gtbc antigravity">
-                    <div class="gtbs nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></div>
-                    <div class="gotobottom nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{^fav}}fa fa-arrow-circle-o-down{{/fav}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}"></span></div>
+                    <div class="gtbs nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{#fa}}fa fa-arrow-circle-o-down{{/fa}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}{{#favi}}fa-regular fa-arrow-alt-circle-down{{/favi}}"></span></div>
+                    <div class="gotobottom nav-link" title="{{#str}}gotobottom, theme_foundation{{/str}}"><span aria-hidden="true" class="{{#fa}}fa fa-arrow-circle-o-down{{/fa}}{{#fav}}far fa-arrow-alt-circle-down{{/fav}}{{#favi}}fa-regular fa-arrow-alt-circle-down{{/favi}}"></span></div>
                 </div>
             </div>
         </li>

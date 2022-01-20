@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die;
 
 $definitions = array(
     // Caches font awesome icons.
-    'fontawesome5iconmapping' => array(
+    'foundationfontawesomeiconmapping' => array(
         'mode' => cache_store::MODE_APPLICATION,
         'simplekeys' => true,
         'simpledata' => true,

@@ -147,9 +147,16 @@ trait core_renderer_toolbox {
             $bodyclasses[] = 'course-hidden';
         }
 
-        $data->fav = !empty($toolbox->get_setting('fav'));
-        if ($data->fav) {
+        $fav = $toolbox->get_setting('fav');
+        if (empty($fav)) {
+            $data->fa = true;
+            $bodyclasses[] = 'fa';
+        } else if ($fav == 1) {
+            $data->fav = true;
             $bodyclasses[] = 'fav';
+        } else if ($fav == 2) {
+            $data->favi = true;
+            $bodyclasses[] = 'favi';
         }
         $bodyclasses = array_merge($bodyclasses, $toolbox->body_classes());
         if (!empty($bodyclasses)) {

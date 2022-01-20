@@ -7,3 +7,13 @@
         line-height: 1;
     }
 }
+
+.favi {
+    .toast.toast-info .toast-body:before {
+        content: "\f05a"; // The (i) icon used when enrolling / unenrolling on a course on the message shown at the top of the page.
+        font-family: 'Font Awesome 6 Free';
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1;
+    }
+}
