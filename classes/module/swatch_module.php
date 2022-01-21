@@ -195,7 +195,9 @@ class swatch_module extends \theme_foundation\module_basement {
             'lux' => 'Lux',
             'materia' => 'Materia',
             'minty' => 'Minty',
+            'morph' => 'Morph',
             'pulse' => 'Pulse',
+            'quartz' => 'Quartz',
             'sandstone' => 'Sandstone',
             'seventies' => 'Seventies',
             'simplex' => 'Simplex',
@@ -205,7 +207,9 @@ class swatch_module extends \theme_foundation\module_basement {
             'spacelab' => 'Spacelab',
             'superhero' => 'Superhero',
             'united' => 'United',
-            'yeti' => 'Yeti'
+            'vapor' => 'Vapor',
+            'yeti' => 'Yeti',
+            'zephyr' => 'Zephyr'
         );
         $default = 'default';
         $setting = new \theme_foundation\admin_setting_configselect($name, $title, $description, $default, $choices);

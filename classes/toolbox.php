@@ -637,10 +637,59 @@ class toolbox {
             }
 
             @font-face {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Inter-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Inter';
+                font-style: italic;
+                font-weight: 400;
+                src: url('[[font:theme|Inter-Italic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                src: url('[[font:theme|Inter-Medium.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Inter';
+                font-style: italic;
+                font-weight: 500;
+                src: url('[[font:theme|Inter-MediumItalic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Inter-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Inter';
+                font-style: italic;
+                font-weight: 700;
+                src: url('[[font:theme|Inter-BoldItalic.ttf]]') format('truetype');
+            }
+
+            @font-face {
                 font-family: 'Lato';
                 font-style: normal;
                 font-weight: 300;
                 src: url('[[font:theme|Lato-Light.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-style: italic;
+                font-weight: 300;
+                src: url('[[font:theme|Lato-LightItalic.ttf]]') format('truetype');
             }
 
             @font-face {
@@ -663,6 +712,13 @@ class toolbox {
                 font-style: normal;
                 font-weight: 700;
                 src: url('[[font:theme|Lato-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Lato';
+                font-style: italic;
+                font-weight: 700;
+                src: url('[[font:theme|Lato-BoldItalic.ttf]]') format('truetype');
             }
 
             @font-face {
@@ -806,6 +862,48 @@ class toolbox {
             }
 
             @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 400;
+                src: url('[[font:theme|Nunito-Regular.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito';
+                font-style: italic;
+                font-weight: 400;
+                src: url('[[font:theme|Nunito-Italic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 600;
+                src: url('[[font:theme|Nunito-SemiBold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito';
+                font-style: italic;
+                font-weight: 600;
+                src: url('[[font:theme|Nunito-SemiBoldItalic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 700;
+                src: url('[[font:theme|Nunito-Bold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito';
+                font-style: italic;
+                font-weight: 700;
+                src: url('[[font:theme|Nunito-BoldItalic.ttf]]') format('truetype');
+            }
+
+            @font-face {
                 font-family: 'Nunito Sans';
                 font-style: normal;
                 font-weight: 400;
@@ -814,9 +912,23 @@ class toolbox {
 
             @font-face {
                 font-family: 'Nunito Sans';
+                font-style: italic;
+                font-weight: 400;
+                src: url('[[font:theme|NunitoSans-Italic.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito Sans';
                 font-style: normal;
                 font-weight: 600;
                 src: url('[[font:theme|NunitoSans-SemiBold.ttf]]') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Nunito Sans';
+                font-style: italic;
+                font-weight: 600;
+                src: url('[[font:theme|NunitoSans-SemiBoldItalic.ttf]]') format('truetype');
             }
 
             @font-face {

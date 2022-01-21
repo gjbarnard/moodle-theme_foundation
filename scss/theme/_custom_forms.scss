@@ -1,3 +1,5 @@
+// TODO - Find out why this is needed as conflicts with Vapor swatch - but now improved for Quartz swatch....
 .custom-select {
-    background: $white none no-repeat scroll 0% 0%;
+    background: lighten($body-bg, 10%) none no-repeat scroll 0% 0%;
+    color: $body-color;
 }
