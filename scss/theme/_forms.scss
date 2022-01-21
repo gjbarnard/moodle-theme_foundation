@@ -1,0 +1,10 @@
+.form-autocomplete-suggestions {
+    background-color: lighten($body-bg, 10%);
+    li {
+        &:hover,
+        &:focus,
+        &[aria-selected="true"] {
+            background-color: lighten($body-bg, 10%);
+        }
+    }
+}
