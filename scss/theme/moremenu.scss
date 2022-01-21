@@ -1,0 +1,15 @@
+.moremenu {
+    .nav-link {
+        height: $moremenu-height;
+        display: flex;
+        align-items: center;
+        border-right: none;
+        border-bottom: solid 3px transparent;
+        border-left: none;
+        border-top: none;
+        @include hover-focus() {
+            background-color: inherit;
+            border-color: inherit;
+        }
+    }
+}
