@@ -98,9 +98,9 @@ body {
 .form-select:not([multiple]) {
   transition: border-color .15s ease-in-out;
 
-  option {
-    color: $black;
-  }
+  //option {
+  //  color: $black;
+  //}
 }
 
 .bg-light .form-control {
