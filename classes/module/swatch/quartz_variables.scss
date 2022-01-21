@@ -94,7 +94,7 @@ $btn-box-shadow:              $box-shadow !default;
 
 // Forms
 
-$input-bg:                              transparent !default;
+$input-bg:                              lighten($body-bg, 10%) !default;
 $input-color:                           $body-color !default;
 $input-disabled-bg:                     rgba($white, .1) !default;
 
