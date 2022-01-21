@@ -11,6 +11,7 @@ Version 3.11.1.5 - TBR
 5. Update FontAwesome from 5.12.2 to 5.12.4.
 6. Add FontAwesome 6.0.0-beta.
 7. Add Morph, Quartz, Vapor and Zephyr bootswatches.
+8. Fix dark text on file type descriptions.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
