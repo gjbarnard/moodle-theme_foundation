@@ -16,6 +16,14 @@
 
 @font-face {
     font-family: 'Lato';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: unquote("url('[[font:theme|Lato-Italic.ttf]]') format('truetype')");
+}
+
+@font-face {
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     src: unquote("url('[[font:theme|Lato-Bold.ttf]]') format('truetype')");
@@ -23,11 +31,11 @@
 
 @font-face {
     font-family: 'Lato';
-    font-weight: 400;
     font-style: italic;
-    font-stretch: normal;
-    src: unquote("url('[[font:theme|Lato-Italic.ttf]]') format('truetype')");
+    font-weight: 700;
+    src: unquote("url('[[font:theme|Lato-BoldItalic.ttf]]') format('truetype')");
 }
+
 
 // Navbar ======================================================================
 
