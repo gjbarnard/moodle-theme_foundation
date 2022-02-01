@@ -12,6 +12,7 @@ Version 3.11.1.5 - TBR
 6. Add FontAwesome 6.0.0-beta.
 7. Add Morph, Quartz, Vapor and Zephyr bootswatches.
 8. Fix dark text on file type descriptions.
+9. Fix secondary colour.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
