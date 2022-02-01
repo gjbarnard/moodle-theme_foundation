@@ -122,26 +122,31 @@ body {
 .block_settings {
     .block_tree {
         .tree_item.branch {
-            margin-left: -4px;
+            margin-left: 6px;
             padding-left: 0;
         }
         p.hasicon {
             padding-left: 0;
-            margin-left: -12px;
+            margin-left: 0;
             text-indent: 0;
             img {
                 margin-left: 3px;
             }
         }
         ul {
-            margin-left: 0.25rem;
             padding-left: 1rem;
         }
 
         [aria-expanded="true"] > p:before {
-            margin-left: -4px;
+            margin-left: 0;
             margin-right: 4px;
         }
+    }
+}
+
+.block_navigation .block_tree {
+    .depth_2 ul {
+        margin-left: 0.25rem;
     }
 }
 
@@ -156,8 +161,4 @@ body {
     #settingsnav {
         padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
     }
-}
-
-.block_navigation .block_tree .depth_1 > ul {
-    margin: 0.25rem;
 }
