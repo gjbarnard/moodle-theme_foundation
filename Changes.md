@@ -14,6 +14,7 @@ Version 3.11.1.5 - TBR
 8. Fix dark text on file type descriptions.
 9. Fix secondary colour.
 10. Fix navigation and setting block positioning - pertaining to when hovered over.
+11. Fix default colours, especially pertaining to the navbar.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
