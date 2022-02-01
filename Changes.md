@@ -13,6 +13,7 @@ Version 3.11.1.5 - TBR
 7. Add Morph, Quartz, Vapor and Zephyr bootswatches.
 8. Fix dark text on file type descriptions.
 9. Fix secondary colour.
+10. Fix navigation and setting block positioning - pertaining to when hovered over.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
