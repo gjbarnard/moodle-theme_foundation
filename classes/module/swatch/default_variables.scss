@@ -17,8 +17,8 @@ $indigo:  #6610f2 !default;
 $purple:  #613d7c !default;
 $pink:    #e83e8c !default;
 $red:     #d9534f !default;
-$orange:  #f0ad4e !default;
-$yellow:  #ff7518 !default;
+$orange:  #ff7518 !default;
+$yellow:  #ffd800 !default;
 $green:   #5cb85c !default;
 $teal:    #20c997 !default;
 $cyan:    #5bc0de !default;
@@ -43,7 +43,9 @@ $font-size-base: 0.9375rem !default;
 $headings-font-weight:   300 !default;
 
 // Navbar
+$navbar-dark-color:                 rgba($white, 0.75) !default;
 $navbar-dark-hover-color:           rgba($white, 1) !default;
+$navbar-light-color:                rgba($black, .7) !default;
 $navbar-light-hover-color:          rgba($black, .9) !default;
 
 // Breadcrumbs
