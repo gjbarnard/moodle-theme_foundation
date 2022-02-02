@@ -76,20 +76,20 @@
 
         <div id="page-content" class="row{{#haspreblocks}} blocks-pre{{/haspreblocks}}{{#haspostblocks}} blocks-post{{/haspostblocks}} d-print-block pb-sm-3">
             <div id="region-main-box" class="col-12 region-main">
+                {{#hasregionmainsettingsmenu}}
+                <div id="region-main-settings-menu" class="d-print-none">
+                    {{{ output.region_main_settings_menu }}}
+                </div>
+                {{/hasregionmainsettingsmenu}}
                 {{#secondarymoremenu}}
                 <div class="secondary-navigation">
                     {{> core/moremenu}}
                 </div>
                 {{/secondarymoremenu}}
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none">
-                    {{{ output.region_main_settings_menu }}}
-                </div>
+                    <div class="region_main_settings_menu_proxy"></div>
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main" class="region-main-content mb-3" aria-label="{{#str}}content{{/str}}">
-                    {{#hasregionmainsettingsmenu}}
-                        <div class="region_main_settings_menu_proxy"></div>
-                    {{/hasregionmainsettingsmenu}}
                     {{{ output.course_content_header }}}
                     {{> partials/carousel}}
                     {{#hasposterblocks}}
