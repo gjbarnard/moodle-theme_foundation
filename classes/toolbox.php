@@ -461,6 +461,14 @@ class toolbox {
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
+            // Unaddable blocks.
+            $name = 'theme_foundation/unaddableblocks';
+            $title = get_string('unaddableblocks', 'theme_foundation');
+            $description = get_string('unaddableblocksdesc', 'theme_foundation');
+            $default = '';
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, true, false);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Pre SCSS.
             $name = 'theme_foundation/prescss';
             $title = get_string('prescss', 'theme_foundation');
