@@ -134,15 +134,14 @@ trait core_renderer_toolbox {
             if (empty($data->navbarposition)) {
                 $data->navbarposition = 'top';
             }
+            $bodyclasses[] = 'navbar-'.$data->navbarposition;
+            $data->navbarbottom = ($data->navbarposition == 'bottom');
 
             $data->navbarstyle = $toolbox->get_setting('navbarstyle');
             if (empty($data->navbarstyle)) {
                 $data->navbarstyle = 'dark';
             }
         }
-
-        $bodyclasses[] = 'navbar-'.$data->navbarposition;
-        $data->navbarbottom = ($data->navbarposition == 'bottom');
 
         if ((!empty($USER->auth)) && ($USER->auth == 'lti')) {
             $data->ltiauth = true;
