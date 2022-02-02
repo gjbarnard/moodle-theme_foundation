@@ -14,6 +14,7 @@ Version 4.0.0.1 - TBR
 10. Fix secondary colour.
 11. Fix navigation and setting block positioning - pertaining to when hovered over.
 12. Fix default colours, especially pertaining to the navbar.
+13. New 'MyCourses' layout, see MDL-70801 and MDL-73173.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

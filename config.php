@@ -116,6 +116,14 @@ $THEME->layouts = array(
         'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
+    // My courses page.
+    'mycourses' => array(
+        'file' => 'layout.php',
+        'mustache' => 'columns2',
+        'regions' => $regions,
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true, 'nocontextheader' => true)
+    ),
     // My dashboard page.
     'mydashboard' => array(
         'file' => 'layout.php',

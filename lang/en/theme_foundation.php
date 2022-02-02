@@ -338,6 +338,7 @@ $string['coursecategorylayout'] = "Course category";
 $string['incourselayout'] = "In course";
 $string['frontpagelayout'] = "Frontpage";
 $string['adminlayout'] = "Admin";
+$string['mycourseslayout'] = "My courses";
 $string['mydashboardlayout'] = "My dashboard";
 $string['mypubliclayout'] = "My public";
 $string['loginlayout'] = "Login";
