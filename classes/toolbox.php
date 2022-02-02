@@ -398,26 +398,6 @@ class toolbox {
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Navbar position.
-            $name = 'theme_foundation/navbarposition';
-            $title = get_string('navbarposition', 'theme_foundation');
-            $description = get_string('navbarpositiondesc', 'theme_foundation');
-            $default = 'top';
-            $choices = array(
-                'bottom' => get_string('bottom', 'core_editor'),
-                'top' => get_string('top', 'core_editor')
-            );
-            $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
-
-            // Custom user menu url.
-            $name = 'theme_foundation/usermenulogouturl';
-            $title = get_string('usermenulogouturl', 'theme_foundation');
-            $default = '';
-            $description = get_string('usermenulogouturldesc', 'theme_foundation');
-            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-            $settingspages['general'][self::SETTINGPAGE]->add($setting);
-
             // Footer anti-gravity horizontal offset.
             $name = 'theme_foundation/footerantigravityhorizontaloffset';
             $title = get_string('footerantigravityhorizontaloffset', 'theme_foundation');

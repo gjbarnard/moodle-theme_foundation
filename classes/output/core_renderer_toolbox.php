@@ -141,13 +141,20 @@ trait core_renderer_toolbox {
         $data->nonavbar = (!empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nonavbar']));
         if ($data->nonavbar) {
             $bodyclasses[] = 'no-navbar';
+        } else {
+            $data->navbarposition = $toolbox->get_setting('navbarposition');
+            if (empty($data->navbarposition)) {
+                $data->navbarposition = 'top';
+            }
+
+            $data->navbarstyle = $toolbox->get_setting('navbarstyle');
+            if (empty($data->navbarstyle)) {
+                $data->navbarstyle = 'dark';
+            }
+
+            $bodyclasses[] = 'navbar-'.$data->navbarposition;
+            $data->navbarbottom = ($data->navbarposition == 'bottom');
         }
-        $data->navbarposition = $toolbox->get_setting('navbarposition');
-        if (empty($data->navbarposition)) {
-            $data->navbarposition = 'top';
-        }
-        $bodyclasses[] = 'navbar-'.$data->navbarposition;
-        $data->navbarbottom = ($data->navbarposition == 'bottom');
 
         if ((!empty($USER->auth)) && ($USER->auth == 'lti')) {
             $data->ltiauth = true;

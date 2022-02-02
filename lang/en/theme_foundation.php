@@ -80,12 +80,6 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
 
-$string['navbarposition'] = 'Navbar position';
-$string['navbarpositiondesc'] = 'Set the position of the navbar.';
-
-$string['usermenulogouturl'] = 'User menu log out URL';
-$string['usermenulogouturldesc'] = 'Set a custom URL to use for the \'Log out\' menu item on the user menu.  Leave blank for system default.  When set, will only work if Foundation is not installed in $CFG->themedir.';
-
 $string['footerantigravityhorizontaloffset'] = 'Screen anti-gravity horizontal offset';
 $string['footerantigravityhorizontaloffsetdesc'] = 'Set the horizontal offset of the anti-gravity buttons on the screen (not the navbar) from the default.  This can be an positive (move right) or negative (move left) number.  The units are pixels.  Note:  Flip this logic for RTL languages.';
 
@@ -219,6 +213,21 @@ $string['urltargetparent'] = 'Parent frame';
 
 // Menus.
 $string['menusheading'] = 'Menus';
+
+// General menus menu.
+$string['generalmenuheadingsub'] = 'General';
+$string['generalmenuheadingdesc'] = 'Configure the general menu settings for Foundation here.';
+
+$string['navbarposition'] = 'Navbar position';
+$string['navbarpositiondesc'] = 'Set the position of the navbar.';
+
+$string['navbarstyle'] = 'Navbar style';
+$string['navbarstyledesc'] = 'Light or Dark.';
+$string['navbarstyledark'] = 'Dark';
+$string['navbarstylelight'] = 'Light';
+
+$string['usermenulogouturl'] = 'User menu log out URL';
+$string['usermenulogouturldesc'] = 'Set a custom URL to use for the \'Log out\' menu item on the user menu.  Leave blank for system default.  When set, will only work if Foundation is not installed in $CFG->themedir.';
 
 // Courses menu.
 $string['coursesmenuheadingsub'] = 'Courses menu settings';
