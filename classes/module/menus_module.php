@@ -83,6 +83,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
             'light' => get_string('navbarstylelight', 'theme_foundation')
         );
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting->set_updatedcallback('theme_reset_all_caches'); // Config file uses this setting.
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Custom user menu url.
