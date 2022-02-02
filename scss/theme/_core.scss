@@ -15,6 +15,13 @@ a:hover {
     border: none;
 }
 
+@include media-breakpoint-up(sm) {
+    .context-header-settings-menu,
+    .region-main-settings-menu {
+        margin-top: 0;
+    }
+}
+
 @include media-breakpoint-down(sm) {
     .pagelayout-mydashboard #region-main {
         padding: 5px;
