@@ -26,6 +26,9 @@
             margin-right: 0;
         }
     }
+    a .icon {
+        color: inherit !important; // stylelint-disable-line declaration-no-important
+    }
 }
 
 @include media-breakpoint-up(xs) {
@@ -152,55 +155,47 @@
             }
         }
     }
+    
+    .logininfo {
+        @if $navbar-style == light {
+            color: $navbar-light-color;
+        }
+        @else {
+            color: $navbar-dark-color;
+        }
+        padding: $nav-link-padding-y $nav-link-padding-x;
+    }
+    .dropdown-menu,
+    .searchform-navbar {
+        a .icon {
+            color: inherit !important; // stylelint-disable-line declaration-no-important
+        }
+    }
+    .simplesearchform .btn {
+        @include hover-focus() {
+            > .icon {
+                color: $body-color !important; // stylelint-disable-line declaration-no-important
+            }
+        }
+    }
+    .dropdown-toggle,
+    .nav-link,
+    .simplesearchform .btn-open {
+        @include hover-focus() {
+            > .icon {
+                @if $navbar-style == light {
+                    color: $navbar-light-hover-color !important; // stylelint-disable-line declaration-no-important
+                }
+                @else {
+                    color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                }
+            }
+        }
+    }
 }
 
 .nav .caret {
     margin-left: 0;
-}
-
-.navbar-dark {
-    .navbar-nav {
-        .logininfo {
-            @if $navbar-style == light {
-                color: $navbar-light-color;
-            }
-            @else {
-                color: $navbar-dark-color;
-            }
-            padding: $nav-link-padding-y $nav-link-padding-x;
-        }
-        .dropdown-menu,
-        .searchform-navbar {
-            a .icon {
-                color: inherit !important; // stylelint-disable-line declaration-no-important
-            }
-        }
-        .simplesearchform .btn {
-            @include hover-focus() {
-                > .icon {
-                    color: $body-color !important; // stylelint-disable-line declaration-no-important
-                }
-            }
-        }
-        .dropdown-toggle,
-        .nav-link,
-        .simplesearchform .btn-open {
-            @include hover-focus() {
-                > .icon {
-                    @if $navbar-style == light {
-                        color: $navbar-light-hover-color !important; // stylelint-disable-line declaration-no-important
-                    }
-                    @else {
-                        color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
-                    }
-                }
-            }
-        }
-    }
-
-    a .icon {
-        color: inherit !important; // stylelint-disable-line declaration-no-important
-    }
 }
 
 .popover-region-toggle {
