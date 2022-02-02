@@ -1,3 +1,13 @@
+.btn.btn-icon {
+    @include hover-focus {
+        background-color: $primary;
+        color: $body-bg;
+    }
+    &.icon-size-3 {
+        line-height: 36px!important;
+    }
+}
+
 .forgetpass .btn {
     white-space: normal;
 }

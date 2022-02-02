@@ -122,7 +122,7 @@ $THEME->layouts = array(
         'mustache' => 'columns2',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true, 'nocontextheader' => true)
+        'options' => array('langmenu' => true)
     ),
     // My dashboard page.
     'mydashboard' => array(
