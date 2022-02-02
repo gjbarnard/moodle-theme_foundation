@@ -16,6 +16,7 @@ Version 4.0.0.1 - TBR
 12. Fix default colours, especially pertaining to the navbar.
 13. New 'MyCourses' layout, see MDL-70801 and MDL-73173.
 14. Added 'unaddableblocks' setting - MDL-73347 and MDL-73719.
+15. Added 'navbarstyle' setting so that light coloured navbar's can have dark text.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

@@ -26,6 +26,7 @@
     * hasdrawerblocks - true if there are drawer blocks on this page.
     * drawerclosed - true if the drawer is closed on this page.
     * navbarposition - Position of the navbar on the page.
+    * navbarstyle - Style.
     * fa - true if using Font Awesome 4.
     * fav - true if using Font Awesome 5.
     * favi - true if using Font Awesome 6.
@@ -38,12 +39,13 @@
         "hasdrawerblocks": true,
         "drawerclosed": true,
         "navbarposition": "top",
+        "navbarstyle": "dark",
         "fa": false,
         "fav": true,
         "favi": false
     }
 }}
-<nav class="fixed-{{navbarposition}} navbar navbar-dark bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<nav class="fixed-{{navbarposition}} navbar navbar-{{navbarstyle}} bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{#hasdrawerblocks}}
     <div class="navbar-nav">
         <button id="drawer" class="btn btn-link nav-link" type="button">

@@ -134,6 +134,11 @@ trait core_renderer_toolbox {
             if (empty($data->navbarposition)) {
                 $data->navbarposition = 'top';
             }
+
+            $data->navbarstyle = $toolbox->get_setting('navbarstyle');
+            if (empty($data->navbarstyle)) {
+                $data->navbarstyle = 'dark';
+            }
         }
 
         $bodyclasses[] = 'navbar-'.$data->navbarposition;

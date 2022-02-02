@@ -210,6 +210,51 @@ $string['urltargetself'] = 'Current page';
 $string['urltargetnew'] = 'New page';
 $string['urltargetparent'] = 'Parent frame';
 
+// Header.
+$string['headerheading'] = 'Header';
+$string['headerheadingsub'] = 'Header settings';
+$string['headerheadingdesc'] = 'Configure the header settings for Foundation here.';
+$string['header'] = 'Header';
+$string['headerdesc'] = 'Header desc.';
+
+$string['headerbackground'] = 'Header background';
+$string['headerbackgrounddesc'] = 'Header background image.';
+
+$string['headerbackgroundposition'] = 'Header background position';
+$string['headerbackgroundpositiondesc'] = 'Select the position for the uploaded image.';
+$string['headerbackgroundstyle'] = 'Header background style';
+$string['headerbackgroundstyledesc'] = 'Select the style for the uploaded image.';
+$string['headerbackgroundbottomopacity'] = 'Header background bottom opacity.';
+$string['headerbackgroundbottomopacitydesc'] = 'Header background bottom opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
+$string['headerbackgroundtopopacity'] = 'Header background top opacity.';
+$string['headerbackgroundtopopacitydesc'] = 'Header background top opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
+
+$string['headerbackgroundtopcolour'] = 'Header background top colour';
+$string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the top of the header when there is a background.  Enter \'-\' to ignore this setting.';
+$string['headerbackgroundbottomcolour'] = 'Header background bottom colour';
+$string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.  Enter \'-\' to ignore this setting.';
+
+$string['headerlangmenu'] = 'Header language menu';
+$string['headerlangmenudesc'] = 'Set the page layouts that you want the language menu to show on.  Use the \'Ctrl\' key to select more than one.  Notes:  Standard Moodle logic may prevent the language menu from showing, in which case this setting will have no effect.  Set the defaults in the theme\'s \'config.php\' file, i.e. "\'options\' => array(\'langmenu\' => true)" for the given layout.';
+$string['baselayout'] = "Base";
+$string['standardlayout'] = "Standard";
+$string['courselayout'] = "Course";
+$string['coursecategorylayout'] = "Course category";
+$string['incourselayout'] = "In course";
+$string['frontpagelayout'] = "Frontpage";
+$string['adminlayout'] = "Admin";
+$string['mycourseslayout'] = "My courses";
+$string['mydashboardlayout'] = "My dashboard";
+$string['mypubliclayout'] = "My public";
+$string['loginlayout'] = "Login";
+$string['popuplayout'] = "Popup";
+$string['frametoplayout'] = "Frametop";
+$string['embeddedlayout'] = "Embedded";
+$string['maintenancelayout'] = "Maintenance";
+$string['printlayout'] = "Print";
+$string['reportlayout'] = "Report";
+$string['securelayout'] = "Secure";
+
 // Menus.
 $string['menusheading'] = 'Menus';
 
@@ -219,6 +264,11 @@ $string['generalmenuheadingdesc'] = 'Configure the general menu settings for Fou
 
 $string['navbarposition'] = 'Navbar position';
 $string['navbarpositiondesc'] = 'Set the position of the navbar.';
+
+$string['navbarstyle'] = 'Navbar style';
+$string['navbarstyledesc'] = 'Light or Dark.';
+$string['navbarstyledark'] = 'Dark';
+$string['navbarstylelight'] = 'Light';
 
 $string['usermenulogouturl'] = 'User menu log out URL';
 $string['usermenulogouturldesc'] = 'Set a custom URL to use for the \'Log out\' menu item on the user menu.  Leave blank for system default.  When set, will only work if Foundation is not installed in $CFG->themedir.';
@@ -307,51 +357,6 @@ $string['swatchcustomfontsizebasedesc'] = 'Set the base font size as a number.  
 
 $string['swatchcustomlineheightbase'] = 'Line height base';
 $string['swatchcustomlineheightbasedesc'] = 'Set the base line height as a number.';
-
-// Header.
-$string['headerheading'] = 'Header';
-$string['headerheadingsub'] = 'Header settings';
-$string['headerheadingdesc'] = 'Configure the header settings for Foundation here.';
-$string['header'] = 'Header';
-$string['headerdesc'] = 'Header desc.';
-
-$string['headerbackground'] = 'Header background';
-$string['headerbackgrounddesc'] = 'Header background image.';
-
-$string['headerbackgroundposition'] = 'Header background position';
-$string['headerbackgroundpositiondesc'] = 'Select the position for the uploaded image.';
-$string['headerbackgroundstyle'] = 'Header background style';
-$string['headerbackgroundstyledesc'] = 'Select the style for the uploaded image.';
-$string['headerbackgroundbottomopacity'] = 'Header background bottom opacity.';
-$string['headerbackgroundbottomopacitydesc'] = 'Header background bottom opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
-$string['headerbackgroundtopopacity'] = 'Header background top opacity.';
-$string['headerbackgroundtopopacitydesc'] = 'Header background top opacity when there is a background image.  The colour is set by the \'body-bg\' SCSS variable.';
-
-$string['headerbackgroundtopcolour'] = 'Header background top colour';
-$string['headerbackgroundtopcolourdesc'] = 'Set the colour of the text for the top of the header when there is a background.  Enter \'-\' to ignore this setting.';
-$string['headerbackgroundbottomcolour'] = 'Header background bottom colour';
-$string['headerbackgroundbottomcolourdesc'] = 'Set the colour of the text for the bottom of the header when there is a background.  Enter \'-\' to ignore this setting.';
-
-$string['headerlangmenu'] = 'Header language menu';
-$string['headerlangmenudesc'] = 'Set the page layouts that you want the language menu to show on.  Use the \'Ctrl\' key to select more than one.  Notes:  Standard Moodle logic may prevent the language menu from showing, in which case this setting will have no effect.  Set the defaults in the theme\'s \'config.php\' file, i.e. "\'options\' => array(\'langmenu\' => true)" for the given layout.';
-$string['baselayout'] = "Base";
-$string['standardlayout'] = "Standard";
-$string['courselayout'] = "Course";
-$string['coursecategorylayout'] = "Course category";
-$string['incourselayout'] = "In course";
-$string['frontpagelayout'] = "Frontpage";
-$string['adminlayout'] = "Admin";
-$string['mycourseslayout'] = "My courses";
-$string['mydashboardlayout'] = "My dashboard";
-$string['mypubliclayout'] = "My public";
-$string['loginlayout'] = "Login";
-$string['popuplayout'] = "Popup";
-$string['frametoplayout'] = "Frametop";
-$string['embeddedlayout'] = "Embedded";
-$string['maintenancelayout'] = "Maintenance";
-$string['printlayout'] = "Print";
-$string['reportlayout'] = "Report";
-$string['securelayout'] = "Secure";
 
 // Accessibility.
 $string['navbarmenus'] = 'Navbar menus';

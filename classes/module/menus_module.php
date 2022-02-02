@@ -71,6 +71,18 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
+        // Navbar style.
+        $name = 'theme_foundation/navbarstyle';
+        $title = get_string('navbarstyle', 'theme_foundation');
+        $description = get_string('navbarstyledesc', 'theme_foundation');
+        $default = 'dark';
+        $choices = array(
+            'dark' => get_string('navbarstyledark', 'theme_foundation'),
+            'light' => get_string('navbarstylelight', 'theme_foundation')
+        );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
         // Custom user menu url.
         $name = 'theme_foundation/usermenulogouturl';
         $title = get_string('usermenulogouturl', 'theme_foundation');
