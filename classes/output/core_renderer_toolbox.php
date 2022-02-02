@@ -160,7 +160,7 @@ trait core_renderer_toolbox {
         $fav = $toolbox->get_setting('fav');
         if (empty($fav)) {
             $data->fa = true;
-            $bodyclasses[] = 'fa';
+            $bodyclasses[] = 'faiiii';
         } else if ($fav == 1) {
             $data->fav = true;
             $bodyclasses[] = 'fav';
