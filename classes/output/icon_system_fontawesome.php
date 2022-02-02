@@ -226,6 +226,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/dashboard' => 'fas fa-tachometer-alt',
             'core:i/lock' => 'fas fa-lock',
             'core:i/categoryevent' => 'fas fa-cubes',
+            'core:i/contentbank' => 'fas fa-paint-brush',
             'core:i/course' => 'fas fa-graduation-cap',
             'core:i/courseevent' => 'fas fa-university',
             'core:i/customfield' => 'far fa-hand-point-right',
