@@ -57,7 +57,12 @@
 .navbar-dark {
     .navbar-nav {
         .logininfo {
-            color: $navbar-dark-color;
+            @if $navbar-style == light {
+                color: $navbar-light-color;
+            }
+            @else {
+                color: $navbar-dark-color;
+            }
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
         .dropdown-menu,
@@ -78,7 +83,12 @@
         .simplesearchform .btn-open {
             @include hover-focus() {
                 > .icon {
-                    color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                    @if $navbar-style == light {
+                        color: $navbar-light-hover-color !important; // stylelint-disable-line declaration-no-important
+                    }
+                    @else {
+                        color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                    }
                 }
             }
         }

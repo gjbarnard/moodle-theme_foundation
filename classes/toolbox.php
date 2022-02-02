@@ -210,6 +210,13 @@ class toolbox {
         }
 
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/foundation_variables.scss');
+
+        $navbarstyle = $this->get_setting('navbarstyle');
+        if (empty($navbarstyle)) {
+            $navbarstyle = 'dark';
+        }
+        $scss .= '$navbar-style: '.$navbarstyle.';'.PHP_EOL;
+
         $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
 
         return $scss;

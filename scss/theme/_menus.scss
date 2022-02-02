@@ -1,6 +1,22 @@
-.context-header-settings-menu a.dropdown-toggle,
 .dropdown-item a .icon {
     color: inherit !important; // stylelint-disable-line declaration-no-important
+}
+
+.context-header-settings-menu a.dropdown-toggle {
+    @if $navbar-style == light {
+        color: $navbar-light-color;
+    }
+    @else {
+        color: $navbar-dark-color;
+    }
+    @include hover-focus() {
+        @if $navbar-style == light {
+            color: $navbar-light-hover-color;
+        }
+        @else {
+            color: $navbar-dark-hover-color;
+        }
+    }
 }
 
 .dropdown-menu,
@@ -21,10 +37,20 @@
 .dropdown-item:active,
 .dropdown-item.active {
     @include gradient-bg($primary);
-    color: $navbar-dark-hover-color;
+    @if $navbar-style == light {
+        color: $navbar-light-hover-color;
+    }
+    @else {
+        color: $navbar-dark-hover-color;
+    }
     a {
         @include gradient-bg($primary);
-        color: $navbar-dark-hover-color;
+        @if $navbar-style == light {
+            color: $navbar-light-hover-color;
+        } 
+        @else {
+            color: $navbar-dark-hover-color;
+        }
     }
 }
 
