@@ -79,11 +79,9 @@
                 <div id="region-main-settings-menu" class="d-print-none">
                     {{{ output.region_main_settings_menu }}}
                 </div>
+                <div class="region_main_settings_menu_proxy"></div>
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main" class="region-main-content mb-3" aria-label="{{#str}}content{{/str}}">
-                    {{#hasregionmainsettingsmenu}}
-                        <div class="region_main_settings_menu_proxy"></div>
-                    {{/hasregionmainsettingsmenu}}
                     {{{ output.course_content_header }}}
                     {{> partials/carousel}}
                     {{#hasposterblocks}}
