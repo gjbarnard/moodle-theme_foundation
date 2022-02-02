@@ -55,7 +55,12 @@
 
     .custom-control-label {
         &::before {
-            background-color: $navbar-dark-color;
+            @if $navbar-style == light {
+                background-color: $navbar-light-color;
+            }
+            @else {
+                background-color: $navbar-dark-color;
+            }
         }
         &::after {
             background-color: $primary;
@@ -64,7 +69,12 @@
 
     .custom-control-input:checked ~ .custom-control-label {
         &::before {
-            background-color: $navbar-dark-color;
+            @if $navbar-style == light {
+                background-color: $navbar-light-color;
+            }
+            @else {
+                background-color: $navbar-dark-color;
+            }
             border-color: transparent;
         }
         &::after {
@@ -76,13 +86,23 @@
         @include hover-focus() {
             .custom-control-label {
                 &::after {
-                    background-color: $navbar-dark-hover-color;
+                    @if $navbar-style == light {
+                        background-color: $navbar-light-hover-color;
+                    }
+                    @else {
+                        background-color: $navbar-dark-hover-color;
+                    }
                 }
             }
 
             .custom-control-input:checked ~ .custom-control-label {
                 &::after {
-                    background-color: $navbar-dark-hover-color;
+                    @if $navbar-style == light {
+                        background-color: $navbar-light-hover-color;
+                    }
+                    @else {
+                        background-color: $navbar-dark-hover-color;
+                    }
                 }
             }
         }
@@ -90,12 +110,22 @@
 
     .usermenu {
         .userinitials {
-            background-color: $navbar-dark-color;
+            @if $navbar-style == light {
+                background-color: $navbar-light-color;
+            }
+            @else {
+                background-color: $navbar-dark-color;
+            }
         }
         .dropdown-toggle {
             @include hover-focus() {
                 .userinitials {
-                    background-color: $navbar-dark-hover-color;
+                    @if $navbar-style == light {
+                        background-color: $navbar-light-hover-color;
+                    }
+                    @else {
+                        background-color: $navbar-dark-hover-color;
+                    }
                 }
             }
         }
@@ -107,9 +137,19 @@
     }
 
     .nav-editswitch {
-        color: $navbar-dark-color;
+        @if $navbar-style == light {
+            color: $navbar-light-color;
+        }
+        @else {
+            color: $navbar-dark-color;
+        }
         @include hover-focus() {
-            color: $navbar-dark-hover-color;
+            @if $navbar-style == light {
+                color: $navbar-light-hover-color;
+            }
+            @else {
+                color: $navbar-dark-hover-color;
+            }
         }
     }
 }
@@ -121,7 +161,12 @@
 .navbar-dark {
     .navbar-nav {
         .logininfo {
-            color: $navbar-dark-color;
+            @if $navbar-style == light {
+                color: $navbar-light-color;
+            }
+            @else {
+                color: $navbar-dark-color;
+            }
             padding: $nav-link-padding-y $nav-link-padding-x;
         }
         .dropdown-menu,
@@ -142,7 +187,12 @@
         .simplesearchform .btn-open {
             @include hover-focus() {
                 > .icon {
-                    color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                    @if $navbar-style == light {
+                        color: $navbar-light-hover-color !important; // stylelint-disable-line declaration-no-important
+                    }
+                    @else {
+                        color: $navbar-dark-hover-color !important; // stylelint-disable-line declaration-no-important
+                    }
                 }
             }
         }
