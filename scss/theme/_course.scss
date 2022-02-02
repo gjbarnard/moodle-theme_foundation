@@ -64,3 +64,8 @@
 .course-content ul li.section.main:not(.course-section) {
     border-bottom: none;
 }
+
+.description .course-description-item {
+    background-color: $card-bg;
+    color: $card-color;
+}
