@@ -3,6 +3,9 @@ Version Information
 Version 3.11.1.5 - TBR
 ---------------------------
 1. Add Progress Section format single page support.
+2. Add horizontal 'Course end' block region that applies to the course, with a new
+   'courseendblocksperrow' setting to set the blocks per row, causing 'blocksperrow'
+   to be changed to 'marketingblocksperrow'.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
