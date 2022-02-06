@@ -85,7 +85,7 @@ $THEME->layouts = array(
     'course' => array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => $regions,
+        'regions' => array_merge($regions, array('courseend')),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true)
     ),

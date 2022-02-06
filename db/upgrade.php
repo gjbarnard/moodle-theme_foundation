@@ -31,6 +31,14 @@
  * @return boolean Success.
  */
 function xmldb_theme_foundation_upgrade($oldversion = 0) {
+    if ($oldversion < 2021051805) {
+        // Change in default names.
+        $value = get_config('theme_foundation', 'blocksperrow');
+        set_config('marketingblocksperrow', $value, 'theme_foundation');
+
+        upgrade_plugin_savepoint(true, 2021051805, 'theme', 'foundation');
+    }
+
     // Automatic 'Purge all caches'....
     purge_all_caches();
 

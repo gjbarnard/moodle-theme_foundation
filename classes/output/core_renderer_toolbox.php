@@ -109,6 +109,14 @@ trait core_renderer_toolbox {
                 $data->sidepostblocks = $postblockshtml;
                 $data->haspostblocks = $haspostblocks;
             }
+
+            if (in_array('courseend', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
+                $ceblockshtml = $this->hblocks('courseend');
+                $hasceblocks = ((strpos($ceblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+
+                $data->ceblocks = $ceblockshtml;
+                $data->hasceblocks = $hasceblocks;
+            }
         }
 
         $modules = $toolbox->get_modules();
@@ -289,7 +297,7 @@ trait core_renderer_toolbox {
         $content = '';
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $blocksperrow = $toolbox->get_setting('blocksperrow');
+        $blocksperrow = $toolbox->get_setting($region.'blocksperrow');
         if (($blocksperrow > 6) || ($blocksperrow < 1)) {
             $blocksperrow = 4;
         }

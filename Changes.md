@@ -18,6 +18,9 @@ Version 4.0.0.1 - TBR
 14. Added 'unaddableblocks' setting - MDL-73347 and MDL-73719.
 15. Added 'navbarstyle' setting so that light coloured navbar's can have dark text.
 16. Added ATTO style override.
+17. Add horizontal 'Course end' block region that applies to the course, with a new
+    'courseendblocksperrow' setting to set the blocks per row, causing 'blocksperrow'
+    to be changed to 'marketingblocksperrow'.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

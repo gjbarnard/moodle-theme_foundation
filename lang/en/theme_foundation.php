@@ -42,6 +42,7 @@ $string['configtabtitle'] = 'Settings';
 $string['pluginname'] = 'Foundation';
 
 $string['region-content'] = 'Content';
+$string['region-courseend'] = 'Course End';
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
 $string['region-poster'] = 'Poster';
@@ -93,8 +94,11 @@ $string['fa6name'] = 'FontAwesome 6 Free';
 $string['faiv'] = 'FontAwesome Free v4 shims';
 $string['faivdesc'] = 'When using FontAwesome Free for the icons add support for version 4 icon class names.';
 
-$string['blocksperrow'] = 'Blocks per row';
-$string['blocksperrowdesc'] = 'Number of blocks per row when using a horizontal block region, such as \'Marketing\'.  Note: When editing all blocks will be the same size to facilitate ease of use.';
+$string['courseendblocksperrow'] = 'Course end blocks per row';
+$string['courseendblocksperrowdesc'] = 'Number of blocks per row when using the \'Course end\' horizontal block region.  Note: When editing all blocks will be the same size to facilitate ease of use.';
+
+$string['marketingblocksperrow'] = 'Marketing blocks per row';
+$string['marketingblocksperrowdesc'] = 'Number of blocks per row when using the \'Marketing\' horizontal block region.  Note: When editing all blocks will be the same size to facilitate ease of use.';
 
 $string['trio'] = 'Three columns';
 $string['triodesc'] = 'Use three columns instead of two on two column pages.  The drawer block area does not count as a \'column\' in this terminology.  Note: When changing this setting, the block region(s) might look odd until the page is refreshed.';
