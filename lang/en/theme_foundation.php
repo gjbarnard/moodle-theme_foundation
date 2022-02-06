@@ -42,6 +42,7 @@ $string['configtabtitle'] = 'Settings';
 $string['pluginname'] = 'Foundation';
 
 $string['region-content'] = 'Content';
+$string['region-courseend'] = 'Course End';
 $string['region-drawer'] = 'Drawer';
 $string['region-marketing'] = 'Marketing';
 $string['region-poster'] = 'Poster';
