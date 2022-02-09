@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2021102301;
-$plugin->requires  = 2022020200.00; // 4.0dev+ (Build: 20220202).
+$plugin->requires  = 2022020800.00; // 4.0dev+ (Build: 20220208).
 $plugin->supported = array(400, 400);
 $plugin->component = 'theme_foundation';
 $plugin->maturity = MATURITY_ALPHA;
