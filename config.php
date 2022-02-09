@@ -194,7 +194,7 @@ $THEME->layouts = array(
     ),
 );
 
-$THEME->rendererfactory = 'theme_overridden_renderer_factory';
+$THEME->rendererfactory = '\\theme_foundation\\renderer_factory';
 
 $THEME->prescsscallback = 'theme_foundation_pre_scss';
 $THEME->scss = function(theme_config $theme) {

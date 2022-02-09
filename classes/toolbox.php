@@ -36,14 +36,6 @@ defined('MOODLE_INTERNAL') || die();
 class toolbox {
 
     /**
-     * @var core_renderer
-     */
-    protected $corerenderer = null;
-    /**
-     * @var string Theme name.
-     */
-    protected $themename = '';
-    /**
      * @var the_config The hierarchy of the_config instances with the current theme last.
      */
     protected $theconfigs = array(); // Indexed on theme name in hierarchy order.
@@ -139,18 +131,8 @@ class toolbox {
      */
     public function get_core_renderer() {
         global $PAGE;
-        $themename = $PAGE->theme->name;
-        if (empty($this->corerenderer)) {
-            $this->corerenderer = $PAGE->get_renderer('theme_'.$themename, 'core');
-            $this->themename = $themename;
-        } else {
-            if ($themename != $this->themename) {
-                // More of a humm! if this happens.
-                \debugging('theme_foundation toolbox::get_core_renderer() - Different theme \''.$themename.'\' from original \''.
-                    $this->themename.'\'.');
-            }
-        }
-        return $this->corerenderer;
+
+        return $PAGE->get_renderer('theme_'.$PAGE->theme->name, 'core');
     }
 
     /**
