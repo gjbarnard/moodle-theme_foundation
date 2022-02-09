@@ -24,6 +24,12 @@
 
 namespace theme_foundation;
 
+/**
+ * The renderer factory.
+ *
+ * @copyright  &copy; 2022-onwards G J Barnard.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
 class renderer_factory extends \theme_overridden_renderer_factory {
 
     /**
@@ -37,16 +43,15 @@ class renderer_factory extends \theme_overridden_renderer_factory {
      */
     public function __construct(\theme_config $theme) {
         parent::__construct($theme);
-        error_log('Foundation renderer_factory new!');
     }
 
-        /**
+    /**
      * Implement the subclass method
      *
      * @param moodle_page $page the page the renderer is outputting content for.
      * @param string $component name such as 'core', 'mod_forum' or 'qtype_multichoice'.
      * @param string $subtype optional subtype such as 'news' resulting to 'mod_forum_news'
-     * @param string $target one of rendering target constants
+     * @param string $target one of rendering target constants.
      * @return renderer_base an object implementing the requested renderer interface.
      */
     public function get_renderer(\moodle_page $page, $component, $subtype = null, $target = null) {
@@ -54,15 +59,12 @@ class renderer_factory extends \theme_overridden_renderer_factory {
         if ((($component == 'core') && (is_null($subtype))) || ($subtype == 'core')) {
             if (is_null($this->core)) {
                 $this->core = parent::get_renderer($page, $component, $subtype, $target);
-                error_log('Foundation renderer_factory new core');
             }
             $renderer = $this->core;
-            error_log('Foundation renderer_factory get core');
         } else {
             $renderer = parent::get_renderer($page, $component, $subtype, $target);
         }
-        
-        error_log('Foundation renderer_factory get_renderer '.$component.' - '.$subtype.' - '.$target);
+
         return $renderer;
     }
 }
