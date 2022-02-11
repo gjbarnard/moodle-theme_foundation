@@ -2,6 +2,11 @@
 .navbar {
     flex-wrap: nowrap;
 
+    &.fixed-bottom,
+    &.fixed-top {
+        height: 50px;
+    }
+
     .nav-link {
         line-height: 1;
     }
