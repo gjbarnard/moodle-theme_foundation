@@ -265,7 +265,7 @@ trait core_renderer_toolbox {
         $content = '';
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $blocksperrow = $toolbox->get_setting('blocksperrow');
+        $blocksperrow = $toolbox->get_setting($region.'blocksperrow');
         if (($blocksperrow > 6) || ($blocksperrow < 1)) {
             $blocksperrow = 4;
         }

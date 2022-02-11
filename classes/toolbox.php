@@ -454,11 +454,26 @@ class toolbox {
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Number of blocks per row.
-            $name = 'theme_foundation/blocksperrow';
-            $title = get_string('blocksperrow', 'theme_foundation');
+            // Course end number of blocks per row.
+            $name = 'theme_foundation/courseendblocksperrow';
+            $title = get_string('courseendblocksperrow', 'theme_foundation');
+            $default = '3';
+            $description = get_string('courseendblocksperrowdesc', 'theme_foundation');
+            $choices = array(
+                '1' => '1',
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+                '6' => '6'
+            );
+            $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Marketing number of blocks per row.
+            $name = 'theme_foundation/marketingblocksperrow';
+            $title = get_string('marketingblocksperrow', 'theme_foundation');
             $default = '2';
-            $description = get_string('blocksperrowdesc', 'theme_foundation');
+            $description = get_string('marketingblocksperrowdesc', 'theme_foundation');
             $choices = array(
                 '1' => '1',
                 '2' => '2',
