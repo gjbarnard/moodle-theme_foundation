@@ -4,7 +4,7 @@
         color: $body-bg;
     }
     &.icon-size-3 {
-        line-height: 36px!important;
+        line-height: 36px !important; // stylelint-disable-line declaration-no-important
     }
 }
 

@@ -43,7 +43,7 @@
         @include gradient-bg($primary);
         @if $navbar-style == light {
             color: $navbar-light-hover-color;
-        } 
+        }
         @else {
             color: $navbar-dark-hover-color;
         }
