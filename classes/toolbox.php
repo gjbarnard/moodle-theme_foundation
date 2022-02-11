@@ -345,27 +345,27 @@ class toolbox {
                     self::HASSETTINGS => false)
             );
 
-            // Information settings.
+            // Information.
             $settingspages['information'][self::SETTINGPAGE]->add(
-                new \admin_setting_heading(
-                    'theme_foundation_informationheading',
-                    get_string('informationheadingsub', 'theme_foundation'),
-                    format_text(get_string('informationheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
-                )
+                new \theme_foundation\admin_setting_information('theme_foundation/themeinformation', '', '', 311)
             );
+
+            // Support.md.
+            $name = 'theme_foundation/themesupport';
+            $title = get_string('themesupport', 'theme_foundation');
+            $setting = new admin_setting_markdown($name, $title, '', 'Support.md');
+            $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // Changes.md.
             $name = 'theme_foundation/themechanges';
             $title = get_string('themechanges', 'theme_foundation');
-            $description = get_string('themechangesdesc', 'theme_foundation');
-            $setting = new admin_setting_markdown($name, $title, $description, 'Changes.md');
+            $setting = new admin_setting_markdown($name, $title, '', 'Changes.md');
             $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // Readme.md.
             $name = 'theme_foundation/themereadme';
             $title = get_string('themereadme', 'theme_foundation');
-            $description = get_string('themereadmedesc', 'theme_foundation');
-            $setting = new admin_setting_markdown($name, $title, $description, 'Readme.md');
+            $setting = new admin_setting_markdown($name, $title, '', 'Readme.md');
             $settingspages['information'][self::SETTINGPAGE]->add($setting);
 
             // General settings.
