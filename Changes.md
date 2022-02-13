@@ -17,6 +17,7 @@ Version 3.11.1.5 - TBR
 11. Fix default colours, especially pertaining to the navbar.
 12. Added 'navbarstyle' setting so that light coloured navbar's can have dark text.
 13. Added ATTO style override.
+14. Fix 'This course', 'Badges' icon when using Font Awesome 4.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

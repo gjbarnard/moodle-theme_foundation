@@ -436,7 +436,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
                 if ($navoptions->badges) {
                     $badgestext = get_string('coursebadges', 'badges');
-                    $badgeslabel = '<span>'.$toolbox->getfontawesomemarkup('shield-alt', array('icon')).$badgestext.'</span>';
+                    $badgeslabel = '<span>'.$toolbox->getfontawesomemarkup('shield', array('icon')).$badgestext.'</span>';
                     $thiscoursemenubranch->add(
                         $badgeslabel,
                         new moodle_url('/badges/view.php', array('type' => 2, 'id' => $PAGE->course->id)),
