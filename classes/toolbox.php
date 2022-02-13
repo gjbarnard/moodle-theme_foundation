@@ -1538,10 +1538,11 @@ class toolbox {
      * @param array $classes Classes.
      * @param array $attributes Attributes.
      * @param string $content Content.
+     * @param string $title A title for when the icon needs to have an accessible semantic meaning.
      *
      * @return string Markup.
      */
-    public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
+    public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '', $title = '') {
         $fav = $this->get_setting('fav');
         if (!empty($fav)) {
             if ($fav == 1) {
@@ -1554,6 +1555,10 @@ class toolbox {
         }
         $attributes['aria-hidden'] = 'true';
         $attributes['class'] = implode(' ', $classes);
+        if (!empty($title)) {
+            $attributes['title'] = $title;
+            $content .= \html_writer::tag('span', $title, array('class' => 'sr-only'));
+        }
         return \html_writer::tag('span', $content, $attributes);
     }
 

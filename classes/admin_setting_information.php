@@ -96,11 +96,13 @@ class admin_setting_information extends \admin_setting {
             $plugininfo->version = $plugininfo->versiondisk;
         }
 
+        $toolbox = \theme_foundation\toolbox::get_instance();
         $context['versioninfo'] = get_string('versioninfo', 'theme_foundation',
             array(
                 'moodle' => $CFG->release,
                 'release' => $plugininfo->release,
-                'version' => $plugininfo->version
+                'version' => $plugininfo->version,
+                'love' => $toolbox->getfontawesomemarkup('heart', array(), array(), '', get_string('love', 'theme_foundation'))
             )
         );
 
