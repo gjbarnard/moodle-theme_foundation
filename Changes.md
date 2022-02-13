@@ -21,6 +21,7 @@ Version 4.0.0.1 - TBR
 17. Add horizontal 'Course end' block region that applies to the course, with a new
     'courseendblocksperrow' setting to set the blocks per row, causing 'blocksperrow'
     to be changed to 'marketingblocksperrow'.
+18. Fix 'This course', 'Badges' icon when using Font Awesome 4.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
