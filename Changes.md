@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.11.1.5 - TBR
+Version 3.11.1.5 - 13/02/22
 ---------------------------
 1. Add Progress Section format single page support.
 2. Add horizontal 'Course end' block region that applies to the course, with a new
