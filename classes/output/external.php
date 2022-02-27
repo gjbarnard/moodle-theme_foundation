@@ -46,6 +46,9 @@ class external extends \core\output\external {
      * @return string the template.
      */
     public static function load_template($component, $template, $themename, $includecomments = false) {
+        global $PAGE;
+
+        $PAGE->set_context(\context_system::instance());
         $params = self::validate_parameters(
             self::load_template_parameters(),
             array(
