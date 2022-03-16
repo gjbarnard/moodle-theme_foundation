@@ -470,9 +470,9 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                         $gradestext
                     );
                 }
-            }
 
-            return $output->render_the_menu($thiscoursemenu);
+                return $output->render_the_menu($thiscoursemenu);
+            }
         }
 
         return '';
