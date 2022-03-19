@@ -1,7 +1,7 @@
 /**
  * Foundation theme.
  *
- * @package     theme_foundation
+ * @module      theme_foundation/anti_gravity
  * @copyright   2019 Gareth J Barnard
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

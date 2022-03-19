@@ -16,7 +16,7 @@
 /**
  * Foundation theme.
  *
- * @package    theme_foundation
+ * @module     theme_foundation/icon_system_fontawesome
  * @copyright  &copy; 2019-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.

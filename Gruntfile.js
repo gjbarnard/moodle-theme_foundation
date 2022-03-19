@@ -31,7 +31,9 @@
  *
  * grunt css     Create the default CSS and lint the SCSS.
  *
- * grunt amd     Use core, e.g. grunt amd --root=theme/foundation
+ * grunt amd     Use core, e.g. grunt js:amd --root=theme/foundation
+ *               If on Windows, then set 'linebreak-style' to 'off' in root '.eslintrc'
+ *               as Git will handle this for us.
  *
  * @package theme_foundation.
  * @author G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
