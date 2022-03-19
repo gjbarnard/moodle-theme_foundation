@@ -151,12 +151,12 @@ class toolbox {
 
         $footerantigravityhorizontaloffset = $this->get_setting('footerantigravityhorizontaloffset', $themename);
         if (!empty($footerantigravityhorizontaloffset)) {
-            $scss .= '$footer-antigravity-horizontal-offset: '.$footerantigravityhorizontaloffset.'px;';
+            $scss .= '$footer-antigravity-horizontal-offset: '.$footerantigravityhorizontaloffset.';';
         }
 
         $footerantigravityverticaloffset = $this->get_setting('footerantigravityverticaloffset', $themename);
         if (!empty($footerantigravityverticaloffset)) {
-            $scss .= '$footer-antigravity-vertical-offset: '.$footerantigravityverticaloffset.'px;';
+            $scss .= '$footer-antigravity-vertical-offset: '.$footerantigravityverticaloffset.';';
         }
 
         // TODO: Does there need to be a parent daisy chain of this setting?

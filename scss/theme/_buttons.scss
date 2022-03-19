@@ -52,11 +52,11 @@
     z-index: 3;
 
     .backtotop {
-        right: calc(2% + 29px - #{$footer-antigravity-horizontal-offset});
+        right: calc(2% + 29px - #{$footer-antigravity-horizontal-offset}px);
     }
 
     .gotobottom {
-        right: calc(2% - #{$footer-antigravity-horizontal-offset});
+        right: calc(2% - #{$footer-antigravity-horizontal-offset}px);
     }
 
     button {
@@ -69,7 +69,7 @@
         position: fixed;
         text-align: center;
         text-decoration: none;
-        top: calc(84% + #{$footer-antigravity-vertical-offset});
+        top: calc(84% + #{$footer-antigravity-vertical-offset}px);
     }
 
     .fav &,
@@ -80,13 +80,13 @@
     }
     .fav & {
         .backtotop {
-            right: calc(2% + 31px - #{$footer-antigravity-horizontal-offset});
+            right: calc(2% + 31px - #{$footer-antigravity-horizontal-offset}px);
         }
     }
 
     .favi & {
         .backtotop {
-            right: calc(2% + 34px - #{$footer-antigravity-horizontal-offset});
+            right: calc(2% + 34px - #{$footer-antigravity-horizontal-offset}px);
         }
     }
 
@@ -96,7 +96,7 @@
 }
 
 .navbar-bottom .footerantigravity button {
-    top: calc(16% + #{$footer-antigravity-vertical-offset});
+    top: calc(16% + #{$footer-antigravity-vertical-offset}px);
 }
 
 #drawer {
