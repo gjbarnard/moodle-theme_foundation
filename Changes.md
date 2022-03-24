@@ -24,6 +24,7 @@ Version 4.0.0.1 - TBR
 18. Fix 'This course', 'Badges' icon when using Font Awesome 4.
 19. Fix '$thiscoursemenu undefined error' - #13.
 20. Fix 'Anti-gravity footer icons'.
+21. Fix login page footer opacity when there is a background.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------
