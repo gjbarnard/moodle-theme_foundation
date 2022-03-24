@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.11.1.6 - TBR
 ---------------------------
+1. Fix 'Open Sans font file extensions'.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
