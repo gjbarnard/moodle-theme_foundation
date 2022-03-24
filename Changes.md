@@ -25,6 +25,7 @@ Version 4.0.0.1 - TBR
 19. Fix '$thiscoursemenu undefined error' - #13.
 20. Fix 'Anti-gravity footer icons'.
 21. Fix login page footer opacity when there is a background.
+22. Fix 'Open Sans font file extensions'.
 
 Version 3.11.1.4 - 08/10/21
 ---------------------------

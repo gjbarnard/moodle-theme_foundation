@@ -918,7 +918,7 @@ class toolbox {
                 font-weight: 300;
                 font-style: italic;
                 font-stretch: normal;
-                src: url('[[font:theme|OpenSans-LightItalic-webfont.ttf]]') format('woff');
+                src: url('[[font:theme|OpenSans-LightItalic-webfont.woff]]') format('woff');
             }
 
             @font-face {
@@ -933,7 +933,7 @@ class toolbox {
                 font-weight: 400;
                 font-style: italic;
                 font-stretch: normal;
-                src: url('[[font:theme|OpenSans-Italic-webfont.ttf]]') format('woff');
+                src: url('[[font:theme|OpenSans-Italic-webfont.woff]]') format('woff');
             }
 
             @font-face {
@@ -948,7 +948,7 @@ class toolbox {
                 font-weight: 700;
                 font-style: italic;
                 font-stretch: normal;
-                src: url('[[font:theme|OpenSans-BoldItalic-webfont.ttf]]') format('woff');
+                src: url('[[font:theme|OpenSans-BoldItalic-webfont.woff]]') format('woff');
             }
 
             @font-face {
