@@ -1,5 +1,5 @@
 /*!
- * Font Awesome Free 6.0.0-beta3 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2021 Fonticons, Inc.
  */
@@ -36,9 +36,6 @@
 
 .fa-accusoft:before {
   content: "\f369"; }
-
-.fa-acquisitions-incorporated:before {
-  content: "\f6af"; }
 
 .fa-adn:before {
   content: "\f170"; }
@@ -628,6 +625,9 @@
 .fa-hackerrank:before {
   content: "\f5f7"; }
 
+.fa-hashnode:before {
+  content: "\e499"; }
+
 .fa-hips:before {
   content: "\f452"; }
 
@@ -841,6 +841,12 @@
 .fa-neos:before {
   content: "\f612"; }
 
+.fa-nfc-directional:before {
+  content: "\e530"; }
+
+.fa-nfc-symbol:before {
+  content: "\e531"; }
+
 .fa-nimblr:before {
   content: "\f5a8"; }
 
@@ -889,6 +895,9 @@
 .fa-osi:before {
   content: "\f41a"; }
 
+.fa-padlet:before {
+  content: "\e4a0"; }
+
 .fa-page4:before {
   content: "\f3d7"; }
 
@@ -903,9 +912,6 @@
 
 .fa-paypal:before {
   content: "\f1ed"; }
-
-.fa-penny-arcade:before {
-  content: "\f704"; }
 
 .fa-perbyte:before {
   content: "\e083"; }
@@ -1044,6 +1050,9 @@
 
 .fa-schlix:before {
   content: "\f3ea"; }
+
+.fa-screenpal:before {
+  content: "\e570"; }
 
 .fa-scribd:before {
   content: "\f28a"; }
