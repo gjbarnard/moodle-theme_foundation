@@ -298,8 +298,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
             $scss .= 'background-size: '.$loginbackgroundstyle.';'.PHP_EOL;
             $scss .= '.card,'.PHP_EOL;
             $scss .= '#page-footer {'.PHP_EOL;
-            $scss .= 'background-color: rgba(red($card-bg), green($card-bg), blue($card-bg), '.
-                $toolbox->get_setting('loginbackgroundopacity', $themename).') !important;'.PHP_EOL;
+            $scss .= 'opacity: '.$toolbox->get_setting('loginbackgroundopacity', $themename).';'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
         }
