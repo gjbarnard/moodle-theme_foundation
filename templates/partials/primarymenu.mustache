@@ -50,7 +50,7 @@
         <li data-key="{{key}}" class="nav-item" role="none presentation" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         {{#is_action_link}}
             <a role="menuitem" class="nav-link {{#classes}}{{.}} {{/classes}}" {{#actionattributes}}{{name}}="{{value}}"{{/actionattributes}} href="{{{url}}}{{{action}}}" data-disableactive="true" tabindex="-1">
-                {{{icon}}}{{{text}}}
+                {{{icon}}}<span class="d-none d-lg-inline">{{text}}</span>
             </a>
             {{#action_link_actions}}
                 {{> core/actions }}
@@ -62,7 +62,7 @@
                 {{#isactive}}aria-current="true"{{/isactive}}
                 {{^isactive}}tabindex="-1"{{/isactive}}
             >
-                {{{icon}}}{{{text}}}
+                {{{icon}}}<span class="d-none d-lg-inline">{{text}}</span>
             </a>
         {{/is_action_link}}
         </li>

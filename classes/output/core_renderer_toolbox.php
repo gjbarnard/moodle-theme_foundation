@@ -851,18 +851,26 @@ trait core_renderer_toolbox {
         // See lib/classes/navigation/output/primary.php
         $menudata = [];
         foreach ($this->page->primarynav->children as $node) {
-
-            $subpix = new \pix_icon_fontawesome($node->icon);
-            $icondata = $subpix->export_for_template($this);
-            if (!$subpix->is_mapped()) {
-                $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
-                $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
-            } else {
-                $classes = array('icon', $icondata['key']);
-                if (empty($fav)) {
-                    $classes[] = 'fa';
+            switch ($node->key) {
+                case 'siteadminnode':
+                    $iconmarkup = $toolbox->getfontawesomemarkup('wrench', array('icon'), array(), '', $node->text);
+                break;
+                case 'courses':
+                    $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', array('icon'), array(), '', $node->text);
+                break;
+                default:
+                $subpix = new \pix_icon_fontawesome($node->icon);
+                $icondata = $subpix->export_for_template($this);
+                if (!$subpix->is_mapped()) {
+                    $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
+                    $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
+                } else {
+                    $classes = array('icon', $icondata['key']);
+                    if (empty($fav)) {
+                        $classes[] = 'fa';
+                    }
+                    $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
                 }
-                $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
             }
 
             $menudata[] = [
@@ -875,8 +883,8 @@ trait core_renderer_toolbox {
             ];
         }
 
-        $moremenu = new \core\navigation\output\more_menu((object) $menudata, 'navbar-nav', false);
-        $templatecontext = $moremenu->export_for_template($this);
+        $primarymenu = new \core\navigation\output\more_menu((object) $menudata, 'navbar-nav', false);
+        $templatecontext = $primarymenu->export_for_template($this);
 
         return $this->render_from_template('theme_foundation/partials/primarymenu', $templatecontext);
     }
