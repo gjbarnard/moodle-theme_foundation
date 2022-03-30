@@ -251,6 +251,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/enrolusers' => 'fas fa-user-plus',
             'core:i/expired' => 'fas fa-exclamation text-warning',
             'core:i/export' => 'fas fa-download',
+            'core:i/externallink' => 'fas fa-external-link',
             'core:i/files' => 'far fa-copy',
             'core:i/filter' => 'fas fa-filter',
             'core:i/flagged' => 'fas fa-flag',
