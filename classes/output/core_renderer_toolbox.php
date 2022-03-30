@@ -844,6 +844,27 @@ trait core_renderer_toolbox {
         return $content;
     }
 
+    public function primary_menu() {
+        // See lib/classes/navigation/output/primary.php
+        $menudata = [];
+        foreach ($this->page->primarynav->children as $node) {
+            $menudata[] = [
+                'title' => $node->get_title(),
+                'url' => $node->action(),
+                'text' => $node->text,
+                'icon' => $this->render($node->icon),
+                'isactive' => $node->isactive,
+                'key' => $node->key,
+            ];
+        }
+        
+        $moremenu = new \core\navigation\output\more_menu((object) $menudata, 'navbar-nav', false);
+        $templatecontext = $moremenu->export_for_template($this);
+        //error_log(print_r($templatecontext, true));
+        
+        return $this->render_from_template('theme_foundation/partials/primarymenu', $templatecontext);
+    }
+
     /**
      * This renders the navbar.
      * Improved on core not to output any markup if no items.

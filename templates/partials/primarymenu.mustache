@@ -1,0 +1,57 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_foundation/primarymenu
+
+    The Primary menu.
+
+    Example context (json):
+    {
+        "nodecollection": {
+            "children": [
+                {
+                    "text": "Home",
+                    "action": "/index.php?redirect=0",
+                    "active": "true"
+                },
+                {
+                    "text": "Dashboard",
+                    "action": "/my"
+                },
+                {
+                    "text": "Courses",
+                    "action": "/course"
+                },
+                {
+                    "text": "Site Administration",
+                    "action": "/admin/search.php"
+                }
+            ]
+        },
+        "moremenuid": "614c104dbacfa"
+    }
+}}
+<ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="navbar-nav mx-auto nav more-nav {{navbarstyle}}">
+    {{#nodearray}}
+        {{> theme_foundation/partials/primarymenu_children}}
+    {{/nodearray}}
+</ul>
+{{#js}}
+    require(['core/moremenu'], function(moremenu) {
+        moremenu(document.querySelector('#moremenu-{{moremenuid}}-{{navbarstyle}}'));
+    });
+{{/js}}
