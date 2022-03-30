@@ -510,15 +510,14 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      * @return string the rendered icon markup.
      */
     public function render_pix_icon(\renderer_base $output, \pix_icon $icon) {
-        if (empty($this->fav)) {
-            return parent::render_pix_icon($output, $icon);
-        }
         $subtype = '\pix_icon_fontawesome';
         $subpix = new $subtype($icon);
         $data = $subpix->export_for_template($output);
 
         if (!$subpix->is_mapped()) {
             $data['unmappedIcon'] = $icon->export_for_template($output);
+        } else if (empty($this->fav)) {
+            $data['key'] = 'fa '.$data['key'];
         }
 
         // MDL-62680.

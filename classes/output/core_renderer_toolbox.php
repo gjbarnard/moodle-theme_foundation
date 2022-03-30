@@ -845,23 +845,39 @@ trait core_renderer_toolbox {
     }
 
     public function primary_menu() {
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $fav = $toolbox->get_setting('fav');
+
         // See lib/classes/navigation/output/primary.php
         $menudata = [];
         foreach ($this->page->primarynav->children as $node) {
+
+            $subpix = new \pix_icon_fontawesome($node->icon);
+            $icondata = $subpix->export_for_template($this);
+            if (!$subpix->is_mapped()) {
+                $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
+                $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
+            } else {
+                $classes = array('icon', $icondata['key']);
+                if (empty($fav)) {
+                    $classes[] = 'fa';
+                }
+                $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
+            }
+
             $menudata[] = [
                 'title' => $node->get_title(),
                 'url' => $node->action(),
                 'text' => $node->text,
-                'icon' => $this->render($node->icon),
+                'icon' => $iconmarkup,
                 'isactive' => $node->isactive,
                 'key' => $node->key,
             ];
         }
-        
+
         $moremenu = new \core\navigation\output\more_menu((object) $menudata, 'navbar-nav', false);
         $templatecontext = $moremenu->export_for_template($this);
-        //error_log(print_r($templatecontext, true));
-        
+
         return $this->render_from_template('theme_foundation/partials/primarymenu', $templatecontext);
     }
 

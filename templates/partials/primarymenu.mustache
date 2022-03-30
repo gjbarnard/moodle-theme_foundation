@@ -45,9 +45,27 @@
         "moremenuid": "614c104dbacfa"
     }
 }}
-<ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="navbar-nav mx-auto nav more-nav {{navbarstyle}}">
+<ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="menubar" class="navbar-nav mx-auto nav more-nav {{navbarstyle}}">
     {{#nodearray}}
-        {{> theme_foundation/partials/primarymenu_children}}
+        <li data-key="{{key}}" class="nav-item" role="none presentation" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
+        {{#is_action_link}}
+            <a role="menuitem" class="nav-link {{#classes}}{{.}} {{/classes}}" {{#actionattributes}}{{name}}="{{value}}"{{/actionattributes}} href="{{{url}}}{{{action}}}" data-disableactive="true" tabindex="-1">
+                {{{icon}}}{{{text}}}
+            </a>
+            {{#action_link_actions}}
+                {{> core/actions }}
+            {{/action_link_actions}}
+        {{/is_action_link}}
+        {{^is_action_link}}
+            <a role="menuitem" class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}"
+                href="{{{url}}}{{{action}}}"
+                {{#isactive}}aria-current="true"{{/isactive}}
+                {{^isactive}}tabindex="-1"{{/isactive}}
+            >
+                {{{icon}}}{{{text}}}
+            </a>
+        {{/is_action_link}}
+        </li>
     {{/nodearray}}
 </ul>
 {{#js}}

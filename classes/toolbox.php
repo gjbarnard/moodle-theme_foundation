@@ -1543,15 +1543,17 @@ class toolbox {
      * @return string Markup.
      */
     public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '', $title = '') {
-        $fav = $this->get_setting('fav');
-        if (!empty($fav)) {
-            if ($fav == 1) {
-                $classes[] = $this->get_fa5_from_fa4($theicon);
+        if (!empty($theicon)) {
+            $fav = $this->get_setting('fav');
+            if (!empty($fav)) {
+                if ($fav == 1) {
+                    $classes[] = $this->get_fa5_from_fa4($theicon);
+                } else {
+                    $classes[] = $this->get_fa6_from_fa4($theicon);
+                }
             } else {
-                $classes[] = $this->get_fa6_from_fa4($theicon);
+                $classes[] = 'fa fa-'.$theicon;
             }
-        } else {
-            $classes[] = 'fa fa-'.$theicon;
         }
         $attributes['aria-hidden'] = 'true';
         $attributes['class'] = implode(' ', $classes);
