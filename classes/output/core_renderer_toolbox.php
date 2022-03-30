@@ -149,6 +149,11 @@ trait core_renderer_toolbox {
             if (empty($data->navbarstyle)) {
                 $data->navbarstyle = 'dark';
             }
+
+            $primary = new \theme_foundation\navigation\output\primary($this->page);
+            $primarymenu = $primary->export_for_template($this);
+            $data->primarymoremenu = $primarymenu['moremenu'];
+            $data->mobileprimarynav = $primarymenu['mobileprimarynav'];
         }
 
         if ((!empty($USER->auth)) && ($USER->auth == 'lti')) {
@@ -199,7 +204,8 @@ trait core_renderer_toolbox {
             if (!defined('BEHAT_SITE_RUNNING')) {
                 $buildsecondarynavigation = $this->page->has_secondary_navigation();
                 if ($buildsecondarynavigation) {
-                    $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs');
+                    $tablistnav = $this->page->has_tablist_secondary_navigation();
+                    $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs', true, $tablistnav);
                     $data->secondarymoremenu = $moremenu->export_for_template($this);
                 }
             }
