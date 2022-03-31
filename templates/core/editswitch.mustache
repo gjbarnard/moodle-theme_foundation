@@ -31,30 +31,33 @@
     }
 }}
 <form action="{{{legacyseturl}}}" method="post" class="d-flex align-items-center editmode-switch-form">
-    <div class="custom-control custom-control-right custom-switch text-nowrap">
-        <input type="checkbox"{{!
-            }} name="setmode"{{!
-            }}{{#checked}}{{!
-                }} aria-checked="true" checked{{!
-            }}{{/checked}}{{!
-            }}{{^checked}}{{!
-                }} aria-checked="false"{{!
-            }}{{/checked}}{{!
-            }} class="custom-control-input"{{!
-            }} id="{{uniqid}}-editingswitch"{{!
-            }} data-context="{{{pagecontextid}}}"{{!
-            }} data-pageurl="{{{pageurl}}}"{{!
-        }}>
-        <label class="custom-control-label" title="{{#str}}editmode{{/str}}"{{!
+    <div class="input-group">
+        <div class="custom-control custom-switch">
+            <input type="checkbox"{{!
+                }} name="setmode"{{!
+                }}{{#checked}}{{!
+                    }} aria-checked="true" checked{{!
+                }}{{/checked}}{{!
+                }}{{^checked}}{{!
+                    }} aria-checked="false"{{!
+                }}{{/checked}}{{!
+                }} class="custom-control-input"{{!
+                }} id="{{uniqid}}-editingswitch"{{!
+                }} data-context="{{{pagecontextid}}}"{{!
+                }} data-pageurl="{{{pageurl}}}"{{!
+            }}>
+            <span class="custom-control-label">&nbsp;</span>
+        </div>
+        <label title="{{#str}}editmode{{/str}}"{{!
             }} aria-label="{{#str}}editmode{{/str}}" for="{{uniqid}}-editingswitch">{{!
         }}</label>
-        <input type="hidden" name="sesskey" value="{{{sesskey}}}">
-        <input type="hidden" name="pageurl" value="{{{pageurl}}}">
-        <input type="hidden" name="context" value="{{{pagecontextid}}}">
-        <noscript>
-            <input type="submit" value="{{#str}}setmode, core{{/str}}">
-        </noscript>
     </div>
+    <input type="hidden" name="sesskey" value="{{{sesskey}}}">
+    <input type="hidden" name="pageurl" value="{{{pageurl}}}">
+    <input type="hidden" name="context" value="{{{pagecontextid}}}">
+    <noscript>
+        <input type="submit" value="{{#str}}setmode, core{{/str}}">
+    </noscript>
 </form>
 {{#js}}
 require(['core/edit_switch'], function(editSwitch) {
