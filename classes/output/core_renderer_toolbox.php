@@ -847,6 +847,7 @@ trait core_renderer_toolbox {
     public function primary_menu() {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $fav = $toolbox->get_setting('fav');
+        $nodisplaymycourses = ($toolbox->get_setting('displaymycourses') < 2);
 
         // See lib/classes/navigation/output/primary.php
         $menudata = [];
@@ -856,21 +857,24 @@ trait core_renderer_toolbox {
                     $iconmarkup = $toolbox->getfontawesomemarkup('wrench', array('icon'), array(), '', $node->text);
                 break;
                 case 'courses':
+                    if ($nodisplaymycourses) {
+                        continue 2;
+                    }
                     $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', array('icon'), array(), '', $node->text);
                 break;
                 default:
-                $subpix = new \pix_icon_fontawesome($node->icon);
-                $icondata = $subpix->export_for_template($this);
-                if (!$subpix->is_mapped()) {
-                    $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
-                    $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
-                } else {
-                    $classes = array('icon', $icondata['key']);
-                    if (empty($fav)) {
-                        $classes[] = 'fa';
+                    $subpix = new \pix_icon_fontawesome($node->icon);
+                    $icondata = $subpix->export_for_template($this);
+                    if (!$subpix->is_mapped()) {
+                        $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
+                        $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
+                    } else {
+                        $classes = array('icon', $icondata['key']);
+                        if (empty($fav)) {
+                            $classes[] = 'fa';
+                        }
+                        $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
                     }
-                    $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
-                }
             }
 
             $menudata[] = [

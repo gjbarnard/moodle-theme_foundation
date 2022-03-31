@@ -113,8 +113,14 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $name = 'theme_foundation/displaymycourses';
         $title = get_string('displaymycourses', 'theme_foundation');
         $description = get_string('displaymycoursesdesc', 'theme_foundation');
-        $default = true;
-        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $default = 1;
+        $choices = array(
+            0 => new \lang_string('displaymycoursesoff', 'theme_foundation'),
+            1 => new \lang_string('displaymycoursesmenu', 'theme_foundation'),
+            2 => new \lang_string('displaymycourseslink', 'theme_foundation'),
+            3 => new \lang_string('displaymycoursesboth', 'theme_foundation')
+        );
+        $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Toggle hidden courses display in custommenu.
@@ -227,7 +233,8 @@ class menus_module extends \theme_foundation\module_basement implements \templat
     protected function courses_menu(\renderer_base $output) {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $hasdisplaymycourses = $toolbox->get_setting('displaymycourses');
-        if (isloggedin() && !isguestuser() && $hasdisplaymycourses) {
+        if (isloggedin() && !isguestuser() &&
+                (($hasdisplaymycourses == 1) || ($hasdisplaymycourses == 3))) {
             global $PAGE;
             $coursemenu = new \theme_foundation\output\foundation_menu_item('');
             $mycoursesorder = $toolbox->get_setting('mycoursesorder');
