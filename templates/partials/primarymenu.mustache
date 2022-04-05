@@ -21,27 +21,25 @@
 
     Example context (json):
     {
-        "nodecollection": {
-            "children": [
-                {
-                    "text": "Home",
-                    "action": "/index.php?redirect=0",
-                    "active": "true"
-                },
-                {
-                    "text": "Dashboard",
-                    "action": "/my"
-                },
-                {
-                    "text": "Courses",
-                    "action": "/course"
-                },
-                {
-                    "text": "Site Administration",
-                    "action": "/admin/search.php"
-                }
-            ]
-        },
+        "nodearray": [
+            {
+                "text": "Home",
+                "action": "/index.php?redirect=0",
+                "active": "true"
+            },
+            {
+                "text": "Dashboard",
+                "action": "/my"
+            },
+            {
+                "text": "Courses",
+                "action": "/course"
+            },
+            {
+                "text": "Site Administration",
+                "action": "/admin/search.php"
+            }
+        ],
         "moremenuid": "614c104dbacfa"
     }
 }}
@@ -68,8 +66,3 @@
         </li>
     {{/nodearray}}
 </ul>
-{{#js}}
-    require(['core/moremenu'], function(moremenu) {
-        moremenu(document.querySelector('#moremenu-{{moremenuid}}-{{navbarstyle}}'));
-    });
-{{/js}}
