@@ -27,6 +27,10 @@ Version 4.0.0.1 - TBR
 21. Fix login page footer opacity when there is a background.
 22. Fix 'Open Sans font file extensions'.
 
+**Note:**
+If you like the new 'Course index' in Boost and want to have it in Foundation, then I've created a wrapper 'block' that you
+can install and use in any region, such as 'Drawer', you can get it from: https://github.com/gjb2048/moodle-block_course_index.
+
 Version 3.11.1.4 - 08/10/21
 ---------------------------
 1. Add header language menu setting.
