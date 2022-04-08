@@ -43,10 +43,11 @@ trait theme_foundation_format_topcoll_renderer_trait {
      */
     protected function get_column_class($columns) {
         $colclasses = array(
-            1 => 'col-sm-12 col-md-12 col-lg-12',
-            2 => 'col-sm-6 col-md-6 col-lg-6',
-            3 => 'col-md-4 col-lg-4',
-            4 => 'col-lg-3');
+            1 => 'col-sm-12',
+            2 => 'col-sm-6',
+            3 => 'col-md-4',
+            4 => 'col-lg-3',
+            'D' => 'col-sm-12 col-md-12 col-lg-6 col-xl-4');
 
         return $colclasses[$columns];
     }
