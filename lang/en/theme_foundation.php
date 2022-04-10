@@ -104,7 +104,7 @@ $string['trio'] = 'Three columns';
 $string['triodesc'] = 'Use three columns instead of two on two column pages.  The drawer block area does not count as a \'column\' in this terminology.  Note: When changing this setting, the block region(s) might look odd until the page is refreshed.';
 
 $string['unaddableblocks'] = 'Unneeded blocks';
-$string['unaddableblocksdesc'] = 'The blocks specified are not needed when using this theme and will not be listed in the \'Add a block\' menu.';
+$string['unaddableblocksdesc'] = 'The blocks specified will not be listed in the \'Add a block\' menu.  This is a comma separated list without spaces of the block \'folder\' name within the \'blocks\' folder.  If you want to \'Hide\' a block completely, such as the \'Navigation\' block then go to \'Site administration\' -> \'Plugins\' -> \'Blocks\' -> \'Manage blocks\'.';
 
 $string['prescss'] = 'Pre SCSS';
 $string['prescssdesc'] = 'State the SCSS that should be used before any other SCSS is added to the theme.';
