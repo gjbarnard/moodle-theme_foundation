@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 4.0.0.1 - TBR
+Version 4.0.0.1 - 10/4/22
 ---------------------------
 1. Add core edit switch with 'navbareditswitch' setting to enable / disable.
 2. Add core secondary navigation.

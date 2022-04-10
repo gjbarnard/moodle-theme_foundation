@@ -16,7 +16,7 @@ Currently the theme does not work when placed within a $CFG->themedir folder.
 
 Features
 ========
-* Bootstrap V4 CSS with core Moodle CSS.
+* Bootstrap CSS with core Moodle CSS.
 * Child theme capable - in 'beta'.
 * Pre and Custom SCSS.
 * Custom Swatches from Bootswatch.com and licensed under the MIT License (MIT).
@@ -79,7 +79,7 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 4.0dev+ version 2021102200.00 (Build: 20211022) and above within the master branch until the
+This version works with Moodle 4.0rc1 version 2022040800.00 (Build: 20220408) and above within the master branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
