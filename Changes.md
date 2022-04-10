@@ -27,6 +27,7 @@ Version 4.0.0.1 - TBR
 21. Fix login page footer opacity when there is a background.
 22. Fix 'Open Sans font file extensions'.
 23. Fix 'Action menu indentation causes item escape from menu'.
+24. Fix 'Activity action menu cannot escape confines of #region-main and be displayed correctly'.
 
 **Note:**
 If you like the new 'Course index' in Boost and want to have it in Foundation, then I've created a wrapper 'block' that you
