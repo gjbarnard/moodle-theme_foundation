@@ -4,6 +4,7 @@ Version Information
 Version 4.0.0.2 - TBR
 ---------------------------
 1. Fix small issue with overridden 'build_action_menu_from_navigation' action menu code.
+2. Fix 'Block region drag and drop broken' - #15.
 
 Version 4.0.0.1 - 10/4/22
 ---------------------------

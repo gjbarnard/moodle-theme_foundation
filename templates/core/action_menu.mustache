@@ -30,23 +30,23 @@
         }
     }
 }}
-{{#primary}}
-    <div class="action-menu {{classes}}" title="{{title}}"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
-        <div class="{{classes}} d-flex"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
+<div class="action-menu {{classes}}" title="{{title}}"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
+    {{#primary}}
+    <div class="{{classes}} d-flex"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
 
-            {{#prioritise}}{{> core/action_menu_trigger }}{{/prioritise}}
+        {{#prioritise}}{{> core/action_menu_trigger }}{{/prioritise}}
 
-            {{#items}}
-                <div class="action-menu-item">
-                    {{> core/action_menu_item }}
-                </div>
-            {{/items}}
+        {{#items}}
+            <div class="action-menu-item">
+                {{> core/action_menu_item }}
+            </div>
+        {{/items}}
 
-            {{^prioritise}}
-                <div class="action-menu-trigger">
-                    {{> core/action_menu_trigger }}
-                </div>
-            {{/prioritise}}
-        </div>
+        {{^prioritise}}
+            <div class="action-menu-trigger">
+                {{> core/action_menu_trigger }}
+            </div>
+        {{/prioritise}}
     </div>
-{{/primary}}
+    {{/primary}}
+</div>
