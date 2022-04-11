@@ -487,7 +487,7 @@ trait core_renderer_toolbox {
                         $skipped = true;
                         continue;
                     }
-                    $link = new action_link(new \moodle_url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
+                    $link = new \action_link(new \moodle_url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
                 }
                 if ($indent) {
                     $link->add_class('pl-3'); // The changed line!

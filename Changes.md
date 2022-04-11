@@ -8,6 +8,7 @@ Version 3.11.1.6 - TBR
 4. Fix login page footer opacity when there is a background.
 5. Fix 'Action menu indentation causes item escape from menu'.
 6. Fix 'Activity action menu cannot escape confines of #region-main and be displayed correctly'.
+7. Fix small issue with overridden 'build_action_menu_from_navigation' action menu code.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
