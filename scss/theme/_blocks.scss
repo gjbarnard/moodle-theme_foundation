@@ -95,8 +95,8 @@ body {
     transition: margin-left 0.75s;
 }
 
-.editing [data-region="blocks-drawer"] {
-    min-height: 786px; // For a drag and drop target area when empty.
+.editing aside.block-region {
+    height: 100%; // For a drag and drop target area when empty.
 }
 
 @include media-breakpoint-down(xs) {
