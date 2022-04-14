@@ -112,7 +112,8 @@ Uninstallation
  1. Put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
  2. Change the theme to another theme of your choice.
  3. In '/theme/' remove the folder 'foundation'.
- 4. Put Moodle out of Maintenance Mode.
+ 4. Go to 'Site administration' -> 'Notifications' and follow standard the 'plugin' update notification.
+ 5. Put Moodle out of Maintenance Mode.
 
 Reporting Issues
 ================
