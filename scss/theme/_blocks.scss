@@ -81,8 +81,7 @@
 // Navbar fixed-bottom or not there.
 .navbar-bottom,
 .no-navbar {
-    [data-region="blocks-drawer"],
-    [data-region="right-hand-drawer"] {
+    [data-region="blocks-drawer"] {
         top: 0;
     }
 }
