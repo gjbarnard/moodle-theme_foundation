@@ -54,8 +54,23 @@
     }
 }
 
-.popover-region-footer-container {
+.popover-region-container {
     height: auto;
+    max-height: 500px;
+}
+
+[data-region="right-hand-drawer"].drawer {
+    height: calc(100% - 50px);
+    top: 50px;
+}
+
+// Navbar fixed-bottom or not there.
+.navbar-bottom,
+.no-navbar {
+    [data-region="right-hand-drawer"].drawer {
+        height: 100%;
+        top: 0;
+    }
 }
 
 .navbar-bottom .navbar {
