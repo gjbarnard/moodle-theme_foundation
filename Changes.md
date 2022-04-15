@@ -7,6 +7,7 @@ Version 4.0.0.2 - TBR
 2. Fix 'Block region drag and drop broken' - #15.
 3. Fix 'Block drag and drop region when editing'.
 4. Fix 'Message and notifications menu style'.
+5. Fix 'Maintenance layout not outputting doctype'.
 
 Version 4.0.0.1 - 10/4/22
 ---------------------------
