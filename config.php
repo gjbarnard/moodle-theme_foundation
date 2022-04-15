@@ -161,7 +161,7 @@ $THEME->layouts = array(
        This must not have any blocks, and it is good idea if it does not have links to
        other places - for example there should not be a home link in the footer... */
     'maintenance' => array(
-        'file' => 'plainlayout.php',
+        'file' => 'maintenance.php',
         'mustache' => 'maintenance',
         'regions' => $empty
     ),

@@ -18,14 +18,14 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2019-onwards G J Barnard.
+ * @copyright  &copy; 2022-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-// Get the renderer for this plugin.
-$toolbox = \theme_foundation\toolbox::get_instance();
-$output = $toolbox->get_core_renderer();
-echo $output->render_plain_page();
+$data = new \stdClass();
+$data->output = $OUTPUT;
+
+echo $OUTPUT->render_from_template('theme_foundation/maintenance', $data);
