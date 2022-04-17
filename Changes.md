@@ -1,16 +1,17 @@
 Version Information
 ===================
 
-Version 4.0.0.2 - TBR
----------------------------
+Version 4.0.1.0 - 17/04/22
+--------------------------
 1. Fix small issue with overridden 'build_action_menu_from_navigation' action menu code.
 2. Fix 'Block region drag and drop broken' - #15.
 3. Fix 'Block drag and drop region when editing'.
 4. Fix 'Message and notifications menu style'.
 5. Fix 'Maintenance layout not outputting doctype'.
+6. General tidy.
 
-Version 4.0.0.1 - 10/4/22
----------------------------
+Version 4.0.0.1 - 10/04/22
+--------------------------
 1. Add core edit switch with 'navbareditswitch' setting to enable / disable.
 2. Add core secondary navigation.
 3. Add Progress Section format single page support.

@@ -17,6 +17,14 @@
             display: none;
         }
     }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-title {
+        margin-bottom: 0.5rem;
+    }
 }
 
 .block-controls {
@@ -58,6 +66,10 @@
     width: 360px;
     &.drawer-hidden {
         left: -360px;
+    }
+
+    .card-title {
+        padding-left: 0.5rem;
     }
 }
 
@@ -160,4 +172,8 @@ body {
     #settingsnav {
         padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
     }
+}
+
+.courseindex .courseindex-section {
+    border-left: none;
 }
