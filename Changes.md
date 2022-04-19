@@ -3,6 +3,7 @@ Version Information
 
 Version 4.0.1.1 - TBR
 --------------------------
+1. Fix 'aria controls on drawer'.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------

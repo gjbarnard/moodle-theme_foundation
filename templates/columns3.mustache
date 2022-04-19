@@ -125,11 +125,7 @@
         </div>
     </div>
 
-    {{#hasdrawerblocks}}
-    <section data-region="blocks-drawer" class="d-print-none{{#drawerclosed}} drawer-hidden{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}">
-        {{{ drawerblocks }}}
-    </section>
-    {{/hasdrawerblocks}}
+    {{> partials/drawerblocks}}
 
     {{{ output.standard_after_main_region_html }}}
     {{^nofooter}}

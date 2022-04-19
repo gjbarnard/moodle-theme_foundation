@@ -49,14 +49,7 @@
     }
 }}
 <nav class="fixed-{{navbarposition}} navbar navbar-{{navbarstyle}} bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-    {{#hasdrawerblocks}}
-    <div class="navbar-nav">
-        <button id="drawer" class="btn btn-link nav-link" type="button">
-            <span id="drawerclose" class="{{#fa}}fa fa-hand-o-left{{/fa}}{{#fav}}far fa-hand-point-left{{/fav}}{{#favi}}fa-regular fa-hand-point-left{{/favi}}{{#drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{#drawerclosed}}true{{/drawerclosed}}{{^drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}closedrawer, theme_foundation{{/str}}"></span>
-            <span id="draweropen" class="{{#fa}}fa fa-hand-o-right{{/fa}}{{#fav}}far fa-hand-point-right{{/fav}}{{#favi}}fa-regular fa-hand-point-right{{/favi}}{{^drawerclosed}} d-none{{/drawerclosed}}" aria-hidden="{{^drawerclosed}}true{{/drawerclosed}}{{#drawerclosed}}false{{/drawerclosed}}" aria-label="{{#str}}opendrawer, theme_foundation{{/str}}"></span>
-        </button>
-    </div>
-    {{/hasdrawerblocks}}
+    {{> partials/navbardrawerblocks}}
 
     {{# output.should_display_navbar_logo }}
         <span class="logo d-none d-sm-inline">
