@@ -5,6 +5,7 @@ Version 4.0.1.1 - TBR
 --------------------------
 1. Fix 'aria controls on drawer'.
 2. Fix 'On "Course Reuse" page dropdown missing' - #17.
+3. Fix 'Custom select indicator colour' - #17.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------

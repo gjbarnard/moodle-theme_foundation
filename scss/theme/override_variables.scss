@@ -10,14 +10,15 @@ $spacers: (
 );
 
 // Bootstrap changes
-$dropdown-padding-y:         0 !default;
-$breadcrumb-divider-color:   inherit !default;
-$breadcrumb-font-size:       $font-size-base !default;
-$modal-content-color:        $body-color !default;
-$modal-content-bg:           $body-bg !default;
-$nav-tabs-link-active-color: $body-color !default;
-$navbar-padding-x:           $spacer / 4 !default;
-$pagination-bg:              $body-bg !default;
+$dropdown-padding-y:            0 !default;
+$breadcrumb-divider-color:      inherit !default;
+$breadcrumb-font-size:          $font-size-base !default;
+$modal-content-color:           $body-color !default;
+$modal-content-bg:              $body-bg !default;
+$nav-tabs-link-active-color:    $body-color !default;
+$navbar-padding-x:              $spacer / 4 !default;
+$pagination-bg:                 $body-bg !default;
+$custom-select-indicator-color: $body-color !default;
 
 // Moodle variable changes
 $navbar-height: 50px;
