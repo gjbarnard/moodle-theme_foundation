@@ -207,6 +207,10 @@ trait core_renderer_toolbox {
                     $tablistnav = $this->page->has_tablist_secondary_navigation();
                     $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs', true, $tablistnav);
                     $data->secondarymoremenu = $moremenu->export_for_template($this);
+                    $overflowdata = $this->page->secondarynav->get_overflow_menu_data();
+                    if (!is_null($overflowdata)) {
+                        $data->overflow = $overflowdata->export_for_template($this);
+                    }
                 }
             }
         }
