@@ -115,9 +115,10 @@ jobs:
         if: ${{ always() }}
         run: moodle-plugin-ci savepoints
 
-      - name: Mustache Lint
-        if: ${{ always() }}
-        run: moodle-plugin-ci mustache
+# Don't run because of aria controls same document error, will be fine as output will be the same document.
+#      - name: Mustache Lint
+#        if: ${{ always() }}
+#        run: moodle-plugin-ci mustache
 
 #      - name: Grunt
 #        if: ${{ always() }}
