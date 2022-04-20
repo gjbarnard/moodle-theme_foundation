@@ -269,10 +269,15 @@ trait core_renderer_toolbox {
         $displayregion = $this->page->apply_theme_region_manipulations($region);
         $classes = (array)$classes;
         $classes[] = 'block-region';
+        $editing = $this->page->user_is_editing();
         $content = '';
 
-        if ($this->page->user_is_editing()) {
+        if ($editing) {
             $content .= $this->block_region_title($displayregion);
+        }
+
+        if ($region != 'content') {
+            $content .= $this->add_block_button($region, $editing, $fakeblocksonly);
         }
 
         $attributes = array(
@@ -317,6 +322,8 @@ trait core_renderer_toolbox {
             $content .= $this->block_region_title($region);
         }
 
+        $content .= $this->add_block_button($region, $editing);
+
         $attributes = array(
             'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
@@ -331,6 +338,21 @@ trait core_renderer_toolbox {
         }
 
         return html_writer::tag($tag, $content, $attributes);
+    }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @param boolean $fakeblocksonly Output fake block only.
+     * @return string the HTML to be output.
+     */
+    public function add_block_button($region, $editing, $fakeblocksonly = false) {
+        $o = '';
+        if (($editing) && (!$fakeblocksonly)) {
+            $o = $this->addblockbutton($region);
+        }
+        return $o;
     }
 
     /**

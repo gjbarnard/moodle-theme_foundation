@@ -217,3 +217,4 @@ $THEME->extrascsscallback = 'theme_foundation_extra_scss';
 $THEME->iconsystem = '\\theme_foundation\\output\\icon_system_fontawesome';
 $THEME->haseditswitch = \theme_foundation\toolbox::get_config_setting('navbareditswitch');
 $THEME->usescourseindex = (file_exists("$CFG->dirroot/blocks/course_index/block_course_index.php"));
+$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_DEFAULT;
