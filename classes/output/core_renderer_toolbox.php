@@ -524,6 +524,10 @@ trait core_renderer_toolbox {
         // Put the modules into an array in order by the position they are shown in the course.
         $mods = [];
         $activitylist = [];
+
+        // Add a link to the main course page.
+        $activitylist[course_get_url($course)->out(false)] = get_string('maincoursepage');
+
         foreach ($modules as $module) {
             // Only add activities the user can access, aren't in stealth mode and have a url (eg. mod_label does not).
             if (!$module->uservisible || $module->is_stealth() || empty($module->url)) {

@@ -9,6 +9,7 @@ Version 4.0.1.1 - TBR
 4. Add 'Add a block option for each block area'.
 5. Add 'Put back activity navigation'.
 6. Fix 'Completion status not showing on activity/return to course button' - #18.
+7. Add 'Main course page link to activity navigation' - #18.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------
