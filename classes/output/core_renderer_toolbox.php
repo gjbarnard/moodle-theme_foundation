@@ -189,6 +189,9 @@ trait core_renderer_toolbox {
         $data->contextheadersettingsmenu = $this->context_header_settings_menu();
         $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
 
+        $header = $this->page->activityheader;
+        $data->headercontent = $header->export_for_template($this);
+
         $data->nofooter = (!empty($this->page->theme->layouts[$this->page->pagelayout]['options']['nofooter']));
         if (!$data->nofooter) {
             $data->pagedoclink = $this->page_doc_link();

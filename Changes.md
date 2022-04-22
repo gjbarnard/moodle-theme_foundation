@@ -8,6 +8,7 @@ Version 4.0.1.1 - TBR
 3. Fix 'Custom select indicator colour' - #17.
 4. Add 'Add a block option for each block area'.
 5. Add 'Put back activity navigation'.
+6. Fix 'Completion status not showing on activity/return to course button' - #18.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------
