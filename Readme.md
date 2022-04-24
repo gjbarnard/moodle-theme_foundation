@@ -2,10 +2,9 @@ Introduction
 ============
 Foundation theme.
 
-This is a Bootstrap theme that aims to be different and yet at the same time have some traditions of the past.
-It does not extend the Boost theme but rather 'pull' the files it needs from it because that is where they are currently
-stored.  No navigation drawer or docking has been implemented.  However, you can collapse and expand blocks and put them
-in a 'drawer' region.
+Foundation is a [Bootstrap](//getbootstrap.com) theme that aims to be different and yet at the same time have some traditions of the past.
+It does not extend the Boost theme but rather 'pull' the files it needs.  No navigation drawer or docking has been
+implemented, however, you can collapse and expand blocks and place them in a 'drawer' region.
 
 There is added support for 'partial' templates which can then be imported into a main template with the syntax
 '> partials/mypartial'.  But this only works for templates rendered by a renderer in PHP, not if called by JS via
@@ -19,9 +18,9 @@ Features
 * Bootstrap CSS with core Moodle CSS.
 * Child theme capable - in 'beta'.
 * Pre and Custom SCSS.
-* Custom Swatches from Bootswatch.com and licensed under the MIT License (MIT).
+* Custom Swatches from [Bootswatch.com](//bootswatch.com) and licensed under the MIT License (MIT).
 * Partial template support.
-* Theme modules - in 'beta', see the swatch_modules.php file.
+* Theme modules - in 'beta'.
 
 About
 =====
@@ -43,7 +42,7 @@ It can be obtained for free from:
 [github.com/gjb2048/moodle-theme_foundation/releases](https://github.com/gjb2048/moodle-theme_foundation/releases)
 
 You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
-FAQ - www.gnu.org/licenses/gpl-faq.html - is a good place to look.
+FAQ - [www.gnu.org/licenses/gpl-faq.html](//www.gnu.org/licenses/gpl-faq.html) - is a good place to look.
 
 If you reuse any of the code then I kindly ask that you make reference to the theme.
 
