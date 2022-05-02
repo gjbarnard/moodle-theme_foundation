@@ -45,12 +45,11 @@
                 }} id="{{uniqid}}-editingswitch"{{!
                 }} data-context="{{{pagecontextid}}}"{{!
                 }} data-pageurl="{{{pageurl}}}"{{!
+                }} title="{{#str}}editmode{{/str}}"{{!
+                }} aria-label="{{#str}}editmode{{/str}}"{{!
             }}>
-            <span class="custom-control-label">&nbsp;</span>
+            <span class="custom-control-label"></span>
         </div>
-        <label title="{{#str}}editmode{{/str}}"{{!
-            }} aria-label="{{#str}}editmode{{/str}}" for="{{uniqid}}-editingswitch">{{!
-        }}</label>
     </div>
     <input type="hidden" name="sesskey" value="{{{sesskey}}}">
     <input type="hidden" name="pageurl" value="{{{pageurl}}}">
