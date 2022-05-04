@@ -11,6 +11,7 @@ Version 4.0.1.1 - TBR
 6. Fix 'Completion status not showing on activity/return to course button' - #18.
 7. Add 'Main course page link to activity navigation' - #18.
 8. Improvement to edit switch accessibility -> https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label.
+9. Fix 'Failing core PHPUnit test' - #19.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------

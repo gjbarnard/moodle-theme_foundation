@@ -25,6 +25,10 @@
 
 namespace theme_foundation\output\core;
 
+defined('MOODLE_INTERNAL') || die;
+
+require_once($CFG->dirroot.'/course/renderer.php');
+
 use html_writer;
 use moodle_url;
 
