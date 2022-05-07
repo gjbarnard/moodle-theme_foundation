@@ -12,6 +12,7 @@ Version 4.0.1.1 - TBR
 7. Add 'Main course page link to activity navigation' - #18.
 8. Improvement to edit switch accessibility -> https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label.
 9. Fix 'Failing core PHPUnit test' - #19.
+10. Apply MDL-74602.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------

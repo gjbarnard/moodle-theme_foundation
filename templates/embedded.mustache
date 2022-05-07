@@ -17,7 +17,7 @@
 {{!
     @template theme_foundation/embedded
 
-    Foundation maintenance layout template.
+    Foundation embedded layout template.
 
     Context variables required for this template:
     * output - The core renderer for the page
@@ -51,6 +51,9 @@
             </section>
         {{/hasfakeblocks}}
         <section class="embedded-main">
+            {{#headercontent}}
+                {{> core/activity_header }}
+            {{/headercontent}}
             {{{ output.main_content }}}
         </section>
         <span class="footerantigravity">

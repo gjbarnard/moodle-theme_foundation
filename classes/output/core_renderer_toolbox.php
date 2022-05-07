@@ -239,6 +239,7 @@ trait core_renderer_toolbox {
         $data->output = $this;
         $data->fakeblocks = $this->blocks('side-pre', array(), 'aside', true);
         $data->hasfakeblocks = strpos($data->fakeblocks, 'data-block="_fake"') !== false;
+        $data->headercontent = $this->page->activityheader->export_for_template($this);
 
         echo $this->render_from_template('theme_foundation/'.$mustache, $data);
     }
