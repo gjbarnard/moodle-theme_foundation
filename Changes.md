@@ -11,6 +11,7 @@ Version 3.11.1.6 - TBR
 7. Fix small issue with overridden 'build_action_menu_from_navigation' action menu code.
 8. Fix 'Message and notifications menu style'.
 9. Fix 'Maintenance layout not outputting doctype'.
+10. Fix 'Collapsable in question preview won't work' - #22.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
