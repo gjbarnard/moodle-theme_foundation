@@ -25,6 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+// Echo the document type here with the $OUTPUT global to prevent core complaining that it hasn't been output!
+echo $OUTPUT->doctype();
+
 $data = new \stdClass();
 $data->output = $OUTPUT;
 

@@ -12,6 +12,7 @@ Version 3.11.1.6 - TBR
 8. Fix 'Message and notifications menu style'.
 9. Fix 'Maintenance layout not outputting doctype'.
 10. Fix 'Collapsable in question preview won't work' - #22.
+11. Fix 'doctype error' - #23.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
