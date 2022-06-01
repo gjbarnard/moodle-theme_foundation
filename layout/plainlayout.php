@@ -25,6 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+// Echo the document type here with the $OUTPUT global to prevent core complaining that it hasn't been output!
+echo $OUTPUT->doctype();
+
 // Get the renderer for this plugin.
 $toolbox = \theme_foundation\toolbox::get_instance();
 $output = $toolbox->get_core_renderer();
