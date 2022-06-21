@@ -13,6 +13,7 @@ Version 3.11.1.6 - TBR
 9. Fix 'Maintenance layout not outputting doctype'.
 10. Fix 'Collapsable in question preview won't work' - #22.
 11. Fix 'doctype error' - #23.
+12. Fix 'string definition for cachedef_foundationfontawesomeiconmapping/theme_foundation' - #25.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------

@@ -49,7 +49,7 @@ $string['region-poster'] = 'Poster';
 $string['region-side-post'] = 'Left';
 $string['region-side-pre'] = 'Right';
 
-$string['cachedef_fontawesome5iconmapping'] = 'Caches font awesome 5 icons';
+$string['cachedef_foundationfontawesomeiconmapping'] = 'Caches font awesome icons';
 
 $string['stylebottom'] = 'Bottom';
 $string['stylecenter'] = 'Centre';
