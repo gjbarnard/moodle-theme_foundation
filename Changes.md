@@ -16,6 +16,7 @@ Version 4.0.1.1 - TBR
 11. Fix 'Collapsable in question preview won't work' - #22.
 12. Fix 'doctype error' - #23.
 13. Fix 'string definition for cachedef_foundationfontawesomeiconmapping/theme_foundation' - #25.
+14. Apply MDL-72885.
 
 Version 4.0.1.0 - 17/04/22
 --------------------------

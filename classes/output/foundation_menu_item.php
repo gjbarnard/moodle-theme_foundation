@@ -39,14 +39,15 @@ class foundation_menu_item extends \custom_menu_item {
      * @param moodle_url $url
      * @param string $title
      * @param int $sort
+     * @param array $attributes Array of other HTML attributes for the custom menu item.
      * @return foundation_menu_item
      */
-    public function add($text, \moodle_url $url = null, $title = null, $sort = null) {
+    public function add($text, \moodle_url $url = null, $title = null, $sort = null, $attributes = []) {
         $key = count($this->children);
         if (empty($sort)) {
             $sort = $this->lastsort + 1;
         }
-        $this->children[$key] = new foundation_menu_item($text, $url, $title, $sort, $this);
+        $this->children[$key] = new foundation_menu_item($text, $url, $title, $sort, $this, $attributes);
         $this->lastsort = (int)$sort;
         return $this->children[$key];
     }
