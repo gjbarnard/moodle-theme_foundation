@@ -7,9 +7,17 @@ in a 'drawer' region.
 
 If you'd like to sponsor, get support or fund improvements, then please do get in touch via:
 
-- gjbarnard | Gmail dt com address.
+- gMail eMail | gjbarnard at gMail dt com.
+- My website eMail | contact at gjbarnard dt co dt uk.
 - GitHub | Please outline your issue / improvement on '[GitHub](https://github.com/gjb2048/moodle-theme_foundation/issues)'.
 - @gjbarnard | '[Twitter](https://twitter.com/gjbarnard)'.
+
+Bespoke work
+------------
+
+If you would like your own customised version or a new child theme of Boost / Classic, then typically with a setting and a few style
+changes this is usually two to three hours work.  At my current rate this will be between 88 and 132 GBP.  I charge by the minute with
+a minimum time of fifteen.  Please contact me for further details with an outline of what you would like.
 
 Open source software
 ====================
