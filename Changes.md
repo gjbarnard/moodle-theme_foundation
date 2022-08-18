@@ -3,6 +3,7 @@ Version Information
 
 Version 4.0.1.2 - TBR
 --------------------------
+1. Better module rendering on course page.
 
 Version 4.0.1.1 - 17/08/22
 --------------------------
