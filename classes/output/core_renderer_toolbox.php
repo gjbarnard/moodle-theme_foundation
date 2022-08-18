@@ -150,7 +150,7 @@ trait core_renderer_toolbox {
                 $data->navbarstyle = 'dark';
             }
 
-            $primary = new \theme_foundation\navigation\output\primary($this->page);
+            $primary = new \core\navigation\output\primary($this->page);
             $primarymenu = $primary->export_for_template($this);
             $data->primarymoremenu = $primarymenu['moremenu'];
             $data->mobileprimarynav = $primarymenu['mobileprimarynav'];
@@ -204,16 +204,14 @@ trait core_renderer_toolbox {
                 $mustache = 'columns3';
             }
 
-            if (!defined('BEHAT_SITE_RUNNING')) {
-                $buildsecondarynavigation = $this->page->has_secondary_navigation();
-                if ($buildsecondarynavigation) {
-                    $tablistnav = $this->page->has_tablist_secondary_navigation();
-                    $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs', true, $tablistnav);
-                    $data->secondarymoremenu = $moremenu->export_for_template($this);
-                    $overflowdata = $this->page->secondarynav->get_overflow_menu_data();
-                    if (!is_null($overflowdata)) {
-                        $data->overflow = $overflowdata->export_for_template($this);
-                    }
+            $buildsecondarynavigation = $this->page->has_secondary_navigation();
+            if ($buildsecondarynavigation) {
+                $tablistnav = $this->page->has_tablist_secondary_navigation();
+                $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs', true, $tablistnav);
+                $data->secondarymoremenu = $moremenu->export_for_template($this);
+                $overflowdata = $this->page->secondarynav->get_overflow_menu_data();
+                if (!is_null($overflowdata)) {
+                    $data->overflow = $overflowdata->export_for_template($this);
                 }
             }
         }
