@@ -9406,7 +9406,7 @@ a.dimmed_text:visited,
 .dimmed_category a {
   color: #868e96; }
 
-.aalink.focus, .aalink:focus,
+.aalink.focus, a.focus.autolink, .aalink:focus, a.autolink:focus,
 #page-footer a:not([class]).focus,
 #page-footer a:not([class]):focus,
 .arrow_link.focus,
@@ -9420,7 +9420,7 @@ a:not([class]):focus,
   background-color: #e4f1fd;
   box-shadow: 0 -0.2rem #e4f1fd, 0 0.2rem #373a3c; }
 
-.aalink:focus:hover,
+.aalink:focus:hover, a.autolink:focus:hover,
 #page-footer a:not([class]):focus:hover,
 .arrow_link:focus:hover,
 a:not([class]):focus:hover,
@@ -11462,26 +11462,58 @@ input[disabled] {
 .alert-primary a {
   color: #05233e; }
 
+.alert-primary .close {
+  color: #01080f;
+  opacity: 0.6; }
+
 .alert-secondary a {
   color: #606162; }
+
+.alert-secondary .close {
+  color: #474848;
+  opacity: 0.6; }
 
 .alert-success a, .environmenttable .ok a {
   color: #1f3e1f; }
 
+.alert-success .close, .environmenttable .ok .close {
+  color: #0e1c0e;
+  opacity: 0.6; }
+
 .alert-info a {
   color: #20454f; }
+
+.alert-info .close {
+  color: #11252b;
+  opacity: 0.6; }
 
 .alert-warning a, .environmenttable .warn a {
   color: #573e1c; }
 
+.alert-warning .close, .environmenttable .warn .close {
+  color: #302310;
+  opacity: 0.6; }
+
 .alert-danger a, .environmenttable .error a {
   color: #4c1d1b; }
+
+.alert-danger .close, .environmenttable .error .close {
+  color: #260f0e;
+  opacity: 0.6; }
 
 .alert-light a {
   color: #686868; }
 
+.alert-light .close {
+  color: #4e4e4f;
+  opacity: 0.6; }
+
 .alert-dark a {
   color: #040505; }
+
+.alert-dark .close {
+  color: black;
+  opacity: 0.6; }
 
 .alert a {
   font-weight: 700; }
@@ -13661,11 +13693,7 @@ input.titleeditor {
   vertical-align: text-bottom; }
 
 span.editinstructions {
-  /*rtl:remove*/
   position: absolute;
-  /*rtl:raw:
-    position: relative;
-    */
   top: 0;
   margin-top: -22px;
   margin-left: 30px;
@@ -13820,11 +13848,6 @@ span.editinstructions {
   font-weight: normal;
   padding: 2px 18px; }
 
-/* rtl:raw:
-.course_category_tree .category > .info > .categoryname {
-    background-image:url([[pix:moodle|t/collapsed_empty_rtl]]);
-}
- */
 .course_category_tree .category.with_children > .info > .categoryname {
   background-image: url([[pix:moodle|t/expanded]]);
   background-repeat: no-repeat;
@@ -14122,7 +14145,7 @@ span.editinstructions {
 
 .activity-add,
 .block-add {
-  color: #378dd8;
+  color: #1177d1;
   background-color: #f5fafd;
   border-color: #378dd8;
   border-width: 1px;
@@ -14132,7 +14155,7 @@ span.editinstructions {
     border-top-color: #2880cd; }
   .activity-add .alert-link,
   .block-add .alert-link {
-    color: #2473b8; }
+    color: #0d5ca2; }
   .activity-add .pluscontainer,
   .block-add .pluscontainer {
     border: 1px solid #378dd8; }
@@ -14144,7 +14167,7 @@ span.editinstructions {
     .block-add:hover .activity-add-text {
       text-decoration: underline; }
 
-#changenumsections {
+.changenumsections {
   border-top: 1px solid #378dd8; }
 
 .section-collapsemenu .collapseall {
@@ -14232,7 +14255,8 @@ span.editinstructions {
       border-bottom: 0; }
 
 .activity-item {
-  position: relative; }
+  position: relative;
+  /* Prevent bootstrap strech-link from covering the inplace editable button using z-index. */ }
   .activity-item:not(.activityinline) {
     border: 1px solid #dee2e6;
     padding: 1rem; }
@@ -14252,9 +14276,11 @@ span.editinstructions {
     display: flex;
     flex: 0 1 auto;
     max-width: 100%; }
-  .activity-item .inplaceeditable .quickeditlink,
-  .activity-item .afterlink {
-    margin: 1.5rem 0 0.2rem 0.5rem; }
+  .activity-item .activityname .afterlink {
+    margin-left: 0.5rem; }
+  .activity-item .activityname .inplaceeditable .quickeditlink {
+    z-index: 2;
+    margin-left: 0.5rem; }
   .activity-item .action-menu-item {
     display: flex;
     align-items: center; }
@@ -14472,6 +14498,10 @@ body.drawer-ease {
 @media (min-width: 992px) {
   .drawer {
     z-index: inherit; }
+    .drawer#theme_boost-drawers-blocks:focus-within {
+      position: absolute; }
+      .drawer#theme_boost-drawers-blocks:focus-within .drawercontent {
+        z-index: auto; }
     .drawer.not-initialized {
       display: block; } }
 
@@ -15293,11 +15323,11 @@ a.ygtvspacer:hover {
   display: block; }
 
 .dndupload-arrow {
-  background: url([[pix:theme|fp/dnd_arrow]]) center no-repeat;
   width: 100%;
   height: 80px;
   position: absolute;
-  top: 5px; }
+  top: 5px;
+  color: #adb5bd; }
 
 .fitem.disabled .filepicker-container,
 .fitem.disabled .fm-empty-container {
@@ -17488,8 +17518,6 @@ select {
 .filter-dates-popover {
   width: 100%;
   max-width: 41.5em; }
-  .filter-dates-popover .mform {
-    margin-left: -3em; }
 
 /* stylelint-disable-line max-line-length */
 @keyframes expandSearchButton {
@@ -18798,34 +18826,46 @@ p.arrow_button {
 #page-grade-grading-form-rubric-edit .gradingform_rubric_editform .status {
   font-size: 70%; }
 
-#rubric-rubric.gradingform_rubric #rubric-criteria {
+.gradingform_rubric {
   margin-bottom: 1em; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .description {
+  .gradingform_rubric.evaluate .criterion .levels .level:hover, .gradingform_rubric.evaluate .criterion .levels .level.checked {
+    background: #dff0d8; }
+  .gradingform_rubric.evaluate .criterion .levels .level.checked {
+    border: none;
+    border-left: 1px solid #dee2e6; }
+  .gradingform_rubric .criterion .description {
     vertical-align: top;
     padding: 6px; }
-    #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .description textarea {
+    .gradingform_rubric .criterion .description textarea {
       margin-bottom: 0;
       height: 115px; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .definition textarea {
+  .gradingform_rubric .criterion .definition textarea {
     width: 80%;
     margin-bottom: 0; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .score {
-    position: relative;
-    float: left;
-    margin-right: 28px; }
-    #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .score input {
+  .gradingform_rubric .criterion .score {
+    margin-top: 5px;
+    margin-right: 28px;
+    font-style: italic;
+    font-weight: bold;
+    color: #4d9b4d; }
+    .gradingform_rubric .criterion .score input {
       margin-bottom: 0; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .level {
+  .gradingform_rubric .criterion .level {
     vertical-align: top;
     padding: 6px; }
-    #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .level .delete {
+    .gradingform_rubric .criterion .level.currentchecked {
+      background: #fff0f0; }
+    .gradingform_rubric .criterion .level.checked {
+      background: #d0ffd0;
+      border: 1px solid #555; }
+    .gradingform_rubric .criterion .level .delete {
       position: relative;
       width: 32px;
       height: 32px;
       margin-top: -32px;
       clear: both;
       float: right; }
-      #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .level .delete input {
+      .gradingform_rubric .criterion .level .delete input {
         display: block;
         position: absolute;
         right: 0;
@@ -18833,47 +18873,45 @@ p.arrow_button {
         height: 24px;
         width: 24px;
         margin: 0; }
-        #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .level .delete input:hover {
+        .gradingform_rubric .criterion .level .delete input:hover {
           background-color: #ddd; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .scorevalue input {
+  .gradingform_rubric .criterion .scorevalue input {
     float: none;
     width: 2em; }
-    #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .scorevalue input.hiddenelement, #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .scorevalue input.pseudotablink {
+    .gradingform_rubric .criterion .scorevalue input.hiddenelement, .gradingform_rubric .criterion .scorevalue input.pseudotablink {
       width: 0; }
-  #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel {
+  .gradingform_rubric .criterion .addlevel {
     vertical-align: top;
     padding-top: 6px; }
-    #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel input {
+    .gradingform_rubric .criterion .addlevel input {
       height: 30px;
       line-height: 1rem; }
-
-#rubric-rubric.gradingform_rubric .addcriterion {
-  margin-left: 5px;
-  padding: 0;
-  margin-bottom: 1em; }
-  #rubric-rubric.gradingform_rubric .addcriterion input {
-    margin: 0;
-    color: inherit;
-    text-shadow: inherit;
-    border: 0 none;
-    line-height: inherit;
-    background: transparent url([[pix:t/add]]) no-repeat 7px 8px;
-    padding-left: 26px; }
-
-#rubric-rubric.gradingform_rubric .options {
-  clear: both; }
-  #rubric-rubric.gradingform_rubric .options .option label {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    font-weight: normal;
-    line-height: 2em;
-    color: inherit;
-    text-shadow: none;
-    background-color: transparent; }
-  #rubric-rubric.gradingform_rubric .options .option input {
+  .gradingform_rubric .addcriterion {
     margin-left: 5px;
-    margin-right: 12px; }
+    padding: 0;
+    margin-bottom: 1em; }
+    .gradingform_rubric .addcriterion input {
+      margin: 0;
+      color: inherit;
+      text-shadow: inherit;
+      border: 0 none;
+      line-height: inherit;
+      background: transparent url([[pix:t/add]]) no-repeat 7px 8px;
+      padding-left: 26px; }
+  .gradingform_rubric .options {
+    clear: both; }
+    .gradingform_rubric .options .option label {
+      margin: 0;
+      padding: 0;
+      font-size: inherit;
+      font-weight: normal;
+      line-height: 2em;
+      color: inherit;
+      text-shadow: none;
+      background-color: transparent; }
+    .gradingform_rubric .options .option input {
+      margin-left: 5px;
+      margin-right: 12px; }
 
 .grade-display .description {
   font-size: 1rem; }
@@ -19073,7 +19111,7 @@ li.activity.label,
   text-align: right;
   padding: 8px; }
 
-.choosercontainer #chooseform .option label {
+.choosercontainer #chooseform .option {
   font-size: 12px; }
 
 /* block.invisible vs .invisible
@@ -19334,6 +19372,12 @@ body.behat-site.path-grade-report-grader .gradeparent tr.heading {
 .phpinfo .h {
   background-color: #99c;
   font-weight: bold; }
+
+body > .debuggingmessage {
+  margin-top: 60px; }
+
+body > .debuggingmessage ~ .debuggingmessage {
+  margin-top: .5rem; }
 
 /**
  * This file contains the styles required to make the footer sticky.
@@ -20544,6 +20588,9 @@ div.editor_atto_toolbar button .icon {
 * Reportbuilder.
 */
 /* Table */
+.reportbuilder-table .action-menu .menubar {
+  justify-content: end; }
+
 /* Filters */
 .reportbuilder-wrapper .filters-dropdown {
   width: 27rem;
@@ -21147,6 +21194,12 @@ hr {
 .block.hidden .card-text {
   display: none; }
 
+.block .card-body {
+  padding: 0; }
+
+.block .card-title {
+  margin-bottom: 0.5rem; }
+
 .block-controls .action-menu-item {
   padding: 0.375rem 0; }
 
@@ -21181,6 +21234,8 @@ hr {
   width: 360px; }
   [data-region="blocks-drawer"].drawer-hidden {
     left: -360px; }
+  [data-region="blocks-drawer"] .card-title {
+    padding-left: 0.5rem; }
 
 @media (max-width: 767.98px) {
   [data-region="blocks-drawer"] {
@@ -21195,9 +21250,7 @@ hr {
     margin-left: 360px; } }
 
 .navbar-bottom [data-region="blocks-drawer"],
-.navbar-bottom [data-region="right-hand-drawer"],
-.no-navbar [data-region="blocks-drawer"],
-.no-navbar [data-region="right-hand-drawer"] {
+.no-navbar [data-region="blocks-drawer"] {
   top: 0; }
 
 .dashboard-card-deck.one-row {
@@ -21256,6 +21309,9 @@ body {
 .block.block_settings #settingsnav {
   padding-top: 0 !important;
   /* stylelint-disable-line declaration-no-important */ }
+
+.courseindex .courseindex-section {
+  border-left: none; }
 
 .brands {
   display: flex;
@@ -21483,10 +21539,6 @@ a:hover {
 .description .course-description-item {
   background-color: #fff; }
 
-.custom-select {
-  background: white none no-repeat scroll 0% 0%;
-  color: #373a3c; }
-
 #page-my-index {
   background-color: #fff; }
 
@@ -21522,7 +21574,7 @@ body.loginbackground.pagelayout-login #page {
 .popover-region-container {
   background-color: #fff; }
 
-.dropdown-item {
+.navbar .dropdown-item {
   padding: 0.25rem 0.5rem; }
 
 .dropdown-item,
@@ -21546,8 +21598,18 @@ body.loginbackground.pagelayout-login #page {
     background-color: #1177d1;
     color: white; }
 
-.popover-region-footer-container {
-  height: auto; }
+.popover-region-container {
+  height: auto;
+  max-height: 500px; }
+
+[data-region=right-hand-drawer].drawer {
+  height: calc(100% - 50px);
+  top: 50px; }
+
+.navbar-bottom [data-region="right-hand-drawer"].drawer,
+.no-navbar [data-region="right-hand-drawer"].drawer {
+  height: 100%;
+  top: 0; }
 
 .navbar-bottom .navbar .dropdown-menu {
   bottom: 100%;
