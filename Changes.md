@@ -4,6 +4,7 @@ Version Information
 Version 4.0.1.2 - 19/08/22
 --------------------------
 1. Better module rendering on course page.
+2. Update to FontAwesome 6.1.2 from 6.1.1.
 
 Version 4.0.1.1 - 17/08/22
 --------------------------
