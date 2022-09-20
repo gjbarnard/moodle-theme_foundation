@@ -82,14 +82,15 @@ trait mustache_engine {
             // We only expose the variables that are exposed to JS templates.
             $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $corerenderer);
 
-            $helpers = array('config' => $safeconfig,
-                             'str' => array($stringhelper, 'str'),
-                             'quote' => array($quotehelper, 'quote'),
-                             'js' => array($jshelper, 'help'),
-                             'pix' => array($pixhelper, 'pix'),
-                             'shortentext' => array($shortentexthelper, 'shorten'),
-                             'userdate' => array($userdatehelper, 'transform'),
-                         );
+            $helpers = array(
+                'config' => $safeconfig,
+                'str' => array($stringhelper, 'str'),
+                'quote' => array($quotehelper, 'quote'),
+                'js' => array($jshelper, 'help'),
+                'pix' => array($pixhelper, 'pix'),
+                'shortentext' => array($shortentexthelper, 'shorten'),
+                'userdate' => array($userdatehelper, 'transform'),
+            );
 
             $this->mustacheengine = new \Mustache_Engine(array(
                 'cache' => $cachedir,
