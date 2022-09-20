@@ -30,7 +30,7 @@
         "uniqid": ""
     }
 }}
-<form action="{{{legacyseturl}}}" method="post" class="d-flex align-items-center editmode-switch-form" title="{{#str}}editmode{{/str}}">
+<form action="{{{legacyseturl}}}" method="post" class="editmode-switch-form" title="{{#str}}editmode{{/str}}">
     <div class="input-group">
         <div class="custom-control custom-switch">
             <input type="checkbox"{{!
@@ -48,7 +48,7 @@
                 }} title="{{#str}}editmode{{/str}}"{{!
                 }} aria-label="{{#str}}editmode{{/str}}"{{!
             }}>
-            <span class="custom-control-label"></span>
+            <span class="custom-control-label">&nbsp;</span>
         </div>
     </div>
     <input type="hidden" name="sesskey" value="{{{sesskey}}}">

@@ -92,13 +92,14 @@
 
     .nav-editswitch {
         .custom-switch {
-            padding-left: 2rem;
+            padding-left: 0;
+            width: 1.75rem;
             .custom-control-label {
                 &::after {
-                    left: calc(-1.75rem + 2px);
+                    left: 2px;
                 }
                 &::before {
-                    left: -1.75rem;
+                    left: 0;
                 }
             }
         }
