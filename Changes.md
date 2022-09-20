@@ -1,6 +1,12 @@
 Version Information
 ===================
 
+Version 400.1.3 - TBR
+--------------------------
+1. Changed to semantic versioning 2.0.0 (https://semver.org/) for the release value, whereby the 'major' number is the Moodle core
+   branch number.  The 'version' property still needs to follow the Moodle way in order for the plugin to operate within the core
+   API.
+
 Version 4.0.1.2 - 19/08/22
 --------------------------
 1. Better module rendering on course page.
