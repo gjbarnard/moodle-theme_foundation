@@ -24,7 +24,7 @@
     "stylelint": "13.13.1",
     "stylelint-checkstyle-formatter": "0.1.2",
     "stylelint-csstree-validator": "1.9.0",
-    "@xmldom/xmldom": "0.7.0",
+    "@xmldom/xmldom": ">=0.8.3",
     "xpath": "0.0.32"
   },
   "engines": {
