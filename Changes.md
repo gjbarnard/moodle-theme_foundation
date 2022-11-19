@@ -20,6 +20,31 @@ Version 311.1.6 - TBR
 16. Changed to semantic versioning 2.0.0 (https://semver.org/) for the release value, whereby the 'major' number is the Moodle core
     branch number.  The 'version' property still needs to follow the Moodle way in order for the plugin to operate within the core
     API.
+17. Change the following mod icons to Font Awesome 6.2.1 free ones:
+      Assign - fa-solid fa-file-pen
+      Assignment - fa-solid fa-file-signature
+      Book - fa-solid fa-book-open
+      Chat - fa-regular fa-comments
+      Choice - fa-solid fa-arrows-split-up-and-left
+      Data - fa-solid fa-database
+      Feedback - fa-regular fa-comment-dots
+      File - fa-regular fa-file
+      Folder - fa-regular fa-folder
+      Forum - fa-solid fa-people-group
+      Glossary - fa-solid fa-box-archive
+      IMScp - fa-solid fa-boxes-stacked
+      Label - fa-solid fa-tag
+      Lesson - fa-solid fa-chalkboard-user
+      LTI - fa-solid fa-puzzle-piece
+      Page - fa-solid fa-sheet-plastic
+      Quiz - fa-solid fa-person-circle-question
+      Resource - fa-regular fa-file
+      SCORM - fa-solid fa-box
+      Survey - fa-solid fa-square-poll-horizontal
+      URL - fa-solid fa-link
+      Wiki - fa-solid fa-circle-nodes
+      Workshop - fa-solid fa-people-arrows
+   Converted to PNG with Inkscape.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
