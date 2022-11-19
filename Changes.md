@@ -8,6 +8,31 @@ Version 400.1.3 - TBR
    API.
 2. Fix 'Editing Button clashes with Chat icon in Safari' - #26.
 3. Update to FontAwesome 6.2.1 from 6.1.2.
+4. Change the following mod icons to Font Awesome 6.2.1 free ones:
+     Assign - fa-solid fa-file-pen
+     Assignment - fa-solid fa-file-signature
+     Book - fa-solid fa-book-open
+     Chat - fa-regular fa-comments
+     Choice - fa-solid fa-arrows-split-up-and-left
+     Data - fa-solid fa-database
+     Feedback - fa-regular fa-comment-dots
+     File - fa-regular fa-file
+     Folder - fa-regular fa-folder
+     Forum - fa-solid fa-people-group
+     Glossary - fa-solid fa-box-archive
+     IMScp - fa-solid fa-boxes-stacked
+     Label - fa-solid fa-tag
+     Lesson - fa-solid fa-chalkboard-user
+     LTI - fa-solid fa-puzzle-piece
+     Page - fa-solid fa-sheet-plastic
+     Quiz - fa-solid fa-person-circle-question
+     Resource - fa-regular fa-file
+     SCORM - fa-solid fa-box
+     Survey - fa-solid fa-square-poll-horizontal
+     URL - fa-solid fa-link
+     Wiki - fa-solid fa-circle-nodes
+     Workshop - fa-solid fa-people-arrows
+   Converted to PNG with Inkscape.
 
 Version 4.0.1.2 - 19/08/22
 --------------------------

@@ -1,4 +1,15 @@
 // Modules.
+.activityiconcontainer {
+    border-radius: 90px;
+}
+
+.modtype_assign .activityicon,
+.modtype_assignment .activityicon,
+.modicon_assign .activityicon,
+.modicon_assignment .activityicon {
+    margin-left: 5px !important;
+}
+
 #page-mod-hvp-mod .form-control-static {
     width: 100%;
 }
