@@ -16,6 +16,7 @@ Version 3.11.1.6 - TBR
 12. Fix 'string definition for cachedef_foundationfontawesomeiconmapping/theme_foundation' - #25.
 13. Apply MDL-72885.
 14. Fix non-navbar menu padding.
+15. Update to FontAwesome 6.2.1 from 6.1.1.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
