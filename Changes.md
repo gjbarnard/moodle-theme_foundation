@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.11.1.6 - TBR
+Version 311.1.6 - TBR
 ---------------------------
 1. Fix 'Open Sans font file extensions'.
 2. Fix '$thiscoursemenu undefined error' - #13.
@@ -17,6 +17,9 @@ Version 3.11.1.6 - TBR
 13. Apply MDL-72885.
 14. Fix non-navbar menu padding.
 15. Update to FontAwesome 6.2.1 from 6.1.1.
+16. Changed to semantic versioning 2.0.0 (https://semver.org/) for the release value, whereby the 'major' number is the Moodle core
+    branch number.  The 'version' property still needs to follow the Moodle way in order for the plugin to operate within the core
+    API.
 
 Version 3.11.1.5 - 13/02/22
 ---------------------------
