@@ -123,7 +123,7 @@
     <location>./style/fontawesomevi/</location>
     <name>Font Awesome 6 - free - https://fontawesome.com</name>
     <license>Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License</license>
-    <version>6.0.0-beta3</version>
+    <version>6.2.1</version>
     <licenseversion></licenseversion>
   </library>
 </libraries>
