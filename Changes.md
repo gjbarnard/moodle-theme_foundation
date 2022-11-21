@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 311.1.6 - TBR
+Version 311.1.6 - 21/11/22
 ---------------------------
 1. Fix 'Open Sans font file extensions'.
 2. Fix '$thiscoursemenu undefined error' - #13.
