@@ -1,6 +1,10 @@
 Version Information
 ===================
 
+Version 401.0.1 - TBR
+--------------------------
+1. Release candidate for Moodle 4.1.
+
 Version 400.1.3 - 21/11/22
 --------------------------
 1. Changed to semantic versioning 2.0.0 (https://semver.org/) for the release value, whereby the 'major' number is the Moodle core

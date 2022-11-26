@@ -84,7 +84,7 @@ $string['footerantigravityverticaloffset'] = 'Screen anti-gravity vertical offse
 $string['footerantigravityverticaloffsetdesc'] = 'Set the vertical offset of the anti-gravity buttons on the screen (not the navbar) from the default.  This can be an positive (move down) or negative (move up) number.  The units are pixels.';
 
 $string['favicon'] = 'Custom favicon';
-$string['favicondesc'] = 'Upload your own favicon.  It should be an .ico file.';
+$string['favicondesc'] = 'Upload a favicon for use on your site using the core setting \'core_admin | favicon\' under \'Site Administration\' -> \'Appearance\' -> \'Logos\'.';
 
 $string['fav'] = 'FontAwesome 5 or 6 Free';
 $string['favdesc'] = 'Use FontAwesome 5 or 6 Free for icons.  Note: Please see the license in the fonts folder of the theme.';

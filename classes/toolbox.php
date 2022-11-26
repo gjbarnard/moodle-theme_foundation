@@ -345,7 +345,7 @@ class toolbox {
 
             // Information.
             $settingspages['information'][self::SETTINGPAGE]->add(
-                new \theme_foundation\admin_setting_information('theme_foundation/themeinformation', '', '', 400)
+                new \theme_foundation\admin_setting_information('theme_foundation/themeinformation', '', '', 401)
             );
 
             // Support.md.
@@ -376,13 +376,11 @@ class toolbox {
                 )
             );
 
-            // Custom favicon.
+            // Core favicon information.
             $name = 'theme_foundation/favicon';
             $title = get_string('favicon', 'theme_foundation');
             $description = get_string('favicondesc', 'theme_foundation');
-            $setting = new \admin_setting_configstoredfile($name, $title, $description, 'favicon', 0,
-                array('accepted_types' => 'ico'));
-            $setting->set_updatedcallback('theme_reset_all_caches');
+            $setting = new \admin_setting_description($name, $title, $description);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Footer anti-gravity horizontal offset.
