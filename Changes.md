@@ -1,6 +1,9 @@
 Version Information
 ===================
 
+Version 401.0.2 - TBR
+--------------------------
+
 Version 401.0.1 - 27/11/22
 --------------------------
 1. Release candidate for Moodle 4.1.
