@@ -3,6 +3,7 @@ Version Information
 
 Version 400.1.4 - TBR
 --------------------------
+1. Apply MDL-70721.
 
 Version 400.1.3 - 21/11/22
 --------------------------
