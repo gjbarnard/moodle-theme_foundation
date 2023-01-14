@@ -91,13 +91,7 @@
                 <section id="region-main" class="region-main-content mb-3" aria-label="{{#str}}content{{/str}}">
                     {{{ output.course_content_header }}}
                     {{> partials/carousel}}
-                    {{#hasposterblocks}}
-                    <div class="row justify-content-center">
-                        <section data-region="blocks-column" class="d-print-none col-8" aria-label="{{#str}}blocks{{/str}}">
-                            {{{ posterblocks }}}
-                        </section>
-                    </div>
-                    {{/hasposterblocks}}
+                    {{> partials/pblocks}}
                     {{> partials/hblocks}}
                     {{#headercontent}}
                         {{> core/activity_header }}
