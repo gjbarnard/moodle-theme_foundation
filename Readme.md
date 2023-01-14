@@ -30,8 +30,8 @@ License    [GNU GPL v3 or later](http://www.gnu.org/copyleft/gpl.html).
 
 Developed and maintained by
 ===========================
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
-Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)
 Web profile | [About.me](http://about.me/gjbarnard)
 
 Free Software
@@ -132,6 +132,6 @@ See Changes.md
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
-Moodle profile: [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+Moodle profile: [Moodle.org](http://moodle.org/user/profile.php?id=442195)
 Web profile   : [About.me](http://about.me/gjbarnard)

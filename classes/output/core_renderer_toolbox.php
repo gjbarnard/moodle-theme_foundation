@@ -278,10 +278,6 @@ trait core_renderer_toolbox {
             $content .= $this->block_region_title($displayregion);
         }
 
-        if ($region != 'content') {
-            $content .= $this->add_block_button($region, $editing, $fakeblocksonly);
-        }
-
         $attributes = array(
             'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
             'class' => join(' ', $classes),
@@ -293,6 +289,10 @@ trait core_renderer_toolbox {
             $content .= $this->blocks_for_region($displayregion, $fakeblocksonly);
         } else {
             $content .= '';
+        }
+
+        if ($region != 'content') {
+            $content .= $this->add_block_button($region, $editing, $fakeblocksonly);
         }
 
         return html_writer::tag($tag, $content, $attributes);
@@ -324,8 +324,6 @@ trait core_renderer_toolbox {
             $content .= $this->block_region_title($region);
         }
 
-        $content .= $this->add_block_button($region, $editing);
-
         $attributes = array(
             'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
@@ -338,6 +336,8 @@ trait core_renderer_toolbox {
         } else {
             $content .= '';
         }
+
+        $content .= $this->add_block_button($region, $editing);
 
         return html_writer::tag($tag, $content, $attributes);
     }
@@ -460,6 +460,12 @@ trait core_renderer_toolbox {
      */
     public function block(block_contents $bc, $region) {
         $bc = clone($bc); // Avoid messing up the object passed in.
+
+        $editing = $this->page->user_is_editing();
+        if (!$editing && (($region == 'marketing') || ($region == 'poster'))) {
+            $bc->title = '';
+        }
+
         if (empty($bc->blockinstanceid) || !strip_tags($bc->title)) {
             $bc->collapsible = block_contents::NOT_HIDEABLE;
         } else {

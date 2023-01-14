@@ -15,24 +15,24 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_foundation/partials/hblocks
+    @template theme_foundation/partials/pblocks
 
-    Horizontal blocks.
+    Poster blocks.
 
     Context variables required for this template:
-    * hashblocks - If there are blocks.
-    * hblocks - The block markup.
+    * hasposterblocks - If there are blocks.
+    * posterblocks - The block markup.
 
     Example context (json):
     {
-        "hashblocks": true,
-        "hblocks": "<h2>Blocks html goes here</h2>"
+        "hasposterblocks": true,
+        "posterblocks": "<h2>Blocks html goes here</h2>"
     }
 }}
-{{#hashblocks}}
-<div class="row">
-    <section class="d-print-none col-12" aria-label="{{#str}}blocks{{/str}}">
-        {{{ hblocks }}}
+{{#hasposterblocks}}
+<div class="row justify-content-center">
+    <section class="d-print-none col-8" aria-label="{{#str}}blocks{{/str}}">
+        {{{ posterblocks }}}
     </section>
 </div>
-{{/hashblocks}}
+{{/hasposterblocks}}
