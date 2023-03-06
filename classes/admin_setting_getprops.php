@@ -130,7 +130,7 @@ class admin_setting_getprops extends \admin_setting {
             $table->colclasses = array('leftalign', 'leftalign');
             $table->id = 'adminprops_'.$this->name;
             $table->attributes['class'] = 'admintable generaltable';
-            $table->data  = array();
+            $table->data = array();
 
             foreach ($this->props as $propname => $propvalue) {
                 $table->data[] = array($propname, '<pre>'.htmlentities($propvalue).'</pre>');
