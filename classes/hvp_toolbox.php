@@ -63,8 +63,8 @@ trait hvp_toolbox {
         global $CFG;
 
         $syscontext = \context_system::instance();
-            $itemid = md5($content);
-                return \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
-                    "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css");
+        $itemid = md5($content);
+        return \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+            "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css");
     }
 }

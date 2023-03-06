@@ -102,14 +102,14 @@ function theme_foundation_serve_hvp_css($filename, $theme) {
 
     $content .= $toolbox->get_setting('hvpcustomcss', $themename);
     $md5content = md5($content);
-    $md5stored = get_config('theme_foundation', 'hvpccssmd5');
+    $md5stored = get_config('theme_'.$themename, 'hvpccssmd5');
     if ((empty($md5stored)) || ($md5stored != $md5content)) {
         // Content changed, so the last modified time needs to change.
-        set_config('hvpccssmd5', $md5content, $themename);
+        set_config('hvpccssmd5', $md5content, 'theme_'.$themename);
         $lastmodified = time();
-        set_config('hvpccsslm', $lastmodified, $themename);
+        set_config('hvpccsslm', $lastmodified, 'theme_'.$themename);
     } else {
-        $lastmodified = get_config($themename, 'hvpccsslm');
+        $lastmodified = get_config('theme_'.$themename, 'hvpccsslm');
         if (empty($lastmodified)) {
             $lastmodified = time();
         }
