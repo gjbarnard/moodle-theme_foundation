@@ -25,6 +25,13 @@
 
 namespace theme_foundation\output;
 
+use core_external\external_api;
+use core_external\external_function_parameters;
+use core_external\external_multiple_structure;
+use core_external\external_single_structure;
+use core_external\external_value;
+use core\external\output\icon_system\load_fontawesome_map;
+
 /**
  * Foundation theme.
  *
@@ -33,7 +40,7 @@ namespace theme_foundation\output;
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class external extends \core\output\external {
+class external extends external_api {
 
     /**
      * Return a mustache template, and all the strings it requires.
@@ -83,8 +90,8 @@ class external extends \core\output\external {
      *
      * @return external_function_parameters
      */
-    public static function load_fontawesome_icon_map_parameters() {
-        return new \external_function_parameters([]);
+    public static function load_fontawesome_icon_map_parameters(): external_function_parameters {
+        return new external_function_parameters([]);
     }
 
     /**
@@ -115,12 +122,6 @@ class external extends \core\output\external {
      * @return external_description
      */
     public static function load_fontawesome_icon_map_returns() {
-        return new \external_multiple_structure(new \external_single_structure(
-            array(
-                'component' => new \external_value(PARAM_COMPONENT, 'The component for the icon.'),
-                'pix' => new \external_value(PARAM_RAW, 'Value to map the icon from.'),
-                'to' => new \external_value(PARAM_RAW, 'Value to map the icon to.')
-            )
-        ));
+        return load_fontawesome_map::execute_returns();
     }
 }

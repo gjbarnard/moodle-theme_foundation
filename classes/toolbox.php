@@ -214,12 +214,18 @@ class toolbox {
 
         $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/override_variables.scss');
         if (empty($this->get_setting('fav'))) {
-            $scss .= '// Import FontAwesome.'.PHP_EOL;
+            $scss .= '// Import Core FontAwesome.'.PHP_EOL;
             $scss .= '@import "'.$path.'fontawesome";'.PHP_EOL;
         } else {
-            $scss .= '// Import FontAwesome Var and Mixins.'.PHP_EOL;
-            $scss .= '@import "'.$path.'fontawesome/variables";'.PHP_EOL;
-            $scss .= '@import "'.$path.'fontawesome/mixins";'.PHP_EOL;
+            $scss .= '// Import Theme FontAwesome.'.PHP_EOL;
+            $scss .= '@import "fontawesome/brands";'.PHP_EOL;
+            $scss .= '@import "fontawesome/regular";'.PHP_EOL;
+            $scss .= '@import "fontawesome/solid";'.PHP_EOL;
+            if (!empty($this->get_setting('faiv'))) {
+                $scss .= '@import "fontawesome/v4-shims";'.PHP_EOL;
+            }
+            $scss .= '@import "fontawesome/fontawesome";'.PHP_EOL;
+            $scss .= '@import "theme/fa6-fixes";'.PHP_EOL;
         }
         $scss .= '// Import All of Bootstrap'.PHP_EOL;
         $scss .= '@import "'.$path.'bootstrap";'.PHP_EOL;
@@ -401,21 +407,20 @@ class toolbox {
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Font Awesome 5 or 6 Free.
+            // Font Awesome 6 Free.
             $name = 'theme_foundation/fav';
             $title = get_string('fav', 'theme_foundation');
             $description = get_string('favdesc', 'theme_foundation');
             $default = 0;
             $choices = array(
                 0 => new \lang_string('favoff', 'theme_foundation'),
-                1 => new \lang_string('fa5name', 'theme_foundation'),
                 2 => new \lang_string('fa6name', 'theme_foundation')
             );
             $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
-            // Font Awesome 5 or 6 Free v4 shims.
+            // Font Awesome 6 Free v4 shims.
             $name = 'theme_foundation/faiv';
             $title = get_string('faiv', 'theme_foundation');
             $description = get_string('faivdesc', 'theme_foundation');

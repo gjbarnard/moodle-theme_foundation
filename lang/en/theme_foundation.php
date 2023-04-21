@@ -86,13 +86,12 @@ $string['footerantigravityverticaloffsetdesc'] = 'Set the vertical offset of the
 $string['favicon'] = 'Custom favicon';
 $string['favicondesc'] = 'Upload a favicon for use on your site using the core setting \'core_admin | favicon\' under \'Site Administration\' -> \'Appearance\' -> \'Logos\'.';
 
-$string['fav'] = 'FontAwesome 5 or 6 Free';
-$string['favdesc'] = 'Use FontAwesome 5 or 6 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
-$string['favoff'] = 'Off';
-$string['fa5name'] = 'FontAwesome 5 Free';
-$string['fa6name'] = 'FontAwesome 6 Free';
+$string['fav'] = 'FontAwesome 6 Free';
+$string['favdesc'] = 'Use the themes version of FontAwesome 6 Free for icons.  Note: Please see the license in the fonts folder of the theme.';
+$string['favoff'] = 'Core FontAwesome 6 Free version';
+$string['fa6name'] = 'Theme FontAwesome 6 Free version';
 $string['faiv'] = 'FontAwesome Free v4 shims';
-$string['faivdesc'] = 'When using FontAwesome Free for the icons add support for version 4 icon class names.';
+$string['faivdesc'] = 'When using the themes FontAwesome 6 Free for the icons add support for version 4 icon class names.';
 
 $string['courseendblocksperrow'] = 'Course end blocks per row';
 $string['courseendblocksperrowdesc'] = 'Number of blocks per row when using the \'Course end\' horizontal block region.  Note: When editing all blocks will be the same size to facilitate ease of use.';

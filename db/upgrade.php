@@ -39,6 +39,16 @@ function xmldb_theme_foundation_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, 2021051805, 'theme', 'foundation');
     }
 
+    if ($oldversion < 2023042200) {
+        // Dropping Font Awesome 5.
+        $value = get_config('theme_foundation', 'fav');
+        if ($value == 1) {
+            set_config('fav', 2, 'theme_foundation'); // Set to own Font Awesome version 6.
+        }
+
+        upgrade_plugin_savepoint(true, 2023042200, 'theme', 'foundation');
+    }
+
     // Automatic 'Purge all caches'....
     purge_all_caches();
 

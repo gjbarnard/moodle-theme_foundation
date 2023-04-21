@@ -29,28 +29,6 @@ $THEME->doctype = 'html5';
 $THEME->name = 'foundation';
 $THEME->parents = array();
 $THEME->sheets = array();
-$fav = \theme_foundation\toolbox::get_config_setting('fav');
-if (!empty($fav)) {
-    if ($fav == 1) {
-        $THEME->sheets[] = 'fontawesomev/fa5-brands';
-        $THEME->sheets[] = 'fontawesomev/fa5-regular';
-        $THEME->sheets[] = 'fontawesomev/fa5-solid';
-        $THEME->sheets[] = 'fontawesomev/fontawesome5';
-        if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
-            $THEME->sheets[] = 'fontawesomev/fa5-v4-shims';
-        }
-        $THEME->sheets[] = 'fontawesomev/fa5-fixes';
-    } else if ($fav == 2) {
-        $THEME->sheets[] = 'fontawesomevi/fa6-brands';
-        $THEME->sheets[] = 'fontawesomevi/fa6-regular';
-        $THEME->sheets[] = 'fontawesomevi/fa6-solid';
-        $THEME->sheets[] = 'fontawesomevi/fontawesome6';
-        if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
-            $THEME->sheets[] = 'fontawesomevi/fa6-v4-shims';
-        }
-        $THEME->sheets[] = 'fontawesomevi/fa6-fixes';
-    }
-}
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
 $THEME->precompiledcsscallback = 'theme_foundation_get_precompiled_css';

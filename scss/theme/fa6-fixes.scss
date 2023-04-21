@@ -1,0 +1,25 @@
+.block_settings .block_tree,
+.block_navigation .block_tree {
+    [aria-expanded="false"] > .tree_item:before {
+        content: "\f054";
+        font: normal normal 900 14px/1 'Font Awesome 6 Free';
+        width: 14px;
+    }
+    [aria-expanded="true"] > .tree_item:before {
+        content: "\f078";
+        font: normal normal 900 14px/1 'Font Awesome 6 Free';
+        width: 14px;
+    }
+}
+
+.block.hidden .block-action:before {
+    content: "\f065";
+    font: normal normal 900 14px/1 'Font Awesome 6 Free';
+    width: 14px;
+}
+
+.block .block-action:before {
+    content: "\f066";
+    font: normal normal 900 14px/1 'Font Awesome 6 Free';
+    width: 14px;
+}
