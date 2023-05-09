@@ -64,7 +64,7 @@ trait core_renderer_toolbox {
         if (!empty($this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
             if (in_array('drawer', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $drawerblockshtml = $this->blocks('drawer');
-                $hasdrawerblocks = ((strpos($drawerblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $hasdrawerblocks = ((strpos($drawerblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->drawerblocks = $drawerblockshtml;
                 $data->hasdrawerblocks = $hasdrawerblocks;
@@ -80,7 +80,7 @@ trait core_renderer_toolbox {
 
             if (in_array('poster', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $posterblockshtml = $this->blocks('poster');
-                $hasposterblocks = ((strpos($posterblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $hasposterblocks = ((strpos($posterblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->posterblocks = $posterblockshtml;
                 $data->hasposterblocks = $hasposterblocks;
@@ -88,7 +88,7 @@ trait core_renderer_toolbox {
 
             if (in_array('marketing', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $hblockshtml = $this->hblocks('marketing');
-                $hashblocks = ((strpos($hblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $hashblocks = ((strpos($hblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->hblocks = $hblockshtml;
                 $data->hashblocks = $hashblocks;
@@ -96,7 +96,7 @@ trait core_renderer_toolbox {
 
             if (in_array('side-pre', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $preblockshtml = $this->blocks('side-pre');
-                $haspreblocks = ((strpos($preblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $haspreblocks = ((strpos($preblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->sidepreblocks = $preblockshtml;
                 $data->haspreblocks = $haspreblocks;
@@ -104,7 +104,7 @@ trait core_renderer_toolbox {
 
             if (in_array('side-post', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $postblockshtml = $this->blocks('side-post');
-                $haspostblocks = ((strpos($postblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $haspostblocks = ((strpos($postblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->sidepostblocks = $postblockshtml;
                 $data->haspostblocks = $haspostblocks;
@@ -112,7 +112,7 @@ trait core_renderer_toolbox {
 
             if (in_array('courseend', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
                 $ceblockshtml = $this->hblocks('courseend');
-                $hasceblocks = ((strpos($ceblockshtml, 'data-block=') !== false) or ($this->page->user_is_editing()));
+                $hasceblocks = ((strpos($ceblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->ceblocks = $ceblockshtml;
                 $data->hasceblocks = $hasceblocks;
@@ -958,7 +958,7 @@ trait core_renderer_toolbox {
             return '';
         }
 
-        if ($this->page->course != SITEID and !empty($this->page->course->lang)) {
+        if ($this->page->course != SITEID && !empty($this->page->course->lang)) {
             // Do not show lang menu if language forced.
             return '';
         }
@@ -1004,7 +1004,7 @@ trait core_renderer_toolbox {
         $fav = $toolbox->get_setting('fav');
         $nodisplaymycourses = ($toolbox->get_setting('displaymycourses') < 2);
 
-        // See lib/classes/navigation/output/primary.php
+        // See lib/classes/navigation/output/primary.php.
         $menudata = [];
         foreach ($this->page->primarynav->children as $node) {
             switch ($node->key) {

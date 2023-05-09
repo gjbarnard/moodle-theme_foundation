@@ -41,7 +41,7 @@ class admin_setting_configselect extends \admin_setting_configselect {
      * @return string XHTML field and wrapping div
      */
     public function output_html($data, $query='') {
-        if (!$this->load_choices() or empty($this->choices)) {
+        if (!$this->load_choices() || empty($this->choices)) {
             return '';
         }
 
@@ -49,7 +49,7 @@ class admin_setting_configselect extends \admin_setting_configselect {
         if (is_null($current)) {
             // First run.
             $default = $this->get_defaultsetting();
-            if ((!is_null($default)) and (empty($data))) {
+            if ((!is_null($default)) && (empty($data))) {
                 $data = $default;
             }
         }

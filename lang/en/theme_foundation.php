@@ -65,7 +65,7 @@ $string['gotobottom'] = 'Go to the bottom of the page';
 $string['backtotop'] = 'Back to top';
 
 // Settings.
-// Information
+// Information.
 $string['informationheading'] = 'Information';
 
 $string['themechanges'] = 'Changes';

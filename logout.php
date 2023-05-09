@@ -29,6 +29,8 @@
  *   Only works when Foundaion is not installed in $CFG->themedir.
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 require_once('../../config.php');
 
 $PAGE->set_url('/theme/foundation/logout.php');
