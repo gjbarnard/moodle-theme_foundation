@@ -30,8 +30,8 @@ $string['choosereadme'] = '
 <p>Foundation is a basic theme.</p>
 <h3>Theme Credits</h3>
 <p>Author: G J Barnard<br>
-Contact: <a href="http://moodle.org/user/profile.php?id=442195">Moodle profile</a><br>
-Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
+Contact: <a href="http://moodle.org/user/profile.php?id=442195" target="_blank">Moodle profile</a><br>
+Website: <a href="https://gjbarnard.co.uk" target="_blank">gjbarnard.co.uk</a>
 </p>
 <h3>More information</h3>
 <p><a href="foundation/Readme.md">How to use this theme.</a></p>
