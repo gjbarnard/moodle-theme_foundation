@@ -225,7 +225,6 @@ class toolbox {
                 $scss .= '@import "fontawesome/v4-shims";'.PHP_EOL;
             }
             $scss .= '@import "fontawesome/fontawesome";'.PHP_EOL;
-            $scss .= '@import "theme/fa6-fixes";'.PHP_EOL;
         }
         $scss .= '// Import All of Bootstrap'.PHP_EOL;
         $scss .= '@import "'.$path.'bootstrap";'.PHP_EOL;

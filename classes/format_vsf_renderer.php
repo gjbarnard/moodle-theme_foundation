@@ -38,22 +38,16 @@ if (file_exists("$CFG->dirroot/course/format/vsf/classes/output/renderer.php")) 
         public function vsf_get_nav_link_icons() {
             $fav = \theme_foundation\toolbox::get_config_setting('fav');
             if (!empty($fav)) {
-                if ($fav == 1) { // FA 5 free.
-                    return array(
-                        'next' => 'far fa-arrow-alt-circle-right',
-                        'previous' => 'far fa-arrow-alt-circle-left'
-                    );
-                } else { // FA 6 free.
+                if ($fav == 2) { // FA 6 free.
                     return array(
                         'next' => 'fa-regular fa-arrow-alt-circle-right',
                         'previous' => 'fa-regular fa-arrow-alt-circle-left'
                     );
                 }
-            } else {
-                return array(
-                    'next' => 'fa fa-arrow-circle-o-right',
-                    'previous' => 'fa fa-arrow-circle-o-left'
-                );
+            }
+            return array(
+                'next' => 'fa fa-arrow-circle-o-right',
+                'previous' => 'fa fa-arrow-circle-o-left'
             }
         }
     }

@@ -5,12 +5,13 @@
         cursor: pointer;
         float: right;
         &:before {
-            content: $fa-var-compress;
+            content: "#{$fa-var-compress}";
+            font: normal normal 900 14px/1 'Font Awesome 6 Free';
         }
     }
     &.hidden {
         .block-action:before {
-            content: $fa-var-expand;
+            content: "#{$fa-var-expand}";
         }
         .card-text {
             display: none;

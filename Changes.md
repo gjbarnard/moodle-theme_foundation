@@ -1,7 +1,9 @@
 Version Information
 ===================
-Version 402.0.1 - TBR
+Version 402.1.0 - TBR
 --------------------------
+1. Remove Font Awesome five.
+2. Update theme version of Font Awesome 6 to 6.4.0.
 
 Version 401.1.0 - TBR
 --------------------------

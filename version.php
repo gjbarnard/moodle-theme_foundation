@@ -29,8 +29,8 @@ $plugin->version = 2023042400;
 $plugin->requires = 2023042400.00; // 4.2 (Build: 20230424).
 $plugin->supported = array(402, 402);
 $plugin->component = 'theme_foundation';
-$plugin->maturity = MATURITY_RC;
-$plugin->release = '402.0.1';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '402.1.0';
 $plugin->dependencies = array(
     'theme_boost' => 2023042400
 );
