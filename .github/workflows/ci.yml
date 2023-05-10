@@ -29,7 +29,7 @@ jobs:
             moodle-branch: 'MOODLE_400_STABLE'
             database: mariadb
           - php: 8.0
-            moodle-branch: MOODLE_400_STABLE
+            moodle-branch: 'MOODLE_400_STABLE'
             database: mariadb
 
     steps:
