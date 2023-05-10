@@ -41,10 +41,10 @@ if (!empty($fav)) {
         }
         $THEME->sheets[] = 'fontawesomev/fa5-fixes';
     } else if ($fav == 2) {
+        $THEME->sheets[] = 'fontawesomevi/fontawesome6';
         $THEME->sheets[] = 'fontawesomevi/fa6-brands';
         $THEME->sheets[] = 'fontawesomevi/fa6-regular';
         $THEME->sheets[] = 'fontawesomevi/fa6-solid';
-        $THEME->sheets[] = 'fontawesomevi/fontawesome6';
         if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
             $THEME->sheets[] = 'fontawesomevi/fa6-v4-shims';
         }
