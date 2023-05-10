@@ -350,7 +350,7 @@ class toolbox {
 
             // Information.
             $settingspages['information'][self::SETTINGPAGE]->add(
-                new \theme_foundation\admin_setting_information('theme_foundation/themeinformation', '', '', 401)
+                new \theme_foundation\admin_setting_information('theme_foundation/themeinformation', '', '', 402)
             );
 
             // Support.md.

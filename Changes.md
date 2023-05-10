@@ -1,11 +1,11 @@
 Version Information
 ===================
-Version 402.1.0 - TBR
+Version 402.1.0 - 10/05/23
 --------------------------
 1. Remove Font Awesome five.
 2. Update theme version of Font Awesome 6 to 6.4.0.
 
-Version 401.1.0 - TBR
+Version 401.1.0 - 10/05/23
 --------------------------
 1. Apply MDL-70721.
 2. Improve poster and marketing blocks.
