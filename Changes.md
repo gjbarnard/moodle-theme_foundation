@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 401.1.0 - TBR
+Version 401.1.0 - 10/05/23
 --------------------------
 1. Apply MDL-70721.
 2. Improve poster and marketing blocks.
