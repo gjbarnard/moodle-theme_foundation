@@ -6,6 +6,7 @@ Version 400.1.4 - TBR
 1. Apply MDL-70721.
 2. Improve poster and marketing blocks.
 3. Cards have borders.
+4. Collapsed Topics V400.1.3 single section navigation support.
 
 Version 400.1.3 - 21/11/22
 --------------------------
