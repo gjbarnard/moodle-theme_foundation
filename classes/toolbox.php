@@ -218,13 +218,13 @@ class toolbox {
             $scss .= '@import "'.$path.'fontawesome";'.PHP_EOL;
         } else {
             $scss .= '// Import Theme FontAwesome.'.PHP_EOL;
+            $scss .= '@import "fontawesome/fontawesome";'.PHP_EOL;
             $scss .= '@import "fontawesome/brands";'.PHP_EOL;
             $scss .= '@import "fontawesome/regular";'.PHP_EOL;
             $scss .= '@import "fontawesome/solid";'.PHP_EOL;
             if (!empty($this->get_setting('faiv'))) {
                 $scss .= '@import "fontawesome/v4-shims";'.PHP_EOL;
             }
-            $scss .= '@import "fontawesome/fontawesome";'.PHP_EOL;
         }
         $scss .= '// Import All of Bootstrap'.PHP_EOL;
         $scss .= '@import "'.$path.'bootstrap";'.PHP_EOL;
