@@ -4,7 +4,7 @@
 @mixin page_layout($blockswidth) {
     $mainwidth-oneblock: (100% - $blockswidth);
     $mainwidth-twoblocks: (100% - $blockswidth * 2);
-    #page-content {
+    body:not(.pagelayout-report) #page-content {
         display: flex;
 
         .region-main {
