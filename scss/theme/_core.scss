@@ -33,6 +33,13 @@ a:hover {
     }
 }
 
+.pagelayout-report #region-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    width: auto;
+}
+
 .pagelayout-popup #page {
     margin-top: 0;
 }

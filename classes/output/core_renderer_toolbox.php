@@ -95,7 +95,11 @@ trait core_renderer_toolbox {
             }
 
             if (in_array('side-pre', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-                $preblockshtml = $this->blocks('side-pre');
+                if ($this->page->pagelayout == 'report') {
+                    $preblockshtml = $this->hblocks('side-pre');
+                } else {
+                    $preblockshtml = $this->blocks('side-pre');
+                }
                 $haspreblocks = ((strpos($preblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->sidepreblocks = $preblockshtml;
@@ -103,7 +107,11 @@ trait core_renderer_toolbox {
             }
 
             if (in_array('side-post', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-                $postblockshtml = $this->blocks('side-post');
+                if ($this->page->pagelayout == 'report') {
+                    $postblockshtml = $this->hblocks('side-post');
+                } else {
+                    $postblockshtml = $this->blocks('side-post');
+                }
                 $haspostblocks = ((strpos($postblockshtml, 'data-block=') !== false) || ($this->page->user_is_editing()));
 
                 $data->sidepostblocks = $postblockshtml;
