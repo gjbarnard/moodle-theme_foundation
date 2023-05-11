@@ -61,8 +61,9 @@ $string['stylestretch'] = 'Stretch';
 $string['styletop'] = 'Top';
 
 // Misc.
-$string['gotobottom'] = 'Go to the bottom of the page';
+$string['addregionblock'] = 'Add block to region';
 $string['backtotop'] = 'Back to top';
+$string['gotobottom'] = 'Go to the bottom of the page';
 
 // Settings.
 // Information.

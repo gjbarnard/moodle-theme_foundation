@@ -5,6 +5,7 @@ Version 402.1.1 - TBR
 --------------------------
 1. Fix 'The course bulk editing does not work properly' - #28.
 2. Tidy report layout to have horizontal block regions.
+3. Distinguish 'Add block' functionality.
 
 Version 402.1.0 - 10/05/23
 --------------------------
