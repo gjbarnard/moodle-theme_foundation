@@ -2,6 +2,10 @@ a:hover {
     text-decoration: none;
 }
 
+.bg-body {
+    background-color: $body-bg;
+}
+
 #region-main {
     overflow-x: visible; // Prevents drop down action menu's from looking odd!
     padding-right: 15px;

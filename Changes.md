@@ -3,6 +3,7 @@ Version Information
 
 Version 402.1.1 - TBR
 --------------------------
+1. Fix 'The course bulk editing does not work properly' - #28.
 
 Version 402.1.0 - 10/05/23
 --------------------------
