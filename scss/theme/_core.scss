@@ -40,6 +40,11 @@ a:hover {
     width: auto;
 }
 
+.hasstickyfooter #page-wrapper {
+    height: auto;
+    margin-bottom: $stickyfooter-height;
+}
+
 .pagelayout-popup #page {
     margin-top: 0;
 }

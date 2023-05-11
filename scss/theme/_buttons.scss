@@ -97,6 +97,10 @@
     top: calc(16% + #{$footer-antigravity-vertical-offset}px);
 }
 
+.hasstickyfooter .footerantigravity button {
+    top: calc(74% + #{$footer-antigravity-vertical-offset}px);
+}
+
 #drawer {
     padding: .5rem;
 }
