@@ -1,4 +1,7 @@
-.bg-light,
-.bg-white {
+.chooser-container .tab-content,
+.custom-select,
+.dashboard-card-footer,
+.form-control,
+.optionscontainer .option {
     background-color: transparent !important; // stylelint-disable-line declaration-no-important
 }
