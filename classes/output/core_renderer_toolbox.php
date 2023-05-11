@@ -174,11 +174,8 @@ trait core_renderer_toolbox {
 
         $fav = $toolbox->get_setting('fav');
         if (empty($fav)) {
-            $data->fa = true;
-            $bodyclasses[] = 'faiiii';
-        } else if ($fav == 1) {
-            $data->fav = true;
-            $bodyclasses[] = 'fav';
+            $data->favi = true;
+            $bodyclasses[] = 'favi';
         } else if ($fav == 2) {
             $data->favi = true;
             $bodyclasses[] = 'favi';

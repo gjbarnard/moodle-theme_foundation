@@ -68,7 +68,7 @@
         border: none;
         color: $white;
         display: none;
-        font-size: 9px;
+        font-size: 24px;
         padding: 1px 7px 3px;
         position: fixed;
         text-align: center;
@@ -84,12 +84,8 @@
 
     .favi & {
         .backtotop {
-            right: calc(2% + 34px - #{$footer-antigravity-horizontal-offset}px);
+            right: calc(2% + 37px - #{$footer-antigravity-horizontal-offset}px);
         }
-    }
-
-    .fa {
-        font-size: 24px;
     }
 }
 
