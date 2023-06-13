@@ -66,6 +66,19 @@ class header_module extends \theme_foundation\module_basement {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
+        // Header background course image.
+        $name = 'theme_foundation/headerbackgroundcourseimage';
+        $title = get_string('headerbackgroundcourseimage', 'theme_foundation');
+        $description = get_string('headerbackgroundcourseimagedesc', 'theme_foundation');
+        $default = 'no';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            array(
+                'no' => get_string('no'),
+                'yes' => get_string('yes')
+            )
+        );
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
         // Header background style.
         $name = 'theme_foundation/headerbackgroundstyle';
         $title = get_string('headerbackgroundstyle', 'theme_foundation');
@@ -208,18 +221,22 @@ class header_module extends \theme_foundation\module_basement {
         if (!empty($headerbackgroundurl)) {
             $scss .= '#page-header {'.PHP_EOL;
 
-            $scss .= 'background-image: linear-gradient(';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).')),';
-            $scss .= 'url("'.$headerbackgroundurl.'");'.PHP_EOL;
+            $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
             $scss .= 'background-position: '.$toolbox->get_setting('headerbackgroundposition', $themename).';'.PHP_EOL;
             $headerbackgroundstyle = $toolbox->get_setting('headerbackgroundstyle', $themename);
             if ($headerbackgroundstyle === 'stretch') {
                 $headerbackgroundstyle = '100% 100%';
             }
             $scss .= 'background-size: '.$headerbackgroundstyle.';'.PHP_EOL;
+
+            $scss .= '.page-header-background-image-overlay {'.PHP_EOL;
+            $scss .= 'background-image: linear-gradient(';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).'));';
+            $scss .= '}'.PHP_EOL;
+
             $scss .= '.card {'.PHP_EOL;
             $scss .= 'background-color: transparent;'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
@@ -252,9 +269,10 @@ class header_module extends \theme_foundation\module_basement {
      * Wrapper for header elements.
      *
      * @param core_renderer $output The core renderer instance.
+     * @param toolbox $toolbox The toolbox.
      * @return string HTML to display the main header.
      */
-    public function header($output) {
+    public function header($output, $toolbox) {
         global $COURSE, $PAGE, $USER;
         $header = new stdClass();
         if (empty($PAGE->theme->layouts[$PAGE->pagelayout]['options']['nocontextheader'])) {
@@ -276,7 +294,8 @@ class header_module extends \theme_foundation\module_basement {
         $header->courseheader = $output->course_header();
         $header->headeractions = $PAGE->get_header_actions();
 
-        if (($COURSE->id != SITEID) && (true)) {
+        if (($COURSE->id != SITEID) && ($toolbox->get_setting('headerbackgroundcourseimage') == 'yes')) {
+            global $CFG;
             if ($COURSE instanceof stdClass) {
                 $course = new \core_course_list_element($COURSE);
             } else {
