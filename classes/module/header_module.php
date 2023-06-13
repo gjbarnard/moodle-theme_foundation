@@ -26,6 +26,7 @@
 namespace theme_foundation\module;
 
 use theme_foundation\admin_setting_configselect;
+use stdClass;
 
 /**
  * Header module.
@@ -254,8 +255,8 @@ class header_module extends \theme_foundation\module_basement {
      * @return string HTML to display the main header.
      */
     public function header($output) {
-        global $PAGE, $USER;
-        $header = new \stdClass();
+        global $COURSE, $PAGE, $USER;
+        $header = new stdClass();
         if (empty($PAGE->theme->layouts[$PAGE->pagelayout]['options']['nocontextheader'])) {
             $header->contextheader = $output->context_header();
         } else {
@@ -274,6 +275,28 @@ class header_module extends \theme_foundation\module_basement {
         $header->pageheadingbutton = $output->page_heading_button();
         $header->courseheader = $output->course_header();
         $header->headeractions = $PAGE->get_header_actions();
+
+        if (($COURSE->id != SITEID) && (true)) {
+            if ($COURSE instanceof stdClass) {
+                $course = new \core_course_list_element($COURSE);
+            } else {
+                $course = $COURSE;
+            }
+            $imageurl = false;
+            foreach ($course->get_course_overviewfiles() as $file) {
+                $isimage = $file->is_valid_image();
+                if ($isimage) {
+                    $imageurl = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                        '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                        $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    break;
+                }
+            }
+            if ($imageurl) {
+                $header->courseimage = $imageurl;
+            }
+        }
+
         return $output->render_from_template('core/full_header', $header);
     }
 }
