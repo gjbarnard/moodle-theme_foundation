@@ -225,7 +225,7 @@ class header_module extends \theme_foundation\module_basement {
                 $scss .= '.hascourseimage';
             }
             $scss .= ' {'.PHP_EOL;
-    
+
             if (!empty($headerbackgroundurl)) {
                 $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
             }
