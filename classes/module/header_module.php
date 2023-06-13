@@ -217,11 +217,18 @@ class header_module extends \theme_foundation\module_basement {
         $scss = '';
 
         $headerbackgroundurl = $toolbox->setting_file_url('headerbackground', 'headerbackground', $themename);
+        $headerbackgroundcourseimage = ($toolbox->get_setting('headerbackgroundcourseimage') == 'yes');
 
-        if (!empty($headerbackgroundurl)) {
-            $scss .= '#page-header {'.PHP_EOL;
-
-            $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
+        if ((!empty($headerbackgroundurl)) || ($headerbackgroundcourseimage)) {
+            $scss .= '#page-header';
+            if ((empty($headerbackgroundurl)) && ($headerbackgroundcourseimage)) {
+                $scss .= '.hascourseimage';
+            }
+            $scss .= ' {'.PHP_EOL;
+    
+            if (!empty($headerbackgroundurl)) {
+                $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
+            }
             $scss .= 'background-position: '.$toolbox->get_setting('headerbackgroundposition', $themename).';'.PHP_EOL;
             $headerbackgroundstyle = $toolbox->get_setting('headerbackgroundstyle', $themename);
             if ($headerbackgroundstyle === 'stretch') {
