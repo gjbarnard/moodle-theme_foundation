@@ -221,6 +221,8 @@ $string['headerdesc'] = 'Header desc.';
 
 $string['headerbackground'] = 'Header background';
 $string['headerbackgrounddesc'] = 'Header background image.';
+$string['headerbackgroundcourseimage'] = 'Header background course image';
+$string['headerbackgroundcourseimagedesc'] = 'If the course summary files contain one or more images, then use the first as a header background image.';
 
 $string['headerbackgroundposition'] = 'Header background position';
 $string['headerbackgroundpositiondesc'] = 'Select the position for the uploaded image.';

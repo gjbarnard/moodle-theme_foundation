@@ -26,6 +26,7 @@
 namespace theme_foundation\module;
 
 use theme_foundation\admin_setting_configselect;
+use stdClass;
 
 /**
  * Header module.
@@ -63,6 +64,19 @@ class header_module extends \theme_foundation\module_basement {
         $setting = new \admin_setting_configstoredfile($name, $title, $description, 'headerbackground', 0,
             array('accepted_types' => array('jpg', 'png')));
         $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        // Header background course image.
+        $name = 'theme_foundation/headerbackgroundcourseimage';
+        $title = get_string('headerbackgroundcourseimage', 'theme_foundation');
+        $description = get_string('headerbackgroundcourseimagedesc', 'theme_foundation');
+        $default = 'no';
+        $setting = new admin_setting_configselect($name, $title, $description, $default,
+            array(
+                'no' => get_string('no'),
+                'yes' => get_string('yes')
+            )
+        );
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Header background style.
@@ -203,22 +217,33 @@ class header_module extends \theme_foundation\module_basement {
         $scss = '';
 
         $headerbackgroundurl = $toolbox->setting_file_url('headerbackground', 'headerbackground', $themename);
+        $headerbackgroundcourseimage = ($toolbox->get_setting('headerbackgroundcourseimage') == 'yes');
 
-        if (!empty($headerbackgroundurl)) {
-            $scss .= '#page-header {'.PHP_EOL;
+        if ((!empty($headerbackgroundurl)) || ($headerbackgroundcourseimage)) {
+            $scss .= '#page-header';
+            if ((empty($headerbackgroundurl)) && ($headerbackgroundcourseimage)) {
+                $scss .= '.hascourseimage';
+            }
+            $scss .= ' {'.PHP_EOL;
 
-            $scss .= 'background-image: linear-gradient(';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).')),';
-            $scss .= 'url("'.$headerbackgroundurl.'");'.PHP_EOL;
+            if (!empty($headerbackgroundurl)) {
+                $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
+            }
             $scss .= 'background-position: '.$toolbox->get_setting('headerbackgroundposition', $themename).';'.PHP_EOL;
             $headerbackgroundstyle = $toolbox->get_setting('headerbackgroundstyle', $themename);
             if ($headerbackgroundstyle === 'stretch') {
                 $headerbackgroundstyle = '100% 100%';
             }
             $scss .= 'background-size: '.$headerbackgroundstyle.';'.PHP_EOL;
+
+            $scss .= '.page-header-background-image-overlay {'.PHP_EOL;
+            $scss .= 'background-image: linear-gradient(';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
+                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).'));';
+            $scss .= '}'.PHP_EOL;
+
             $scss .= '.card {'.PHP_EOL;
             $scss .= 'background-color: transparent;'.PHP_EOL;
             $scss .= '}'.PHP_EOL;
@@ -251,11 +276,12 @@ class header_module extends \theme_foundation\module_basement {
      * Wrapper for header elements.
      *
      * @param core_renderer $output The core renderer instance.
+     * @param toolbox $toolbox The toolbox.
      * @return string HTML to display the main header.
      */
-    public function header($output) {
-        global $PAGE, $USER;
-        $header = new \stdClass();
+    public function header($output, $toolbox) {
+        global $COURSE, $PAGE, $USER;
+        $header = new stdClass();
         if (empty($PAGE->theme->layouts[$PAGE->pagelayout]['options']['nocontextheader'])) {
             $header->contextheader = $output->context_header();
         } else {
@@ -274,6 +300,29 @@ class header_module extends \theme_foundation\module_basement {
         $header->pageheadingbutton = $output->page_heading_button();
         $header->courseheader = $output->course_header();
         $header->headeractions = $PAGE->get_header_actions();
+
+        if (($COURSE->id != SITEID) && ($toolbox->get_setting('headerbackgroundcourseimage') == 'yes')) {
+            global $CFG;
+            if ($COURSE instanceof stdClass) {
+                $course = new \core_course_list_element($COURSE);
+            } else {
+                $course = $COURSE;
+            }
+            $imageurl = false;
+            foreach ($course->get_course_overviewfiles() as $file) {
+                $isimage = $file->is_valid_image();
+                if ($isimage) {
+                    $imageurl = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                        '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                        $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    break;
+                }
+            }
+            if ($imageurl) {
+                $header->courseimage = $imageurl;
+            }
+        }
+
         return $output->render_from_template('core/full_header', $header);
     }
 }

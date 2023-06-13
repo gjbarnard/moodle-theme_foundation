@@ -233,7 +233,8 @@ trait core_renderer_toolbox {
      * @return string HTML to display the main header.
      */
     public function full_header() {
-        return \theme_foundation\toolbox::get_instance()->get_module('header')->header($this);
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        return $toolbox->get_module('header')->header($this, $toolbox);
     }
 
     /**

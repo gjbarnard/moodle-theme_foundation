@@ -7,6 +7,7 @@ Version 401.1.1 - TBR
 2. Grid V401.1.1 single section navigation support.
 3. Tidy report layout to have horizontal block regions.
 4. Distinguish 'Add block' functionality.
+5. Add 'Header background course image' functionality.
 
 Version 401.1.0 - 10/05/23
 --------------------------
