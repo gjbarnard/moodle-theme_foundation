@@ -3,6 +3,7 @@ Version Information
 
 Version 401.1.2 - TBR
 --------------------------
+1. Fix 'Logout Url not working' - https://moodle.org/mod/forum/discuss.php?d=448979.
 
 Version 401.1.1 - 15/06/23
 --------------------------
