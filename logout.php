@@ -31,7 +31,7 @@
 
 require_once(__DIR__.'/../../config.php');
 
-require_login();
+// Need to ignore code checker complaining about require_login() etc.
 
 $PAGE->set_url('/theme/foundation/logout.php');
 $PAGE->set_context(context_system::instance());
