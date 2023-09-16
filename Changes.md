@@ -1,6 +1,9 @@
 Version Information
 ===================
 
+Version 402.1.3 - TBR
+--------------------------
+
 Version 402.1.2 - 08/09/23
 --------------------------
 1. Fix 'Logout Url not working' - https://moodle.org/mod/forum/discuss.php?d=448979.
