@@ -46,6 +46,7 @@ if (!empty($fav)) {
         $THEME->sheets[] = 'fontawesomevi/fa6-regular';
         $THEME->sheets[] = 'fontawesomevi/fa6-solid';
         if (!empty(\theme_foundation\toolbox::get_config_setting('faiv'))) {
+            $THEME->sheets[] = 'fontawesomevi/fa6-v4-compatibility';
             $THEME->sheets[] = 'fontawesomevi/fa6-v4-shims';
         }
         $THEME->sheets[] = 'fontawesomevi/fa6-fixes';
