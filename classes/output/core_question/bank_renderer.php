@@ -27,7 +27,7 @@ namespace theme_foundation\output\core_question;
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot.'/question/renderer.php');
+require_once($CFG->dirroot . '/question/renderer.php');
 
 /**
  * The question bank renderer.

@@ -32,7 +32,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 abstract class module_basement {
-
     /**
      * Gets the module pre SCSS.
      *
@@ -72,7 +71,7 @@ abstract class module_basement {
      * @return array bodyclass strings.
      */
     public function body_classes() {
-        return array();
+        return [];
     }
 
     /**
@@ -97,6 +96,6 @@ abstract class module_basement {
      * @return array Array of strings for the module.
      */
     public function get_lang_strings($lang, $toolbox) {
-        return array();
+        return [];
     }
 }

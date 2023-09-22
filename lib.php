@@ -35,7 +35,7 @@
  * @param array $options
  * @return bool
  */
-function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     static $theme = null;
     if (empty($theme)) {
         $theme = theme_config::load('foundation');
@@ -71,7 +71,7 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
  */
 function theme_foundation_serve_hvp_css($filename, $theme) {
     global $CFG, $PAGE;
-    require_once($CFG->dirroot.'/lib/configonlylib.php'); // For min_enable_zlib_compression().
+    require_once($CFG->dirroot . '/lib/configonlylib.php'); // For min_enable_zlib_compression().
 
     $toolbox = \theme_foundation\toolbox::get_instance();
     $PAGE->set_context(context_system::instance());
@@ -82,7 +82,7 @@ function theme_foundation_serve_hvp_css($filename, $theme) {
     if (!empty($hvpfontcss)) {
         // Code adapted from post_process() in the theme_config object.
         if (preg_match_all('/\[\[font:([a-z0-9_]+\|)?([^\]]+)\]\]/', $hvpfontcss, $matches, PREG_SET_ORDER)) {
-            $replaced = array();
+            $replaced = [];
             foreach ($matches as $match) {
                 if (isset($replaced[$match[0]])) {
                     continue;
@@ -96,20 +96,20 @@ function theme_foundation_serve_hvp_css($filename, $theme) {
                 $hvpfontcss = str_replace($match[0], $fonturl, $hvpfontcss);
             }
 
-            $content .= $hvpfontcss.PHP_EOL.PHP_EOL;
+            $content .= $hvpfontcss . PHP_EOL . PHP_EOL;
         }
     }
 
     $content .= $toolbox->get_setting('hvpcustomcss', $themename);
     $md5content = md5($content);
-    $md5stored = get_config('theme_'.$themename, 'hvpccssmd5');
+    $md5stored = get_config('theme_' . $themename, 'hvpccssmd5');
     if ((empty($md5stored)) || ($md5stored != $md5content)) {
         // Content changed, so the last modified time needs to change.
-        set_config('hvpccssmd5', $md5content, 'theme_'.$themename);
+        set_config('hvpccssmd5', $md5content, 'theme_' . $themename);
         $lastmodified = time();
-        set_config('hvpccsslm', $lastmodified, 'theme_'.$themename);
+        set_config('hvpccsslm', $lastmodified, 'theme_' . $themename);
     } else {
-        $lastmodified = get_config('theme_'.$themename, 'hvpccsslm');
+        $lastmodified = get_config('theme_' . $themename, 'hvpccsslm');
         if (empty($lastmodified)) {
             $lastmodified = time();
         }
@@ -120,16 +120,16 @@ function theme_foundation_serve_hvp_css($filename, $theme) {
 
     header('HTTP/1.1 200 OK');
 
-    header('Etag: "'.$md5content.'"');
-    header('Content-Disposition: inline; filename="'.$filename.'"');
-    header('Last-Modified: '.gmdate('D, d M Y H:i:s', $lastmodified).' GMT');
-    header('Expires: '.gmdate('D, d M Y H:i:s', time() + $lifetime).' GMT');
+    header('Etag: "' . $md5content . '"');
+    header('Content-Disposition: inline; filename="' . $filename . '"');
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastmodified) . ' GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $lifetime) . ' GMT');
     header('Pragma: ');
-    header('Cache-Control: public, max-age='.$lifetime);
+    header('Cache-Control: public, max-age=' . $lifetime);
     header('Accept-Ranges: none');
     header('Content-Type: text/css; charset=utf-8');
     if (!min_enable_zlib_compression()) {
-        header('Content-Length: '.strlen($content));
+        header('Content-Length: ' . strlen($content));
     }
 
     echo $content;
@@ -168,9 +168,9 @@ function theme_foundation_get_precompiled_css() {
     global $CFG;
 
     if (file_exists("{$CFG->dirroot}/theme/foundation/style/fallback.css")) {
-        $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/style/fallback.css');
+        $filecontents = file_get_contents($CFG->dirroot . '/theme/foundation/style/fallback.css');
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/style/fallback.css")) {
-        $filecontents = file_get_contents($CFG->themedir.'/foundation/style/fallback.css');
+        $filecontents = file_get_contents($CFG->themedir . '/foundation/style/fallback.css');
     } else {
         $filecontents = '';
     }
@@ -218,7 +218,7 @@ function theme_foundation_extend_navigation_course($coursenode, $course, $course
             $baseurl->param('sesskey', sesskey());
         } else {
             // Edit on the main course page.
-            $baseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()));
+            $baseurl = new moodle_url('/course/view.php', ['id' => $course->id, 'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()]);
         }
 
         $editurl = clone($baseurl);

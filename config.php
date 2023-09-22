@@ -27,164 +27,164 @@ defined('MOODLE_INTERNAL') || die;
 
 $THEME->doctype = 'html5';
 $THEME->name = 'foundation';
-$THEME->parents = array();
-$THEME->sheets = array();
+$THEME->parents = [];
+$THEME->sheets = [];
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
 $THEME->precompiledcsscallback = 'theme_foundation_get_precompiled_css';
 $THEME->enable_dock = false;
 
 $THEME->supportscssoptimisation = false;
-$THEME->yuicssmodules = array();
+$THEME->yuicssmodules = [];
 
-$empty = array();
-$regions = array('side-pre', 'drawer');
+$empty = [];
+$regions = ['side-pre', 'drawer'];
 if (!empty(\theme_foundation\toolbox::get_config_setting('trio'))) {
     // Have three columns on 'two column' pages, the mustache file will be changed in the core renderer toolbox.
     $regions[] = 'side-post';
 }
 
-$THEME->layouts = array(
+$THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
-    'base' => array(
+    'base' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
+        'defaultregion' => 'side-pre',
+    ],
     // Standard layout with blocks, this is recommended for most pages with general information.
-    'standard' => array(
+    'standard' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
+        'defaultregion' => 'side-pre',
+    ],
     // Main course page.
-    'course' => array(
+    'course' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => array_merge($regions, array('courseend')),
+        'regions' => array_merge($regions, ['courseend']),
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true)
-    ),
-    'coursecategory' => array(
+        'options' => ['langmenu' => true],
+    ],
+    'coursecategory' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
-    'incourse' => array(
+        'defaultregion' => 'side-pre',
+    ],
+    'incourse' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
+        'defaultregion' => 'side-pre',
+    ],
     // The site home page.
-    'frontpage' => array(
+    'frontpage' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => array_merge($regions, array('marketing', 'poster')),
+        'regions' => array_merge($regions, ['marketing', 'poster']),
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true)
-    ),
+        'options' => ['langmenu' => true],
+    ],
     // Server administration scripts.
-    'admin' => array(
+    'admin' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
+        'defaultregion' => 'side-pre',
+    ],
     // My courses page.
-    'mycourses' => array(
+    'mycourses' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true)
-    ),
+        'options' => ['langmenu' => true],
+    ],
     // My dashboard page.
-    'mydashboard' => array(
+    'mydashboard' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true, 'nocontextheader' => true)
-    ),
+        'options' => ['langmenu' => true, 'nocontextheader' => true],
+    ],
     // My public page.
-    'mypublic' => array(
+    'mypublic' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
-    'login' => array(
+        'defaultregion' => 'side-pre',
+    ],
+    'login' => [
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('langmenu' => true)
-    ),
+        'options' => ['langmenu' => true],
+    ],
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
-    'popup' => array(
+    'popup' => [
         'file' => 'layout.php',
         'mustache' => 'popup',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nobreadcrumb' => true, 'nonavbar' => true)
-    ),
+        'options' => ['nofooter' => true, 'nobreadcrumb' => true, 'nonavbar' => true],
+    ],
     // No blocks and minimal footer - used for legacy frame layouts only!
-    'frametop' => array(
+    'frametop' => [
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nocoursefooter' => true)
-    ),
+        'options' => ['nofooter' => true, 'nocoursefooter' => true],
+    ],
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
-    'embedded' => array(
+    'embedded' => [
         'file' => 'plainlayout.php',
         'mustache' => 'embedded',
-        'regions' => $empty
-    ),
+        'regions' => $empty,
+    ],
     /* Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
        This must not have any blocks, and it is good idea if it does not have links to
        other places - for example there should not be a home link in the footer... */
-    'maintenance' => array(
+    'maintenance' => [
         'file' => 'maintenance.php',
         'mustache' => 'maintenance',
-        'regions' => $empty
-    ),
+        'regions' => $empty,
+    ],
     // Should display the content and basic headers only.
-    'print' => array(
+    'print' => [
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nobreadcrumb' => false, 'nonavbar' => true)
-    ),
+        'options' => ['nofooter' => true, 'nobreadcrumb' => false, 'nonavbar' => true],
+    ],
     // The pagelayout used when a redirection is occuring.
-    'redirect' => array(
+    'redirect' => [
         'file' => 'plainlayout.php',
         'mustache' => 'embedded',
-        'regions' => $empty
-    ),
+        'regions' => $empty,
+    ],
     // The pagelayout used for reports.
-    'report' => array(
+    'report' => [
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
-    ),
+        'defaultregion' => 'side-pre',
+    ],
     // The pagelayout used for safebrowser and securewindow.
-    'secure' => array(
+    'secure' => [
         'file' => 'layout.php',
         'mustache' => 'secure',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
-        'options' => array('nofooter' => true)
-    ),
-);
+        'options' => ['nofooter' => true],
+    ],
+];
 
 $THEME->rendererfactory = '\\theme_foundation\\renderer_factory';
 
 $THEME->prescsscallback = 'theme_foundation_pre_scss';
-$THEME->scss = function(theme_config $theme) {
+$THEME->scss = function (theme_config $theme) {
     $toolbox = \theme_foundation\toolbox::get_instance();
     $scss = $toolbox->get_main_scss_content($theme);
 

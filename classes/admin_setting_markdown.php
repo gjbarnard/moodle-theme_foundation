@@ -31,7 +31,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class admin_setting_markdown extends \admin_setting {
-
     /** @var string Filename */
     private $filename;
 
@@ -85,7 +84,7 @@ class admin_setting_markdown extends \admin_setting {
      * @param string $query
      * @return string Returns an HTML string
      */
-    public function output_html($data, $query='') {
+    public function output_html($data, $query = '') {
         global $CFG, $OUTPUT;
 
         $context = new \stdClass();
@@ -93,11 +92,11 @@ class admin_setting_markdown extends \admin_setting {
         $context->description = $this->description;
 
         if (file_exists("{$CFG->dirroot}/theme/foundation/{$this->filename}")) {
-            $filecontents = file_get_contents($CFG->dirroot.'/theme/foundation/'.$this->filename);
+            $filecontents = file_get_contents($CFG->dirroot . '/theme/foundation/' . $this->filename);
         } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/foundation/{$this->filename}")) {
-            $filecontents = file_get_contents($CFG->themedir.'/foundation/'.$this->filename);
+            $filecontents = file_get_contents($CFG->themedir . '/foundation/' . $this->filename);
         } else {
-            $filecontents = 'admin_setting_markdown -> file not found: '.$this->filename;
+            $filecontents = 'admin_setting_markdown -> file not found: ' . $this->filename;
         }
         $context->markdown = format_text($filecontents, FORMAT_MARKDOWN);
 

@@ -31,7 +31,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker {
-
     /** @var string default colour */
     protected $defaultcolour;
 
@@ -50,8 +49,16 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param array $previewconfig Array('selector'=>'.some .css .selector','style'=>'backgroundColor');
      * @param boolean $usedefaultwhenempty true or false.
      */
-    public function __construct($name, $visiblename, $description, $defaultsetting, $defaultcolour,
-            $classname = null, array $previewconfig = null, $usedefaultwhenempty = true) {
+    public function __construct(
+        $name,
+        $visiblename,
+        $description,
+        $defaultsetting,
+        $defaultcolour,
+        $classname = null,
+        array $previewconfig = null,
+        $usedefaultwhenempty = true
+    ) {
         $this->previewconfig = $previewconfig;
         $this->usedefaultwhenempty = $usedefaultwhenempty;
         $this->defaultcolour = $defaultcolour;
@@ -82,13 +89,13 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
      * @param string $query
      * @return string XHTML field and wrapping div
      */
-    public function output_html($data, $query='') {
+    public function output_html($data, $query = '') {
         global $PAGE, $OUTPUT;
 
         $id = $this->get_id();
         $PAGE->requires->js('/theme/foundation/js/fd_colourpopup.js');
-        $PAGE->requires->js_init_call('M.util.init_fdcolour_popup', array($id));
-        $initvalue = array();
+        $PAGE->requires->js_init_call('M.util.init_fdcolour_popup', [$id]);
+        $initvalue = [];
         if (empty($data)) {
             $data = '-';
         }
@@ -111,7 +118,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
             'initvalue' => $initvalue,
             'haspreviewconfig' => !empty($this->previewconfig),
             'forceltr' => $this->get_force_ltr(),
-            'readonly' => $this->is_readonly()
+            'readonly' => $this->is_readonly(),
         ];
 
         if (!empty($this->classname)) {
@@ -120,7 +127,15 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
 
         $element = $OUTPUT->render_from_template('theme_foundation/admin_setting_configcolourpicker', $context);
 
-        return format_admin_setting($this, $this->visiblename, $element, $this->description, true, '',
-            $this->get_defaultsetting(), $query);
+        return format_admin_setting(
+            $this,
+            $this->visiblename,
+            $element,
+            $this->description,
+            true,
+            '',
+            $this->get_defaultsetting(),
+            $query
+        );
     }
 }

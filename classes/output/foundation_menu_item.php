@@ -70,7 +70,7 @@ class foundation_menu_item extends \custom_menu_item {
         $context->url = $this->url ? $this->url->out() : null;
         $context->title = external_format_string($this->title, $syscontext->id);
         $context->sort = $this->sort;
-        $context->children = array();
+        $context->children = [];
         if (preg_match("/^#+$/", $this->text)) {
             $context->divider = true;
         }

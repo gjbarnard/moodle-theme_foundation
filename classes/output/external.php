@@ -41,7 +41,6 @@ use core\external\output\icon_system\load_fontawesome_map;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class external extends external_api {
-
     /**
      * Return a mustache template, and all the strings it requires.
      *
@@ -58,12 +57,12 @@ class external extends external_api {
         $PAGE->set_context(\context_system::instance());
         $params = self::validate_parameters(
             self::load_template_parameters(),
-            array(
+            [
                 'component' => $component,
                 'template' => $template,
                 'themename' => $themename,
-                'includecomments' => $includecomments
-            )
+                'includecomments' => $includecomments,
+            ]
         );
 
         $component = $params['component'];
@@ -106,7 +105,7 @@ class external extends external_api {
         $result = [];
 
         foreach ($map as $from => $to) {
-            list($component, $pix) = explode(':', $from);
+            [$component, $pix] = explode(':', $from);
             $one = [];
             $one['component'] = $component;
             $one['pix'] = $pix;

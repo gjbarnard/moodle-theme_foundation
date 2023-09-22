@@ -27,7 +27,7 @@ namespace theme_foundation\output\core;
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot.'/files/renderer.php');
+require_once($CFG->dirroot . '/files/renderer.php');
 
 /**
  * Rendering of files viewer related widgets.

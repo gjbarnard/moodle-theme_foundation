@@ -33,7 +33,6 @@ namespace theme_foundation;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class admin_setting_putprops extends \admin_setting_configtextarea {
-
     /** @var string Name of the theme. */
     private $themename;
     /** @var string Name of the 'callable' function to call with the name of the theme and the properties as an array. */
@@ -124,7 +123,7 @@ class admin_setting_putprops extends \admin_setting_configtextarea {
      *
      * @return string Returns an HTML string
      */
-    public function output_html($data, $query='') {
+    public function output_html($data, $query = '') {
         $return = parent::output_html($data, $query);
 
         return $return;

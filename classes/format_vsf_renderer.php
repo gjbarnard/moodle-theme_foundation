@@ -36,10 +36,10 @@ if (file_exists("$CFG->dirroot/course/format/vsf/classes/output/renderer.php")) 
      */
     class theme_foundation_format_vsf_renderer extends \format_vsf\output\renderer {
         public function vsf_get_nav_link_icons() {
-            return array(
+            return [
                 'next' => 'fa-regular fa-arrow-alt-circle-right',
-                'previous' => 'fa-regular fa-arrow-alt-circle-left'
-            );
+                'previous' => 'fa-regular fa-arrow-alt-circle-left',
+            ];
         }
     }
 }

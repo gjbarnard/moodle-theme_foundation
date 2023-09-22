@@ -32,15 +32,14 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class toolbox {
-
     /**
      * @var the_config The hierarchy of the_config instances with the current theme last.
      */
-    protected $theconfigs = array(); // Indexed on theme name in hierarchy order.
+    protected $theconfigs = []; // Indexed on theme name in hierarchy order.
     /**
      * @var module_basement Sub class instances of the abstract module_basement class representing all of the modules in the theme.
      */
-    protected $modules = array();
+    protected $modules = [];
     /**
      * @var toolbox Singleton instance of us.
      */
@@ -59,7 +58,7 @@ class toolbox {
     /**
      * @var array Opacity choices for settings.
      */
-    public static $settingopactitychoices = array(
+    public static $settingopactitychoices = [
         '0.0' => '0.0',
         '0.1' => '0.1',
         '0.2' => '0.2',
@@ -70,8 +69,8 @@ class toolbox {
         '0.7' => '0.7',
         '0.8' => '0.8',
         '0.9' => '0.9',
-        '1.0' => '1.0'
-    );
+        '1.0' => '1.0',
+    ];
 
     /**
      * This is a lonely object.
@@ -99,23 +98,23 @@ class toolbox {
         global $CFG;
 
         // TODO: Cope with $CFG->themedir.
-        if ($handle = opendir($CFG->dirroot.'/theme/foundation/classes/module/')) {
+        if ($handle = opendir($CFG->dirroot . '/theme/foundation/classes/module/')) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry == '.' || $entry == '..') {
                     continue;
                 }
-                $fullpath = $CFG->dirroot.'/theme/foundation/classes/module/'.$entry;
+                $fullpath = $CFG->dirroot . '/theme/foundation/classes/module/' . $entry;
                 if (is_dir($fullpath)) {
                     continue;
                 }
 
                 // Remove '.php'.
                 $classname = rtrim($entry, '.php');
-                $classname = '\theme_foundation\module\\'.$classname;
+                $classname = '\theme_foundation\module\\' . $classname;
                 if (class_exists($classname)) {
                     $this->modules[] = new $classname();
                 } else {
-                    \debugging('theme_foundation::toolbox:init_modules() Class \''.$classname.'\' not found.');
+                    \debugging('theme_foundation::toolbox:init_modules() Class \'' . $classname . '\' not found.');
                 }
             }
             closedir($handle);
@@ -130,7 +129,7 @@ class toolbox {
     public function get_core_renderer() {
         global $PAGE;
 
-        return $PAGE->get_renderer('theme_'.$PAGE->theme->name, 'core');
+        return $PAGE->get_renderer('theme_' . $PAGE->theme->name, 'core');
     }
 
     /**
@@ -149,12 +148,12 @@ class toolbox {
 
         $footerantigravityhorizontaloffset = $this->get_setting('footerantigravityhorizontaloffset', $themename);
         if (!empty($footerantigravityhorizontaloffset)) {
-            $scss .= '$footer-antigravity-horizontal-offset: '.$footerantigravityhorizontaloffset.';';
+            $scss .= '$footer-antigravity-horizontal-offset: ' . $footerantigravityhorizontaloffset . ';';
         }
 
         $footerantigravityverticaloffset = $this->get_setting('footerantigravityverticaloffset', $themename);
         if (!empty($footerantigravityverticaloffset)) {
-            $scss .= '$footer-antigravity-vertical-offset: '.$footerantigravityverticaloffset.';';
+            $scss .= '$footer-antigravity-vertical-offset: ' . $footerantigravityverticaloffset . ';';
         }
 
         // TODO: Does there need to be a parent daisy chain of this setting?
@@ -186,18 +185,18 @@ class toolbox {
         }
 
         if (!empty($this->get_setting('trio'))) {
-            $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/trio.scss');
+            $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/trio.scss');
         }
 
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/foundation_variables.scss');
+        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/foundation_variables.scss');
 
         $navbarstyle = $this->get_setting('navbarstyle');
         if (empty($navbarstyle)) {
             $navbarstyle = 'dark';
         }
-        $scss .= '$navbar-style: '.$navbarstyle.';'.PHP_EOL;
+        $scss .= '$navbar-style: ' . $navbarstyle . ';' . PHP_EOL;
 
-        $scss .= file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/theme.scss');
+        $scss .= file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/theme.scss');
 
         return $scss;
     }
@@ -212,24 +211,24 @@ class toolbox {
         // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
         $path = '../../boost/scss/';
 
-        $scss = file_get_contents($CFG->dirroot.'/theme/foundation/scss/theme/override_variables.scss');
+        $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/override_variables.scss');
         if (empty($this->get_setting('fav'))) {
-            $scss .= '// Import Core FontAwesome.'.PHP_EOL;
-            $scss .= '@import "'.$path.'fontawesome";'.PHP_EOL;
+            $scss .= '// Import Core FontAwesome.' . PHP_EOL;
+            $scss .= '@import "' . $path . 'fontawesome";' . PHP_EOL;
         } else {
-            $scss .= '// Import Theme FontAwesome.'.PHP_EOL;
-            $scss .= '@import "fontawesome/fontawesome";'.PHP_EOL;
-            $scss .= '@import "fontawesome/brands";'.PHP_EOL;
-            $scss .= '@import "fontawesome/regular";'.PHP_EOL;
-            $scss .= '@import "fontawesome/solid";'.PHP_EOL;
+            $scss .= '// Import Theme FontAwesome.' . PHP_EOL;
+            $scss .= '@import "fontawesome/fontawesome";' . PHP_EOL;
+            $scss .= '@import "fontawesome/brands";' . PHP_EOL;
+            $scss .= '@import "fontawesome/regular";' . PHP_EOL;
+            $scss .= '@import "fontawesome/solid";' . PHP_EOL;
             if (!empty($this->get_setting('faiv'))) {
-                $scss .= '@import "fontawesome/v4-shims";'.PHP_EOL;
+                $scss .= '@import "fontawesome/v4-shims";' . PHP_EOL;
             }
         }
-        $scss .= '// Import All of Bootstrap'.PHP_EOL;
-        $scss .= '@import "'.$path.'bootstrap";'.PHP_EOL;
-        $scss .= '// Import Core moodle CSS'.PHP_EOL;
-        $scss .= '@import "'.$path.'moodle";'.PHP_EOL;
+        $scss .= '// Import All of Bootstrap' . PHP_EOL;
+        $scss .= '@import "' . $path . 'bootstrap";' . PHP_EOL;
+        $scss .= '// Import Core moodle CSS' . PHP_EOL;
+        $scss .= '@import "' . $path . 'moodle";' . PHP_EOL;
 
         return $scss;
     }
@@ -263,7 +262,7 @@ class toolbox {
      * @return array bodyclass strings.
      */
     public function body_classes() {
-        $bodyclasses = array();
+        $bodyclasses = [];
         foreach ($this->modules as $module) {
             $bodyclasses = array_merge($bodyclasses, $module->body_classes());
         }
@@ -283,7 +282,7 @@ class toolbox {
             // Get the actual classname from the end of the prefixing namespace.
             $classname = explode('\\', get_class($module));
             $classname = end($classname);
-            if ($classname == $modulename.'_module') {
+            if ($classname == $modulename . '_module') {
                 $themodule = $module;
                 break;
             }
@@ -329,24 +328,32 @@ class toolbox {
 
         if ($ADMIN->fulltree) {
             // The settings pages we create.
-            $settingspages = array(
-                'information' => array(
-                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_information',
-                        get_string('informationheading', 'theme_foundation')),
-                    self::HASSETTINGS => true),
-                'general' => array(
-                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_generic',
-                        get_string('generalheading', 'theme_foundation')),
-                    self::HASSETTINGS => true),
-                'hvp' => array(
-                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_hvp',
-                        get_string('hvpheading', 'theme_foundation')),
-                    self::HASSETTINGS => true),
-                'module' => array(
-                    self::SETTINGPAGE => new \admin_settingpage('theme_foundation_module',
-                        get_string('moduleheading', 'theme_foundation')),
-                    self::HASSETTINGS => false)
-            );
+            $settingspages = [
+                'information' => [
+                    self::SETTINGPAGE => new \admin_settingpage(
+                        'theme_foundation_information',
+                        get_string('informationheading', 'theme_foundation')
+                    ),
+                    self::HASSETTINGS => true, ],
+                'general' => [
+                    self::SETTINGPAGE => new \admin_settingpage(
+                        'theme_foundation_generic',
+                        get_string('generalheading', 'theme_foundation')
+                    ),
+                    self::HASSETTINGS => true, ],
+                'hvp' => [
+                    self::SETTINGPAGE => new \admin_settingpage(
+                        'theme_foundation_hvp',
+                        get_string('hvpheading', 'theme_foundation')
+                    ),
+                    self::HASSETTINGS => true, ],
+                'module' => [
+                    self::SETTINGPAGE => new \admin_settingpage(
+                        'theme_foundation_module',
+                        get_string('moduleheading', 'theme_foundation')
+                    ),
+                    self::HASSETTINGS => false, ],
+            ];
 
             // Information.
             $settingspages['information'][self::SETTINGPAGE]->add(
@@ -376,7 +383,7 @@ class toolbox {
                 new \admin_setting_heading(
                     'theme_foundation_generalheading',
                     get_string('generalheadingsub', 'theme_foundation'),
-                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('generalheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN) . PHP_EOL .
                     format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
@@ -411,10 +418,10 @@ class toolbox {
             $title = get_string('fav', 'theme_foundation');
             $description = get_string('favdesc', 'theme_foundation');
             $default = 0;
-            $choices = array(
+            $choices = [
                 0 => new \lang_string('favoff', 'theme_foundation'),
-                2 => new \lang_string('fa6name', 'theme_foundation')
-            );
+                2 => new \lang_string('fa6name', 'theme_foundation'),
+            ];
             $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
             $setting->set_updatedcallback('purge_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
@@ -433,13 +440,13 @@ class toolbox {
             $title = get_string('courseendblocksperrow', 'theme_foundation');
             $default = '3';
             $description = get_string('courseendblocksperrowdesc', 'theme_foundation');
-            $choices = array(
+            $choices = [
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
                 '4' => '4',
-                '6' => '6'
-            );
+                '6' => '6',
+            ];
             $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
@@ -448,13 +455,13 @@ class toolbox {
             $title = get_string('marketingblocksperrow', 'theme_foundation');
             $default = '2';
             $description = get_string('marketingblocksperrowdesc', 'theme_foundation');
-            $choices = array(
+            $choices = [
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
                 '4' => '4',
-                '6' => '6'
-            );
+                '6' => '6',
+            ];
             $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
@@ -498,7 +505,7 @@ class toolbox {
                 new \admin_setting_heading(
                     'theme_foundation_hvpheading',
                     get_string('hvpheadingsub', 'theme_foundation'),
-                    format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN).PHP_EOL.
+                    format_text(get_string('hvpheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN) . PHP_EOL .
                     format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
                 )
             );
@@ -557,14 +564,16 @@ class toolbox {
         global $ADMIN;
         $page = new \admin_settingpage('theme_foundation_importexport', get_string('properties', 'theme_foundation'));
         if ($ADMIN->fulltree) {
-
-            $page->add(new \admin_setting_heading('theme_foundation_importexport',
+            $page->add(new \admin_setting_heading(
+                'theme_foundation_importexport',
                 get_string('propertiessub', 'theme_foundation'),
-                format_text(get_string('propertiesdesc', 'theme_foundation'), FORMAT_MARKDOWN)));
+                format_text(get_string('propertiesdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            ));
 
             $foundationexportprops = optional_param('theme_foundation_getprops_saveprops', 0, PARAM_INT);
             $foundationprops = self::compile_properties('foundation');
-            $page->add(new admin_setting_getprops('theme_foundation_getprops',
+            $page->add(new admin_setting_getprops(
+                'theme_foundation_getprops',
                 get_string('propertiesproperty', 'theme_foundation'),
                 get_string('propertiesvalue', 'theme_foundation'),
                 $foundationprops,
@@ -580,7 +589,8 @@ class toolbox {
             $setting = new \admin_setting_heading($name, $heading, '');
             $page->add($setting);
 
-            $setting = new admin_setting_putprops('theme_foundation_putprops',
+            $setting = new admin_setting_putprops(
+                'theme_foundation_putprops',
                 get_string('putpropertiesname', 'theme_foundation'),
                 get_string('putpropertiesdesc', 'theme_foundation'),
                 'foundation',
@@ -1117,7 +1127,7 @@ class toolbox {
      * @return array Array of strings.
      */
     public function get_lang_strings($lang) {
-        $strings = array();
+        $strings = [];
 
         foreach ($this->modules as $module) {
             $strings = array_merge($strings, $module->get_lang_strings($lang, $this));
@@ -1211,7 +1221,7 @@ class toolbox {
         if (empty($themename)) {
             $themename = 'foundation';
         }
-        return \get_config('theme_'.$themename, $setting);
+        return \get_config('theme_' . $themename, $setting);
     }
 
     /**
@@ -1237,7 +1247,7 @@ class toolbox {
                 $itemid = \theme_get_revision();
                 $syscontext = \context_system::instance();
 
-                $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_$theconfig->name/$setting/$itemid".$thesetting);
+                $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_$theconfig->name/$setting/$itemid" . $thesetting);
             }
         }
         return $settingurl;
@@ -1261,12 +1271,12 @@ class toolbox {
             if (!empty($thesetting)) {
                 // From theme_config::setting_file_url.
                 global $CFG;
-                $component = 'theme_'.$themename;
+                $component = 'theme_' . $themename;
                 $itemid = \theme_get_revision();
                 $filepath = $thesetting;
                 $syscontext = \context_system::instance();
 
-                $url = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/$component/$filearea/$itemid".$filepath);
+                $url = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/$component/$filearea/$itemid" . $filepath);
 
                 /* Now this is tricky because the we can not hardcode http or https here, lets use the relative link.
                    Note: unfortunately moodle_url does not support //urls yet. */
@@ -1335,17 +1345,17 @@ class toolbox {
             $catlist = $DB->get_records('course_categories', null, 'sortorder', 'id, name, depth, path');
 
             foreach ($catlist as $category) {
-                $category->parents = array();
-                if ($category->depth > 1 ) {
+                $category->parents = [];
+                if ($category->depth > 1) {
                     $path = preg_split('|/|', $category->path, -1, PREG_SPLIT_NO_EMPTY);
-                    $category->namechunks = array();
+                    $category->namechunks = [];
                     foreach ($path as $parentid) {
                         $category->namechunks[] = $catlist[$parentid]->name;
                         $category->parents[] = $parentid;
                     }
                     $category->parents = array_reverse($category->parents);
                 } else {
-                    $category->namechunks = array($category->name);
+                    $category->namechunks = [$category->name];
                 }
             }
         }
@@ -1364,8 +1374,8 @@ class toolbox {
     public static function compile_properties($themename, $array = true) {
         global $CFG, $DB;
 
-        $props = array();
-        $themeprops = $DB->get_records('config_plugins', array('plugin' => 'theme_'.$themename));
+        $props = [];
+        $themeprops = $DB->get_records('config_plugins', ['plugin' => 'theme_' . $themename]);
 
         if ($array) {
             $props['moodle_version'] = $CFG->version;
@@ -1423,27 +1433,27 @@ class toolbox {
         $currentprops = self::compile_properties($themename, false);
 
         // Build the report.
-        $report = get_string('putpropertyreport', 'theme_foundation').PHP_EOL;
-        $report .= get_string('putpropertyproperties', 'theme_foundation').' \'Moodle\' '.
-            get_string('putpropertyversion', 'theme_foundation').' '.$props['moodle_version'].'.'.PHP_EOL;
+        $report = get_string('putpropertyreport', 'theme_foundation') . PHP_EOL;
+        $report .= get_string('putpropertyproperties', 'theme_foundation') . ' \'Moodle\' ' .
+            get_string('putpropertyversion', 'theme_foundation') . ' ' . $props['moodle_version'] . '.' . PHP_EOL;
         unset($props['moodle_version']);
-        $report .= get_string('putpropertyour', 'theme_foundation').' \'Moodle\' '.
-            get_string('putpropertyversion', 'theme_foundation').' '.$currentprops['moodle_version']->value.'.'.PHP_EOL;
+        $report .= get_string('putpropertyour', 'theme_foundation') . ' \'Moodle\' ' .
+            get_string('putpropertyversion', 'theme_foundation') . ' ' . $currentprops['moodle_version']->value . '.' . PHP_EOL;
         unset($currentprops['moodle_version']);
-        $report .= get_string('putpropertyproperties', 'theme_foundation').' \''.ucfirst($themename).'\' '.
-            get_string('putpropertyversion', 'theme_foundation').' '.$props['theme_version'].'.'.PHP_EOL;
+        $report .= get_string('putpropertyproperties', 'theme_foundation') . ' \'' . ucfirst($themename) . '\' ' .
+            get_string('putpropertyversion', 'theme_foundation') . ' ' . $props['theme_version'] . '.' . PHP_EOL;
         unset($props['theme_version']);
-        $report .= get_string('putpropertyour', 'theme_foundation').' \''.ucfirst($themename).'\' '.
-            get_string('putpropertyversion', 'theme_foundation').' '.$currentprops['theme_version']->value.'.'.PHP_EOL.PHP_EOL;
+        $report .= get_string('putpropertyour', 'theme_foundation') . ' \'' . ucfirst($themename) . '\' ' .
+            get_string('putpropertyversion', 'theme_foundation') . ' ' . $currentprops['theme_version']->value . '.' . PHP_EOL . PHP_EOL;
         unset($currentprops['theme_version']);
 
         // Pre-process files - using 'theme_foundation_pluginfile' in lib.php as a reference.
         $filestoreport = '';
-        $preprocessfilesettings = array('logo', 'favicon', 'hvp', 'loginbackground');
+        $preprocessfilesettings = ['logo', 'favicon', 'hvp', 'loginbackground'];
 
         // Slide show.
         for ($propslide = 1; $propslide <= $props['frontpagecarouselslides']; $propslide++) {
-            $preprocessfilesettings[] = 'frontpageslideimage'.$propslide;
+            $preprocessfilesettings[] = 'frontpageslideimage' . $propslide;
         }
 
         // Process the file properties.
@@ -1453,47 +1463,47 @@ class toolbox {
         }
 
         if ($filestoreport) {
-            $report .= get_string('putpropertiesreportfiles', 'theme_foundation').PHP_EOL.$filestoreport.PHP_EOL;
+            $report .= get_string('putpropertiesreportfiles', 'theme_foundation') . PHP_EOL . $filestoreport . PHP_EOL;
         }
 
         // Need to ignore and report on any unknown settings.
-        $report .= get_string('putpropertiessettingsreport', 'theme_foundation').PHP_EOL;
+        $report .= get_string('putpropertiessettingsreport', 'theme_foundation') . PHP_EOL;
         $changed = '';
         $unchanged = '';
         $added = '';
         $ignored = '';
         $settinglog = '';
         foreach ($props as $propkey => $propvalue) {
-            $settinglog = '\''.$propkey.'\' '.get_string('putpropertiesvalue', 'theme_foundation').' \''.$propvalue.'\'';
+            $settinglog = '\'' . $propkey . '\' ' . get_string('putpropertiesvalue', 'theme_foundation') . ' \'' . $propvalue . '\'';
             if (array_key_exists($propkey, $currentprops)) {
                 if ($propvalue != $currentprops[$propkey]->value) {
-                    $settinglog .= ' '.get_string('putpropertiesfrom', 'theme_foundation').' \''.$currentprops[$propkey]->value.'\'';
-                    $changed .= $settinglog.'.'.PHP_EOL;
-                    $DB->update_record('config_plugins', array('id' => $currentprops[$propkey]->id, 'value' => $propvalue), true);
+                    $settinglog .= ' ' . get_string('putpropertiesfrom', 'theme_foundation') . ' \'' . $currentprops[$propkey]->value . '\'';
+                    $changed .= $settinglog . '.' . PHP_EOL;
+                    $DB->update_record('config_plugins', ['id' => $currentprops[$propkey]->id, 'value' => $propvalue], true);
                 } else {
-                    $unchanged .= $settinglog.'.'.PHP_EOL;
+                    $unchanged .= $settinglog . '.' . PHP_EOL;
                 }
             } else if (self::to_add_property($propkey)) {
                 // Properties that have an index and don't already exist.
-                $DB->insert_record('config_plugins', array(
-                    'plugin' => 'theme_'.$themename, 'name' => $propkey, 'value' => $propvalue), true);
-                $added .= $settinglog.'.'.PHP_EOL;
+                $DB->insert_record('config_plugins', [
+                    'plugin' => 'theme_' . $themename, 'name' => $propkey, 'value' => $propvalue, ], true);
+                $added .= $settinglog . '.' . PHP_EOL;
             } else {
-                $ignored .= $settinglog.'.'.PHP_EOL;
+                $ignored .= $settinglog . '.' . PHP_EOL;
             }
         }
 
         if (!empty($changed)) {
-            $report .= get_string('putpropertieschanged', 'theme_foundation').PHP_EOL.$changed.PHP_EOL;
+            $report .= get_string('putpropertieschanged', 'theme_foundation') . PHP_EOL . $changed . PHP_EOL;
         }
         if (!empty($added)) {
-            $report .= get_string('putpropertiesadded', 'theme_foundation').PHP_EOL.$added.PHP_EOL;
+            $report .= get_string('putpropertiesadded', 'theme_foundation') . PHP_EOL . $added . PHP_EOL;
         }
         if (!empty($unchanged)) {
-            $report .= get_string('putpropertiesunchanged', 'theme_foundation').PHP_EOL.$unchanged.PHP_EOL;
+            $report .= get_string('putpropertiesunchanged', 'theme_foundation') . PHP_EOL . $unchanged . PHP_EOL;
         }
         if (!empty($ignored)) {
-            $report .= get_string('putpropertiesignored', 'theme_foundation').PHP_EOL.$ignored.PHP_EOL;
+            $report .= get_string('putpropertiesignored', 'theme_foundation') . PHP_EOL . $ignored . PHP_EOL;
         }
 
         return $report;
@@ -1507,11 +1517,11 @@ class toolbox {
      * @return array matches
      */
     protected static function to_add_property($propkey) {
-        static $matches = '('.
+        static $matches = '(' .
              // Slider ....
-             '^frontpageenableslide[1-9][0-9]$|'.
-             '^frontpageslidetitle[1-9][0-9]$|'.
-             '^frontpageslidecaption[1-9][0-9]$|'.
+             '^frontpageenableslide[1-9][0-9]$|' .
+             '^frontpageslidetitle[1-9][0-9]$|' .
+             '^frontpageslidecaption[1-9][0-9]$|' .
             ')';
 
         return (preg_match($matches, $propkey) === 1);
@@ -1527,8 +1537,8 @@ class toolbox {
      */
     private static function put_prop_file_preprocess($key, &$props, &$filestoreport) {
         if (!empty($props[$key])) {
-            $filestoreport .= '\''.$key.'\' '.get_string('putpropertiesvalue', 'theme_foundation').' \''.
-                \core_text::substr($props[$key], 1).'\'.'.PHP_EOL;
+            $filestoreport .= '\'' . $key . '\' ' . get_string('putpropertiesvalue', 'theme_foundation') . ' \'' .
+                \core_text::substr($props[$key], 1) . '\'.' . PHP_EOL;
         }
         unset($props[$key]);
     }
@@ -1544,7 +1554,7 @@ class toolbox {
      *
      * @return string Markup.
      */
-    public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '', $title = '') {
+    public function getfontawesomemarkup($theicon, $classes = [], $attributes = [], $content = '', $title = '') {
         if (!empty($theicon)) {
             $fav = $this->get_setting('fav');
             if (!empty($fav)) {
@@ -1554,14 +1564,14 @@ class toolbox {
                     $classes[] = $this->get_fa6_from_fa4($theicon);
                 }
             } else {
-                $classes[] = 'fa fa-'.$theicon;
+                $classes[] = 'fa fa-' . $theicon;
             }
         }
         $attributes['aria-hidden'] = 'true';
         $attributes['class'] = implode(' ', $classes);
         if (!empty($title)) {
             $attributes['title'] = $title;
-            $content .= \html_writer::tag('span', $title, array('class' => 'sr-only'));
+            $content .= \html_writer::tag('span', $title, ['class' => 'sr-only']);
         }
         return \html_writer::tag('span', $content, $attributes);
     }
@@ -1575,10 +1585,10 @@ class toolbox {
      * @return string Icon CSS classes.
      */
     public function get_fa5_from_fa4($icon, $hasprefix = false) {
-        $icontofind = ($hasprefix) ? $icon : 'fa-'.$icon;
+        $icontofind = ($hasprefix) ? $icon : 'fa-' . $icon;
 
         // Ref: fa-v4-shims.js.
-        static $icons = array(
+        static $icons = [
             'fa-glass' => 'fas fa-glass-martini',
             'fa-meetup' => 'fab fa-meetup',
             'fa-star-o' => 'far fa-star',
@@ -2041,14 +2051,14 @@ class toolbox {
             'fa-snowflake-o' => 'far fa-snowflake',
             'fa-superpowers' => 'fab fa-superpowers',
             'fa-wpexplorer' => 'fab fa-wpexplorer',
-            'fa-cab' => 'fas fa-taxi'
-        );
+            'fa-cab' => 'fas fa-taxi',
+        ];
 
         if (isset($icons[$icontofind])) {
             return $icons[$icontofind];
         } else {
             // Guess.
-            return 'fas '.$icontofind;
+            return 'fas ' . $icontofind;
         }
     }
 
@@ -2061,7 +2071,7 @@ class toolbox {
      * @return string Icon CSS classes.
      */
     public function get_fa6_from_fa4($icon, $hasprefix = false) {
-        $icontofind = ($hasprefix) ? $icon : 'fa-'.$icon;
+        $icontofind = ($hasprefix) ? $icon : 'fa-' . $icon;
 
         // Ref: fa-v4-shims.js.
         /* Node JS Code:
@@ -2082,7 +2092,7 @@ class toolbox {
                 console.log(output);
             });
         */
-        static $icons = array(
+        static $icons = [
             'fa-glass' => 'fas fa-martini-glass-empty',
             'fa-envelope-o' => 'far fa-envelope',
             'fa-star-o' => 'far fa-star',
@@ -2547,14 +2557,14 @@ class toolbox {
             'fa-snowflake-o' => 'far fa-snowflake',
             'fa-superpowers' => 'fab fa-superpowers',
             'fa-wpexplorer' => 'fab fa-wpexplorer',
-            'fa-meetup' => 'fab fa-meetup'
-        );
+            'fa-meetup' => 'fab fa-meetup',
+        ];
 
         if (isset($icons[$icontofind])) {
             return $icons[$icontofind];
         } else {
             // Guess.
-            return 'fas '.$icontofind;
+            return 'fas ' . $icontofind;
         }
     }
 }

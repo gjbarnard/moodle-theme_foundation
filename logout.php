@@ -29,7 +29,7 @@
  *   Only works when Foundaion is not installed in $CFG->themedir.
  */
 
-require_once(__DIR__.'/../../config.php');
+require_once(__DIR__ . '/../../config.php');
 
 // Need to ignore code checker complaining about require_login() etc.
 
@@ -44,8 +44,10 @@ if (($loggedin) && (!confirm_sesskey($sesskey))) {
     $PAGE->set_title($SITE->fullname);
     $PAGE->set_heading($SITE->fullname);
     echo $OUTPUT->header();
-    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url($PAGE->url,
-        array('sesskey' => sesskey())), $CFG->wwwroot.'/');
+    echo $OUTPUT->confirm(get_string('logoutconfirm'), new moodle_url(
+        $PAGE->url,
+        ['sesskey' => sesskey()]
+    ), $CFG->wwwroot . '/');
     echo $OUTPUT->footer();
     die;
 }
