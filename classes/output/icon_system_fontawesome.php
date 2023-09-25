@@ -33,7 +33,6 @@ namespace theme_foundation\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
-
     /**
      * @var array $map Cached map of Moodle icon names to Font Awesome icon names.
      */
@@ -457,7 +456,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             if ($this->map === []) {
                 $cache = \cache::make('theme_foundation', 'foundationfontawesomeiconmapping');
 
-                $this->map = $cache->get('mapping'.$this->fav);
+                $this->map = $cache->get('mapping' . $this->fav);
                 if ($this->fav == 1) {
                     $getmethod = 'get_fa5_from_fa4';
                 } else {
@@ -481,7 +480,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
                             }
                         }
                     }
-                    $cache->set('mapping'.$this->fav, $this->map);
+                    $cache->set('mapping' . $this->fav, $this->map);
                 }
             }
         }
@@ -517,7 +516,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         if (!$subpix->is_mapped()) {
             $data['unmappedIcon'] = $icon->export_for_template($output);
         } else if (empty($this->fav)) {
-            $data['key'] = 'fa '.$data['key'];
+            $data['key'] = 'fa ' . $data['key'];
         }
 
         // MDL-62680.

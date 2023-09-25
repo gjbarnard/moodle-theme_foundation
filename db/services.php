@@ -25,21 +25,21 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$functions = array(
-    'theme_foundation_output_load_fontawesome_icon_map' => array(
+$functions = [
+    'theme_foundation_output_load_fontawesome_icon_map' => [
         'classname' => 'theme_foundation\output\external',
         'methodname' => 'load_fontawesome_icon_map',
         'description' => 'Load the mapping of names to icons',
         'type' => 'read',
         'loginrequired' => false,
-        'ajax' => true
-    )
-);
+        'ajax' => true,
+    ],
+];
 
-$services = array(
-    'Foundation theme FontAwesome map' => array(
-            'functions' => array('theme_foundation_output_load_fontawesome_icon_map'),
+$services = [
+    'Foundation theme FontAwesome map' => [
+            'functions' => ['theme_foundation_output_load_fontawesome_icon_map'],
             'restrictedusers' => 0,
-            'enabled' => 1
-    )
-);
+            'enabled' => 1,
+    ],
+];

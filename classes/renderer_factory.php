@@ -31,7 +31,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class renderer_factory extends \theme_overridden_renderer_factory {
-
     /**
      * @var object The theme's core renderer.
      */

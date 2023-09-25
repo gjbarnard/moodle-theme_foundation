@@ -27,7 +27,7 @@ namespace theme_foundation\output\core;
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot.'/course/renderer.php');
+require_once($CFG->dirroot . '/course/renderer.php');
 
 use html_writer;
 use moodle_url;
@@ -64,15 +64,20 @@ class course_renderer extends \core_course_renderer {
             $nametag = 'div';
         }
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $coursename = $toolbox->getfontawesomemarkup('graduation-cap', array('mr-1')).$chelper->get_course_formatted_name($course);
-        $coursenamelink = html_writer::link(new moodle_url('/course/view.php', ['id' => $course->id]),
-            $coursename, ['class' => $course->visible ? 'aalink' : 'aalink dimmed']);
+        $coursename = $toolbox->getfontawesomemarkup('graduation-cap', ['mr-1']) . $chelper->get_course_formatted_name($course);
+        $coursenamelink = html_writer::link(
+            new moodle_url('/course/view.php', ['id' => $course->id]),
+            $coursename,
+            ['class' => $course->visible ? 'aalink' : 'aalink dimmed']
+        );
         $content .= html_writer::tag($nametag, $coursenamelink, ['class' => 'coursename']);
         // If we display course in collapsed form but the course has summary or course contacts, display the link to the info page.
         $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
         if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
-            if ($course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()
-                || $course->has_custom_fields()) {
+            if (
+                $course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()
+                || $course->has_custom_fields()
+            ) {
                 $url = new moodle_url('/course/info.php', ['id' => $course->id]);
                 $image = $this->output->pix_icon('i/info', $this->strings->summary);
                 $content .= html_writer::link($url, $image, ['title' => $this->strings->summary]);

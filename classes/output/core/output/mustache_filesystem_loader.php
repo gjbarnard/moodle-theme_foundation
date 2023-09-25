@@ -33,7 +33,6 @@ namespace theme_foundation\output\core\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader {
-
     /**
      * Helper function for getting a Mustache template file name.
      * Uses the leading component to restrict us specific directories.
@@ -41,7 +40,7 @@ class mustache_filesystem_loader extends \core\output\mustache_filesystem_loader
      * @param string $name Template name.
      * @return string Template file name with path.
      */
-    protected function getFileName($name) {
+    protected function getfilename($name) {
         /*
          * Call the theme template finder which supports partials and our inclusion rather
          * than the dependance on the Boost theme.

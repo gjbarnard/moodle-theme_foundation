@@ -37,7 +37,6 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class header_module extends \theme_foundation\module_basement {
-
     /**
      * Add the header settings.
      *
@@ -46,8 +45,10 @@ class header_module extends \theme_foundation\module_basement {
      */
     public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
-        $settingspages['header'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_header',
-            get_string('headerheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
+        $settingspages['header'] = [\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage(
+            'theme_foundation_header',
+            get_string('headerheading', 'theme_foundation')
+        ), \theme_foundation\toolbox::HASSETTINGS => true, ];
 
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
@@ -61,8 +62,14 @@ class header_module extends \theme_foundation\module_basement {
         $name = 'theme_foundation/headerbackground';
         $title = get_string('headerbackground', 'theme_foundation');
         $description = get_string('headerbackgrounddesc', 'theme_foundation');
-        $setting = new \admin_setting_configstoredfile($name, $title, $description, 'headerbackground', 0,
-            array('accepted_types' => array('jpg', 'png')));
+        $setting = new \admin_setting_configstoredfile(
+            $name,
+            $title,
+            $description,
+            'headerbackground',
+            0,
+            ['accepted_types' => ['jpg', 'png']]
+        );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -71,11 +78,15 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundcourseimage', 'theme_foundation');
         $description = get_string('headerbackgroundcourseimagedesc', 'theme_foundation');
         $default = 'no';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            array(
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            [
                 'no' => get_string('no'),
-                'yes' => get_string('yes')
-            )
+                'yes' => get_string('yes'),
+            ]
         );
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -84,12 +95,16 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundstyle', 'theme_foundation');
         $description = get_string('headerbackgroundstyledesc', 'theme_foundation');
         $default = 'cover';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            array(
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            [
                 'contain' => get_string('stylecontain', 'theme_foundation'),
                 'cover' => get_string('stylecover', 'theme_foundation'),
-                'stretch' => get_string('stylestretch', 'theme_foundation')
-            )
+                'stretch' => get_string('stylestretch', 'theme_foundation'),
+            ]
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -99,14 +114,18 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundposition', 'theme_foundation');
         $description = get_string('headerbackgroundpositiondesc', 'theme_foundation');
         $default = 'center';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            array(
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            [
                 'center' => get_string('stylecenter', 'theme_foundation'),
                 'top' => get_string('styletop', 'theme_foundation'),
                 'bottom' => get_string('stylebottom', 'theme_foundation'),
                 'left' => get_string('styleleft', 'theme_foundation'),
-                'right' => get_string('styleright', 'theme_foundation')
-            )
+                'right' => get_string('styleright', 'theme_foundation'),
+            ]
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -116,8 +135,13 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundtopopacity', 'theme_foundation');
         $description = get_string('headerbackgroundtopopacitydesc', 'theme_foundation');
         $default = '0.1';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            \theme_foundation\toolbox::$settingopactitychoices);
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            \theme_foundation\toolbox::$settingopactitychoices
+        );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -126,8 +150,13 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundbottomopacity', 'theme_foundation');
         $description = get_string('headerbackgroundbottomopacitydesc', 'theme_foundation');
         $default = '0.9';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            \theme_foundation\toolbox::$settingopactitychoices);
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            \theme_foundation\toolbox::$settingopactitychoices
+        );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -136,7 +165,7 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundtopcolour', 'theme_foundation');
         $description = get_string('headerbackgroundtopcolourdesc', 'theme_foundation');
         $default = '-';
-        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingtop', 'element' => 'color');
+        $defaultcolour = ['colour' => '#ffaabb', 'selector' => '.pageheadingtop', 'element' => 'color'];
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
@@ -152,7 +181,7 @@ class header_module extends \theme_foundation\module_basement {
         $title = get_string('headerbackgroundbottomcolour', 'theme_foundation');
         $description = get_string('headerbackgroundbottomcolourdesc', 'theme_foundation');
         $default = '-';
-        $defaultcolour = array('colour' => '#ffaabb', 'selector' => '.pageheadingbottom', 'element' => 'color');
+        $defaultcolour = ['colour' => '#ffaabb', 'selector' => '.pageheadingbottom', 'element' => 'color'];
         $setting = new \theme_foundation\admin_setting_configcolourpicker(
             $name,
             $title,
@@ -169,10 +198,10 @@ class header_module extends \theme_foundation\module_basement {
         $description = get_string('headerlangmenudesc', 'theme_foundation');
         $layoutoptions = $toolbox->get_theme_layout_options('foundation');
         unset($layoutoptions['redirect']); // Does not make sense here.
-        $defaults = array();
-        $layouts = array();
+        $defaults = [];
+        $layouts = [];
         foreach ($layoutoptions as $key => $value) {
-            $layouts[$key] = get_string($key.'layout', 'theme_foundation');
+            $layouts[$key] = get_string($key . 'layout', 'theme_foundation');
             if (!empty($value['langmenu'])) {
                 $defaults[] = $key;
             }
@@ -200,7 +229,7 @@ class header_module extends \theme_foundation\module_basement {
 
         $headerbackgroundbottomcolour = $toolbox->get_setting('headerbackgroundbottomcolour', $themename);
         if ((!empty($headerbackgroundbottomcolour)) && ($headerbackgroundbottomcolour[0] != '-')) {
-            $prescss .= '$breadcrumb-divider-color: '.$headerbackgroundbottomcolour.';'.PHP_EOL;
+            $prescss .= '$breadcrumb-divider-color: ' . $headerbackgroundbottomcolour . ';' . PHP_EOL;
         }
 
         return $prescss;
@@ -224,49 +253,49 @@ class header_module extends \theme_foundation\module_basement {
             if ((empty($headerbackgroundurl)) && ($headerbackgroundcourseimage)) {
                 $scss .= '.hascourseimage';
             }
-            $scss .= ' {'.PHP_EOL;
+            $scss .= ' {' . PHP_EOL;
 
             if (!empty($headerbackgroundurl)) {
-                $scss .= 'background-image: url("'.$headerbackgroundurl.'");'.PHP_EOL;
+                $scss .= 'background-image: url("' . $headerbackgroundurl . '");' . PHP_EOL;
             }
-            $scss .= 'background-position: '.$toolbox->get_setting('headerbackgroundposition', $themename).';'.PHP_EOL;
+            $scss .= 'background-position: ' . $toolbox->get_setting('headerbackgroundposition', $themename) . ';' . PHP_EOL;
             $headerbackgroundstyle = $toolbox->get_setting('headerbackgroundstyle', $themename);
             if ($headerbackgroundstyle === 'stretch') {
                 $headerbackgroundstyle = '100% 100%';
             }
-            $scss .= 'background-size: '.$headerbackgroundstyle.';'.PHP_EOL;
+            $scss .= 'background-size: ' . $headerbackgroundstyle . ';' . PHP_EOL;
 
-            $scss .= '.page-header-background-image-overlay {'.PHP_EOL;
+            $scss .= '.page-header-background-image-overlay {' . PHP_EOL;
             $scss .= 'background-image: linear-gradient(';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundtopopacity', $themename).'), ';
-            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), '.
-                $toolbox->get_setting('headerbackgroundbottomopacity', $themename).'));';
-            $scss .= '}'.PHP_EOL;
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), ' .
+                $toolbox->get_setting('headerbackgroundtopopacity', $themename) . '), ';
+            $scss .= 'rgba(red($body-bg), green($body-bg), blue($body-bg), ' .
+                $toolbox->get_setting('headerbackgroundbottomopacity', $themename) . '));';
+            $scss .= '}' . PHP_EOL;
 
-            $scss .= '.card {'.PHP_EOL;
-            $scss .= 'background-color: transparent;'.PHP_EOL;
-            $scss .= '}'.PHP_EOL;
+            $scss .= '.card {' . PHP_EOL;
+            $scss .= 'background-color: transparent;' . PHP_EOL;
+            $scss .= '}' . PHP_EOL;
 
-            $scss .= '.breadcrumb-item a,'.PHP_EOL;
-            $scss .= '.pageheadingbutton .btn {'.PHP_EOL;
-            $scss .= 'color: inherit;'.PHP_EOL;
-            $scss .= '}'.PHP_EOL;
+            $scss .= '.breadcrumb-item a,' . PHP_EOL;
+            $scss .= '.pageheadingbutton .btn {' . PHP_EOL;
+            $scss .= 'color: inherit;' . PHP_EOL;
+            $scss .= '}' . PHP_EOL;
 
             $headerbackgroundtopcolour = $toolbox->get_setting('headerbackgroundtopcolour', $themename);
             if ((!empty($headerbackgroundtopcolour)) && ($headerbackgroundtopcolour[0] != '-')) {
-                $scss .= '.pageheadingtop {'.PHP_EOL;
-                $scss .= 'color: '.$headerbackgroundtopcolour.';'.PHP_EOL;
-                $scss .= '}'.PHP_EOL;
+                $scss .= '.pageheadingtop {' . PHP_EOL;
+                $scss .= 'color: ' . $headerbackgroundtopcolour . ';' . PHP_EOL;
+                $scss .= '}' . PHP_EOL;
             }
             $headerbackgroundbottomcolour = $toolbox->get_setting('headerbackgroundbottomcolour', $themename);
             if ((!empty($headerbackgroundbottomcolour)) && ($headerbackgroundbottomcolour[0] != '-')) {
-                $scss .= '.pageheadingbottom {'.PHP_EOL;
-                $scss .= 'color: '.$headerbackgroundbottomcolour.';'.PHP_EOL;
-                $scss .= '}'.PHP_EOL;
+                $scss .= '.pageheadingbottom {' . PHP_EOL;
+                $scss .= 'color: ' . $headerbackgroundbottomcolour . ';' . PHP_EOL;
+                $scss .= '}' . PHP_EOL;
             }
 
-            $scss .= '}'.PHP_EOL;
+            $scss .= '}' . PHP_EOL;
         }
 
         return $scss;
@@ -312,9 +341,12 @@ class header_module extends \theme_foundation\module_basement {
             foreach ($course->get_course_overviewfiles() as $file) {
                 $isimage = $file->is_valid_image();
                 if ($isimage) {
-                    $imageurl = file_encode_url("$CFG->wwwroot/pluginfile.php",
-                        '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
-                        $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    $imageurl = file_encode_url(
+                        "$CFG->wwwroot/pluginfile.php",
+                        '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
+                        $file->get_filearea() . $file->get_filepath() . $file->get_filename(),
+                        !$isimage
+                    );
                     break;
                 }
             }

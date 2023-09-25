@@ -34,7 +34,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class admin_setting_configinteger extends \admin_setting_configtext {
-
     /** @var int lower range limit */
     public $lower;
     /** @var int upper range limit */
@@ -85,15 +84,15 @@ class admin_setting_configinteger extends \admin_setting_configtext {
      */
     public function validate($data) {
         if (!is_number($data)) {
-            $validated = get_string('asconfigintnan', 'theme_foundation', array('value' => $data));
+            $validated = get_string('asconfigintnan', 'theme_foundation', ['value' => $data]);
         } else {
             $validated = parent::validate($data); // Pass parent validation first.
 
             if ($validated == true) {
                 if ($data < $this->lower) {
-                    $validated = get_string('asconfigintlower', 'theme_foundation', array('value' => $data, 'lower' => $this->lower));
+                    $validated = get_string('asconfigintlower', 'theme_foundation', ['value' => $data, 'lower' => $this->lower]);
                 } else if ($data > $this->upper) {
-                     $validated = get_string('asconfigintupper', 'theme_foundation', array('value' => $data, 'upper' => $this->upper));
+                     $validated = get_string('asconfigintupper', 'theme_foundation', ['value' => $data, 'upper' => $this->upper]);
                 } else {
                     $validated = true;
                 }

@@ -27,7 +27,7 @@ namespace theme_foundation\output;
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot.'/blocks/settings/renderer.php');
+require_once($CFG->dirroot . '/blocks/settings/renderer.php');
 
 /**
  * The Block settings renderer.

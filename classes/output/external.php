@@ -34,7 +34,6 @@ namespace theme_foundation\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class external extends \core\output\external {
-
     /**
      * Return a mustache template, and all the strings it requires.
      *
@@ -51,12 +50,12 @@ class external extends \core\output\external {
         $PAGE->set_context(\context_system::instance());
         $params = self::validate_parameters(
             self::load_template_parameters(),
-            array(
+            [
                 'component' => $component,
                 'template' => $template,
                 'themename' => $themename,
-                'includecomments' => $includecomments
-            )
+                'includecomments' => $includecomments,
+            ]
         );
 
         $component = $params['component'];
@@ -99,7 +98,7 @@ class external extends \core\output\external {
         $result = [];
 
         foreach ($map as $from => $to) {
-            list($component, $pix) = explode(':', $from);
+            [$component, $pix] = explode(':', $from);
             $one = [];
             $one['component'] = $component;
             $one['pix'] = $pix;
@@ -116,11 +115,11 @@ class external extends \core\output\external {
      */
     public static function load_fontawesome_icon_map_returns() {
         return new \external_multiple_structure(new \external_single_structure(
-            array(
+            [
                 'component' => new \external_value(PARAM_COMPONENT, 'The component for the icon.'),
                 'pix' => new \external_value(PARAM_RAW, 'Value to map the icon from.'),
-                'to' => new \external_value(PARAM_RAW, 'Value to map the icon to.')
-            )
+                'to' => new \external_value(PARAM_RAW, 'Value to map the icon to.'),
+            ]
         ));
     }
 }

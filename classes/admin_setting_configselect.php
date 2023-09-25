@@ -40,7 +40,7 @@ class admin_setting_configselect extends \admin_setting_configselect {
      * @param string $query
      * @return string XHTML field and wrapping div
      */
-    public function output_html($data, $query='') {
+    public function output_html($data, $query = '') {
         if (!$this->load_choices() || empty($this->choices)) {
             return '';
         }

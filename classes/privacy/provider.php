@@ -25,8 +25,8 @@
 
 namespace theme_foundation\privacy;
 
-use \core_privacy\local\request\writer;
-use \core_privacy\local\metadata\collection;
+use core_privacy\local\request\writer;
+use core_privacy\local\metadata\collection;
 
 /**
  * The Foundation theme.
@@ -40,14 +40,13 @@ class provider implements
 
     // This plugin has some sitewide user preferences to export.
     \core_privacy\local\request\user_preference_provider {
-
     /**
      * Returns meta data about this system.
      *
      * @param   collection $items The initialised item collection to add items to.
      * @return  collection A listing of user data stored through this system.
      */
-    public static function get_metadata(collection $items) : collection {
+    public static function get_metadata(collection $items): collection {
         $items->add_user_preference('collapseblock', 'privacy:metadata:preference:collapseblock');
         $items->add_user_preference('drawerclosed', 'privacy:metadata:preference:drawerclosed');
 
@@ -63,7 +62,7 @@ class provider implements
         $preferences = get_user_preferences(null, null, $userid);
         foreach ($preferences as $name => $value) {
             $blockid = null;
-            $matches = array();
+            $matches = [];
             if (preg_match('/(?<=block)\d*(?=hidden)/', $name, $matches)) {
                 if (!empty($matches[0])) {
                     $blockid = $matches[0];
@@ -77,7 +76,7 @@ class provider implements
                             'name' => $name,
                             'blockid' => $blockid,
                             'value' => $value,
-                            'decoded' => $decoded
+                            'decoded' => $decoded,
                         ])
                     );
                 }
@@ -91,7 +90,7 @@ class provider implements
                     get_string('privacy:request:preference:drawerclosed', 'theme_foundation', (object) [
                         'name' => $name,
                         'value' => $value,
-                        'decoded' => $decoded
+                        'decoded' => $decoded,
                     ])
                 );
             }

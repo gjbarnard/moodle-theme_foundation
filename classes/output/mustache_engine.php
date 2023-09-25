@@ -32,7 +32,6 @@ namespace theme_foundation\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 trait mustache_engine {
-
     /**
      * @var Mustache_Engine $mustache The mustache template compiler.
      */
@@ -81,24 +80,23 @@ trait mustache_engine {
             // We only expose the variables that are exposed to JS templates.
             $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $corerenderer);
 
-            $helpers = array(
+            $helpers = [
                 'config' => $safeconfig,
-                'str' => array($stringhelper, 'str'),
-                'cleanstr' => array($cleanstringhelper, 'cleanstr'),
-                'quote' => array($quotehelper, 'quote'),
-                'js' => array($jshelper, 'help'),
-                'pix' => array($pixhelper, 'pix'),
-                'shortentext' => array($shortentexthelper, 'shorten'),
-                'userdate' => array($userdatehelper, 'transform'),
-            );
+                'str' => [$stringhelper, 'str'],
+                'cleanstr' => [$cleanstringhelper, 'cleanstr'],
+                'quote' => [$quotehelper, 'quote'],
+                'js' => [$jshelper, 'help'],
+                'pix' => [$pixhelper, 'pix'],
+                'shortentext' => [$shortentexthelper, 'shorten'],
+                'userdate' => [$userdatehelper, 'transform'],
+            ];
 
-            $this->mustacheengine = new \Mustache_Engine(array(
+            $this->mustacheengine = new \Mustache_Engine([
                 'cache' => $cachedir,
                 'escape' => 's',
                 'loader' => $loader,
                 'helpers' => $helpers,
-                'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS]));
-
+                'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS], ]);
         }
 
         return $this->mustacheengine;

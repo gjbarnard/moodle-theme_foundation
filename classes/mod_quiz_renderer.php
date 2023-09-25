@@ -24,7 +24,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 global $CFG;
-$quizrenderer = $CFG->dirroot.'/mod/quiz/renderer.php';
+$quizrenderer = $CFG->dirroot . '/mod/quiz/renderer.php';
 if (file_exists($quizrenderer)) {
     // Be sure to include the quiz renderer so it can be extended.
     require_once($quizrenderer);
@@ -44,8 +44,8 @@ if (file_exists($quizrenderer)) {
          * @return string HTML fragment.
          */
         protected function render_quiz_nav_question_button(quiz_nav_question_button $button) {
-            $classes = array('qnbutton', $button->stateclass, $button->navmethod);
-            $extrainfo = array();
+            $classes = ['qnbutton', $button->stateclass, $button->navmethod];
+            $extrainfo = [];
 
             if ($button->currentpage) {
                 $classes[] = 'thispage';
@@ -59,7 +59,7 @@ if (file_exists($quizrenderer)) {
             } else {
                 $flaglabel = '';
             }
-            $extrainfo[] = html_writer::tag('span', $flaglabel, array('class' => 'flagstate'));
+            $extrainfo[] = html_writer::tag('span', $flaglabel, ['class' => 'flagstate']);
 
             if (is_numeric($button->number)) {
                 $qnostring = 'questionnonav';
@@ -70,11 +70,11 @@ if (file_exists($quizrenderer)) {
             $a = new stdClass();
             $a->number = $button->number;
             $a->attributes = implode(' ', $extrainfo);
-            $tagcontents = html_writer::tag('span', '', array('class' => 'thispageholder')) .
-                html_writer::tag('span', '', array('class' => 'trafficlight')) .
+            $tagcontents = html_writer::tag('span', '', ['class' => 'thispageholder']) .
+                html_writer::tag('span', '', ['class' => 'trafficlight']) .
                 get_string($qnostring, 'quiz', $a);
-            $tagattributes = array('class' => implode(' ', $classes), 'id' => $button->id,
-                'title' => $button->statestring, 'data-quiz-page' => $button->page);
+            $tagattributes = ['class' => implode(' ', $classes), 'id' => $button->id,
+                'title' => $button->statestring, 'data-quiz-page' => $button->page, ];
 
             if ($button->url) {
                 return html_writer::link($button->url, $tagcontents, $tagattributes);

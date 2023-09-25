@@ -35,7 +35,6 @@ use html_writer;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 trait core_renderer_toolbox {
-
     /**
      * Orchestrates the rendering of the page.
      */
@@ -46,11 +45,13 @@ trait core_renderer_toolbox {
 
         $data = new \stdClass();
         $data->output = $this;
-        $bodyclasses = array();
+        $bodyclasses = [];
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
-        if ($this->page->include_region_main_settings_in_header_actions() &&
-                !$this->page->blocks->is_block_present('settings')) {
+        if (
+            $this->page->include_region_main_settings_in_header_actions() &&
+                !$this->page->blocks->is_block_present('settings')
+        ) {
             /* Only include the region main settings if the page has requested it and it doesn't already have
                the settings block on it. The region main settings are included in the settings block and
                duplicating the content causes behat failures. */
@@ -129,7 +130,7 @@ trait core_renderer_toolbox {
 
         $modules = $toolbox->get_modules();
         foreach ($modules as $module) {
-            if (method_exists ($module, 'export_for_template')) {
+            if (method_exists($module, 'export_for_template')) {
                 $moduledata = $module->export_for_template($this);
                 if (!empty($moduledata)) {
                     foreach ($moduledata as $mkey => $mvalue) {
@@ -150,7 +151,7 @@ trait core_renderer_toolbox {
             if (empty($data->navbarposition)) {
                 $data->navbarposition = 'top';
             }
-            $bodyclasses[] = 'navbar-'.$data->navbarposition;
+            $bodyclasses[] = 'navbar-' . $data->navbarposition;
             $data->navbarbottom = ($data->navbarposition == 'bottom');
 
             $data->navbarstyle = $toolbox->get_setting('navbarstyle');
@@ -193,7 +194,7 @@ trait core_renderer_toolbox {
 
         $data->regionmainsettingsmenu = $regionmainsettingsmenu;
         $data->hasregionmainsettingsmenu = !empty($regionmainsettingsmenu);
-        require_once($CFG->dirroot.'/course/format/lib.php');  // For course_get_format() call?  Not sure if needed.
+        require_once($CFG->dirroot . '/course/format/lib.php');  // For course_get_format() call?  Not sure if needed.
         $data->contextheadersettingsmenu = $this->context_header_settings_menu();
         $data->hascontextheadersettingsmenu = !empty($data->contextheadersettingsmenu);
 
@@ -224,7 +225,7 @@ trait core_renderer_toolbox {
             }
         }
 
-        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
+        echo $this->render_from_template('theme_foundation/' . $mustache, $data);
     }
 
     /**
@@ -244,11 +245,11 @@ trait core_renderer_toolbox {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         $data = new \stdClass();
         $data->output = $this;
-        $data->fakeblocks = $this->blocks('side-pre', array(), 'aside', true);
+        $data->fakeblocks = $this->blocks('side-pre', [], 'aside', true);
         $data->hasfakeblocks = strpos($data->fakeblocks, 'data-block="_fake"') !== false;
         $data->headercontent = $this->page->activityheader->export_for_template($this);
 
-        echo $this->render_from_template('theme_foundation/'.$mustache, $data);
+        echo $this->render_from_template('theme_foundation/' . $mustache, $data);
     }
 
     /**
@@ -259,7 +260,7 @@ trait core_renderer_toolbox {
      * @param array $attributes An array of other attributes to give the box.
      * @return string the HTML to output.
      */
-    public function box_start($classes = 'generalbox', $id = null, $attributes = array()) {
+    public function box_start($classes = 'generalbox', $id = null, $attributes = []) {
         $this->opencontainers->push('box', html_writer::end_tag('div'));
         $attributes['id'] = $id;
         $attributes['class'] = 'box ' . \renderer_base::prepare_classes($classes);
@@ -276,7 +277,7 @@ trait core_renderer_toolbox {
      *
      * @return string HTML.
      */
-    public function blocks($region, $classes = array(), $tag = 'aside', $fakeblocksonly = false) {
+    public function blocks($region, $classes = [], $tag = 'aside', $fakeblocksonly = false) {
         $displayregion = $this->page->apply_theme_region_manipulations($region);
         $classes = (array)$classes;
         $classes[] = 'block-region';
@@ -287,12 +288,12 @@ trait core_renderer_toolbox {
             $content .= $this->block_region_title($displayregion);
         }
 
-        $attributes = array(
-            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+        $attributes = [
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
             'class' => join(' ', $classes),
             'data-blockregion' => $displayregion,
-            'data-droptarget' => '1'
-        );
+            'data-droptarget' => '1',
+        ];
 
         if ($this->page->blocks->region_has_content($displayregion, $this)) {
             $content .= $this->blocks_for_region($displayregion, $fakeblocksonly);
@@ -316,29 +317,29 @@ trait core_renderer_toolbox {
      *
      * @return string HTML.
      */
-    public function hblocks($region, $classes = array(), $tag = 'aside') {
+    public function hblocks($region, $classes = [], $tag = 'aside') {
         $classes = (array)$classes;
         $classes[] = 'block-region row hblocks';
         $editing = $this->page->user_is_editing();
         $content = '';
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $blocksperrow = $toolbox->get_setting($region.'blocksperrow');
+        $blocksperrow = $toolbox->get_setting($region . 'blocksperrow');
         if (($blocksperrow > 6) || ($blocksperrow < 1)) {
             $blocksperrow = 4;
         }
 
         if ($editing) {
-            $classes[] = 'editing bpr-'.$blocksperrow;
+            $classes[] = 'editing bpr-' . $blocksperrow;
             $content .= $this->block_region_title($region);
         }
 
-        $attributes = array(
-            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
+        $attributes = [
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
             'data-blockregion' => $region,
-            'data-droptarget' => '1'
-        );
+            'data-droptarget' => '1',
+        ];
 
         if ($this->page->blocks->region_has_content($region, $this)) {
             $content .= $this->hblocks_for_region($region, $editing, $blocksperrow);
@@ -376,8 +377,8 @@ trait core_renderer_toolbox {
     protected function block_region_title($region) {
         return html_writer::tag(
             'p',
-            get_string('region-'.$region, 'theme_foundation'),
-            array('class' => 'block-region-title col-12 text-center font-italic font-weight-bold')
+            get_string('region-' . $region, 'theme_foundation'),
+            ['class' => 'block-region-title col-12 text-center font-italic font-weight-bold']
         );
     }
 
@@ -394,7 +395,7 @@ trait core_renderer_toolbox {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $blocks = $this->page->blocks->get_blocks_for_region($region);
         $lastblock = null;
-        $zones = array();
+        $zones = [];
         foreach ($blocks as $block) {
             $zones[] = $block->title;
         }
@@ -443,7 +444,7 @@ trait core_renderer_toolbox {
                         $currentrow = $currentrequiredrow;
                     }
 
-                    $bc->attributes['width'] = 'col-sm-'.$col;
+                    $bc->attributes['width'] = 'col-sm-' . $col;
                 }
 
                 if ($bc instanceof block_contents) {
@@ -452,7 +453,7 @@ trait core_renderer_toolbox {
                 } else if ($bc instanceof block_move_target) {
                     $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
                 } else {
-                    throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
+                    throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
                 }
             }
         }
@@ -478,7 +479,7 @@ trait core_renderer_toolbox {
         if (empty($bc->blockinstanceid) || !strip_tags($bc->title)) {
             $bc->collapsible = block_contents::NOT_HIDEABLE;
         } else {
-            user_preference_allow_ajax_update('block'.$bc->blockinstanceid.'hidden', PARAM_INT);
+            user_preference_allow_ajax_update('block' . $bc->blockinstanceid . 'hidden', PARAM_INT);
         }
         $id = !empty($bc->attributes['id']) ? $bc->attributes['id'] : uniqid('block-');
         $context = new \stdClass();
@@ -521,8 +522,10 @@ trait core_renderer_toolbox {
     public function activity_navigation() {
         // First we should check if we want to add navigation.
         $context = $this->page->context;
-        if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
-            || $context->contextlevel != CONTEXT_MODULE) {
+        if (
+            ($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
+            || $context->contextlevel != CONTEXT_MODULE
+        ) {
             return '';
         }
 
@@ -560,7 +563,7 @@ trait core_renderer_toolbox {
                 $modname .= ' ' . get_string('hiddenwithbrackets');
             }
             // Module URL.
-            $linkurl = new \moodle_url($module->url, array('forceview' => 1));
+            $linkurl = new \moodle_url($module->url, ['forceview' => 1]);
             // Add module URL (as key) and name (as value) to the activity list array.
             $activitylist[$linkurl->out(false)] = $modname;
         }
@@ -607,11 +610,11 @@ trait core_renderer_toolbox {
      * @return boolean nodesskipped - True if nodes were skipped in building the menu
      */
     protected function build_action_menu_from_navigation(
-            \action_menu $menu,
-            \navigation_node $node,
-            $indent = false,
-            $onlytopleafnodes = false
-        ) {
+        \action_menu $menu,
+        \navigation_node $node,
+        $indent = false,
+        $onlytopleafnodes = false
+    ) {
         $skipped = false;
         // Build an action menu based on the visible nodes from this navigation tree.
         foreach ($node->children as $menuitem) {
@@ -662,7 +665,7 @@ trait core_renderer_toolbox {
      * @return mixed string|bool
      */
     public function mform_element($element, $required, $advanced, $error, $ingroup) {
-        $templatename = 'core_form/element-'.$element->getType();
+        $templatename = 'core_form/element-' . $element->getType();
         if ($ingroup) {
             $templatename .= "-inline";
         }
@@ -690,15 +693,15 @@ trait core_renderer_toolbox {
                     }
                 }
 
-                $context = array(
+                $context = [
                     'element' => $elementcontext,
                     'label' => $label,
                     'text' => $text,
                     'required' => $required,
                     'advanced' => $advanced,
                     'helpbutton' => $helpbutton,
-                    'error' => $error
-                );
+                    'error' => $error,
+                ];
                 return $this->render_from_template($templatename, $context);
             }
         } catch (\Exception $e) {
@@ -721,7 +724,7 @@ trait core_renderer_toolbox {
      */
     public function user_menu($user = null, $withlinks = null) {
         global $CFG, $USER;
-        require_once($CFG->dirroot.'/user/lib.php');
+        require_once($CFG->dirroot . '/user/lib.php');
 
         if (is_null($user)) {
             $user = $USER;
@@ -753,7 +756,7 @@ trait core_renderer_toolbox {
         if (!isloggedin()) {
             $returnstr = get_string('loggedinnot', 'moodle');
             if (!$loginpage) {
-                $returnstr .= " (<a href=\"$loginurl\">".get_string('login').'</a>)';
+                $returnstr .= " (<a href=\"$loginurl\">" . get_string('login') . '</a>)';
             }
             return html_writer::div(
                 html_writer::span(
@@ -762,14 +765,13 @@ trait core_renderer_toolbox {
                 ),
                 $usermenuclasses
             );
-
         }
 
         // If logged in as a guest user, show a string to that effect.
         if (isguestuser()) {
             $returnstr = get_string('loggedinasguest');
             if (!$loginpage && $withlinks) {
-                $returnstr .= " (<a href=\"$loginurl\">".get_string('login').'</a>)';
+                $returnstr .= " (<a href=\"$loginurl\">" . get_string('login') . '</a>)';
             }
 
             return html_writer::div(
@@ -782,7 +784,7 @@ trait core_renderer_toolbox {
         }
 
         // Get some navigation opts.
-        $opts = \user_get_user_navigation_info($user, $this->page, array('avatarsize' => 30));
+        $opts = \user_get_user_navigation_info($user, $this->page, ['avatarsize' => 30]);
 
         $avatarclasses = "avatars";
         $avatarcontents = html_writer::span($opts->metadata['useravatar'], 'avatar current');
@@ -805,7 +807,7 @@ trait core_renderer_toolbox {
                         'value'
                     )
                 ),
-                array('class' => 'meta viewingas')
+                ['class' => 'meta viewingas']
             );
         }
 
@@ -852,7 +854,7 @@ trait core_renderer_toolbox {
         }
 
         $returnstr .= html_writer::span(
-            html_writer::span($usertextcontents, 'usertext mr-1').
+            html_writer::span($usertextcontents, 'usertext mr-1') .
             html_writer::span($avatarcontents, $avatarclasses),
             'userbutton'
         );
@@ -884,20 +886,20 @@ trait core_renderer_toolbox {
                         // Process this as a link item.
                         $pix = null;
                         if (isset($value->pix) && !empty($value->pix)) {
-                            $pix = new \pix_icon($value->pix, $value->title, null, array('class' => 'iconsmall'));
+                            $pix = new \pix_icon($value->pix, $value->title, null, ['class' => 'iconsmall']);
                         } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
                             $value->title = html_writer::img(
                                 $value->imgsrc,
                                 $value->title,
-                                array('class' => 'iconsmall')
-                            ).$value->title;
+                                ['class' => 'iconsmall']
+                            ) . $value->title;
                         }
 
                         $al = new \action_menu_link_secondary(
                             $value->url,
                             $pix,
                             $value->title,
-                            array('class' => 'icon')
+                            ['class' => 'icon']
                         );
                         if (!empty($value->titleidentifier)) {
                             $al->attributes['data-title'] = $value->titleidentifier;
@@ -989,14 +991,14 @@ trait core_renderer_toolbox {
         $strlang = get_string('language');
         $currentlangcode = current_language();
         if (isset($langs[$currentlangcode])) {
-            $currentlang = html_writer::tag('span', $langs[$currentlangcode], array('class' => 'd-none d-md-inline')).
-                html_writer::tag('span', $currentlangcode, array('class' => 'd-md-none'));
+            $currentlang = html_writer::tag('span', $langs[$currentlangcode], ['class' => 'd-none d-md-inline']) .
+                html_writer::tag('span', $currentlangcode, ['class' => 'd-md-none']);
         } else {
             $currentlang = $strlang;
         }
         $this->language = $menu->add($currentlang, new \moodle_url('#'), $strlang, 10000);
         foreach ($langs as $langtype => $langname) {
-            $this->language->add($langname, new \moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+            $this->language->add($langname, new \moodle_url($this->page->url, ['lang' => $langtype]), $langname);
         }
 
         $content = '';
@@ -1018,14 +1020,14 @@ trait core_renderer_toolbox {
         foreach ($this->page->primarynav->children as $node) {
             switch ($node->key) {
                 case 'siteadminnode':
-                    $iconmarkup = $toolbox->getfontawesomemarkup('wrench', array('icon'), array(), '', $node->text);
-                break;
+                    $iconmarkup = $toolbox->getfontawesomemarkup('wrench', ['icon'], [], '', $node->text);
+                    break;
                 case 'courses':
                     if ($nodisplaymycourses) {
                         continue 2;
                     }
-                    $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', array('icon'), array(), '', $node->text);
-                break;
+                    $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', ['icon'], [], '', $node->text);
+                    break;
                 default:
                     $subpix = new \pix_icon_fontawesome($node->icon);
                     $icondata = $subpix->export_for_template($this);
@@ -1033,11 +1035,11 @@ trait core_renderer_toolbox {
                         $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
                         $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
                     } else {
-                        $classes = array('icon', $icondata['key']);
+                        $classes = ['icon', $icondata['key']];
                         if (empty($fav)) {
                             $classes[] = 'fa';
                         }
-                        $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, array(), '', $node->text);
+                        $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, [], '', $node->text);
                     }
             }
 

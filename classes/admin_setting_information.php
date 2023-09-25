@@ -31,7 +31,6 @@ namespace theme_foundation;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class admin_setting_information extends \admin_setting {
-
     /** @var int The branch this Grid format is for. */
     protected $mbranch;
 
@@ -85,7 +84,7 @@ class admin_setting_information extends \admin_setting {
      * @param string $query
      * @return string Returns an HTML string
      */
-    public function output_html($data, $query='') {
+    public function output_html($data, $query = '') {
         global $CFG, $OUTPUT;
 
         $themes = \core_plugin_manager::instance()->get_present_plugins('theme');
@@ -97,13 +96,15 @@ class admin_setting_information extends \admin_setting {
         }
 
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $context['versioninfo'] = get_string('versioninfo', 'theme_foundation',
-            array(
+        $context['versioninfo'] = get_string(
+            'versioninfo',
+            'theme_foundation',
+            [
                 'moodle' => $CFG->release,
                 'release' => $plugininfo->release,
                 'version' => $plugininfo->version,
-                'love' => $toolbox->getfontawesomemarkup('heart', array(), array(), '', get_string('love', 'theme_foundation'))
-            )
+                'love' => $toolbox->getfontawesomemarkup('heart', [], [], '', get_string('love', 'theme_foundation')),
+            ]
         );
 
         if (!empty($plugininfo->maturity)) {
@@ -111,24 +112,24 @@ class admin_setting_information extends \admin_setting {
                 case MATURITY_ALPHA:
                     $context['maturity'] = get_string('versionalpha', 'theme_foundation');
                     $context['maturityalert'] = 'danger';
-                break;
+                    break;
                 case MATURITY_BETA:
                     $context['maturity'] = get_string('versionbeta', 'theme_foundation');
                     $context['maturityalert'] = 'danger';
-                break;
+                    break;
                 case MATURITY_RC:
                     $context['maturity'] = get_string('versionrc', 'theme_foundation');
                     $context['maturityalert'] = 'warning';
-                break;
+                    break;
                 case MATURITY_STABLE:
                     $context['maturity'] = get_string('versionstable', 'theme_foundation');
                     $context['maturityalert'] = 'info';
-                break;
+                    break;
             }
         }
 
         if ($CFG->branch != $this->mbranch) {
-            $context['versioncheck'] = 'Release '.$plugininfo->release.', version '.$plugininfo->version.' is incompatible with Moodle '.$CFG->release;
+            $context['versioncheck'] = 'Release ' . $plugininfo->release . ', version ' . $plugininfo->version . ' is incompatible with Moodle ' . $CFG->release;
             $context['versioncheck'] .= ', please get the correct version from ';
             $context['versioncheck'] .= '<a href="https://moodle.org/plugins/format_grid" target="_blank">Moodle.org</a>.  ';
             $context['versioncheck'] .= 'If none is available, then please consider supporting the format by funding it.  ';

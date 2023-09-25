@@ -36,7 +36,6 @@ use theme_foundation\admin_setting_configselect;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class features_module extends \theme_foundation\module_basement implements \templatable {
-
     /**
      * Add the features settings.
      *
@@ -45,8 +44,10 @@ class features_module extends \theme_foundation\module_basement implements \temp
      */
     public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
-        $settingspages['features'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_features',
-                    get_string('featuresheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
+        $settingspages['features'] = [\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage(
+            'theme_foundation_features',
+            get_string('featuresheading', 'theme_foundation')
+        ), \theme_foundation\toolbox::HASSETTINGS => true, ];
 
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
@@ -72,9 +73,12 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $default = 0;
         $lower = 0;
         $upper = 4;
-        $description = get_string('numberofalertsdesc', 'theme_foundation',
-                array('lower' => $lower, 'upper' => $upper));
-        $choices = array();
+        $description = get_string(
+            'numberofalertsdesc',
+            'theme_foundation',
+            ['lower' => $lower, 'upper' => $upper]
+        );
+        $choices = [];
         for ($c = $lower; $c <= $upper; $c++) {
             $choices['' . $c] = $c;
         }
@@ -88,25 +92,25 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                     new \admin_setting_heading(
                         'theme_foundation_alert_' . $alertnum . '_heading',
-                        get_string('alertsettingheading', 'theme_foundation', array('number' => $alertnum)),
+                        get_string('alertsettingheading', 'theme_foundation', ['number' => $alertnum]),
                         ''
                     )
                 );
 
                 // Alert enabled.
                 $name = 'theme_foundation/enablealert' . $alertnum;
-                $title = get_string('enablealert', 'theme_foundation', array('number' => $alertnum));
-                $description = get_string('enablealertdesc', 'theme_foundation', array('number' => $alertnum));
+                $title = get_string('enablealert', 'theme_foundation', ['number' => $alertnum]);
+                $description = get_string('enablealertdesc', 'theme_foundation', ['number' => $alertnum]);
                 $default = false;
                 $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Alert type.
                 $name = 'theme_foundation/alerttype' . $alertnum;
-                $title = get_string('alerttype', 'theme_foundation', array('number' => $alertnum));
+                $title = get_string('alerttype', 'theme_foundation', ['number' => $alertnum]);
                 $description = get_string('alerttypedesc', 'theme_foundation');
                 $default = 'info';
-                $choices = array(
+                $choices = [
                     'danger' => get_string('alertdanger', 'theme_foundation'),
                     'dark' => get_string('alertdark', 'theme_foundation'),
                     'info' => get_string('alertinfo', 'theme_foundation'),
@@ -114,38 +118,38 @@ class features_module extends \theme_foundation\module_basement implements \temp
                     'primary' => get_string('alertprimary', 'theme_foundation'),
                     'secondary' => get_string('alertsecondary', 'theme_foundation'),
                     'success' => get_string('alertsuccess', 'theme_foundation'),
-                    'warning' => get_string('alertwarning', 'theme_foundation')
-                );
+                    'warning' => get_string('alertwarning', 'theme_foundation'),
+                ];
                 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Alert title.
                 $name = 'theme_foundation/alerttitle' . $alertnum;
-                $title = get_string('alerttitle', 'theme_foundation', array('number' => $alertnum));
-                $description = get_string('alerttitledesc', 'theme_foundation', array('number' => $alertnum));
+                $title = get_string('alerttitle', 'theme_foundation', ['number' => $alertnum]);
+                $description = get_string('alerttitledesc', 'theme_foundation', ['number' => $alertnum]);
                 $default = '';
                 $setting = new \admin_setting_configtext($name, $title, $description, $default);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Alert text.
                 $name = 'theme_foundation/alerttext' . $alertnum;
-                $title = get_string('alerttext', 'theme_foundation', array('number' => $alertnum));
-                $description = get_string('alerttextdesc', 'theme_foundation', array('number' => $alertnum));
+                $title = get_string('alerttext', 'theme_foundation', ['number' => $alertnum]);
+                $description = get_string('alerttextdesc', 'theme_foundation', ['number' => $alertnum]);
                 $default = '';
                 $setting = new \admin_setting_confightmleditor($name, $title, $description, $default);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Alert pages on.
                 $name = 'theme_foundation/alertpage' . $alertnum;
-                $title = get_string('alertpage', 'theme_foundation', array('number' => $alertnum));
-                $description = get_string('alertpagedesc', 'theme_foundation', array('number' => $alertnum));
+                $title = get_string('alertpage', 'theme_foundation', ['number' => $alertnum]);
+                $description = get_string('alertpagedesc', 'theme_foundation', ['number' => $alertnum]);
                 $default = 'frontpage';
-                $choices = array(
+                $choices = [
                     'all' => get_string('all'),
                     'course' => get_string('course'),
                     'mydashboard' => get_string('myhome'),
-                    'frontpage' => get_string('frontpage', 'admin')
-                );
+                    'frontpage' => get_string('frontpage', 'admin'),
+                ];
                 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
             }
@@ -167,9 +171,12 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $default = 0;
         $lower = 0;
         $upper = 8;
-        $description = get_string('numberofbrandsdesc', 'theme_foundation',
-                array('lower' => $lower, 'upper' => $upper));
-        $choices = array();
+        $description = get_string(
+            'numberofbrandsdesc',
+            'theme_foundation',
+            ['lower' => $lower, 'upper' => $upper]
+        );
+        $choices = [];
         for ($c = $lower; $c <= $upper; $c++) {
             $choices['' . $c] = $c;
         }
@@ -183,31 +190,31 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add(
                     new \admin_setting_heading(
                         'theme_foundation_brand_' . $brandnum . '_heading',
-                        get_string('brandsettingheading', 'theme_foundation', array('number' => $brandnum)),
+                        get_string('brandsettingheading', 'theme_foundation', ['number' => $brandnum]),
                         ''
                     )
                 );
 
                 // Brand enabled.
                 $name = 'theme_foundation/enablebrand' . $brandnum;
-                $title = get_string('enablebrand', 'theme_foundation', array('number' => $brandnum));
-                $description = get_string('enablebranddesc', 'theme_foundation', array('number' => $brandnum));
+                $title = get_string('enablebrand', 'theme_foundation', ['number' => $brandnum]);
+                $description = get_string('enablebranddesc', 'theme_foundation', ['number' => $brandnum]);
                 $default = false;
                 $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Brand icon name.
                 $name = 'theme_foundation/brandiconname' . $brandnum;
-                $title = get_string('brandiconname', 'theme_foundation', array('number' => $brandnum));
-                $description = get_string('brandiconnamedesc', 'theme_foundation', array('number' => $brandnum));
+                $title = get_string('brandiconname', 'theme_foundation', ['number' => $brandnum]);
+                $description = get_string('brandiconnamedesc', 'theme_foundation', ['number' => $brandnum]);
                 $default = '';
                 $setting = new \admin_setting_configtext($name, $title, $description, $default);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
                 // Brand icon URL.
                 $name = 'theme_foundation/brandiconurl' . $brandnum;
-                $title = get_string('brandiconurl', 'theme_foundation', array('number' => $brandnum));
-                $description = get_string('brandiconurldesc', 'theme_foundation', array('number' => $brandnum));
+                $title = get_string('brandiconurl', 'theme_foundation', ['number' => $brandnum]);
+                $description = get_string('brandiconurldesc', 'theme_foundation', ['number' => $brandnum]);
                 $default = '';
                 $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
                 $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -236,12 +243,16 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $title = get_string('loginbackgroundstyle', 'theme_foundation');
         $description = get_string('loginbackgroundstyledesc', 'theme_foundation');
         $default = 'cover';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            array(
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            [
                 'contain' => get_string('stylecontain', 'theme_foundation'),
                 'cover' => get_string('stylecover', 'theme_foundation'),
-                'stretch' => get_string('stylestretch', 'theme_foundation')
-            )
+                'stretch' => get_string('stylestretch', 'theme_foundation'),
+            ]
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -251,8 +262,13 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $title = get_string('loginbackgroundopacity', 'theme_foundation');
         $description = get_string('loginbackgroundopacitydesc', 'theme_foundation');
         $default = '0.8';
-        $setting = new admin_setting_configselect($name, $title, $description, $default,
-            \theme_foundation\toolbox::$settingopactitychoices);
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            $default,
+            \theme_foundation\toolbox::$settingopactitychoices
+        );
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
         // Syntax highlighting.
@@ -286,20 +302,20 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $loginbackgroundurl = $toolbox->setting_file_url('loginbackground', 'loginbackground', $themename);
 
         if (!empty($loginbackgroundurl)) {
-            $scss .= 'body.loginbackground {'.PHP_EOL;
-            $scss .= 'background-image: url("'.$loginbackgroundurl.'");'.PHP_EOL;
+            $scss .= 'body.loginbackground {' . PHP_EOL;
+            $scss .= 'background-image: url("' . $loginbackgroundurl . '");' . PHP_EOL;
 
             $loginbackgroundstyle = $toolbox->get_setting('loginbackgroundstyle', $themename);
             if ($loginbackgroundstyle === 'stretch') {
                 $loginbackgroundstyle = '100% 100%';
             }
-            $scss .= 'background-size: '.$loginbackgroundstyle.';'.PHP_EOL;
-            $scss .= '.card,'.PHP_EOL;
-            $scss .= '#page-footer, '.PHP_EOL;
-            $scss .= '.navbar {'.PHP_EOL;
-            $scss .= 'opacity: '.$toolbox->get_setting('loginbackgroundopacity', $themename).';'.PHP_EOL;
-            $scss .= '}'.PHP_EOL;
-            $scss .= '}'.PHP_EOL;
+            $scss .= 'background-size: ' . $loginbackgroundstyle . ';' . PHP_EOL;
+            $scss .= '.card,' . PHP_EOL;
+            $scss .= '#page-footer, ' . PHP_EOL;
+            $scss .= '.navbar {' . PHP_EOL;
+            $scss .= 'opacity: ' . $toolbox->get_setting('loginbackgroundopacity', $themename) . ';' . PHP_EOL;
+            $scss .= '}' . PHP_EOL;
+            $scss .= '}' . PHP_EOL;
         }
 
         return $scss;
@@ -312,7 +328,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
      */
     public function body_classes() {
         global $PAGE;
-        $bodyclasses = array();
+        $bodyclasses = [];
 
         if ($PAGE->pagelayout == 'login') {
             $bodyclasses[] = 'loginbackground';
@@ -329,7 +345,7 @@ class features_module extends \theme_foundation\module_basement implements \temp
      * @return stdClass containing the data or null.
      */
     public function export_for_template(\renderer_base $output) {
-        $data = new \stdClass;
+        $data = new \stdClass();
         $toolbox = \theme_foundation\toolbox::get_instance();
 
         $this->export_alerts($data, $toolbox);
@@ -348,10 +364,10 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $numberofalerts = $toolbox->get_setting('numberofalerts', 'foundation'); // Stick to ours or could be confusing!
         if ($numberofalerts > 0) {
             global $PAGE;
-            $alertsenabled = array();
+            $alertsenabled = [];
             for ($alertnum = 1; $alertnum <= $numberofalerts; $alertnum++) {
-                if ($toolbox->get_setting('enablealert'.$alertnum, 'foundation')) { // Stick to ours or could be confusing!
-                    $alertpage = $toolbox->get_setting('alertpage'.$alertnum, 'foundation');
+                if ($toolbox->get_setting('enablealert' . $alertnum, 'foundation')) { // Stick to ours or could be confusing!
+                    $alertpage = $toolbox->get_setting('alertpage' . $alertnum, 'foundation');
                     switch ($alertpage) {
                         case 'all':
                             $alertsenabled[] = $alertnum; // Alert to be shown on the page.
@@ -366,12 +382,12 @@ class features_module extends \theme_foundation\module_basement implements \temp
             }
 
             if (!empty($alertsenabled)) {
-                $data->thealerts = array();
+                $data->thealerts = [];
                 foreach ($alertsenabled as $alertnum) {
-                    $thealert = new \stdClass;
-                    $thealert->alerttype = $toolbox->get_setting('alerttype'.$alertnum, 'foundation');
-                    $thealert->alerttitle = $toolbox->get_setting('alerttitle'.$alertnum, 'foundation');
-                    $thealert->alerttext = $toolbox->get_setting('alerttext'.$alertnum, 'foundation');
+                    $thealert = new \stdClass();
+                    $thealert->alerttype = $toolbox->get_setting('alerttype' . $alertnum, 'foundation');
+                    $thealert->alerttitle = $toolbox->get_setting('alerttitle' . $alertnum, 'foundation');
+                    $thealert->alerttext = $toolbox->get_setting('alerttext' . $alertnum, 'foundation');
 
                     $data->thealerts[] = $thealert;
                 }
@@ -389,15 +405,15 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $numberofbrands = $toolbox->get_setting('numberofbrands', 'foundation'); // Stick to ours or could be confusing!
         if ($numberofbrands > 0) {
             global $PAGE;
-            $brandsenabled = array();
+            $brandsenabled = [];
             for ($brandnum = 1; $brandnum <= $numberofbrands; $brandnum++) {
-                if ($toolbox->get_setting('enablebrand'.$brandnum, 'foundation')) { // Stick to ours or could be confusing!
+                if ($toolbox->get_setting('enablebrand' . $brandnum, 'foundation')) { // Stick to ours or could be confusing!
                     $brandsenabled[] = $brandnum; // Alert to be shown on the page.
                 }
             }
 
             if (!empty($brandsenabled)) {
-                $data->thebrands = array();
+                $data->thebrands = [];
                 $fav = $toolbox->get_setting('fav', 'foundation');
                 if ($fav == 1) {
                     $data->brandclasses = 'fab fa-';
@@ -408,9 +424,9 @@ class features_module extends \theme_foundation\module_basement implements \temp
                 }
                 $data->brandsenabled = true;
                 foreach ($brandsenabled as $brandnum) {
-                    $thebrand = new \stdClass;
-                    $thebrand->brandiconname = $toolbox->get_setting('brandiconname'.$brandnum, 'foundation');
-                    $thebrand->brandiconurl = $toolbox->get_setting('brandiconurl'.$brandnum, 'foundation');
+                    $thebrand = new \stdClass();
+                    $thebrand->brandiconname = $toolbox->get_setting('brandiconname' . $brandnum, 'foundation');
+                    $thebrand->brandiconurl = $toolbox->get_setting('brandiconurl' . $brandnum, 'foundation');
 
                     $data->thebrands[] = $thebrand;
                 }

@@ -23,9 +23,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
-use \core_privacy\local\metadata\collection;
-use \core_privacy\local\request\writer;
-use \theme_foundation\privacy\provider;
+use core_privacy\local\metadata\collection;
+use core_privacy\local\request\writer;
+use theme_foundation\privacy\provider;
 
 /**
  * Privacy unit tests for the Foundation theme.
@@ -36,7 +36,6 @@ use \theme_foundation\privacy\provider;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_testcase {
-
     /**
      * Set up.
      */
@@ -95,7 +94,7 @@ class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_tes
             'name' => 'block20hidden',
             'blockid' => '20',
             'value' => '1',
-            'decoded' => 'Open'
+            'decoded' => 'Open',
         ]);
         $this->assertEquals($description, $block->description);
     }

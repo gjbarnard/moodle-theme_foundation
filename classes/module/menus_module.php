@@ -39,7 +39,6 @@ use theme_foundation\admin_setting_configinteger;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class menus_module extends \theme_foundation\module_basement implements \templatable {
-
     /**
      * Add the course menu settings.
      *
@@ -48,8 +47,10 @@ class menus_module extends \theme_foundation\module_basement implements \templat
      */
     public function add_settings(&$settingspages, $toolbox) {
         // Create our own settings page.
-        $settingspages['menus'] = array(\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage('theme_foundation_menus',
-            get_string('menusheading', 'theme_foundation')), \theme_foundation\toolbox::HASSETTINGS => true);
+        $settingspages['menus'] = [\theme_foundation\toolbox::SETTINGPAGE => new \admin_settingpage(
+            'theme_foundation_menus',
+            get_string('menusheading', 'theme_foundation')
+        ), \theme_foundation\toolbox::HASSETTINGS => true, ];
 
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
@@ -64,10 +65,10 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('navbarposition', 'theme_foundation');
         $description = get_string('navbarpositiondesc', 'theme_foundation');
         $default = 'top';
-        $choices = array(
+        $choices = [
             'bottom' => get_string('bottom', 'core_editor'),
-            'top' => get_string('top', 'core_editor')
-        );
+            'top' => get_string('top', 'core_editor'),
+        ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -76,10 +77,10 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('navbarstyle', 'theme_foundation');
         $description = get_string('navbarstyledesc', 'theme_foundation');
         $default = 'dark';
-        $choices = array(
+        $choices = [
             'dark' => get_string('navbarstyledark', 'theme_foundation'),
-            'light' => get_string('navbarstylelight', 'theme_foundation')
-        );
+            'light' => get_string('navbarstylelight', 'theme_foundation'),
+        ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches'); // Config file uses this setting.
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
@@ -114,12 +115,12 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('displaymycourses', 'theme_foundation');
         $description = get_string('displaymycoursesdesc', 'theme_foundation');
         $default = 1;
-        $choices = array(
+        $choices = [
             0 => new \lang_string('displaymycoursesoff', 'theme_foundation'),
             1 => new \lang_string('displaymycoursesmenu', 'theme_foundation'),
             2 => new \lang_string('displaymycourseslink', 'theme_foundation'),
-            3 => new \lang_string('displaymycoursesboth', 'theme_foundation')
-        );
+            3 => new \lang_string('displaymycoursesboth', 'theme_foundation'),
+        ];
         $setting = new \admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -136,11 +137,11 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('mycoursesorder', 'theme_foundation');
         $description = get_string('mycoursesorderdesc', 'theme_foundation');
         $default = 1;
-        $choices = array(
+        $choices = [
             1 => get_string('mycoursesordersort', 'theme_foundation'),
             2 => get_string('mycoursesorderid', 'theme_foundation'),
-            3 => get_string('mycoursesorderlast', 'theme_foundation')
-        );
+            3 => get_string('mycoursesorderlast', 'theme_foundation'),
+        ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -149,10 +150,10 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('mycoursesorderidorder', 'theme_foundation');
         $description = get_string('mycoursesorderidorderdesc', 'theme_foundation');
         $default = 1;
-        $choices = array(
+        $choices = [
             1 => get_string('mycoursesorderidasc', 'theme_foundation'),
-            2 => get_string('mycoursesorderiddes', 'theme_foundation')
-        );
+            2 => get_string('mycoursesorderiddes', 'theme_foundation'),
+        ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -162,8 +163,11 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $default = 0;
         $lower = 0;
         $upper = 20;
-        $description = get_string('mycoursesmaxdesc', 'theme_foundation',
-            array('lower' => $lower, 'upper' => $upper));
+        $description = get_string(
+            'mycoursesmaxdesc',
+            'theme_foundation',
+            ['lower' => $lower, 'upper' => $upper]
+        );
         $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -172,12 +176,12 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $title = get_string('mycoursetitle', 'theme_foundation');
         $description = get_string('mycoursetitledesc', 'theme_foundation');
         $default = 'course';
-        $choices = array(
+        $choices = [
             'course' => get_string('mycourses', 'theme_foundation'),
             'unit' => get_string('myunits', 'theme_foundation'),
             'class' => get_string('myclasses', 'theme_foundation'),
-            'module' => get_string('mymodules', 'theme_foundation')
-        );
+            'module' => get_string('mymodules', 'theme_foundation'),
+        ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
@@ -209,14 +213,14 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
         $coursesmenu = $this->courses_menu($output);
         if (!empty($coursesmenu)) {
-            $data = new \stdClass;
+            $data = new \stdClass();
             $data->coursesmenu = $coursesmenu;
         }
 
         $thiscourse = $this->this_course_menu($output);
         if (!empty($thiscourse)) {
             if (empty($data)) {
-                $data = new \stdClass;
+                $data = new \stdClass();
             }
             $data->thiscoursemenu = $thiscourse;
         }
@@ -233,8 +237,10 @@ class menus_module extends \theme_foundation\module_basement implements \templat
     protected function courses_menu(\renderer_base $output) {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $hasdisplaymycourses = $toolbox->get_setting('displaymycourses');
-        if (isloggedin() && !isguestuser() &&
-                (($hasdisplaymycourses == 1) || ($hasdisplaymycourses == 3))) {
+        if (
+            isloggedin() && !isguestuser() &&
+                (($hasdisplaymycourses == 1) || ($hasdisplaymycourses == 3))
+        ) {
             global $PAGE;
             $coursemenu = new \theme_foundation\output\foundation_menu_item('');
             $mycoursesorder = $toolbox->get_setting('mycoursesorder');
@@ -249,34 +255,34 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
             $mycoursetitle = $toolbox->get_setting('mycoursetitle');
             if ($mycoursetitle == 'module') {
-                $branchtitle = get_string('my'.$lateststring.'modules', 'theme_foundation');
+                $branchtitle = get_string('my' . $lateststring . 'modules', 'theme_foundation');
             } else if ($mycoursetitle == 'unit') {
-                $branchtitle = get_string('my'.$lateststring.'units', 'theme_foundation');
+                $branchtitle = get_string('my' . $lateststring . 'units', 'theme_foundation');
             } else if ($mycoursetitle == 'class') {
-                $branchtitle = get_string('my'.$lateststring.'classes', 'theme_foundation');
+                $branchtitle = get_string('my' . $lateststring . 'classes', 'theme_foundation');
             } else {
-                $branchtitle = get_string('my'.$lateststring.'courses', 'theme_foundation');
+                $branchtitle = get_string('my' . $lateststring . 'courses', 'theme_foundation');
             }
-            $branchlabel = $toolbox->getfontawesomemarkup('briefcase', array('icon')).
-                html_writer::tag('span', $branchtitle, array('class' => 'd-none d-md-inline'));
+            $branchlabel = $toolbox->getfontawesomemarkup('briefcase', ['icon']) .
+                html_writer::tag('span', $branchtitle, ['class' => 'd-none d-md-inline']);
             $branchurl = $PAGE->url;
             $branchsort = 200;
 
             $coursemenubranch = $coursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
             $myhometext = get_string('myhome');
-            $myhomelabel = '<span>'.$toolbox->getfontawesomemarkup('dashboard', array('icon')).$myhometext.'</span>';
+            $myhomelabel = '<span>' . $toolbox->getfontawesomemarkup('dashboard', ['icon']) . $myhometext . '</span>';
             $coursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
 
             $hometext = get_string('sitehome');
-            $homelabel = '<span>'.$toolbox->getfontawesomemarkup('home', array('icon')).$hometext.'</span>';
-            $coursemenubranch->add($homelabel, new moodle_url('/index.php', array('redirect' => '0')), $homelabel);
+            $homelabel = '<span>' . $toolbox->getfontawesomemarkup('home', ['icon']) . $hometext . '</span>';
+            $coursemenubranch->add($homelabel, new moodle_url('/index.php', ['redirect' => '0']), $homelabel);
 
             // Retrieve courses and add them to the menu when they are visible.
             $numcourses = 0;
             $hasdisplayhiddenmycourses = $toolbox->get_setting('displayhiddenmycourses');
 
-            $courses = array();
+            $courses = [];
             if (($mycoursesorder == 1) || ($mycoursesorder == 2)) {
                 $direction = 'ASC';
                 if ($mycoursesorder == 1) {
@@ -292,7 +298,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                         $direction = 'DESC';
                     }
                 }
-                $courses = \enrol_get_my_courses(null, $sortorder.' '.$direction);
+                $courses = \enrol_get_my_courses(null, $sortorder . ' ' . $direction);
             } else if ($mycoursesorder == 3) {
                 /* To test:
                  * 1. As an administrator...
@@ -308,7 +314,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                 if ($courses) {
                     // We have something to work with.  Get the last accessed information for the user and populate.
                     global $DB, $USER;
-                    $lastaccess = $DB->get_records('user_lastaccess', array('userid' => $USER->id), '', 'courseid, timeaccess');
+                    $lastaccess = $DB->get_records('user_lastaccess', ['userid' => $USER->id], '', 'courseid, timeaccess');
                     if ($lastaccess) {
                         foreach ($courses as $course) {
                             if (!empty($lastaccess[$course->id])) {
@@ -326,14 +332,14 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                     }
                     if ($enrolquery) {
                         // We do.
-                        $params = array('userid' => $USER->id);
+                        $params = ['userid' => $USER->id];
                         $sql = "SELECT ue.id, e.courseid, ue.timestart
                             FROM {enrol} e
                             JOIN {user_enrolments} ue ON (ue.enrolid = e.id AND ue.userid = :userid)";
                         $enrolments = $DB->get_records_sql($sql, $params, 0, 0);
                         if ($enrolments) {
                             // Sort out any multiple enrolments on the same course.
-                            $userenrolments = array();
+                            $userenrolments = [];
                             foreach ($enrolments as $enrolment) {
                                 if (!empty($userenrolments[$enrolment->courseid])) {
                                     if ($userenrolments[$enrolment->courseid] < $enrolment->timestart) {
@@ -352,7 +358,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                             }
                         }
                     }
-                    uasort($courses, array($this, 'timeaccesscompare'));
+                    uasort($courses, [$this, 'timeaccesscompare']);
                 }
             }
 
@@ -372,7 +378,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
             }
             if ($numcourses == 0) {
                 $noenrolments = get_string('noenrolments', 'theme_foundation');
-                $coursemenubranch->add('<em>'.$noenrolments.'</em>', $PAGE->url, $noenrolments);
+                $coursemenubranch->add('<em>' . $noenrolments . '</em>', $PAGE->url, $noenrolments);
             }
             return $output->render_the_menu($coursemenu);
         }
@@ -394,15 +400,15 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $toolbox = \theme_foundation\toolbox::get_instance();
         if ($course->visible) {
             $branchtitle = format_string($course->shortname);
-            $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
-            $branchlabel = '<span>'.$toolbox->getfontawesomemarkup('graduation-cap', array('icon')).format_string($course->fullname).'</span>';
+            $branchurl = new moodle_url('/course/view.php', ['id' => $course->id]);
+            $branchlabel = '<span>' . $toolbox->getfontawesomemarkup('graduation-cap', ['icon']) . format_string($course->fullname) . '</span>';
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
         } else if (has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) && $hasdisplayhiddenmycourses) {
             $branchtitle = format_string($course->shortname);
-            $branchlabel = '<span class="dimmed_text">'.$toolbox->getfontawesomemarkup('eye-slash', array('icon')).
-                format_string($course->fullname).'</span>';
-            $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
+            $branchlabel = '<span class="dimmed_text">' . $toolbox->getfontawesomemarkup('eye-slash', ['icon']) .
+                format_string($course->fullname) . '</span>';
+            $branchurl = new moodle_url('/course/view.php', ['id' => $course->id]);
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
         }
@@ -421,18 +427,19 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $toolbox = \theme_foundation\toolbox::get_instance();
         $hasdisplaythiscourse = $toolbox->get_setting('displaythiscourse');
         if (isloggedin() && !isguestuser() && $hasdisplaythiscourse && ($PAGE->course->id != SITEID)) {
-
             $navoptions = \course_get_user_navigation_options($PAGE->context, $PAGE->course);
 
-            if (($navoptions->badges) ||
+            if (
+                ($navoptions->badges) ||
                 ($navoptions->competencies) ||
                 ($navoptions->grades) ||
-                ($navoptions->participants)) {
+                ($navoptions->participants)
+            ) {
                 $thiscoursemenu = new \theme_foundation\output\foundation_menu_item('');
 
                 $branchtitle = get_string('thiscourse', 'theme_foundation');
-                $branchlabel = $toolbox->getfontawesomemarkup('graduation-cap', array('icon')).
-                    html_writer::tag('span', $branchtitle, array('class' => 'd-none d-sm-inline'));
+                $branchlabel = $toolbox->getfontawesomemarkup('graduation-cap', ['icon']) .
+                    html_writer::tag('span', $branchtitle, ['class' => 'd-none d-sm-inline']);
                 $branchurl = $PAGE->url;
                 $branchsort = 200;
 
@@ -440,40 +447,40 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
                 if ($navoptions->participants) {
                     $participantstext = get_string('participants');
-                    $participantslabel = '<span>'.$toolbox->getfontawesomemarkup('users', array('icon')).$participantstext.'</span>';
+                    $participantslabel = '<span>' . $toolbox->getfontawesomemarkup('users', ['icon']) . $participantstext . '</span>';
                     $thiscoursemenubranch->add(
                         $participantslabel,
-                        new moodle_url('/user/index.php?id='.$PAGE->course->id),
+                        new moodle_url('/user/index.php?id=' . $PAGE->course->id),
                         $participantstext
                     );
                 }
 
                 if ($navoptions->badges) {
                     $badgestext = get_string('coursebadges', 'badges');
-                    $badgeslabel = '<span>'.$toolbox->getfontawesomemarkup('shield', array('icon')).$badgestext.'</span>';
+                    $badgeslabel = '<span>' . $toolbox->getfontawesomemarkup('shield', ['icon']) . $badgestext . '</span>';
                     $thiscoursemenubranch->add(
                         $badgeslabel,
-                        new moodle_url('/badges/view.php', array('type' => 2, 'id' => $PAGE->course->id)),
+                        new moodle_url('/badges/view.php', ['type' => 2, 'id' => $PAGE->course->id]),
                         $badgestext
                     );
                 }
 
                 if ($navoptions->competencies) {
                     $competenciestext = get_string('competencies', 'core_competency');
-                    $competencieslabel = '<span>'.$toolbox->getfontawesomemarkup('check-square', array('icon')).$competenciestext.'</span>';
+                    $competencieslabel = '<span>' . $toolbox->getfontawesomemarkup('check-square', ['icon']) . $competenciestext . '</span>';
                     $thiscoursemenubranch->add(
                         $competencieslabel,
-                        new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)),
+                        new moodle_url('/admin/tool/lp/coursecompetencies.php', ['courseid' => $PAGE->course->id]),
                         $competenciestext
                     );
                 }
 
                 if ($navoptions->grades) {
                     $gradestext = get_string('grade', 'core_grades');
-                    $gradeslabel = '<span>'.$toolbox->getfontawesomemarkup('table', array('icon')).$gradestext.'</span>';
+                    $gradeslabel = '<span>' . $toolbox->getfontawesomemarkup('table', ['icon']) . $gradestext . '</span>';
                     $thiscoursemenubranch->add(
                         $gradeslabel,
-                        new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id)),
+                        new moodle_url('/grade/report/index.php', ['id' => $PAGE->course->id]),
                         $gradestext
                     );
                 }

@@ -45,10 +45,10 @@ trait hvp_toolbox {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $content = $toolbox->get_setting('hvpcustomcss');
         if (!empty($content)) {
-            $styles[] = (object) array(
+            $styles[] = (object) [
                 'path' => $this->get_style_url($content),
-                'version' => ''
-            );
+                'version' => '',
+            ];
         }
     }
 
@@ -64,7 +64,9 @@ trait hvp_toolbox {
 
         $syscontext = \context_system::instance();
         $itemid = md5($content);
-        return \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
-            "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css");
+        return \moodle_url::make_file_url(
+            "$CFG->wwwroot/pluginfile.php",
+            "/$syscontext->id/theme_foundation/hvp/$itemid/themehvp.css"
+        );
     }
 }

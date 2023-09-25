@@ -24,7 +24,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 global $CFG;
-$h5prenderer = $CFG->dirroot.'/mod/hvp/renderer.php';
+$h5prenderer = $CFG->dirroot . '/mod/hvp/renderer.php';
 if (file_exists($h5prenderer)) {
     // Be sure to include the H5P renderer so it can be extended.
     require_once($h5prenderer);
