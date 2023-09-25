@@ -222,6 +222,7 @@ class toolbox {
             $scss .= '@import "fontawesome/regular";' . PHP_EOL;
             $scss .= '@import "fontawesome/solid";' . PHP_EOL;
             if (!empty($this->get_setting('faiv'))) {
+                $scss .= '@import "fontawesome/v4-compatibility";' . PHP_EOL;
                 $scss .= '@import "fontawesome/v4-shims";' . PHP_EOL;
             }
         }

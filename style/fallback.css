@@ -2,7 +2,7 @@
 /* Imports relative to theme folder, see get_css_content_from_scss() and get_scss_property() of theme_config in
    /lib/outputlib.php. */
 /*!
- * Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2023 Fonticons, Inc.
  */
@@ -1525,7 +1525,7 @@
   content: "\f3f6"; }
 
 /*!
- * Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2023 Fonticons, Inc.
  */
@@ -1546,7 +1546,7 @@
   font-weight: 400; }
 
 /*!
- * Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2023 Fonticons, Inc.
  */
@@ -1588,7 +1588,7 @@
   font-weight: 900; }
 
 /*!
- * Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2023 Fonticons, Inc.
  */
@@ -3782,19 +3782,8 @@
   font-family: 'Font Awesome 6 Brands';
   font-weight: 400; }
 
-:root, :host {
-  --fa-style-family-brands: 'Font Awesome 4 Compatibility';
-  --fa-font-brands: normal 400 1em/1 'Font Awesome 4 Compatibility'; }
-
-@font-face {
-  font-family: 'Font Awesome 4 Compatibility';
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("[[font:core|fa-v4compatibility.woff2]]") format("woff2"), url("[[font:core|fa-v4compatibility.ttf]]") format("truetype"); }
-
 /*!
- * Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2023 Fonticons, Inc.
  */
@@ -17058,6 +17047,17 @@ a.text-dark:hover, a.text-dark:focus {
 .dir-rtl .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
   transform: translateX(-0.75rem); }
 
+.dir-rtl .tooltip.bs-tooltip-left .arrow, .dir-rtl .tooltip.bs-tooltip-auto[x-placement^="left"] .arrow, .dir-rtl .tooltip.bs-tooltip-right .arrow, .dir-rtl .tooltip.bs-tooltip-auto[x-placement^="right"] .arrow {
+  transform: rotate(180deg); }
+
+.dir-rtl .tooltip.bs-tooltip-left .arrow, .dir-rtl .tooltip.bs-tooltip-auto[x-placement^="left"] .arrow {
+  left: auto;
+  right: 0; }
+
+.dir-rtl .tooltip.bs-tooltip-right .arrow, .dir-rtl .tooltip.bs-tooltip-auto[x-placement^="right"] .arrow {
+  left: 0;
+  right: auto; }
+
 /**
  * Moodle variables
  *
@@ -17415,8 +17415,14 @@ form.popupform div {
   overflow: auto; }
 
 .no-overflow > .generaltable {
-  position: relative;
   margin-bottom: 0; }
+
+.no-overflow .generaltable .sr-only,
+.no-overflow .generaltable .accesshide,
+.table-responsive .generaltable .sr-only,
+.table-responsive .generaltable .accesshide {
+  position: relative;
+  display: block; }
 
 .accesshide {
   position: absolute;
@@ -18737,7 +18743,7 @@ a.disabled {
   text-decoration: none;
   cursor: default;
   font-style: italic;
-  color: #808080; }
+  color: #868e96; }
 
 body.lockscroll {
   height: 100%;
@@ -18823,11 +18829,6 @@ h3.sectionname .inplaceeditable.inplaceeditingon .editinstructions {
     display: none; }
   .chart-area .chart-table.accesshide .chart-table-data {
     display: block; }
-
-ul {
-  padding-left: 1rem;
-  -webkit-margin-start: 0.2rem;
-  /* stylelint-disable-line */ }
 
 /* YUI 2 Tree View */
 /*rtl:raw:
@@ -19668,6 +19669,7 @@ blockquote {
   .activityiconcontainer .activityicon,
   .activityiconcontainer .icon {
     margin: 0;
+    font-size: 24px;
     height: 24px;
     width: 24px; }
   .activityiconcontainer.small {
@@ -21630,6 +21632,9 @@ span.editinstructions {
 .coursebox .customfieldseparator {
   font-weight: 700; }
 
+.coursebox .content .coursefile {
+  max-width: 100px; }
+
 .coursebox .content .courseimage img {
   max-width: 100px;
   max-height: 100px; }
@@ -21733,6 +21738,8 @@ span.editinstructions {
   #course-category-listings .listitem[data-selected='1'] {
     border-left: calc(1px + 5px) solid #1177d1;
     padding-left: calc(1.25rem - 5px); }
+  #course-category-listings .listitem:hover {
+    z-index: 2; }
   #course-category-listings .item-actions {
     margin-right: 1em;
     display: inline-block; }
@@ -23971,7 +23978,8 @@ body.path-question-type {
 
 .que span.qno {
   font-size: 1.5em;
-  font-weight: bold; }
+  font-weight: bold;
+  word-break: break-word; }
 
 .que .info > div {
   font-size: 0.8em;
@@ -25922,7 +25930,8 @@ img.userpicture {
   width: 30px;
   border-radius: 3px;
   border: 0;
-  overflow: visible;
+  overflow: hidden;
+  white-space: nowrap;
   margin: 0 6px 6px 0; }
 
 .path-mod-quiz #mod_quiz_navblock span.qnbutton {
@@ -25989,8 +25998,8 @@ img.userpicture {
   vertical-align: middle; }
 
 #page-mod-quiz-edit ul.slots li.section li.activity .instancemaxmarkcontainer {
-  padding: 0;
-  margin: 0 0.4em; }
+  padding: .5em 0 .5em .1em;
+  margin: 2px; }
 
 /* Countdown timer. */
 #page-mod-quiz-attempt #region-main {
@@ -26937,6 +26946,9 @@ p.arrow_button {
 .path-grade-report-grader .gradeparent tr .cell,
 .path-grade-report-grader .gradeparent .floater .cell {
   background-color: #fff; }
+  .path-grade-report-grader .gradeparent tr .cell.gradecell .dropdown-menu.show,
+  .path-grade-report-grader .gradeparent .floater .cell.gradecell .dropdown-menu.show {
+    z-index: 1; }
 
 .path-grade-report-grader .gradeparent table,
 .path-grade-report-grader .gradeparent .cell {
@@ -26953,24 +26965,32 @@ p.arrow_button {
 .path-grade-report-grader .gradeparent tr.heading {
   position: sticky;
   top: 0;
-  z-index: 1; }
+  z-index: 4; }
+
+.path-grade-report-grader .gradeparent tr.userrow th {
+  z-index: 2; }
+  .path-grade-report-grader .gradeparent tr.userrow th.actions-menu-active {
+    z-index: 3; }
 
 .path-grade-report-grader .gradeparent tr.lastrow {
   position: sticky;
-  bottom: 0; }
+  bottom: -1px; }
+  .path-grade-report-grader .gradeparent tr.lastrow.pinned {
+    z-index: 4; }
   .path-grade-report-grader .gradeparent tr.lastrow td,
   .path-grade-report-grader .gradeparent tr.lastrow th {
     border-top: 1px solid #dee2e6; }
 
 .path-grade-report-grader .gradeparent th.header {
-  position: sticky;
-  z-index: 1; }
+  position: sticky; }
   @media (max-width: 767.98px) {
     .path-grade-report-grader .gradeparent th.header {
       left: 0; } }
   @media (min-width: 768px) {
     .path-grade-report-grader .gradeparent th.header {
       left: -3rem; } }
+  .path-grade-report-grader .gradeparent th.header#studentheader {
+    z-index: 1; }
 
 .path-grade-report-grader .gradeparent td.noborder {
   border-right: transparent; }
@@ -28562,6 +28582,9 @@ div.editor_atto_toolbar button .icon {
 .pagelayout-embedded #page {
   margin-top: 0; }
 
+:root {
+  --navbar-height: 60px; }
+
 /**
 * Reportbuilder.
 */
@@ -29322,8 +29345,11 @@ body.admin h1:after {
   margin: 10px 0;
   padding: 4px; }
 
-.bg-light,
-.bg-white {
+.chooser-container .tab-content,
+.custom-select,
+.dashboard-card-footer,
+.form-control,
+.optionscontainer .option {
   background-color: transparent !important; }
 
 .atto_image_button_text-bottom {
@@ -29331,13 +29357,6 @@ body.admin h1:after {
 
 .navbar-nav {
   flex-direction: row; }
-
-.fav .toast.toast-info .toast-body:before {
-  content: "\f05a";
-  font-family: 'Font Awesome 5 Free';
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 1; }
 
 .favi .toast.toast-info .toast-body:before {
   content: "\f05a";
@@ -29360,10 +29379,11 @@ hr {
   cursor: pointer;
   float: right; }
   .block .block-action:before {
-    content: \f066; }
+    content: "\\f066";
+    font: normal normal 900 14px/1 'Font Awesome 6 Free'; }
 
 .block.hidden .block-action:before {
-  content: \f065; }
+  content: "\\f065"; }
 
 .block.hidden .card-text {
   display: none; }
@@ -29401,7 +29421,10 @@ hr {
 [data-region="blocks-drawer"] {
   height: calc(100% - 50px);
   left: 0;
+  margin-top: 0.5rem;
   overflow-y: auto;
+  padding-left: 15px;
+  padding-right: 15px;
   position: fixed;
   top: 50px;
   transition: all 0.75s;
@@ -29546,24 +29569,22 @@ body {
     border: none;
     color: #fff;
     display: none;
-    font-size: 9px;
+    font-size: 24px;
     padding: 1px 7px 3px;
     position: fixed;
     text-align: center;
     text-decoration: none;
     top: calc(84% + 0px); }
-  .fav .footerantigravity button,
   .favi .footerantigravity button {
     padding: 3px 8px 3px; }
-  .fav .footerantigravity .backtotop {
-    right: calc(2% + 31px - 0px); }
   .favi .footerantigravity .backtotop {
-    right: calc(2% + 34px - 0px); }
-  .footerantigravity .fa {
-    font-size: 24px; }
+    right: calc(2% + 37px - 0px); }
 
 .navbar-bottom .footerantigravity button {
   top: calc(16% + 0px); }
+
+.hasstickyfooter .footerantigravity button {
+  top: calc(74% + 0px); }
 
 #drawer {
   padding: .5rem; }
@@ -29635,6 +29656,9 @@ body {
 a:hover {
   text-decoration: none; }
 
+.bg-body {
+  background-color: #fff; }
+
 #region-main {
   overflow-x: visible;
   padding-right: 15px; }
@@ -29655,8 +29679,21 @@ a:hover {
   .pagelayout-mydashboard #region-main {
     padding: 5px; } }
 
+.pagelayout-report #region-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  width: auto; }
+
+.hasstickyfooter #page-wrapper {
+  height: auto;
+  margin-bottom: calc(max(96px, calc(0.9375rem * 3))); }
+
 .pagelayout-popup #page {
   margin-top: 0; }
+
+#page-header .card {
+  border: none; }
 
 .page-context-header {
   padding: 0; }
@@ -29809,11 +29846,6 @@ body.loginbackground.pagelayout-login #page {
   bottom: auto;
   top: -19px; }
 
-.fav .dropdown-item[aria-current="true"]:before,
-.fav .dropdown-toggle::after {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900; }
-
 .favi .dropdown-item[aria-current="true"]:before,
 .favi .dropdown-toggle::after {
   font-family: 'Font Awesome 6 Free';
@@ -29963,11 +29995,9 @@ body.loginbackground.pagelayout-login #page {
   bottom: -8px;
   right: 6px; }
 
-.fav .navbar-plugin-output .popover-region-toggle::after,
 .favi .navbar-plugin-output .popover-region-toggle::after {
   right: 9px; }
 
-.fav .navbar-plugin-output .popover-region-toggle::before,
 .favi .navbar-plugin-output .popover-region-toggle::before {
   right: 8px; }
 
@@ -30032,8 +30062,7 @@ body.loginbackground.pagelayout-login #page {
       border-bottom-style: none;
       justify-content: center; }
       .secondary-navigation .navigation .nav-tabs > .nav-item {
-        border-bottom: 1px solid #dee2e6;
-        border-top: 1px solid #dee2e6; }
+        border-bottom: 1px solid #dee2e6; }
 
 #gridshadebox_content {
   background-color: #fff;
@@ -30060,96 +30089,96 @@ ul.ctopics :target {
     margin-bottom: 1rem; } }
 
 @media (min-width: 768px) {
-  #page-content {
+  body:not(.pagelayout-report) #page-content {
     display: flex; }
-    #page-content .region-main {
+    body:not(.pagelayout-report) #page-content .region-main {
       flex: 0 0 100%;
       padding: 0 1rem;
       max-width: 100%; }
-    #page-content.blocks-pre .columnpre {
+    body:not(.pagelayout-report) #page-content.blocks-pre .columnpre {
       flex: 0 0 32%;
       padding: 0 1rem;
       max-width: 32%; }
-    #page-content.blocks-pre .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre .region-main {
       flex: 0 0 68%;
       max-width: 68%;
       padding: 0 0 0 1rem; }
-    #page-content.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-post .region-main {
       flex: 0 0 68%;
       max-width: 68%;
       padding: 0 1rem 0 0; }
-    #page-content.blocks-post .columnpost {
+    body:not(.pagelayout-report) #page-content.blocks-post .columnpost {
       flex: 0 0 32%;
       order: -1;
       padding: 0 1rem;
       max-width: 32%; }
-    #page-content.blocks-pre.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre.blocks-post .region-main {
       flex: 0 0 36%;
       max-width: 36%;
       padding: 0; }
-    #page-content [data-region="blocks-column"] {
+    body:not(.pagelayout-report) #page-content [data-region="blocks-column"] {
       width: 100%; } }
 
 @media (min-width: 992px) {
-  #page-content {
+  body:not(.pagelayout-report) #page-content {
     display: flex; }
-    #page-content .region-main {
+    body:not(.pagelayout-report) #page-content .region-main {
       flex: 0 0 100%;
       padding: 0 1rem;
       max-width: 100%; }
-    #page-content.blocks-pre .columnpre {
+    body:not(.pagelayout-report) #page-content.blocks-pre .columnpre {
       flex: 0 0 25%;
       padding: 0 1rem;
       max-width: 25%; }
-    #page-content.blocks-pre .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre .region-main {
       flex: 0 0 75%;
       max-width: 75%;
       padding: 0 0 0 1rem; }
-    #page-content.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-post .region-main {
       flex: 0 0 75%;
       max-width: 75%;
       padding: 0 1rem 0 0; }
-    #page-content.blocks-post .columnpost {
+    body:not(.pagelayout-report) #page-content.blocks-post .columnpost {
       flex: 0 0 25%;
       order: -1;
       padding: 0 1rem;
       max-width: 25%; }
-    #page-content.blocks-pre.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre.blocks-post .region-main {
       flex: 0 0 50%;
       max-width: 50%;
       padding: 0; }
-    #page-content [data-region="blocks-column"] {
+    body:not(.pagelayout-report) #page-content [data-region="blocks-column"] {
       width: 100%; } }
 
 @media (min-width: 1200px) {
-  #page-content {
+  body:not(.pagelayout-report) #page-content {
     display: flex; }
-    #page-content .region-main {
+    body:not(.pagelayout-report) #page-content .region-main {
       flex: 0 0 100%;
       padding: 0 1rem;
       max-width: 100%; }
-    #page-content.blocks-pre .columnpre {
+    body:not(.pagelayout-report) #page-content.blocks-pre .columnpre {
       flex: 0 0 20%;
       padding: 0 1rem;
       max-width: 20%; }
-    #page-content.blocks-pre .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre .region-main {
       flex: 0 0 80%;
       max-width: 80%;
       padding: 0 0 0 1rem; }
-    #page-content.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-post .region-main {
       flex: 0 0 80%;
       max-width: 80%;
       padding: 0 1rem 0 0; }
-    #page-content.blocks-post .columnpost {
+    body:not(.pagelayout-report) #page-content.blocks-post .columnpost {
       flex: 0 0 20%;
       order: -1;
       padding: 0 1rem;
       max-width: 20%; }
-    #page-content.blocks-pre.blocks-post .region-main {
+    body:not(.pagelayout-report) #page-content.blocks-pre.blocks-post .region-main {
       flex: 0 0 60%;
       max-width: 60%;
       padding: 0; }
-    #page-content [data-region="blocks-column"] {
+    body:not(.pagelayout-report) #page-content [data-region="blocks-column"] {
       width: 100%; } }
 
 @media print {
