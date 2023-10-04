@@ -39,7 +39,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
     private $map = [];
 
     /**
-     * @var int $fav Using FontAwesome 4, 5 or 6 - 0, 1 or 2 values.
+     * @var int $fav Using FontAwesome from core or our version of 6 - 0 or 2 values.
      */
     private $fav;
 
@@ -59,7 +59,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
     public function get_core_icon_map() {
         if (empty($this->fav)) {
             $map = parent::get_core_icon_map();
-            $map['core:i/navigationitem'] = 'fa-compass';
+            $map['core:i/navigationitem'] = 'fa-compass';  // Core has 'fa-fw'!
             return $map;
         }
 
@@ -479,11 +479,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
                 $cache = \cache::make('theme_foundation', 'foundationfontawesomeiconmapping');
 
                 $this->map = $cache->get('mapping' . $this->fav);
-                if ($this->fav == 1) {
-                    $getmethod = 'get_fa5_from_fa4';
-                } else {
-                    $getmethod = 'get_fa6_from_fa4';
-                }
+                $getmethod = 'get_fa6_from_fa4'; // Only v6 now.
 
                 if (empty($this->map)) {
                     $this->map = $this->get_core_icon_map();
@@ -494,7 +490,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
                         foreach ($pluginsfunction as $plugintype => $plugins) {
                             foreach ($plugins as $pluginsubtype => $pluginfunction) {
                                 $pluginmap = $pluginfunction();
-                                // Convert map from FA 4 to 5 or 6.
+                                // Convert map from FA 4 to 6.
                                 foreach ($pluginmap as $micon => $faicon) {
                                     $pluginmap[$micon] = $toolbox->{$getmethod}($faicon, true);
                                 }
