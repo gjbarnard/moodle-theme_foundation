@@ -25,12 +25,12 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2023042403;
-$plugin->requires = 2023042400.00; // 4.2 (Build: 20230424).
-$plugin->supported = [402, 402];
+$plugin->version = 2023100700;
+$plugin->requires = 2023100900.00; // 4.3 (Build: 20231009).
+$plugin->supported = [403, 403];
 $plugin->component = 'theme_foundation';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '402.1.3';
+$plugin->release = '403.1.0';
 $plugin->dependencies = [
-    'theme_boost' => 2023042400,
+    'theme_boost' => 2023100900,
 ];
