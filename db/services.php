@@ -38,8 +38,8 @@ $functions = [
 
 $services = [
     'Foundation theme FontAwesome map' => [
-            'functions' => ['theme_foundation_output_load_fontawesome_icon_map'],
-            'restrictedusers' => 0,
-            'enabled' => 1,
+        'functions' => ['theme_foundation_output_load_fontawesome_icon_map'],
+        'restrictedusers' => 0,
+        'enabled' => 1,
     ],
 ];
