@@ -1,8 +1,9 @@
 Version Information
 ===================
 
-Version 403.1.0 - TBR
+Version 403.1.0 - 08/10/23
 --------------------------
+1. First version for Moodle 4.3.
 
 Version 402.1.3 - TBR
 --------------------------
