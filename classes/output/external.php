@@ -139,9 +139,9 @@ class external extends external_api {
                         [
                             'name' => new external_value(PARAM_RAW, 'The name of the preference'),
                             'value' => new external_value(PARAM_RAW, 'The value of the preference'),
-                        ],
+                        ]
                     )
-                )
+                ),
             ],
         );
     }
@@ -177,7 +177,7 @@ class external extends external_api {
                     'item' => 'user',
                     'itemid' => $USER->id,
                     'warningcode' => 'invaliduser',
-                    'message' => $e->getMessage()
+                    'message' => $e->getMessage(),
                 ];
             }
         }
@@ -231,8 +231,8 @@ class external extends external_api {
                         ],
                     ), 'Preferences saved'
                 ),
-                'warnings' => new external_warnings()
-            ],
+                'warnings' => new external_warnings(),
+            ]
         );
     }
 }
