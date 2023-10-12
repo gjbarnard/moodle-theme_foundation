@@ -133,18 +133,16 @@ class external extends external_api {
      */
     public static function set_user_preferences_parameters() {
         return new external_function_parameters(
-            array(
+            [
                 'preferences' => new external_multiple_structure(
                     new external_single_structure(
-                        array(
+                        [
                             'name' => new external_value(PARAM_RAW, 'The name of the preference'),
                             'value' => new external_value(PARAM_RAW, 'The value of the preference'),
-                            'userid' => new external_value(PARAM_INT,
-                                'Id of the user to set the preference (default to current user)', VALUE_DEFAULT, 0),
-                        )
+                        ],
                     )
                 )
-            )
+            ],
         );
     }
 
@@ -166,28 +164,25 @@ class external extends external_api {
         $PAGE->set_context($context);
 
         $userscache = [];
-        foreach ($params['preferences'] as $pref) {
-            $userid = $pref['userid'] ?: $USER->id;
-
-            // Check to which user set the preference.
-            if (!empty($userscache[$userid])) {
-                $user = $userscache[$userid];
-            } else {
-                try {
-                    $user = core_user::get_user($userid, '*', MUST_EXIST);
-                    core_user::require_active_user($user);
-                    $userscache[$userid] = $user;
-                } catch (Exception $e) {
-                    $warnings[] = [
-                        'item' => 'user',
-                        'itemid' => $userid,
-                        'warningcode' => 'invaliduser',
-                        'message' => $e->getMessage()
-                    ];
-                    continue;
-                }
+        // Check to which user set the preference.
+        if (!empty($userscache[$USER->id])) {
+            $user = $userscache[$USER->id];
+        } else {
+            try {
+                $user = core_user::get_user($USER->id, '*', MUST_EXIST);
+                core_user::require_active_user($user);
+                $userscache[$userid] = $user;
+            } catch (Exception $e) {
+                $warnings[] = [
+                    'item' => 'user',
+                    'itemid' => $USER->id,
+                    'warningcode' => 'invaliduser',
+                    'message' => $e->getMessage()
+                ];
             }
+        }
 
+        foreach ($params['preferences'] as $pref) {
             try {
                 // Support legacy preferences from the old M.util.set_user_preference API (always using the current user).
                 if (isset($USER->foundation_user_pref[$pref['name']])) {
@@ -227,17 +222,17 @@ class external extends external_api {
      */
     public static function set_user_preferences_returns() {
         return new external_single_structure(
-            array(
+            [
                 'saved' => new external_multiple_structure(
                     new external_single_structure(
-                        array(
+                        [
                             'name' => new external_value(PARAM_RAW, 'The name of the preference'),
                             'userid' => new external_value(PARAM_INT, 'The user the preference was set for'),
-                        )
+                        ],
                     ), 'Preferences saved'
                 ),
                 'warnings' => new external_warnings()
-            )
+            ],
         );
     }
 }

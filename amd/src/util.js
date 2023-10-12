@@ -29,17 +29,16 @@ import {call as fetchMany} from 'core/ajax';
  *
  * @param {String} name Name of the preference
  * @param {String|null} value Value of the preference (omit if you want to remove the current value)
- * @param {Number} userid User ID (defaults to current user)
  * @return {Promise}
  */
-export const setUserPreference = (name, value = null, userid = 0) => {
-    return setUserPreferences([{name, value, userid}]);
+export const setUserPreference = (name, value = null) => {
+    return setUserPreferences([{name, value}]);
 };
 
 /**
  * Set multiple user preferences
  *
- * @param {Object[]} preferences Array of preferences containing name/value/userid attributes
+ * @param {Object[]} preferences Array of preferences containing name/value attributes
  * @return {Promise}
  */
 export const setUserPreferences = (preferences) => {
