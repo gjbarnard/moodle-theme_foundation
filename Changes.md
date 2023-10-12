@@ -3,6 +3,7 @@ Version Information
 
 Version 403.1.1 - TBR
 --------------------------
+1. Fix 'Image Icon and Video Icon: Browse Repository button does not get any action to proceed to next screen' - #29.
 
 Version 403.1.0 - 08/10/23
 --------------------------
