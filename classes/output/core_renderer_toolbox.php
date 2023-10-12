@@ -71,7 +71,7 @@ trait core_renderer_toolbox {
                 $data->hasdrawerblocks = $hasdrawerblocks;
 
                 if ($hasdrawerblocks) {
-                    \user_preference_allow_ajax_update('drawerclosed', PARAM_BOOL);
+                    $USER->foundation_user_pref['drawerclosed'] = PARAM_BOOL;
                     $data->drawerclosed = get_user_preferences('drawerclosed', true);
                     if (!$data->drawerclosed) {
                         $bodyclasses[] = 'drawer-open';
@@ -476,7 +476,8 @@ trait core_renderer_toolbox {
         if (empty($bc->blockinstanceid) || !strip_tags($bc->title)) {
             $bc->collapsible = block_contents::NOT_HIDEABLE;
         } else {
-            user_preference_allow_ajax_update('block' . $bc->blockinstanceid . 'hidden', PARAM_INT);
+            global $USER;
+            $USER->foundation_user_pref['block' . $bc->blockinstanceid . 'hidden'] = PARAM_INT;
         }
         $id = !empty($bc->attributes['id']) ? $bc->attributes['id'] : uniqid('block-');
         $context = new \stdClass();

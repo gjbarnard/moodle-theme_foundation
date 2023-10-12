@@ -34,6 +34,15 @@ $functions = [
         'loginrequired' => false,
         'ajax' => true,
     ],
+    'theme_foundation_user_set_user_preferences' => array(
+        'classname' => 'theme_foundation\output\external',
+        'methodname' => 'set_user_preferences',
+        'description' => 'Set user preferences.',
+        'type' => 'write',
+        'capabilities' => 'moodle/site:config',
+        'loginrequired' => false,
+        'ajax' => true,
+    ),
 ];
 
 $services = [
