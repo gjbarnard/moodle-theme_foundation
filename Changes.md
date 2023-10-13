@@ -6,6 +6,8 @@ Version 402.1.3 - TBR
 1. Update theme version of Font Awesome 6 to 6.4.2 from 6.4.0.
 2. Fix 'username unicode characters on login page'.  Really strange this one as caused by 'json_encode' in 'quote' method
    of 'mustache_quote_helper' being called when '!}}' and '{{' not used to make the 'input' tag on one line in the output.
+3. Add the ability not to show 'My courses' in the breadcrumb when it is not used as the start page for the user.  See the
+  'breadcrumbdisplaymycourses' setting in on the 'Header' settings tab under 'Breadcrumb'.
 
 Version 402.1.2 - 08/09/23
 --------------------------
