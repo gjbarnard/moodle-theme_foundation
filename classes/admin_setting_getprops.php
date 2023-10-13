@@ -140,7 +140,7 @@ class admin_setting_getprops extends \admin_setting {
             $table->data = [];
 
             foreach ($this->props as $propname => $propvalue) {
-                $table->data[] = [$propname, '<pre>' . htmlentities($propvalue) . '</pre>'];
+                $table->data[] = [$propname, '<pre>' . htmlentities($propvalue, ENT_COMPAT) . '</pre>'];
             }
             $return .= $propsexportbutton;
             $return .= \html_writer::table($table);
