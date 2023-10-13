@@ -258,6 +258,12 @@ $string['printlayout'] = "Print";
 $string['reportlayout'] = "Report";
 $string['securelayout'] = "Secure";
 
+// Breadcrumb.
+$string['breadcrumbheadingsub'] = 'Breaddrumb';
+$string['breadcrumbheadingdesc'] = 'Configure the settings for the \'Breadcrumb\' navigation here.';
+$string['breadcrumbdisplaymycourses'] = 'Display \'My courses\'';
+$string['breadcrumbdisplaymycoursesdesc'] = 'Display \'My courses\' in the menu \'Breadcrumb\' when it is not set to be the \'Homepage\' either by the core setting \'defaulthomepage\' (\'Start page for users\') or the user profile preference \'Start page\' when \'defaulthomepage\' is set to \'User preference\'.';
+
 // Menus.
 $string['menusheading'] = 'Menus';
 
@@ -281,7 +287,7 @@ $string['navbareditswitchdesc'] = 'Have the edit switch on the navbar.';
 
 // Courses menu.
 $string['coursesmenuheadingsub'] = 'Courses menu settings';
-$string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu of Foundation here.';
+$string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu of Foundation here.  Not to be confused with the core \'My courses\' page.';
 $string['displaymycourses'] = 'Display courses';
 $string['displaymycoursesdesc'] = 'Display courses for users on the \'Navbar\'.  This can be \'Off\', \'My courses menu\', \'My courses page link\' or \'Both\'.';
 $string['displaymycoursesoff'] = 'Off';

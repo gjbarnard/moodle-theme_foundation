@@ -1082,6 +1082,33 @@ trait core_renderer_toolbox {
         $output = '';
         $navbaritems = $this->page->navbar->get_items();
         if (!empty($navbaritems)) {
+            $toolbox = \theme_foundation\toolbox::get_instance();
+            if (!$toolbox->get_setting('breadcrumbdisplaythiscourse')) {
+                global $CFG;
+                $removemycourses = true;
+                if ($CFG->defaulthomepage == HOMEPAGE_MYCOURSES) {
+                    $removemycourses = false;
+                } else if ($CFG->defaulthomepage == HOMEPAGE_USER) {
+                    global $USER;
+                    if ((!empty($USER->preference['user_home_page_preference'])) &&
+                        ($USER->preference['user_home_page_preference'] == HOMEPAGE_MYCOURSES)) {
+                        $removemycourses = false;
+                    }
+                }
+                if ($removemycourses) {
+                    $replacementnavbaritems = [];
+                    foreach ($navbaritems as $navbaritem) {
+                        if (!empty($navbaritem->key)) {
+                            if ($navbaritem->key != 'mycourses') {
+                                $replacementnavbaritems[] = $navbaritem;
+                            } // Else it is mycourses so don't add it back in.
+                        } else {
+                            $replacementnavbaritems[] = $navbaritem;
+                        }
+                    }
+                    $navbaritems = $replacementnavbaritems;
+                }
+            }
             $navbar = new \stdClass();
             $navbar->get_items = $navbaritems;
             $output .= $this->render_from_template('core/navbar', $navbar);

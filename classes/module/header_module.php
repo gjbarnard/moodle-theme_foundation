@@ -214,6 +214,25 @@ class header_module extends \theme_foundation\module_basement {
             $layouts
         );
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
+
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add(
+            new \admin_setting_heading(
+                'theme_foundation_breadcrumbheading',
+                get_string('breadcrumbheadingsub', 'theme_foundation'),
+                format_text(get_string('breadcrumbheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN)
+            )
+        );
+
+        // Breadcrumb my courses.
+        $name = 'theme_foundation/breadcrumbdisplaythiscourse';
+        $title = get_string('breadcrumbdisplaymycourses', 'theme_foundation');
+        $description = get_string('breadcrumbdisplaymycoursesdesc', 'theme_foundation');
+        $default = true;
+        $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
     }
 
     /**
