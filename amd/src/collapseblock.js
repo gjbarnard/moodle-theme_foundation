@@ -17,8 +17,11 @@
  * Collapse block.
  *
  * @module     theme_foundation/collapseblock
- * @copyright  &copy; 2019-onwards G J Barnard.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2019 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 /* jshint ignore:start */

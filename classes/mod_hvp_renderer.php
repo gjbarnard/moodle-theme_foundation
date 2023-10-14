@@ -17,9 +17,12 @@
 /**
  * Foundation theme.
  *
- * @package     theme_foundation
- * @copyright   2018 Gareth J Barnard
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_foundation
+ * @copyright  2018 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 defined('MOODLE_INTERNAL') || die;
 
@@ -31,10 +34,6 @@ if (file_exists($h5prenderer)) {
 
     /**
      * Class theme_foundation_mod_hvp_renderer
-     *
-     * @package     theme_foundation
-     * @copyright   2018 Gareth J Barnard
-     * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
      */
     class theme_foundation_mod_hvp_renderer extends mod_hvp_renderer {
         use \theme_foundation\hvp_toolbox;

@@ -18,19 +18,17 @@
  * Put properties with validation setting.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2021 G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2021 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation;
 
 /**
  * Set properties class.
- *
- * @package   theme_foundation
- * @copyright &copy; 2021 G J Barnard.
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class admin_setting_putprops extends \admin_setting_configtextarea {
     /** @var string Name of the theme. */

@@ -18,8 +18,12 @@
  *
  * @module     theme_foundation/util
  * @copyright  2020 Andrew Nicols <andrew@nicols.co.uk>
- * @copyright  &copy; 2023-onwards G J Barnard.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @copyright  2023 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 import {call as fetchMany} from 'core/ajax';
