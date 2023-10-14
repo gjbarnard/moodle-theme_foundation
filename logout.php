@@ -18,11 +18,14 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2021-onwards G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @copyright  2021 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * Adapted from code written by:
  * @copyright  1999 onwards Martin Dougiamas  http://dougiamas.com
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  *
  * Notes:
  *   If /login/logout.php ever changes, then change this!

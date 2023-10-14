@@ -24,22 +24,22 @@ Features
 
 About
 =====
-Copyright  &copy; 2019-onwards G J Barnard.  
-Author     G J Barnard - [About.me](http://about.me/gjbarnard) and [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
-License    [GNU GPL v3 or later](http://www.gnu.org/copyleft/gpl.html).
+Copyright  2019-onwards G J Barnard.
+Author     G J Barnard - [gjbarnard.co.uk](https://gjbarnard.co.uk) and [Moodle.org](https://moodle.org/user/profile.php?id=442195)
+License    [GNU GPL v3 or later](https://www.gnu.org/copyleft/gpl.html).
 
 Developed and maintained by
 ===========================
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
-Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)
-Web profile | [About.me](http://about.me/gjbarnard)
+Moodle profile | [Moodle.org](https://moodle.org/user/profile.php?id=442195)
+Web profile | [gjbarnard.co.uk](https://gjbarnard.co.uk)
 
 Free Software
 =============
 The Foundation theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.
 
 It can be obtained for free from:
-[github.com/gjb2048/moodle-theme_foundation/releases](https://github.com/gjb2048/moodle-theme_foundation/releases)
+[github.com/gjbarnard/moodle-theme_foundation/releases](https://github.com/gjbarnard/moodle-theme_foundation/releases)
 
 You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
 FAQ - [www.gnu.org/licenses/gpl-faq.html](//www.gnu.org/licenses/gpl-faq.html) - is a good place to look.
@@ -51,14 +51,14 @@ The 'Swatches' are from [Bootswatch.com](https://bootswatch.com/) and licensed u
 in order for them to work with Moodle.
 
 If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
-[GitHub](https://github.com/gjb2048/moodle-theme_foundation) and doing a 'Pull Request' so that the rest of the Moodle community
+[GitHub](https://github.com/gjbarnard/moodle-theme_foundation) and doing a 'Pull Request' so that the rest of the Moodle community
 benefits.
 
 Support
 =======
 As Foundation is licensed under the GNU GPLv3 License it comes with NO support.  If you would like support from
-me then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the 'Themes' forum:
-moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.
+me then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the '[Themes](https://moodle.org/mod/forum/view.php?id=46)'
+forum is an excellent place to ask questions.
 
 Sponsorships
 ============
@@ -133,5 +133,7 @@ See Changes.md
 Me
 ==
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
-Moodle profile: [Moodle.org](http://moodle.org/user/profile.php?id=442195)
-Web profile   : [About.me](http://about.me/gjbarnard)
+
+- Moodle profile | [Moodle.org](https://moodle.org/user/profile.php?id=442195)
+- @gjbarnard | [X](https://twitter.com/gjbarnard).
+- Web profile | [gjbarnard.co.uk](https://gjbarnard.co.uk)

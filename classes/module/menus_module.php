@@ -18,9 +18,11 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2019-onwards G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @copyright  2019 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation\module;
@@ -182,6 +184,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
             'class' => get_string('myclasses', 'theme_foundation'),
             'module' => get_string('mymodules', 'theme_foundation'),
         ];
+
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 

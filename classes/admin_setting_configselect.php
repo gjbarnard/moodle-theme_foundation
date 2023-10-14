@@ -17,18 +17,17 @@
 /**
  * Foundation theme.
  * @package    theme_foundation
- * @copyright  &copy; 2018-onwards G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2018 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation;
 
 /**
  * Config select setting that sets the default on first run.
- *
- * @copyright  &copy; 2018-onwards G J Barnard.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class admin_setting_configselect extends \admin_setting_configselect {
     /**

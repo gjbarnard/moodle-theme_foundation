@@ -17,11 +17,13 @@
 /**
  * Container for settings pages to display as tabs.
  *
- * @package   theme_foundation
- * @copyright  &copy; 2020 G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @copyright 2016 Ryan Wyllie - from Boost theme.
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_foundation
+ * @copyright  2016 Ryan Wyllie - from Boost theme.
+ * @copyright  2020 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_foundation;
@@ -30,12 +32,6 @@ use admin_settingpage;
 
 /**
  * Container for settings pages to display as tabs.
- *
- * @package   theme_foundation
- * @copyright  &copy; 2020 G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @copyright 2016 Ryan Wyllie - from Boost theme.
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class admin_settingspage_tabs extends admin_settingpage {
     /** @var The tabs */
