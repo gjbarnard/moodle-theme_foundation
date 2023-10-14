@@ -17,9 +17,12 @@
 /**
  * Foundation theme.
  *
- * @package     theme_foundation
- * @copyright   2021 Gareth J Barnard
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_foundation
+ * @copyright  2021 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 namespace theme_foundation;
 
@@ -28,10 +31,6 @@ namespace theme_foundation;
  *
  * See: https://tracker.moodle.org/browse/MDL-69087 and
  *      https://github.com/sarjona/h5pmods-moodle-plugin.
- *
- * @package     theme_foundation
- * @copyright   2021 Gareth J Barnard
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 trait hvp_toolbox {
     /**

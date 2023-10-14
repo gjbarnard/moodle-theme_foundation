@@ -18,19 +18,21 @@
  * Foundation theme.
  *
  * @package    theme_foundation
- * @copyright  &copy; 2018-onwards G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @copyright  2018 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 $string['choosereadme'] = '
 <div class="clearfix">
 <h2>Foundation</h2>
 <h3>About</h3>
-<p>Foundation is a basic theme.</p>
+<p>This is a Bootstrap theme that aims to be minimalistic and modern in look.</p>
 <h3>Theme Credits</h3>
 <p>Author: G J Barnard<br>
-Contact: <a href="http://moodle.org/user/profile.php?id=442195" target="_blank">Moodle profile</a><br>
+Contact: <a href="https://moodle.org/user/profile.php?id=442195" target="_blank">Moodle profile</a><br>
 Website: <a href="https://gjbarnard.co.uk" target="_blank">gjbarnard.co.uk</a>
 </p>
 <h3>More information</h3>
@@ -76,7 +78,7 @@ $string['themesupport'] = 'Support';
 // General.
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
-$string['generalheadingdesc'] = 'Configure the general settings for Foundation here.';
+$string['generalheadingdesc'] = 'Configure the general settings.';
 
 $string['footerantigravityhorizontaloffset'] = 'Screen anti-gravity horizontal offset';
 $string['footerantigravityhorizontaloffsetdesc'] = 'Set the horizontal offset of the anti-gravity buttons on the screen (not the navbar) from the default.  This can be an positive (move right) or negative (move left) number.  The units are pixels.  Note:  Flip this logic for RTL languages.';
@@ -115,7 +117,7 @@ $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 // H5P.
 $string['hvpheading'] = 'H5P';
 $string['hvpheadingsub'] = 'H5P settings';
-$string['hvpheadingdesc'] = 'Configure the H5P settings for Foundation here.  They only take effect if the H5P module (moodle.org/plugins/mod_hvp) is installed.';
+$string['hvpheadingdesc'] = 'Configure the H5P settings.  They only take effect if the H5P module (moodle.org/plugins/mod_hvp) is installed.';
 
 $string['hvpcustomcss'] = 'H5P Custom CSS';
 $string['hvpcustomcssdesc'] = 'Custom CSS for the H5P module.';
@@ -126,7 +128,7 @@ $string['hvpfontcssdesc'] = 'Font CSS for the H5P module.  Place the \'font-face
 // Features.
 $string['featuresheading'] = 'Features';
 $string['featuresheadingsub'] = 'Features settings';
-$string['featuresheadingdesc'] = 'Configure the settings for the features of Foundation here.';
+$string['featuresheadingdesc'] = 'Configure the settings for the features.';
 
 $string['alertsheading'] = 'Alerts settings';
 $string['alertsheadingdesc'] = 'Set the alerts settings.';
@@ -185,12 +187,12 @@ $string['loginbackgroundopacitydesc'] = 'Login background opacity for the login 
 $string['syntaxhighlightheading'] = 'Syntax highlighting settings';
 $string['syntaxhighlightheadingdesc'] = 'Set the syntax highlighting settings.';
 $string['syntaxhighlightremoved'] = 'Syntax highlighting removed';
-$string['syntaxhighlightremoveddesc'] = 'Syntax highlighting functionality in Foundation has been removed.  Please use the \'<a href="https://moodle.org/plugins/filter_synhi" target="_blank">SynHi</a>\' filter instead.';
+$string['syntaxhighlightremoveddesc'] = 'The syntax highlighting functionality has been removed.  Please use the \'<a href="https://moodle.org/plugins/filter_synhi" target="_blank">SynHi</a>\' filter instead.';
 
 // Carousels.
 $string['frontpagecarouselheading'] = 'Frontpage carousel';
 $string['frontpagecarouselheadingsub'] = 'Frontpage carousel settings';
-$string['frontpagecarouselheadingdesc'] = 'Configure the settings for the frontpage carousel of Foundation here.';
+$string['frontpagecarouselheadingdesc'] = 'Configure the settings for the frontpage carousel.';
 $string['frontpagecarouselslides'] = 'Frontpage slides';
 $string['frontpagecarouselslidesdesc'] = 'Number of frontpage slides between {$a->lower} and {$a->upper}.  After changing and \'Saving changes\', refresh the page.';
 $string['frontpageslideno'] = 'Frontpage slide {$a->number}';
@@ -214,7 +216,7 @@ $string['urltargetparent'] = 'Parent frame';
 // Header.
 $string['headerheading'] = 'Header';
 $string['headerheadingsub'] = 'Header settings';
-$string['headerheadingdesc'] = 'Configure the header settings for Foundation here.';
+$string['headerheadingdesc'] = 'Configure the header settings.';
 $string['header'] = 'Header';
 $string['headerdesc'] = 'Header desc.';
 
@@ -259,7 +261,7 @@ $string['reportlayout'] = "Report";
 $string['securelayout'] = "Secure";
 
 // Breadcrumb.
-$string['breadcrumbheadingsub'] = 'Breaddrumb';
+$string['breadcrumbheadingsub'] = 'Breadcrumb';
 $string['breadcrumbheadingdesc'] = 'Configure the settings for the \'Breadcrumb\' navigation here.';
 $string['breadcrumbdisplaymycourses'] = 'Display \'My courses\'';
 $string['breadcrumbdisplaymycoursesdesc'] = 'Display \'My courses\' in the menu \'Breadcrumb\' when it is not set to be the \'Homepage\' either by the core setting \'defaulthomepage\' (\'Start page for users\') or the user profile preference \'Start page\' when \'defaulthomepage\' is set to \'User preference\'.';
@@ -269,7 +271,7 @@ $string['menusheading'] = 'Menus';
 
 // General menus menu.
 $string['generalmenuheadingsub'] = 'General';
-$string['generalmenuheadingdesc'] = 'Configure the general menu settings for Foundation here.';
+$string['generalmenuheadingdesc'] = 'Configure the general menu settings.';
 
 $string['navbarposition'] = 'Navbar position';
 $string['navbarpositiondesc'] = 'Set the position of the navbar.';
@@ -287,7 +289,7 @@ $string['navbareditswitchdesc'] = 'Have the edit switch on the navbar.';
 
 // Courses menu.
 $string['coursesmenuheadingsub'] = 'Courses menu settings';
-$string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu of Foundation here.  Not to be confused with the core \'My courses\' page.';
+$string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu.  Not to be confused with the core \'My courses\' page.';
 $string['displaymycourses'] = 'Display courses';
 $string['displaymycoursesdesc'] = 'Display courses for users on the \'Navbar\'.  This can be \'Off\', \'My courses menu\', \'My courses page link\' or \'Both\'.';
 $string['displaymycoursesoff'] = 'Off';
@@ -328,7 +330,7 @@ $string['noenrolments'] = 'You have no current enrolments';
 
 // This course menu.
 $string['thiscoursemenuheadingsub'] = 'This course menu settings';
-$string['thiscoursemenuheadingdesc'] = 'Configure the settings for the \'This course\' menu of Foundation here.';
+$string['thiscoursemenuheadingdesc'] = 'Configure the settings for the \'This course\' menu.';
 $string['displaythiscourse'] = 'Display \'This course\' menu';
 $string['displaythiscoursedesc'] = 'Display the \'This course\' menu on the \'Navbar\' in a course.';
 $string['thiscourse'] = 'This course';
@@ -336,7 +338,7 @@ $string['thiscourse'] = 'This course';
 // Modules.
 $string['moduleheading'] = 'Module';
 $string['moduleheadingsub'] = 'Module settings';
-$string['moduleheadingdesc'] = 'Configure the module settings for Foundation here.';
+$string['moduleheadingdesc'] = 'Configure the module settings.';
 
 // Dynamic - will this break plugin validation?  If it does then will have to put the theme strings here, but the concept will still be proven for modules.
 /* Future code? -> $toolbox = \theme_foundation\toolbox::get_instance();
@@ -345,7 +347,7 @@ $string['moduleheadingdesc'] = 'Configure the module settings for Foundation her
 // Swatch.
 $string['swatchheading'] = 'Swatch';
 $string['swatchheadingsub'] = 'Swatch settings';
-$string['swatchheadingdesc'] = 'Configure the swatch settings for Foundation here.';
+$string['swatchheadingdesc'] = 'Configure the swatch settings.';
 $string['swatch'] = 'Swatch';
 $string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way of changing the look of the theme using a preset list of definitions that you attach a name to.  All swatches (bar \'Seventies\' which I created) are from \'Bootswatch.com\' and licensed under the \'MIT License\'.  Note:  The Google font CDN\'s have been removed due to limitations with the PHP SCSS compiler and I don\'t want to have the complications of updating the privacy too.';
 
@@ -354,7 +356,7 @@ $string['swatchcustomcolours'] = 'Swatch custom colours';
 $string['swatchcustomcoloursdesc'] = 'Activate custom swatch colour settings.';
 $string['swatchcustomcoloursheading'] = 'Swatch custom colours';
 $string['swatchcustomcoloursheadingsub'] = 'Custom swatch colour settings';
-$string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings for Foundation here.';
+$string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings.';
 
 $string['swatchcustomcolour'] = '{$a} colour';
 $string['swatchcustomcolourdesc'] = 'Set the {$a} colour.  Enter \'-\' to ignore this setting.';
@@ -363,7 +365,7 @@ $string['swatchcustomtypography'] = 'Swatch custom typography';
 $string['swatchcustomtypographydesc'] = 'Activate custom swatch typography settings.';
 $string['swatchcustomtypographyheading'] = 'Swatch custom typography';
 $string['swatchcustomtypographyheadingsub'] = 'Custom swatch typography settings';
-$string['swatchcustomtypographyheadingdesc'] = 'Configure the custom swatch typography settings for Foundation here.';
+$string['swatchcustomtypographyheadingdesc'] = 'Configure the custom swatch typography settings.';
 
 $string['swatchcustomfontsizebase'] = 'Font size base';
 $string['swatchcustomfontsizebasedesc'] = 'Set the base font size as a number.  Units are \'rem\' internally.';
@@ -384,7 +386,7 @@ $string['asconfigintnan'] = '{$a->value} is not a number';
 // Properties.
 $string['properties'] = 'Import / export settings';
 $string['propertiessub'] = 'Current theme settings';
-$string['propertiesdesc'] = 'In this section you can import / export current Foundation theme settings (properties) in JSON format. You can also view all current settings on this Moodle installation.';
+$string['propertiesdesc'] = 'In this section you can import / export current theme settings (properties) in JSON format. You can also view all current settings on this Moodle installation.';
 $string['propertiesproperty'] = 'Property';
 $string['propertiesvalue'] = 'Value';
 $string['propertiesexport'] = 'Export properties as a JSON string';
