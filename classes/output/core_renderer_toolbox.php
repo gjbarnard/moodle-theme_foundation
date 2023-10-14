@@ -1089,7 +1089,8 @@ trait core_renderer_toolbox {
                     $removemycourses = false;
                 } else if ($CFG->defaulthomepage == HOMEPAGE_USER) {
                     global $USER;
-                    if ((!empty($USER->preference['user_home_page_preference'])) &&
+                    if (
+                        (!empty($USER->preference['user_home_page_preference'])) &&
                         ($USER->preference['user_home_page_preference'] == HOMEPAGE_MYCOURSES)) {
                         $removemycourses = false;
                     }
