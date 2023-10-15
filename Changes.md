@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 403.1.2 - TBR
+Version 403.1.2 - 15/10/23
 --------------------------
 1. Add the ability not to show 'My courses' in the breadcrumb when it is not used as the start page for the user.  See the
   'breadcrumbdisplaymycourses' setting in on the 'Header' settings tab under 'Breadcrumb'.
