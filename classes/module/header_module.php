@@ -217,9 +217,6 @@ class header_module extends \theme_foundation\module_basement {
         );
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add(
             new \admin_setting_heading(
                 'theme_foundation_breadcrumbheading',
