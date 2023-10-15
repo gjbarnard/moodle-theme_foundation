@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 401.1.3 - TBR
+Version 401.1.3 - 15/10/23
 --------------------------
 1. Update theme version of Font Awesome 6 to 6.4.2 from 6.2.1.
 2. Fix 'username unicode characters on login page'.  Really strange this one as caused by 'json_encode' in 'quote' method
