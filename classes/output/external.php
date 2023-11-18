@@ -168,7 +168,7 @@ class external extends external_api {
             try {
                 $user = core_user::get_user($USER->id, '*', MUST_EXIST);
                 core_user::require_active_user($user);
-                $userscache[$userid] = $user;
+                $userscache[$user->id] = $user;
             } catch (Exception $e) {
                 $warnings[] = [
                     'item' => 'user',
