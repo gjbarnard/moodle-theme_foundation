@@ -105,6 +105,8 @@ $string['marketingblocksperrowdesc'] = 'Number of blocks per row when using the 
 $string['trio'] = 'Three columns';
 $string['triodesc'] = 'Use three columns instead of two on two column pages.  The drawer block area does not count as a \'column\' in this terminology.  Note: When changing this setting, the block region(s) might look odd until the page is refreshed.';
 
+$string['blockshowhide'] = 'Show / hide the block';
+
 $string['unaddableblocks'] = 'Unneeded blocks';
 $string['unaddableblocksdesc'] = 'The blocks specified will not be listed in the \'Add a block\' menu.  This is a comma separated list without spaces of the block \'folder\' name within the \'blocks\' folder.  If you want to \'Hide\' a block completely, such as the \'Navigation\' block then go to \'Site administration\' -> \'Plugins\' -> \'Blocks\' -> \'Manage blocks\'.';
 
