@@ -1,6 +1,9 @@
 Version Information
 ===================
 
+Version 403.1.3 - TBR
+--------------------------
+
 Version 403.1.2 - 15/10/23
 --------------------------
 1. Add the ability not to show 'My courses' in the breadcrumb when it is not used as the start page for the user.  See the
