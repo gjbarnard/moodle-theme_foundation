@@ -3,6 +3,7 @@ Version Information
 
 Version 403.1.3 - TBR
 --------------------------
+1. Added tooltip to show / hide block.
 
 Version 403.1.2 - 15/10/23
 --------------------------
