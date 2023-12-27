@@ -4,6 +4,7 @@ Version Information
 Version 403.1.3 - TBR
 --------------------------
 1. Added tooltip to show / hide block.
+2. Fix 'error: class constructors must be invoked with 'new'' - ref: https://moodle.org/mod/forum/discuss.php?d=453804.
 
 Version 403.1.2 - 15/10/23
 --------------------------
