@@ -261,6 +261,7 @@ $string['maintenancelayout'] = "Maintenance";
 $string['printlayout'] = "Print";
 $string['reportlayout'] = "Report";
 $string['securelayout'] = "Secure";
+$string['sitelogo'] = "Site logo";
 
 // Breadcrumb.
 $string['breadcrumbheadingsub'] = 'Breadcrumb';

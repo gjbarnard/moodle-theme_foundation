@@ -38,12 +38,13 @@ trait core_renderer_toolbox {
      * Orchestrates the rendering of the page.
      */
     public function render_page() {
-        global $CFG, $COURSE, $USER;
+        global $CFG, $COURSE, $SITE, $USER;
 
         $toolbox = \theme_foundation\toolbox::get_instance();
 
         $data = new \stdClass();
         $data->output = $this;
+        $data->sitename = format_string($SITE->shortname, true, ['context' => \context_course::instance(SITEID), "escape" => false]);
         $bodyclasses = [];
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
