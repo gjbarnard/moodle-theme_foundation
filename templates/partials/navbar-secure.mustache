@@ -52,11 +52,13 @@
     {{> partials/navbardrawerblocks}}
 
     {{# output.should_display_navbar_logo }}
-        <span class="logo d-none d-sm-inline">
-            <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-        </span>
+    <span class="logo d-none d-sm-flex align-items-center">
+        <img src="{{output.get_compact_logo_url}}" title="{{sitename}}" alt="{{#str}} sitelogo, theme_foundation {{/str}}">
+    </span>
     {{/ output.should_display_navbar_logo }}
-    <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+    {{^ output.should_display_navbar_logo}}
+    <span class="site-name navbar-brand d-none d-sm-flex align-items-center">{{ sitename }}</span>
+    {{/ output.should_display_navbar_logo }}
 
     <!-- primary_menu -->
     {{{ output.primary_menu }}}
