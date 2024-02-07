@@ -53,6 +53,11 @@
     }
 }
 
+.navbar-brand {
+    padding-bottom: $nav-link-padding-y;
+    padding-top: $nav-link-padding-y;
+}
+
 .navbar-nav {
     .dropdown-menu {
         position: absolute;

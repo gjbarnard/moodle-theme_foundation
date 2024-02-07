@@ -54,13 +54,15 @@
     {{#ltiauth}}
     <span
     {{/ltiauth}}
-    class="navbar-brand aabtn{{#output.should_display_navbar_logo}} has-logo d-none d-sm-block{{/output.should_display_navbar_logo}}{{^output.should_display_navbar_logo}} d-none{{/output.should_display_navbar_logo}}">
+    class="navbar-brand aabtn nav-link d-none d-sm-flex{{#output.should_display_navbar_logo}} has-logo{{/output.should_display_navbar_logo}}">
         {{# output.should_display_navbar_logo }}
-            <span class="logo d-none d-sm-inline">
-                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-            </span>
+        <span class="logo">
+            <img src="{{output.get_compact_logo_url}}" title="{{sitename}}" alt="{{#str}} sitelogo, theme_foundation {{/str}}">
+        </span>
         {{/ output.should_display_navbar_logo }}
-        <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+        {{^ output.should_display_navbar_logo}}
+        <span class="site-name">{{ sitename }}</span>
+        {{/ output.should_display_navbar_logo }}
     {{^ltiauth}}
     </a>
     {{/ltiauth}}

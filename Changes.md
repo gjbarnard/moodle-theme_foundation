@@ -4,6 +4,7 @@ Version Information
 Version 401.1.4 - TBR
 --------------------------
 1. Added tooltip to show / hide block.
+2. Fix 'Site Logo needs Alt Text for Accessibility' - #30.
 
 Version 401.1.3 - 15/10/23
 --------------------------
