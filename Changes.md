@@ -5,6 +5,7 @@ Version 402.1.4 - TBR
 --------------------------
 1. Added tooltip to show / hide block.
 2. Fix 'Site Logo needs Alt Text for Accessibility' - #30.
+3. Fix 'Alert warning secondary buttons'.
 
 Version 402.1.3 - 15/10/23
 --------------------------
