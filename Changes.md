@@ -1,6 +1,9 @@
 Version Information
 ===================
 
+Version 402.1.4 - TBR
+--------------------------
+
 Version 402.1.3 - 15/10/23
 --------------------------
 1. Update theme version of Font Awesome 6 to 6.4.2 from 6.4.0.
