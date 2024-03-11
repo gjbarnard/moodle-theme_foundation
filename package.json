@@ -1,6 +1,6 @@
 {
   "name": "theme-foundation-tasks",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Grunt tasks for Moodle Foundation theme.",
   "main": "Gruntfile.js",
   "author": {
