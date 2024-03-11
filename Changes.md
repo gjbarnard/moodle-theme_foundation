@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 403.1.3 - TBR
+Version 403.1.3 - 11/03/24
 --------------------------
 1. Added tooltip to show / hide block.
 2. Fix 'error: class constructors must be invoked with 'new'' - ref: https://moodle.org/mod/forum/discuss.php?d=453804.
@@ -22,7 +22,7 @@ Version 403.1.0 - 08/10/23
 --------------------------
 1. First version for Moodle 4.3.
 
-Version 402.1.3 - TBR
+Version 402.1.3 - 15/10/23
 --------------------------
 1. Update theme version of Font Awesome 6 to 6.4.2 from 6.4.0.
 2. Fix 'username unicode characters on login page'.  Really strange this one as caused by 'json_encode' in 'quote' method
