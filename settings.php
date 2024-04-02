@@ -27,5 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+unset($settings); // Remove generated 'themesettingfoundation' page.
+$settings = null;
 $toolbox = \theme_foundation\toolbox::get_instance();
-$toolbox->add_settings($settings);
+$toolbox->add_settings();
