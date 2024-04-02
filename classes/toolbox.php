@@ -316,15 +316,15 @@ class toolbox {
     /**
      * Add the settings to the theme.
      *
-     * @param admin_settingpage $settings The core settings page reference.
+     * @param admin_externalpage $settings The core settings page reference.
      */
-    public function add_settings(\admin_settingpage &$settings) {
+    public function add_settings(\admin_externalpage &$settings) {
         global $ADMIN;
 
-        $settings = null;
-
-        $ADMIN->add('themes', new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
-        $fsettings = new admin_settingspage_tabs('themesettingsfoundation', get_string('configtabtitle', 'theme_foundation'));
+        unset($settings); // Remove generated 'themesettingfoundation' page.
+        $ADMIN->add('appearance', new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
+        //$settings->add(new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
+        $fsettings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtabtitle', 'theme_foundation'));
 
         if ($ADMIN->fulltree) {
             // The settings pages we create.
@@ -479,7 +479,7 @@ class toolbox {
             $title = get_string('unaddableblocks', 'theme_foundation');
             $description = get_string('unaddableblocksdesc', 'theme_foundation');
             $default = '';
-            $setting = new \admin_setting_configtext($name, $title, $description, $default, true, false);
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_TEXT);
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
 
             // Pre SCSS.
