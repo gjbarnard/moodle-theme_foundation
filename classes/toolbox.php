@@ -315,15 +315,11 @@ class toolbox {
 
     /**
      * Add the settings to the theme.
-     *
-     * @param admin_externalpage $settings The core settings page reference.
      */
-    public function add_settings(\admin_externalpage &$settings) {
+    public function add_settings() {
         global $ADMIN;
 
-        unset($settings); // Remove generated 'themesettingfoundation' page.
         $ADMIN->add('appearance', new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
-        //$settings->add(new \admin_category('theme_foundation', get_string('configtitle', 'theme_foundation')));
         $fsettings = new admin_settingspage_tabs('themesettingfoundation', get_string('configtabtitle', 'theme_foundation'));
 
         if ($ADMIN->fulltree) {
