@@ -23,19 +23,20 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
+namespace theme_foundation;
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\writer;
 use theme_foundation\privacy\provider;
 
 /**
  * Privacy unit tests for the Foundation theme.
- * @group theme_foundation
  *
+ * @group theme_foundation
  * @copyright  &copy; 2018-onwards G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_testcase {
+final class privacy_provider_test extends \core_privacy\tests\provider_testcase {
     /**
      * Set up.
      */
@@ -48,7 +49,7 @@ class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_tes
     /**
      * Ensure that get_metadata exports valid content.
      */
-    public function test_get_metadata() {
+    public function test_get_metadata(): void {
         $items = new collection('theme_foundation');
         $result = provider::get_metadata($items);
         $this->assertSame($items, $result);
@@ -58,7 +59,7 @@ class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_tes
     /**
      * Ensure that export_user_preferences returns no data if the user has not set a block to be hidden or not.
      */
-    public function test_export_user_preferences_no_pref() {
+    public function test_export_user_preferences_no_pref(): void {
         $user = \core_user::get_user_by_username('admin');
         provider::export_user_preferences($user->id);
 
@@ -70,7 +71,7 @@ class theme_foundation_privacy_testcase extends \core_privacy\tests\provider_tes
     /**
      * Ensure that export_user_preferences returns request data.
      */
-    public function test_export_user_preferences() {
+    public function test_export_user_preferences(): void {
         $this->set_up();
         $this->setAdminUser();
 

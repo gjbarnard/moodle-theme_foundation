@@ -44,7 +44,8 @@ trait core_renderer_toolbox {
 
         $data = new \stdClass();
         $data->output = $this;
-        $data->sitename = format_string($SITE->shortname, true, ['context' => \context_course::instance(SITEID), "escape" => false]);
+        $data->sitename = format_string($SITE->shortname, true,
+            ['context' => \context_course::instance(SITEID), "escape" => false]);
         $bodyclasses = [];
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
@@ -453,7 +454,8 @@ trait core_renderer_toolbox {
                 } else if ($bc instanceof block_move_target) {
                     $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
                 } else {
-                    throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+                    throw new coding_exception(
+                        'Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
                 }
             }
         }
@@ -1025,6 +1027,11 @@ trait core_renderer_toolbox {
         return $content;
     }
 
+    /**
+     * Render the primary menu.
+     *
+     * returns string Markup.
+     */
     public function primary_menu() {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $fav = $toolbox->get_setting('fav');

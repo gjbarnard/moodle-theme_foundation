@@ -42,7 +42,7 @@ use stdClass;
  */
 class the_config {
     /**
-     * @var Array Theme parents.
+     * @var array Theme parents.
      */
     public $parents = null;
 

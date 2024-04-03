@@ -50,11 +50,15 @@ class swatch_module extends \theme_foundation\module_basement {
         'dark' => ['colour' => '#3c6afb', 'selector' => '.foundation-default-dark-colour', 'element' => 'color'],
         'body-bg' => ['colour' => '#fffa0f', 'selector' => '.foundation-default-body-bg-colour', 'element' => 'color'],
         'body-color' => ['colour' => '#03b40a', 'selector' => '.foundation-default-body-color-colour', 'element' => 'color'],
-        'component-active-color' => ['colour' => '#bbfc70', 'selector' => '.foundation-default-component-active-color-colour', 'element' => 'color'],
-        'component-active-bg' => ['colour' => '#f475fc', 'selector' => '.foundation-default-component-active-bg-colour', 'element' => 'color'],
-        'headings-color' => ['colour' => '#ffca8e', 'selector' => '.foundation-default-headings-color-colour', 'element' => 'color'],
+        'component-active-color' =>
+            ['colour' => '#bbfc70', 'selector' => '.foundation-default-component-active-color-colour', 'element' => 'color'],
+        'component-active-bg' =>
+            ['colour' => '#f475fc', 'selector' => '.foundation-default-component-active-bg-colour', 'element' => 'color'],
+        'headings-color' =>
+            ['colour' => '#ffca8e', 'selector' => '.foundation-default-headings-color-colour', 'element' => 'color'],
         'text-muted' => ['colour' => '#015a22', 'selector' => '.foundation-default-text-muted-colour', 'element' => 'color'],
-        'blockquote-small-color' => ['colour' => '#028187', 'selector' => '.foundation-default-blockquote-small-color-colour', 'element' => 'color'],
+        'blockquote-small-color' =>
+            ['colour' => '#028187', 'selector' => '.foundation-default-blockquote-small-color-colour', 'element' => 'color'],
         'card-color' => ['colour' => '#ffaabb', 'selector' => '.foundation-default-card-color-colour', 'element' => 'color'],
         'card-bg' => ['colour' => '#060064', 'selector' => '.foundation-default-card-bg-colour', 'element' => 'color'],
     ];
@@ -126,7 +130,7 @@ class swatch_module extends \theme_foundation\module_basement {
         if (empty($swatch)) {
             $swatch = 'default';
         }
-        // TODOs: Cope with the theme being in $CFG->themedir.
+        // Todos: Cope with the theme being in $CFG->themedir.
         global $CFG;
         $scss = file_get_contents($CFG->dirroot . '/theme/foundation/classes/module/swatch/' . $swatch . '_variables.scss');
         $scss .= $toolbox->get_core_framework_scss();
