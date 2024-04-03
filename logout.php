@@ -32,9 +32,10 @@
  *   Only works when Foundaion is not installed in $CFG->themedir.
  */
 
-require_once(__DIR__ . '/../../config.php');
-
 // Need to ignore code checker complaining about require_login() etc.
+// phpcs:disable moodle.Files.RequireLogin.Missing
+
+require_once(__DIR__ . '/../../config.php');
 
 $PAGE->set_url('/theme/foundation/logout.php');
 $PAGE->set_context(context_system::instance());

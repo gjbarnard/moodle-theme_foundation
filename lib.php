@@ -73,7 +73,7 @@ function theme_foundation_pluginfile($course, $cm, $context, $filearea, $args, $
  */
 function theme_foundation_serve_hvp_css($filename, $theme) {
     global $CFG, $PAGE;
-    require_once($CFG->dirroot . '/lib/configonlylib.php'); // For min_enable_zlib_compression().
+    require_once($CFG->dirroot . '/lib/configonlylib.php'); // For 'min_enable_zlib_compression' function.
 
     $toolbox = \theme_foundation\toolbox::get_instance();
     $PAGE->set_context(context_system::instance());
@@ -220,7 +220,8 @@ function theme_foundation_extend_navigation_course($coursenode, $course, $course
             $baseurl->param('sesskey', sesskey());
         } else {
             // Edit on the main course page.
-            $baseurl = new moodle_url('/course/view.php', ['id' => $course->id, 'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()]);
+            $baseurl = new moodle_url('/course/view.php', ['id' => $course->id,
+                'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()]);
         }
 
         $editurl = clone($baseurl);
@@ -232,7 +233,8 @@ function theme_foundation_extend_navigation_course($coursenode, $course, $course
             $editstring = get_string('turneditingon');
         }
 
-        $childnode = navigation_node::create($editstring, $editurl, navigation_node::TYPE_SETTING, null, 'turneditingonoff', new pix_icon('i/edit', ''));
+        $childnode = navigation_node::create($editstring, $editurl, navigation_node::TYPE_SETTING, null,
+            'turneditingonoff', new pix_icon('i/edit', ''));
         $keylist = $coursenode->get_children_key_list();
         if (!empty($keylist)) {
             if (count($keylist) > 1) {

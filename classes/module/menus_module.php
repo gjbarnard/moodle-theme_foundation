@@ -404,10 +404,12 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         if ($course->visible) {
             $branchtitle = format_string($course->shortname);
             $branchurl = new moodle_url('/course/view.php', ['id' => $course->id]);
-            $branchlabel = '<span>' . $toolbox->getfontawesomemarkup('graduation-cap', ['icon']) . format_string($course->fullname) . '</span>';
+            $branchlabel = '<span>' . $toolbox->getfontawesomemarkup('graduation-cap', ['icon']) .
+                format_string($course->fullname) . '</span>';
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
-        } else if (has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) && $hasdisplayhiddenmycourses) {
+        } else if (has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) &&
+            $hasdisplayhiddenmycourses) {
             $branchtitle = format_string($course->shortname);
             $branchlabel = '<span class="dimmed_text">' . $toolbox->getfontawesomemarkup('eye-slash', ['icon']) .
                 format_string($course->fullname) . '</span>';
@@ -450,7 +452,8 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
                 if ($navoptions->participants) {
                     $participantstext = get_string('participants');
-                    $participantslabel = '<span>' . $toolbox->getfontawesomemarkup('users', ['icon']) . $participantstext . '</span>';
+                    $participantslabel = '<span>' . $toolbox->getfontawesomemarkup('users', ['icon']) .
+                        $participantstext . '</span>';
                     $thiscoursemenubranch->add(
                         $participantslabel,
                         new moodle_url('/user/index.php?id=' . $PAGE->course->id),
@@ -470,7 +473,8 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
                 if ($navoptions->competencies) {
                     $competenciestext = get_string('competencies', 'core_competency');
-                    $competencieslabel = '<span>' . $toolbox->getfontawesomemarkup('check-square', ['icon']) . $competenciestext . '</span>';
+                    $competencieslabel = '<span>' . $toolbox->getfontawesomemarkup('check-square', ['icon']) .
+                        $competenciestext . '</span>';
                     $thiscoursemenubranch->add(
                         $competencieslabel,
                         new moodle_url('/admin/tool/lp/coursecompetencies.php', ['courseid' => $PAGE->course->id]),

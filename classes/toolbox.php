@@ -96,7 +96,7 @@ class toolbox {
     private function init_modules() {
         global $CFG;
 
-        // TODO: Cope with $CFG->themedir.
+        // Todo: Cope with $CFG->themedir.
         if ($handle = opendir($CFG->dirroot . '/theme/foundation/classes/module/')) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry == '.' || $entry == '..') {
@@ -155,7 +155,7 @@ class toolbox {
             $scss .= '$footer-antigravity-vertical-offset: ' . $footerantigravityverticaloffset . ';';
         }
 
-        // TODO: Does there need to be a parent daisy chain of this setting?
+        // Todo: Does there need to be a parent daisy chain of this setting?
         $prescss = $this->get_setting('prescss', $themename);
         if (!empty($prescss)) {
             $scss .= $prescss;
@@ -207,7 +207,7 @@ class toolbox {
      */
     public function get_core_framework_scss() {
         global $CFG;
-        // TODO: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
+        // Todo: If theme is in $CFG->themedir then work out the relative path from the theme to the 'boost' folder.
         $path = '../../boost/scss/';
 
         $scss = file_get_contents($CFG->dirroot . '/theme/foundation/scss/theme/override_variables.scss');
@@ -247,7 +247,7 @@ class toolbox {
             $scss .= $module->extra_scss($themename, $this);
         }
 
-        // TODO: Does there need to be a parent daisy chain of this setting?
+        // Todo: Does there need to be a parent daisy chain of this setting?
         $customscss = $this->get_setting('customscss', $themename);
         if (!empty($customscss)) {
             $scss .= $customscss;
@@ -1243,7 +1243,8 @@ class toolbox {
                 $itemid = \theme_get_revision();
                 $syscontext = \context_system::instance();
 
-                $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_$theconfig->name/$setting/$itemid" . $thesetting);
+                $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+                    "/$syscontext->id/theme_$theconfig->name/$setting/$itemid" . $thesetting);
             }
         }
         return $settingurl;
@@ -1272,7 +1273,8 @@ class toolbox {
                 $filepath = $thesetting;
                 $syscontext = \context_system::instance();
 
-                $url = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/$component/$filearea/$itemid" . $filepath);
+                $url = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+                    "/$syscontext->id/$component/$filearea/$itemid" . $filepath);
 
                 /* Now this is tricky because the we can not hardcode http or https here, lets use the relative link.
                    Note: unfortunately moodle_url does not support //urls yet. */
@@ -1440,7 +1442,8 @@ class toolbox {
             get_string('putpropertyversion', 'theme_foundation') . ' ' . $props['theme_version'] . '.' . PHP_EOL;
         unset($props['theme_version']);
         $report .= get_string('putpropertyour', 'theme_foundation') . ' \'' . ucfirst($themename) . '\' ' .
-            get_string('putpropertyversion', 'theme_foundation') . ' ' . $currentprops['theme_version']->value . '.' . PHP_EOL . PHP_EOL;
+            get_string('putpropertyversion', 'theme_foundation') . ' ' . $currentprops['theme_version']->value . '.' .
+                PHP_EOL . PHP_EOL;
         unset($currentprops['theme_version']);
 
         // Pre-process files - using 'theme_foundation_pluginfile' in lib.php as a reference.
@@ -1470,10 +1473,12 @@ class toolbox {
         $ignored = '';
         $settinglog = '';
         foreach ($props as $propkey => $propvalue) {
-            $settinglog = '\'' . $propkey . '\' ' . get_string('putpropertiesvalue', 'theme_foundation') . ' \'' . $propvalue . '\'';
+            $settinglog = '\'' . $propkey . '\' ' . get_string('putpropertiesvalue', 'theme_foundation') . ' \'' .
+                $propvalue . '\'';
             if (array_key_exists($propkey, $currentprops)) {
                 if ($propvalue != $currentprops[$propkey]->value) {
-                    $settinglog .= ' ' . get_string('putpropertiesfrom', 'theme_foundation') . ' \'' . $currentprops[$propkey]->value . '\'';
+                    $settinglog .= ' ' . get_string('putpropertiesfrom', 'theme_foundation') . ' \'' .
+                        $currentprops[$propkey]->value . '\'';
                     $changed .= $settinglog . '.' . PHP_EOL;
                     $DB->update_record('config_plugins', ['id' => $currentprops[$propkey]->id, 'value' => $propvalue], true);
                 } else {
