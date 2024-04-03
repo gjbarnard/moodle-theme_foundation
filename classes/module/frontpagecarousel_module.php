@@ -145,11 +145,13 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
         if ($PAGE->pagelayout == 'frontpage') {
             $toolbox = \theme_foundation\toolbox::get_instance();
 
-            $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation'); // Stick to ours or could be confusing!
+            // Stick to ours or could be confusing!
+            $numberofslides = $toolbox->get_setting('frontpagecarouselslides', 'foundation');
             if ($numberofslides > 0) {
                 $slidesenabled = [];
                 for ($slidenum = 1; $slidenum <= $numberofslides; $slidenum++) {
-                    $slideenabled = $toolbox->get_setting('frontpageenableslide' . $slidenum, 'foundation'); // Stick to ours or could be confusing!
+                    // Stick to ours or could be confusing!
+                    $slideenabled = $toolbox->get_setting('frontpageenableslide' . $slidenum, 'foundation');
                     if ($slideenabled) {
                         $slidesenabled[] = $slidenum; // Slide to be shown on the page.
                     }
@@ -166,7 +168,8 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                         $theslide->slidetitle = $toolbox->get_setting('frontpageslidetitle' . $slidenum, 'foundation');
                         $theslide->slidecaption = $toolbox->get_setting('frontpageslidecaption' . $slidenum, 'foundation');
                         if (!empty($toolbox->get_setting('frontpageslideimage' . $slidenum))) {
-                            $theslide->slideimage = $toolbox->setting_file_url('frontpageslideimage' . $slidenum, 'frontpageslideimage' . $slidenum, 'foundation');
+                            $theslide->slideimage = $toolbox->setting_file_url('frontpageslideimage' . $slidenum,
+                                'frontpageslideimage' . $slidenum, 'foundation');
                         } else {
                             $theslide->slideimage = $output->image_url('Foundation_default_slide', 'theme_foundation');
                         }

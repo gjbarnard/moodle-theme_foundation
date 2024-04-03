@@ -25,8 +25,13 @@
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
+// phpcs:disable Generic.Classes.DuplicateClassName.Found
+
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Foundation theme Collapsed Topics trait.
+ */
 trait theme_foundation_format_topcoll_renderer_trait {
     /**
      * The grid row class.

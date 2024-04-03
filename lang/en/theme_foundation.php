@@ -25,6 +25,8 @@
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
+// phpcs:disable moodle.Files.LangFilesOrdering
+
 $string['choosereadme'] = '
 <div class="clearfix">
 <h2>Foundation</h2>
