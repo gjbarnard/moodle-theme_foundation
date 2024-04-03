@@ -37,14 +37,6 @@ class renderer_factory extends \theme_overridden_renderer_factory {
     protected $core = null;
 
     /**
-     * Constructor.
-     * @param theme_config $theme the theme we are rendering for.
-     */
-    public function __construct(\theme_config $theme) {
-        parent::__construct($theme);
-    }
-
-    /**
      * Implement the subclass method
      *
      * @param moodle_page $page the page the renderer is outputting content for.

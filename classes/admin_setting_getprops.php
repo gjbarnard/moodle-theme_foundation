@@ -128,8 +128,8 @@ class admin_setting_getprops extends \admin_setting {
             $propsexporturl = new \moodle_url('/admin/settings.php', ['section' => $this->settingsectionname,
                 $this->name . '_saveprops' => 1, ]);
 
-            $propsexportbutton = '<div class="singlebutton"><div><a class="btn btn-secondary" href="' . $propsexporturl->out(true) . '">' .
-                $this->savepropsbuttonname . '</a></div></div>';
+            $propsexportbutton = '<div class="singlebutton"><div><a class="btn btn-secondary" href="' .
+                $propsexporturl->out(true) . '">' . $this->savepropsbuttonname . '</a></div></div>';
             $table = new \html_table();
             $table->head = [$this->visiblename, markdown_to_html($this->description)];
             $table->colclasses = ['leftalign', 'leftalign'];

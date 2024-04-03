@@ -34,6 +34,11 @@ if (file_exists("$CFG->dirroot/course/format/vsf/classes/output/renderer.php")) 
      * The theme's Progress Section format renderer.
      */
     class theme_foundation_format_vsf_renderer extends \format_vsf\output\renderer {
+        /**
+         * Get the navigation icons.
+         *
+         * return array Icons.
+         */
         public function vsf_get_nav_link_icons() {
             return [
                 'next' => 'fa-regular fa-arrow-alt-circle-right',
