@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 404.0.1 - TBR
+Version 404.0.1 - 22/04/24
 --------------------------
 1. Release candidate version for Moodle 4.4.
 2. Grade report improvements.

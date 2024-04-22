@@ -16,7 +16,7 @@ Bespoke work
 ------------
 
 If you would like your own customised version or a new child theme of Boost / Classic, then typically with a setting and a few style
-changes this is usually two to three hours work.  At my current rate this will be between 88 and 132 GBP.  I charge by the minute with
+changes this is usually two to three hours work.  At my current rate this will be between 94 and 141 GBP.  I charge by the minute with
 a minimum time of fifteen.  Please contact me for further details with an outline of what you would like.
 
 Open source software
