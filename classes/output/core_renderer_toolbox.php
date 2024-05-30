@@ -871,8 +871,8 @@ trait core_renderer_toolbox {
         }
 
         $returnstr .= html_writer::span(
-            html_writer::span($usertextcontents, 'usertext mr-1') .
-            html_writer::span($avatarcontents, $avatarclasses),
+            html_writer::span($avatarcontents, $avatarclasses) .
+            html_writer::span($usertextcontents, 'usertext mr-1'),
             'userbutton'
         );
 

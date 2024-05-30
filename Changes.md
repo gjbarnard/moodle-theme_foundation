@@ -3,6 +3,7 @@ Version Information
 
 Version 401.1.5 - TBR
 --------------------------
+1. Swap over user name and icon in navbar.  In line with a design style of other online applications.
 
 Version 401.1.4 - 11/03/24
 --------------------------
