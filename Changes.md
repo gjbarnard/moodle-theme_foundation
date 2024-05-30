@@ -1,6 +1,10 @@
 Version Information
 ===================
 
+Version 403.1.4 - TBR
+--------------------------
+1. Swap over user name and icon in navbar.  In line with a design style of other online applications.
+
 Version 403.1.3 - 11/03/24
 --------------------------
 1. Added tooltip to show / hide block.
