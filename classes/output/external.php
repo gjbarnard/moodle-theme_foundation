@@ -27,7 +27,7 @@
 
 namespace theme_foundation\output;
 
-use core_external\external_api;
+use core\output\external as external_core;
 use core_external\external_function_parameters;
 use core_external\external_multiple_structure;
 use core_external\external_single_structure;
@@ -37,7 +37,7 @@ use core\external\output\icon_system\load_fontawesome_map;
 /**
  * External.
  */
-class external extends external_api {
+class external extends external_core {
     /**
      * Return a mustache template, and all the strings it requires.
      *
