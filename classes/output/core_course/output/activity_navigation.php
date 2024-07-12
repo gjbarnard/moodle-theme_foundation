@@ -50,7 +50,7 @@ class activity_navigation extends \core_course\output\activity_navigation {
 
         // Check if there is a previous module to display.
         if ($prevmod) {
-            $linkurl = new \moodle_url($prevmod->url, array('forceview' => 1));
+            $linkurl = new \moodle_url($prevmod->url, ['forceview' => 1]);
 
             if ($activitynavigationmodulenames) {
                 $linkname = $prevmod->get_formatted_name();
@@ -70,7 +70,7 @@ class activity_navigation extends \core_course\output\activity_navigation {
 
         // Check if there is a next module to display.
         if ($nextmod) {
-            $linkurl = new \moodle_url($nextmod->url, array('forceview' => 1));
+            $linkurl = new \moodle_url($nextmod->url, ['forceview' => 1]);
             if ($activitynavigationmodulenames) {
                 $linkname = $nextmod->get_formatted_name();
             } else {
@@ -89,9 +89,9 @@ class activity_navigation extends \core_course\output\activity_navigation {
 
         // Render the activity list dropdown menu if available.
         if (!empty($activitylist)) {
-            $select = new url_select($activitylist, '', array('' => get_string('jumpto')));
-            $select->set_label(get_string('jumpto'), array('class' => 'sr-only'));
-            $select->attributes = array('id' => 'jump-to-activity');
+            $select = new url_select($activitylist, '', ['' => get_string('jumpto')]);
+            $select->set_label(get_string('jumpto'), ['class' => 'sr-only']);
+            $select->attributes = ['id' => 'jump-to-activity'];
             $this->activitylist = $select;
         }
     }
