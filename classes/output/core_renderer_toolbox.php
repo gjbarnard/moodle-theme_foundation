@@ -601,7 +601,7 @@ trait core_renderer_toolbox {
             $nextmod = $mods[$modids[$position + 1]];
         }
 
-        $activitynav = new \core_course\output\activity_navigation($prevmod, $nextmod, $activitylist);
+        $activitynav = new \theme_foundation\output\core_course\output\activity_navigation($prevmod, $nextmod, $activitylist);
         $renderer = $this->page->get_renderer('core', 'course');
         return $renderer->render($activitynav);
     }
