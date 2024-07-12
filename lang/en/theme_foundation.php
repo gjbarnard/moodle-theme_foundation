@@ -119,6 +119,14 @@ $string['prescssdesc'] = 'State the SCSS that should be used before any other SC
 $string['customscss'] = 'Custom SCSS';
 $string['customscssdesc'] = 'Add custom SCSS to the theme.';
 
+// Course.
+$string['courseheading'] = 'Course';
+$string['courseheadingsub'] = 'Course settings';
+$string['courseheadingdesc'] = 'Configure the course settings.';
+
+$string['activitynavigationenabled'] = 'Activity navigation';
+$string['activitynavigationenableddesc'] = 'Enabled?';
+
 // H5P.
 $string['hvpheading'] = 'H5P';
 $string['hvpheadingsub'] = 'H5P settings';
