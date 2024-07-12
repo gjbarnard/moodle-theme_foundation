@@ -61,9 +61,9 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         }
 
         // Information on https://fontawesome.com/how-to-use/upgrading-from-4.
-        // TODO: Determine if any missing and if FA 5 / 6 need to be different.
+        // Todo: Determine if any missing and if FA 5 / 6 need to be different.
         return [
-            'core:book' => 'fas fa-book', // TODO: Backport?  In 4.0, used in helplink in footer rather than information icon.
+            'core:book' => 'fas fa-book', // Todo: Backport?  In 4.0, used in helplink in footer rather than information icon.
             'core:docs' => 'fas fa-info-circle',
             'core:help' => 'fas fa-question-circle text-info',
             'core:req' => 'fas fa-exclamation-circle text-danger',
@@ -355,7 +355,8 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:t/block' => 'fas fa-ban',
             'core:t/block_to_dock_rtl' => 'fas fa-chevron-right',
             'core:t/block_to_dock' => 'fas fa-chevron-left',
-            'core:t/calc_off' => 'fas fa-calculator', // TODO: Change to better icon once we have stacked icon support or more icons.
+            // Todo: Change to better icon once we have stacked icon support or more icons.
+            'core:t/calc_off' => 'fas fa-calculator',
             'core:t/calc' => 'fas fa-calculator',
             'core:t/check' => 'fas fa-check',
             'core:t/cohort' => 'fas fa-users',
