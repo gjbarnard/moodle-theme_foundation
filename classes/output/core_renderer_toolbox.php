@@ -530,6 +530,12 @@ trait core_renderer_toolbox {
             return '';
         }
 
+        // Enabled?
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        if (!$toolbox->get_setting('activitynavigationenabled')) {
+            return '';
+        }
+
         // If the activity is in stealth mode, show no links.
         if ($this->page->cm->is_stealth()) {
             return '';
