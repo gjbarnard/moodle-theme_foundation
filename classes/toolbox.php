@@ -520,6 +520,14 @@ class toolbox {
             $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
             $settingspages['course'][self::SETTINGPAGE]->add($setting);
 
+            // Course activity navigation module names.
+            $name = 'theme_foundation/activitynavigationmodulenames';
+            $title = get_string('activitynavigationmodulenames', 'theme_foundation');
+            $description = get_string('activitynavigationmodulenamesdesc', 'theme_foundation');
+            $default = true;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $settingspages['course'][self::SETTINGPAGE]->add($setting);
+
             // H5P settings.
             $settingspages['hvp'][self::SETTINGPAGE]->add(
                 new \admin_setting_heading(

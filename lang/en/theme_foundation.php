@@ -126,6 +126,9 @@ $string['courseheadingdesc'] = 'Configure the course settings.';
 $string['activitynavigationenabled'] = 'Activity navigation';
 $string['activitynavigationenableddesc'] = 'Enabled?';
 
+$string['activitynavigationmodulenames'] = 'Activity navigation module names';
+$string['activitynavigationmodulenamesdesc'] = 'Show the module names, set, or previous / next if unset.';
+
 // H5P.
 $string['hvpheading'] = 'H5P';
 $string['hvpheadingsub'] = 'H5P settings';
