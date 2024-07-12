@@ -337,6 +337,12 @@ class toolbox {
                         get_string('generalheading', 'theme_foundation')
                     ),
                     self::HASSETTINGS => true, ],
+                'course' => [
+                    self::SETTINGPAGE => new \admin_settingpage(
+                        'theme_foundation_course',
+                        get_string('courseheading', 'theme_foundation')
+                    ),
+                    self::HASSETTINGS => true, ],
                 'hvp' => [
                     self::SETTINGPAGE => new \admin_settingpage(
                         'theme_foundation_hvp',
@@ -495,6 +501,24 @@ class toolbox {
             $setting = new \admin_setting_configtextarea($name, $title, $description, $default);
             $setting->set_updatedcallback('theme_reset_all_caches');
             $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
+            // Course settings.
+            $settingspages['course'][self::SETTINGPAGE]->add(
+                new \admin_setting_heading(
+                    'theme_foundation_courseheading',
+                    get_string('courseheadingsub', 'theme_foundation'),
+                    format_text(get_string('courseheadingdesc', 'theme_foundation'), FORMAT_MARKDOWN) . PHP_EOL .
+                    format_text(get_string('privacynote', 'theme_foundation'), FORMAT_MARKDOWN)
+                )
+            );
+
+            // Course activity navigation.
+            $name = 'theme_foundation/activitynavigationenabled';
+            $title = get_string('activitynavigationenabled', 'theme_foundation');
+            $description = get_string('activitynavigationenableddesc', 'theme_foundation');
+            $default = true;
+            $setting = new \admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+            $settingspages['course'][self::SETTINGPAGE]->add($setting);
 
             // H5P settings.
             $settingspages['hvp'][self::SETTINGPAGE]->add(
