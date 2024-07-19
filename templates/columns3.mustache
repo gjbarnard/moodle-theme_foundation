@@ -144,6 +144,8 @@ require(['theme_boost/loader'], function() {
   M.util.js_complete('theme_boost/loader');
 });
 {{#hasdrawerblocks}}
-require(['theme_foundation/drawer']);
+require(['theme_foundation/drawer'], function (Drawer) {
+    Drawer.drawerInit();
+});
 {{/hasdrawerblocks}}
 {{/js}}
