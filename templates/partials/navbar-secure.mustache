@@ -90,5 +90,7 @@
     </ul>
 </nav>
 {{#js}}
-require(['theme_foundation/anti_gravity']);
+require(['theme_foundation/anti_gravity'], function (AntiGravity) {
+    AntiGravity.init();
+});
 {{/js}}
