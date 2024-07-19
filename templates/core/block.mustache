@@ -69,6 +69,8 @@
 
 {{#collapsible}}
 {{#js}}
-require(['theme_foundation/collapseblock']);
+require(['theme_foundation/collapseblock'], function (CollapseBlock) {
+    CollapseBlock.collapseBlockInit();
+});
 {{/js}}
 {{/collapsible}}
