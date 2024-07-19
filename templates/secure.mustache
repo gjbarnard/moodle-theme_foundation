@@ -122,6 +122,8 @@ require(['theme_foundation/anti_gravity'], function (AntiGravity) {
     AntiGravity.init();
 });
 {{#hasdrawerblocks}}
-require(['theme_foundation/drawer']);
+require(['theme_foundation/drawer'], function (Drawer) {
+    Drawer.drawerInit();
+});
 {{/hasdrawerblocks}}
 {{/js}}
