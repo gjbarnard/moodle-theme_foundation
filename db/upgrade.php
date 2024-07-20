@@ -56,7 +56,6 @@ function xmldb_theme_foundation_upgrade($oldversion = 0) {
         $value = get_config('theme_foundation', 'usermenulogouturl');
         if (!empty($value)) {
             set_config('customlogouturl', $value, 'theme_foundation');
-            // Prevent replacement when upgrade has already happened in a version for an older Moodle!
             unset_config('usermenulogouturl', 'theme_foundation');
         }
 
