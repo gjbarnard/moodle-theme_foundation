@@ -51,6 +51,18 @@ function xmldb_theme_foundation_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, 2023042200, 'theme', 'foundation');
     }
 
+    if ($oldversion < 2023100704) {
+        // Change of name from 'usermenulogouturl' to 'customlogouturl'.
+        $value = get_config('theme_foundation', 'usermenulogouturl');
+        if (!empty($value)) {
+            set_config('customlogouturl', $value, 'theme_foundation');
+            // Prevent replacement in a newer version of the theme!
+            unset_config('usermenulogouturl', 'theme_foundation');
+        }
+
+        upgrade_plugin_savepoint(true, 2023100704, 'theme', 'foundation');
+    }
+
     // Automatic 'Purge all caches'....
     purge_all_caches();
 

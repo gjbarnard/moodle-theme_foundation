@@ -607,6 +607,27 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Return the standard string that says whether you are logged in (and switched
+     * roles/logged in as another user).
+     * @param bool $withlinks if false, then don't include any links in the HTML produced.
+     * If not set, the default is the nologinlinks option from the theme config.php file,
+     * and if that is not set, then links are included.
+     * @return string HTML fragment.
+     */
+    public function login_info($withlinks = null) {
+        $loggedinas = parent::login_info($withlinks);
+
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $customlogouturl = $toolbox->get_setting('customlogouturl');
+        if (!empty($customlogouturl)) {
+             // Replace if there.
+             $loggedinas = str_replace('/login/logout.php', '/theme/foundation/logout.php', $loggedinas);
+        }
+
+        return $loggedinas;
+    }
+
+    /**
      * Take a node in the nav tree and make an action menu out of it.
      * The links are injected in the action menu.
      *
@@ -861,8 +882,8 @@ trait core_renderer_toolbox {
 
         // Logout URL.  Only works when Foundation not in $CFG->themedir.
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $usermenulogouturl = $toolbox->get_setting('usermenulogouturl');
-        if (!empty($usermenulogouturl)) {
+        $customlogouturl = $toolbox->get_setting('customlogouturl');
+        if (!empty($customlogouturl)) {
             foreach ($opts->navitems as $object) {
                 if (!empty($object->titleidentifier)) {
                     $titleidentifier = explode(',', $object->titleidentifier);

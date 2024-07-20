@@ -87,14 +87,6 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $setting->set_updatedcallback('theme_reset_all_caches'); // Config file uses this setting.
         $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 
-        // Custom user menu url.
-        $name = 'theme_foundation/usermenulogouturl';
-        $title = get_string('usermenulogouturl', 'theme_foundation');
-        $default = '';
-        $description = get_string('usermenulogouturldesc', 'theme_foundation');
-        $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-        $settingspages['menus'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
-
         // Edit switch.
         $name = 'theme_foundation/navbareditswitch';
         $title = get_string('navbareditswitch', 'theme_foundation');

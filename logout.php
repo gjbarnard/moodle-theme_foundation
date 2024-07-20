@@ -58,7 +58,7 @@ if (($loggedin) && (!confirm_sesskey($sesskey))) {
 
 // Logout URL.
 $toolbox = \theme_foundation\toolbox::get_instance();
-$redirect = $toolbox->get_setting('usermenulogouturl');
+$redirect = $toolbox->get_setting('customlogouturl');
 
 if (!$loggedin) {
     // User has already logged out.
