@@ -390,6 +390,14 @@ class toolbox {
                 )
             );
 
+            // Custom logout url.
+            $name = 'theme_foundation/customlogouturl';
+            $title = get_string('customlogouturl', 'theme_foundation');
+            $default = '';
+            $description = get_string('customlogouturldesc', 'theme_foundation');
+            $setting = new \admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+            $settingspages['general'][self::SETTINGPAGE]->add($setting);
+
             // Core favicon information.
             $name = 'theme_foundation/favicon';
             $title = get_string('favicon', 'theme_foundation');
