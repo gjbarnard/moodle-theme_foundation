@@ -6,6 +6,8 @@ Version 401.1.5 - TBR
 1. Swap over user name and icon in navbar.  In line with a design style of other online applications.
 2. Add 'activitynavigationenabled' setting to enable / disable activity navigation.
 3. Add 'activitynavigationmodulenames' setting to show the activity module names in the navigation or previous / next if unset.
+4. Change of name from 'usermenulogouturl' to 'customlogouturl' and move setting from 'Menus' to 'General' in the theme settings
+   to fix the logout URL in the footer being inconsistent with the user menu - #33.
 
 Version 401.1.4 - 11/03/24
 --------------------------
