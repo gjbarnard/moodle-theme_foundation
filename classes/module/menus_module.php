@@ -475,7 +475,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                 }
 
                 if ($navoptions->grades) {
-                    $gradestext = get_string('grade', 'core_grades');
+                    $gradestext = get_string('grades');
                     $gradeslabel = '<span>' . $toolbox->getfontawesomemarkup('table', ['icon']) . $gradestext . '</span>';
                     $thiscoursemenubranch->add(
                         $gradeslabel,
