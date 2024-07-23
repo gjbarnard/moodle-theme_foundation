@@ -17,6 +17,12 @@
     border-bottom-width: 0;
 }
 
+.course-section {
+    .section-item {
+        border-width: 0;
+    }
+}
+
 .course-content ul.topics,
 .course-content ul.weeks {
     li.section {
