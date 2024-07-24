@@ -1,7 +1,7 @@
 Version Information
 ===================
 
-Version 402.1.5 - TBR
+Version 402.1.5 - 24/07/24
 --------------------------
 1. Swap over user name and icon in navbar.  In line with a design style of other online applications.
 2. Add 'activitynavigationenabled' setting to enable / disable activity navigation.
