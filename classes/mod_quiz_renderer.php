@@ -24,7 +24,10 @@
  *               {@link https://gjbarnard.co.uk}
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
+
 defined('MOODLE_INTERNAL') || die;
+
+use core\output\html_writer;
 
 global $CFG;
 $quizrenderer = $CFG->dirroot . '/mod/quiz/renderer.php';

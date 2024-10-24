@@ -35,6 +35,8 @@
 
 namespace theme_foundation;
 
+use core\exception\coding_exception;
+use core\exception\dml_exception;
 use stdClass;
 
 /**
@@ -83,7 +85,7 @@ class the_config {
         if ($config = self::find_theme_config($themename)) {
             return new self($config);
         } else {
-            throw new \coding_exception('Unable to load the \'' . $themename . '\' theme!');
+            throw new coding_exception('Unable to load the \'' . $themename . '\' theme!');
         }
     }
 
@@ -125,9 +127,9 @@ class the_config {
         // Note: theme_config does not do this but store the themes settings in the parent and not the parents settings.
         try {
             $settings = \get_config('theme_' . $themename);
-        } catch (\dml_exception $e) {
+        } catch (dml_exception $e) {
             // Most probably moodle tables not created yet.
-            $settings = new \stdClass();
+            $settings = new stdClass();
         }
 
         $THEME->settings = $settings;
@@ -138,7 +140,7 @@ class the_config {
         // Verify the theme configuration is OK.
         if (!is_array($THEME->parents)) {
             // Parents option is mandatory now.
-            throw new \coding_exception('Theme \'' . $themename . '\' has no \'parents\' array defined in its config.php file.');
+            throw new coding_exception('Theme \'' . $themename . '\' has no \'parents\' array defined in its config.php file.');
         }
 
         return $THEME;
@@ -159,12 +161,12 @@ class the_config {
         } else if (!empty($CFG->themedir) && file_exists("$CFG->themedir/$themename/config.php")) {
             $dir = "$CFG->themedir/$themename";
         } else {
-            throw new \coding_exception('Unable to find the \'' . $themename . '\' theme!');
+            throw new coding_exception('Unable to find the \'' . $themename . '\' theme!');
         }
 
         if (file_exists("$dir/styles.php")) {
             // Legacy theme - needs to be upgraded - upgrade info is displayed on the admin settings page.
-            throw new \coding_exception('Legacy \'' . $themename . '\' theme needs to be upgraded!');
+            throw new coding_exception('Legacy \'' . $themename . '\' theme needs to be upgraded!');
         }
 
         return $dir;

@@ -27,8 +27,9 @@
 
 namespace theme_foundation\module;
 
-use html_writer;
-use moodle_url;
+use core\output\html_writer;
+use core\url;
+use stdClass;
 use theme_foundation\admin_setting_configselect;
 use theme_foundation\admin_setting_configinteger;
 
@@ -208,14 +209,14 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
         $coursesmenu = $this->courses_menu($output);
         if (!empty($coursesmenu)) {
-            $data = new \stdClass();
+            $data = new stdClass();
             $data->coursesmenu = $coursesmenu;
         }
 
         $thiscourse = $this->this_course_menu($output);
         if (!empty($thiscourse)) {
             if (empty($data)) {
-                $data = new \stdClass();
+                $data = new stdClass();
             }
             $data->thiscoursemenu = $thiscourse;
         }
@@ -267,11 +268,11 @@ class menus_module extends \theme_foundation\module_basement implements \templat
 
             $myhometext = get_string('myhome');
             $myhomelabel = '<span>' . $toolbox->getfontawesomemarkup('dashboard', ['icon']) . $myhometext . '</span>';
-            $coursemenubranch->add($myhomelabel, new moodle_url('/my/index.php'), $myhometext);
+            $coursemenubranch->add($myhomelabel, new url('/my/index.php'), $myhometext);
 
             $hometext = get_string('sitehome');
             $homelabel = '<span>' . $toolbox->getfontawesomemarkup('home', ['icon']) . $hometext . '</span>';
-            $coursemenubranch->add($homelabel, new moodle_url('/index.php', ['redirect' => '0']), $homelabel);
+            $coursemenubranch->add($homelabel, new url('/index.php', ['redirect' => '0']), $homelabel);
 
             // Retrieve courses and add them to the menu when they are visible.
             $numcourses = 0;
@@ -395,7 +396,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
         $toolbox = \theme_foundation\toolbox::get_instance();
         if ($course->visible) {
             $branchtitle = format_string($course->shortname);
-            $branchurl = new moodle_url('/course/view.php', ['id' => $course->id]);
+            $branchurl = new url('/course/view.php', ['id' => $course->id]);
             $branchlabel = '<span>' . $toolbox->getfontawesomemarkup('graduation-cap', ['icon']) .
                 format_string($course->fullname) . '</span>';
             $branch->add($branchlabel, $branchurl, $branchtitle);
@@ -405,7 +406,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
             $branchtitle = format_string($course->shortname);
             $branchlabel = '<span class="dimmed_text">' . $toolbox->getfontawesomemarkup('eye-slash', ['icon']) .
                 format_string($course->fullname) . '</span>';
-            $branchurl = new moodle_url('/course/view.php', ['id' => $course->id]);
+            $branchurl = new url('/course/view.php', ['id' => $course->id]);
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
         }
@@ -448,7 +449,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                         $participantstext . '</span>';
                     $thiscoursemenubranch->add(
                         $participantslabel,
-                        new moodle_url('/user/index.php?id=' . $PAGE->course->id),
+                        new url('/user/index.php?id=' . $PAGE->course->id),
                         $participantstext
                     );
                 }
@@ -458,7 +459,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                     $badgeslabel = '<span>' . $toolbox->getfontawesomemarkup('shield', ['icon']) . $badgestext . '</span>';
                     $thiscoursemenubranch->add(
                         $badgeslabel,
-                        new moodle_url('/badges/view.php', ['type' => 2, 'id' => $PAGE->course->id]),
+                        new url('/badges/view.php', ['type' => 2, 'id' => $PAGE->course->id]),
                         $badgestext
                     );
                 }
@@ -469,7 +470,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                         $competenciestext . '</span>';
                     $thiscoursemenubranch->add(
                         $competencieslabel,
-                        new moodle_url('/admin/tool/lp/coursecompetencies.php', ['courseid' => $PAGE->course->id]),
+                        new url('/admin/tool/lp/coursecompetencies.php', ['courseid' => $PAGE->course->id]),
                         $competenciestext
                     );
                 }
@@ -479,7 +480,7 @@ class menus_module extends \theme_foundation\module_basement implements \templat
                     $gradeslabel = '<span>' . $toolbox->getfontawesomemarkup('table', ['icon']) . $gradestext . '</span>';
                     $thiscoursemenubranch->add(
                         $gradeslabel,
-                        new moodle_url('/grade/report/index.php', ['id' => $PAGE->course->id]),
+                        new url('/grade/report/index.php', ['id' => $PAGE->course->id]),
                         $gradestext
                     );
                 }

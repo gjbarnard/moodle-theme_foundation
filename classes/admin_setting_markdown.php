@@ -26,6 +26,8 @@
 
 namespace theme_foundation;
 
+use stdClass;
+
 /**
  * Setting that displays markdown files.  Based on admin_setting_description in adminlib.php.
  */
@@ -86,7 +88,7 @@ class admin_setting_markdown extends \admin_setting {
     public function output_html($data, $query = '') {
         global $CFG, $OUTPUT;
 
-        $context = new \stdClass();
+        $context = new stdClass();
         $context->title = $this->visiblename;
         $context->description = $this->description;
 

@@ -214,13 +214,13 @@ function theme_foundation_extend_navigation_course($coursenode, $course, $course
 
     if (($PAGE->theme->name == 'foundation') && ($PAGE->user_allowed_editing())) {
         // Add the turn on/off settings.
-        if ($PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
+        if ($PAGE->url->compare(new \core\url('/course/view.php'), URL_MATCH_BASE)) {
             // We are on the course page, retain the current page params e.g. section.
             $baseurl = clone($PAGE->url);
             $baseurl->param('sesskey', sesskey());
         } else {
             // Edit on the main course page.
-            $baseurl = new moodle_url('/course/view.php', ['id' => $course->id,
+            $baseurl = new \core\url('/course/view.php', ['id' => $course->id,
                 'return' => $PAGE->url->out_as_local_url(false), 'sesskey' => sesskey()]);
         }
 

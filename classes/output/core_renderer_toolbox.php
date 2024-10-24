@@ -27,8 +27,17 @@
 
 namespace theme_foundation\output;
 
-use block_contents;
-use html_writer;
+use core_block\output\block_contents;
+use core\output\action_link;
+use core\output\action_menu;
+use core\output\action_menu\filler;
+use core\output\action_menu\link_secondary;
+use core\output\html_writer;
+use core\output\pix_icon;
+use core\output\pix_icon_fontawesome;
+use navigation_node;
+use core\url;
+use stdClass;
 
 /**
  * The core renderer toolbox.
@@ -42,7 +51,7 @@ trait core_renderer_toolbox {
 
         $toolbox = \theme_foundation\toolbox::get_instance();
 
-        $data = new \stdClass();
+        $data = new stdClass();
         $data->output = $this;
         $data->sitename = format_string($SITE->shortname, true,
             ['context' => \context_course::instance(SITEID), "escape" => false]);
@@ -241,7 +250,7 @@ trait core_renderer_toolbox {
      */
     public function render_plain_page() {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
-        $data = new \stdClass();
+        $data = new stdClass();
         $data->output = $this;
         $data->fakeblocks = $this->blocks('side-pre', [], 'aside', true);
         $data->hasfakeblocks = strpos($data->fakeblocks, 'data-block="_fake"') !== false;
@@ -400,6 +409,48 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @param boolean $fakeblocksonly Output fake block only.
+     * @return string the HTML to be output.
+     */
+    public function blocks_for_region($region, $fakeblocksonly = false) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $lastblock = null;
+        $zones = [];
+        foreach ($blockcontents as $key => $bc) {
+            if ($bc instanceof block_contents) {
+                if ($bc->attributes['data-block'] == 'adminblock') {
+                    // Remove 'Add block'.
+                    unset($blockcontents[$key]);
+                    continue;
+                }
+                $zones[] = $bc->title;
+            }
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            if ($bc instanceof block_contents) {
+                if ($fakeblocksonly && !$bc->is_fake()) {
+                    // Skip rendering real blocks if we only want to show fake blocks.
+                    continue;
+                }
+                $output .= $this->block($bc, $region);
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                if (!$fakeblocksonly) {
+                    $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+                }
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
+    }
+
+    /**
      * Output all the horizontal blocks in a particular region.
      *
      * @param string $region The name of a region on this page.
@@ -410,11 +461,17 @@ trait core_renderer_toolbox {
      */
     public function hblocks_for_region($region, $editing, $blocksperrow) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
-        $blocks = $this->page->blocks->get_blocks_for_region($region);
         $lastblock = null;
         $zones = [];
-        foreach ($blocks as $block) {
-            $zones[] = $block->title;
+        foreach ($blockcontents as $key => $bc) {
+            if ($bc instanceof block_contents) {
+                if ($bc->attributes['data-block'] == 'adminblock') {
+                    // Remove 'Add block'.
+                    unset($blockcontents[$key]);
+                    continue;
+                }
+                $zones[] = $bc->title;
+            }
         }
         $output = '';
 
@@ -501,7 +558,7 @@ trait core_renderer_toolbox {
             $USER->foundation_user_pref['block' . $bc->blockinstanceid . 'hidden'] = PARAM_INT;
         }
         $id = !empty($bc->attributes['id']) ? $bc->attributes['id'] : uniqid('block-');
-        $context = new \stdClass();
+        $context = new stdClass();
         $context->skipid = $bc->skipid;
         $context->blockinstanceid = $bc->blockinstanceid;
         $context->dockable = $bc->dockable;
@@ -588,7 +645,7 @@ trait core_renderer_toolbox {
                 $modname .= ' ' . get_string('hiddenwithbrackets');
             }
             // Module URL.
-            $linkurl = new \moodle_url($module->url, ['forceview' => 1]);
+            $linkurl = new url($module->url, ['forceview' => 1]);
             // Add module URL (as key) and name (as value) to the activity list array.
             $activitylist[$linkurl->out(false)] = $modname;
         }
@@ -656,8 +713,8 @@ trait core_renderer_toolbox {
      * @return boolean nodesskipped - True if nodes were skipped in building the menu
      */
     protected function build_action_menu_from_navigation(
-        \action_menu $menu,
-        \navigation_node $node,
+        action_menu $menu,
+        navigation_node $node,
         $indent = false,
         $onlytopleafnodes = false
     ) {
@@ -677,14 +734,14 @@ trait core_renderer_toolbox {
                             $link->icon = $menuitem->icon;
                         }
                     } else {
-                        $link = new \action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
+                        $link = new action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
                     }
                 } else {
                     if ($onlytopleafnodes) {
                         $skipped = true;
                         continue;
                     }
-                    $link = new \action_link(new \moodle_url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
+                    $link = new action_link(new url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
                 }
                 if ($indent) {
                     $link->add_class('pl-3'); // The changed line!
@@ -906,7 +963,7 @@ trait core_renderer_toolbox {
                 if (!empty($object->titleidentifier)) {
                     $titleidentifier = explode(',', $object->titleidentifier);
                     if ($titleidentifier[0] == 'logout') {
-                        $foundationlogout = new \moodle_url('/theme/foundation/logout.php', $object->url->params());
+                        $foundationlogout = new url('/theme/foundation/logout.php', $object->url->params());
                         $object->url = $foundationlogout;
                         break;
                     }
@@ -921,10 +978,10 @@ trait core_renderer_toolbox {
         );
 
         // Create a divider (well, a filler).
-        $divider = new \action_menu_filler();
+        $divider = new filler();
         $divider->primary = false;
 
-        $am = new \action_menu();
+        $am = new action_menu();
         $am->set_menu_trigger($returnstr, 'nav-link');
         $am->set_action_label(get_string('usermenu'));
         $am->set_menu_left();
@@ -947,7 +1004,7 @@ trait core_renderer_toolbox {
                         // Process this as a link item.
                         $pix = null;
                         if (isset($value->pix) && !empty($value->pix)) {
-                            $pix = new \pix_icon($value->pix, $value->title, null, ['class' => 'iconsmall']);
+                            $pix = new pix_icon($value->pix, $value->title, null, ['class' => 'iconsmall']);
                         } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
                             $value->title = html_writer::img(
                                 $value->imgsrc,
@@ -956,7 +1013,7 @@ trait core_renderer_toolbox {
                             ) . $value->title;
                         }
 
-                        $al = new \action_menu_link_secondary(
+                        $al = new link_secondary(
                             $value->url,
                             $pix,
                             $value->title,
@@ -1057,9 +1114,9 @@ trait core_renderer_toolbox {
         } else {
             $currentlang = $strlang;
         }
-        $this->language = $menu->add($currentlang, new \moodle_url('#'), $strlang, 10000);
+        $this->language = $menu->add($currentlang, new url('#'), $strlang, 10000);
         foreach ($langs as $langtype => $langname) {
-            $this->language->add($langname, new \moodle_url($this->page->url, ['lang' => $langtype]), $langname);
+            $this->language->add($langname, new url($this->page->url, ['lang' => $langtype]), $langname);
         }
 
         $content = '';
@@ -1095,7 +1152,7 @@ trait core_renderer_toolbox {
                     $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', ['icon'], [], '', $node->text);
                     break;
                 default:
-                    $subpix = new \pix_icon_fontawesome($node->icon);
+                    $subpix = new pix_icon_fontawesome($node->icon);
                     $icondata = $subpix->export_for_template($this);
                     if (!$subpix->is_mapped()) {
                         $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
@@ -1163,7 +1220,7 @@ trait core_renderer_toolbox {
                     $navbaritems = $replacementnavbaritems;
                 }
             }
-            $navbar = new \stdClass();
+            $navbar = new stdClass();
             $navbar->get_items = $navbaritems;
             $output .= $this->render_from_template('core/navbar', $navbar);
         }
@@ -1176,9 +1233,9 @@ trait core_renderer_toolbox {
      * @param navigation_node $item The navigation node to render.
      * @return string HTML fragment
      */
-    protected function render_navigation_node(\navigation_node $item) {
+    protected function render_navigation_node(navigation_node $item) {
         // Action link template uses the 'pix' mustache helper for the icon.
-        if ($item->action instanceof \action_link) {
+        if ($item->action instanceof action_link) {
             $item->hideicon = true;
         }
         return parent::render_navigation_node($item);

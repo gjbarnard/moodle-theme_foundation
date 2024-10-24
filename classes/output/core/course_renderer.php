@@ -31,8 +31,8 @@ defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->dirroot . '/course/renderer.php');
 
-use html_writer;
-use moodle_url;
+use core\output\html_writer;
+use core\url;
 
 /**
  * The course renderer.
@@ -65,7 +65,7 @@ class course_renderer extends \core_course_renderer {
         $toolbox = \theme_foundation\toolbox::get_instance();
         $coursename = $toolbox->getfontawesomemarkup('graduation-cap', ['mr-1']) . $chelper->get_course_formatted_name($course);
         $coursenamelink = html_writer::link(
-            new moodle_url('/course/view.php', ['id' => $course->id]),
+            new url('/course/view.php', ['id' => $course->id]),
             $coursename,
             ['class' => $course->visible ? 'aalink' : 'aalink dimmed']
         );
@@ -77,7 +77,7 @@ class course_renderer extends \core_course_renderer {
                 $course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()
                 || $course->has_custom_fields()
             ) {
-                $url = new moodle_url('/course/info.php', ['id' => $course->id]);
+                $url = new url('/course/info.php', ['id' => $course->id]);
                 $image = $this->output->pix_icon('i/info', $this->strings->summary);
                 $content .= html_writer::link($url, $image, ['title' => $this->strings->summary]);
                 // Make sure JS file to expand course content is included.

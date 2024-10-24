@@ -31,12 +31,16 @@ namespace theme_foundation;
  * Set properties class.
  */
 class admin_setting_putprops extends \admin_setting_configtextarea {
-    /** @var string Name of the theme. */
-    private $themename;
+    /** @var string Name of the plugin. */
+    private $pluginname;
+    /** @var string Frankenstyle of the plugin. */
+    private $pluginfrankenstyle;
     /** @var string Name of the 'callable' function to call with the name of the theme and the properties as an array. */
     private $callme;
     /** @var string Report back from the parsing 'callable' to inform the user in the text area. */
     private $report = '';
+    /** @var string File report to use if any. */
+    private $filereport = '';
 
     /**
      * Not a setting, just putting properties.
@@ -45,13 +49,16 @@ class admin_setting_putprops extends \admin_setting_configtextarea {
      * config_plugins.
      * @param string $visiblename localised
      * @param string $description long localised info
-     * @param string $themename Name of the theme.
+     * @param string $pluginname Name of the plugin.
+     * @param string $pluginfrankenstyle Frankenstyle of the plugin.
      * @param string $callme Name of the 'callable' function to call with the name of the theme and the properties as an array.
      */
-    public function __construct($name, $visiblename, $description, $themename, $callme) {
-        $this->themename = $themename;
+    public function __construct($name, $visiblename, $description, $pluginname, $pluginfrankenstyle, $callme) {
+        $this->pluginname = $pluginname;
+        $this->pluginfrankenstyle = $pluginfrankenstyle;
         $this->callme = $callme;
-        parent::__construct($name, $visiblename, $description, ''); // Last parameter is default.
+        // Not a 'nosave' as saves the current report.
+        parent::__construct($name, $visiblename, $description, '', PARAM_RAW, '60', '24'); // Cols and rows.
     }
 
     /**
@@ -60,6 +67,14 @@ class admin_setting_putprops extends \admin_setting_configtextarea {
      */
     public function get_defaultsetting() {
         return '';
+    }
+
+    /**
+     * Set file report.
+     * @param string $filereport File report.
+     */
+    public function set_filereport($filereport) {
+        $this->filereport = $filereport;
     }
 
     /**
@@ -92,6 +107,7 @@ class admin_setting_putprops extends \admin_setting_configtextarea {
             if (!empty($data)) {
                 // Only attempt decode if we have the start of a JSON string, otherwise will certainly be the saved report.
                 if ($data[0] == '{') {
+                    // Setting has JSON.
                     $props = json_decode($data, true);
                     if ($props === null) {
                         if (function_exists('json_last_error_msg')) {
@@ -101,12 +117,21 @@ class admin_setting_putprops extends \admin_setting_configtextarea {
                             $validated = json_last_error();
                         }
                     } else {
-                        $this->report = call_user_func($this->callme, $this->themename, $props);
+                        $this->report = call_user_func($this->callme, $this->pluginname, $this->pluginfrankenstyle, $props);
                     }
                 } else {
-                    // Keep what we have.
-                    $this->report = $data;
+                    // Keep what we have unless we're replacing with a file report.
+                    if (!empty($this->filereport)) {
+                        $this->report = $this->filereport;
+                        $this->filereport = null;
+                    } else {
+                        $this->report = $data;
+                    }
                 }
+            } else if (!empty($this->filereport)) {
+                // Replace empty setting with file report.
+                $this->report = $this->filereport;
+                $this->filereport = null;
             }
         }
 

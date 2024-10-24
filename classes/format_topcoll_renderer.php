@@ -25,8 +25,6 @@
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
-// phpcs:disable Generic.Classes.DuplicateClassName.Found
-
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -64,24 +62,12 @@ trait theme_foundation_format_topcoll_renderer_trait {
 global $CFG;
 if (file_exists("$CFG->dirroot/course/format/topcoll/classes/output/renderer.php")) {
     /**
-     * The theme's Collapsed Topics renderer, new location.
+     * The theme's Collapsed Topics renderer.
      *
      * @copyright  &copy; 2021-onwards G J Barnard.
      * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
      */
     class theme_foundation_format_topcoll_renderer extends \format_topcoll\output\renderer {
-        use theme_foundation_format_topcoll_renderer_trait;
-    }
-} else if (file_exists("$CFG->dirroot/course/format/topcoll/renderer.php")) {
-    include_once($CFG->dirroot . "/course/format/topcoll/renderer.php");
-
-    /**
-     * The theme's Collapsed Topics renderer.
-     *
-     * @copyright  &copy; 2018-onwards G J Barnard.
-     * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
-     */
-    class theme_foundation_format_topcoll_renderer extends format_topcoll_renderer {
         use theme_foundation_format_topcoll_renderer_trait;
     }
 }

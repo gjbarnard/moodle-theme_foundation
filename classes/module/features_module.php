@@ -236,7 +236,13 @@ class features_module extends \theme_foundation\module_basement implements \temp
         $name = 'theme_foundation/loginbackground';
         $title = get_string('loginbackground', 'theme_foundation');
         $description = get_string('loginbackgrounddesc', 'theme_foundation');
-        $setting = new \admin_setting_configstoredfile($name, $title, $description, 'loginbackground');
+        $setting = new \theme_foundation\admin_setting_configstoredfiles(
+            $name,
+            $title,
+            $description,
+            'loginbackground',
+            ['accepted_types' => '*.jpg,*.jpeg,*.png', 'maxfiles' => 1]
+        );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['features'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
 

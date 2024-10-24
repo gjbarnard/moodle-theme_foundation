@@ -48,6 +48,7 @@ final class privacy_provider_test extends \core_privacy\tests\provider_testcase 
 
     /**
      * Ensure that get_metadata exports valid content.
+     * @covers \provider::get_metadata
      */
     public function test_get_metadata(): void {
         $items = new collection('theme_foundation');
@@ -58,6 +59,7 @@ final class privacy_provider_test extends \core_privacy\tests\provider_testcase 
 
     /**
      * Ensure that export_user_preferences returns no data if the user has not set a block to be hidden or not.
+     * @covers \provider::export_user_preferences
      */
     public function test_export_user_preferences_no_pref(): void {
         $user = \core_user::get_user_by_username('admin');
@@ -70,6 +72,7 @@ final class privacy_provider_test extends \core_privacy\tests\provider_testcase 
 
     /**
      * Ensure that export_user_preferences returns request data.
+     * @covers \provider::export_user_preferences
      */
     public function test_export_user_preferences(): void {
         $this->set_up();

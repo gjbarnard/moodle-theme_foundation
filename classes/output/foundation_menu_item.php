@@ -27,21 +27,27 @@
 
 namespace theme_foundation\output;
 
+use context_system;
+use core\output\custom_menu_item;
+use core\output\renderer_base;
+use core\url;
+use stdClass;
+
 /**
  * The menu item for the theme.
  */
-class foundation_menu_item extends \custom_menu_item {
+class foundation_menu_item extends custom_menu_item {
     /**
      * Adds a menu item as a child of this node given its properties.
      *
      * @param string $text
-     * @param moodle_url $url
+     * @param url $url
      * @param string $title
      * @param int $sort
      * @param array $attributes Array of other HTML attributes for the custom menu item.
      * @return foundation_menu_item
      */
-    public function add($text, \moodle_url $url = null, $title = null, $sort = null, $attributes = []) {
+    public function add($text, ?url $url = null, $title = null, $sort = null, $attributes = []) {
         $key = count($this->children);
         if (empty($sort)) {
             $sort = $this->lastsort + 1;
@@ -57,14 +63,14 @@ class foundation_menu_item extends \custom_menu_item {
      * @param renderer_base $output Used to do a final render of any components that need to be rendered for export.
      * @return array
      */
-    public function export_for_template(\renderer_base $output) {
+    public function export_for_template(renderer_base $output) {
         global $CFG;
 
         require_once($CFG->libdir . '/externallib.php');
 
-        $syscontext = \context_system::instance();
+        $syscontext = context_system::instance();
 
-        $context = new \stdClass();
+        $context = new stdClass();
         $context->text = $this->text;
         $context->url = $this->url ? $this->url->out() : null;
         $context->title = external_format_string($this->title, $syscontext->id);

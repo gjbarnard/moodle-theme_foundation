@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gjb2048/moodle-theme_foundation.git"
+    "url": "https://github.com/gjbarnard/moodle-theme_foundation.git"
   },
   "bugs": {
-    "url": "https://github.com/gjb2048/moodle-theme_foundation/issues"
+    "url": "https://github.com/gjbarnard/moodle-theme_foundation/issues"
   },
   "devDependencies": {
     "grunt": "^1.6.1",

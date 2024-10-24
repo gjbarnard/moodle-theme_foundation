@@ -27,6 +27,8 @@
 
 namespace theme_foundation\module;
 
+use stdClass;
+
 /**
  * Frontpage carousel module.
  *
@@ -111,7 +113,13 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                 $name = 'theme_foundation/frontpageslideimage' . $slidenum;
                 $title = get_string('frontpageslideimage', 'theme_foundation', ['number' => $slidenum]);
                 $description = get_string('frontpageslideimagedesc', 'theme_foundation', ['number' => $slidenum]);
-                $setting = new \admin_setting_configstoredfile($name, $title, $description, 'frontpageslideimage' . $slidenum);
+                $setting = new \theme_foundation\admin_setting_configstoredfiles(
+                    $name,
+                    $title,
+                    $description,
+                    'frontpageslideimage' . $slidenum,
+                    ['accepted_types' => '*.jpg,*.jpeg,*.png', 'maxfiles' => 1]
+                );
                 $settingspages['frontpagecarousel'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
             }
         }
@@ -158,13 +166,13 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                 }
 
                 if (!empty($slidesenabled)) {
-                    $data = new \stdClass();
+                    $data = new stdClass();
                     $data->carouselid = 'frontpagecarousel';
                     $data->carouselindicators = [];
                     $indicator = 0;
                     $data->carouselslides = [];
                     foreach ($slidesenabled as $slidenum) {
-                        $theslide = new \stdClass();
+                        $theslide = new stdClass();
                         $theslide->slidetitle = $toolbox->get_setting('frontpageslidetitle' . $slidenum, 'foundation');
                         $theslide->slidecaption = $toolbox->get_setting('frontpageslidecaption' . $slidenum, 'foundation');
                         if (!empty($toolbox->get_setting('frontpageslideimage' . $slidenum))) {
@@ -175,7 +183,7 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                         }
                         $theslide->slideimagetext = 'TODO';
 
-                        $theindicator = new \stdClass();
+                        $theindicator = new stdClass();
                         $theindicator->indicatoractive = ($indicator == 0) ? 1 : 0;
                         $theindicator->indicatornumber = $indicator++;
                         $data->carouselindicators[] = $theindicator;

@@ -1,6 +1,17 @@
 Version Information
 ===================
 
+Version 405.0.1 - 24/10/2024
+----------------------------
+1. Release candidate version for Moodle 4.5.
+2. Add file settings to import / export of settings.
+3. Better file upload icon and for when FA4 shims disabled.
+4. Update theme version of FontAwesome free to 6.6.0 from 6.5.2.
+5. Impact of MDL-81920 and MDL-81960.
+6. Remove duplicate 'Add block' in 'side-pre'.
+7. Tidy 'Add block to region' button.
+8. Fix block drag and drop time icon.
+
 Version 404.1.0 - 24/07/24
 --------------------------
 1. Swap over user name and icon in navbar.  In line with a design style of other online applications.

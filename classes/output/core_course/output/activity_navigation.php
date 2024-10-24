@@ -27,7 +27,9 @@
 
 namespace theme_foundation\output\core_course\output;
 
-use url_select;
+use core\output\action_link;
+use core\output\url_select;
+use core\url;
 
 /**
  * The class activity navigation renderable.
@@ -50,7 +52,7 @@ class activity_navigation extends \core_course\output\activity_navigation {
 
         // Check if there is a previous module to display.
         if ($prevmod) {
-            $linkurl = new \moodle_url($prevmod->url, ['forceview' => 1]);
+            $linkurl = new url($prevmod->url, ['forceview' => 1]);
 
             if ($activitynavigationmodulenames) {
                 $linkname = $prevmod->get_formatted_name();
@@ -65,12 +67,12 @@ class activity_navigation extends \core_course\output\activity_navigation {
                 'class' => 'btn btn-link',
                 'id' => 'prev-activity-link',
             ];
-            $this->prevlink = new \action_link($linkurl, $OUTPUT->larrow() . ' ' . $linkname, null, $attributes);
+            $this->prevlink = new action_link($linkurl, $OUTPUT->larrow() . ' ' . $linkname, null, $attributes);
         }
 
         // Check if there is a next module to display.
         if ($nextmod) {
-            $linkurl = new \moodle_url($nextmod->url, ['forceview' => 1]);
+            $linkurl = new url($nextmod->url, ['forceview' => 1]);
             if ($activitynavigationmodulenames) {
                 $linkname = $nextmod->get_formatted_name();
             } else {
@@ -84,7 +86,7 @@ class activity_navigation extends \core_course\output\activity_navigation {
                 'class' => 'btn btn-link',
                 'id' => 'next-activity-link',
             ];
-            $this->nextlink = new \action_link($linkurl, $linkname . ' ' . $OUTPUT->rarrow(), null, $attributes);
+            $this->nextlink = new action_link($linkurl, $linkname . ' ' . $OUTPUT->rarrow(), null, $attributes);
         }
 
         // Render the activity list dropdown menu if available.

@@ -56,7 +56,7 @@ class admin_setting_configcolourpicker extends \admin_setting_configcolourpicker
         $defaultsetting,
         $defaultcolour,
         $classname = null,
-        array $previewconfig = null,
+        ?array $previewconfig = null,
         $usedefaultwhenempty = true
     ) {
         $this->previewconfig = $previewconfig;

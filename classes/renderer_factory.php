@@ -27,10 +27,12 @@
 
 namespace theme_foundation;
 
+use core\output\renderer_factory\theme_overridden_renderer_factory;
+
 /**
  * The renderer factory.
  */
-class renderer_factory extends \theme_overridden_renderer_factory {
+class renderer_factory extends theme_overridden_renderer_factory {
     /**
      * @var object The theme's core renderer.
      */

@@ -27,12 +27,18 @@
 
 namespace theme_foundation;
 
+use context_system;
+use context_user;
+use html_table;
+use html_writer;
+use moodle_url;
+
 /**
  * Get properties class.
  */
 class admin_setting_getprops extends \admin_setting {
-    /** @var string Store properties. */
-    private $props;
+    /** @var string Plugin frankenstyle. */
+    private $pluginfrankenstyle;
 
     /** @var string Return button name. */
     private $returnbuttonname;
@@ -40,11 +46,14 @@ class admin_setting_getprops extends \admin_setting {
     /** @var string Section name. */
     private $settingsectionname;
 
-    /** @var string Save properties. */
-    private $saveprops;
-
     /** @var string Save properties button name. */
     private $savepropsbuttonname;
+
+    /** @var string Save properties with files as a string button name. */
+    private $savepropsfilestoobuttonname;
+
+    /** @var string Save properties with files as a file button name. */
+    private $savepropsfilestoofilebuttonname;
 
     /**
      * Not a setting, just properties.
@@ -52,28 +61,32 @@ class admin_setting_getprops extends \admin_setting {
      * or 'myplugin/mysetting' for ones in config_plugins.
      * @param string $heading Heading.
      * @param string $information Text in box.
-     * @param string $props Properties
-     * @param string $settingsectionname Setting section name
-     * @param string $returnbuttonname Return button name
-     * @param string $savepropsbuttonname Save properties button name
-     * @param string $saveprops Save properties
+     * @param string $pluginfrankenstyle Plugin frankenstyle.
+     * @param string $props Properties.
+     * @param string $settingsectionname Setting section name.
+     * @param string $returnbuttonname Return button name.
+     * @param string $savepropsbuttonname Save properties button name.
+     * @param string $savepropsfilestoobuttonname Save properties with files as a string button name.
+     * @param string $savepropsfilestoofilebuttonname Save properties with files as a file button name.
      */
     public function __construct(
         $name,
         $heading,
         $information,
-        $props,
+        $pluginfrankenstyle,
         $settingsectionname,
         $returnbuttonname,
         $savepropsbuttonname,
-        $saveprops
+        $savepropsfilestoobuttonname,
+        $savepropsfilestoofilebuttonname
     ) {
         $this->nosave = true;
-        $this->props = $props;
+        $this->pluginfrankenstyle = $pluginfrankenstyle;
         $this->returnbuttonname = $returnbuttonname;
         $this->settingsectionname = $settingsectionname;
         $this->savepropsbuttonname = $savepropsbuttonname;
-        $this->saveprops = $saveprops;
+        $this->savepropsfilestoobuttonname = $savepropsfilestoobuttonname;
+        $this->savepropsfilestoofilebuttonname = $savepropsfilestoofilebuttonname;
         parent::__construct($name, $heading, $information, ''); // Last parameter is default.
     }
 
@@ -115,34 +128,142 @@ class admin_setting_getprops extends \admin_setting {
     public function output_html($data, $query = '') {
         $return = '';
 
-        if ($this->saveprops) {
-            $returnurl = new \moodle_url('/admin/settings.php', ['section' => $this->settingsectionname]);
+        $saveprops = optional_param($this->pluginfrankenstyle.'_getprops_saveprops', 0, PARAM_INT);
+        $savepropsfilestoo = optional_param($this->pluginfrankenstyle.'_getprops_saveprops_filestoo', 0, PARAM_INT);
+        $savepropsfilestoofile = optional_param($this->pluginfrankenstyle.'_getprops_saveprops_filestoofile', 0, PARAM_INT);
+        if ($saveprops) {
+            $props = \theme_foundation\toolbox::get_properties($this->pluginfrankenstyle);
+
+            $returnurl = new moodle_url('/admin/settings.php', ['section' => $this->settingsectionname]);
             $returnbutton = '<div class="singlebutton"><a class="btn btn-secondary" href="' . $returnurl->out(true) . '">' .
                 $this->returnbuttonname . '</a></div>';
             $return .= $returnbutton;
-            $return .= '<div class="well" style="word-break: break-all;">';
-            $return .= json_encode($this->props, JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS);
+            $return .= '<hr>';
+            $return .= '<div class="alert alert-success word-break-all" role="alert">';
+            $return .= json_encode($props[\theme_foundation\toolbox::PROPS],
+                JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS);
             $return .= '</div>';
             $return .= $returnbutton;
-        } else {
-            $propsexporturl = new \moodle_url('/admin/settings.php', ['section' => $this->settingsectionname,
-                $this->name . '_saveprops' => 1, ]);
+            $return .= '<hr>';
+        } else if (($savepropsfilestoo) || ($savepropsfilestoofile)) {
+            $props = \theme_foundation\toolbox::get_properties($this->pluginfrankenstyle, true);
 
+            $jsonprops = json_encode($props[\theme_foundation\toolbox::PROPS],
+                JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS);
+
+            $alertstate = 'success';
+            if ($savepropsfilestoofile) {
+                $fs = get_file_storage();
+                $syscontext = context_system::instance();
+                $files = $fs->get_area_files(
+                    $syscontext->id, $this->pluginfrankenstyle, 'propertyfiles', 0, 'filepath,filename', false);
+                if (count($files) < 8) {
+                    global $USER;
+                    $time = time();
+                    $datetime = new \DateTime("now", \core_date::get_user_timezone_object());
+                    // Appended seconds.
+                    $userdate = userdate($datetime->getTimestamp(), get_string('backupnameformat', 'core_langconfig').'%S');
+                    $filename = "Foundation_".get_string('settings')."_".$userdate.".json";
+
+                    $filerecord = [
+                        'contextid' => context_user::instance($USER->id)->id,
+                        'component' => 'user',
+                        'filearea' => 'draft',
+                        'itemid' => file_get_unused_draft_itemid(),
+                        'filepath' => '/',
+                        'filename' => $filename,
+                        // Don't use userid as could be different!
+                        'author' => fullname($USER, true),
+                        'license' => '',
+                        'timecreated' => $time,
+                        'timemodified' => $time,
+                        'mimetype' => 'application/json',
+                    ];
+                    $draftjson = $fs->create_file_from_string($filerecord, $jsonprops); // Draft.
+
+                    // Able to make file....
+                    $filerecord = [
+                        'contextid' => $syscontext->id,
+                        'component' => $this->pluginfrankenstyle,
+                        'filearea' => 'propertyfiles',
+                        'itemid' => '0',
+                        'filepath' => $draftjson->get_filepath(),
+                        'filename' => $draftjson->get_filename(),
+                        'author' => $draftjson->get_author(),
+                        'license' => $draftjson->get_license(),
+                        'timecreated' => $draftjson->get_timecreated(),
+                        'timemodified' => $draftjson->get_timemodified(),
+                        'mimetype' => $draftjson->get_mimetype(),
+                    ];
+                    $settingfile = $fs->create_file_from_storedfile($filerecord, $draftjson); // Replacement.
+
+                    $draftjson->delete(); // Finished with draft.
+
+                    $savepropsfilestoofileresult = get_string('propertiesexportfilestoofilesuccess', $this->pluginfrankenstyle, $settingfile->get_filename());
+                } else {
+                    $savepropsfilestoofileresult = get_string('propertiesexportfilestoofilefail', $this->pluginfrankenstyle);
+                    $alertstate = 'warning';
+                }
+            }
+
+            $returnurl = new moodle_url('/admin/settings.php', ['section' => $this->settingsectionname]);
+            $returnbutton = '<div class="singlebutton"><a class="btn btn-secondary" href="' . $returnurl->out(true) . '">' .
+                $this->returnbuttonname . '</a></div>';
+            $return .= $returnbutton;
+            $return .= '<hr>';
+            $return .= '<div class="alert alert-'.$alertstate.' word-break-all" role="alert">';
+            if ($savepropsfilestoofile) {
+                $return .= $savepropsfilestoofileresult;
+            } else {
+                $return .= $jsonprops;
+            }
+            $return .= '</div>';
+            $return .= $returnbutton;
+            $return .= '<hr>';
+
+        } else {
+            $props = \theme_foundation\toolbox::get_properties($this->pluginfrankenstyle);
+
+            $propsexporturl = new moodle_url('/admin/settings.php', ['section' => $this->settingsectionname,
+                $this->pluginfrankenstyle . '_getprops_saveprops' => 1, ]);
             $propsexportbutton = '<div class="singlebutton"><div><a class="btn btn-secondary" href="' .
-                $propsexporturl->out(true) . '">' . $this->savepropsbuttonname . '</a></div></div>';
-            $table = new \html_table();
+                $propsexporturl->out(true) . '" data-toggle="tooltip" data-placement="bottom" title="'.
+                get_string('propertiesexporthelp', $this->pluginfrankenstyle) . '">' .
+                $this->savepropsbuttonname . '</a></div></div>';
+
+            $propsexportfilestoourl = new moodle_url('/admin/settings.php', ['section' => $this->settingsectionname,
+                $this->pluginfrankenstyle . '_getprops_saveprops_filestoo' => 1, ]);
+            $propsexportfilestoobutton = '<div class="singlebutton"><div><a class="btn btn-secondary" href="' .
+                $propsexportfilestoourl->out(true) . '" data-toggle="tooltip" data-placement="bottom" title="'.
+                get_string('propertiesexportfilestoohelp', $this->pluginfrankenstyle) . '">' .
+                $this->savepropsfilestoobuttonname . '</a></div></div>';
+
+            $propsexportfilestoofilesurl = new moodle_url('/admin/settings.php', ['section' => $this->settingsectionname,
+                $this->pluginfrankenstyle . '_getprops_saveprops_filestoofile' => 1, ]);
+            $propsexportfilestoofilebutton = '<div class="singlebutton"><div><a class="btn btn-secondary" href="' .
+                $propsexportfilestoofilesurl->out(true) . '" data-toggle="tooltip" data-placement="bottom" title="'.
+                get_string('propertiesexportfilestoofilehelp', $this->pluginfrankenstyle) . '">' .
+                $this->savepropsfilestoofilebuttonname . '</a></div></div>';
+
+                $table = new html_table();
             $table->head = [$this->visiblename, markdown_to_html($this->description)];
             $table->colclasses = ['leftalign', 'leftalign'];
             $table->id = 'adminprops_' . $this->name;
             $table->attributes['class'] = 'admintable generaltable';
             $table->data = [];
 
-            foreach ($this->props as $propname => $propvalue) {
+            foreach ($props[\theme_foundation\toolbox::PROPS] as $propname => $propvalue) {
                 $table->data[] = [$propname, '<pre>' . htmlentities($propvalue, ENT_COMPAT) . '</pre>'];
             }
             $return .= $propsexportbutton;
-            $return .= \html_writer::table($table);
+            $return .= $propsexportfilestoobutton;
+            $return .= $propsexportfilestoofilebutton;
+            $return .= '<hr>';
+            $return .= html_writer::table($table);
             $return .= $propsexportbutton;
+            $return .= $propsexportfilestoobutton;
+            $return .= $propsexportfilestoofilebutton;
+            $return .= '<hr>';
         }
 
         return $return;

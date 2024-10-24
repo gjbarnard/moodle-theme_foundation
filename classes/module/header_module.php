@@ -64,13 +64,12 @@ class header_module extends \theme_foundation\module_basement {
         $name = 'theme_foundation/headerbackground';
         $title = get_string('headerbackground', 'theme_foundation');
         $description = get_string('headerbackgrounddesc', 'theme_foundation');
-        $setting = new \admin_setting_configstoredfile(
+        $setting = new \theme_foundation\admin_setting_configstoredfiles(
             $name,
             $title,
             $description,
             'headerbackground',
-            0,
-            ['accepted_types' => ['jpg', 'png']]
+            ['accepted_types' => '*.jpg,*.jpeg,*.png', 'maxfiles' => 1]
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingspages['header'][\theme_foundation\toolbox::SETTINGPAGE]->add($setting);
