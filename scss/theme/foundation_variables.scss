@@ -7,3 +7,28 @@ $breadcrumb-margin-bottom:          0 !default;
 // Foundation
 $footer-antigravity-horizontal-offset:  0 !default; // stylelint-disable-line length-zero-no-unit
 $footer-antigravity-vertical-offset:    0 !default; // stylelint-disable-line length-zero-no-unit
+
+// Foreground colours.
+$fg-primary:       $gray-800 !default;
+$fg-secondary:     $gray-100 !default;
+$fg-success:       $gray-800 !default;
+$fg-info:          $gray-100 !default;
+$fg-warning:       $gray-800 !default;
+$fg-danger:        $gray-100 !default;
+$fg-light:         $gray-900 !default;
+$fg-dark:          $white !default;
+
+$fg-theme-colors: () !default;
+$fg-theme-colors: map-merge(
+  (
+    "primary":    $fg-primary,
+    "secondary":  $fg-secondary,
+    "success":    $fg-success,
+    "info":       $fg-info,
+    "warning":    $fg-warning,
+    "danger":     $fg-danger,
+    "light":      $fg-light,
+    "dark":       $fg-dark
+  ),
+  $fg-theme-colors
+);

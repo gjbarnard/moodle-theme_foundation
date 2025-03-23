@@ -35,8 +35,8 @@ use core\output\action_menu\link_secondary;
 use core\output\html_writer;
 use core\output\pix_icon;
 use core\output\pix_icon_fontawesome;
-use navigation_node;
 use core\url;
+use navigation_node;
 use stdClass;
 
 /**
@@ -106,7 +106,7 @@ trait core_renderer_toolbox {
             }
 
             if (in_array('side-pre', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-                if ($this->page->pagelayout == 'report') {
+                if (($this->page->pagelayout == 'report') || ($this->page->pagetype == 'mod-assign-grading')) {
                     $preblockshtml = $this->hblocks('side-pre');
                 } else {
                     $preblockshtml = $this->blocks('side-pre');
@@ -118,7 +118,7 @@ trait core_renderer_toolbox {
             }
 
             if (in_array('side-post', $this->page->theme->layouts[$this->page->pagelayout]['regions'])) {
-                if ($this->page->pagelayout == 'report') {
+                if (($this->page->pagelayout == 'report') || ($this->page->pagetype == 'mod-assign-grading')) {
                     $postblockshtml = $this->hblocks('side-post');
                 } else {
                     $postblockshtml = $this->blocks('side-post');
@@ -861,7 +861,7 @@ trait core_renderer_toolbox {
             $usermenuclasses .= ' withoutlinks';
         }
 
-        $returnstr = "";
+        $returnstr = '';
 
         // If during initial install, return the empty return string.
         if (during_initial_install()) {
@@ -904,59 +904,73 @@ trait core_renderer_toolbox {
         // Get some navigation opts.
         $opts = \user_get_user_navigation_info($user, $this->page, ['avatarsize' => 30]);
 
-        $avatarclasses = "avatars";
-        $avatarcontents = html_writer::span($opts->metadata['useravatar'], 'avatar current');
-        $usertextcontents = $opts->metadata['userfullname'];
+        $toolbox = \theme_foundation\toolbox::get_instance();
+        $navbardisplay = $toolbox->navbardisplaysettings();
+
+        $avatarcontents = '';
+        $usertextcontents = '';
+        if ($navbardisplay['navbardisplayicons']) {
+            $avatarcontents .= html_writer::span($opts->metadata['useravatar'], 'avatar current');
+        }
+        if ($navbardisplay['navbardisplaytitles']) {
+            $usertextcontents = $opts->metadata['userfullname'];
+        }
 
         // Other user.
         if (!empty($opts->metadata['asotheruser'])) {
-            $avatarcontents .= html_writer::span(
-                $opts->metadata['realuseravatar'],
-                'avatar realuser'
-            );
-            $usertextcontents = $opts->metadata['realuserfullname'];
-            $usertextcontents .= html_writer::tag(
-                'span',
-                get_string(
-                    'loggedinas',
-                    'moodle',
-                    html_writer::span(
-                        $opts->metadata['userfullname'],
-                        'value'
-                    )
-                ),
-                ['class' => 'meta viewingas']
-            );
+            if ($navbardisplay['navbardisplayicons']) {
+                $avatarcontents .= html_writer::span(
+                    $opts->metadata['realuseravatar'],
+                    'avatar realuser'
+                );
+            }
+
+            if ($navbardisplay['navbardisplaytitles']) {
+                $usertextcontents = $opts->metadata['realuserfullname'];
+                $usertextcontents .= html_writer::tag(
+                    'span',
+                    get_string(
+                        'loggedinas',
+                        'moodle',
+                        html_writer::span(
+                            $opts->metadata['userfullname'],
+                            'value'
+                        )
+                    ),
+                    ['class' => 'meta viewingas']
+                );
+            }
         }
 
-        // Role.
-        if (!empty($opts->metadata['asotherrole'])) {
-            $role = \core_text::strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['rolename'])));
-            $usertextcontents .= html_writer::span(
-                $opts->metadata['rolename'],
-                'meta role role-' . $role
-            );
-        }
+        if ($navbardisplay['navbardisplaytitles']) {
+            // Role.
+            if (!empty($opts->metadata['asotherrole'])) {
+                $role = \core_text::strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['rolename'])));
+                $usertextcontents .= html_writer::span(
+                    $opts->metadata['rolename'],
+                    'meta role role-' . $role
+                );
+            }
 
-        // User login failures.
-        if (!empty($opts->metadata['userloginfail'])) {
-            $usertextcontents .= html_writer::span(
-                $opts->metadata['userloginfail'],
-                'meta loginfailures'
-            );
-        }
+            // User login failures.
+            if (!empty($opts->metadata['userloginfail'])) {
+                $usertextcontents .= html_writer::span(
+                    $opts->metadata['userloginfail'],
+                    'meta loginfailures'
+                );
+            }
 
-        // MNet.
-        if (!empty($opts->metadata['asmnetuser'])) {
-            $mnet = strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['mnetidprovidername'])));
-            $usertextcontents .= html_writer::span(
-                $opts->metadata['mnetidprovidername'],
-                'meta mnet mnet-' . $mnet
-            );
+            // MNet.
+            if (!empty($opts->metadata['asmnetuser'])) {
+                $mnet = strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['mnetidprovidername'])));
+                $usertextcontents .= html_writer::span(
+                    $opts->metadata['mnetidprovidername'],
+                    'meta mnet mnet-' . $mnet
+                );
+            }
         }
 
         // Logout URL.  Only works when Foundation not in $CFG->themedir.
-        $toolbox = \theme_foundation\toolbox::get_instance();
         $customlogouturl = $toolbox->get_setting('customlogouturl');
         if (!empty($customlogouturl)) {
             foreach ($opts->navitems as $object) {
@@ -971,11 +985,17 @@ trait core_renderer_toolbox {
             }
         }
 
-        $returnstr .= html_writer::span(
-            html_writer::span($avatarcontents, $avatarclasses) .
-            html_writer::span($usertextcontents, 'usertext mr-1'),
-            'userbutton'
-        );
+        $returntxt = '';
+        if ($navbardisplay['navbardisplayicons']) {
+            $avatarclasses = "avatars";
+            $returntxt .= html_writer::span($avatarcontents, $avatarclasses);
+        }
+
+        if ($navbardisplay['navbardisplaytitles']) {
+            $returntxt .= html_writer::span($usertextcontents, 'usertext mr-1');
+        }
+
+        $returnstr .= html_writer::span($returntxt, 'userbutton');
 
         // Create a divider (well, a filler).
         $divider = new filler();
@@ -1042,6 +1062,36 @@ trait core_renderer_toolbox {
     }
 
     /**
+     * Returns the custom menu if one has been set
+     *
+     * A custom menu can be configured by browsing to a theme's settings page
+     * and then configuring the custommenu config setting as described.
+     *
+     * Theme developers: DO NOT OVERRIDE! Please override function
+     * {@see core_renderer::render_custom_menu()} instead.  Nah!
+     *
+     * @param string $custommenuitems - custom menuitems set by theme instead of global theme settings.
+     * @return string Markup.
+     */
+    public function custom_menu($custommenuitems = '') {
+        global $CFG;
+
+        if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
+            $custommenuitems = $CFG->custommenuitems;
+        }
+
+        if (!empty($custommenuitems)) {
+            $menu = new custom_menu();
+
+            $menu->add_custom_menu_items($custommenuitems, current_language());
+
+            return $this->render_our_custom_menu($menu);
+        }
+
+        return '';
+    }
+
+    /**
      * Renders the a menu.
      *
      * @param object $menu Menu branch.
@@ -1071,7 +1121,7 @@ trait core_renderer_toolbox {
      *
      * @return string
      */
-    protected function render_custom_menu(\custom_menu $menu) {
+    protected function render_our_custom_menu(custom_menu $menu) {
         return $this->render_the_menu($menu);
     }
 
@@ -1105,7 +1155,7 @@ trait core_renderer_toolbox {
             return '';
         }
 
-        $menu = new foundation_menu_item('');
+        $menu = new custom_menu_item('');
         $strlang = get_string('language');
         $currentlangcode = current_language();
         if (isset($langs[$currentlangcode])) {
@@ -1135,45 +1185,54 @@ trait core_renderer_toolbox {
      */
     public function primary_menu() {
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $fav = $toolbox->get_setting('fav');
         $nodisplaymycourses = ($toolbox->get_setting('displaymycourses') < 2);
+        $navbardisplay = $toolbox->navbardisplaysettings();
 
         // See lib/classes/navigation/output/primary.php.
         $menudata = [];
         foreach ($this->page->primarynav->children as $node) {
-            switch ($node->key) {
-                case 'siteadminnode':
-                    $iconmarkup = $toolbox->getfontawesomemarkup('wrench', ['icon'], [], '', $node->text);
-                    break;
-                case 'courses':
-                    if ($nodisplaymycourses) {
-                        continue 2;
-                    }
-                    $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', ['icon'], [], '', $node->text);
-                    break;
-                default:
-                    $subpix = new pix_icon_fontawesome($node->icon);
-                    $icondata = $subpix->export_for_template($this);
-                    if (!$subpix->is_mapped()) {
-                        $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
-                        $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
-                    } else {
-                        $classes = ['icon', $icondata['key']];
-                        if (empty($fav)) {
-                            $classes[] = 'fa';
+            if ($navbardisplay['navbardisplayicons']) {
+                switch ($node->key) {
+                    case 'siteadminnode':
+                        $iconmarkup = $toolbox->getfontawesomemarkup('wrench', ['icon'], [], '', $node->text);
+                        break;
+                    case 'myhome':
+                        $iconmarkup = $toolbox->getfontawesomemarkup('dashboard', ['icon'], [], '', $node->text);
+                        break;
+                    case 'courses':
+                        if ($nodisplaymycourses) {
+                            continue 2;
                         }
-                        $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, [], '', $node->text);
-                    }
+                        $iconmarkup = $toolbox->getfontawesomemarkup('briefcase', ['icon'], [], '', $node->text);
+                        break;
+                    default:
+                        $subpix = new pix_icon_fontawesome($node->icon);
+                        $icondata = $subpix->export_for_template($this);
+                        if (!$subpix->is_mapped()) {
+                            $icondata['unmappedIcon'] = $node->icon->export_for_template($this);
+                            $iconmarkup = $this->render_from_template('theme_foundation/pix_icon_fontawesome', $icondata);
+                        } else {
+                            $classes = ['icon', $icondata['key']];
+                            $iconmarkup = $toolbox->getfontawesomemarkup('', $classes, [], '', $node->text);
+                        }
+                }
             }
 
-            $menudata[] = [
-                'title' => $node->get_title(),
+            $menuitem = [
                 'url' => $node->action(),
-                'text' => $node->text,
-                'icon' => $iconmarkup,
+                'title' => $node->text,
                 'isactive' => $node->isactive,
                 'key' => $node->key,
             ];
+
+            if ($navbardisplay['navbardisplayicons']) {
+                $menuitem['icon'] = $iconmarkup;
+            }
+            if ($navbardisplay['navbardisplaytitles']) {
+                $menuitem['text'] = $node->text;
+            }
+
+            $menudata[] = $menuitem;
         }
 
         $primarymenu = new \core\navigation\output\more_menu((object) $menudata, 'navbar-nav', false);

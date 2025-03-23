@@ -45,7 +45,7 @@
         "favi": false
     }
 }}
-<nav class="fixed-{{navbarposition}} navbar navbar-{{navbarstyle}} bg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<nav class="fixed-{{navbarposition}} navbar navbar-{{navbarstyle}} bg-primary fg-primary navbar-expand-md moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     {{> partials/navbardrawerblocks}}
 
     {{^ltiauth}}
@@ -82,7 +82,7 @@
         {{{thiscoursemenu}}}
     </ul>
     {{/thiscoursemenu}}
-    <ul class="navbar-nav d-none d-md-flex mr-auto">
+    <ul class="navbar-nav d-none d-md-flex">
         <!-- custom_menu -->
         {{{ output.custom_menu }}}
         <!-- page_heading_menu -->
@@ -90,7 +90,7 @@
     </ul>
     <!-- primary_menu -->
     {{{ output.primary_menu }}}
-    <ul class="nav navbar-nav usernav flex-row ml-auto align-items-center">
+    <ul class="nav navbar-nav usernav flex-row align-items-center">
         <!-- lang_menu -->
         {{{ output.render_lang_menu }}}
         <li class="d-none d-md-block">

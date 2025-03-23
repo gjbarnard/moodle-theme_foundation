@@ -47,20 +47,22 @@
     {{#nodearray}}
         <li data-key="{{key}}" class="nav-item" role="none presentation" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         {{#is_action_link}}
-            <a role="menuitem" class="nav-link {{#classes}}{{.}} {{/classes}}" {{#actionattributes}}{{name}}="{{value}}"{{/actionattributes}} href="{{{url}}}{{{action}}}" data-disableactive="true" tabindex="-1">
-                {{{icon}}}<span class="d-none d-lg-inline">{{text}}</span>
+            <a role="menuitem" class="nav-link{{#classes}} {{.}}{{/classes}}"{{#actionattributes}} {{name}}="{{value}}"{{/actionattributes}}
+                 href="{{{url}}}{{{action}}}" title="{{title}}" data-disableactive="true" tabindex="-1">
+                {{{icon}}}{{#text}}<span class="d-none d-lg-inline">{{text}}</span>{{/text}}
             </a>
             {{#action_link_actions}}
                 {{> core/actions }}
             {{/action_link_actions}}
         {{/is_action_link}}
         {{^is_action_link}}
-            <a role="menuitem" class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}"
+            <a role="menuitem" class="nav-link{{#isactive}} active{{/isactive}}{{#classes}} {{.}}{{/classes}}"
                 href="{{{url}}}{{{action}}}"
+                title="{{title}}"
                 {{#isactive}}aria-current="true"{{/isactive}}
                 {{^isactive}}tabindex="-1"{{/isactive}}
             >
-                {{{icon}}}<span class="d-none d-lg-inline">{{text}}</span>
+                {{{icon}}}{{#text}}<span class="d-none d-lg-inline">{{text}}</span>{{/text}}
             </a>
         {{/is_action_link}}
         </li>

@@ -1292,6 +1292,31 @@ class toolbox {
     }
 
     /**
+     * Gets the specified setting.
+     *
+     * @param string $settingname Setting name.
+     * @param string $format format_text format or false.
+     * @param string $themename null(default of 'foundation' used)|theme name.
+     *
+     * @return boolean|mixed false if not found or setting value.
+     */
+    public function get_setting_format($settingname, $format = false, $themename = null) {
+        $settingvalue = $this->get_setting($settingname, $themename);
+
+        if (!$format) {
+            return $settingvalue;
+        } else if ($format === 'format_text') {
+            return format_text($settingvalue, FORMAT_PLAIN);
+        } else if ($format === 'format_moodle') {
+            return format_text($settingvalue, FORMAT_MOODLE);
+        } else if ($format === 'format_html') {
+            return format_text($settingvalue, FORMAT_HTML);
+        } else {
+            return format_string($settingvalue);
+        }
+    }
+
+    /**
      * Finds the given setting in the theme using the get_config core function for when the
      * theme_config object has not been created.
      *
@@ -1416,6 +1441,21 @@ class toolbox {
         }
 
         return $theconfig;
+    }
+
+    /**
+     * Get the values of the navbar display settings.
+     *
+     * return array Indexed state of the two settings.
+     */
+    public function navbardisplaysettings() {
+        $navbardisplayicons = (!empty($this->get_setting('navbardisplayicons')));
+        $navbardisplaytitles = (!empty($this->get_setting('navbardisplaytitles')));
+        if (!$navbardisplaytitles && !$navbardisplayicons) {
+            // Can't have nothing!
+            $navbardisplaytitles = true;
+        }
+        return ['navbardisplayicons' => $navbardisplayicons, 'navbardisplaytitles' => $navbardisplaytitles];
     }
 
     /**

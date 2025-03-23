@@ -1,6 +1,42 @@
 Version Information
 ===================
 
+Version 405.0.2 - 23/03/2025
+----------------------------
+1. Fix 'Using trio setting breaks SCSS' - #35.
+2. Data instance id format in line with core.
+3. Fix missing '$font-size-base' in Journal swatch.
+4. Swatch setting description improvements.
+5. Add 'foreground' colours, 'fg-' prefix, to apply to the text on the given 'background' selector 'bg-' prefix:
+
+```
+$fg-primary:       $gray-800 !default;
+$fg-secondary:     $gray-100 !default;
+$fg-success:       $gray-800 !default;
+$fg-info:          $gray-100 !default;
+$fg-warning:       $gray-800 !default;
+$fg-danger:        $gray-100 !default;
+$fg-light:         $gray-900 !default;
+$fg-dark:          $white !default;
+```
+
+If want to change these values, then define a new value in the 'prescss' theme setting, for instance:
+
+`$fg-secondary:     #ffaabb !default;`
+
+CSS selectors for each colour are then generated, for instance:
+
+```
+.fg-secondary {
+  color: #ffaabb !important;
+}
+```
+
+6. Fix layout of 'Assignment grading page' being 'mod-assign-grading'.
+7. Fix 'currentlanguage' assignment to non-existent class attribute in custom_menu_item.
+8. Fix navbar alignment with custom menu.
+9. Update theme version of FontAwesome free to 6.7.2 from 6.6.0.
+
 Version 405.0.1 - 24/10/2024
 ----------------------------
 1. Release candidate version for Moodle 4.5.

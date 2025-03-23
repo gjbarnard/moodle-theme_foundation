@@ -1,54 +1,62 @@
-// General Post SCSS for use in all presets.
+// Trio SCSS.
 
 // Generate the column layout css.
 @mixin page_layout($blockswidth) {
     $mainwidth-oneblock: (100% - $blockswidth);
     $mainwidth-twoblocks: (100% - $blockswidth * 2);
-    body:not(.pagelayout-report) #page-content {
-        display: flex;
+    body:not(.pagelayout-report, #page-mod-assign-grading) {
+        #page-content {
+            display: flex;
 
-        .region-main {
-            flex: 0 0 100%;
-            padding: 0 1rem;
-            max-width: 100%;
-        }
-
-        &.blocks-pre {
-            .columnpre {
-                flex: 0 0 $blockswidth;
+            .region-main {
+                flex: 0 0 100%;
                 padding: 0 1rem;
-                max-width: $blockswidth;
+                max-width: 100%;
             }
-            .region-main {
-                flex: 0 0 $mainwidth-oneblock;
-                max-width: $mainwidth-oneblock;
-                padding: 0 0 0 1rem;
-            }
-        }
-        &.blocks-post {
-            .region-main {
-                flex: 0 0 $mainwidth-oneblock;
-                max-width: $mainwidth-oneblock;
-                padding: 0 1rem 0 0;
-            }
-            .columnpost {
-                flex: 0 0 $blockswidth;
-                order: -1;
-                padding: 0 1rem;
-                max-width: $blockswidth;
-            }
-        }
-        &.blocks-pre.blocks-post {
-            .region-main {
-                flex: 0 0 $mainwidth-twoblocks;
-                max-width: $mainwidth-twoblocks;
-                padding: 0;
-            }
-        }
 
-        [data-region="blocks-column"] {
-            width: 100%;
+            &.blocks-pre {
+                .columnpre {
+                    flex: 0 0 $blockswidth;
+                    padding: 0 1rem;
+                    max-width: $blockswidth;
+                }
+                .region-main {
+                    flex: 0 0 $mainwidth-oneblock;
+                    max-width: $mainwidth-oneblock;
+                    padding: 0 0 0 1rem;
+                }
+            }
+            &.blocks-post {
+                .region-main {
+                    flex: 0 0 $mainwidth-oneblock;
+                    max-width: $mainwidth-oneblock;
+                    padding: 0 1rem 0 0;
+                }
+                .columnpost {
+                    flex: 0 0 $blockswidth;
+                    order: -1;
+                    padding: 0 1rem;
+                    max-width: $blockswidth;
+                }
+            }
+            &.blocks-pre.blocks-post {
+                .region-main {
+                    flex: 0 0 $mainwidth-twoblocks;
+                    max-width: $mainwidth-twoblocks;
+                    padding: 0;
+                }
+            }
+
+            [data-region="blocks-column"] {
+                width: 100%;
+            }
         }
+    }
+}
+
+#page-mod-assign-grading {
+    [data-region="blocks-column"] {
+        width: 100%;
     }
 }
 
@@ -83,6 +91,10 @@
         padding: 0 1rem 0 !important; /* stylelint-disable-line declaration-no-important */
     }
 }
+
+$card-group-margin: $grid-gutter-width * .5 !default;
+$card-deck-margin: $card-group-margin !default;
+$card-gutter: $card-deck-margin * 2;
 
 @include media-breakpoint-up(sm) {
     .dashboard-card-deck .dashboard-card {

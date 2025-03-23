@@ -135,5 +135,4 @@ Me
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 
 - Moodle profile | [Moodle.org](https://moodle.org/user/profile.php?id=442195)
-- @gjbarnard | [X](https://twitter.com/gjbarnard).
 - Web profile | [gjbarnard.co.uk](https://gjbarnard.co.uk)

@@ -303,6 +303,12 @@ $string['navbarstylelight'] = 'Light';
 $string['navbareditswitch'] = 'Edit switch';
 $string['navbareditswitchdesc'] = 'Have the edit switch on the navbar.';
 
+$string['navbardisplayicons'] = 'Display icons';
+$string['navbardisplayiconsdesc'] = 'Display an icon next to the menu title.';
+
+$string['navbardisplaytitles'] = 'Display titles';
+$string['navbardisplaytitlesdesc'] = 'Display the menu title.  Note: Ignored when \'navbardisplayicons\' is unset.';
+
 // Courses menu.
 $string['coursesmenuheadingsub'] = 'Courses menu settings';
 $string['coursesmenuheadingdesc'] = 'Configure the settings for the courses menu.  Not to be confused with the core \'My courses\' page.';
@@ -314,11 +320,11 @@ $string['displaymycourseslink'] = 'My courses page link';
 $string['displaymycoursesboth'] = 'Both';
 $string['displayhiddenmycourses'] = 'Display hidden courses';
 $string['displayhiddenmycoursesdesc'] = 'Display hidden courses for users in the \'My courses menu\' if they have permission to view hidden courses';
+$string['mycoursemanagementoptions'] = 'Course management options';
 $string['mycoursesorderidorder'] = 'Course ID order';
 $string['mycoursesorderidorderdesc'] = 'Course ID order for when \'Course ID\' is set as the \'Course sort order\'.';
 $string['mycoursesorderidasc'] = 'Ascending';
 $string['mycoursesorderiddes'] = 'Descending';
-
 $string['mycoursesorder'] = 'Courses order';
 $string['mycoursesorderdesc'] = 'State how the courses should be ordered.  The course sort order can be is set by the core navigation setting \'navsortmycoursessort\'.';
 $string['mycoursesordersort'] = 'Course sort order';
@@ -369,16 +375,16 @@ $string['swatchdesc'] = 'Choose the swatch for the theme.  A \'Swatch\' is a way
 
 // Swatch custom settings.
 $string['swatchcustomcolours'] = 'Swatch custom colours';
-$string['swatchcustomcoloursdesc'] = 'Activate custom swatch colour settings.';
+$string['swatchcustomcoloursdesc'] = 'Activate custom swatch colour settings.  This allows you to set your own colours in the swatch.';
 $string['swatchcustomcoloursheading'] = 'Swatch custom colours';
 $string['swatchcustomcoloursheadingsub'] = 'Custom swatch colour settings';
-$string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings.';
+$string['swatchcustomcoloursheadingdesc'] = 'Configure the custom swatch colour settings.  The \'current\' is shown in the colour picker box.  Changing the value to \'-\' will use the default value set in the swatch itself not the \'Default\' shown here.';
 
 $string['swatchcustomcolour'] = '{$a} colour';
 $string['swatchcustomcolourdesc'] = 'Set the {$a} colour.  Enter \'-\' to ignore this setting.';
 
 $string['swatchcustomtypography'] = 'Swatch custom typography';
-$string['swatchcustomtypographydesc'] = 'Activate custom swatch typography settings.';
+$string['swatchcustomtypographydesc'] = 'Activate custom swatch typography settings.  This allows you to set your own typography settings.';
 $string['swatchcustomtypographyheading'] = 'Swatch custom typography';
 $string['swatchcustomtypographyheadingsub'] = 'Custom swatch typography settings';
 $string['swatchcustomtypographyheadingdesc'] = 'Configure the custom swatch typography settings.';

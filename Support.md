@@ -10,14 +10,13 @@ If you'd like to sponsor, get support or fund improvements, then please do get i
 - gMail eMail | gjbarnard at gMail dt com.
 - My website eMail | contact at gjbarnard dt co dt uk.
 - GitHub | Please outline your issue / improvement on '[GitHub](https://github.com/gjbarnard/moodle-theme_foundation/issues)'.
-- @gjbarnard | '[X](https://twitter.com/gjbarnard)'.
 
 Bespoke work
 ------------
 
-If you would like your own customised version or a new child theme of Boost / Classic, then typically with a setting and a few style
-changes this is usually two to three hours work.  At my current rate this will be between 94 and 141 GBP.  I charge by the minute with
-a minimum time of fifteen.  Please contact me for further details with an outline of what you would like.
+If you would like your own customised version or a new child theme of Boost / Classic, then typically with a setting and a few
+style changes this is usually two to three hours work.  I charge by the minute with a minimum time of fifteen.  Please contact
+me for further details with an outline of what you would like.
 
 Open source software
 ====================
@@ -71,5 +70,4 @@ Developed and maintained by
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 
 - Moodle profile | [Moodle.org](https://moodle.org/user/profile.php?id=442195)
-- @gjbarnard | [X](https://twitter.com/gjbarnard).
 - Web profile | [gjbarnard.co.uk](https://gjbarnard.co.uk)

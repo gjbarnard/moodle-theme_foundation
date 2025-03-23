@@ -175,7 +175,7 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                         $theslide = new stdClass();
                         $theslide->slidetitle = $toolbox->get_setting('frontpageslidetitle' . $slidenum, 'foundation');
                         $theslide->slidecaption = $toolbox->get_setting('frontpageslidecaption' . $slidenum, 'foundation');
-                        if (!empty($toolbox->get_setting('frontpageslideimage' . $slidenum))) {
+                        if (!empty($toolbox->get_setting('frontpageslideimage' . $slidenum, 'foundation'))) {
                             $theslide->slideimage = $toolbox->setting_file_url('frontpageslideimage' . $slidenum,
                                 'frontpageslideimage' . $slidenum, 'foundation');
                         } else {

@@ -41,7 +41,6 @@ $functions = [
         'methodname' => 'set_user_preferences',
         'description' => 'Set user preferences.',
         'type' => 'write',
-        'capabilities' => 'moodle/site:config',
         'loginrequired' => false,
         'ajax' => true,
     ],

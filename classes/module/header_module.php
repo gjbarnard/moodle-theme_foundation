@@ -263,7 +263,7 @@ class header_module extends \theme_foundation\module_basement {
         $scss = '';
 
         $headerbackgroundurl = $toolbox->setting_file_url('headerbackground', 'headerbackground', $themename);
-        $headerbackgroundcourseimage = ($toolbox->get_setting('headerbackgroundcourseimage') == 'yes');
+        $headerbackgroundcourseimage = ($toolbox->get_setting('headerbackgroundcourseimage', $themename) == 'yes');
 
         if ((!empty($headerbackgroundurl)) || ($headerbackgroundcourseimage)) {
             $scss .= '#page-header';

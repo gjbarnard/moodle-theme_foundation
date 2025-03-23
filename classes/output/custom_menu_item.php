@@ -15,11 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Foundation theme.
+ * Foundation's custom menu item.
  *
  * @package    theme_foundation
- * @copyright  2019 G J Barnard.
- * @author     G J Barnard -
+ * @copyright  2025 G J Barnard
  *               {@link https://moodle.org/user/profile.php?id=442195}
  *               {@link https://gjbarnard.co.uk}
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
@@ -28,31 +27,38 @@
 namespace theme_foundation\output;
 
 use context_system;
-use core\output\custom_menu_item;
+use core\output\custom_menu_item as core_custom_menu_item;
 use core\output\renderer_base;
 use core\url;
+use moodle_url;
 use stdClass;
 
 /**
- * The menu item for the theme.
+ * Foundations's custom menu item.
  */
-class foundation_menu_item extends custom_menu_item {
+class custom_menu_item extends core_custom_menu_item {
     /**
-     * Adds a menu item as a child of this node given its properties.
+     * Adds a custom menu item as a child of this node given its properties.
      *
      * @param string $text
-     * @param url $url
+     * @param null|moodle_url $url
      * @param string $title
      * @param int $sort
      * @param array $attributes Array of other HTML attributes for the custom menu item.
-     * @return foundation_menu_item
+     * @return custom_menu_item
      */
-    public function add($text, ?url $url = null, $title = null, $sort = null, $attributes = []) {
+    public function add(
+        $text,
+        ?moodle_url $url = null,
+        $title = null,
+        $sort = null,
+        $attributes = [],
+    ) {
         $key = count($this->children);
         if (empty($sort)) {
             $sort = $this->lastsort + 1;
         }
-        $this->children[$key] = new foundation_menu_item($text, $url, $title, $sort, $this, $attributes);
+        $this->children[$key] = new custom_menu_item($text, $url, $title, $sort, $this, $attributes);
         $this->lastsort = (int)$sort;
         return $this->children[$key];
     }
@@ -61,20 +67,24 @@ class foundation_menu_item extends custom_menu_item {
      * Export this data so it can be used as the context for a mustache template.
      *
      * @param renderer_base $output Used to do a final render of any components that need to be rendered for export.
-     * @return array
+     * @return stdClass
      */
     public function export_for_template(renderer_base $output) {
-        global $CFG;
-
-        require_once($CFG->libdir . '/externallib.php');
-
         $syscontext = context_system::instance();
 
         $context = new stdClass();
-        $context->text = $this->text;
+        $context->moremenuid = uniqid();
+        $context->text = \core_external\util::format_text($this->text, null, $syscontext->id)[0];
         $context->url = $this->url ? $this->url->out() : null;
-        $context->title = external_format_string($this->title, $syscontext->id);
+        // No need for the title if it's the same with text.
+        if ($this->text !== $this->title) {
+            // Show the title attribute only if it's different from the text.
+            $context->title = \core_external\util::format_string($this->title, $syscontext->id);
+        }
         $context->sort = $this->sort;
+        if (!empty($this->attributes)) {
+            $context->attributes = $this->attributes;
+        }
         $context->children = [];
         if (preg_match("/^#+$/", $this->text)) {
             $context->divider = true;

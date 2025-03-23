@@ -54,6 +54,21 @@
     }
 }
 
+.navbar .navbar-nav {
+    ul.dropdown-menu li > ul {
+        border: none;
+        display: block;
+        margin-left: 10px;
+        position: static;
+    }
+}
+
+// Bootstrap hides/shows dropdowns onclick via the class 'show'.
+.dropdown-menu.show {
+    display: block !important; // SHAME - using important as this seems to be overwriten elsewhere.
+    position: absolute;
+}
+
 .popover-region-container {
     height: auto;
     max-height: 500px;
