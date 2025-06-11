@@ -32,3 +32,9 @@ $fg-theme-colors: map-merge(
   ),
   $fg-theme-colors
 );
+
+// Extra spacer
+$spacers: map-merge((
+    6: ($spacer * 4)
+), $spacers);
+

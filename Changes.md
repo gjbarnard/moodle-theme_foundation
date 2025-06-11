@@ -1,7 +1,23 @@
 Version Information
 ===================
 
-Version 405.0.2 - 23/03/2025
+Version 500.0.1 - 11/06/2025
+----------------------------
+1. Release candidate version for Moodle 5.0.
+2. Fix 'Slider images not in JSON settings backup'.
+3. Change to 'Badge' colours, ref: https://moodledev.io/docs/5.0/guides/bs5migration#badges.
+4. Make settings tabs work.
+5. BS data JS updates, ref: https://moodledev.io/docs/5.0/guides/bs5migration#refactor-bs5-data-attributes.
+6. Fix carousel.
+7. Media query changes, ref: https://moodledev.io/docs/5.0/guides/bs5migration#refactor-media-query-mixins.
+8. Add aria label to carousel indicators.
+9. Change 'Directional utilities', ref: https://moodledev.io/docs/5.0/guides/bs5migration#directional-utilities.
+10. Change 'Screen reader utilities', ref: https://moodledev.io/docs/5.0/guides/bs5migration#screen-reader-utilities.
+11. Change 'Font utility classes', ref: https://moodledev.io/docs/5.0/guides/bs5migration#font-utility-classes.
+12. Change 'Refactor dropdowns positioning classes', ref: https://moodledev.io/docs/5.0/guides/bs5migration#refactor-dropdowns-positioning-classes.
+14. Fix 'Bootstrap spacer utilities not being generated'.
+
+Version 405.0.2 - 25/03/2025
 ----------------------------
 1. Fix 'Using trio setting breaks SCSS' - #35.
 2. Data instance id format in line with core.

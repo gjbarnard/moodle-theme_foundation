@@ -45,7 +45,7 @@
     }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
     .navbar {
         .dropdown-toggle::after {
             display: none;
@@ -314,7 +314,7 @@
     }
 }
 
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(sm) {
     .nav.usernav .usermenu .dropdown-toggle {
         padding-left: 0;
         padding-right: 0;

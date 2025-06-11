@@ -320,11 +320,9 @@ trait core_renderer_toolbox {
             'data-droptarget' => '1',
         ];
 
+        $content .= html_writer::tag('h2', get_string('blocks'), ['class' => 'visually-hidden']);
         if ($this->page->blocks->region_has_content($displayregion, $this)) {
-            $content .= html_writer::tag('h2', get_string('blocks'), ['class' => 'sr-only']) .
-                $this->blocks_for_region($displayregion, $fakeblocksonly);
-        } else {
-            $content .= html_writer::tag('h2', get_string('blocks'), ['class' => 'sr-only']);
+            $content .= $this->blocks_for_region($displayregion, $fakeblocksonly);
         }
 
         if ($region != 'content') {
@@ -404,7 +402,7 @@ trait core_renderer_toolbox {
         return html_writer::tag(
             'p',
             get_string('region-' . $region, 'theme_foundation'),
-            ['class' => 'block-region-title col-12 text-center font-italic font-weight-bold']
+            ['class' => 'block-region-title col-12 text-center fst-italic fw-bold']
         );
     }
 
@@ -744,7 +742,7 @@ trait core_renderer_toolbox {
                     $link = new action_link(new url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
                 }
                 if ($indent) {
-                    $link->add_class('pl-3'); // The changed line!
+                    $link->add_class('ps-3'); // The changed line!
                 }
                 if (!empty($menuitem->classes)) {
                     $link->add_class(implode(" ", $menuitem->classes));
@@ -992,7 +990,7 @@ trait core_renderer_toolbox {
         }
 
         if ($navbardisplay['navbardisplaytitles']) {
-            $returntxt .= html_writer::span($usertextcontents, 'usertext mr-1');
+            $returntxt .= html_writer::span($usertextcontents, 'usertext me-1');
         }
 
         $returnstr .= html_writer::span($returntxt, 'userbutton');

@@ -76,7 +76,7 @@
     }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
     [data-region="blocks-drawer"] {
         background-color: $card-bg;
         padding: 5px 5px 0 5px;
@@ -113,7 +113,7 @@ body {
     height: 100%; // For a drag and drop target area when empty.
 }
 
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(sm) {
     [data-region="blocks-column"] {
         margin-right: -$grid-gutter-width / 2;
         width: calc(100% + #{$grid-gutter-width});

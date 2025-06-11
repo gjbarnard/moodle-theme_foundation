@@ -186,6 +186,7 @@ class frontpagecarousel_module extends \theme_foundation\module_basement impleme
                         $theindicator = new stdClass();
                         $theindicator->indicatoractive = ($indicator == 0) ? 1 : 0;
                         $theindicator->indicatornumber = $indicator++;
+                        $theindicator->slidetitle = $theslide->slidetitle;
                         $data->carouselindicators[] = $theindicator;
 
                         $theslide->slideactive = $theindicator->indicatoractive;

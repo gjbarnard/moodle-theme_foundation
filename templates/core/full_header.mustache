@@ -40,17 +40,17 @@
 {{/courseimage}}
 <header id="page-header" class="row{{#courseimage}} hascourseimage{{/courseimage}}">
     <div class="page-header-background-image-overlay w-100">
-        <div class="card w-100 pl-3 pr-3{{^contextheader}} border-0 bg-transparent{{/contextheader}}{{#contextheader}} mb-2{{/contextheader}}">
+        <div class="card w-100 ps-3 pe-3{{^contextheader}} border-0 bg-transparent{{/contextheader}}{{#contextheader}} mb-2{{/contextheader}}">
             <div class="card-body{{^contextheader}} p-2{{/contextheader}}">
                 <div class="d-sm-flex align-items-center pageheadingtop">
                     {{#contextheader}}
-                    <div class="mr-auto">
+                    <div class="me-auto">
                         {{{contextheader}}}
                     </div>
                     {{/contextheader}}
                     <div class="header-actions-container flex-shrink-0" data-region="header-actions-container">
                         {{#headeractions}}
-                            <div class="header-action ml-2">{{{.}}}</div>
+                            <div class="header-action ms-2">{{{.}}}</div>
                         {{/headeractions}}
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         {{{breadcrumb}}}
                     </div>
                     {{/hasbreadcrumb}}
-                    <div class="ml-auto d-flex pageheadingbutton">
+                    <div class="ms-auto d-flex pageheadingbutton">
                         {{{pageheadingbutton}}}
                     </div>
                     <div id="course-header">

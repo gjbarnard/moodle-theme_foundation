@@ -190,7 +190,7 @@ class custom_menu extends custom_menu_item {
                     $lastdepth--;
                 }
                 if ($itemfa) {
-                    $itemtext = $toolbox->getfontawesomemarkup($itemfa, ['mr-1']) . $itemtext;
+                    $itemtext = $toolbox->getfontawesomemarkup($itemfa, ['me-1']) . $itemtext;
                 }
                 $lastitem = $lastitem->add($itemtext, $itemurl, $itemtitle, $linenumber + 1);
                 $lastdepth++;

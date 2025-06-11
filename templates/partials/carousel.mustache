@@ -28,12 +28,12 @@
     }
 }}
 {{#carouselid}}
-<div id="{{carouselid}}" class="carousel slide">
-    <ol class="carousel-indicators">
+<div id="{{carouselid}}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
         {{#carouselindicators}}
-        <li data-target="#{{carouselid}}" data-slide-to="{{indicatornumber}}"{{#indicatoractive}} class="active"{{/indicatoractive}}></li>
+        <button type="button" data-bs-target="#{{carouselid}}" data-bs-slide-to="{{indicatornumber}}"{{#indicatoractive}} class="active" aria-current="true"{{/indicatoractive}} aria-label="{{slidetitle}}"></button>
         {{/carouselindicators}}
-    </ol>
+    </div>
     <div class="carousel-inner container-fluid">
         {{#carouselslides}}
         <div class="carousel-item{{#slideactive}} active{{/slideactive}}">
@@ -49,18 +49,13 @@
         </div>
         {{/carouselslides}}
     </div>
-    <a class="carousel-control carousel-control-prev" href="#{{carouselid}}" role="button" data-slide="prev">
+    <a class="carousel-control carousel-control-prev" href="#{{carouselid}}" role="button" data-bs-slide="prev">
         <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
-        <span class="sr-only">{{#str}}previous{{/str}}</span>
+        <span class="visually-hidden">{{#str}}previous{{/str}}</span>
     </a>
-    <a class="carousel-control carousel-control-next" href="#{{carouselid}}" role="button" data-slide="next">
+    <a class="carousel-control carousel-control-next" href="#{{carouselid}}" role="button" data-bs-slide="next">
         <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
-        <span class="sr-only">{{#str}}next{{/str}}</span>
+        <span class="visually-hidden">{{#str}}next{{/str}}</span>
     </a>
 </div>
-{{#js}}
-require(['jquery', 'theme_boost/bootstrap/carousel'], function($) {
-    $('#{{carouselid}}').carousel();
-});
-{{/js}}
 {{/carouselid}}

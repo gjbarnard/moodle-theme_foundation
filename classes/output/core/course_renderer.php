@@ -63,7 +63,7 @@ class course_renderer extends \core_course_renderer {
             $nametag = 'div';
         }
         $toolbox = \theme_foundation\toolbox::get_instance();
-        $coursename = $toolbox->getfontawesomemarkup('graduation-cap', ['mr-1']) . $chelper->get_course_formatted_name($course);
+        $coursename = $toolbox->getfontawesomemarkup('graduation-cap', ['me-1']) . $chelper->get_course_formatted_name($course);
         $coursenamelink = html_writer::link(
             new url('/course/view.php', ['id' => $course->id]),
             $coursename,

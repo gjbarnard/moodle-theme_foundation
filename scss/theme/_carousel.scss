@@ -67,10 +67,10 @@
 
 .carousel-indicators {
     margin-bottom: 0;
-    li {
+    [data-bs-target] {
         background-color: $primary;
-    }
-    .active {
-        background-color: darken($primary, 7%);
+        &.active {
+            background-color: darken($primary, 7%);
+        }
     }
 }

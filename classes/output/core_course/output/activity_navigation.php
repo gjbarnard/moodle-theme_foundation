@@ -92,7 +92,7 @@ class activity_navigation extends \core_course\output\activity_navigation {
         // Render the activity list dropdown menu if available.
         if (!empty($activitylist)) {
             $select = new url_select($activitylist, '', ['' => get_string('jumpto')]);
-            $select->set_label(get_string('jumpto'), ['class' => 'sr-only']);
+            $select->set_label(get_string('jumpto'), ['class' => 'visually-hidden']);
             $select->attributes = ['id' => 'jump-to-activity'];
             $this->activitylist = $select;
         }

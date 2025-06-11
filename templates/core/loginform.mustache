@@ -106,7 +106,7 @@
         {{/logourl}}
         <div class="card-body">
             {{#cansignup}}
-                <div class="sr-only">
+                <div class="visually-hidden">
                     <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
                 </div>
             {{/cansignup}}
@@ -125,7 +125,7 @@
                         <script>document.getElementById('anchor').value = location.hash;</script>
                         <input type="hidden" name="logintoken" value="{{logintoken}}">
                         <div class="form-group">
-                            <label for="username" class="sr-only">
+                            <label for="username" class="visually-hidden">
                                 {{^canloginbyemail}}
                                     {{#str}} username {{/str}}
                                 {{/canloginbyemail}}
@@ -141,7 +141,7 @@
                                 !}}autocomplete="username">
                         </div>
                         <div class="form-group">
-                            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
+                            <label for="password" class="visually-hidden">{{#str}} password {{/str}}</label>
                             <input type="password" name="password" id="password" value="" {{!
                                 !}}class="form-control" {{!
                                 !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!

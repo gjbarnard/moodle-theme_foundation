@@ -57,8 +57,6 @@ class swatch_module extends \theme_foundation\module_basement {
         'headings-color' =>
             ['colour' => '#ffca8e', 'selector' => '.foundation-default-headings-color-colour', 'element' => 'color'],
         'text-muted' => ['colour' => '#015a22', 'selector' => '.foundation-default-text-muted-colour', 'element' => 'color'],
-        'blockquote-small-color' =>
-            ['colour' => '#028187', 'selector' => '.foundation-default-blockquote-small-color-colour', 'element' => 'color'],
         'card-color' => ['colour' => '#ffaabb', 'selector' => '.foundation-default-card-color-colour', 'element' => 'color'],
         'card-bg' => ['colour' => '#060064', 'selector' => '.foundation-default-card-bg-colour', 'element' => 'color'],
     ];
