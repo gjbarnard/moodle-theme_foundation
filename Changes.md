@@ -1,7 +1,12 @@
 Version Information
 ===================
 
-Version 405.0.2 - 23/03/2025
+Version 405.1.0 - 11/06/2025
+----------------------------
+1. Fix 'Slider images not in JSON settings backup'.
+2. Add aria label to carousel indicators.
+
+Version 405.0.2 - 25/03/2025
 ----------------------------
 1. Fix 'Using trio setting breaks SCSS' - #35.
 2. Data instance id format in line with core.

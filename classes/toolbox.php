@@ -1556,7 +1556,7 @@ class toolbox {
 
         // Slide show.
         for ($propslide = 1; $propslide <= $slidercount; $propslide++) {
-            $preprocessfilesettings[] = 'frontpageslideimage' . $propslide;
+            $ourfileprops[] = 'frontpageslideimage' . $propslide;
         }
 
         if (array_key_exists('propertyfiles', $ourprops)) {
@@ -1594,7 +1594,8 @@ class toolbox {
 
             foreach ($fileprops as $fileprop) {
                 $name = $pluginfrankenstyle.'/'.$fileprop;
-                $title = get_string($fileprop, $pluginfrankenstyle);
+                // Remove any number to get a common string.
+                $title = get_string(preg_replace('/[0-9]+/', '', $fileprop), $pluginfrankenstyle);
                 $description = $title;
                 $setting = new \theme_foundation\admin_setting_configstoredfiles(
                     $name, $title, $description, $fileprop, null
@@ -1740,7 +1741,8 @@ class toolbox {
         if (!empty($props[$key])) {
             if ($props[$key][0] == '{') { // Is a JSON encoded file(s).
                 $name = $pluginfrankenstyle.'/'.$key;
-                $title = get_string($key, $pluginfrankenstyle);
+                // Remove any number to get a common string.
+                $title = get_string(preg_replace('/[0-9]+/', '', $key), $pluginfrankenstyle);
                 $description = $title;
                 $setting = new \theme_foundation\admin_setting_configstoredfiles(
                     $name, $title, $description, $key, null
@@ -1763,6 +1765,9 @@ class toolbox {
                             ['filename' => $addedfilename, 'settingname' => $key]
                         ) . PHP_EOL;
                     }
+                }
+                if (!empty($changed[\theme_foundation\admin_setting_configstoredfiles::ERROR])) {
+                    $filestoreport .= $changed[\theme_foundation\admin_setting_configstoredfiles::ERROR] . PHP_EOL;
                 }
             } else {
                 $filestoreport .= '\'' . $key . '\' ' . get_string('putpropertiesvalue', $pluginfrankenstyle) . ' \'' .

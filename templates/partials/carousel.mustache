@@ -31,7 +31,7 @@
 <div id="{{carouselid}}" class="carousel slide">
     <ol class="carousel-indicators">
         {{#carouselindicators}}
-        <li data-target="#{{carouselid}}" data-slide-to="{{indicatornumber}}"{{#indicatoractive}} class="active"{{/indicatoractive}}></li>
+        <li data-target="#{{carouselid}}" data-slide-to="{{indicatornumber}}"{{#indicatoractive}} class="active"{{/indicatoractive}} aria-label="{{slidetitle}}"></li>
         {{/carouselindicators}}
     </ol>
     <div class="carousel-inner container-fluid">
