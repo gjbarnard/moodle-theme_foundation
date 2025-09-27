@@ -15,3 +15,19 @@
         }
     }
 }
+
+.form-switch {
+    .form-check-input {
+        --#{$prefix}form-switch-bg: #{escape-svg($form-switch-focus-bg-image)};
+        background-color: transparent;
+
+        &:checked {
+            --#{$prefix}form-switch-bg: #{escape-svg($form-switch-focus-bg-image)};
+        }
+
+        &:hover,
+        &:focus {
+            --#{$prefix}form-switch-bg: #{escape-svg($form-switch-checked-bg-image)};
+        }
+    }
+}

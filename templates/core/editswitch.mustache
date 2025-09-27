@@ -32,7 +32,7 @@
 }}
 <form action="{{{legacyseturl}}}" method="post" class="editmode-switch-form" title="{{#str}}editmode{{/str}}">
     <div class="input-group">
-        <div class="custom-control custom-switch">
+        <div class="form-check form-switch">
             <input type="checkbox"{{!
                 }} name="setmode"{{!
                 }}{{#checked}}{{!
@@ -41,14 +41,14 @@
                 }}{{^checked}}{{!
                     }} aria-checked="false"{{!
                 }}{{/checked}}{{!
-                }} class="custom-control-input"{{!
+                }} class="form-check-input"{{!
                 }} id="{{uniqid}}-editingswitch"{{!
                 }} data-context="{{{pagecontextid}}}"{{!
                 }} data-pageurl="{{{pageurl}}}"{{!
                 }} title="{{#str}}editmode{{/str}}"{{!
                 }} aria-label="{{#str}}editmode{{/str}}"{{!
             }}>
-            <span class="custom-control-label"></span>
+            <span class="form-check-label"></span>
         </div>
     </div>
     <input type="hidden" name="sesskey" value="{{{sesskey}}}">

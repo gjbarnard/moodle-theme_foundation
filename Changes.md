@@ -1,6 +1,12 @@
 Version Information
 ===================
 
+Version 500.0.2 - 27/09/2025
+----------------------------
+1. Fix 'Undefined Property $layouts' - #36.
+2. Fix 'Drawer toggle does not work' - #37.
+3. Fix 'Link underscores showing when not hovering'.
+
 Version 500.0.1 - 11/06/2025
 ----------------------------
 1. Release candidate version for Moodle 5.0.

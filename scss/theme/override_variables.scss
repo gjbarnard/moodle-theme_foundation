@@ -5,15 +5,18 @@ $body-color: #212529 !default;
 $spacer:     1rem !default;
 
 // Bootstrap changes
-$dropdown-padding-y:            0 !default;
-$breadcrumb-divider-color:      inherit !default;
-$breadcrumb-font-size:          $font-size-base !default;
-$modal-content-color:           $body-color !default;
-$modal-content-bg:              $body-bg !default;
-$nav-tabs-link-active-color:    $body-color !default;
-$navbar-padding-x:              $spacer / 4 !default;
-$pagination-bg:                 $body-bg !default;
-$custom-select-indicator-color: $body-color !default;
+$dropdown-padding-y:                    0 !default;
+$breadcrumb-divider-color:              inherit !default;
+$breadcrumb-font-size:                  $font-size-base !default;
+$modal-content-color:                   $body-color !default;
+$modal-content-bg:                      $body-bg !default;
+$nav-tabs-link-active-color:            $body-color !default;
+$navbar-padding-x:                      $spacer / 4 !default;
+$pagination-bg:                         $body-bg !default;
+$custom-select-indicator-color:         $body-color !default;
+$form-check-input-checked-border-color: inherit !default;
+$link-decoration:                       none !default;
+$link-hover-decoration:                 underline !default;
 
 // Moodle variable changes
 $navbar-height: 50px;
