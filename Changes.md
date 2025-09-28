@@ -1,6 +1,10 @@
 Version Information
 ===================
 
+Version 405.1.1 - 28/09/2025
+----------------------------
+1. Fix 'Undefined Property $layouts' - #36.
+
 Version 405.1.0 - 11/06/2025
 ----------------------------
 1. Fix 'Slider images not in JSON settings backup'.

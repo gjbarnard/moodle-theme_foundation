@@ -79,7 +79,7 @@ class the_config {
      * of this class. (That is, this is a factory method.)
      *
      * @param string $themename the name of the theme.
-     * @return theme_config an instance of this class.
+     * @return the_config an instance of this class.
      */
     public static function load($themename) {
         if ($config = self::find_theme_config($themename)) {
@@ -91,7 +91,7 @@ class the_config {
 
     /**
      * Private constructor, can be called only from the factory method.
-     * @param stdClass $config
+     * @param stdClass $config The theme configuration.
      */
     private function __construct($config) {
         $this->settings = $config->settings;
@@ -99,11 +99,36 @@ class the_config {
         $this->dir = $config->dir;
         $this->parents = $config->parents;
 
-        foreach ($config->layouts as $key => $value) {
-            if (!empty($value['options'])) {
-                $this->layoutoptions[$key] = $value['options'];
-            } else {
-                $this->layoutoptions[$key] = null;
+        /* Layouts may or may not exist in the configuration, but are 'interited'
+           with changes in the child themes overriding those of the parents.
+           So.... start with the top parent and move forward, recursively. */
+        if (!empty($config->parents)) {
+            $parentname = end($config->parents);
+            while ($parentname !== false) {
+                if ($parentconfig = self::find_theme_config($parentname)) {
+                    $this->process_layouts($parentconfig);
+                } else {
+                    throw new coding_exception('Unable to load the \'' . $themename . '\' theme!');
+                }
+                $parentname = prev($config->parents);
+            }
+        }
+        // Finally process our layouts, if any.
+        $this->process_layouts($config);
+    }
+
+    /**
+     * Process the layouts if any.
+     * @param stdClass $config The theme configuration.
+     */
+    private function process_layouts($config) {
+        if (!empty($config->layouts)) {
+            foreach ($config->layouts as $key => $value) {
+                if (!empty($value['options'])) {
+                    $this->layoutoptions[$key] = $value['options'];
+                } else {
+                    $this->layoutoptions[$key] = null;
+                }
             }
         }
     }
