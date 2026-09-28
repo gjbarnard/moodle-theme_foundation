@@ -4,6 +4,9 @@ Version Information
 Version 405.1.1 - 28/09/2025
 ----------------------------
 1. Fix 'Undefined Property $layouts' - #36.
+2. Removed the ability to create the fallback css from the scss due to tool support compatibility at this time.
+   Compiled CSS supplied.  To compile the AMD use the core tools.
+Note: This will be the last release of Foundation for Moodle 4.5.
 
 Version 405.1.0 - 11/06/2025
 ----------------------------
