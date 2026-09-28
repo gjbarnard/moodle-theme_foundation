@@ -176,7 +176,7 @@ class custom_menu extends custom_menu_item {
                                     $itemshown = false;
                                 }
                             }
-                        break;
+                            break;
                     }
                 }
             }

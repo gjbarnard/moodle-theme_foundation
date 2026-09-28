@@ -35,7 +35,6 @@ use core\url;
  * The class activity navigation renderable.
  */
 class activity_navigation extends \core_course\output\activity_navigation {
-
     /**
      * Constructor.
      *

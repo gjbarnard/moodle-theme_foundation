@@ -233,8 +233,14 @@ function theme_foundation_extend_navigation_course($coursenode, $course, $course
             $editstring = get_string('turneditingon');
         }
 
-        $childnode = navigation_node::create($editstring, $editurl, navigation_node::TYPE_SETTING, null,
-            'turneditingonoff', new pix_icon('i/edit', ''));
+        $childnode = navigation_node::create(
+            $editstring,
+            $editurl,
+            navigation_node::TYPE_SETTING,
+            null,
+            'turneditingonoff',
+            new pix_icon('i/edit', '')
+        );
         $keylist = $coursenode->get_children_key_list();
         if (!empty($keylist)) {
             if (count($keylist) > 1) {

@@ -436,8 +436,10 @@ class menus_module extends module_basement implements templatable {
                 format_string($course->fullname) . '</span>';
             $branch->add($branchlabel, $branchurl, $branchtitle);
             $courseadded = true;
-        } else if (has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) &&
-            $hasdisplayhiddenmycourses) {
+        } else if (
+            has_capability('moodle/course:viewhiddencourses', \context_course::instance($course->id)) &&
+            $hasdisplayhiddenmycourses
+        ) {
             $branchtitle = format_string($course->shortname);
             $branchlabel = '<span class="dimmed_text">' . $toolbox->getfontawesomemarkup('eye-slash', ['icon']) .
                 format_string($course->fullname) . '</span>';

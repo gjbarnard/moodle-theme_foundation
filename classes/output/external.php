@@ -193,7 +193,7 @@ class external extends external_core {
                         'item' => 'user',
                         'itemid' => $user->id,
                         'warningcode' => 'nopermission',
-                        'message' => 'You are not allowed to change the preference '.s($pref['name']).' for user '.$user->id,
+                        'message' => 'You are not allowed to change the preference ' . s($pref['name']) . ' for user ' . $user->id,
                     ];
                 }
             } catch (Exception $e) {
@@ -226,7 +226,8 @@ class external extends external_core {
                             'name' => new external_value(PARAM_RAW, 'The name of the preference'),
                             'userid' => new external_value(PARAM_INT, 'The user the preference was set for'),
                         ],
-                    ), 'Preferences saved'
+                    ),
+                    'Preferences saved'
                 ),
                 'warnings' => new external_warnings(),
             ]

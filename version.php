@@ -28,7 +28,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->version = 2024101703;
-$plugin->requires = 2024100700.00; // 4.5 (Build: 20241007).
+$plugin->requires = 2024100700.00; // 4.5 (Build: 20241007).  phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 $plugin->supported = [405, 405];
 $plugin->component = 'theme_foundation';
 $plugin->maturity = MATURITY_STABLE;

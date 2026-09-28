@@ -363,7 +363,7 @@ $string['moduleheadingsub'] = 'Module settings';
 $string['moduleheadingdesc'] = 'Configure the module settings.';
 
 // Dynamic - will this break plugin validation?  If it does then will have to put the theme strings here, but the concept will still be proven for modules.
-/* Future code? -> $toolbox = \theme_foundation\toolbox::get_instance();
+/* Future code? -> $toolbox = \theme_foundation\toolbox::get_instance();  phpcs:ignore Squiz.PHP.CommentedOutCode.Found
    $string = array_merge($string, $toolbox->get_lang_strings('en')); */
 // Module strings here for now!
 // Swatch.
