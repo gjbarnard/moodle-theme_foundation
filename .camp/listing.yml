@@ -1,0 +1,16 @@
+name: theme_foundation
+summary: Foundation Moodle theme.
+description: |
+  Foundation is a Bootstrap theme that aims to be different and yet at the same time have some traditions of the past.
+labels:
+  - fully-free
+  - donation-supported
+  - commercial-support-available
+screenshots:
+  - path: .camp/screenshots/Foundation_icon.png
+    caption: Logo
+links:
+  docs: https://github.com/gjbarnard/moodle-theme_foundation/blob/main/Readme.md
+  changelog: https://github.com/gjbarnard/moodle-theme_foundation/blob/main/Changes.md
+  issues: https://github.com/gjbarnard/moodle-theme_foundation/issues
+  donate: https://github.com/gjbarnard/moodle-theme_foundation/blob/main/Information.md
