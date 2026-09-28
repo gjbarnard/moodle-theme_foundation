@@ -53,8 +53,11 @@ trait core_renderer_toolbox {
 
         $data = new stdClass();
         $data->output = $this;
-        $data->sitename = format_string($SITE->shortname, true,
-            ['context' => \context_course::instance(SITEID), "escape" => false]);
+        $data->sitename = format_string(
+            $SITE->shortname,
+            true,
+            ['context' => \context_course::instance(SITEID), "escape" => false]
+        );
         $bodyclasses = [];
         $regionmainsettingsmenu = $this->region_main_settings_menu();
 
@@ -286,8 +289,11 @@ trait core_renderer_toolbox {
     public function container($contents, $classes = null, $id = null, $attributes = []) {
         // Manipulate the grader report.
         if ((!is_null($classes)) && ($classes == 'gradeparent')) {
-            $contents = preg_replace('/<th class="(header|userfield)(.*?)>(.*?)<\/th>/is',
-                '<th class="$1$2><div class="d-flex">$3</div></th>', $contents);
+            $contents = preg_replace(
+                '/<th class="(header|userfield)(.*?)>(.*?)<\/th>/is',
+                '<th class="$1$2><div class="d-flex">$3</div></th>',
+                $contents
+            );
         }
         return $this->container_start($classes, $id, $attributes) . $contents . $this->container_end();
     }
@@ -526,7 +532,8 @@ trait core_renderer_toolbox {
                     $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
                 } else {
                     throw new coding_exception(
-                        'Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+                        'Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.'
+                    );
                 }
             }
         }
@@ -1259,7 +1266,8 @@ trait core_renderer_toolbox {
                     global $USER;
                     if (
                         (!empty($USER->preference['user_home_page_preference'])) &&
-                        ($USER->preference['user_home_page_preference'] == HOMEPAGE_MYCOURSES)) {
+                        ($USER->preference['user_home_page_preference'] == HOMEPAGE_MYCOURSES)
+                    ) {
                         $removemycourses = false;
                     }
                 }

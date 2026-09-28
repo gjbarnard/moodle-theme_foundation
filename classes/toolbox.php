@@ -645,7 +645,10 @@ class toolbox {
             $title = get_string('propertyfiles', 'theme_foundation');
             $description = get_string('propertyfilesdesc', 'theme_foundation');
             $setting = new \theme_foundation\admin_setting_configstoredfiles(
-                $name, $title, $description, 'propertyfiles',
+                $name,
+                $title,
+                $description,
+                'propertyfiles',
                 ['accepted_types' => '*.json', 'maxfiles' => 8]
             );
             $page->add($setting);
@@ -1355,8 +1358,10 @@ class toolbox {
                 $itemid = \theme_get_revision();
                 $syscontext = context_system::instance();
 
-                $settingurl = url::make_file_url("$CFG->wwwroot/pluginfile.php",
-                    "/$syscontext->id/theme_$theconfig->name/$setting/$itemid" . $thesetting);
+                $settingurl = url::make_file_url(
+                    "$CFG->wwwroot/pluginfile.php",
+                    "/$syscontext->id/theme_$theconfig->name/$setting/$itemid" . $thesetting
+                );
             }
         }
         return $settingurl;
@@ -1385,8 +1390,10 @@ class toolbox {
                 $filepath = $thesetting;
                 $syscontext = context_system::instance();
 
-                $url = url::make_file_url("$CFG->wwwroot/pluginfile.php",
-                    "/$syscontext->id/$component/$filearea/$itemid" . $filepath);
+                $url = url::make_file_url(
+                    "$CFG->wwwroot/pluginfile.php",
+                    "/$syscontext->id/$component/$filearea/$itemid" . $filepath
+                );
 
                 /* Now this is tricky because the we can not hardcode http or https here, lets use the relative link.
                    Note: unfortunately url does not support //urls yet. */
@@ -1593,12 +1600,16 @@ class toolbox {
             $fileprops = $props[self::FILEPROPNAMES];
 
             foreach ($fileprops as $fileprop) {
-                $name = $pluginfrankenstyle.'/'.$fileprop;
+                $name = $pluginfrankenstyle . '/' . $fileprop;
                 // Remove any number to get a common string.
                 $title = get_string(preg_replace('/[0-9]+/', '', $fileprop), $pluginfrankenstyle);
                 $description = $title;
                 $setting = new \theme_foundation\admin_setting_configstoredfiles(
-                    $name, $title, $description, $fileprop, null
+                    $name,
+                    $title,
+                    $description,
+                    $fileprop,
+                    null
                 );
                 $encoded = $setting->base64encode();
 
@@ -1679,8 +1690,11 @@ class toolbox {
                     $settinglog .= ' ' . get_string('putpropertiesfrom', $pluginfrankenstyle) . ' \'' .
                     $currentprops[self::PROPS][$propkey]->value . '\'';
                     $changed .= $settinglog . '.' . PHP_EOL;
-                    $DB->update_record('config_plugins', ['id' => $currentprops[self::PROPS][$propkey]->id, 'value' => $propvalue],
-                        true);
+                    $DB->update_record(
+                        'config_plugins',
+                        ['id' => $currentprops[self::PROPS][$propkey]->id, 'value' => $propvalue],
+                        true
+                    );
                 } else {
                     $unchanged .= $settinglog . '.' . PHP_EOL;
                 }
@@ -1740,12 +1754,16 @@ class toolbox {
     private static function put_prop_file_preprocess($pluginfrankenstyle, $key, &$props, &$filestoreport, &$fileschanged) {
         if (!empty($props[$key])) {
             if ($props[$key][0] == '{') { // Is a JSON encoded file(s).
-                $name = $pluginfrankenstyle.'/'.$key;
+                $name = $pluginfrankenstyle . '/' . $key;
                 // Remove any number to get a common string.
                 $title = get_string(preg_replace('/[0-9]+/', '', $key), $pluginfrankenstyle);
                 $description = $title;
                 $setting = new \theme_foundation\admin_setting_configstoredfiles(
-                    $name, $title, $description, $key, null
+                    $name,
+                    $title,
+                    $description,
+                    $key,
+                    null
                 );
                 $changed = $setting->base64decode($props[$key]);
                 if (!empty($changed[\theme_foundation\admin_setting_configstoredfiles::REMOVEDFILES])) {

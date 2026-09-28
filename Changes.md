@@ -1,6 +1,10 @@
 Version Information
 ===================
 
+Version 500.1.0 - 28/09/2026
+----------------------------
+1. Fix 'Exception - Class "mod_quiz_renderer" not found in Quiz' - #38.
+
 Version 500.0.2 - 27/09/2025
 ----------------------------
 1. Fix 'Undefined Property $layouts' - #36.
